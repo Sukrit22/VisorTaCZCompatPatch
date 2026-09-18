@@ -1,0 +1,70 @@
+plugins {
+    id 'java'
+    id 'net.minecraftforge.gradle' version '6.0.54'
+}
+
+group = 'dev.visorcompat.tacz'
+version = '0.6.5'
+base.archivesName = 'visor-compat-tacz-1.20.1'
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+// Visor's published Forge jar includes these annotation packages. A separate
+// copy in ForgeGradle's development module layer causes split-package failures.
+configurations.configureEach {
+    exclude group: 'com.google.errorprone', module: 'error_prone_annotations'
+}
+
+minecraft {
+    mappings channel: 'official', version: '1.20.1'
+    runs {
+        client {
+            workingDirectory project.file('run/client')
+            mods { visor_tacz { source sourceSets.main } }
+            arg '-mixin.config=visor_tacz.mixins.json'
+        }
+        server {
+            workingDirectory project.file('run/server')
+            mods { visor_tacz { source sourceSets.main } }
+            arg '-mixin.config=visor_tacz.mixins.json'
+            args '--nogui'
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+    ivy {
+        url = 'https://raw.githubusercontent.com/MCModderAnchor/TACZ/b43eb84c38e9768d8e73c8b14f0b845669704b38/libs'
+        patternLayout { artifact '[artifact]-[revision].[ext]' }
+        metadataSources { artifact() }
+        content { includeGroup 'com.github.mcmodderanchor' }
+    }
+    maven {
+        url = 'https://api.modrinth.com/maven'
+        content { includeGroup 'maven.modrinth' }
+    }
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.4.0'
+    implementation fg.deobf('maven.modrinth:visor:gqaBzrB7')
+    implementation fg.deobf('maven.modrinth:timeless-and-classics-zero:yOVIzIJR')
+    implementation(fg.deobf('com.github.mcmodderanchor:simplebedrockmodel:2.2.2-forge+mc1.20.1')) { transitive = false }
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
+}
+
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+tasks.named('test') { useJUnitPlatform() }
+tasks.named('jar') {
+    manifest.attributes('MixinConfigs': 'visor_tacz.mixins.json')
+    finalizedBy 'reobfJar'
+}
+tasks.named('processResources') {
+    inputs.property 'version', project.version
+    filesMatching('META-INF/mods.toml') { expand(version: project.version) }
+}
+
+tasks.register('diagnosticClasspath') {
+    doLast { file('build/diagnostic-classpath.txt').text = sourceSets.main.runtimeClasspath.asPath }
+}

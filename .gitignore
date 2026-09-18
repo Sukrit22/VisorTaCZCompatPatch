@@ -1,0 +1,15 @@
+.gradle/
+build/
+run/
+.upstream/
+.idea/
+*.iml
+*.log
+logs/
+crash-reports/
+docs/INSTANCE-INSPECTION.md
+.env
+.env.*
+*.disabled
+.DS_Store
+Thumbs.db

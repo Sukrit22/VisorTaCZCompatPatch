@@ -1,0 +1,32 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="MIT"
+[[mods]]
+modId="visor_tacz"
+version="${version}"
+displayName="Visor TaCZ Compatibility"
+description='''Controller aiming, muzzle-origin shooting and VR rendering for TaCZ.'''
+[[dependencies.visor_tacz]]
+modId="forge"
+mandatory=true
+versionRange="[47.4.0,48)"
+ordering="NONE"
+side="BOTH"
+[[dependencies.visor_tacz]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.1]"
+ordering="NONE"
+side="BOTH"
+[[dependencies.visor_tacz]]
+modId="visor"
+mandatory=true
+versionRange="[0.5.0]"
+ordering="AFTER"
+side="BOTH"
+[[dependencies.visor_tacz]]
+modId="tacz"
+mandatory=true
+versionRange="[1.1.8-hotfix]"
+ordering="AFTER"
+side="BOTH"
