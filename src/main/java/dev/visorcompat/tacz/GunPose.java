@@ -21,7 +21,8 @@ public record GunPose(Vector3f hand, Quaternionf rotation, Vector3f muzzle, Vect
         hand = calibration.position(hand, rotation, scale);
         rotation = calibration.orientation(rotation);
         if (emptyOffhand) rotation = PoseMath.supportedRotation(rotation, hand,pose.getOffhand().getPosition(),
-            new Vector3f(0,0,-profile.supportDistance()).add(calibration.interactions().support().vector()),scale,profile.supportDistance()>0);
+            dev.visorcompat.tacz.physical.Handling.support(profile,calibration),scale,profile.supportDistance()>0,
+            profile.pump()?calibration.zones().rack():calibration.zones().support());
         Vector3f direction = rotation.transform(new Vector3f(0, 0, -1)).normalize();
         Vector3f muzzle = rotation.transform(calibration.muzzleOffset(profile.muzzleOffset()).mul(scale)).add(hand);
         return PoseMath.finite(muzzle) && PoseMath.finite(direction)

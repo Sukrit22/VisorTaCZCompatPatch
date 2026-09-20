@@ -25,6 +25,7 @@ public final class PhysicalClient {
         if(!active())return true;
         var stack=Minecraft.getInstance().player.getMainHandItem();
         if(Profiles.pump(stack) && (dev.visorcompat.tacz.server.ServerPump.open(stack) || dev.visorcompat.tacz.server.ServerPump.spent(stack) || pull()>=.02f))return false;
+        if(Profiles.bolt(stack) && dev.visorcompat.tacz.physical.BoltState.blocked(stack))return false;
         return !dev.visorcompat.tacz.compat.GunDurabilityCompat.jammed(stack) && Handling.fireable(phase()) && com.tacz.guns.api.item.IGun.getIGunOrNull(stack).hasBulletInBarrel(stack);
     }
     public static boolean supporting() { return !active() || phase()==Phase.SUPPORT || (phase()==Phase.PUMP_HOLD && pull()<.02f); }
@@ -54,12 +55,12 @@ public final class PhysicalClient {
         var gun=GunPose.resolve(pose,profile,supporting(),c);if(gun==null)return Handling.Target.NONE;
         var off=pose.getOffhand().getPosition();
         var forward=pose.getHmd().getRotation().transformDirection(new org.joml.Vector3f(0,0,-1));
-        boolean pouch=off.distance(Handling.pouch(pose.getHmd().getPosition(),forward,gun.worldScale(),c))<.25f*gun.worldScale();
+        boolean pouch=Handling.inPouch(off,pose.getHmd().getPosition(),forward,gun.worldScale(),c);
         var local=Handling.local(gun,off);
         var jam=dev.visorcompat.tacz.server.ServerJams.read(stack);
         if((phase()==Phase.READY || phase()==Phase.NEED_RACK) && jam.kind()==dev.visorcompat.tacz.physical.Jam.Kind.STOVEPIPE && jam.remaining()>0
-            && Handling.near(local,dev.visorcompat.tacz.physical.JamProfile.of(profile,c).port(),.035f))return Handling.Target.CASING;
-        var target=Handling.target(phase(),local,pouch,profile,c);
+            && Handling.inside(local,dev.visorcompat.tacz.physical.JamProfile.of(profile,c).port(),c,ZoneSizes.Zone.PORT))return Handling.Target.CASING;
+        var target=Handling.target(phase(),local,pouch,profile,c,dev.visorcompat.tacz.physical.BoltState.open(stack));
         if(target==Handling.Target.POUCH && jam.kind()==dev.visorcompat.tacz.physical.Jam.Kind.DOUBLE_FEED && jam.remaining()>0)return Handling.Target.NONE;
         return target;
     }
@@ -76,6 +77,10 @@ public final class PhysicalClient {
         if(!active() || !canInput)return false;
         if(event.getActionButton()==grab && event.isPressEvent() && !held) {
             var target=target();if(target==Handling.Target.NONE)return false;
+            if(target==Handling.Target.POUCH && Profiles.pump(Minecraft.getInstance().player.getMainHandItem())
+                && !dev.visorcompat.tacz.physical.PouchAmmo.available(Minecraft.getInstance().player,Minecraft.getInstance().player.getMainHandItem())){
+                Minecraft.getInstance().player.displayClientMessage(Component.literal("TaCZ VR: OUT OF AMMO"),true);event.setCanceled(true);return true;
+            }
             held=true;event.setCanceled(true);
             if(target==Handling.Target.SELECTOR)CompatNetwork.CHANNEL.sendToServer(new CompatNetwork.PhysicalSelector());
             else CompatNetwork.CHANNEL.sendToServer(new CompatNetwork.PhysicalGrip(true));
@@ -103,9 +108,9 @@ public final class PhysicalClient {
                 case NO_MAG -> "Grab a replacement at waist pouch (below headset)";
                 case NEW_MAG -> "Move magazine to magwell and release to insert";
                 case LOADING -> "TaCZ is supplying ammo...";
-                case NEED_RACK -> "Grab slide / charging handle, pull back 6 cm, release";
+                case NEED_RACK -> Profiles.bolt(p.getMainHandItem())?"Grab bolt: pull back 8 cm, then push forward to chamber":"Grab slide / charging handle, pull back 6 cm, release";
                 case PLUCKING -> "Pull the casing away from the port, then release";
-                case RACKING, RACKING_EMPTY -> "Pull backward, then release";
+                case RACKING, RACKING_EMPTY -> Profiles.bolt(p.getMainHandItem())?"Pull bolt back, then push forward; release open leaves it open":"Pull backward, then release";
                 case SUPPORT -> "Two-hand grip engaged; release offhand use to let go";
             };
             p.displayClientMessage(Component.literal("TaCZ VR: "+hint),true);

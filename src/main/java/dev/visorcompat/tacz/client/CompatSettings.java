@@ -40,7 +40,7 @@ public final class CompatSettings {
                 "AUTO activates in VR and stays inactive in flatscreen, without commands.",
                 "Use /visor_tacz auto to restore AUTO, or /visor_tacz off for comparison testing.")
                 .define("enabled", true);
-        PHYSICAL = builder.comment("Experimental physical magazine / slide handling for Glock, M4A1 and M870. Default: button controls.").define("physicalHandling",false);
+        PHYSICAL = builder.comment("Experimental physical magazine / slide handling for Glock, M4A1, M870, M700 and HK MP5A5. Default: button controls.").define("physicalHandling",false);
         AUTO_ADS=builder.comment("Use physical sight alignment to drive TaCZ ADS.").define("autoAds",true);
         OPTICS=builder.comment("Experimental per-eye reticles and screen-space lens magnification; shaders unsupported.").define("vrOptics",true);
         DEBUG_CUBES=builder.comment("Show colored interaction and calibration cubes. Visual only; does not change grab zones.").define("debugCubes",true);
@@ -164,7 +164,7 @@ public final class CompatSettings {
                 .then(Commands.literal("calibrate").executes(context -> {
                     var mc = Minecraft.getInstance();
                     if (mc.player == null || Profiles.get(mc.player.getMainHandItem()) == null) {
-                        context.getSource().sendFailure(Component.literal("Hold a supported Glock 17, M4A1 or M870 to calibrate."));
+                        context.getSource().sendFailure(Component.literal("Hold a supported Glock 17, M4A1, M870, M700 or HK MP5A5 to calibrate."));
                         return 0;
                     }
                     String key = Profiles.key(mc.player.getMainHandItem());

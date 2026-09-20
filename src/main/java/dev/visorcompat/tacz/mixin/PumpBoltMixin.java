@@ -9,5 +9,5 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class PumpBoltMixin {
     @Shadow @Final private LivingEntity shooter;
     @Inject(method="bolt",at=@At("HEAD"),cancellable=true)
-    private void physicalPump(CallbackInfo ci){if(shooter instanceof ServerPlayer p && dev.visorcompat.tacz.Profiles.pump(p.getMainHandItem()) && dev.visorcompat.tacz.server.ServerPhysical.enabled(p))ci.cancel();}
+    private void physicalPump(CallbackInfo ci){if(shooter instanceof ServerPlayer p && dev.visorcompat.tacz.Profiles.manualAction(p.getMainHandItem()) && dev.visorcompat.tacz.server.ServerPhysical.enabled(p))ci.cancel();}
 }

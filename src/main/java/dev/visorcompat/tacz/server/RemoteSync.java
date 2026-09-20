@@ -9,7 +9,7 @@ public final class RemoteSync {
     public static void tick(ServerPlayer p) {
         boolean active=ServerPoses.isVr(p) && p.isAlive() && Profiles.get(p.getMainHandItem())!=null;
         var state=new CompatNetwork.RemoteState(p.getUUID(),Profiles.key(p.getMainHandItem()),active,
-            CompatNetwork.physical(p),ServerPhysical.phase(p),ServerPhysical.pull(p),CompatNetwork.calibration(p));
+            CompatNetwork.physical(p),ServerPhysical.phase(p),ServerPhysical.pull(p),CompatNetwork.calibration(p),active && dev.visorcompat.tacz.physical.PouchAmmo.magazineLoaded(p,ServerPhysical.phase(p)));
         var last=LAST.get(p.getUUID());
         if((active || last!=null && last.active()) && (!state.equals(last) || p.tickCount%20==0))
             CompatNetwork.CHANNEL.send(PacketDistributor.TRACKING_ENTITY.with(()->p),state);

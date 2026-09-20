@@ -17,7 +17,7 @@ public final class ServerJams {
     }
     public static void start(ServerPlayer p,Jam.Kind requested) {
         var stack=p.getMainHandItem();var gun=IGun.getIGunOrNull(stack);
-        if(dev.visorcompat.tacz.Profiles.pump(stack) || !GunDurabilityCompat.supported() || gun==null || !GunDurabilityCompat.jammed(stack) || read(stack).kind()!=Jam.Kind.NONE)return;
+        if(dev.visorcompat.tacz.Profiles.manualAction(stack) || !GunDurabilityCompat.supported() || gun==null || !GunDurabilityCompat.jammed(stack) || read(stack).kind()!=Jam.Kind.NONE)return;
         var result=Jam.allocate(requested,gun.getCurrentAmmoCount(stack),gun.hasBulletInBarrel(stack));
         gun.setCurrentAmmoCount(stack,result.magazine());gun.setBulletInBarrel(stack,result.chamber());
         write(stack,result.jam());p.inventoryMenu.broadcastChanges();

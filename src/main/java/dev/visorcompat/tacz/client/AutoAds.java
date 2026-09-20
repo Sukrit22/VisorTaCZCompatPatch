@@ -23,7 +23,7 @@ public final class AutoAds {
         var mc=Minecraft.getInstance();
         if(mc.player==null) {owned=false;aiming=false;return;}
         boolean owns=ownsInput(),desired=false;
-        if(owns && mc.screen==null && !mc.isPaused() && mc.player.isAlive() && !mc.player.isSprinting()
+        if(owns && mc.screen==null && !mc.isPaused() && mc.player.isAlive()
             && VisorAPI.clientState().stateMode().isFocused()
             && VisorAPI.client().getVRLocalPlayer().getRawController(HandType.MAIN).isTracking()
             && !IGunOperator.fromLivingEntity(mc.player).getSynReloadState().getStateType().isReloading()
@@ -32,14 +32,15 @@ public final class AutoAds {
             var pose=VisorAPI.client().getVRLocalPlayer().getPoseData(PlayerPoseType.TICK);
             var gun=GunPose.resolve(pose,profile,mc.player.getOffhandItem().isEmpty() && PhysicalClient.supporting(),CalibrationStore.get(Profiles.key(stack)));
             Vector3f sight=OpticGeometry.sight(stack,profile);
-            if(sight!=null)sight.add(CalibrationStore.get(Profiles.key(stack)).interactions().sight().vector());
+            if(sight!=null)sight.add(CalibrationStore.get(Profiles.key(stack)).interactions().sight().vector()).mul(CalibrationStore.get(Profiles.key(stack)).gunScale());
             if(gun!=null && sight!=null) {
                 Vector3f look=pose.getHmd().getRotation().transformDirection(new Vector3f(0,0,-1)).normalize();
                 look=new Quaternionf(gun.rotation()).conjugate().transform(look);
-                desired=OpticMath.aligned(Handling.local(gun,pose.getEyeLeft().getPosition()),look,sight,aiming)
-                    || OpticMath.aligned(Handling.local(gun,pose.getEyeRight().getPosition()),look,sight,aiming);
+                desired=OpticMath.aligned(Handling.local(gun,pose.getEyeLeft().getPosition()),look,sight,aiming,CalibrationStore.get(Profiles.key(stack)).zones().sight())
+                    || OpticMath.aligned(Handling.local(gun,pose.getEyeRight().getPosition()),look,sight,aiming,CalibrationStore.get(Profiles.key(stack)).zones().sight());
             }
         }
+        if(desired)mc.player.setSprinting(false);
         var operator=IClientPlayerGunOperator.fromLocalPlayer(mc.player);
         if((owns || owned) && operator.isAim()!=desired)operator.aim(desired);
         aiming=desired;owned=owns;

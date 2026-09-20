@@ -67,16 +67,17 @@ public final class RemoteGuns {
                 matrices.translate(gun.hand().x-camera.x,gun.hand().y-camera.y,gun.hand().z-camera.z);
                 matrices.mulPose(gun.rotation());matrices.scale(gun.worldScale(),gun.worldScale(),gun.worldScale());
                 matrices.pushPose();
+                float modelScale=state.calibration().gunScale();matrices.scale(modelScale,modelScale,modelScale);
                 var grip=profile.grip();matrices.translate(-grip.x,-grip.y,-grip.z);
                 matrices.scale(profile.scale(),profile.scale(),profile.scale());matrices.translate(0,1.5,0);matrices.mulPose(Axis.ZP.rotationDegrees(180));
                 model.cleanAnimationTransform();model.setRenderHand(false);MuzzleFlashRender.isSelf=false;
                 var type=display.enablesTransparency()?RenderType.entityTranslucent(display.getModelTexture()):RenderType.entityCutout(display.getModelTexture());
                 int light=mc.getEntityRenderDispatcher().getPackedLightCoords(player,event.getPartialTick());
-                try(var physical=new PhysicalModel(model,profile,state.physical(),state.phase(),state.pull()*.005f,stack)) {
+                try(var physical=new PhysicalModel(model,profile,state.physical(),state.phase(),state.pull()*.005f,stack,state.calibration())) {
                     model.render(matrices,stack,ItemDisplayContext.THIRD_PERSON_RIGHT_HAND,type,light,OverlayTexture.NO_OVERLAY);
                 } finally {matrices.popPose();}
-                PhysicalModel.detached(matrices,model,profile,gun,pose,type,light,state.physical(),state.phase());
-                if(state.physical())PumpVisual.render(matrices,profile,gun,pose,state.phase(),light);
+                PhysicalModel.detached(matrices,model,profile,gun,pose,type,light,state.physical(),state.phase(),state.calibration().gunScale(),state.magazineLoaded());
+                if(state.physical())PumpVisual.render(matrices,profile,gun,pose,state.phase(),light,state.calibration().gunScale());
                 if(state.physical())JamVisual.render(matrices,stack,profile,state.calibration(),gun,pose,state.phase(),light);
                 mc.renderBuffers().bufferSource().endBatch();
             } finally {model.setRenderHand(hands);MuzzleFlashRender.isSelf=flash;com.tacz.guns.client.model.functional.ShellRender.isSelf=oldShell;model.cleanAnimationTransform();matrices.popPose();}

@@ -31,6 +31,7 @@ public final class GunRenderer extends VRHandEffect {
 
     @Override public void render(HandType hand, VRRenderPass pass, PoseStack matrices,
                                  boolean guiHand, float partialTicks) {
+        if(!guiHand && pass.isEye() && !LateGunRenderer.drawing && !com.tacz.guns.compat.oculus.OculusCompat.isUsingRenderPack()){LateGunRenderer.defer(this,hand,pass,matrices,partialTicks);return;}
         Minecraft mc = Minecraft.getInstance();
         if (mc.player == null) return;
         var stack = mc.player.getMainHandItem();
@@ -60,13 +61,16 @@ public final class GunRenderer extends VRHandEffect {
                 matrices.last().normal().mul(correction.get3x3(new org.joml.Matrix3f()).invert().transpose());
                 if (mc.screen instanceof CalibrationScreen) {
                     Vector3f origin = CalibrationStore.render(Profiles.key(stack)).muzzleOffset(profile.muzzleOffset());
+                    int markerColor=CalibrationHints.get(Profiles.key(stack),"muzzle").color();
                     var lines = mc.renderBuffers().bufferSource().getBuffer(RenderType.lines());
                     net.minecraft.client.renderer.LevelRenderer.renderLineBox(matrices, lines,
                         origin.x-.006,origin.y-.006,origin.z-.006,
-                        origin.x+.006,origin.y+.006,origin.z+.006,0,1,1,1);
+                        origin.x+.006,origin.y+.006,origin.z+.006,((markerColor>>16)&255)/255f,((markerColor>>8)&255)/255f,(markerColor&255)/255f,1);
                 }
                 PhysicalModel.guides(matrices,profile,gun,pose);
                 matrices.pushPose();
+                float modelScale=CalibrationStore.render(Profiles.key(stack)).gunScale();
+                matrices.scale(modelScale,modelScale,modelScale);
                 Vector3f grip = profile.grip();
                 matrices.translate(-grip.x, -grip.y, -grip.z);
                 matrices.scale(profile.scale(), profile.scale(), profile.scale());

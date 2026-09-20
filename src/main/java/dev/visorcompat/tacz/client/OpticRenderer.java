@@ -123,6 +123,6 @@ public final class OpticRenderer {
         static final RenderType TYPE=create("visor_tacz_optic",DefaultVertexFormat.NEW_ENTITY,VertexFormat.Mode.QUADS,256,false,false,
             CompositeState.builder().setShaderState(new ShaderStateShard(()->shader))
                 .setTextureState(new TextureStateShard(SCENE,false,false)).setTransparencyState(TRANSLUCENT_TRANSPARENCY)
-                .setCullState(NO_CULL).setWriteMaskState(COLOR_WRITE).createCompositeState(false));
+                .setCullState(NO_CULL).setWriteMaskState(COLOR_DEPTH_WRITE).createCompositeState(false));
     }
 }

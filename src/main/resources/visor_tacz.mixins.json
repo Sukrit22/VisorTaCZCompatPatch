@@ -4,6 +4,6 @@
   "package": "dev.visorcompat.tacz.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": ["PoseFreshnessMixin", "BulletMixin", "BulletSpreadMixin", "PumpBoltMixin"],
-  "client": ["ClientPumpBoltMixin", "CameraMixin", "DesktopGunRenderMixin", "TracerMixin", "MuzzleFlashMixin", "PhysicalReloadMixin", "AutoAdsMixin", "RemoteGunMixin", "VrInputMixin", "ShootKeyAccess", "ScopeModelAccess", "OpticLensMixin", "VisorGuiReadyMixin", "WorldStencilReadyMixin", "GunStencilMixin", "StencilEnableMixin", "ScopedAccelerationMixin"],
+  "client": ["AdsSprintMixin", "OffhandUseMixin", "LocalAttachmentDetailMixin", "ClientPumpBoltMixin", "CameraMixin", "DesktopGunRenderMixin", "TracerMixin", "MuzzleFlashMixin", "PhysicalReloadMixin", "AutoAdsMixin", "RemoteGunMixin", "VrInputMixin", "ShootKeyAccess", "ScopeModelAccess", "OpticLensMixin", "VisorGuiReadyMixin", "WorldStencilReadyMixin", "GunStencilMixin", "StencilEnableMixin", "ScopedAccelerationMixin"],
   "injectors": {"defaultRequire": 1}
 }

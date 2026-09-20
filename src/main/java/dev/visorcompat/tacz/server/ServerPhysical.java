@@ -45,6 +45,7 @@ public final class ServerPhysical {
         if(!enabled(p)) return true;
         if(Profiles.pump(p.getMainHandItem()))return ServerPump.canFire(p);
         Session s=SESSIONS.get(p.getUUID());return s!=null && s.stack==p.getMainHandItem() && Handling.fireable(s.phase)
+            && !(Profiles.bolt(s.stack) && dev.visorcompat.tacz.physical.BoltState.blocked(s.stack))
             && !GunDurabilityCompat.jammed(s.stack) && IGun.getIGunOrNull(s.stack).hasBulletInBarrel(s.stack);
     }
     public static boolean allowsReload(ServerPlayer p) {
@@ -91,7 +92,7 @@ public final class ServerPhysical {
         if(!PoseMath.finite(off) || off.distance(pose.getHmd().getPosition())>1.6f*gun.worldScale()) return null;
         Vector3f forward=pose.getHmd().getRotation().transformDirection(new Vector3f(0,0,-1));
         Vector3f pouch=Handling.pouch(pose.getHmd().getPosition(),forward,gun.worldScale(),CompatNetwork.calibration(p));
-        return new Sample(Handling.local(gun,off),off.distance(pouch)<.25f*gun.worldScale());
+        return new Sample(Handling.local(gun,off),Handling.inPouch(off,pose.getHmd().getPosition(),forward,gun.worldScale(),CompatNetwork.calibration(p)));
     }
     public static void tick(ServerPlayer p) {
         ServerPump.cleanup(p);
@@ -106,6 +107,8 @@ public final class ServerPhysical {
             s=new Session(p);SESSIONS.put(p.getUUID(),s);
         }
         if(!s.held && s.phase!=Phase.LOADING && !Handling.magazineOut(s.phase))ServerJams.observe(p);
+        if(!s.held && (s.phase==Phase.READY || s.phase==Phase.NEED_RACK))
+            s.phase=IGun.getIGunOrNull(s.stack).hasBulletInBarrel(s.stack) && !(Profiles.bolt(s.stack) && dev.visorcompat.tacz.physical.BoltState.blocked(s.stack))?Phase.READY:Phase.NEED_RACK;
         s.ticks++;
         Sample pose=sample(p);
         if((pose==null || !p.getOffhandItem().isEmpty()) && s.held) release(p,s,null);
@@ -115,8 +118,9 @@ public final class ServerPhysical {
                 s.stack.getOrCreateTag().putInt(RESERVE,gun.getCurrentAmmoCount(s.stack));
                 gun.setCurrentAmmoCount(s.stack,0);
                 s.phase=Phase.OLD_MAG;HandlingFeedback.emit(p,0,ServerPoses.validated(p));
-            } else if(Handling.racking(s.phase) && Handling.racked(s.start,pose.local())) pullRack(p,s);
-            else if(s.phase==Phase.SUPPORT && !Handling.near(pose.local(),Handling.support(Profiles.get(s.stack),CompatNetwork.calibration(p)),.24f)) {
+            } else if(Handling.racking(s.phase) && Profiles.bolt(s.stack)) moveBolt(p,s,pose);
+            else if(Handling.racking(s.phase) && Handling.racked(s.start,pose.local())) pullRack(p,s);
+            else if(s.phase==Phase.SUPPORT && !Handling.inside(pose.local(),Handling.support(Profiles.get(s.stack),CompatNetwork.calibration(p)),CompatNetwork.calibration(p),ZoneSizes.Zone.SUPPORT)) {
                 s.phase=Phase.READY;s.held=false;
             }
         }
@@ -127,7 +131,7 @@ public final class ServerPhysical {
         }
         float travel=pose==null?0:Handling.racking(s.phase)?pose.local().z-s.start.z:
             s.phase==Phase.REMOVING?s.start.y-pose.local().y:0;
-        int pull=Math.min(14,Math.max(0,Math.round(travel*200)));
+        int pull=Math.min(Profiles.bolt(s.stack)?16:14,Math.max(0,Math.round(travel*200)));
         if(s.sent!=s.phase || s.sentPull!=pull) { send(p,s,s.phase,pull);s.sent=s.phase;s.sentPull=pull; }
     }
     private static void finishReload(Session s) {
@@ -153,13 +157,14 @@ public final class ServerPhysical {
         s.held=true;s.start.set(pose.local());
         WeaponProfile profile=Profiles.get(s.stack);
         var jam=ServerJams.read(s.stack);
-        var target=Handling.target(s.phase,pose.local(),pose.pouch(),profile,CompatNetwork.calibration(p));
+        var target=Handling.target(s.phase,pose.local(),pose.pouch(),profile,CompatNetwork.calibration(p),dev.visorcompat.tacz.physical.BoltState.open(s.stack));
         if((s.phase==Phase.READY || s.phase==Phase.NEED_RACK) && jam.kind()==Jam.Kind.STOVEPIPE && jam.remaining()>0
-            && Handling.near(pose.local(),JamProfile.of(profile,CompatNetwork.calibration(p)).port(),.035f))target=Handling.Target.CASING;
+            && Handling.inside(pose.local(),JamProfile.of(profile,CompatNetwork.calibration(p)).port(),CompatNetwork.calibration(p),ZoneSizes.Zone.PORT))target=Handling.Target.CASING;
         switch(target) {
             case POUCH -> {if(jam.kind()==Jam.Kind.DOUBLE_FEED && jam.remaining()>0)s.held=false;else s.phase=Phase.NEW_MAG;}
             case CASING -> {s.rackFrom=s.phase;s.phase=Phase.PLUCKING;}
-            case RACK -> {s.rackFrom=s.phase;s.phase=s.rackFrom==Phase.NO_MAG?Phase.RACKING_EMPTY:Phase.RACKING;s.pulled=false;s.jammedAtRack=GunDurabilityCompat.jammed(s.stack);}
+            case RACK -> {s.rackFrom=s.phase;s.phase=s.rackFrom==Phase.NO_MAG?Phase.RACKING_EMPTY:Phase.RACKING;s.pulled=false;s.jammedAtRack=GunDurabilityCompat.jammed(s.stack);
+                if(profile.bolt() && dev.visorcompat.tacz.physical.BoltState.open(s.stack))s.start.z-=dev.visorcompat.tacz.physical.PumpCycle.TRAVEL;}
             case MAGAZINE -> s.phase=Phase.REMOVING;
             case SUPPORT -> s.phase=Phase.SUPPORT;
             default -> s.held=false;
@@ -174,7 +179,7 @@ public final class ServerPhysical {
             case OLD_MAG -> s.phase=Phase.NO_MAG;
             case NEW_MAG -> {
                 WeaponProfile profile=Profiles.get(s.stack);
-                if(pose!=null && profile!=null && Handling.near(pose.local(),Handling.magazine(profile,CompatNetwork.calibration(p)),.09f)) insert(p,s);
+                if(pose!=null && profile!=null && Handling.inside(pose.local(),Handling.magazine(profile,CompatNetwork.calibration(p)),CompatNetwork.calibration(p),ZoneSizes.Zone.MAGAZINE)) insert(p,s);
                 else s.phase=Phase.NO_MAG;
             }
             case PLUCKING -> {
@@ -184,6 +189,11 @@ public final class ServerPhysical {
                 s.phase=s.rackFrom;
             }
             case RACKING, RACKING_EMPTY -> {
+                if(Profiles.bolt(s.stack)){
+                    if(pose!=null)moveBolt(p,s,pose);
+                    s.phase=s.rackFrom==Phase.NO_MAG?Phase.NO_MAG:IGun.getIGunOrNull(s.stack).hasBulletInBarrel(s.stack) && !dev.visorcompat.tacz.physical.BoltState.blocked(s.stack)?Phase.READY:Phase.NEED_RACK;
+                    break;
+                }
                 boolean noMagazine=s.rackFrom==Phase.NO_MAG;
                 IGun gun=IGun.getIGunOrNull(s.stack);
                 if(pose!=null && (s.pulled || Handling.racked(s.start,pose.local()))) {
@@ -201,6 +211,22 @@ public final class ServerPhysical {
             default -> {}
         }
     }
+    private static void moveBolt(ServerPlayer p,Session s,Sample pose) {
+        var gun=IGun.getIGunOrNull(s.stack);var pos=pose.local();
+        var transition=dev.visorcompat.tacz.physical.PumpCycle.transition(dev.visorcompat.tacz.physical.BoltState.open(s.stack),pos.z-s.start.z,pos.x-s.start.x,pos.y-s.start.y);
+        if(transition==dev.visorcompat.tacz.physical.PumpCycle.Transition.CLOSE && s.jammedAtRack)GunDurabilityCompat.clear(p,s.stack);
+        var result=dev.visorcompat.tacz.physical.BoltCycle.advance(dev.visorcompat.tacz.physical.BoltState.open(s.stack),dev.visorcompat.tacz.physical.BoltState.spent(s.stack),
+            new Chamber(gun.getCurrentAmmoCount(s.stack),gun.hasBulletInBarrel(s.stack)),transition,s.rackFrom!=Phase.NO_MAG,!GunDurabilityCompat.jammed(s.stack));
+        if(result.effect()<0)return;
+        gun.setCurrentAmmoCount(s.stack,result.chamber().magazine());gun.setBulletInBarrel(s.stack,result.chamber().loaded());
+        s.stack.getOrCreateTag().putBoolean(dev.visorcompat.tacz.physical.BoltState.OPEN,result.open());
+        s.stack.getTag().putBoolean(dev.visorcompat.tacz.physical.BoltState.SPENT,result.spent());
+        if(!result.open()){
+            s.phase=s.rackFrom==Phase.NO_MAG?Phase.NO_MAG:result.chamber().loaded()?Phase.READY:Phase.NEED_RACK;s.held=false;
+        }
+        HandlingFeedback.emit(p,result.effect(),ServerPoses.validated(p));
+    }
+
     private static void pullRack(ServerPlayer p,Session s) {
         if(s.pulled)return;
         s.pulled=true;
@@ -225,7 +251,7 @@ public final class ServerPhysical {
     public static void selector(ServerPlayer p) {
         Session s=SESSIONS.get(p.getUUID());Sample pose=sample(p);
         if(!enabled(p) || s==null || s.phase!=Phase.READY || pose==null || s.ticks-s.lastControl<6) return;
-        if(Handling.near(pose.local(),Handling.selector(Profiles.get(s.stack),CompatNetwork.calibration(p)),.11f)) {
+        if(Profiles.get(s.stack).selector() && Handling.inside(pose.local(),Handling.selector(Profiles.get(s.stack),CompatNetwork.calibration(p)),CompatNetwork.calibration(p),ZoneSizes.Zone.SELECTOR)) {
             IGunOperator.fromLivingEntity(p).fireSelect();s.lastControl=s.ticks;
         }
     }

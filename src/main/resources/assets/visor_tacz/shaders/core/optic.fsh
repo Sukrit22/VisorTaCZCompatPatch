@@ -11,8 +11,8 @@ void main() {
     vec2 pixels = (uv - AimUV) * Viewport.zw;
     if (Scope < 0.5) {
         float coverage = 1.0 - smoothstep(1.0, 2.1, length(pixels));
-        if (coverage <= 0.0) discard;
-        fragColor = vec4(1.0, 0.07, 0.025, coverage);
+        vec3 scene = texture(Sampler0, uv).rgb;
+        fragColor = vec4(mix(scene, vec3(1.0, 0.07, 0.025), coverage), 1.0);
         return;
     }
     vec2 sampleUV = AimUV + (uv - AimUV) / max(Zoom, 1.0);

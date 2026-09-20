@@ -21,27 +21,30 @@ public final class PhysicalModel implements AutoCloseable {
     private final boolean visible;
     private final float slideZ, magazineY,boltZ;
     public PhysicalModel(BedrockGunModel model,WeaponProfile profile) {
-        this(model,profile,PhysicalClient.active(),PhysicalClient.phase(),PhysicalClient.pull(),Minecraft.getInstance().player.getMainHandItem());
+        this(model,profile,PhysicalClient.active(),PhysicalClient.phase(),PhysicalClient.pull(),Minecraft.getInstance().player.getMainHandItem(),CalibrationStore.render(Profiles.key(Minecraft.getInstance().player.getMainHandItem())));
     }
-    public PhysicalModel(BedrockGunModel model,WeaponProfile profile,boolean active,Phase phase,float travel,net.minecraft.world.item.ItemStack stack) {
+    public PhysicalModel(BedrockGunModel model,WeaponProfile profile,boolean active,Phase phase,float travel,net.minecraft.world.item.ItemStack stack,Calibration calibration) {
         loose=profile.pump()?find(model.getRootNode(),"bullet_and_lefthand"):null;looseVisible=loose!=null&&loose.visible;
-        bolt=profile.supportDistance()>0?find(model.getRootNode(),"m4a1_bolt"):null;boltZ=bolt==null?0:bolt.offsetZ;
+        bolt=profile.boltNode()!=null?find(model.getRootNode(),profile.boltNode()):null;boltZ=bolt==null?0:bolt.offsetZ;
         magazine=find(model.getRootNode(),"magazine");
-        slide=find(model.getRootNode(),profile.pump()?"slide2":profile.supportDistance()==0?"slide":"m4a1_pull");
+        slide=find(model.getRootNode(),profile.rackNode());
         visible=magazine!=null && magazine.visible;magazineY=magazine==null?0:magazine.offsetY;slideZ=slide==null?0:slide.offsetZ;
         if(active) {
             if(loose!=null)loose.visible=false;
             if(magazine!=null && Handling.magazineOut(phase)) magazine.visible=false;
-            if(magazine!=null && phase==Phase.REMOVING) magazine.offsetY+=travel/profile.scale();
+            if(magazine!=null && phase==Phase.REMOVING) magazine.offsetY+=travel/(profile.scale()*calibration.gunScale());
             if(slide!=null) {
                 float pull=Handling.racking(phase) || phase==Phase.PUMP_HOLD || phase==Phase.PUMP_OPEN?travel:0;
                 if(profile.pump() && phase!=Phase.PUMP_HOLD && dev.visorcompat.tacz.server.ServerPump.open(stack))pull=dev.visorcompat.tacz.physical.PumpCycle.TRAVEL;
+                if(profile.bolt() && !Handling.racking(phase) && dev.visorcompat.tacz.physical.BoltState.open(stack))pull=dev.visorcompat.tacz.physical.PumpCycle.TRAVEL;
                 var jam=dev.visorcompat.tacz.server.ServerJams.read(stack);
-                if(profile.supportDistance()==0 && phase==Phase.NEED_RACK && jam.kind()==dev.visorcompat.tacz.physical.Jam.Kind.NONE)pull=.055f;
+                if(!profile.pump() && profile.supportDistance()==0 && !Handling.racking(phase)
+                    && !com.tacz.guns.api.item.IGun.getIGunOrNull(stack).hasBulletInBarrel(stack)
+                    && jam.kind()==dev.visorcompat.tacz.physical.Jam.Kind.NONE)pull=.055f;
                 if(jam.remaining()>0 && (jam.kind()==dev.visorcompat.tacz.physical.Jam.Kind.STOVEPIPE || jam.kind()==dev.visorcompat.tacz.physical.Jam.Kind.DOUBLE_FEED))
-                    {if(bolt!=null)bolt.offsetZ+=java.lang.Math.max(0,.025f-pull)/profile.scale();
+                    {if(bolt!=null)bolt.offsetZ+=java.lang.Math.max(0,.025f-pull)/(profile.scale()*calibration.gunScale());
                     else pull=java.lang.Math.max(pull,.025f);}
-                slide.offsetZ+=pull/profile.scale();
+                slide.offsetZ+=pull/(profile.scale()*calibration.gunScale());
             }
         }
     }
@@ -56,35 +59,65 @@ public final class PhysicalModel implements AutoCloseable {
         parts.remove(parts.size()-1);return false;
     }
     public static void guides(PoseStack matrices,WeaponProfile profile,GunPose gun,VRPlayerPose pose) {
-        if(!CompatSettings.debugCubes())return;
-        if(!PhysicalClient.active() && !(Minecraft.getInstance().screen instanceof CalibrationScreen))return;
-        var c=CalibrationStore.render(Profiles.key(Minecraft.getInstance().player.getMainHandItem()));
-        box(matrices,Handling.magazine(profile,c),.023f,0,1,0);
-        box(matrices,Handling.rack(profile,c),.023f,1,.6f,0);
-        box(matrices,dev.visorcompat.tacz.physical.JamProfile.of(profile,c).port(),.015f,1,.2f,.6f);
-        if(!profile.pump())box(matrices,Handling.selector(profile,c),.014f,1,1,0);
-        // Pump grip provides support; the separate support point only calibrates aim.
-        if(profile.supportDistance()>0 && (!profile.pump() || Minecraft.getInstance().screen instanceof CalibrationScreen))box(matrices,Handling.support(profile,c),.022f,0,.6f,1);
+        if(!CompatSettings.debugCubes() && !(Minecraft.getInstance().screen instanceof CalibrationScreen))return;
+        boolean calibrating=Minecraft.getInstance().screen instanceof CalibrationScreen;
+        if(!PhysicalClient.active()&&!calibrating)return;
+        var stack=Minecraft.getInstance().player.getMainHandItem();String key=Profiles.key(stack);
+        var c=CalibrationStore.render(key);var local=Handling.local(gun,pose.getOffhand().getPosition());
+        guide(matrices,Handling.magazine(profile,c),c.zones().magazine(),key,"magazine",local);
+        var rack=Handling.rack(profile,c,dev.visorcompat.tacz.physical.BoltState.open(stack));
+        if(profile.pump()&&dev.visorcompat.tacz.server.ServerPump.open(stack))rack.add(0,0,dev.visorcompat.tacz.physical.PumpCycle.TRAVEL);
+        guide(matrices,rack,c.zones().rack(),key,"rack",local);
+        var port=dev.visorcompat.tacz.physical.JamProfile.of(profile,c).port();
+        guide(matrices,port,profile.manualAction()?new ZoneSizes.Box(.025f,.025f,.025f):c.zones().port(),key,"port",local);
+        if(!profile.pump()&&profile.supportDistance()>0){
+            if(profile.selector())guide(matrices,Handling.selector(profile,c),c.zones().selector(),key,"selector",local);
+            guide(matrices,Handling.support(profile,c),c.zones().support(),key,"support",local);
+        }
         Vector3f forward=pose.getHmd().getRotation().transformDirection(new Vector3f(0,0,-1));
-        Vector3f pouch=Handling.pouch(pose.getHmd().getPosition(),forward,gun.worldScale(),c);
-        if(profile.pump() || PhysicalClient.phase()==Phase.NO_MAG || Minecraft.getInstance().screen instanceof CalibrationScreen)
-            box(matrices,Handling.local(gun,pouch),.065f,0,1,1);
-        if(Minecraft.getInstance().screen instanceof CalibrationScreen) {
-            var sight=OpticGeometry.sight(Minecraft.getInstance().player.getMainHandItem(),profile);
-            if(sight!=null)box(matrices,sight.add(c.interactions().sight().vector()),.01f,1,0,1);
+        if(profile.pump()||PhysicalClient.phase()==Phase.NO_MAG||calibrating){
+            var flat=new Vector3f(forward.x,0,forward.z);if(flat.lengthSquared()<.001f)flat.set(0,0,-1);else flat.normalize();
+            var pouch=Handling.pouch(pose.getHmd().getPosition(),forward,gun.worldScale(),c);
+            var worldGun=new Matrix4f().translation(gun.hand()).rotate(gun.rotation()).scale(gun.worldScale());
+            var worldPouch=new Matrix4f().translation(pouch).rotateY((float)java.lang.Math.atan2(-flat.x,-flat.z)).scale(gun.worldScale());
+            matrices.pushPose();
+            try{var correction=worldGun.invert().mul(worldPouch);matrices.mulPoseMatrix(correction);matrices.last().normal().mul(correction.get3x3(new Matrix3f()).invert().transpose());
+                guide(matrices,new Vector3f(),c.zones().pouch(),key,"pouch",Handling.pouchLocal(pose.getOffhand().getPosition(),pose.getHmd().getPosition(),forward,gun.worldScale(),c));
+            }finally{matrices.popPose();}
+        }
+        if(calibrating){
+            var sight=OpticGeometry.sight(stack,profile);
+            if(sight!=null){
+                sight.add(c.interactions().sight().vector()).mul(c.gunScale());
+                var eye=Handling.local(gun,pose.getHmd().getPosition());
+                if(pose instanceof org.vmstudio.visor.api.client.player.pose.VRPlayerPoseClient clientPose){
+                    var left=Handling.local(gun,clientPose.getEyeLeft().getPosition());
+                    var right=Handling.local(gun,clientPose.getEyeRight().getPosition());
+                    var center=new Vector3f(sight).add(0,0,.015f+c.zones().sight().depth()/2);
+                    eye=c.zones().sight().contains(left,center)?left:right;
+                }
+                guide(matrices,new Vector3f(sight).add(0,0,.015f+c.zones().sight().depth()/2),c.zones().sight(),key,"sight",eye);
+                guide(matrices,sight,new ZoneSizes.Box(.01f,.01f,.01f),key,"sight",eye);
+                // Thin forward marker makes the direction of the sight line explicit.
+                guide(matrices,new Vector3f(sight).add(0,0,-.06f),new ZoneSizes.Box(.002f,.002f,.12f),key,"sight",eye);
+            }
         }
     }
-    private static void box(PoseStack matrices,Vector3f pos,float radius,float r,float g,float b) {
+    private static void guide(PoseStack matrices,Vector3f pos,ZoneSizes.Box size,String key,String action,Vector3f hand){
+        int color=CalibrationHints.get(key,action).color();boolean inside=size.contains(hand,pos);
+        float r=((color>>16)&255)/255f,g=((color>>8)&255)/255f,b=(color&255)/255f;
+        if(inside){r=(r+1)/2;g=(g+1)/2;b=(b+1)/2;}
         var buffer=Minecraft.getInstance().renderBuffers().bufferSource().getBuffer(RenderType.lines());
-        LevelRenderer.renderLineBox(matrices,buffer,pos.x-radius,pos.y-radius,pos.z-radius,
-            pos.x+radius,pos.y+radius,pos.z+radius,r,g,b,1);
+        LevelRenderer.renderLineBox(matrices,buffer,pos.x-size.width()/2,pos.y-size.height()/2,pos.z-size.depth()/2,
+            pos.x+size.width()/2,pos.y+size.height()/2,pos.z+size.depth()/2,r,g,b,inside?1:.45f);
     }
     public static void detached(PoseStack matrices,BedrockGunModel model,WeaponProfile profile,
                                 GunPose gun,VRPlayerPose pose,RenderType type,int light) {
-        detached(matrices,model,profile,gun,pose,type,light,PhysicalClient.active(),PhysicalClient.phase());
+        detached(matrices,model,profile,gun,pose,type,light,PhysicalClient.active(),PhysicalClient.phase(),CalibrationStore.render(Profiles.key(Minecraft.getInstance().player.getMainHandItem())).gunScale(),
+            dev.visorcompat.tacz.physical.PouchAmmo.magazineLoaded(Minecraft.getInstance().player,PhysicalClient.phase()));
     }
     public static void detached(PoseStack matrices,BedrockGunModel model,WeaponProfile profile,
-                                GunPose gun,VRPlayerPose pose,RenderType type,int light,boolean active,Phase phase) {
+                                GunPose gun,VRPlayerPose pose,RenderType type,int light,boolean active,Phase phase,float modelScale,boolean loaded) {
         if(!active || (phase!=Phase.OLD_MAG && phase!=Phase.NEW_MAG)) return;
         List<BedrockPart> parts=new ArrayList<>();
         if(!path(model.getRootNode(),"magazine",parts)) return;
@@ -96,18 +129,19 @@ public final class PhysicalModel implements AutoCloseable {
         try {
             matrices.mulPoseMatrix(correction);
             matrices.last().normal().mul(correction.get3x3(new Matrix3f()).invert().transpose());
+            matrices.scale(modelScale,modelScale,modelScale);
             Vector3f anchor=profile.grip().add(Handling.magazine(profile));
             matrices.translate(-anchor.x,-anchor.y,-anchor.z);
             matrices.scale(profile.scale(),profile.scale(),profile.scale());
             matrices.translate(0,1.5,0);matrices.mulPose(Axis.ZP.rotationDegrees(180));
             for(int i=0;i<parts.size()-1;i++)parts.get(i).translateAndRotateAndScale(matrices);
             var mag=parts.get(parts.size()-1);
-            boolean oldVisible=mag.visible;
+            boolean oldVisible=mag.visible;var bullet=find(mag,"bullet_in_mag");boolean oldBullet=bullet!=null&&bullet.visible;
             try {
-                mag.visible=true;
+                mag.visible=true;if(bullet!=null)bullet.visible=loaded;
                 mag.render(matrices,ItemDisplayContext.THIRD_PERSON_RIGHT_HAND,
                     Minecraft.getInstance().renderBuffers().bufferSource().getBuffer(type),light,OverlayTexture.NO_OVERLAY);
-            } finally {mag.visible=oldVisible;}
+            } finally {mag.visible=oldVisible;if(bullet!=null)bullet.visible=oldBullet;}
         } finally {matrices.popPose();}
     }
 }

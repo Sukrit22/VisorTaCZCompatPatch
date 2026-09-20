@@ -10,6 +10,9 @@ along with your addon version, headset/controllers, main-hand choice, gun and gu
 pack/display variant, attachments used, and what was tested (grip, muzzle, pump,
 ADS, etc.). A short screenshot/video of alignment is helpful but optional.
 This JSON contains gun profile keys and offsets, not the whole modpack config.
+From 0.7.0 it also contains `gunScale` (1.0 = 100%) and `zones`, whose width,
+height, and depth are full box dimensions in metres. Older profiles default to
+100% and standard boxes; their existing offsets are preserved.
 
 To install a shared file:
 
@@ -44,3 +47,11 @@ can add reviewed profiles there without changing gun model pivots. These values
 are starting points from Pico 4 Ultra testing, not universal calibration for
 every controller or custom gun model. The TA31 black-scope issue is not fixed by
 this release, and sight calibration does not reposition the rendered lens.
+
+Per-gun menu wording/colors are separate from numerical calibration. Edit
+`src/main/resources/calibration-hints.toml` and rebuild to bundle those changes.
+See [0.7.0 instructions](RELEASE-0.7.0.md) for supported pages and box behavior.
+
+From 0.7.1, `scaleLock` defaults to true and saves per gun. It links future gun-scale
+menu edits to gun-mounted box dimensions; loading old values or toggling the lock
+does not resize them. The pouch remains independent.

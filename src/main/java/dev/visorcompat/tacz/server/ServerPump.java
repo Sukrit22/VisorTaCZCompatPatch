@@ -67,7 +67,7 @@ public final class ServerPump {
         var sample=ServerPhysical.sample(p);
         if(!held){
             if(s.held&&!canceled&&sample!=null&&p.getOffhandItem().isEmpty()){
-                if(s.shell && Handling.near(sample.local(),Handling.magazine(Profiles.get(s.stack),CompatNetwork.calibration(p)),.085f))insert(p,s);
+                if(s.shell && Handling.inside(sample.local(),Handling.magazine(Profiles.get(s.stack),CompatNetwork.calibration(p)),CompatNetwork.calibration(p),ZoneSizes.Zone.MAGAZINE))insert(p,s);
                 else if(!s.shell)move(p,s,sample);
             }
             s.held=false;s.shell=false;return;
@@ -77,9 +77,13 @@ public final class ServerPump {
         if(target==Handling.Target.RACK){s.held=true;s.shell=false;}
         // This is only a preview. hasInventoryAmmo is for inventory-fed guns
         // and always rejects the M870; insertion below validates/consumes ammo.
-        if(target==Handling.Target.POUCH){s.held=true;s.shell=true;}
+        if(target==Handling.Target.POUCH){
+            if(!PouchAmmo.available(p,s.stack)){p.displayClientMessage(net.minecraft.network.chat.Component.literal("TaCZ VR: OUT OF AMMO"),true);return;}
+            s.held=true;s.shell=true;
+        }
     }
     private static void insert(ServerPlayer p,State s){
+        if(open(s.stack))return;
         var gun=(AbstractGunItem)s.stack.getItem();var index=TimelessAPI.getCommonGunIndex(gun.getGunId(s.stack)).orElse(null);if(index==null)return;
         int capacity=com.tacz.guns.util.AttachmentDataUtils.getAmmoCountWithAttachment(s.stack,index.getGunData());
         int count=gun.getCurrentAmmoCount(s.stack);if(count>=capacity)return;

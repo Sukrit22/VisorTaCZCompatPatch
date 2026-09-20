@@ -51,6 +51,7 @@ public abstract class BulletMixin extends Projectile implements BulletPose {
         self.yOld = startPos.y;
         self.zOld = startPos.z;
         if(dev.visorcompat.tacz.Profiles.pump(stack) && ServerPhysical.enabled(player))ServerPump.shot(player,stack);
+        else if(dev.visorcompat.tacz.Profiles.bolt(stack) && ServerPhysical.enabled(player))stack.getOrCreateTag().putBoolean(dev.visorcompat.tacz.physical.BoltState.SPENT,true);
         else HandlingFeedback.emit(player,4,visorTacz$pose);
     }
     @Override public GunPose visorTacz$pose() { return visorTacz$pose; }

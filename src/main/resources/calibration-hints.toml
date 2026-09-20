@@ -1,0 +1,255 @@
+# Per-gun calibration text and guide RGB colors. Edit here, then rebuild the JAR.
+# Supported actions/pages are defined in CalibrationLayout.java, not enabled by this file.
+# Box size uses full width/height/depth in metres in JSON, millimetres in the menu.
+
+["tacz:glock_17".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Align the firing hand with the grip. X right, Y up, Z back. Offsets remain visible."
+
+["tacz:glock_17".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the gun to follow your controller. Pitch, yaw and roll are degrees."
+
+["tacz:glock_17".scale]
+title = "Gun size"
+color = "#FFFFFF"
+hint = "Uniform scale around the firing-hand grip. 100% is the original size. Lock links gun boxes to scale changes; unlock keeps their sizes. Pouch stays independent."
+
+["tacz:glock_17".muzzle]
+title = "Bullet origin - CYAN"
+color = "#55FFFF"
+hint = "Place the small cyan marker at the muzzle opening. Negative Z moves forward. This adjusts bullet origin."
+
+["tacz:glock_17".magazine]
+title = "Magazine - GREEN"
+color = "#33FF55"
+hint = "Grab inside the green box and pull down. Bring a replacement here and release to insert."
+
+["tacz:glock_17".rack]
+title = "Slide - ORANGE"
+color = "#FF9900"
+hint = "Grab in the orange box, pull the slide rearward, then release. A loaded chamber ejects one live round."
+
+["tacz:glock_17".pouch]
+title = "Ammo pouch - CYAN"
+color = "#33FFFF"
+hint = "Hold Grab in this head-yaw-aligned box to take a preview. Inventory ammo is checked on insertion."
+
+["tacz:glock_17".sight]
+title = "ADS alignment - PURPLE"
+color = "#DD44FF"
+hint = "Place the purple point on the sight line. Put either eye inside the box behind it and look down the barrel. This controls ADS, not scope glass."
+
+["tacz:glock_17".port]
+title = "Ejection / casing grab - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. During a stovepipe, grab in its box and pull the casing away."
+
+["tacz:m4a1".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Align the firing hand with the grip. X right, Y up, Z back. Offsets remain visible."
+
+["tacz:m4a1".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the gun to follow your controller. Pitch, yaw and roll are degrees."
+
+["tacz:m4a1".scale]
+title = "Gun size"
+color = "#FFFFFF"
+hint = "Uniform scale around the firing-hand grip. 100% is the original size. Lock links gun boxes to scale changes; unlock keeps their sizes. Pouch stays independent."
+
+["tacz:m4a1".muzzle]
+title = "Bullet origin - CYAN"
+color = "#55FFFF"
+hint = "Place the small cyan marker at the muzzle opening. Negative Z moves forward. This adjusts bullet origin."
+
+["tacz:m4a1".support]
+title = "Support grip - BLUE"
+color = "#3399FF"
+hint = "Hold Grab inside the blue box to support aim. Box size controls acquisition and release."
+
+["tacz:m4a1".magazine]
+title = "Magazine - GREEN"
+color = "#33FF55"
+hint = "Grab inside the green box and pull down. Bring a replacement here and release to insert."
+
+["tacz:m4a1".rack]
+title = "Charging handle - ORANGE"
+color = "#FF9900"
+hint = "Hold Grab inside the orange box; pull rearward, then release. Box size controls pickup, not stroke length."
+
+["tacz:m4a1".selector]
+title = "Fire selector - YELLOW"
+color = "#FFFF33"
+hint = "Put the offhand in this box and press main-hand Use to cycle fire mode."
+
+["tacz:m4a1".pouch]
+title = "Ammo pouch - CYAN"
+color = "#33FFFF"
+hint = "Hold Grab in this head-yaw-aligned box to take a preview. Inventory ammo is checked on insertion."
+
+["tacz:m4a1".sight]
+title = "ADS alignment - PURPLE"
+color = "#DD44FF"
+hint = "Place the purple point on the sight line. Put either eye inside the box behind it and look down the barrel. This controls ADS, not scope glass."
+
+["tacz:m4a1".port]
+title = "Ejection / casing grab - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. During a stovepipe, grab in its box and pull the casing away."
+
+["tacz:m870".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Align the firing hand with the grip. X right, Y up, Z back. Offsets remain visible."
+
+["tacz:m870".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the gun to follow your controller. Pitch, yaw and roll are degrees."
+
+["tacz:m870".scale]
+title = "Gun size"
+color = "#FFFFFF"
+hint = "Uniform scale around the firing-hand grip. 100% is the original size. Lock links gun boxes to scale changes; unlock keeps their sizes. Pouch stays independent."
+
+["tacz:m870".muzzle]
+title = "Bullet origin - CYAN"
+color = "#55FFFF"
+hint = "Place the small cyan marker at the muzzle opening. Negative Z moves forward. This adjusts bullet origin."
+
+["tacz:m870".magazine]
+title = "Shell loading port - GREEN"
+color = "#33FF55"
+hint = "Bring a shell preview here and release. A valid insertion consumes one 12-gauge shell from inventory."
+
+["tacz:m870".rack]
+title = "Pump + support grip - ORANGE"
+color = "#FF9900"
+hint = "Hold forward for support aim. Pull back 80 mm, then push forward to chamber. Box size controls pickup, not stroke length."
+
+["tacz:m870".pouch]
+title = "Ammo pouch - CYAN"
+color = "#33FFFF"
+hint = "Close the pump, then grab here for a shell. OUT OF AMMO means no compatible reserve. Insertion consumes one shell."
+
+["tacz:m870".sight]
+title = "ADS alignment - PURPLE"
+color = "#DD44FF"
+hint = "Place the purple point on the sight line. Put either eye inside the box behind it and look down the barrel. This controls ADS, not scope glass."
+
+["tacz:m870".port]
+title = "Shell ejection point - PINK"
+color = "#FF3388"
+hint = "Place the pink marker at the ejection opening. This is a visual origin, not a grab zone on the M870."
+
+["tacz:m700".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Align the firing hand with the grip. X right, Y up, Z back. Offsets remain visible."
+
+["tacz:m700".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the gun to follow your controller. Pitch, yaw and roll are degrees."
+
+["tacz:m700".scale]
+title = "Gun size"
+color = "#FFFFFF"
+hint = "Uniform scale around the firing-hand grip. 100% is the original size. Lock links gun boxes to scale changes; unlock keeps their sizes. Pouch stays independent."
+
+["tacz:m700".muzzle]
+title = "Bullet origin - CYAN"
+color = "#55FFFF"
+hint = "Place the small cyan marker at the muzzle opening. Negative Z moves forward. This adjusts bullet origin."
+
+["tacz:m700".support]
+title = "Support grip - BLUE"
+color = "#3399FF"
+hint = "Hold Grab inside the blue box to support aim. Box size controls acquisition and release."
+
+["tacz:m700".magazine]
+title = "Magazine - GREEN"
+color = "#33FF55"
+hint = "Grab inside the green box and pull down. Bring a replacement here and release to insert."
+
+["tacz:m700".rack]
+title = "Bolt handle - ORANGE"
+color = "#FF9900"
+hint = "Pull the bolt back 8 cm to eject, then push fully forward to chamber. Release open leaves it open. No twist gesture yet."
+
+["tacz:m700".pouch]
+title = "Ammo pouch - CYAN"
+color = "#33FFFF"
+hint = "Hold Grab in this head-yaw-aligned box to take a preview. Inventory ammo is checked on insertion."
+
+["tacz:m700".sight]
+title = "ADS alignment - PURPLE"
+color = "#DD44FF"
+hint = "Place the purple point on the sight line. Put either eye inside the box behind it and look down the barrel. This controls ADS, not scope glass."
+
+["tacz:m700".port]
+title = "Ejection port - PINK"
+color = "#FF3388"
+hint = "Place the pink marker at the ejection port. It is visual only. Clear a generic durability jam with a full back-forward bolt cycle."
+
+
+["tacz:hk_mp5a5".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Align the firing hand with the grip. X right, Y up, Z back. Offsets remain visible."
+
+["tacz:hk_mp5a5".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the gun to follow your controller. Pitch, yaw and roll are degrees."
+
+["tacz:hk_mp5a5".scale]
+title = "Gun size"
+color = "#FFFFFF"
+hint = "Uniform scale around the firing-hand grip. 100% is the original size. Lock links gun boxes to scale changes; unlock keeps their sizes. Pouch stays independent."
+
+["tacz:hk_mp5a5".muzzle]
+title = "Bullet origin - CYAN"
+color = "#55FFFF"
+hint = "Place the small cyan marker at the muzzle opening. Negative Z moves forward. This adjusts bullet origin."
+
+["tacz:hk_mp5a5".support]
+title = "Support grip - BLUE"
+color = "#3399FF"
+hint = "Hold Grab inside the blue box to support aim. Box size controls acquisition and release."
+
+["tacz:hk_mp5a5".magazine]
+title = "Magazine - GREEN"
+color = "#33FF55"
+hint = "Grab inside the green box and pull down. Bring a replacement here and release to insert."
+
+["tacz:hk_mp5a5".rack]
+title = "Charging handle - ORANGE"
+color = "#FF9900"
+hint = "Grab the left/front charging handle, pull back, then release. A separate slap or handle-lock gesture is not required."
+
+["tacz:hk_mp5a5".selector]
+title = "Fire selector - YELLOW"
+color = "#FFFF33"
+hint = "Put the offhand in this box and press main-hand Use to cycle fire mode."
+
+["tacz:hk_mp5a5".pouch]
+title = "Ammo pouch - CYAN"
+color = "#33FFFF"
+hint = "Hold Grab in this head-yaw-aligned box to take a preview. Inventory ammo is checked on insertion."
+
+["tacz:hk_mp5a5".sight]
+title = "ADS alignment - PURPLE"
+color = "#DD44FF"
+hint = "Place the purple point on the sight line. Put either eye inside the box behind it and look down the barrel. This controls ADS, not scope glass."
+
+["tacz:hk_mp5a5".port]
+title = "Ejection / casing grab - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. During a stovepipe, grab in its box and pull the casing away."
+

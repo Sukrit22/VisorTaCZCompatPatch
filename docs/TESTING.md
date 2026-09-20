@@ -1,6 +1,8 @@
 # Acceptance tests
 
-For this release, start with [the prioritized 0.3.0 checklist](TESTING-0.3.0.md).
+For current testing, use [the rolling manual test tracker](TESTING-CURRENT.md).
+The remainder of this document is historical acceptance criteria; several
+limitations and controls below have changed. Do not use it as current results.
 
 Build/unit tests cannot establish headset comfort, stereo alignment or real-server
 behavior. Record hardware, exact versions, logs and results when running these.
