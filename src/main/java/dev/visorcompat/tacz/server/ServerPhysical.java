@@ -135,7 +135,12 @@ public final class ServerPhysical {
             }
         }
         Sample pose=sample(p);
-        if(pose==null || !p.getOffhandItem().isEmpty()){if(s.held)release(p,s,null);s.anchor=null;}
+        if(pose==null || !p.getOffhandItem().isEmpty()){if(s.held)release(p,s,null);s.anchor=null;if(s.phase==Phase.SUPPORT)s.phase=Phase.READY;}
+        if(pose!=null && !s.held && Profiles.get(s.stack).supportDistance()==0
+            && (s.phase==Phase.READY||s.phase==Phase.NEED_RACK||s.phase==Phase.SUPPORT)){
+            boolean touch=p.getOffhandItem().isEmpty()&&Handling.inside(pose.local(),Handling.support(Profiles.get(s.stack),CompatNetwork.calibration(p)),CompatNetwork.calibration(p),ZoneSizes.Zone.SUPPORT);
+            s.phase=touch?Phase.SUPPORT:IGun.getIGunOrNull(s.stack).hasBulletInBarrel(s.stack)?Phase.READY:Phase.NEED_RACK;
+        }
         if(pose!=null && s.held) {
             if(s.phase==Phase.REMOVING && Handling.magazinePulled(s.start,pose.local())) {
                 IGun gun=IGun.getIGunOrNull(s.stack);
@@ -143,16 +148,31 @@ public final class ServerPhysical {
                 gun.setCurrentAmmoCount(s.stack,0);
                 s.phase=Phase.OLD_MAG;HandlingFeedback.emit(p,0,ServerPoses.validated(p));
             } else if(Handling.racking(s.phase) && Profiles.bolt(s.stack)) moveBolt(p,s,pose);
-            else if(Handling.racking(s.phase) && Handling.racked(s.start,pose.local())) {
-                pullRack(p,s);
-                if(Profiles.get(s.stack).smg())ActionState.locked(s.stack,true);
-            }
+            else if(Handling.racking(s.phase))moveRack(p,s,pose);
             else if(s.phase==Phase.SUPPORT && !Profiles.bolt(s.stack) && !Handling.inside(pose.local(),Handling.support(Profiles.get(s.stack),CompatNetwork.calibration(p)),CompatNetwork.calibration(p),ZoneSizes.Zone.SUPPORT)) {
                 s.phase=Phase.READY;s.held=false;
             }
         }
         if(pose!=null && !s.held && Profiles.get(s.stack).smg() && ActionState.locked(s.stack)
             && s.previous!=null && p.getOffhandItem().isEmpty() && ActionCycle.releaseSweep(s.previous,pose.local(),Handling.release(Profiles.get(s.stack),CompatNetwork.calibration(p)),CompatNetwork.calibration(p).zones().release()))releaseAction(p,s);
+        if(pose!=null && !s.held && Profiles.bolt(s.stack) && !BoltState.open(s.stack) && ActionState.lifted(s.stack)
+            && s.previous!=null && (s.phase==Phase.READY||s.phase==Phase.NEED_RACK||s.phase==Phase.NO_MAG)
+            && ActionCycle.boltSlap(s.previous,pose.local(),Handling.rack(Profiles.get(s.stack),CompatNetwork.calibration(p)),CompatNetwork.calibration(p).zones().rack())){
+            ActionState.lifted(s.stack,false);HandlingFeedback.emit(p,5,ServerPoses.validated(p));p.inventoryMenu.broadcastChanges();
+            if(s.phase!=Phase.NO_MAG)s.phase=IGun.getIGunOrNull(s.stack).hasBulletInBarrel(s.stack)?Phase.READY:Phase.NEED_RACK;
+        }
+        if(s.anchor!=null && pose!=null && !Handling.magazineOut(s.phase) && VisorAPI.getVRPlayer(p) instanceof VRServerPlayer vr){
+            var gun=ServerPoses.validated(p);var main=vr.getPoseData().getMainHand();
+            if(gun!=null){
+                var grip=CompatNetwork.calibration(p).position(new Vector3f(main.getPosition()),main.getRotation().getNormalizedRotation(new org.joml.Quaternionf()),gun.worldScale());
+                if(ActionCycle.regrip(BoltState.blocked(s.stack)||GunDurabilityCompat.jammed(s.stack),s.held,grip.distance(gun.hand())/gun.worldScale())){
+                    s.anchor=null;s.supportAnchor=null;s.held=true;s.phase=Phase.SUPPORT;
+                    // Offhand Grab is still held; keep support, but require a fresh transfer gesture next time.
+                    var next=ServerPoses.validated(p);if(next!=null)s.supportAnchor=HandAnchor.capture(next,vr.getPoseData());
+                    send(p,s,s.phase,0);
+                }
+            }
+        }
         s.previous=pose==null||s.held||s.phase==Phase.LOADING||s.phase==Phase.OLD_MAG||s.phase==Phase.NEW_MAG?null:new Vector3f(pose.local());
         if(s.phase==Phase.LOADING) {
             var operator=IGunOperator.fromLivingEntity(p);
@@ -185,6 +205,7 @@ public final class ServerPhysical {
         if(!enabled(p) || !p.getOffhandItem().isEmpty()) return;
         Session s=SESSIONS.get(p.getUUID());Sample pose=sample(p);
         if(s==null || s.stack!=p.getMainHandItem() || s.held || pose==null) return;
+        if(s.phase==Phase.SUPPORT && Profiles.get(s.stack).supportDistance()==0)s.phase=IGun.getIGunOrNull(s.stack).hasBulletInBarrel(s.stack)?Phase.READY:Phase.NEED_RACK;
         s.held=true;s.start.set(pose.local());
         WeaponProfile profile=Profiles.get(s.stack);
         var jam=ServerJams.read(s.stack);
@@ -230,21 +251,17 @@ public final class ServerPhysical {
                     s.phase=s.rackFrom==Phase.NO_MAG?Phase.NO_MAG:IGun.getIGunOrNull(s.stack).hasBulletInBarrel(s.stack) && !dev.visorcompat.tacz.physical.BoltState.blocked(s.stack)?Phase.READY:Phase.NEED_RACK;
                     break;
                 }
-                boolean noMagazine=s.rackFrom==Phase.NO_MAG;
-                IGun gun=IGun.getIGunOrNull(s.stack);
-                if(pose!=null && (s.pulled || Handling.racked(s.start,pose.local()))) {
-                    // Catch a completed pull arriving in the release pose between ticks.
-                    pullRack(p,s);
-                    if(Profiles.get(s.stack).smg())ActionState.locked(s.stack,true);
-                    if(s.jammedAtRack)ServerJams.finish(p);
-                    HandlingFeedback.emit(p,5,ServerPoses.validated(p));
-                    Chamber chamber=new Chamber(gun.getCurrentAmmoCount(s.stack),gun.hasBulletInBarrel(s.stack));
-                    if(!Profiles.get(s.stack).smg())ActionState.locked(s.stack,false);
-                    if(!noMagazine && !GunDurabilityCompat.jammed(s.stack) && !ActionState.locked(s.stack))chamber=chamber.feed();
-                    gun.setCurrentAmmoCount(s.stack,chamber.magazine());
-                    gun.setBulletInBarrel(s.stack,chamber.loaded());
-                    s.phase=noMagazine?Phase.NO_MAG:gun.hasBulletInBarrel(s.stack)?Phase.READY:Phase.NEED_RACK;
-                } else s.phase=noMagazine?Phase.NO_MAG:s.pulled?Phase.NEED_RACK:s.rackFrom;
+                if(pose!=null)moveRack(p,s,pose);
+                if(s.pulled && pose!=null){
+                    if(Profiles.get(s.stack).smg()){
+                        // Letting go rearward parks the MP5 in its notch; continuing forward while held closes it.
+                        ActionState.locked(s.stack,true);
+                        if(s.jammedAtRack)ServerJams.finish(p);
+                    }else finishRack(p,s);
+                }
+                var gun=IGun.getIGunOrNull(s.stack);
+                s.phase=s.rackFrom==Phase.NO_MAG?Phase.NO_MAG:gun.hasBulletInBarrel(s.stack)&&!ActionState.locked(s.stack)?Phase.READY:Phase.NEED_RACK;
+
             }
             default -> {}
         }
@@ -281,6 +298,23 @@ public final class ServerPhysical {
         p.inventoryMenu.broadcastChanges();
     }
 
+    private static void moveRack(ServerPlayer p,Session s,Sample pose){
+        var pos=pose.local();
+        var transition=ActionCycle.rack(s.pulled,pos.z-s.start.z,pos.x-s.start.x,pos.y-s.start.y);
+        if(transition==dev.visorcompat.tacz.physical.PumpCycle.Transition.OPEN){
+            pullRack(p,s);if(Profiles.get(s.stack).smg())ActionState.locked(s.stack,true);
+        }else if(transition==dev.visorcompat.tacz.physical.PumpCycle.Transition.CLOSE)finishRack(p,s);
+    }
+    private static void finishRack(ServerPlayer p,Session s){
+        if(!s.pulled)return;
+        if(s.jammedAtRack)ServerJams.finish(p);
+        var gun=IGun.getIGunOrNull(s.stack);
+        var chamber=new Chamber(gun.getCurrentAmmoCount(s.stack),gun.hasBulletInBarrel(s.stack));
+        if(s.rackFrom!=Phase.NO_MAG&&!GunDurabilityCompat.jammed(s.stack))chamber=chamber.feed();
+        gun.setCurrentAmmoCount(s.stack,chamber.magazine());gun.setBulletInBarrel(s.stack,chamber.loaded());
+        ActionState.locked(s.stack,false);s.pulled=false;s.jammedAtRack=GunDurabilityCompat.jammed(s.stack);
+        HandlingFeedback.emit(p,5,ServerPoses.validated(p));p.inventoryMenu.broadcastChanges();
+    }
     private static void pullRack(ServerPlayer p,Session s) {
         if(s.pulled)return;
         s.pulled=true;
@@ -291,16 +325,26 @@ public final class ServerPhysical {
         gun.setBulletInBarrel(s.stack,false);
     }
     private static void insert(ServerPlayer p, Session s) {
-        HandlingFeedback.emit(p,1,ServerPoses.validated(p));
-        restore(s.stack);
-        IGun gun=IGun.getIGunOrNull(s.stack);
-        s.rackFrom=gun.hasBulletInBarrel(s.stack)?Phase.READY:Phase.NEED_RACK;
-        if(s.rackFrom==Phase.NEED_RACK)s.stack.getOrCreateTag().putBoolean(EMPTY_RELOAD,true);
-        var operator=IGunOperator.fromLivingEntity(p);
+        var api=new com.tacz.guns.item.ModernKineticGunScriptAPI();
+        api.setItemStack(s.stack);api.setShooter(p);
+        var operator=IGunOperator.fromLivingEntity(p);api.setDataHolder(operator.getDataHolder());
+        if(api.getGunIndex()==null){s.phase=Phase.NO_MAG;return;}
+        boolean canceled;
         s.allowReload=true;
-        try { operator.reload(); } finally { s.allowReload=false; }
-        if(operator.getDataHolder().reloadStateType.isReloading()) { s.phase=Phase.LOADING;s.reloadStart=s.ticks; }
-        else finishReload(s);
+        try { canceled=net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(
+            new com.tacz.guns.api.event.common.GunReloadEvent(p,s.stack,net.minecraftforge.fml.LogicalSide.SERVER)); }
+        finally { s.allowReload=false; }
+        if(canceled || p.getMainHandItem()!=s.stack){s.phase=Phase.NO_MAG;return;}
+        // The physical insertion already completed the reload gesture. Transfer native ammo
+        // immediately, preserving the chamber and the removed magazine's saved rounds.
+        restore(s.stack);
+        int needed=Math.max(0,api.getNeededAmmoAmount());
+        boolean consume=api.isReloadingNeedConsumeAmmo()&&!api.getGunIndex().getGunData().getReloadData().isInfinite();
+        if(needed>0)api.putAmmoInMagazine(consume?api.consumeAmmoFromPlayer(needed):needed);
+        var gun=IGun.getIGunOrNull(s.stack);
+        s.phase=gun.hasBulletInBarrel(s.stack)?Phase.READY:Phase.NEED_RACK;
+        s.rackFrom=s.phase;
+        HandlingFeedback.emit(p,1,ServerPoses.validated(p));p.inventoryMenu.broadcastChanges();
     }
     private static boolean mayTransfer(ServerPlayer p,Session s){
         var gun=IGun.getIGunOrNull(s.stack);

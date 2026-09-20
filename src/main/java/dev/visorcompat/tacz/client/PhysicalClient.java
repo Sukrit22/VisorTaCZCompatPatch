@@ -31,7 +31,20 @@ public final class PhysicalClient {
         if(Profiles.bolt(stack) && dev.visorcompat.tacz.physical.BoltState.blocked(stack))return false;
         return !dev.visorcompat.tacz.compat.GunDurabilityCompat.jammed(stack) && Handling.fireable(phase()) && com.tacz.guns.api.item.IGun.getIGunOrNull(stack).hasBulletInBarrel(stack);
     }
-    public static boolean supporting() { return !active() || phase()==Phase.SUPPORT || (phase()==Phase.PUMP_HOLD && pull()<.02f); }
+    public static boolean supporting() {
+        if(!active())return true;
+        var mc=Minecraft.getInstance();var stack=mc.player.getMainHandItem();var profile=Profiles.get(stack);
+        if(profile.supportDistance()!=0)return phase()==Phase.SUPPORT || (phase()==Phase.PUMP_HOLD && pull()<.02f);
+        if(mc.screen!=null || !mc.player.getOffhandItem().isEmpty()
+            || (phase()!=Phase.READY && phase()!=Phase.NEED_RACK && phase()!=Phase.SUPPORT))return false;
+        var vr=VisorAPI.client().getVRLocalPlayer();
+        if(!vr.getRawController(HandType.OFFHAND).isTracking()
+            || VisorAPI.client().getGuiManager().getCursorHandler().isHandFocused(HandType.OFFHAND)
+            || !VisorAPI.client().getDecorationRenderer().getHandState(HandType.OFFHAND).isWorldHand())return false;
+        var pose=vr.getPoseData(org.vmstudio.visor.api.client.player.pose.PlayerPoseType.TICK);
+        var c=CalibrationStore.get(Profiles.key(stack));var gun=GunPose.resolve(pose,profile,false,c);
+        return gun!=null && Handling.inside(Handling.local(gun,pose.getOffhand().getPosition()),Handling.support(profile,c),c,ZoneSizes.Zone.SUPPORT);
+    }
     public static void releaseGrip() {releaseGrip(true);}
     private static void releaseGrip(boolean canceled) {
         if(held && Minecraft.getInstance().getConnection()!=null) CompatNetwork.CHANNEL.sendToServer(new CompatNetwork.PhysicalGrip(false,canceled));
@@ -62,9 +75,9 @@ public final class PhysicalClient {
         boolean pouch=Handling.inPouch(off,pose.getHmd().getPosition(),forward,gun.worldScale(),c);
         var local=Handling.local(gun,off);
         var jam=dev.visorcompat.tacz.server.ServerJams.read(stack);
-        if((phase()==Phase.READY || phase()==Phase.NEED_RACK) && jam.kind()==dev.visorcompat.tacz.physical.Jam.Kind.STOVEPIPE && jam.remaining()>0
+        if((phase()==Phase.READY || phase()==Phase.NEED_RACK || profile.supportDistance()==0 && phase()==Phase.SUPPORT) && jam.kind()==dev.visorcompat.tacz.physical.Jam.Kind.STOVEPIPE && jam.remaining()>0
             && Handling.inside(local,dev.visorcompat.tacz.physical.JamProfile.of(profile,c).port(),c,ZoneSizes.Zone.PORT))return Handling.Target.CASING;
-        var target=Handling.target(phase(),local,pouch,profile,c,dev.visorcompat.tacz.physical.BoltState.open(stack),dev.visorcompat.tacz.physical.ActionState.locked(stack),dev.visorcompat.tacz.physical.ActionState.lifted(stack));
+        var target=Handling.target(profile.supportDistance()==0 && phase()==Phase.SUPPORT?Phase.READY:phase(),local,pouch,profile,c,dev.visorcompat.tacz.physical.BoltState.open(stack),dev.visorcompat.tacz.physical.ActionState.locked(stack),dev.visorcompat.tacz.physical.ActionState.lifted(stack));
         if(target==Handling.Target.POUCH && jam.kind()==dev.visorcompat.tacz.physical.Jam.Kind.DOUBLE_FEED && jam.remaining()>0)return Handling.Target.NONE;
         return target;
     }

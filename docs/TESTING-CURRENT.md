@@ -1,12 +1,27 @@
-# Consolidated testing checklist - 0.9.2
+# Consolidated testing checklist - 0.9.3
 
 This replaces the scattered current instructions in the older release guides.
 Older checklists/results are retained in TESTING-HISTORY-THROUGH-0.9.2.md and
 release notes. Test IDs are retained where possible. A past pass is evidence for
 that version, not a pass for every subcase or for newly changed behavior.
 
-**Current build:** 0.9.2, protocol 16; 100 automated tests passed. No 0.9.1/0.9.2
-headset results have been reported yet. Automated tests do not close VR checks.
+**Current build:** 0.9.3, protocol 17. See RELEASE-0.9.3.md for build verification.
+0.9.2 headset results are recorded below; 0.9.3 headset checks remain open.
+
+## 0.9.2 reported results and priority retests
+
+- Glock, M4, M870: general handling OK. F01/G01 passed with a reported reload delay; repeat survival partial/empty/tactical reloads after the new immediate transfer.
+- F02: requested touch-only pistol support; verify entering/leaving the blue region without Grab.
+- G02: ejection timing/counts OK; held forward-return then rearward re-rack failed. Test five complete cycles without releasing Grab; count discarded live rounds.
+- MP5: verify held back-to-front return and released-handle slap separately.
+- M700: verify diagonal forward/down, release then downward slap, and returning main hand to grip after closing. No re-grip while open or jammed.
+- J01-J03: Glock/M4/MP5 clearing reported OK; verify reversed casing ends. M870/M700 only support the generic `/visor_tacz_test jam`; named dud/double-feed tests are rejected, not applied.
+- C04/F05: still untested. Save/reload/restart calibration and casing scale.
+- I01: focus loss OK. R01: disconnect mid-reload recovered; exact extra-round accounting remains unconfirmed. Count all ammunition before/after two reconnects.
+- I04: OK. Check flat/VR mode switching as a regression.
+- Check detached magazine sideways 30-degree orientation with both handedness settings.
+
+Older unchecked rows below retain broader subcases; these reports do not establish every subcase as passed.
 
 ## Recommended next session: Glock first
 
@@ -38,7 +53,7 @@ previously passed basic cases only where a new change or failure warrants it.
 
 ## Setup and reporting
 
-- Install only one addon JAR, **0.9.2 on every client and server**. Single-player
+- Install only one addon JAR, **0.9.3 on every client and server**. Single-player
   has an integrated server. Keep your existing calibration; do not zero it.
 - Pico 4 Ultra + Virtual Desktop + SteamVR. Start with shaders OFF, physical
   handling ON, debug regions ON, and Visor's assigned offhand hotbar slot empty.
@@ -51,8 +66,8 @@ previously passed basic cases only where a new change or failure warrants it.
 - Jam tests: gundb **2.2.2**, cheats/operator permission, selected supported gun,
   physical VR handling, enough ammo and no active gesture. Clear one jam before
   starting another. Run the no-gundb test separately.
-- Report `0.9.2 F01 PASS - Glock, main Use and offhand Use`, or
-  `0.9.2 F04 FAIL - MP5, handle latched, forward sweep did nothing`.
+- Report `0.9.3 F01 PASS - Glock, main Use and offhand Use`, or
+  `0.9.3 F04 FAIL - MP5, handle latched, forward sweep did nothing`.
   Include partial results, gun/optic ID, shader state and handedness. For crashes,
   give the timestamp and active instance log/crash-report path. For geometry,
   share `config/visor_tacz-calibration.json`.
@@ -77,7 +92,7 @@ previously passed basic cases only where a new change or failure warrants it.
 ## Glock and shared magazine handling
 
 - [ ] **F01 - slide release (new behavior).** Empty Glock, replace magazine,
-  wait for native LOADING to finish, press main-hand Use: slide closes and one
+  immediately press main-hand Use: slide closes and one
   round chambers. Repeat using offhand Use at cyan region with Grab=TRIGGER,
   configured Grab at that region, and slide racking. Repeated release presses
   must not consume additional ammo. Wrong-zone offhand input must not release.
@@ -89,7 +104,7 @@ previously passed basic cases only where a new change or failure warrants it.
   at rearward completion, holding there repeats nothing. Five complete live
   racks discard five rounds if available. Record sound and live/spent size issues.
 - [ ] **F02 - two-hand ADS.** With ADS 2 hands ON, eye alignment alone does not
-  activate ADS. Hold blue support + align: ADS enters; release: ADS exits. Try
+  activate ADS. Touch blue support + align for pistols (Grab optional); other guns still require Grab. Move away: ADS exits. Try
   both eyes, lowered gun, sprinting, reloading, menu and focus loss. ADS should
   stop sprinting. OFF restores alignment-only ADS. Repeat each supported gun;
   M870 uses its fully forward pump as support. Pistol direction stays with the

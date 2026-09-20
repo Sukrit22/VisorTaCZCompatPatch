@@ -27,8 +27,8 @@ public final class ServerEvents {
         else if(!ServerPoses.isVr(p))
             failure="The addon is inactive or the server does not recognize you as a Visor VR player. Enable VR and the addon; if needed, reconnect while in VR.";
         else if(dev.visorcompat.tacz.Profiles.manualAction(stack) && kind!=dev.visorcompat.tacz.physical.Jam.Kind.STOVEPIPE)
-            failure="This manual-action gun only supports the generic jam test. Use /visor_tacz_test jam.";
-        else if(ServerPhysical.phase(p)!=dev.visorcompat.tacz.physical.Handling.Phase.READY && ServerPhysical.phase(p)!=dev.visorcompat.tacz.physical.Handling.Phase.NEED_RACK)
+            failure="M870/M700 currently support only a generic action jam, not visual dud/double-feed/stovepipe simulations. No jam applied. Use /visor_tacz_test jam.";
+        else if(ServerPhysical.phase(p)!=dev.visorcompat.tacz.physical.Handling.Phase.READY && ServerPhysical.phase(p)!=dev.visorcompat.tacz.physical.Handling.Phase.NEED_RACK && ServerPhysical.phase(p)!=dev.visorcompat.tacz.physical.Handling.Phase.SUPPORT)
             failure="Finish the current physical action before testing a jam. Server phase: "+ServerPhysical.phase(p);
         else if(ServerJams.read(stack).kind()!=dev.visorcompat.tacz.physical.Jam.Kind.NONE)
             failure="Clear the existing jam first: "+ServerJams.read(stack).kind();

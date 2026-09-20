@@ -7,9 +7,15 @@ public final class ActionCycle {
         return switch(state){
             case LOWERED -> up>=.035f && Math.abs(back)<.04f?Bolt.LIFTED:state;
             case LIFTED -> back>=.08f && up>=.02f?Bolt.OPEN:
-                Math.abs(back)<.025f && up<=.012f && up>=-.04f?Bolt.LOWERED:state;
-            case OPEN -> Math.abs(back)<.018f && up>=.02f?Bolt.LIFTED:state;
+                back>=-.06f && back<=.035f && up<=.02f && up>=-.10f?Bolt.LOWERED:state;
+            case OPEN -> back>=-.06f && back<=.025f && up>=-.10f && up<=.14f?Bolt.LIFTED:state;
         };
+    }
+    public static PumpCycle.Transition rack(boolean rearReached,float back,float side,float up){
+        if(!Float.isFinite(back+side+up)||Math.abs(side)>.12f||Math.abs(up)>.12f)return PumpCycle.Transition.NONE;
+        if(!rearReached&&back>=.055f)return PumpCycle.Transition.OPEN;
+        if(rearReached&&back<=.018f&&back>=-.04f)return PumpCycle.Transition.CLOSE;
+        return PumpCycle.Transition.NONE;
     }
     public static boolean latch(float back,float up,float side){return Float.isFinite(back+up+side)&&back>=.055f&&up>=.035f&&Math.abs(side)<.12f;}
     public static boolean slap(float previousY,float nowY){return Float.isFinite(previousY+nowY)&&previousY-nowY>=.025f;}
@@ -27,6 +33,12 @@ public final class ActionCycle {
             else {float x=(-half[i]-a[i])/d[i],y=(half[i]-a[i])/d[i];low=Math.max(low,Math.min(x,y));high=Math.min(high,Math.max(x,y));if(low>high)return false;}
         }
         return true;
+    }
+    public static boolean boltSlap(org.joml.Vector3fc from,org.joml.Vector3fc to,org.joml.Vector3fc rack,dev.visorcompat.tacz.ZoneSizes.Box box){
+        return from.y()-to.y()>.004f && releaseSweep(from,to,new org.joml.Vector3f(rack).add(0,.035f,0),box);
+    }
+    public static boolean regrip(boolean actionBlocked,boolean held,float distance){
+        return !actionBlocked&&!held&&Float.isFinite(distance)&&distance<=.085f;
     }
     public static Chamber release(Chamber chamber,boolean latched,boolean magazine,boolean jammed){return latched&&magazine&&!jammed?chamber.feed():chamber;}
     public static boolean portLoad(boolean open,boolean loaded,int consumed){return open&&!loaded&&consumed==1;}

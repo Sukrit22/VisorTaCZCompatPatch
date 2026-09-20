@@ -34,6 +34,7 @@ public final class JamVisual {
                 // Shell model runs along local Z. Turn it across the bore, tilted upward 22.5 degrees.
                 if(spent){matrices.mulPose(Axis.ZP.rotationDegrees(22.5f));matrices.mulPose(Axis.YP.rotationDegrees(90));}
                 else matrices.mulPose(Axis.YP.rotationDegrees(i==0?-8:8));
+                matrices.mulPose(Axis.YP.rotationDegrees(180)); // Case base faces inward, narrow/open end outward.
                 float visual=calibration.gunScale()*calibration.casingScale();matrices.scale(visual,visual,visual);
                 if(model!=null && texture!=null) {
                     matrices.translate(0,-1.5,0);

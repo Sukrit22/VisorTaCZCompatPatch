@@ -1,6 +1,6 @@
 # Adding a gun: UMP45 walkthrough, Kar98k exercise
 
-Written against this workspace's **0.8.0** source and pinned TaCZ 1.1.8-hotfix
+Reviewed against this workspace's **0.9.3** source and pinned TaCZ 1.1.8-hotfix
 default pack. These are instructions, **not installed gun support**. UMP45 and
 Kar98k have deliberately not been added to the running mod for you.
 
@@ -30,7 +30,10 @@ behavior. A later refactor can separate mechanism from per-gun geometry/parts.
 
 UMP45 uses a closed bolt and detachable magazine, so it can use the existing
 server reload state machine. You should not need to edit ammo extraction or add
-another firing packet. Its default-pack ammo is `tacz:45acp`, capacity 25, and
+another firing packet. In 0.9.3 physical magazine insertion transfers native
+ammo immediately; do not also start TaCZ's timed reload, or you risk a second
+feed path. Held racks can cycle repeatedly after a full forward return.
+Its default-pack ammo is `tacz:45acp`, capacity 25, and
 native modes are auto/burst. Those properties remain TaCZ-owned.
 
 ### 1. Inspect the source assets
@@ -162,12 +165,28 @@ scale, subtracts grip, and adds saved port offsets. Do not convert it twice.
 Copy all `["tacz:hk_mp5a5".…]` sections in `calibration-hints.toml`, append them,
 and change the copied section keys to `tacz:ump45`. Edit the text for UMP's handle.
 Keep grip, rotation, scale, muzzle, support, magazine, rack, selector, pouch, sight,
-and port. Each section must occur only once.
+port, release, and casing. The release/casing sections are farther down the file,
+not next to the main MP5 block. Each section must occur only once.
+
+Rewrite the copied release hint: this UMP family uses the ordinary locked-bolt
+release control, not MP5's raised-handle latch or hands-free slap. Its release
+region initially uses the rifle fallback in `Handling.release()`. Calibrate it
+onto the intended control and save; add a UMP-specific default there if needed.
+The casing page controls loose-round/casing size, independently of uniform gun
+scale. Do not copy MP5-specific motion instructions unchanged.
 
 `CalibrationLayout` now reads profile capabilities, so UMP gets support/selector
 pages automatically. The renderer uses `rackNode()` and `boltNode()`; the magazine
 and `bullet_in_mag` names already match. Leave `ServerPhysical` unchanged for this
 exercise. Copying it would create a second reload implementation unnecessarily.
+
+This is a first working profile, not a guarantee of complete moving-part fidelity.
+`PhysicalModel` currently couples the separate bolt to handle travel only for
+`smg()` (MP5). Merely returning an UMP bolt name does not add that coupling.
+Inspect the UMP animation and bone hierarchy before adding a UMP-specific
+rendering case; verify both handle and bolt motion, locked-open pose, and jam
+pose. Do not change `smg()` to include UMP just to animate the bolt: that would
+also enable MP5 geometry and server latch/slap rules.
 
 ### 7. Choose explicit temporary action sounds
 
@@ -205,10 +224,10 @@ assertEquals("ump45_charge_handle",p.rackNode());
 assertEquals("ump45_bolt",p.boltNode());
 ```
 
-Use a distinct local version, e.g. `0.8.0-ump-learning`, in `build.gradle` so you
+Use a distinct local version, e.g. `0.9.3-ump-learning`, in `build.gradle` so you
 can distinguish the JAR. Change the three channel-version strings in
-`CompatNetwork` from `13` to `13-ump-learning`, and install that build on both
-clients/server. A stock 0.8.0 server does not have your new profile even though
+`CompatNetwork` from `17` to `17-ump-learning`, and install that build on both
+clients/server. A stock 0.9.3 server does not have your new profile even though
 the packet layout looks the same.
 
 From the project folder in PowerShell:
@@ -225,15 +244,16 @@ does not validate a physical grab or model alignment.
 ### 9. Test in this order
 
 1. Button mode: model, muzzle origin, aim, normal TaCZ firing/reloading.
-2. Calibrate grip, muzzle, rack, magazine, support, port; Save & close before
+2. Calibrate grip, muzzle, rack, magazine, support, port, release and casing size; Save & close before
    testing server interactions. Save a copy of your calibration JSON.
-3. Physical tactical and empty reloads: correct mag/handle motion and ammo counts.
+3. Physical tactical and empty reloads: immediate ammo transfer, correct mag/handle motion, locked-bolt release, repeated held racks, and exact ammo counts.
 4. Native auto/burst modes, trigger release, support aim, selector, no spare ammo.
 5. If using gundb: existing three jam types, checking port/bolt visuals carefully.
 6. Reconnect mid-reload; flatscreen friend checks ordinary play and remote visuals.
 
-Do not use the currently broken optics as your initial pass/fail criterion for
-new gun support. Iron sights and muzzle/impact alignment isolate the new profile.
+Start with iron sights and muzzle/impact alignment to isolate the new profile,
+then test optics separately. The earlier blanket warning that optics are broken
+is outdated; working optics have since been reported.
 
 ## Exercise 2: Kar98k — investigate and propose your design
 
@@ -250,7 +270,8 @@ Before writing code, try answering:
 
 1. What does the model's `magazine` actually depict? Which parts move during each
    native reload animation? What is the role of `clip`?
-2. Which parts of M700's bolt cycle can you reuse unchanged?
+2. Which parts of M700's lift/back/forward/lower cycle, downward slap and
+   main-hand re-grip can you reuse, and which model pivots differ?
 3. When may ammunition be inserted: action closed, action open, or both? How will
    you distinguish reserve count from chamber count?
 4. How does an attached scope change the native script's loading choice? Would

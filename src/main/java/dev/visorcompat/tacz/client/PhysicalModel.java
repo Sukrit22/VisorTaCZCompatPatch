@@ -135,6 +135,7 @@ public final class PhysicalModel implements AutoCloseable {
         try {
             matrices.mulPoseMatrix(correction);
             matrices.last().normal().mul(correction.get3x3(new Matrix3f()).invert().transpose());
+            matrices.mulPose(Axis.YP.rotationDegrees(30));
             matrices.scale(modelScale,modelScale,modelScale);
             Vector3f anchor=profile.grip().add(Handling.magazine(profile));
             matrices.translate(-anchor.x,-anchor.y,-anchor.z);

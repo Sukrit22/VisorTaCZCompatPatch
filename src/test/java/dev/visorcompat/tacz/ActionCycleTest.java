@@ -10,7 +10,7 @@ class ActionCycleTest {
         assertEquals(LIFTED,ActionCycle.bolt(LOWERED,0,.04f,0));
         assertEquals(OPEN,ActionCycle.bolt(LIFTED,.09f,.04f,0));
         assertEquals(OPEN,ActionCycle.bolt(OPEN,.09f,0,0));
-        assertEquals(OPEN,ActionCycle.bolt(OPEN,0,0,0));
+        assertEquals(LIFTED,ActionCycle.bolt(OPEN,0,0,0));
         assertEquals(LIFTED,ActionCycle.bolt(OPEN,0,.04f,0));
         assertEquals(LOWERED,ActionCycle.bolt(LIFTED,0,0,0));
     }
@@ -61,5 +61,34 @@ class ActionCycleTest {
         var c=new com.google.gson.Gson().fromJson("{\"y\":-0.01,\"z\":0.03,\"interactions\":{\"rack\":{\"y\":0.1}}}",Calibration.class);
         assertTrue(c.valid());assertEquals(-.01f,c.y());assertEquals(.03f,c.z());assertEquals(.1f,c.interactions().rack().y());
         assertEquals(InteractionOffsets.Point.ZERO,c.interactions().release());assertEquals(.06f,c.zones().release().width());
+    }
+
+    @Test void heldRackRearmsOnlyAfterForwardReturn(){
+        var chamber=new Chamber(5,true);boolean rear=false;int ejected=0;
+        for(float back:new float[]{.03f,.06f,.08f,.06f,.03f,0,.06f,.08f,0}){
+            var transition=ActionCycle.rack(rear,back,0,0);
+            if(transition==PumpCycle.Transition.OPEN){rear=true;if(chamber.loaded())ejected++;chamber=new Chamber(chamber.magazine(),false);}
+            if(transition==PumpCycle.Transition.CLOSE){rear=false;chamber=chamber.feed();}
+        }
+        assertEquals(2,ejected);assertEquals(new Chamber(3,true),chamber);
+        assertEquals(6,chamber.rounds()+ejected);
+        assertEquals(PumpCycle.Transition.NONE,ActionCycle.rack(false,Float.NaN,0,0));
+        assertEquals(PumpCycle.Transition.NONE,ActionCycle.rack(true,.06f,0,0));
+    }
+    @Test void boltAcceptsDiagonalForwardThenDownAndRegripsOnlyNearbyWhenReady(){
+        assertEquals(LIFTED,ActionCycle.bolt(OPEN,.01f,-.03f,0));
+        assertEquals(LOWERED,ActionCycle.bolt(LIFTED,.01f,-.03f,0));
+        assertEquals(OPEN,ActionCycle.bolt(OPEN,.07f,-.03f,0));
+        assertTrue(ActionCycle.regrip(false,false,.06f));
+        assertFalse(ActionCycle.regrip(true,false,.06f));
+        assertFalse(ActionCycle.regrip(false,true,.06f));
+        assertFalse(ActionCycle.regrip(false,false,.15f));
+        assertFalse(ActionCycle.regrip(false,false,Float.NaN));
+    }
+    @Test void boltSlapMustCrossHandleDownward(){
+        var box=new ZoneSizes.Box(.06f,.06f,.06f);var center=new Vector3f();
+        assertTrue(ActionCycle.boltSlap(new Vector3f(0,.08f,0),new Vector3f(0,0,0),center,box));
+        assertFalse(ActionCycle.boltSlap(new Vector3f(0,0,0),new Vector3f(0,.08f,0),center,box));
+        assertFalse(ActionCycle.boltSlap(new Vector3f(.2f,.08f,0),new Vector3f(.2f,0,0),center,box));
     }
 }
