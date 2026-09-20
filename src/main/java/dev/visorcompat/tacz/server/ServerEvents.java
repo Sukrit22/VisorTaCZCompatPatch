@@ -10,6 +10,7 @@ public final class ServerEvents {
         var jam=net.minecraft.commands.Commands.literal("jam").executes(c->testJam(c.getSource(),dev.visorcompat.tacz.physical.Jam.Kind.STOVEPIPE));
         for(var kind:dev.visorcompat.tacz.physical.Jam.Kind.values())if(kind!=dev.visorcompat.tacz.physical.Jam.Kind.NONE)
             jam.then(net.minecraft.commands.Commands.literal(kind.name().toLowerCase(java.util.Locale.ROOT)).executes(c->testJam(c.getSource(),kind)));
+        jam.then(net.minecraft.commands.Commands.literal("misfire").executes(c->testJam(c.getSource(),dev.visorcompat.tacz.physical.Jam.Kind.DUD)));
         event.getDispatcher().register(net.minecraft.commands.Commands.literal("visor_tacz_test")
             .requires(source->source.hasPermission(2)).then(jam));
     }

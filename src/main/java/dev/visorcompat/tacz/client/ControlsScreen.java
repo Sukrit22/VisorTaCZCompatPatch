@@ -27,13 +27,17 @@ public final class ControlsScreen extends Screen {
         }).bounds(x,y+72,260,20).build());
         addRenderableWidget(Button.builder(Component.literal("Auto ADS: "+CompatSettings.autoAds()),b->{
             CompatSettings.setAutoAds(!CompatSettings.autoAds());rebuildWidgets();
-        }).bounds(x,y+96,260,20).build());
+        }).bounds(x,y+96,128,20).build());
+        addRenderableWidget(Button.builder(Component.literal("ADS 2 hands: "+CompatSettings.twoHandAds()),b->{CompatSettings.setTwoHandAds(!CompatSettings.twoHandAds());rebuildWidgets();}).bounds(x+132,y+96,128,20).build());
         addRenderableWidget(Button.builder(Component.literal("VR optics: "+CompatSettings.optics()),b->{
             CompatSettings.setOptics(!CompatSettings.optics());rebuildWidgets();
-        }).bounds(x,y+120,260,20).build());
+        }).bounds(x,y+120,128,20).build());
         addRenderableWidget(Button.builder(Component.literal("Debug cubes: "+(CompatSettings.debugCubes()?"ON":"OFF")),b->{
             CompatSettings.setDebugCubes(!CompatSettings.debugCubes());rebuildWidgets();
-        }).bounds(x,y+144,260,20).build());
+        }).bounds(x+132,y+120,128,20).build());
+        addRenderableWidget(Button.builder(Component.literal("M700 transfer: "+(CompatSettings.transferAnytime()?"ANYTIME":"BOLT NEEDED")),b->{
+            CompatSettings.setTransferAnytime(!CompatSettings.transferAnytime());rebuildWidgets();
+        }).tooltip(net.minecraft.client.gui.components.Tooltip.create(Component.literal("BOLT NEEDED: only after firing, with an empty chamber, open/lifted bolt or jam. ANYTIME: transfer whenever support grip is held. Applies to moving away and main Use."))).bounds(x,y+144,260,20).build());
         addRenderableWidget(Button.builder(Component.literal("Done"),b->onClose()).bounds(x,y+172,260,20).build());
         ClientControls.clearInput();
     }

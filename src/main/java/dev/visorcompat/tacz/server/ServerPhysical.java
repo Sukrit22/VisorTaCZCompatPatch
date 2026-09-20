@@ -27,7 +27,7 @@ public final class ServerPhysical {
     private static final String EMPTY_RELOAD="visor_tacz_empty_reload";
     private static final Map<UUID, Session> SESSIONS=new HashMap<>();
     private static final class Session {
-        HandAnchor anchor; boolean mainInput;
+        HandAnchor anchor,supportAnchor; boolean mainInput;
         ItemStack stack; int slot; Phase phase=Phase.READY; Phase rackFrom=Phase.READY;
         boolean held, pulled, allowReload, jammedAtRack, shot; Vector3f previous; Vector3f start=new Vector3f();
         int ticks, reloadStart, lastControl=-20; Phase sent; int sentPull=-1;
@@ -123,6 +123,17 @@ public final class ServerPhysical {
         }
         if(Profiles.bolt(s.stack)&&BoltState.open(s.stack))ActionState.lifted(s.stack,true);
         s.ticks++;
+        if(s.phase==Phase.SUPPORT && s.held && s.supportAnchor!=null && s.anchor==null && VisorAPI.getVRPlayer(p) instanceof VRServerPlayer vr){
+            var projected=s.supportAnchor.resolve(vr.getPoseData(),Profiles.get(s.stack),CompatNetwork.calibration(p));
+            var main=vr.getPoseData().getMainHand();
+            var grip=CompatNetwork.calibration(p).position(new Vector3f(main.getPosition()),main.getRotation().getNormalizedRotation(new org.joml.Quaternionf()),vr.getPoseData().getWorldScale());
+            if(!mayTransfer(p,s)){
+                var current=ServerPoses.validated(p);
+                if(current!=null)s.supportAnchor=HandAnchor.capture(current,vr.getPoseData());
+            }else if(projected!=null && grip.distance(projected.hand())>.16f*projected.worldScale()){
+                s.anchor=s.supportAnchor;s.held=false;s.phase=Phase.NEED_RACK;
+            }
+        }
         Sample pose=sample(p);
         if(pose==null || !p.getOffhandItem().isEmpty()){if(s.held)release(p,s,null);s.anchor=null;}
         if(pose!=null && s.held) {
@@ -134,16 +145,15 @@ public final class ServerPhysical {
             } else if(Handling.racking(s.phase) && Profiles.bolt(s.stack)) moveBolt(p,s,pose);
             else if(Handling.racking(s.phase) && Handling.racked(s.start,pose.local())) {
                 pullRack(p,s);
-                if(Profiles.get(s.stack).smg() && ActionCycle.latch(pose.local().z-s.start.z,pose.local().y-s.start.y,pose.local().x-s.start.x))ActionState.locked(s.stack,true);
+                if(Profiles.get(s.stack).smg())ActionState.locked(s.stack,true);
             }
-            else if(s.phase==Phase.SUPPORT && !Handling.inside(pose.local(),Handling.support(Profiles.get(s.stack),CompatNetwork.calibration(p)),CompatNetwork.calibration(p),ZoneSizes.Zone.SUPPORT)) {
+            else if(s.phase==Phase.SUPPORT && !Profiles.bolt(s.stack) && !Handling.inside(pose.local(),Handling.support(Profiles.get(s.stack),CompatNetwork.calibration(p)),CompatNetwork.calibration(p),ZoneSizes.Zone.SUPPORT)) {
                 s.phase=Phase.READY;s.held=false;
             }
         }
         if(pose!=null && !s.held && Profiles.get(s.stack).smg() && ActionState.locked(s.stack)
-            && s.previous!=null && ActionCycle.slap(s.previous.y,pose.local().y)
-            && Handling.inside(pose.local(),Handling.release(Profiles.get(s.stack),CompatNetwork.calibration(p)),CompatNetwork.calibration(p),ZoneSizes.Zone.RELEASE))releaseAction(p,s);
-        s.previous=pose==null?null:new Vector3f(pose.local());
+            && s.previous!=null && p.getOffhandItem().isEmpty() && ActionCycle.releaseSweep(s.previous,pose.local(),Handling.release(Profiles.get(s.stack),CompatNetwork.calibration(p)),CompatNetwork.calibration(p).zones().release()))releaseAction(p,s);
+        s.previous=pose==null||s.held||s.phase==Phase.LOADING||s.phase==Phase.OLD_MAG||s.phase==Phase.NEW_MAG?null:new Vector3f(pose.local());
         if(s.phase==Phase.LOADING) {
             var operator=IGunOperator.fromLivingEntity(p);
             if(!operator.getDataHolder().reloadStateType.isReloading() && s.ticks>s.reloadStart+2) finishReload(s);
@@ -189,7 +199,10 @@ public final class ServerPhysical {
             case RACK -> {s.rackFrom=s.phase;s.phase=s.rackFrom==Phase.NO_MAG?Phase.RACKING_EMPTY:Phase.RACKING;s.pulled=false;s.jammedAtRack=GunDurabilityCompat.jammed(s.stack);
                 if(profile.bolt())s.start.set(Handling.rack(profile,CompatNetwork.calibration(p)));}
             case MAGAZINE -> s.phase=Phase.REMOVING;
-            case SUPPORT -> s.phase=Phase.SUPPORT;
+            case SUPPORT -> {s.phase=Phase.SUPPORT;
+                var gun=ServerPoses.validated(p);
+                if(profile.bolt() && gun!=null && VisorAPI.getVRPlayer(p) instanceof VRServerPlayer vr)s.supportAnchor=HandAnchor.capture(gun,vr.getPoseData());
+            }
             default -> s.held=false;
         }
     }
@@ -222,6 +235,7 @@ public final class ServerPhysical {
                 if(pose!=null && (s.pulled || Handling.racked(s.start,pose.local()))) {
                     // Catch a completed pull arriving in the release pose between ticks.
                     pullRack(p,s);
+                    if(Profiles.get(s.stack).smg())ActionState.locked(s.stack,true);
                     if(s.jammedAtRack)ServerJams.finish(p);
                     HandlingFeedback.emit(p,5,ServerPoses.validated(p));
                     Chamber chamber=new Chamber(gun.getCurrentAmmoCount(s.stack),gun.hasBulletInBarrel(s.stack));
@@ -288,14 +302,19 @@ public final class ServerPhysical {
         if(operator.getDataHolder().reloadStateType.isReloading()) { s.phase=Phase.LOADING;s.reloadStart=s.ticks; }
         else finishReload(s);
     }
+    private static boolean mayTransfer(ServerPlayer p,Session s){
+        var gun=IGun.getIGunOrNull(s.stack);
+        return gun!=null && dev.visorcompat.tacz.physical.TransferPolicy.mayStart(CompatNetwork.transferAnytime(p),BoltState.spent(s.stack),BoltState.open(s.stack),ActionState.lifted(s.stack),gun.hasBulletInBarrel(s.stack),GunDurabilityCompat.jammed(s.stack));
+    }
     public static void transfer(ServerPlayer p){
         var s=SESSIONS.get(p.getUUID());if(!enabled(p)||s==null||!Profiles.bolt(s.stack)||!p.getOffhandItem().isEmpty())return;
         var gun=ServerPoses.validated(p);if(gun==null)return;
         if(s.anchor!=null){
             var pose=((VRServerPlayer)VisorAPI.getVRPlayer(p)).getPoseData();
-            if(Handling.local(gun,pose.getMainHand().getPosition()).length()>.16f)return;
+            var main=pose.getMainHand();var grip=CompatNetwork.calibration(p).position(new Vector3f(main.getPosition()),main.getRotation().getNormalizedRotation(new org.joml.Quaternionf()),gun.worldScale());
+            if(grip.distance(gun.hand())>.16f*gun.worldScale())return;
             if(s.held)release(p,s,null);s.anchor=null;s.held=false;
-        }else if(s.phase==Phase.SUPPORT && s.held){
+        }else if(s.phase==Phase.SUPPORT && s.held && mayTransfer(p,s)){
             s.anchor=HandAnchor.capture(gun,((VRServerPlayer)VisorAPI.getVRPlayer(p)).getPoseData());s.held=false;s.phase=Phase.NEED_RACK;
         }
         send(p,s,s.phase,0);
@@ -304,6 +323,11 @@ public final class ServerPhysical {
         var s=SESSIONS.get(p.getUUID());if(s==null||s.anchor==null)return;
         s.mainInput=true;
         try{if(canceled)release(p,s,null);else grip(p,held);}finally{s.mainInput=false;}
+    }
+    public static void pistolRelease(ServerPlayer p){
+        var s=SESSIONS.get(p.getUUID());if(!enabled(p)||s==null||s.stack!=p.getMainHandItem()||Profiles.get(s.stack).supportDistance()!=0||s.held&&s.phase!=Phase.SUPPORT)return;
+        boolean support=s.phase==Phase.SUPPORT;if(support)s.phase=Phase.READY;
+        releaseAction(p,s);if(support)s.phase=Phase.SUPPORT;
     }
     public static void selector(ServerPlayer p) {
         Session s=SESSIONS.get(p.getUUID());Sample pose=sample(p);

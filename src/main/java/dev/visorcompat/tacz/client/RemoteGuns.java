@@ -77,7 +77,7 @@ public final class RemoteGuns {
                     model.render(matrices,stack,ItemDisplayContext.THIRD_PERSON_RIGHT_HAND,type,light,OverlayTexture.NO_OVERLAY);
                 } finally {matrices.popPose();}
                 PhysicalModel.detached(matrices,model,profile,gun,pose,type,light,state.physical(),state.phase(),state.calibration().gunScale(),state.magazineLoaded());
-                if(state.physical())PumpVisual.render(matrices,profile,gun,pose,state.phase(),light,state.calibration().gunScale());
+                if(state.physical())PumpVisual.render(matrices,profile,gun,pose,state.phase(),light,state.calibration().gunScale()*state.calibration().casingScale());
                 if(state.physical())JamVisual.render(matrices,stack,profile,state.calibration(),gun,pose,state.phase(),light);
                 mc.renderBuffers().bufferSource().endBatch();
             } finally {model.setRenderHand(hands);MuzzleFlashRender.isSelf=flash;com.tacz.guns.client.model.functional.ShellRender.isSelf=oldShell;model.cleanAnimationTransform();matrices.popPose();}

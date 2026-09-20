@@ -1,231 +1,294 @@
-# Rolling manual test tracker — 0.7.0
+# Consolidated testing checklist - 0.9.2
 
-Updated September 20, 2026 from the user's reports and earlier release checklists.
-This is the current checklist; older release checklists are historical. No result
-reported means **unverified**, not failed. Build/unit tests do not close VR tests.
-Stable IDs below can be used in replies and retained in future releases.
+This replaces the scattered current instructions in the older release guides.
+Older checklists/results are retained in TESTING-HISTORY-THROUGH-0.9.2.md and
+release notes. Test IDs are retained where possible. A past pass is evidence for
+that version, not a pass for every subcase or for newly changed behavior.
 
-Latest follow-up (0.8.0): scopes work in old and new worlds per user report; PK06 lower viewing area still lacks magnification. M870 pump grab fails in the old world but works in a new world; cause unresolved. Jam testing is blocked because the active only Visor+TaCZ+addons-noTaCZcompat instance has no gundb installed. Normal handling does not require gundb. Source now reports separate jam-command failure reasons. Earlier optic failures below are historical; individual optics, decals and shader cases still need specific retests.
+**Current build:** 0.9.2, protocol 16; 100 automated tests passed. No 0.9.1/0.9.2
+headset results have been reported yet. Automated tests do not close VR checks.
 
-Earlier: [0.7.0 user results and requested changes](TEST-RESULTS-0.7.0.md).
-Checked entries mean the user reported the main behavior OK; unmentioned subcases
-are not automatically certified. Partial and failed groups remain unchecked.
+## Recommended next session: Glock first
 
-0.7.1 changes require the [focused retest](RELEASE-0.7.1.md). Checked results below
-refer to the reported 0.7.0 session, not automatic validation of 0.7.1.
+Do these before expanding the shared pistol implementation:
 
-New M700/MP5 checks **N01�N08** are all pending in the [0.8.0 checklist](RELEASE-0.8.0.md).
-Keep reporting 0.7.1 results with that version; adding guns does not close older issues.
+1. **F01 + G01:** Empty reload, main Use slide release, offhand release zone,
+   and normal racking. Then tactical reload, no spare ammo, repeated release.
+2. **F02:** Blue support region and two-hand ADS: grip + eye alignment enters,
+   releasing support exits; toggle the option and compare.
+3. **G02:** Partial rack, full rack, hold rearward, repeated loaded-chamber racks:
+   ejection timing and exact round count.
+4. **J01-J03:** Stovepipe, double feed, dud. Check clearing and ammo totals,
+   not only the visual model.
+5. **C04 + F05:** Save grip/zone/casing calibration, change gun, reload/restart:
+   values and model size remain consistent.
+6. **I01 + R01:** Lose focus while holding an input; disconnect mid-reload and
+   rejoin twice. No stuck firing, phantom grab, or extra rounds.
+7. **I04:** Switch to button mode/flatscreen and back; normal TaCZ still works.
+
+If those pass, add one more conventional pistol first (M1911), test its model,
+release and ammo behavior, then add a batch. A Glock pass validates the shared
+mechanism; it does not validate other guns' model bones, pivots, sound files,
+capacities, ammo types, or firing modes.
+
+You do not need to finish this entire document before starting the first new
+pistol profile. The seven checks above are the shared-pistol readiness gate.
+Other sections retain outstanding coverage and targeted regressions; repeat
+previously passed basic cases only where a new change or failure warrants it.
 
 ## Setup and reporting
 
-Use a backed-up test world, Pico 4 Ultra + Virtual Desktop + SteamVR, and default
-TaCZ Glock 17, M4A1, and M870. Install 0.8.0 on all clients/server (protocol 13).
-Keep only one addon version. Preserve calibration and settings. Begin with
-shaders off; use survival with known ammo totals for accounting tests. Physical
-grabs require Visor's assigned offhand to be empty, including its hotbar slot.
-Enable debug cubes for alignment checks. Save calibration before testing server
-interactions: an unsaved preview is not the server's saved profile.
+- Install only one addon JAR, **0.9.2 on every client and server**. Single-player
+  has an integrated server. Keep your existing calibration; do not zero it.
+- Pico 4 Ultra + Virtual Desktop + SteamVR. Start with shaders OFF, physical
+  handling ON, debug regions ON, and Visor's assigned offhand hotbar slot empty.
+- Save calibration before testing grabs. Unsaved preview geometry is not the
+  server's saved geometry. Colors can vary with your bundled hints: blue support,
+  orange rack/pump, green magazine/tube port, pink ejection/side port, cyan release.
+- Use survival and record inventory + gun magazine/tube + chamber ammo before
+  and after accounting tests. Include all ammo containers. Ignore unlimited
+  creative ammo for conservation tests. Ejected cosmetic objects are not pickups.
+- Jam tests: gundb **2.2.2**, cheats/operator permission, selected supported gun,
+  physical VR handling, enough ammo and no active gesture. Clear one jam before
+  starting another. Run the no-gundb test separately.
+- Report `0.9.2 F01 PASS - Glock, main Use and offhand Use`, or
+  `0.9.2 F04 FAIL - MP5, handle latched, forward sweep did nothing`.
+  Include partial results, gun/optic ID, shader state and handedness. For crashes,
+  give the timestamp and active instance log/crash-report path. For geometry,
+  share `config/visor_tacz-calibration.json`.
 
-Reply, for example: `S02 PASS — M870, survival, 12g in inventory` or
-`J02 FAIL — M4, second pull produced no round`. Include addon version, gun/optic,
-shader state, handedness, and observed result. Partial passes stay open; specify
-which subcase passed. For crashes send the timestamped report and matching log.
-For alignment feedback send `config/visor_tacz-calibration.json`.
+## What your reports already establish
 
-## Earlier results already reported
-
-| Area | Evidence from user | Remaining scope |
+| Area | Latest reported evidence | What remains |
 | --- | --- | --- |
-| Last active hand | Solved: left-hand interaction no longer redirects right-hand shots | Small regression check after new calibration |
-| M4 support aim | Solved: barrel and bullet direction turn together | New scale/box regression; remote observer |
-| HMD reconnect | Full disconnect/reconnect works | Focus-only loss remains untested |
-| Addon OFF comparison | Upstream VR gun behavior observed with addon off | AUTO transitions and preference persistence |
-| Grip calibration | Adjusted successfully; hand reaches grip | Persistence, Cancel, new scale and boxes |
-| Glock/M4 physical handling | Basic handling works; sounds and ejection observed | Exact ammo counts, timing, interruptions, sound quality |
-| M870 pump | Pump operation observed | Detailed stroke/count tests and latest support fix |
-| Scope stability | Later session reported no crash or blinking | Exact old-world/Z/shader/transition matrix unverified |
-| QMK-152 | Magnification reported working with shaders off | Stereo, off-axis behavior and toggle persistence |
-| TA31 ACOG | Black center reported | Known unresolved issue; no fix claimed |
-| Whole-world blinking | Reproduced without addon; stopped after PC restart | Monitor recurrence; root cause unknown |
+| Main-hand shot direction / M4 support aim | Reported solved | Regression and remote observer checks |
+| Scale, XYZ boxes, basic save, HUD and mode switching | Main behavior passed in 0.7.0 | New controls, new regions and persistence subcases |
+| Focus loss and HMD reconnect | Both reported working in 0.7.0 | Interrupted firing/grabs/reloads and new transfer state |
+| M4 release / M870 new reload | No issue noticed in 0.9.0 | Counts, cancellations and new-build regressions |
+| M700 lift/back/forward/lower | Worked in 0.9.0 | Interrupted states and support transfer |
+| M700 support transfer | Failed in 0.9.0 | 0.9.1 fix plus both 0.9.2 policies untested |
+| MP5 release | Failed in 0.9.0 | New latch and swept-release behavior untested |
+| Jams | Stovepipe/double-feed visuals observed in 0.9.0 | Clearing/counting not confirmed; changed visuals untested |
+| Optics | Later report says scopes work in old and new worlds | Exact optic/stereo/decal matrix; PK06 magnification unresolved |
+| M870 old-world grab | Failed in old world, worked in new in earlier report | Same affected old gun/world not explicitly cleared by later general success |
+| Torch / handedness | Torch placement failed; gun hand switches; menu position obstructed testing | Candidate torch fix and remaining left-handed cases |
+| Whole-world flashing | Occurred without addon; stopped after PC restart | Report recurrence; no need to repeatedly reproduce every old crash |
 
-## First session: fixes and newly added controls
+## Glock and shared magazine handling
 
-- [x] **C01 — PASS reported 0.7.0: uniform scale.** Try 80%, 100%, 120% on all three guns.
-  Grip stays anchored; model, muzzle and gun-mounted points resize together.
-  Pouch placement and independently set box dimensions do not resize with the gun.
-  Fire at targets: shot origin follows the resized muzzle.
-- [x] **C02 — PASS reported 0.7.0: box dimensions.** On magazine/loading port, rack/pump, pouch,
-  and M4 support, change width, height, depth separately. Save; valid grabs match
-  visible bounds. Short/sideways strokes must not complete a reload or rack merely
-  because the grab box is larger. Check rotated guns and head-yaw-relative pouch.
-- [x] **C03 — PASS reported 0.7.0: per-gun menu.** Hints name the visible colors/actions; no text
-  overlaps buttons at your GUI scale. Hover the page title for long hints. M4 has
-  support/selector pages; Glock/M870 omit unsupported selector actions. M870 pump
-  is also its support point; its pink port marker has no grab-box size control.
-- [x] **S01 — PASS reported 0.7.0: M870 support.** Hold the orange pump fully forward,
-  keep firing hand nearly still, move offhand: barrel and impacts follow support
-  aim. Release to disengage. The separate old blue point is no longer required.
-- [x] **S02 — PASS reported 0.7.0: M870 pouch.** With 12g ammo in survival inventory,
-  grab cyan pouch, release at green port: inventory -1, tube +1, chamber unchanged.
-  Repeat with an ammo box. No ammo/full tube/invalid release must not grant or
-  consume ammo. A preview appearing without inventory ammo is allowed.
-- [x] **S03 — PASS reported 0.7.0: cartridge visual.** Pump an unfired chamber:
-  ejected model is 12g-sized, not pistol-like. Fire then pump: one spent 12g shell.
-  Check pouch preview too. Current live/spent visuals reuse the casing asset.
-- [x] **D01 — PASS reported 0.7.0: displays/status.** Try Gun, Wrist, HUD, Off. Verify ammo,
-  chamber/tube, ADS and handling state are visible and accurate. HUD uses ordinary
-  GUI overlay placement; verify your Visor wrist overlay setup separately.
-  `/visor_tacz status` should produce chat output. Restart to check preference.
-- [x] **A01 — PASS reported 0.7.0: auto ADS.** After D01, align purple sight reference and
-  test each eye, raise/lower, look away, sprint, reload, open/close a menu and regain
-  HMD focus. ADS should activate/deactivate appropriately without whole-view zoom.
-  Guide highlighting checks position only; ADS also requires look alignment.
+- [ ] **F01 - slide release (new behavior).** Empty Glock, replace magazine,
+  wait for native LOADING to finish, press main-hand Use: slide closes and one
+  round chambers. Repeat using offhand Use at cyan region with Grab=TRIGGER,
+  configured Grab at that region, and slide racking. Repeated release presses
+  must not consume additional ammo. Wrong-zone offhand input must not release.
+- [ ] **G01 - ammunition ledger.** Tactical reload retains a live chamber;
+  empty reload requires physical chambering. Test partial/no spare ammo, native
+  capacity attachments, loaded-chamber racking and magazine removed. A removed
+  magazine permits only an already chambered shot, not feeding hidden rounds.
+- [ ] **G02 - action timing.** Partial rack ejects nothing, full rack ejects once
+  at rearward completion, holding there repeats nothing. Five complete live
+  racks discard five rounds if available. Record sound and live/spent size issues.
+- [ ] **F02 - two-hand ADS.** With ADS 2 hands ON, eye alignment alone does not
+  activate ADS. Hold blue support + align: ADS enters; release: ADS exits. Try
+  both eyes, lowered gun, sprinting, reloading, menu and focus loss. ADS should
+  stop sprinting. OFF restores alignment-only ADS. Repeat each supported gun;
+  M870 uses its fully forward pump as support. Pistol direction stays with the
+  firing controller; its close support hand gates ADS instead of steering it.
+- [ ] **G03 - firing restrictions.** Compare modes/rate/cooldown with flat TaCZ.
+  No shots while invalid reload/action state or through a wall. Recover when
+  muzzle is clear. Sprint reload being allowed is not automatically a bug.
+- [ ] **G04 - pouch ownership.** Glock/M4/MP5 pouch only supplies replacement
+  during removed-magazine stage. Occupied assigned offhand blocks grabs. M870
+  shell pouch is available with pump open for side loading and closed for tube.
 
-## Calibration and settings carried forward
+## M700 bolt and transfer
 
-- [x] **C04 — PASS reported 0.7.0: save/cancel/migration.** Existing Y/Z values remain
-  nonzero as saved. Change grip rotation/position, muzzle, scale, and boxes; Save,
-  switch guns, reconnect and restart. Profiles stay separate. Cancel/Escape restores
-  saved values. Reset affects only the current page, not other offsets.
-- [ ] **C05 — UNVERIFIED: reload file.** Back up JSON; edit a value, save externally,
-  then test both Reload calibration menu button and command. Held gun/server
-  interactions update. Deliberately invalid JSON in the test copy must retain old
-  values and refuse Save; restore valid file and reload. Reload must not rewrite it.
-- [x] **C06 — PASS reported 0.7.0: hide guides.** Debug cubes OFF hides all colored guides,
-  during normal play. Calibration always shows its guides in 0.7.1. Handling/ADS still work.
-  Restart: preference persists. ON restores guides.
-- [ ] **C07 — UNVERIFIED: shared/bundled profiles.** In a backed-up config, test
-  a missing local profile falling back to bundled values and a shared local profile
-  overriding them. Do not erase your only copy of personal calibration.
+The basic four-stage cycle (**N02**) passed in 0.9.0; these new/remaining cases
+are still open. **F03** is the umbrella transfer check, split into T01-T05 below.
 
-## Input and ordinary weapon handling carried forward
+- [ ] **T01 - BOLT NEEDED, ready gun.** Loaded closed rifle, support held: move
+  main hand away and try main Use. Neither starts transfer; gun follows main hand.
+- [ ] **T02 - BOLT NEEDED, action required.** Fire, keep support held, move main
+  hand over 16 cm away: rifle stays with support hand. Repeat explicit main Use.
+  Also try empty chamber, lifted/open bolt and generic jam.
+- [ ] **T03 - finish and return.** While transferred, main trigger grabs bolt;
+  lift/back/forward/lower. No firing or ADS during transfer. Closing/lowering
+  must not snap gun back. Main Use near grip returns it; releasing support also
+  ends transfer. Try your narrow calibrated support region.
+- [ ] **T04 - ANYTIME.** Transfer a ready loaded gun by movement and by main Use.
+  Return normally; no unwanted shot and no chamber/ammo change from transfer alone.
+- [ ] **T05 - saved preference.** Switch policy, restart/rejoin; it persists and
+  reaches server. Two players can select different policies. Neither mode
+  changes other guns or flatscreen controls.
+- [ ] **N03 - interrupted bolt.** Too-short stroke, wrong direction, release
+  lifted/open, re-grab and complete, disconnect while open. One ejection/feed;
+  no firing with open/lifted bolt and no automatic feed from reconnect.
+- [ ] **N04 - magazine/chamber.** Tactical/empty magazine reload with bolt open,
+  cycle with no magazine, cycle a live chamber. Count ammo; no-mag cannot feed.
 
-- [ ] **I01 — PARTIAL: focus and full reconnect PASS; other interruptions pending: HMD/input recovery.** Test focus loss without disconnect,
-  then tracking loss while firing Glock/automatic M4. Open menus, switch slots and
-  die while holding trigger. No stuck firing or shots merely from resuming; a fresh
-  press works. Full-disconnect recovery was previously reported working.
-- [ ] **I02 — FAIL: torch placement; swings and grab suppression PASS: contextual Use/Trigger grabs.** Both choices grab valid
-  zones. Away from zones, normal Visor actions work. Offhand torch placement, sword
-  swings, bare-hand punching away from gun, and GUI pointing still work. Grabbing
-  near the gun must not accidentally punch/mine. Test two-handed hotbar assignments.
-- [ ] **I03 — PARTIAL: gun handedness PASS; menu position obstructs remaining tests: handedness/movement.** Repeat gun aiming and grips with
-  Visor left-handed mode, crouching, roomscale movement and snap turns. Occupied
-  assigned offhand must not engage physical grabs/support. No dual wield is added.
-- [x] **I04 — PASS reported 0.7.0: AUTO and modes.** AUTO follows VR/flatscreen transitions;
-  OFF persists until AUTO selected. Switch Physical/Buttons and restart. Ordinary
-  flatscreen fire/reload remains normal. Reconnect if enabling VR after joining
-  with Visor disabled. OFF is not a complete mod unload.
-- [x] **G01 — PASS reported 0.7.0: Glock/M4 ammo accounting.** Record inventory + gun ammo.
-  Test tactical and empty reloads, partial/no spare ammo and capacity attachments.
-  Tactical reload retains chamber; empty physical reload needs charging. Five
-  complete loaded-chamber racks discard exactly five rounds if available; empty
-  racks create none. Magazine removed: only an existing chamber round can fire.
-- [ ] **G02 — PARTIAL: no issue noticed; timing recheck pending: ejection/audio timing.** Full rear pull ejects once before
-  release; holding open repeats nothing, partial pulls eject nothing. Observe each
-  eye and listen for removal/insertion/rack cues. Report missing/ill-fitting sounds;
-  sample quality is still provisional.
-- [ ] **G03 — PARTIAL: wall rejection PASS; sprint reload works: fire restrictions.** Compare Glock semi-auto and M4
-  selector/modes with flat TaCZ. Correct ammo consumption, trigger release,
-  cooldowns, reload/sprint restrictions. Muzzle/controller through a wall must not
-  permit shooting through it; firing recovers when moved clear.
-- [x] **G04 — PASS reported 0.7.0: pouch ownership.** Glock/M4 ready state should not grab
-  a replacement at the waist; removed-magazine stage should. Another offhand item
-  blocks grab. M870 shell-loading pouch behavior differs and is covered by S02.
+## MP5
 
-## M870 remaining sequence tests
+- [ ] **F04 - latch and release.** Full rearward pull latches without lifting.
+  Release Grab, insert magazine, wait for LOADING, sweep empty hand back-to-front
+  through cyan region without a button. Repeat downward slap, slow/fast sweep,
+  configured Grab and offhand Use. Wrong direction/outside region do nothing;
+  one release feeds at most one round. Try no magazine and an active jam.
+  Empty firing alone does not latch; physically pull the handle first.
+- [ ] **N05 - ordinary operation.** Native firing modes/selector, trigger release,
+  blue support, tactical/empty reload, no spare ammo and full inventory.
+- [ ] **N06 - action accounting.** Check action model/sound, all three jam types
+  and interrupted reload; repeat shared G01/G02 and J01-J04 on MP5.
 
-- [ ] **S04 — PARTIAL: stays open and manual close PASS; rear-hold count pending: pump state.** Partial rear stroke feeds/ejects nothing;
-  full rear stroke ejects once; forward stroke chambers one shell. Hold rearward,
-  release open, re-grab, push forward: no extra ejection or premature firing.
-- [ ] **S05 — PARTIAL: disconnect counts PASS; other cancellations pending: shell cancellation.** Cancel preview by invalid release,
-  weapon switch, focus loss or reconnect: no ammo lost/created. Inserted shells stay
-  loaded. Repeat at capacity and with an empty tube/chamber.
-- [ ] **S06 — UNVERIFIED: native fallback.** Buttons/flatscreen restore normal
-  TaCZ M870 reload/bolt behavior without stuck pump state or altered ammo totals.
+## M870
 
-## Jams — all still awaiting reported gameplay results
+- [ ] **S01 - support regression.** Fully forward held pump supports aim; barrel
+  and impacts follow. Released/partially pulled pump must not count as ready ADS
+  support. No firing while open or spent case requires pumping.
+- [ ] **S02 - tube loading.** Closed pump, pouch to green underside port:
+  inventory -1, tube +1, chamber unchanged. Empty inventory gives OUT OF AMMO and
+  no shell preview. Full tube/invalid placement consumes nothing; try ammo boxes.
+- [ ] **S07 - side-port loading (part of F08).** Open pump, pouch shell to pink
+  port: inventory -1, chamber +1, tube unchanged. Closing consumes no tube shell
+  when chamber already loaded. Cannot insert twice into occupied chamber; wrong
+  port/open-pump underside insertion consumes nothing.
+- [ ] **S03 - shell visuals.** Live ejection, spent ejection and held preview all
+  use 12g casing asset; verify new casing scale (F05).
+- [ ] **S04 - pump strokes.** Partial rear stroke does nothing; complete rear
+  stroke ejects once; hold/release open/re-grab then close feeds at most one.
+- [ ] **S05 - cancellations/counts.** Invalid shell release, switch, focus loss,
+  disconnect: preview consumes nothing; committed insertion stays committed.
+  Include full tube and empty tube/chamber. Disconnect counts previously passed;
+  side-port loading still needs that check.
+- [ ] **S06 - fallback and old world.** Buttons/flatscreen native reload works.
+  Retest the affected old-world gun; if grab fails, compare a fresh M870 in that
+  same world before creating another world.
 
-Use gundb 2.2.2, cheats/operator permission, VR physical mode, a supported loaded
-gun, and no active gesture. Test Glock and M4 separately. Commands force a test
-jam; ordinary jam probability still belongs to Durability.
+**F08** also includes the M4 cyan release regression and shared R01/M01 checks.
 
-- [ ] **J01 — UNVERIFIED: stovepipe.** `/visor_tacz_test jam stovepipe`. Short
-  pluck does not clear; full casing pluck clears. Force a fresh jam and clear by
-  full rack. Check casing/action alignment and no collectible/free ammo.
-- [ ] **J02 — UNVERIFIED: double feed.** With at least two rounds, use
-  `/visor_tacz_test jam double_feed`. Magazine inserted: cannot clear obstruction.
-  Remove magazine, perform two separate full pulls: exactly two rounds ejected.
-  Holding open/extra pulls create none. Reinsert, charge, fire; total ammo accounts
-  for two discarded rounds. Pouch stays blocked while obstructions remain.
-- [ ] **J03 — UNVERIFIED: dud.** `/visor_tacz_test jam dud`. Trigger clicks; one
-  completed rack ejects the dud and permits normal feeding. No magazine slap is
-  required in this implementation.
-- [ ] **J04 — UNVERIFIED: jam interruption.** Switch gun, lose focus, reconnect
-  mid-clear. Jam/remaining obstruction count survives; already-ejected rounds do
-  not return. Durability never increases from clearing.
-- [ ] **J05 — UNVERIFIED: native fallback.** Switch to flatscreen holding jammed
-  gun, press Inspect (**H in this instance**), let unjam finish. Custom jam visuals
-  clear and unejected reserved ammo returns once. Keep addon installed for cleanup.
-- [ ] **J06 — UNVERIFIED: M870 generic jam.** `/visor_tacz_test jam` on M870,
-  complete pump cycle: clears generic jam. Partial/canceled cycle does not. M870
-  does not implement Glock/M4 double-feed/dud sequences.
-- [ ] **J07 — UNVERIFIED: no Durability installed.** In a separate test setup,
-  omit gundb on client/server; load world and use all three guns normally. No missing
-  class crash or new random jams; physical reloads and ordinary firing still work.
+## Jams and casing calibration
 
-## Reconnect, multiplayer, and stability
+Test Glock first; later repeat on M4/MP5. Having seen the jam model does not yet
+confirm its clearing sequence or ammunition accounting.
 
-- [ ] **R01 — UNVERIFIED: interrupted Glock/M4 reload.** Record ammo, disconnect
-  with mag removed; also before/after empty-reload ammo transfer. Rejoin twice,
-  including with gun unselected: recovery happens once, no ammo growth, committed
-  loaded ammo retained and charging requirement preserved. Repeat with orderly
-  server restart. Do not deliberately crash your main world.
-- [ ] **R02 — UNVERIFIED: other interruptions.** Test menu, mode change, slot
-  switch, death/drop/transfer during reload in a disposable world. No duplicated
-  reserved ammo or stuck grabs. Report exact stage if recovery differs.
-- [ ] **M01 — UNVERIFIED: flatscreen friend.** Friend fires/reloads supported and
-  another TaCZ gun normally. They see VR gun scale/calibration, M4 support aim,
-  magazine/slide, M870 pump/shell, and jam state. No duplicate/missing gun after
-  reconnect, teleport, switching weapons or moving out of view.
-- [ ] **M02 — UNVERIFIED: server impacts/latency.** Friend watches while gun points
-  away from face: impacts originate/direction follow muzzle, not head/cursor.
-  Test nearby/distant targets, support aim, scale and realistic latency. Recovery
-  from rejected stale tracking must not leave input stuck. Judge impacts as well
-  as tracer appearance.
-- [ ] **R03 — PARTIAL: startup/render matrix.** Reopen previously failing world
-  holding scoped gun; also new world. Test flat-to-VR main-menu transition and Z
-  attach/detach/slot change/rejoin in flat and VR, shader off/on. No crash/whole-world
-  flashing. Prior clean sessions are encouraging, not coverage of every combination.
+- [ ] **J01 - stovepipe.** `/visor_tacz_test jam stovepipe`: casing lies across
+  bore, tilted upward 22.5 degrees relative to gun. Short pluck does not clear;
+  full pluck does. Force again and clear by full rack. No free ammo or repeats.
+- [ ] **J02 - double feed.** With at least two rounds, `/visor_tacz_test jam
+  double_feed`: two casing-model obstructions. Cannot clear with magazine in;
+  remove it, make two separate full pulls, reinsert and chamber. Extra pulls or
+  holding rearward create no rounds; two discarded rounds accounted for. Pouch
+  remains blocked while obstructions remain.
+- [ ] **J03 / F06 - dud.** `/visor_tacz_test jam dud` (`misfire` alias also works).
+  Action looks closed, trigger clicks, HUD reports DUD. Rack ejects one reserved
+  round and permits feeding. No external protrusion or magazine-tap requirement.
+- [ ] **J04 - interrupted jam.** Switch, focus loss, disconnect mid-clear:
+  remaining count persists; already ejected rounds do not return. No repair of
+  durability merely from clearing.
+- [ ] **J05 - native clear.** Switch flat, use TaCZ Inspect (check binding;
+  normally H). After native unjam, extra visuals clear; unejected reserved ammo
+  returns once. Keep addon installed while testing its cleanup.
+- [ ] **J06 - manual-action generic jam.** M870 and M700: `/visor_tacz_test jam`,
+  then complete pump/bolt cycle. Partial gesture must not clear. These guns do
+  not use the Glock/MP5 three visual jam mechanisms.
+- [ ] **J07 - optional dependency.** Separate no-gundb setup: normal operation
+  on all five guns without crashes/new random jams. Jam-test command should
+  explain the missing integration. Earlier no-gundb gameplay worked generally.
+- [ ] **F05 - casing scale.** Casing size page: preview at port; test 50%, 100%,
+  150%, save/restart/reload. Jam models, ejections and M870 held shell agree.
+  Gun scale multiplies this visual setting; ammo counts/hitboxes do not change.
 
-## Optics carried forward
+## Calibration, configuration, HUD
 
-Latest user report: **0.7.1 still has black/solid-looking apertures on tested optics
-other than QMK-152**, including the earlier named red dots. Apparent low detail is
-an observation, not proof that the LOD model was selected. The 0.7.1 candidate fix
-is not confirmed successful. No fresh bullet-mark/decal result was supplied in
-this report. 0.8.0 carries the same optics changes, not an additional optics fix.
+- [ ] **C01 - linked scaling.** Gun scale 80/100/120%, lock ON resizes mounted
+  boxes; OFF leaves their dimensions unchanged. Pouch stays independent. Grip
+  stays anchored, muzzle/impacts match, toggling lock itself does not resize.
+- [ ] **C02 - box bounds.** Width/height/depth on support, release, mag/tube,
+  rack, pouch and M870 pink port. Saved visible region and actual pickup agree.
+  Large boxes do not turn incomplete strokes into complete ones.
+- [ ] **C03 - pages/hints.** Each gun exposes its actions; no overlapping text.
+  Glock now has support and release; M870 pink port now has size controls.
+- [ ] **C04 - persistence/cancel.** Existing nonzero offsets remain. Per-gun
+  save, switch, reconnect, restart; Cancel/Escape reverts preview; page reset
+  affects only selected setting. Include new release/support/casing controls.
+- [ ] **C05 - file reload.** Back up JSON, edit externally; menu Reload calibration
+  and `/visor_tacz reload_calibration` update visuals/server grabs. Malformed
+  JSON must be reported and previous valid values retained. Restore and retry.
+- [ ] **C06 - guides.** Debug OFF hides guides in play but calibration still
+  shows them. Interaction/ADS unaffected; preference persists.
+- [ ] **C07 - fallback/share.** Missing local gun profile uses bundled defaults;
+  supplied local profile overrides. Test with a copy, preserve personal values.
+- [ ] **D01 - displays.** Gun/Wrist/HUD/OFF and `/visor_tacz status`: ammo,
+  chamber, ADS, target and action match; preferences persist. Verify wrist
+  placement independently of normal GUI HUD.
 
+**A01** is now covered by F02. **N01** uses C01-C04 on M700/MP5.
 
+## Input, interruptions, multiplayer
 
-- [ ] **O01 — FAIL: multiple named optics black; see latest report: red dot.** Earlier black-center report lacks a confirmed
-  resolution. Record exact optic ID; shaders off, each eye separately. Dot visible,
-  clipped to window, stable while moving head, no duplicate overlay/flicker.
-- [ ] **O02 — PARTIAL: zoom works; decal visibility and front sight artifacts: QMK-152.** Zoom already reported working with shaders off.
-  Check each eye, off-axis/eye-distance blackout, near/far targets and performance.
-  Outside the lens stays unzoomed. Record gun/zoom setting.
-- [ ] **O03 — UNVERIFIED: toggles.** Optics OFF/ON and ADS OFF/AUTO behave as
-  selected and persist after restart. Shader-enabled runs remain stable; custom
-  scope magnification with shaders is not implemented, so absent zoom is expected.
+- [ ] **I01 - input recovery.** Focus/tracking loss while firing semi/auto,
+  menu, slot change and death while trigger held: no stuck fire or firing merely
+  on resume. New press works. Previous ordinary focus/reconnect tests passed.
+- [ ] **I02 - contextual controls.** Grab=USE and TRIGGER work. Away from valid
+  zones, torch placement, sword swing, bare-hand punch, GUI pointing work with
+  gun in other hand. A grabbed gun part must not punch/mine accidentally.
+- [ ] **I03 - handedness.** Left-handed mode, crouch, roomscale and snap-turn;
+  occupied assigned offhand blocks grabs. Include M700 transfer. Record Visor
+  Essential menu positioning separately if it prevents the test. No dual wield.
+- [ ] **I04 - AUTO/flat.** OFF/AUTO and Physical/Buttons transitions, restart:
+  normal flat TaCZ behavior, no stuck action. OFF is not complete mod unloading.
+- [ ] **R01 - interrupted magazine reload.** Disconnect before/after native
+  ammo commit and with mag removed. Rejoin twice, selected and unselected gun;
+  recover once, keep committed ammo and charging requirement. Orderly server
+  restart too; include Glock/M4/MP5/M700.
+- [ ] **R02 / F07 - other interruptions.** During open action, shell preview,
+  jam clearing or M700 transfer: menu, slot, focus, mode change, death/drop in a
+  disposable test world. No duplicated ammo, stuck grab or accidental shot.
+- [ ] **M01 - flat friend / remote models.** Friend plays native TaCZ normally.
+  They see calibrated weapon, parts, jam/case size and M700 support transfer.
+  Reconnect/teleport/switch/out-of-view causes no duplicate/missing gun.
+- [ ] **M02 - server impacts.** Gun pointed away from face, last interaction
+  from opposite hand: impacts follow gun/muzzle, including support aim and
+  scaling. Check near/far targets and real latency, not just tracer appearance.
 
-**Known open issue, not an untested feature:** TA31 ACOG black center. A retest
-can supply evidence, but 0.7.0 does not claim to fix it. Whole-world blinking
-should be reported if it recurs; previous isolation showed it can occur without
-this addon. Physical recoil, physical attachment insertion, tracked magazines,
-dual wield, and general item-pouch handling are not implemented and are not
-acceptance requirements for this build.
+**N07** is covered by I04/M01/M02; **N08** is the Glock/M4/M870 regression groups.
 
-Sources: TESTING.md, TESTING-0.3.0.md, 0.4.x–0.7.0 release notes, and user reports
-in this task. Latest automated validation: 84 tests/build passed, separate from
-all manual checkboxes above.
+## Optics and stability (after handling tests)
 
+- [ ] **O01 - named optics.** Later general scope success supersedes the old
+  blanket black-optics failure. Confirm named examples (QMK-152, TA31 ACOG,
+  previously black red dots) by exact ID, each eye, head movement and lens clipping.
+- [ ] **O02 - QMK scene/decal.** Shader OFF: magnification, off-axis behavior,
+  near/far targets, bullet marks inside lens, no unzoomed decal visible over lens,
+  and no incorrect muzzle/front-sight intrusion. Record scale/zoom/gun.
+- [ ] **O03 - settings/shaders.** Optics and ADS toggles persist. Shader runs
+  stay clear/stable; custom shader-pack magnification remains unsupported.
+- [ ] **O04 - PK06 evidence.** Record exact variant ID, viewing area and shader
+  state. Missing lower-view magnification remains unresolved; not a promised
+  0.9.2 fix and not a blocker for validating the pistol reload mechanism.
+- [ ] **R03 - stability regression.** Old/new world holding scope, Z attachment
+  GUI/slot changes/rejoin in flat/VR, main-menu VR transition, shaders off/on.
+  Report crash or flashing timestamp. Flashing previously occurred without addon.
+
+## What to implement after the Glock gate
+
+Pinned default-pack source has **14 pistol-category entries**, including Glock.
+This is not a promise of automatic support for arbitrary third-party gun packs.
+
+| Batch | Default IDs (tacz namespace) | Reason |
+| --- | --- | --- |
+| First proving profile | m1911 | Semi-auto, magazine/slide parts present; different ammo/model tests profile separation |
+| Conventional magazine pistols | p320, m9a4, deagle, deagle_golden, timeless50 | Similar high-level cycle, but different parts/pivots and some compound slide assemblies |
+| Firing-mode exceptions | b93r, cz75, hk_mk23 | Pinned pack uses burst/semi, auto, and semi/burst respectively; selector and interruption checks required |
+| Distinct mechanisms | rhino357, taurus500, taurus943, lonetrail | Pinned data uses open_bolt; cylinder/round-shell or different loading geometry, so do not copy Glock's slide/mag assumptions |
+
+Before adding a batch, make slide/bolt/magazine part names, sound mappings and
+support/release capabilities profile-driven. Current code has Glock/M4-specific
+assumptions. For example M9A4 uses slide_base, and several models have multiple
+slide/magazine nodes. Each new profile still needs basic in-headset calibration,
+empty/tactical reload and ammo tests. Shared mechanism passes reduce repeated
+work; they do not eliminate per-gun testing.
+
+Defer physical attachment insertion, individually tracked magazine items, dual
+wield, general item pouch, and further new mechanism families until current
+input/state behavior is confirmed. Polish sounds/animations after functional
+blockers; the M700/MP5 fixes can be tested separately from the Glock gate.

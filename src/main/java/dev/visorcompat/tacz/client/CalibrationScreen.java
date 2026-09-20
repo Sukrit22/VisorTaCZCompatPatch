@@ -10,7 +10,7 @@ import java.util.*;
 
 public final class CalibrationScreen extends Screen {
     private final String key;
-    private final float[] values=new float[58];
+    private final float[] values=new float[59];
     private final List<CalibrationLayout.Page> pages;
     private final Button[] readouts=new Button[3];
     private boolean coarse,size,scaleLock;
@@ -23,9 +23,10 @@ public final class CalibrationScreen extends Screen {
         float[] base={c.x(),c.y(),c.z(),c.pitch(),c.yaw(),c.roll(),c.muzzleX(),c.muzzleY(),c.muzzleZ()};
         System.arraycopy(base,0,values,0,9);int n=9;
         for(int i=0;i<8;i++){var p=c.interactions().points()[i];n=i==7?55:9+i*3;values[n++]=p.x();values[n++]=p.y();values[n++]=p.z();}
-        values[30]=c.gunScale();n=31;
+        values[58]=c.casingScale();values[30]=c.gunScale();n=31;
         for(var box:c.zones().boxes()){values[n++]=box.width();values[n++]=box.height();values[n++]=box.depth();}
     }
+    public boolean casingPreview(){return current().offset()==58;}
     private CalibrationLayout.Page current(){return pages.get(page);}
     private int start(){return size?31+current().zone().ordinal()*3:current().offset();}
     private int count(){return size?3:current().count();}
@@ -37,7 +38,7 @@ public final class CalibrationScreen extends Screen {
             b[i]=new ZoneSizes.Box(values[31+i*3],values[32+i*3],values[33+i*3]);
         }
         return new Calibration(values[0],values[1],values[2],values[3],values[4],values[5],values[6],values[7],values[8],
-            new InteractionOffsets(p[0],p[1],p[2],p[3],p[4],p[5],p[6],p[7]),values[30],new ZoneSizes(b[0],b[1],b[2],b[3],b[4],b[5],b[6],b[7]),scaleLock);
+            new InteractionOffsets(p[0],p[1],p[2],p[3],p[4],p[5],p[6],p[7]),values[30],new ZoneSizes(b[0],b[1],b[2],b[3],b[4],b[5],b[6],b[7]),scaleLock,values[58]);
     }
     private void changePage(int direction){page=Math.floorMod(page+direction,pages.size());size=false;rebuildWidgets();}
     @Override protected void init(){
@@ -56,21 +57,21 @@ public final class CalibrationScreen extends Screen {
             addRenderableWidget(Button.builder(Component.literal("+"),b->adjust(axis,1)).bounds(left+265,y,35,20).build());
         }
         addRenderableWidget(Button.builder(Component.literal(coarse?"Coarse steps":"Fine steps"),b->{coarse=!coarse;rebuildWidgets();}).bounds(left,top+169,145,20).build());
-        addRenderableWidget(Button.builder(Component.literal(size?"Default box size":current().offset()==30?"Reset to 100%":"Zero this page"),b->{
+        addRenderableWidget(Button.builder(Component.literal(size?"Default box size":(current().offset()==30||current().offset()==58)?"Reset to 100%":"Zero this page"),b->{
             if(size){var box=ZoneSizes.DEFAULT.get(current().zone());values[start()]=box.width();values[start()+1]=box.height();values[start()+2]=box.depth();}
-            else if(current().offset()==30)scaleTo(1);else Arrays.fill(values,start(),start()+count(),0);update();
+            else if(current().offset()==58)values[58]=1;else if(current().offset()==30)scaleTo(1);else Arrays.fill(values,start(),start()+count(),0);update();
         }).bounds(left+155,top+169,145,20).build());
         addRenderableWidget(Button.builder(Component.literal("Save & close"),b->{try{CalibrationStore.save(key,value());CompatSettings.syncState();onClose();}catch(Exception e){error="Save failed: "+e.getMessage();}}).bounds(left,top+193,145,20).build());
         addRenderableWidget(Button.builder(Component.literal("Cancel"),b->onClose()).bounds(left+155,top+193,145,20).build());
         update();ClientControls.clearInput();
     }
     private void adjust(int axis,int sign){
-        boolean rotation=axis>=3&&axis<6,scale=axis==30;
+        boolean rotation=axis>=3&&axis<6,scale=axis==30||axis==58;
         float step=scale?(coarse?.05f:.01f):rotation?(coarse?10:1):(coarse?.01f:.001f);
-        float min=scale?.5f:(axis>=31&&axis<55)?.01f:rotation?-180:axis>=9?-.5f:-.25f;
-        float max=scale?1.5f:(axis>=31&&axis<55)?1.5f:rotation?180:axis>=9?.5f:.25f;
+        float min=axis==58?.1f:scale?.5f:(axis>=31&&axis<55)?.01f:rotation?-180:axis>=9?-.5f:-.25f;
+        float max=axis==58?3f:scale?1.5f:(axis>=31&&axis<55)?1.5f:rotation?180:axis>=9?.5f:.25f;
         float next=Math.max(min,Math.min(max,values[axis]+step*sign));
-        if(scale)scaleTo(next);else values[axis]=next;update();
+        if(axis==30)scaleTo(next);else values[axis]=next;update();
     }
     private void scaleTo(float next){
         if(scaleLock){int i=31;for(var box:value().zones().resizeMounted(next/values[30]).boxes()){
@@ -81,8 +82,8 @@ public final class CalibrationScreen extends Screen {
     private void update(){
         CalibrationStore.previewKey=key;CalibrationStore.preview=value();
         for(int i=0;i<count();i++)if(readouts[i]!=null){
-            int axis=start()+i;boolean rotation=axis>=3&&axis<6,scale=axis==30;
-            String label=size?new String[]{"Width X","Height Y","Depth Z"}[i]:scale?"Gun size":rotation?new String[]{"Pitch","Yaw","Roll"}[i]:new String[]{"X right","Y up","Z back"}[i];
+            int axis=start()+i;boolean rotation=axis>=3&&axis<6,scale=axis==30||axis==58;
+            String label=size?new String[]{"Width X","Height Y","Depth Z"}[i]:scale?(axis==58?"Casing size":"Gun size"):rotation?new String[]{"Pitch","Yaw","Roll"}[i]:new String[]{"X right","Y up","Z back"}[i];
             readouts[i].setMessage(Component.literal(String.format(Locale.ROOT,"%s: %.1f %s",label,values[axis]*(scale?100:rotation?1:1000),scale?"%":rotation?"deg":"mm")));
         }
     }

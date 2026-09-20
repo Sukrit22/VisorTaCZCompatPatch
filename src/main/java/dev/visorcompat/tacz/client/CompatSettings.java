@@ -21,13 +21,13 @@ import org.vmstudio.visor.api.VisorAPI;
 @Mod.EventBusSubscriber(modid = VisorTacz.ID, value = Dist.CLIENT)
 public final class CompatSettings {
     private static Boolean lastSentActive;
-    private static boolean lastPhysical;
+    private static boolean lastPhysical,lastTransferAnytime;
     private static String lastCalibrationKey;
     private static Calibration lastCalibration;
     private static final ForgeConfigSpec SPEC;
     private static final ForgeConfigSpec.BooleanValue ENABLED;
     private static final ForgeConfigSpec.BooleanValue PHYSICAL;
-    private static final ForgeConfigSpec.BooleanValue AUTO_ADS, OPTICS;
+    private static final ForgeConfigSpec.BooleanValue AUTO_ADS, OPTICS, TWO_HAND_ADS, TRANSFER_ANYTIME;
     private static final ForgeConfigSpec.BooleanValue DEBUG_CUBES;
     public enum Grab { USE, TRIGGER }
     public enum Display { GUN, WRIST, HUD, OFF }
@@ -41,6 +41,8 @@ public final class CompatSettings {
                 "Use /visor_tacz auto to restore AUTO, or /visor_tacz off for comparison testing.")
                 .define("enabled", true);
         PHYSICAL = builder.comment("Experimental physical magazine / slide handling for Glock, M4A1, M870, M700 and HK MP5A5. Default: button controls.").define("physicalHandling",false);
+        TRANSFER_ANYTIME=builder.comment("M700: false permits hand transfer only when bolt handling is needed; true permits transfer anytime. Applies to automatic transfer and main-hand Use.").define("m700TransferAnytime",false);
+        TWO_HAND_ADS=builder.comment("Require a held support grip for automatic ADS in physical mode; geometric support in button mode.").define("twoHandAds",true);
         AUTO_ADS=builder.comment("Use physical sight alignment to drive TaCZ ADS.").define("autoAds",true);
         OPTICS=builder.comment("Experimental per-eye reticles and screen-space lens magnification; shaders unsupported.").define("vrOptics",true);
         DEBUG_CUBES=builder.comment("Show colored interaction and calibration cubes. Visual only; does not change grab zones.").define("debugCubes",true);
@@ -57,10 +59,14 @@ public final class CompatSettings {
     public static void setGrab(Grab value){ClientControls.clearInput();GRAB.set(value);SPEC.save();}
     public static void setDisplay(Display value){DISPLAY.set(value);SPEC.save();}
     public static void setPhysical(boolean value){PHYSICAL.set(value);SPEC.save();PhysicalClient.reset();syncState();ClientControls.clearInput();}
+    public static void setTwoHandAds(boolean value){TWO_HAND_ADS.set(value);SPEC.save();}
     public static void setAutoAds(boolean value){AUTO_ADS.set(value);SPEC.save();}
     public static void setOptics(boolean value){OPTICS.set(value);SPEC.save();}
     public static void setDebugCubes(boolean value){DEBUG_CUBES.set(value);SPEC.save();}
     public static boolean debugCubes(){return !SPEC.isLoaded() || DEBUG_CUBES.get();}
+    public static boolean transferAnytime(){return SPEC.isLoaded()&&TRANSFER_ANYTIME.get();}
+    public static void setTransferAnytime(boolean value){ClientControls.clearInput();TRANSFER_ANYTIME.set(value);SPEC.save();syncState();}
+    public static boolean twoHandAds(){return !SPEC.isLoaded()||TWO_HAND_ADS.get();}
     public static boolean autoAds() {return !SPEC.isLoaded() || AUTO_ADS.get();}
     public static boolean optics() {return !SPEC.isLoaded() || OPTICS.get();}
     public static boolean physical() { return SPEC.isLoaded() && PHYSICAL.get(); }
@@ -110,10 +116,10 @@ public final class CompatSettings {
             }
         }
         boolean current = active();
-        if (lastSentActive == null || lastSentActive != current || lastPhysical != physical()) {
-            CompatNetwork.CHANNEL.sendToServer(new CompatNetwork.Mode(current,physical()));
+        if (lastSentActive == null || lastSentActive != current || lastPhysical != physical() || lastTransferAnytime != transferAnytime()) {
+            CompatNetwork.CHANNEL.sendToServer(new CompatNetwork.Mode(current,physical(),transferAnytime()));
             lastSentActive = current;
-            lastPhysical = physical();
+            lastPhysical = physical();lastTransferAnytime=transferAnytime();
             ClientControls.clearInput();
         }
     }

@@ -21,9 +21,11 @@ public final class Handling {
         if(phase==Phase.NO_MAG && inPouch)return Target.POUCH;
         if(phase==Phase.NO_MAG && inside(local,rack(p,c,boltOpen),c,ZoneSizes.Zone.RACK))return Target.RACK;
         if(phase!=Phase.READY && phase!=Phase.NEED_RACK)return Target.NONE;
+        var support=support(p,c);
+        if(inside(local,support,c,ZoneSizes.Zone.SUPPORT) && local.distance(support)<local.distance(rack(p,c,boltOpen)) && local.distance(support)<local.distance(magazine(p,c)))return Target.SUPPORT;
         if(inside(local,rack(p,c,boltOpen),c,ZoneSizes.Zone.RACK))return Target.RACK;
         if(inside(local,magazine(p,c),c,ZoneSizes.Zone.MAGAZINE))return Target.MAGAZINE;
-        if((phase==Phase.READY || phase==Phase.NEED_RACK) && p.supportDistance()>0 && inside(local,support(p,c),c,ZoneSizes.Zone.SUPPORT))return Target.SUPPORT;
+        if((phase==Phase.READY || phase==Phase.NEED_RACK) && inside(local,support(p,c),c,ZoneSizes.Zone.SUPPORT))return Target.SUPPORT;
         if(phase==Phase.READY && p.selector() && inside(local,selector(p,c),c,ZoneSizes.Zone.SELECTOR))return Target.SELECTOR;
         return Target.NONE;
     }
@@ -65,7 +67,7 @@ public final class Handling {
     public static Vector3f rack(WeaponProfile p,Calibration c){return rack(p).add(c.interactions().rack().vector()).mul(c.gunScale());}
     public static Vector3f rack(WeaponProfile p,Calibration c,boolean open){return rack(p,c).add(0,0,p.bolt()&&open?PumpCycle.TRAVEL:0);}
     public static Vector3f selector(WeaponProfile p,Calibration c){return selector(p).add(c.interactions().selector().vector()).mul(c.gunScale());}
-    public static Vector3f support(WeaponProfile p,Calibration c){return p.pump()?rack(p,c):new Vector3f(0,0,-p.supportDistance()).add(c.interactions().support().vector()).mul(c.gunScale());}
+    public static Vector3f support(WeaponProfile p,Calibration c){return p.pump()?rack(p,c):(p.supportDistance()==0?new Vector3f(0,-.015f,-.065f):new Vector3f(0,0,-p.supportDistance())).add(c.interactions().support().vector()).mul(c.gunScale());}
     public static Vector3f pouch(Vector3fc head,Vector3fc forward,float scale,Calibration c) {
         Vector3f flat=new Vector3f(forward.x(),0,forward.z());
         if(flat.lengthSquared()<.001f)flat.set(0,0,-1);else flat.normalize();

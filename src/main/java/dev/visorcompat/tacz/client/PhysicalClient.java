@@ -101,9 +101,12 @@ public final class PhysicalClient {
             else CompatNetwork.CHANNEL.sendToServer(new CompatNetwork.PhysicalGrip(true));
             return true;
         }
+        if(event.getActionButton()==input.getActionRightMouse(HandType.OFFHAND) && target()==Handling.Target.RELEASE){
+            event.setCanceled(true);if(event.isPressEvent()){CompatNetwork.CHANNEL.sendToServer(new CompatNetwork.PhysicalGrip(true));CompatNetwork.CHANNEL.sendToServer(new CompatNetwork.PhysicalGrip(false));}return true;
+        }
         if(event.getActionButton()==input.getActionRightMouse(HandType.MAIN)) {
             event.setCanceled(true);
-            if(event.isPressEvent())CompatNetwork.CHANNEL.sendToServer(new CompatNetwork.PhysicalSelector());
+            if(event.isPressEvent()){if(Profiles.get(Minecraft.getInstance().player.getMainHandItem()).supportDistance()==0)CompatNetwork.CHANNEL.sendToServer(new CompatNetwork.PistolRelease());else CompatNetwork.CHANNEL.sendToServer(new CompatNetwork.PhysicalSelector());}
             return true;
         }
         return false;

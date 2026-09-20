@@ -20,6 +20,6 @@ public final class HandlingFeedback {
             pos.set(vr.getPoseData().getOffhand().getPosition());
         var velocity=pose.rotation().transform(new Vector3f(.8f,.45f,.12f).mul(pose.worldScale()));
         CompatNetwork.CHANNEL.send(PacketDistributor.TRACKING_ENTITY_AND_SELF.with(()->p),new CompatNetwork.Feedback(
-            kind,p.getId(),gun.getGunId(stack),index.getGunData().getAmmoId(),pos.x,pos.y,pos.z,velocity.x,velocity.y,velocity.z,pose.worldScale(),CompatNetwork.calibration(p).gunScale()));
+            kind,p.getId(),gun.getGunId(stack),index.getGunData().getAmmoId(),pos.x,pos.y,pos.z,velocity.x,velocity.y,velocity.z,pose.worldScale(),CompatNetwork.calibration(p).gunScale()*CompatNetwork.calibration(p).casingScale()));
     }
 }

@@ -170,7 +170,7 @@ hint = "Place the small cyan marker at the muzzle opening. Negative Z moves forw
 ["tacz:m700".support]
 title = "Support grip - BLUE"
 color = "#3399FF"
-hint = "Hold offhand Grab here, press main-hand Use to transfer. Main trigger grabs bolt. Main Use near grip returns gun; releasing offhand also returns."
+hint = "Hold offhand Grab inside blue region. Move main hand 16 cm away to transfer, or press main Use. Main trigger grabs bolt; main Use near grip returns."
 
 ["tacz:m700".magazine]
 title = "Magazine - GREEN"
@@ -231,7 +231,7 @@ hint = "Grab inside the green box and pull down. Bring a replacement here and re
 ["tacz:hk_mp5a5".rack]
 title = "Charging handle - ORANGE"
 color = "#FF9900"
-hint = "Pull back 55 mm to eject; raise 35 mm while back to latch. Release, reload, then slap cyan zone downward or press Grab there."
+hint = "Pull handle back 55 mm to eject and latch. Release Grab, reload magazine, then sweep forward through cyan region without pressing a button."
 
 ["tacz:hk_mp5a5".selector]
 title = "Fire selector - YELLOW"
@@ -257,7 +257,7 @@ hint = "Place the pink point at the ejection port. During a stovepipe, grab in i
 ["tacz:glock_17".release]
 title = "Slide release - CYAN"
 color = "#55FFFF"
-hint = "Put cyan box on slide release above grip. With slide locked back, insert magazine then press Grab here, or rack slide."
+hint = "After inserting magazine, main-hand Use releases locked slide. Offhand Use or Grab at cyan region also works. Racking remains available."
 ["tacz:m4a1".release]
 title = "Bolt release - CYAN"
 color = "#55FFFF"
@@ -265,4 +265,34 @@ hint = "Put cyan box on bolt catch beside magazine well. Insert magazine, then p
 ["tacz:hk_mp5a5".release]
 title = "Handle slap - CYAN"
 color = "#55FFFF"
-hint = "Align cyan box with raised rearward handle. After latching and reloading, move hand downward through box, or press Grab here."
+hint = "Align cyan box to raised rearward handle. Sweep hand from back to front through it, or slap downward. Grab or offhand Use also releases."
+
+["tacz:glock_17".support]
+title = "Support grip - BLUE"
+color = "#5599FF"
+hint = "Place blue region beside/below firing hand. Hold offhand Grab inside it for two-hand ADS. Aim direction stays with firing controller."
+
+["tacz:glock_17".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview at the port. Applies to jam cases, ejected rounds and shell preview; multiplies gun size. Save keeps the value per gun."
+
+["tacz:m4a1".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview at the port. Applies to jam cases, ejected rounds and shell preview; multiplies gun size. Save keeps the value per gun."
+
+["tacz:m870".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview at the port. Applies to jam cases, ejected rounds and shell preview; multiplies gun size. Save keeps the value per gun."
+
+["tacz:m700".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview at the port. Applies to jam cases, ejected rounds and shell preview; multiplies gun size. Save keeps the value per gun."
+
+["tacz:hk_mp5a5".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview at the port. Applies to jam cases, ejected rounds and shell preview; multiplies gun size. Save keeps the value per gun."

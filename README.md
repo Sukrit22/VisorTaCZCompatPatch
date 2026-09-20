@@ -2,7 +2,7 @@
 
 Experimental Minecraft **1.20.1 Forge** mod that registers as a **Visor addon** and gives TaCZ guns controller aiming and physical VR handling. VR and flatscreen players can share a server.
 
-Current version: **0.7.0** · network protocol **11** · Java **17** · MIT license.
+Current version: **0.9.2** · network protocol **16** · Java **17** · MIT license.
 
 ## Requirements and installation
 
@@ -26,6 +26,7 @@ The addon follows Visor's VR state automatically. Flatscreen players keep normal
 - Glock/M4 magazine removal, inventory-backed waist-pouch replacement, insertion, and slide/charging-handle gestures. Native reload timing still supplies ammunition after insertion.
 - M870 individual shell insertion, manual back-and-forward pumping, and fore-end support. Spent shells eject during pumping instead of per shotgun pellet.
 - Optional Gun Durability integration: Glock/M4/MP5 stovepipe, double-feed, and dud handling states. M870 and M700 support generic jam clearing through a completed pump/bolt cycle. No durability mod is required for normal operation.
+- Two-hand ADS requirement (default on; menu toggle), pistol support region, and per-gun casing-size calibration.
 - Physical ADS detection, VR comfort changes, haptics, action sounds, muzzle flashes, and shell/cartridge visuals.
 - Experimental per-eye red dots and scope magnification with shader packs **off**.
 - Ammo/ADS display on the gun, wrist, ordinary GUI HUD, or off. The standard HUD can be arranged with Visor overlay presets; no separate overlay addon is required.
@@ -35,7 +36,11 @@ The addon follows Visor's VR state automatically. Flatscreen players keep normal
 - Menu toggle for colored debug cubes. Hiding them does not disable interactions.
 - Removed-magazine ammo recovery on reconnect, and saved empty-reload charging requirements. Recovery keeps committed ammo changes rather than rewinding the inventory.
 
-The [0.8.0 release guide](docs/RELEASE-0.8.0.md) covers M700 bolt cycling, MP5 handling, and their new tests.
+The [0.9.1 release guide and focused tests](docs/RELEASE-0.9.1.md) cover action releases, M700 hand transfer, MP5 forward-sweep release, M870 side-port loading, casing-size calibration and two-hand ADS. These changes require headset retesting.
+
+M700 hand transfer defaults to **BOLT NEEDED**, with an **ANYTIME** menu option. See the [0.9.2 controls and tests](docs/RELEASE-0.9.2.md).
+
+The [consolidated 0.9.2 checklist](docs/TESTING-CURRENT.md) includes prior results, remaining tests, a short Glock-first session, and the proposed pistol rollout batches.
 
 ## Controls and setup
 
@@ -44,7 +49,7 @@ Start with `/visor_tacz menu`. Bindings follow Visor's logical main/offhand, inc
 | Action | Button handling | Physical handling |
 | --- | --- | --- |
 | Main-hand attack / trigger | Fire | Fire when the action is ready |
-| Main-hand use | Reload | Change fire mode when offhand is at selector |
+| Main-hand use | Reload | Glock slide release; M700 hand transfer/return; other guns change mode when offhand is at selector |
 | Offhand use | Cycle fire mode with empty offhand | Contextual grab by default |
 | Offhand trigger | Normal Visor behavior | Optional contextual grab via menu |
 
@@ -81,7 +86,7 @@ Settings: `config/visor_tacz-client.toml`. Calibration: `config/visor_tacz-calib
 
 | Area | Current limitation |
 | --- | --- |
-| Black optics | 0.7.1 user retest still reports black/solid-looking tested optics except QMK-152, including TA31 and several red dots. Unresolved; 0.8.0 has no additional optics fix. |
+| Optics | Later user report says scopes work in old/new worlds; PK06 magnification remains unresolved. Individual optic, decal and shader cases still require targeted tests. |
 | Shader-pack optics | Custom magnification is disabled; shader framebuffer/compositing integration is not implemented. |
 | Scope quality | Uses the current eye image, not an independent high-resolution scope camera; generic reticles replace pack artwork. |
 | Other guns/packs | No universal profile generator or external profile-pack loader. Replaced/custom geometry requires implementation and calibration. |
@@ -102,7 +107,7 @@ See [0.7.1 changes and focused retests](docs/RELEASE-0.7.1.md) for scale lock, a
 Use the [rolling manual test tracker](docs/TESTING-CURRENT.md) for remaining tests,
 previous user results, and stable IDs to report pass/fail across releases.
 
-- Latest build: **84 unit tests passed**. Build success is not proof of in-headset correctness.
+- Latest build: **100 unit tests passed**. Build success is not proof of in-headset correctness.
 - Development feedback uses **Pico 4 Ultra + Virtual Desktop + SteamVR**. Controller aiming and M4 support aiming have received successful user feedback; many newer interactions remain under testing.
 - 0.6.1 prepares stencil before world rendering to address scope/depth-format crashes. A subsequent user session reported no crash or blinking. This is not a guarantee for every shader/mod combination.
 - Blinking was also reproduced without this addon, with Visor + base TaCZ, and stopped after a PC restart in that test session; its root cause is not established.

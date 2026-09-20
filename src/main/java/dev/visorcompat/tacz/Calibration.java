@@ -6,9 +6,10 @@ import org.joml.Vector3f;
 /** Translation in metres at world scale 1; intrinsic XYZ rotation in degrees. */
 public record Calibration(float x, float y, float z, float pitch, float yaw, float roll,
                           float muzzleX, float muzzleY, float muzzleZ, InteractionOffsets interactions,
-                          Float gunScale,ZoneSizes zones, Boolean scaleLock) {
+                          Float gunScale,ZoneSizes zones, Boolean scaleLock,Float casingScale) {
+    public Calibration(float x,float y,float z,float pitch,float yaw,float roll,float mx,float my,float mz,InteractionOffsets interactions,Float scale,ZoneSizes zones,Boolean locked){this(x,y,z,pitch,yaw,roll,mx,my,mz,interactions,scale,zones,locked,1f);}
     public Calibration {
-        scaleLock=scaleLock==null?true:scaleLock;
+        scaleLock=scaleLock==null?true:scaleLock;casingScale=casingScale==null?1f:casingScale;
         interactions=interactions==null?InteractionOffsets.ZERO:interactions;
         gunScale=gunScale==null?1f:gunScale;zones=zones==null?ZoneSizes.DEFAULT:zones;
     }
@@ -29,7 +30,7 @@ public record Calibration(float x, float y, float z, float pitch, float yaw, flo
         return bounded(x,.25f) && bounded(y,.25f) && bounded(z,.25f)
             && bounded(pitch,180) && bounded(yaw,180) && bounded(roll,180)
             && bounded(muzzleX,.25f) && bounded(muzzleY,.25f) && bounded(muzzleZ,.25f) && interactions.valid()
-            && Float.isFinite(gunScale) && gunScale>=.5f && gunScale<=1.5f && zones.valid();
+            && Float.isFinite(gunScale) && gunScale>=.5f && gunScale<=1.5f && zones.valid() && Float.isFinite(casingScale) && casingScale>=.1f && casingScale<=3f;
     }
     private static boolean bounded(float value, float limit) {
         return Float.isFinite(value) && Math.abs(value) <= limit;

@@ -76,7 +76,7 @@ public final class PhysicalModel implements AutoCloseable {
         if(!profile.manualAction())guide(matrices,Handling.release(profile,c),c.zones().release(),key,"release",local);
         var port=dev.visorcompat.tacz.physical.JamProfile.of(profile,c).port();
         guide(matrices,port,profile.bolt()?new ZoneSizes.Box(.025f,.025f,.025f):c.zones().port(),key,"port",local);
-        if(!profile.pump()&&profile.supportDistance()>0){
+        if(!profile.pump()){
             if(profile.selector())guide(matrices,Handling.selector(profile,c),c.zones().selector(),key,"selector",local);
             guide(matrices,Handling.support(profile,c),c.zones().support(),key,"support",local);
         }

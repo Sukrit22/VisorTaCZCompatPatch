@@ -13,7 +13,7 @@ import org.vmstudio.visor.api.common.player.VRPlayerPose;
 
 public final class PumpVisual {
     public static void render(PoseStack matrices,WeaponProfile profile,GunPose gun,VRPlayerPose pose,Handling.Phase phase,int light){
-        render(matrices,profile,gun,pose,phase,light,CalibrationStore.render(Profiles.key(Minecraft.getInstance().player.getMainHandItem())).gunScale());
+        render(matrices,profile,gun,pose,phase,light,CalibrationStore.render(Profiles.key(Minecraft.getInstance().player.getMainHandItem())).gunScale()*CalibrationStore.render(Profiles.key(Minecraft.getInstance().player.getMainHandItem())).casingScale());
     }
     public static void render(PoseStack matrices,WeaponProfile profile,GunPose gun,VRPlayerPose pose,Handling.Phase phase,int light,float size){
         if(!profile.pump()||phase!=Handling.Phase.SHELL)return;

@@ -23,8 +23,9 @@ import java.util.UUID;
 @Mod.EventBusSubscriber(modid = VisorTacz.ID)
 public final class CompatNetwork {
     public static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
-            new ResourceLocation(VisorTacz.ID, "main"), () -> "14", "14"::equals, "14"::equals);
+            new ResourceLocation(VisorTacz.ID, "main"), () -> "16", "16"::equals, "16"::equals);
     private static final Set<UUID> MODE_KNOWN = new HashSet<>();
+    private static final Set<UUID> TRANSFER_ANYTIME = new HashSet<>();
     private static final Set<UUID> PHYSICAL = new HashSet<>();
     private static final Set<UUID> ACTIVE = new HashSet<>();
     private static final Map<UUID, Grip> GRIPS = new HashMap<>();
@@ -32,7 +33,11 @@ public final class CompatNetwork {
 
     public record Feedback(int kind,int entityId,ResourceLocation gun,ResourceLocation ammo,float x,float y,float z,float vx,float vy,float vz,float scale,float gunScale) {}
     public record MainAction(boolean transfer,boolean held,boolean canceled) {}
+    public record PistolRelease() {}
     public static void register() {
+        CHANNEL.messageBuilder(PistolRelease.class,8,NetworkDirection.PLAY_TO_SERVER)
+            .encoder((m,b)->{}).decoder(b->new PistolRelease())
+            .consumerMainThread((m,c)->{var p=c.get().getSender();if(p!=null)ServerPhysical.pistolRelease(p);c.get().setPacketHandled(true);}).add();
         CHANNEL.messageBuilder(MainAction.class,7,NetworkDirection.PLAY_TO_SERVER)
             .encoder((m,b)->{b.writeBoolean(m.transfer());b.writeBoolean(m.held());b.writeBoolean(m.canceled());})
             .decoder(b->new MainAction(b.readBoolean(),b.readBoolean(),b.readBoolean()))
@@ -75,12 +80,13 @@ public final class CompatNetwork {
                 context.get().setPacketHandled(true);
             }).add();
         CHANNEL.messageBuilder(Mode.class, 0, NetworkDirection.PLAY_TO_SERVER)
-                .encoder((message, buffer) -> buffer.writeBoolean(message.enabled()).writeBoolean(message.physical()))
-                .decoder(buffer -> new Mode(buffer.readBoolean(),buffer.readBoolean()))
+                .encoder((message, buffer) -> buffer.writeBoolean(message.enabled()).writeBoolean(message.physical()).writeBoolean(message.transferAnytime()))
+                .decoder(buffer -> new Mode(buffer.readBoolean(),buffer.readBoolean(),buffer.readBoolean()))
                 .consumerMainThread((message, context) -> {
                     ServerPlayer player = context.get().getSender();
                     if (player != null) {
                         MODE_KNOWN.add(player.getUUID());
+                        if(message.transferAnytime())TRANSFER_ANYTIME.add(player.getUUID());else TRANSFER_ANYTIME.remove(player.getUUID());
                         if (message.enabled() && message.physical()) PHYSICAL.add(player.getUUID());
                         else { PHYSICAL.remove(player.getUUID());ServerPhysical.clear(player); }
                         if (message.enabled()) ACTIVE.add(player.getUUID());
@@ -101,7 +107,8 @@ public final class CompatNetwork {
     public record PhysicalState(String key,int slot,Phase phase,int pull,dev.visorcompat.tacz.HandAnchor anchor) {public PhysicalState(String key,int slot,Phase phase,int pull){this(key,slot,phase,pull,null);}}
     public static boolean modeKnown(ServerPlayer player){return MODE_KNOWN.contains(player.getUUID());}
     public static boolean physical(ServerPlayer player) { return PHYSICAL.contains(player.getUUID()); }
-    public record Mode(boolean enabled, boolean physical) {}
+    public static boolean transferAnytime(ServerPlayer p){return TRANSFER_ANYTIME.contains(p.getUUID());}
+    public record Mode(boolean enabled, boolean physical,boolean transferAnytime) {}
     public static boolean enabled(ServerPlayer player) { return ACTIVE.contains(player.getUUID()); }
     @SubscribeEvent public static void login(PlayerEvent.PlayerLoggedInEvent event) {
         if(event.getEntity() instanceof ServerPlayer player) ServerPhysical.recoverInventory(player);
@@ -109,10 +116,10 @@ public final class CompatNetwork {
     @SubscribeEvent public static void logout(PlayerEvent.PlayerLoggedOutEvent event) {
         if(event.getEntity() instanceof ServerPlayer player) ServerPhysical.clear(player);
         MODE_KNOWN.remove(event.getEntity().getUUID());
-        PHYSICAL.remove(event.getEntity().getUUID());
+        PHYSICAL.remove(event.getEntity().getUUID());TRANSFER_ANYTIME.remove(event.getEntity().getUUID());
         ACTIVE.remove(event.getEntity().getUUID());
         GRIPS.remove(event.getEntity().getUUID());
         dev.visorcompat.tacz.server.RemoteSync.remove(event.getEntity().getUUID());
     }
-    @SubscribeEvent public static void stopped(ServerStoppedEvent event) { MODE_KNOWN.clear(); ACTIVE.clear(); PHYSICAL.clear(); GRIPS.clear(); ServerPhysical.stop(); dev.visorcompat.tacz.server.RemoteSync.clear(); }
+    @SubscribeEvent public static void stopped(ServerStoppedEvent event) { MODE_KNOWN.clear(); TRANSFER_ANYTIME.clear(); ACTIVE.clear(); PHYSICAL.clear(); GRIPS.clear(); ServerPhysical.stop(); dev.visorcompat.tacz.server.RemoteSync.clear(); }
 }
