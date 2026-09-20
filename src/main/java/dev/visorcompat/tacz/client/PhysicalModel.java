@@ -19,7 +19,7 @@ public final class PhysicalModel implements AutoCloseable {
     private final BedrockPart magazine,slide,bolt,loose;
     private final boolean looseVisible;
     private final boolean visible;
-    private final float slideZ, magazineY,boltZ;
+    private final float slideZ, magazineY,boltZ,slideRot;
     public PhysicalModel(BedrockGunModel model,WeaponProfile profile) {
         this(model,profile,PhysicalClient.active(),PhysicalClient.phase(),PhysicalClient.pull(),Minecraft.getInstance().player.getMainHandItem(),CalibrationStore.render(Profiles.key(Minecraft.getInstance().player.getMainHandItem())));
     }
@@ -27,7 +27,7 @@ public final class PhysicalModel implements AutoCloseable {
         loose=profile.pump()?find(model.getRootNode(),"bullet_and_lefthand"):null;looseVisible=loose!=null&&loose.visible;
         bolt=profile.boltNode()!=null?find(model.getRootNode(),profile.boltNode()):null;boltZ=bolt==null?0:bolt.offsetZ;
         magazine=find(model.getRootNode(),"magazine");
-        slide=find(model.getRootNode(),profile.rackNode());
+        slide=find(model.getRootNode(),profile.rackNode());slideRot=slide==null?0:slide.zRot;
         visible=magazine!=null && magazine.visible;magazineY=magazine==null?0:magazine.offsetY;slideZ=slide==null?0:slide.offsetZ;
         if(active) {
             if(loose!=null)loose.visible=false;
@@ -38,17 +38,21 @@ public final class PhysicalModel implements AutoCloseable {
                 if(profile.pump() && phase!=Phase.PUMP_HOLD && dev.visorcompat.tacz.server.ServerPump.open(stack))pull=dev.visorcompat.tacz.physical.PumpCycle.TRAVEL;
                 if(profile.bolt() && !Handling.racking(phase) && dev.visorcompat.tacz.physical.BoltState.open(stack))pull=dev.visorcompat.tacz.physical.PumpCycle.TRAVEL;
                 var jam=dev.visorcompat.tacz.server.ServerJams.read(stack);
-                if(!profile.pump() && profile.supportDistance()==0 && !Handling.racking(phase)
-                    && !com.tacz.guns.api.item.IGun.getIGunOrNull(stack).hasBulletInBarrel(stack)
-                    && jam.kind()==dev.visorcompat.tacz.physical.Jam.Kind.NONE)pull=.055f;
+                if(profile.bolt()){if(dev.visorcompat.tacz.physical.ActionState.lifted(stack)||dev.visorcompat.tacz.physical.BoltState.open(stack))slide.zRot+=1.05f;else pull=0;}
+                if(dev.visorcompat.tacz.physical.ActionState.locked(stack)){
+                    if(profile.smg()){pull=java.lang.Math.max(pull,.055f);slide.zRot+=.6f;}
+                    else if(bolt!=null)bolt.offsetZ+=.055f/(profile.scale()*calibration.gunScale());
+                    else pull=java.lang.Math.max(pull,.055f);
+                }
                 if(jam.remaining()>0 && (jam.kind()==dev.visorcompat.tacz.physical.Jam.Kind.STOVEPIPE || jam.kind()==dev.visorcompat.tacz.physical.Jam.Kind.DOUBLE_FEED))
                     {if(bolt!=null)bolt.offsetZ+=java.lang.Math.max(0,.025f-pull)/(profile.scale()*calibration.gunScale());
                     else pull=java.lang.Math.max(pull,.025f);}
+                if(profile.smg()&&bolt!=null)bolt.offsetZ+=pull/(profile.scale()*calibration.gunScale());
                 slide.offsetZ+=pull/(profile.scale()*calibration.gunScale());
             }
         }
     }
-    @Override public void close() { if(magazine!=null){magazine.visible=visible;magazine.offsetY=magazineY;}if(slide!=null)slide.offsetZ=slideZ;if(bolt!=null)bolt.offsetZ=boltZ;if(loose!=null)loose.visible=looseVisible; }
+    @Override public void close() { if(magazine!=null){magazine.visible=visible;magazine.offsetY=magazineY;}if(slide!=null){slide.offsetZ=slideZ;slide.zRot=slideRot;}if(bolt!=null)bolt.offsetZ=boltZ;if(loose!=null)loose.visible=looseVisible; }
     private static BedrockPart find(BedrockPart node,String name) {
         if(node==null)return null;if(name.equals(node.name))return node;
         for(var child:node.children){var found=find(child,name);if(found!=null)return found;}return null;
@@ -63,13 +67,15 @@ public final class PhysicalModel implements AutoCloseable {
         boolean calibrating=Minecraft.getInstance().screen instanceof CalibrationScreen;
         if(!PhysicalClient.active()&&!calibrating)return;
         var stack=Minecraft.getInstance().player.getMainHandItem();String key=Profiles.key(stack);
-        var c=CalibrationStore.render(key);var local=Handling.local(gun,pose.getOffhand().getPosition());
+        var c=CalibrationStore.render(key);var local=Handling.local(gun,PhysicalClient.anchor()!=null?pose.getMainHand().getPosition():pose.getOffhand().getPosition());
         guide(matrices,Handling.magazine(profile,c),c.zones().magazine(),key,"magazine",local);
         var rack=Handling.rack(profile,c,dev.visorcompat.tacz.physical.BoltState.open(stack));
         if(profile.pump()&&dev.visorcompat.tacz.server.ServerPump.open(stack))rack.add(0,0,dev.visorcompat.tacz.physical.PumpCycle.TRAVEL);
+        if(profile.bolt()&&dev.visorcompat.tacz.physical.ActionState.lifted(stack))rack.add(0,.035f,0);
         guide(matrices,rack,c.zones().rack(),key,"rack",local);
+        if(!profile.manualAction())guide(matrices,Handling.release(profile,c),c.zones().release(),key,"release",local);
         var port=dev.visorcompat.tacz.physical.JamProfile.of(profile,c).port();
-        guide(matrices,port,profile.manualAction()?new ZoneSizes.Box(.025f,.025f,.025f):c.zones().port(),key,"port",local);
+        guide(matrices,port,profile.bolt()?new ZoneSizes.Box(.025f,.025f,.025f):c.zones().port(),key,"port",local);
         if(!profile.pump()&&profile.supportDistance()>0){
             if(profile.selector())guide(matrices,Handling.selector(profile,c),c.zones().selector(),key,"selector",local);
             guide(matrices,Handling.support(profile,c),c.zones().support(),key,"support",local);

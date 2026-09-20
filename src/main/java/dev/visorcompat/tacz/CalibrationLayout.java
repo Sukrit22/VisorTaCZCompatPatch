@@ -15,7 +15,8 @@ public final class CalibrationLayout {
         if(profile!=null && profile.selector())pages.add(new Page("selector",18,3,SELECTOR));
         pages.add(new Page("pouch",21,3,POUCH));pages.add(new Page("sight",24,3,SIGHT));
         // Manual-action ports are visual only: it has no casing-pluck interaction.
-        pages.add(new Page("port",27,3,profile!=null && profile.manualAction()?null:PORT));
+        pages.add(new Page("port",27,3,profile!=null && profile.bolt()?null:PORT));
+        if(profile!=null && !profile.manualAction())pages.add(new Page("release",55,3,RELEASE));
         return List.copyOf(pages);
     }
 }

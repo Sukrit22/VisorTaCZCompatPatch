@@ -26,8 +26,11 @@ final class StatusText {
         }
         if(dev.visorcompat.tacz.Profiles.bolt(stack) && PhysicalClient.active() && !state.equals("JAMMED")){
             if(dev.visorcompat.tacz.physical.BoltState.open(stack))state="BOLT OPEN";
+            else if(dev.visorcompat.tacz.physical.ActionState.lifted(stack))state="LOWER BOLT HANDLE";
             else if(dev.visorcompat.tacz.physical.BoltState.spent(stack) || !item.hasBulletInBarrel(stack))state="CYCLE BOLT";
         }
+        if(PhysicalClient.active()&&dev.visorcompat.tacz.physical.ActionState.locked(stack))state="ACTION LOCKED OPEN";
+        if(PhysicalClient.anchor()!=null)state="SUPPORT HAND HOLD | MAIN USE AT GRIP TO RETURN";
         var jam=dev.visorcompat.tacz.server.ServerJams.read(stack);
         if(state.equals("JAMMED") && jam.kind()!=dev.visorcompat.tacz.physical.Jam.Kind.NONE)
             state=jam.kind().name().replace('_',' ')+" | LEFT "+jam.remaining();

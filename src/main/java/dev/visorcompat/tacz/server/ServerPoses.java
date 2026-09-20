@@ -22,7 +22,7 @@ public final class ServerPoses {
                 || System.nanoTime() - fresh.visorTacz$lastPoseNanos() > 500_000_000L) return null;
         WeaponProfile profile = Profiles.get(player.getMainHandItem());
         if (profile == null || !player.isAlive() || player.isSpectator()) return null;
-        GunPose pose = GunPose.resolve(vr.getPoseData(), profile, player.getOffhandItem().isEmpty() && (!CompatNetwork.physical(player) || ServerPhysical.supporting(player)), CompatNetwork.calibration(player));
+        GunPose pose = GunPose.resolve(vr.getPoseData(), profile, player.getOffhandItem().isEmpty() && (!CompatNetwork.physical(player) || ServerPhysical.supporting(player)), CompatNetwork.calibration(player),ServerPhysical.anchor(player));
         if (pose == null) return null;
         Vec3 head = vr.getPoseData().getHmd().getPositionVec3();
         Vec3 hand = new Vec3(pose.hand());

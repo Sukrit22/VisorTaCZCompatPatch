@@ -10,7 +10,11 @@ public record GunPose(Vector3f hand, Quaternionf rotation, Vector3f muzzle, Vect
         return resolve(pose, profile, emptyOffhand, Calibration.ZERO);
     }
     public static GunPose resolve(VRPlayerPose pose, WeaponProfile profile, boolean emptyOffhand, Calibration calibration) {
+        return resolve(pose,profile,emptyOffhand,calibration,null);
+    }
+    public static GunPose resolve(VRPlayerPose pose,WeaponProfile profile,boolean emptyOffhand,Calibration calibration,HandAnchor anchor) {
         if (pose == null || profile == null || calibration == null || !calibration.valid()) return null;
+        if(anchor!=null)return anchor.resolve(pose,profile,calibration);
         float scale = pose.getWorldScale();
         var main = pose.getMainHand();
         Vector3f hand = new Vector3f(main.getPosition());

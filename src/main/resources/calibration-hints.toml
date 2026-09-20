@@ -145,7 +145,7 @@ hint = "Place the purple point on the sight line. Put either eye inside the box 
 ["tacz:m870".port]
 title = "Shell ejection point - PINK"
 color = "#FF3388"
-hint = "Place the pink marker at the ejection opening. This is a visual origin, not a grab zone on the M870."
+hint = "Side-port loading: open pump, grab shell at pouch and release inside pink box. Close pump before firing. Green underside zone loads tube only with pump closed."
 
 ["tacz:m700".grip]
 title = "Grip position"
@@ -170,7 +170,7 @@ hint = "Place the small cyan marker at the muzzle opening. Negative Z moves forw
 ["tacz:m700".support]
 title = "Support grip - BLUE"
 color = "#3399FF"
-hint = "Hold Grab inside the blue box to support aim. Box size controls acquisition and release."
+hint = "Hold offhand Grab here, press main-hand Use to transfer. Main trigger grabs bolt. Main Use near grip returns gun; releasing offhand also returns."
 
 ["tacz:m700".magazine]
 title = "Magazine - GREEN"
@@ -180,7 +180,7 @@ hint = "Grab inside the green box and pull down. Bring a replacement here and re
 ["tacz:m700".rack]
 title = "Bolt handle - ORANGE"
 color = "#FF9900"
-hint = "Pull the bolt back 8 cm to eject, then push fully forward to chamber. Release open leaves it open. No twist gesture yet."
+hint = "Lift handle 35 mm, pull back 80 mm, push forward while raised, then lower. Release preserves open or lifted state."
 
 ["tacz:m700".pouch]
 title = "Ammo pouch - CYAN"
@@ -231,7 +231,7 @@ hint = "Grab inside the green box and pull down. Bring a replacement here and re
 ["tacz:hk_mp5a5".rack]
 title = "Charging handle - ORANGE"
 color = "#FF9900"
-hint = "Grab the left/front charging handle, pull back, then release. A separate slap or handle-lock gesture is not required."
+hint = "Pull back 55 mm to eject; raise 35 mm while back to latch. Release, reload, then slap cyan zone downward or press Grab there."
 
 ["tacz:hk_mp5a5".selector]
 title = "Fire selector - YELLOW"
@@ -253,3 +253,16 @@ title = "Ejection / casing grab - PINK"
 color = "#FF3388"
 hint = "Place the pink point at the ejection port. During a stovepipe, grab in its box and pull the casing away."
 
+
+["tacz:glock_17".release]
+title = "Slide release - CYAN"
+color = "#55FFFF"
+hint = "Put cyan box on slide release above grip. With slide locked back, insert magazine then press Grab here, or rack slide."
+["tacz:m4a1".release]
+title = "Bolt release - CYAN"
+color = "#55FFFF"
+hint = "Put cyan box on bolt catch beside magazine well. Insert magazine, then press Grab here to release a locked-open bolt."
+["tacz:hk_mp5a5".release]
+title = "Handle slap - CYAN"
+color = "#55FFFF"
+hint = "Align cyan box with raised rearward handle. After latching and reloading, move hand downward through box, or press Grab here."

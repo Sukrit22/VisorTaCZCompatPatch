@@ -25,10 +25,10 @@ class ScaleLockTest {
         assertTrue(ZoneSizes.DEFAULT.resizeMounted(100).valid());assertTrue(ZoneSizes.DEFAULT.resizeMounted(.001f).valid());
         assertThrows(IllegalArgumentException.class,()->ZoneSizes.DEFAULT.resizeMounted(Float.NaN));
     }
-    @Test void openPumpBlocksPouchButAllowsRearGrip(){
+    @Test void openPumpAllowsPouchForSidePortAndRearGrip(){
         var p=new WeaponProfile(.6f,0,6.825f,5.425f,.0125f,9.125f,-23.5f,.32f,WeaponProfile.Mechanism.PUMP);
         assertEquals(Handling.Target.POUCH,Handling.target(Handling.Phase.READY,new Vector3f(10),true,p,Calibration.ZERO));
-        assertEquals(Handling.Target.NONE,Handling.target(Handling.Phase.PUMP_OPEN,new Vector3f(10),true,p,Calibration.ZERO));
+        assertEquals(Handling.Target.POUCH,Handling.target(Handling.Phase.PUMP_OPEN,new Vector3f(10),true,p,Calibration.ZERO));
         assertEquals(Handling.Target.RACK,Handling.target(Handling.Phase.PUMP_OPEN,Handling.rack(p,Calibration.ZERO).add(0,0,.08f),false,p,Calibration.ZERO));
     }
 }

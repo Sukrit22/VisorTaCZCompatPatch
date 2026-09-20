@@ -59,7 +59,8 @@ public final class ServerEvents {
     @SubscribeEvent public static void tick(net.minecraftforge.event.TickEvent.PlayerTickEvent event) {
         if(event.phase==net.minecraftforge.event.TickEvent.Phase.END && event.player instanceof ServerPlayer player) {for(var stack:player.getInventory().items){
                 ServerJams.reconcile(player,stack);
-                if(dev.visorcompat.tacz.network.CompatNetwork.modeKnown(player) && dev.visorcompat.tacz.Profiles.manualAction(stack) && (!dev.visorcompat.tacz.network.CompatNetwork.physical(player) || !ServerPoses.isVr(player)) && stack.hasTag()){
+                if(dev.visorcompat.tacz.network.CompatNetwork.modeKnown(player) && dev.visorcompat.tacz.Profiles.get(stack)!=null && (!dev.visorcompat.tacz.network.CompatNetwork.physical(player) || !ServerPoses.isVr(player)) && stack.hasTag()){
+                    stack.getTag().remove(dev.visorcompat.tacz.physical.ActionState.LOCKED);stack.getTag().remove(dev.visorcompat.tacz.physical.ActionState.LIFTED);
                     stack.getTag().remove(ServerPump.OPEN);stack.getTag().remove(ServerPump.SPENT);
                     stack.getTag().remove(dev.visorcompat.tacz.physical.BoltState.OPEN);stack.getTag().remove(dev.visorcompat.tacz.physical.BoltState.SPENT);
                 }

@@ -23,14 +23,14 @@ public final class AutoAds {
         var mc=Minecraft.getInstance();
         if(mc.player==null) {owned=false;aiming=false;return;}
         boolean owns=ownsInput(),desired=false;
-        if(owns && mc.screen==null && !mc.isPaused() && mc.player.isAlive()
+        if(owns && PhysicalClient.anchor()==null && mc.screen==null && !mc.isPaused() && mc.player.isAlive()
             && VisorAPI.clientState().stateMode().isFocused()
             && VisorAPI.client().getVRLocalPlayer().getRawController(HandType.MAIN).isTracking()
             && !IGunOperator.fromLivingEntity(mc.player).getSynReloadState().getStateType().isReloading()
             && (!PhysicalClient.active() || Handling.fireable(PhysicalClient.phase()))) {
             var stack=mc.player.getMainHandItem();var profile=Profiles.get(stack);
             var pose=VisorAPI.client().getVRLocalPlayer().getPoseData(PlayerPoseType.TICK);
-            var gun=GunPose.resolve(pose,profile,mc.player.getOffhandItem().isEmpty() && PhysicalClient.supporting(),CalibrationStore.get(Profiles.key(stack)));
+            var gun=GunPose.resolve(pose,profile,mc.player.getOffhandItem().isEmpty() && PhysicalClient.supporting(),CalibrationStore.get(Profiles.key(stack)),PhysicalClient.anchor());
             Vector3f sight=OpticGeometry.sight(stack,profile);
             if(sight!=null)sight.add(CalibrationStore.get(Profiles.key(stack)).interactions().sight().vector()).mul(CalibrationStore.get(Profiles.key(stack)).gunScale());
             if(gun!=null && sight!=null) {

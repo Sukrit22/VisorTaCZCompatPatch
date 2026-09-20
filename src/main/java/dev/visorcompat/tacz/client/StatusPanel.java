@@ -29,7 +29,7 @@ public final class StatusPanel extends VRHandEffect {
         var mc=Minecraft.getInstance();if(mc.player==null)return;
         var stack=mc.player.getMainHandItem();var item=IGun.getIGunOrNull(stack);if(item==null)return;
         var pose=VisorAPI.client().getVRLocalPlayer().getPoseData(PlayerPoseType.RENDER);
-        var gun=GunPose.resolve(pose,Profiles.get(stack),mc.player.getOffhandItem().isEmpty()&&PhysicalClient.supporting(),CalibrationStore.get(Profiles.key(stack)));
+        var gun=GunPose.resolve(pose,Profiles.get(stack),mc.player.getOffhandItem().isEmpty()&&PhysicalClient.supporting(),CalibrationStore.get(Profiles.key(stack)),PhysicalClient.anchor());
         if(gun==null)return;
         Vector3f anchor;
         if(CompatSettings.display()==CompatSettings.Display.GUN)anchor=gun.rotation().transform(new Vector3f(.10f,.13f,.03f).mul(gun.worldScale())).add(gun.hand());

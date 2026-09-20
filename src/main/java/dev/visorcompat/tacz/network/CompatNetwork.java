@@ -23,7 +23,7 @@ import java.util.UUID;
 @Mod.EventBusSubscriber(modid = VisorTacz.ID)
 public final class CompatNetwork {
     public static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
-            new ResourceLocation(VisorTacz.ID, "main"), () -> "13", "13"::equals, "13"::equals);
+            new ResourceLocation(VisorTacz.ID, "main"), () -> "14", "14"::equals, "14"::equals);
     private static final Set<UUID> MODE_KNOWN = new HashSet<>();
     private static final Set<UUID> PHYSICAL = new HashSet<>();
     private static final Set<UUID> ACTIVE = new HashSet<>();
@@ -31,15 +31,20 @@ public final class CompatNetwork {
     private CompatNetwork() {}
 
     public record Feedback(int kind,int entityId,ResourceLocation gun,ResourceLocation ammo,float x,float y,float z,float vx,float vy,float vz,float scale,float gunScale) {}
+    public record MainAction(boolean transfer,boolean held,boolean canceled) {}
     public static void register() {
+        CHANNEL.messageBuilder(MainAction.class,7,NetworkDirection.PLAY_TO_SERVER)
+            .encoder((m,b)->{b.writeBoolean(m.transfer());b.writeBoolean(m.held());b.writeBoolean(m.canceled());})
+            .decoder(b->new MainAction(b.readBoolean(),b.readBoolean(),b.readBoolean()))
+            .consumerMainThread((m,c)->{var p=c.get().getSender();if(p!=null){if(m.transfer())ServerPhysical.transfer(p);else ServerPhysical.mainGrip(p,m.held(),m.canceled());}c.get().setPacketHandled(true);}).add();
         CHANNEL.messageBuilder(Feedback.class,6,NetworkDirection.PLAY_TO_CLIENT)
             .encoder((m,b)->{b.writeVarInt(m.kind());b.writeVarInt(m.entityId());b.writeResourceLocation(m.gun());b.writeResourceLocation(m.ammo());b.writeFloat(m.x());b.writeFloat(m.y());b.writeFloat(m.z());b.writeFloat(m.vx());b.writeFloat(m.vy());b.writeFloat(m.vz());b.writeFloat(m.scale());b.writeFloat(m.gunScale());})
             .decoder(b->new Feedback(b.readVarInt(),b.readVarInt(),b.readResourceLocation(),b.readResourceLocation(),b.readFloat(),b.readFloat(),b.readFloat(),b.readFloat(),b.readFloat(),b.readFloat(),b.readFloat(),b.readFloat()))
             .consumerMainThread((m,c)->{net.minecraftforge.fml.DistExecutor.unsafeRunWhenOn(net.minecraftforge.api.distmarker.Dist.CLIENT,()->()->dev.visorcompat.tacz.client.HandlingEffects.receive(m));c.get().setPacketHandled(true);}).add();
         CHANNEL.messageBuilder(RemoteState.class,5,NetworkDirection.PLAY_TO_CLIENT)
             .encoder((m,b)->{b.writeUUID(m.player());b.writeUtf(m.key(),512);b.writeBoolean(m.active());b.writeBoolean(m.physical());
-                b.writeEnum(m.phase());b.writeVarInt(m.pull());CalibrationCodec.write(b,m.calibration());b.writeBoolean(m.magazineLoaded());})
-            .decoder(b->new RemoteState(b.readUUID(),b.readUtf(512),b.readBoolean(),b.readBoolean(),b.readEnum(Phase.class),b.readVarInt(),CalibrationCodec.read(b),b.readBoolean()))
+                b.writeEnum(m.phase());b.writeVarInt(m.pull());CalibrationCodec.write(b,m.calibration());b.writeBoolean(m.magazineLoaded());dev.visorcompat.tacz.HandAnchor.write(b,m.anchor());})
+            .decoder(b->new RemoteState(b.readUUID(),b.readUtf(512),b.readBoolean(),b.readBoolean(),b.readEnum(Phase.class),b.readVarInt(),CalibrationCodec.read(b),b.readBoolean(),dev.visorcompat.tacz.HandAnchor.read(b)))
             .consumerMainThread((m,c)->{
                 net.minecraftforge.fml.DistExecutor.unsafeRunWhenOn(net.minecraftforge.api.distmarker.Dist.CLIENT,
                     ()->()->dev.visorcompat.tacz.client.RemoteGuns.receive(m));c.get().setPacketHandled(true);
@@ -51,8 +56,8 @@ public final class CompatNetwork {
             .encoder((m,b)->{}).decoder(b->new PhysicalSelector())
             .consumerMainThread((m,c)->{var p=c.get().getSender();if(p!=null)ServerPhysical.selector(p);c.get().setPacketHandled(true);}).add();
         CHANNEL.messageBuilder(PhysicalState.class,4,NetworkDirection.PLAY_TO_CLIENT)
-            .encoder((m,b)->{b.writeUtf(m.key(),512);b.writeVarInt(m.slot());b.writeEnum(m.phase());b.writeVarInt(m.pull());})
-            .decoder(b->new PhysicalState(b.readUtf(512),b.readVarInt(),b.readEnum(Phase.class),b.readVarInt()))
+            .encoder((m,b)->{b.writeUtf(m.key(),512);b.writeVarInt(m.slot());b.writeEnum(m.phase());b.writeVarInt(m.pull());dev.visorcompat.tacz.HandAnchor.write(b,m.anchor());})
+            .decoder(b->new PhysicalState(b.readUtf(512),b.readVarInt(),b.readEnum(Phase.class),b.readVarInt(),dev.visorcompat.tacz.HandAnchor.read(b)))
             .consumerMainThread((m,c)->{
                 net.minecraftforge.fml.DistExecutor.unsafeRunWhenOn(net.minecraftforge.api.distmarker.Dist.CLIENT,
                     ()->()->dev.visorcompat.tacz.client.PhysicalClient.receive(m));
@@ -84,7 +89,7 @@ public final class CompatNetwork {
                     context.get().setPacketHandled(true);
                 }).add();
     }
-    public record RemoteState(UUID player,String key,boolean active,boolean physical,Phase phase,int pull,Calibration calibration,boolean magazineLoaded) {}
+    public record RemoteState(UUID player,String key,boolean active,boolean physical,Phase phase,int pull,Calibration calibration,boolean magazineLoaded,dev.visorcompat.tacz.HandAnchor anchor) {}
     public record Grip(String key, Calibration calibration) {}
     public static Calibration calibration(ServerPlayer player) {
         Grip grip = GRIPS.get(player.getUUID());
@@ -93,7 +98,7 @@ public final class CompatNetwork {
     }
     public record PhysicalGrip(boolean held,boolean canceled) {public PhysicalGrip(boolean held){this(held,false);}}
     public record PhysicalSelector() {}
-    public record PhysicalState(String key,int slot,Phase phase,int pull) {}
+    public record PhysicalState(String key,int slot,Phase phase,int pull,dev.visorcompat.tacz.HandAnchor anchor) {public PhysicalState(String key,int slot,Phase phase,int pull){this(key,slot,phase,pull,null);}}
     public static boolean modeKnown(ServerPlayer player){return MODE_KNOWN.contains(player.getUUID());}
     public static boolean physical(ServerPlayer player) { return PHYSICAL.contains(player.getUUID()); }
     public record Mode(boolean enabled, boolean physical) {}

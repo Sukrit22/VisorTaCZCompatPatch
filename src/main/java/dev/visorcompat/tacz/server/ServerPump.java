@@ -67,7 +67,11 @@ public final class ServerPump {
         var sample=ServerPhysical.sample(p);
         if(!held){
             if(s.held&&!canceled&&sample!=null&&p.getOffhandItem().isEmpty()){
-                if(s.shell && Handling.inside(sample.local(),Handling.magazine(Profiles.get(s.stack),CompatNetwork.calibration(p)),CompatNetwork.calibration(p),ZoneSizes.Zone.MAGAZINE))insert(p,s);
+                if(s.shell){
+                    var c=CompatNetwork.calibration(p);var profile=Profiles.get(s.stack);
+                    boolean port=open(s.stack)&&Handling.inside(sample.local(),JamProfile.of(profile,c).port(),c,ZoneSizes.Zone.PORT);
+                    if(port || !open(s.stack)&&Handling.inside(sample.local(),Handling.magazine(profile,c),c,ZoneSizes.Zone.MAGAZINE))insert(p,s,port);
+                }
                 else if(!s.shell)move(p,s,sample);
             }
             s.held=false;s.shell=false;return;
@@ -82,15 +86,15 @@ public final class ServerPump {
             s.held=true;s.shell=true;
         }
     }
-    private static void insert(ServerPlayer p,State s){
-        if(open(s.stack))return;
+    private static void insert(ServerPlayer p,State s,boolean port){
+        if(open(s.stack)!=port)return;
         var gun=(AbstractGunItem)s.stack.getItem();var index=TimelessAPI.getCommonGunIndex(gun.getGunId(s.stack)).orElse(null);if(index==null)return;
         int capacity=com.tacz.guns.util.AttachmentDataUtils.getAmmoCountWithAttachment(s.stack,index.getGunData());
-        int count=gun.getCurrentAmmoCount(s.stack);if(count>=capacity)return;
+        int count=gun.getCurrentAmmoCount(s.stack);if(port?gun.hasBulletInBarrel(s.stack):count>=capacity)return;
         int consumed;
         if(!IGunOperator.fromLivingEntity(p).needCheckAmmo())consumed=1;
         else if(gun.useDummyAmmo(s.stack))consumed=gun.findAndExtractDummyAmmo(s.stack,1);
         else consumed=p.getCapability(ForgeCapabilities.ITEM_HANDLER).map(cap->gun.findAndExtractInventoryAmmo(cap,s.stack,1)).orElse(0);
-        if(PumpCycle.canInsert(count,capacity,consumed)){gun.setCurrentAmmoCount(s.stack,count+1);HandlingFeedback.emit(p,1,ServerPoses.validated(p));p.inventoryMenu.broadcastChanges();}
+        if(port?ActionCycle.portLoad(open(s.stack),gun.hasBulletInBarrel(s.stack),consumed):PumpCycle.canInsert(count,capacity,consumed)){if(port)gun.setBulletInBarrel(s.stack,true);else gun.setCurrentAmmoCount(s.stack,count+1);HandlingFeedback.emit(p,1,ServerPoses.validated(p));p.inventoryMenu.broadcastChanges();}
     }
 }

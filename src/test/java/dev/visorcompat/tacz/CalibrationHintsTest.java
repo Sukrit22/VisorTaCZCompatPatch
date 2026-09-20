@@ -15,7 +15,7 @@ class CalibrationHintsTest {
     @Test void unsupportedActionsAreNotOffered(){
         var pump=CalibrationLayout.pages("tacz:m870|tacz:default");
         assertTrue(pump.stream().noneMatch(p->p.id().equals("support")||p.id().equals("selector")));
-        assertNull(pump.stream().filter(p->p.id().equals("port")).findFirst().orElseThrow().zone());
+        assertEquals(ZoneSizes.Zone.PORT,pump.stream().filter(p->p.id().equals("port")).findFirst().orElseThrow().zone());
         assertTrue(CalibrationLayout.pages("tacz:m4a1|tacz:default").stream().anyMatch(p->p.id().equals("support")));
     }
 }
