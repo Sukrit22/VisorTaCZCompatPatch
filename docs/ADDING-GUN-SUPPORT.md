@@ -4,6 +4,8 @@ Reviewed against this workspace's **0.9.3** source and pinned TaCZ 1.1.8-hotfix
 default pack. These are instructions, **not installed gun support**. UMP45 and
 Kar98k have deliberately not been added to the running mod for you.
 
+For the pistol batch, follow [Adding pistol support](ADDING-PISTOL-SUPPORT.md): M1911 walkthrough, remaining pistol groups, and a review checklist.
+
 ## What a profile actually does
 
 A registry entry enables aiming/rendering, but full physical support also needs:

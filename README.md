@@ -168,3 +168,5 @@ Built against published Visor `gqaBzrB7` and TaCZ `yOVIzIJR` Modrinth versions. 
 
 Follow the [UMP45 walkthrough and Kar98k exercise](docs/ADDING-GUN-SUPPORT.md).
 These are learning exercises, not already registered gun support.
+
+Pistol development exercise: [M1911 walkthrough and pistol batch checklist](docs/ADDING-PISTOL-SUPPORT.md). These instructions do not register additional guns.
