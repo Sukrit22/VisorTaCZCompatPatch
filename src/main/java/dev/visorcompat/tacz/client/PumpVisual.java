@@ -16,8 +16,8 @@ public final class PumpVisual {
         render(matrices,profile,gun,pose,phase,light,CalibrationStore.render(Profiles.key(Minecraft.getInstance().player.getMainHandItem())).gunScale()*CalibrationStore.render(Profiles.key(Minecraft.getInstance().player.getMainHandItem())).casingScale());
     }
     public static void render(PoseStack matrices,WeaponProfile profile,GunPose gun,VRPlayerPose pose,Handling.Phase phase,int light,float size){
-        if(!profile.pump()||phase!=Handling.Phase.SHELL)return;
-        var ammo=TimelessAPI.getClientAmmoIndex(new ResourceLocation("tacz","12g")).orElse(null);if(ammo==null)return;
+        if((!profile.pump()&&!profile.cylinder())||phase!=Handling.Phase.SHELL)return;
+        var ammo=TimelessAPI.getClientAmmoIndex(new ResourceLocation(profile.cylinder()?PistolProfiles.get(profile).ammo():"tacz:12g")).orElse(null);if(ammo==null)return;
         // The projectile entity model is not a physical cartridge (often a generic bullet).
         var model=ammo.getShellModel();var texture=ammo.getShellTextureLocation();
         var worldGun=new Matrix4f().translation(gun.hand()).rotate(gun.rotation()).scale(gun.worldScale());

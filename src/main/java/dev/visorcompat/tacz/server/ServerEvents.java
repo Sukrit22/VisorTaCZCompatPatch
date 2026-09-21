@@ -27,7 +27,7 @@ public final class ServerEvents {
         else if(!ServerPoses.isVr(p))
             failure="The addon is inactive or the server does not recognize you as a Visor VR player. Enable VR and the addon; if needed, reconnect while in VR.";
         else if(dev.visorcompat.tacz.Profiles.manualAction(stack) && kind!=dev.visorcompat.tacz.physical.Jam.Kind.STOVEPIPE)
-            failure="M870/M700 currently support only a generic action jam, not visual dud/double-feed/stovepipe simulations. No jam applied. Use /visor_tacz_test jam.";
+            failure="Manual-action guns currently support only a generic action jam, not visual dud/double-feed/stovepipe simulations. No jam applied. Use /visor_tacz_test jam.";
         else if(ServerPhysical.phase(p)!=dev.visorcompat.tacz.physical.Handling.Phase.READY && ServerPhysical.phase(p)!=dev.visorcompat.tacz.physical.Handling.Phase.NEED_RACK && ServerPhysical.phase(p)!=dev.visorcompat.tacz.physical.Handling.Phase.SUPPORT)
             failure="Finish the current physical action before testing a jam. Server phase: "+ServerPhysical.phase(p);
         else if(ServerJams.read(stack).kind()!=dev.visorcompat.tacz.physical.Jam.Kind.NONE)
@@ -61,6 +61,7 @@ public final class ServerEvents {
         if(event.phase==net.minecraftforge.event.TickEvent.Phase.END && event.player instanceof ServerPlayer player) {for(var stack:player.getInventory().items){
                 ServerJams.reconcile(player,stack);
                 if(dev.visorcompat.tacz.network.CompatNetwork.modeKnown(player) && dev.visorcompat.tacz.Profiles.get(stack)!=null && (!dev.visorcompat.tacz.network.CompatNetwork.physical(player) || !ServerPoses.isVr(player)) && stack.hasTag()){
+                    stack.getTag().remove(ServerCylinder.OPEN);stack.getTag().remove(ServerCylinder.SPENT);
                     stack.getTag().remove(dev.visorcompat.tacz.physical.ActionState.LOCKED);stack.getTag().remove(dev.visorcompat.tacz.physical.ActionState.LIFTED);
                     stack.getTag().remove(ServerPump.OPEN);stack.getTag().remove(ServerPump.SPENT);
                     stack.getTag().remove(dev.visorcompat.tacz.physical.BoltState.OPEN);stack.getTag().remove(dev.visorcompat.tacz.physical.BoltState.SPENT);

@@ -51,8 +51,10 @@ public final class HandlingEffects {
                 case 0 -> "hk_mp5a5_reload_magout";case 1 -> "hk_mp5a5_reload_magin";
                 case 5 -> "hk_mp5a5_inspect_boltrelease";default -> "hk_mp5a5_inspect_boltback";
             };
+            var pistol=dev.visorcompat.tacz.PistolProfiles.get(dev.visorcompat.tacz.Profiles.byId(m.gun().toString()));
+            String sound=pistol==null?folder+"/"+clip:pistol.sound(m.kind());
             if(entity!=null)com.tacz.guns.client.sound.SoundPlayManager.playAnimationSound(entity,
-                new net.minecraft.resources.ResourceLocation("tacz",folder+"/"+clip),m.kind()==6?.55f:.8f,m.kind()==6?.65f:1f,12);
+                new net.minecraft.resources.ResourceLocation("tacz",sound),m.kind()==6?.55f:.8f,m.kind()==6?.65f:1f,12);
         }
         if(m.kind()==3 || m.kind()==4){
             if(ROUNDS.size()>=64)ROUNDS.removeFirst();ROUNDS.addLast(new Round(m,System.nanoTime()));

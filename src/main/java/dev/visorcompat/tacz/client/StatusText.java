@@ -15,10 +15,16 @@ final class StatusText {
         if(item==null)return new String[0];
         boolean pump=dev.visorcompat.tacz.Profiles.pump(stack);
         String ammo=(pump?"TUBE ":"MAG ")+item.getCurrentAmmoCount(stack)+" | CH "+(item.hasBulletInBarrel(stack)?"1":"0");
+        boolean cylinder=dev.visorcompat.tacz.Profiles.cylinder(stack);
+        if(cylinder)ammo="LIVE "+item.getCurrentAmmoCount(stack)+" | SPENT "+(stack.hasTag()?stack.getTag().getInt(dev.visorcompat.tacz.server.ServerCylinder.SPENT):0);
         boolean reload=IGunOperator.fromLivingEntity(player).getSynReloadState().getStateType().isReloading();
         String state=dev.visorcompat.tacz.physical.GunStatus.describe(
             dev.visorcompat.tacz.compat.GunDurabilityCompat.jammed(stack), item.isOverheatLocked(stack),reload,
             PhysicalClient.active(),PhysicalClient.phase(),item.hasBulletInBarrel(stack),item.getCurrentAmmoCount(stack));
+        if(cylinder && PhysicalClient.active() && !state.equals("JAMMED") && !state.equals("OVERHEATED")) {
+            state=dev.visorcompat.tacz.server.ServerCylinder.open(stack)?"ACTION OPEN":item.getCurrentAmmoCount(stack)>0?"":"EMPTY";
+            if(PhysicalClient.phase()==dev.visorcompat.tacz.physical.Handling.Phase.SHELL)state="INSERT ROUND";
+        }
         if(pump && PhysicalClient.active() && !state.equals("JAMMED") && !state.equals("OVERHEATED")) {
             if(dev.visorcompat.tacz.server.ServerPump.open(stack))state="PUMP OPEN";
             else if(dev.visorcompat.tacz.server.ServerPump.spent(stack) || !item.hasBulletInBarrel(stack))state="PUMP TO CHAMBER";

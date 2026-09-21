@@ -21,11 +21,12 @@ public final class PhysicalClient {
         var p=Minecraft.getInstance().player;
         return p!=null && state!=null && state.slot()==p.getInventory().selected && state.key().equals(Profiles.key(p.getMainHandItem())) ? state.phase():Phase.READY;
     }
-    public static float pull() { return state!=null && (Handling.racking(phase()) || phase()==Phase.PUMP_HOLD || phase()==Phase.PUMP_OPEN || phase()==Phase.REMOVING) ? state.pull()*.005f:0; }
+    public static float pull() { return state!=null && (Handling.racking(phase()) || phase()==Phase.PUMP_HOLD || phase()==Phase.PUMP_OPEN || phase()==Phase.REMOVING || phase()==Phase.CYLINDER_HOLD) ? state.pull()*.005f:0; }
     public static boolean canFire() {
         if(!active())return true;
         if(anchor()!=null)return false;
         var stack=Minecraft.getInstance().player.getMainHandItem();
+        if(Profiles.cylinder(stack))return phase()==Phase.READY&&!dev.visorcompat.tacz.server.ServerCylinder.open(stack)&&!dev.visorcompat.tacz.compat.GunDurabilityCompat.jammed(stack)&&com.tacz.guns.api.item.IGun.getIGunOrNull(stack).getCurrentAmmoCount(stack)>0;
         if(Profiles.pump(stack) && (dev.visorcompat.tacz.server.ServerPump.open(stack) || dev.visorcompat.tacz.server.ServerPump.spent(stack) || pull()>=.02f))return false;
         if(dev.visorcompat.tacz.physical.ActionState.locked(stack))return false;
         if(Profiles.bolt(stack) && dev.visorcompat.tacz.physical.BoltState.blocked(stack))return false;
@@ -105,7 +106,7 @@ public final class PhysicalClient {
         if(!active() || !canInput)return false;
         if(event.getActionButton()==grab && event.isPressEvent() && !held) {
             var target=target();if(target==Handling.Target.NONE)return false;
-            if(target==Handling.Target.POUCH && Profiles.pump(Minecraft.getInstance().player.getMainHandItem())
+            if(target==Handling.Target.POUCH && (Profiles.pump(Minecraft.getInstance().player.getMainHandItem())||Profiles.cylinder(Minecraft.getInstance().player.getMainHandItem()))
                 && !dev.visorcompat.tacz.physical.PouchAmmo.available(Minecraft.getInstance().player,Minecraft.getInstance().player.getMainHandItem())){
                 Minecraft.getInstance().player.displayClientMessage(Component.literal("TaCZ VR: OUT OF AMMO"),true);event.setCanceled(true);return true;
             }
@@ -130,10 +131,12 @@ public final class PhysicalClient {
         boolean changed=state==null || state.phase()!=update.phase();state=update;
         if(changed) {
             String hint=switch(update.phase()) {
+                case CYLINDER_OPEN -> "Open: load one round from pouch at green; pink Grab + pull back ejects ALL rounds/cases";
+                case CYLINDER_HOLD -> "Orange: move sideways 5 cm to open/close, then release; pink: pull back to eject";
                 case PUMP_HOLD -> "Hold fore-end: pull back fully, then push forward to chamber";
                 case PUMP_OPEN -> "Pump open: insert a shell at the side port, or push fore-end forward";
                 case SHELL -> "Move shell from pouch to loading port and release";
-                case READY -> "Ready: grab magazine and pull down to reload";
+                case READY -> Profiles.cylinder(p.getMainHandItem())?"Ready: grab orange action and move sideways 5 cm to open":"Ready: grab magazine and pull down to reload";
                 case REMOVING -> "Pull magazine down 7 cm, holding offhand use";
                 case OLD_MAG -> "Release old magazine to stow its remaining rounds";
                 case NO_MAG -> "Grab a replacement at waist pouch (below headset)";

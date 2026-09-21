@@ -6,12 +6,20 @@ import dev.visorcompat.tacz.*;
 /** Shared gesture geometry, in calibrated gun-local metres. */
 public final class Handling {
     private Handling() {}
-    public enum Phase { READY, REMOVING, OLD_MAG, NO_MAG, NEW_MAG, LOADING, NEED_RACK, RACKING, SUPPORT, RACKING_EMPTY, PLUCKING, PUMP_HOLD, PUMP_OPEN, SHELL }
+    public enum Phase { READY, REMOVING, OLD_MAG, NO_MAG, NEW_MAG, LOADING, NEED_RACK, RACKING, SUPPORT, RACKING_EMPTY, PLUCKING, PUMP_HOLD, PUMP_OPEN, SHELL, CYLINDER_OPEN, CYLINDER_HOLD }
     public enum Target { NONE, POUCH, RACK, MAGAZINE, SUPPORT, SELECTOR, CASING, RELEASE }
     public static Target target(Phase phase,Vector3fc local,boolean inPouch,WeaponProfile p,Calibration c) {
         return target(phase,local,inPouch,p,c,false);
     }
     public static Target target(Phase phase,Vector3fc local,boolean inPouch,WeaponProfile p,Calibration c,boolean boltOpen) {
+        if(p.cylinder()) {
+            if(phase!=Phase.READY&&phase!=Phase.CYLINDER_OPEN)return Target.NONE;
+            if(phase==Phase.CYLINDER_OPEN&&inPouch)return Target.POUCH;
+            var rack=rack(p,c);var port=JamProfile.of(p,c).port();
+            if(phase==Phase.CYLINDER_OPEN&&inside(local,port,c,ZoneSizes.Zone.PORT)
+                && (!inside(local,rack,c,ZoneSizes.Zone.RACK)||local.distance(port)<local.distance(rack)))return Target.CASING;
+            return inside(local,rack,c,ZoneSizes.Zone.RACK)?Target.RACK:Target.NONE;
+        }
         if(p.pump()) {
             if(phase!=Phase.READY && phase!=Phase.NEED_RACK && phase!=Phase.PUMP_OPEN)return Target.NONE;
             if(inPouch)return Target.POUCH;
@@ -22,6 +30,9 @@ public final class Handling {
         if(phase==Phase.NO_MAG && inside(local,rack(p,c,boltOpen),c,ZoneSizes.Zone.RACK))return Target.RACK;
         if(phase!=Phase.READY && phase!=Phase.NEED_RACK)return Target.NONE;
         var support=support(p,c);
+        var select=selector(p,c);
+        if(PistolProfiles.get(p)!=null&&p.selector()&&inside(local,select,c,ZoneSizes.Zone.SELECTOR)
+            &&local.distance(select)<local.distance(support)&&local.distance(select)<local.distance(rack(p,c,boltOpen))&&local.distance(select)<local.distance(magazine(p,c)))return Target.SELECTOR;
         if(inside(local,support,c,ZoneSizes.Zone.SUPPORT) && local.distance(support)<local.distance(rack(p,c,boltOpen)) && local.distance(support)<local.distance(magazine(p,c)))return Target.SUPPORT;
         if(inside(local,rack(p,c,boltOpen),c,ZoneSizes.Zone.RACK))return Target.RACK;
         if(inside(local,magazine(p,c),c,ZoneSizes.Zone.MAGAZINE))return Target.MAGAZINE;
@@ -47,12 +58,14 @@ public final class Handling {
         return phase == Phase.OLD_MAG || phase == Phase.NO_MAG || phase == Phase.NEW_MAG || phase == Phase.RACKING_EMPTY;
     }
     public static Vector3f magazine(WeaponProfile p) {
+        if(PistolProfiles.get(p)!=null)return new Vector3f(PistolProfiles.get(p).magazine());
         if(p.pump())return new Vector3f(0,.015f,-.20f);
         if(p.bolt())return new Vector3f(0,-.045f,-.12f);
         if(p.smg())return new Vector3f(0,-.07f,-.17f);
         return p.supportDistance() == 0 ? new Vector3f(-.00025f,-.116f,.108f) : new Vector3f(0,-.076f,-.136f);
     }
     public static Vector3f rack(WeaponProfile p) {
+        if(PistolProfiles.get(p)!=null)return new Vector3f(PistolProfiles.get(p).rackPoint());
         if(p.pump())return new Vector3f(0,.02f,-p.supportDistance());
         if(p.bolt())return new Vector3f(.065f,.12f,.035f);
         if(p.smg())return new Vector3f(-.04f,.15f,-.43f);

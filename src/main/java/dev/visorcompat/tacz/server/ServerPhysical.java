@@ -39,8 +39,8 @@ public final class ServerPhysical {
     }
     record Sample(Vector3f local, boolean pouch) {}
     public static boolean enabled(ServerPlayer p) { return CompatNetwork.physical(p) && ServerPoses.isVr(p) && Profiles.get(p.getMainHandItem())!=null; }
-    public static Phase phase(ServerPlayer p) {if(Profiles.pump(p.getMainHandItem()))return ServerPump.phase(p);Session s=SESSIONS.get(p.getUUID());return s==null?Phase.READY:s.phase;}
-    public static int pull(ServerPlayer p) {if(Profiles.pump(p.getMainHandItem()))return ServerPump.pull(p);Session s=SESSIONS.get(p.getUUID());return s==null?0:Math.max(0,s.sentPull);}
+    public static Phase phase(ServerPlayer p) {if(Profiles.cylinder(p.getMainHandItem()))return ServerCylinder.phase(p);if(Profiles.pump(p.getMainHandItem()))return ServerPump.phase(p);Session s=SESSIONS.get(p.getUUID());return s==null?Phase.READY:s.phase;}
+    public static int pull(ServerPlayer p) {if(Profiles.cylinder(p.getMainHandItem()))return ServerCylinder.open(p.getMainHandItem())?16:0;if(Profiles.pump(p.getMainHandItem()))return ServerPump.pull(p);Session s=SESSIONS.get(p.getUUID());return s==null?0:Math.max(0,s.sentPull);}
     public static HandAnchor anchor(ServerPlayer p){var s=SESSIONS.get(p.getUUID());return s!=null&&s.stack==p.getMainHandItem()?s.anchor:null;}
     public static boolean supporting(ServerPlayer p) {
         if(Profiles.pump(p.getMainHandItem()))return ServerPump.supporting(p);
@@ -48,6 +48,7 @@ public final class ServerPhysical {
     }
     public static boolean canFire(ServerPlayer p) {
         if(!enabled(p)) return true;
+        if(Profiles.cylinder(p.getMainHandItem()))return ServerCylinder.canFire(p);
         if(Profiles.pump(p.getMainHandItem()))return ServerPump.canFire(p);
         Session s=SESSIONS.get(p.getUUID());return s!=null && s.stack==p.getMainHandItem() && Handling.fireable(s.phase)
             && s.anchor==null && !(Profiles.bolt(s.stack) && dev.visorcompat.tacz.physical.BoltState.blocked(s.stack))
@@ -55,6 +56,7 @@ public final class ServerPhysical {
     }
     public static void shot(ServerPlayer p){var s=SESSIONS.get(p.getUUID());if(s!=null&&s.stack==p.getMainHandItem())s.shot=true;}
     public static boolean allowsReload(ServerPlayer p) {
+        if(enabled(p)&&Profiles.cylinder(p.getMainHandItem()))return ServerCylinder.allowsReload(p);
         Session s=SESSIONS.get(p.getUUID());return !enabled(p) || (s!=null && s.allowReload);
     }
     private static void restore(ItemStack stack) {
@@ -81,7 +83,7 @@ public final class ServerPhysical {
         for(int i=0;i<p.getInventory().getContainerSize();i++)restore(p.getInventory().getItem(i));
     }
     public static void clear(ServerPlayer p) {
-        ServerPump.clear(p);
+        ServerPump.clear(p);ServerCylinder.clear(p);
         Session s=SESSIONS.remove(p.getUUID());
         if(s!=null) {
             if(s.phase==Phase.LOADING) IGunOperator.fromLivingEntity(p).cancelReload();
@@ -89,7 +91,7 @@ public final class ServerPhysical {
             send(p,s,Phase.READY,0);
         }
     }
-    public static void stop() { SESSIONS.clear();ServerPump.stop(); }
+    public static void stop() { SESSIONS.clear();ServerPump.stop();ServerCylinder.stop(); }
     static Sample sample(ServerPlayer p) {
         GunPose gun=ServerPoses.validated(p);
         if(gun==null || !(VisorAPI.getVRPlayer(p) instanceof VRServerPlayer vr)) return null;
@@ -102,12 +104,13 @@ public final class ServerPhysical {
         return new Sample(Handling.local(gun,off),Handling.inPouch(off,pose.getHmd().getPosition(),forward,gun.worldScale(),CompatNetwork.calibration(p)));
     }
     public static void tick(ServerPlayer p) {
-        ServerPump.cleanup(p);
+        ServerPump.cleanup(p);ServerCylinder.cleanup(p);
         Session s=SESSIONS.get(p.getUUID());
         if(s!=null && (!enabled(p) || !p.isAlive() || p.isSpectator() || s.stack!=p.getMainHandItem() || s.slot!=p.getInventory().selected)) {
             clear(p);s=null;
         }
         if(!enabled(p) || !p.isAlive() || p.isSpectator()) { restore(p.getMainHandItem());return; }
+        if(Profiles.cylinder(p.getMainHandItem())){ServerCylinder.tick(p);return;}
         if(Profiles.pump(p.getMainHandItem())){ServerPump.tick(p);return;}
         if(s==null) {
             restore(p.getMainHandItem());
@@ -191,10 +194,12 @@ public final class ServerPhysical {
         s.phase=gun.hasBulletInBarrel(s.stack)?Phase.READY:Phase.NEED_RACK;
     }
     public static void cancelGrip(ServerPlayer p) {
+        if(Profiles.cylinder(p.getMainHandItem())){ServerCylinder.grip(p,false,true);return;}
         if(Profiles.pump(p.getMainHandItem())){ServerPump.grip(p,false,true);return;}
         var s=SESSIONS.get(p.getUUID());if(s!=null){release(p,s,null);s.anchor=null;}
     }
     public static void grip(ServerPlayer p, boolean held) {
+        if(Profiles.cylinder(p.getMainHandItem())){ServerCylinder.grip(p,held,false);return;}
         if(Profiles.pump(p.getMainHandItem())){ServerPump.grip(p,held,false);return;}
         Session current=SESSIONS.get(p.getUUID());
         if(current!=null && (current.stack!=p.getMainHandItem() || current.slot!=p.getInventory().selected || !enabled(p))) {
@@ -375,7 +380,7 @@ public final class ServerPhysical {
     }
     public static void selector(ServerPlayer p) {
         Session s=SESSIONS.get(p.getUUID());Sample pose=sample(p);
-        if(!enabled(p) || s==null || s.phase!=Phase.READY || pose==null || s.ticks-s.lastControl<6) return;
+        if(!enabled(p) || s==null || (s.phase!=Phase.READY&&s.phase!=Phase.SUPPORT) || pose==null || s.ticks-s.lastControl<6) return;
         if(Profiles.get(s.stack).selector() && Handling.inside(pose.local(),Handling.selector(Profiles.get(s.stack),CompatNetwork.calibration(p)),CompatNetwork.calibration(p),ZoneSizes.Zone.SELECTOR)) {
             IGunOperator.fromLivingEntity(p).fireSelect();s.lastControl=s.ticks;
         }

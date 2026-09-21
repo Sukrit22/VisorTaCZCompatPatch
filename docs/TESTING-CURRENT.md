@@ -1,12 +1,14 @@
-# Consolidated testing checklist - 0.9.3
+# Consolidated testing checklist - 0.10.0
 
 This replaces the scattered current instructions in the older release guides.
 Older checklists/results are retained in TESTING-HISTORY-THROUGH-0.9.2.md and
 release notes. Test IDs are retained where possible. A past pass is evidence for
 that version, not a pass for every subcase or for newly changed behavior.
 
-**Current build:** 0.9.3, protocol 17. See RELEASE-0.9.3.md for build verification.
+**Current build:** 0.10.0, protocol 18. See RELEASE-0.10.0.md for build verification.
 0.9.2 headset results are recorded below; 0.9.3 headset checks remain open.
+
+New pistol profiles: start with [the 0.10.0 pistol checklist](TESTING-PISTOLS-0.10.0.md). All new pistol checks remain open. Older evidence below is retained.
 
 ## 0.9.2 reported results and priority retests
 
@@ -53,7 +55,7 @@ previously passed basic cases only where a new change or failure warrants it.
 
 ## Setup and reporting
 
-- Install only one addon JAR, **0.9.3 on every client and server**. Single-player
+- Install only one addon JAR, **0.10.0 on every client and server**. Single-player
   has an integrated server. Keep your existing calibration; do not zero it.
 - Pico 4 Ultra + Virtual Desktop + SteamVR. Start with shaders OFF, physical
   handling ON, debug regions ON, and Visor's assigned offhand hotbar slot empty.

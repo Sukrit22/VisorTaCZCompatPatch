@@ -296,3 +296,773 @@ hint = "Resize the casing preview at the port. Applies to jam cases, ejected rou
 title = "Casing size - PINK preview"
 color = "#FF88DD"
 hint = "Resize the casing preview at the port. Applies to jam cases, ejected rounds and shell preview; multiplies gun size. Save keeps the value per gun."
+
+["tacz:m1911".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Align the firing hand with the grip. X right, Y up, Z back. Offsets remain visible."
+
+["tacz:m1911".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the gun to follow your controller. Pitch, yaw and roll are degrees."
+
+["tacz:m1911".scale]
+title = "Gun size"
+color = "#FFFFFF"
+hint = "Uniform scale around the firing-hand grip. 100% is the original size. Lock links gun boxes to scale changes; unlock keeps their sizes. Pouch stays independent."
+
+["tacz:m1911".muzzle]
+title = "Bullet origin - CYAN"
+color = "#55FFFF"
+hint = "Place the small cyan marker at the muzzle opening. Negative Z moves forward. This adjusts bullet origin."
+
+["tacz:m1911".magazine]
+title = "Magazine - GREEN"
+color = "#33FF55"
+hint = "Grab inside the green box and pull down. Bring a replacement here and release to insert."
+
+["tacz:m1911".rack]
+title = "Slide - ORANGE"
+color = "#FF9900"
+hint = "Grab orange region. Pull fully back, then push forward or release. Repeat full back/front strokes without releasing Grab to rack again."
+
+["tacz:m1911".pouch]
+title = "Ammo pouch - CYAN"
+color = "#33FFFF"
+hint = "Hold Grab in this head-yaw-aligned box to take a preview. Inventory ammo is checked on insertion."
+
+["tacz:m1911".sight]
+title = "ADS alignment - PURPLE"
+color = "#DD44FF"
+hint = "Place the purple point on the sight line. Put either eye inside the box behind it and look down the barrel. This controls ADS, not scope glass."
+
+["tacz:m1911".port]
+title = "Ejection / casing grab - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. During a stovepipe, grab in its box and pull the casing away."
+
+["tacz:m1911".release]
+title = "Slide release - CYAN"
+color = "#55FFFF"
+hint = "After inserting magazine, main-hand Use releases locked slide. Offhand Use or Grab at cyan region also works. Racking remains available."
+
+["tacz:m1911".support]
+title = "Support grip - BLUE"
+color = "#5599FF"
+hint = "Touch the blue region with the empty offhand for two-hand ADS. No Grab required. Aim still follows the firing hand."
+
+["tacz:m1911".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview at the port. Applies to jam cases, ejected rounds and shell preview; multiplies gun size. Save keeps the value per gun."
+
+["tacz:p320".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Align the firing hand with the grip. X right, Y up, Z back. Offsets remain visible."
+
+["tacz:p320".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the gun to follow your controller. Pitch, yaw and roll are degrees."
+
+["tacz:p320".scale]
+title = "Gun size"
+color = "#FFFFFF"
+hint = "Uniform scale around the firing-hand grip. 100% is the original size. Lock links gun boxes to scale changes; unlock keeps their sizes. Pouch stays independent."
+
+["tacz:p320".muzzle]
+title = "Bullet origin - CYAN"
+color = "#55FFFF"
+hint = "Place the small cyan marker at the muzzle opening. Negative Z moves forward. This adjusts bullet origin."
+
+["tacz:p320".magazine]
+title = "Magazine - GREEN"
+color = "#33FF55"
+hint = "Grab inside the green box and pull down. Bring a replacement here and release to insert."
+
+["tacz:p320".rack]
+title = "Slide - ORANGE"
+color = "#FF9900"
+hint = "Grab orange region. Pull fully back, then push forward or release. Repeat full back/front strokes without releasing Grab to rack again."
+
+["tacz:p320".pouch]
+title = "Ammo pouch - CYAN"
+color = "#33FFFF"
+hint = "Hold Grab in this head-yaw-aligned box to take a preview. Inventory ammo is checked on insertion."
+
+["tacz:p320".sight]
+title = "ADS alignment - PURPLE"
+color = "#DD44FF"
+hint = "Place the purple point on the sight line. Put either eye inside the box behind it and look down the barrel. This controls ADS, not scope glass."
+
+["tacz:p320".port]
+title = "Ejection / casing grab - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. During a stovepipe, grab in its box and pull the casing away."
+
+["tacz:p320".release]
+title = "Slide release - CYAN"
+color = "#55FFFF"
+hint = "After inserting magazine, main-hand Use releases locked slide. Offhand Use or Grab at cyan region also works. Racking remains available."
+
+["tacz:p320".support]
+title = "Support grip - BLUE"
+color = "#5599FF"
+hint = "Touch the blue region with the empty offhand for two-hand ADS. No Grab required. Aim still follows the firing hand."
+
+["tacz:p320".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview at the port. Applies to jam cases, ejected rounds and shell preview; multiplies gun size. Save keeps the value per gun."
+
+["tacz:m9a4".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Align the firing hand with the grip. X right, Y up, Z back. Offsets remain visible."
+
+["tacz:m9a4".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the gun to follow your controller. Pitch, yaw and roll are degrees."
+
+["tacz:m9a4".scale]
+title = "Gun size"
+color = "#FFFFFF"
+hint = "Uniform scale around the firing-hand grip. 100% is the original size. Lock links gun boxes to scale changes; unlock keeps their sizes. Pouch stays independent."
+
+["tacz:m9a4".muzzle]
+title = "Bullet origin - CYAN"
+color = "#55FFFF"
+hint = "Place the small cyan marker at the muzzle opening. Negative Z moves forward. This adjusts bullet origin."
+
+["tacz:m9a4".magazine]
+title = "Magazine - GREEN"
+color = "#33FF55"
+hint = "Grab inside the green box and pull down. Bring a replacement here and release to insert."
+
+["tacz:m9a4".rack]
+title = "Slide - ORANGE"
+color = "#FF9900"
+hint = "Grab orange region. Pull fully back, then push forward or release. Repeat full back/front strokes without releasing Grab to rack again."
+
+["tacz:m9a4".pouch]
+title = "Ammo pouch - CYAN"
+color = "#33FFFF"
+hint = "Hold Grab in this head-yaw-aligned box to take a preview. Inventory ammo is checked on insertion."
+
+["tacz:m9a4".sight]
+title = "ADS alignment - PURPLE"
+color = "#DD44FF"
+hint = "Place the purple point on the sight line. Put either eye inside the box behind it and look down the barrel. This controls ADS, not scope glass."
+
+["tacz:m9a4".port]
+title = "Ejection / casing grab - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. During a stovepipe, grab in its box and pull the casing away."
+
+["tacz:m9a4".release]
+title = "Slide release - CYAN"
+color = "#55FFFF"
+hint = "After inserting magazine, main-hand Use releases locked slide. Offhand Use or Grab at cyan region also works. Racking remains available."
+
+["tacz:m9a4".support]
+title = "Support grip - BLUE"
+color = "#5599FF"
+hint = "Touch the blue region with the empty offhand for two-hand ADS. No Grab required. Aim still follows the firing hand."
+
+["tacz:m9a4".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview at the port. Applies to jam cases, ejected rounds and shell preview; multiplies gun size. Save keeps the value per gun."
+
+["tacz:deagle".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Align the firing hand with the grip. X right, Y up, Z back. Offsets remain visible."
+
+["tacz:deagle".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the gun to follow your controller. Pitch, yaw and roll are degrees."
+
+["tacz:deagle".scale]
+title = "Gun size"
+color = "#FFFFFF"
+hint = "Uniform scale around the firing-hand grip. 100% is the original size. Lock links gun boxes to scale changes; unlock keeps their sizes. Pouch stays independent."
+
+["tacz:deagle".muzzle]
+title = "Bullet origin - CYAN"
+color = "#55FFFF"
+hint = "Place the small cyan marker at the muzzle opening. Negative Z moves forward. This adjusts bullet origin."
+
+["tacz:deagle".magazine]
+title = "Magazine - GREEN"
+color = "#33FF55"
+hint = "Grab inside the green box and pull down. Bring a replacement here and release to insert."
+
+["tacz:deagle".rack]
+title = "Slide - ORANGE"
+color = "#FF9900"
+hint = "Grab orange region. Pull fully back, then push forward or release. Repeat full back/front strokes without releasing Grab to rack again."
+
+["tacz:deagle".pouch]
+title = "Ammo pouch - CYAN"
+color = "#33FFFF"
+hint = "Hold Grab in this head-yaw-aligned box to take a preview. Inventory ammo is checked on insertion."
+
+["tacz:deagle".sight]
+title = "ADS alignment - PURPLE"
+color = "#DD44FF"
+hint = "Place the purple point on the sight line. Put either eye inside the box behind it and look down the barrel. This controls ADS, not scope glass."
+
+["tacz:deagle".port]
+title = "Ejection / casing grab - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. During a stovepipe, grab in its box and pull the casing away."
+
+["tacz:deagle".release]
+title = "Slide release - CYAN"
+color = "#55FFFF"
+hint = "After inserting magazine, main-hand Use releases locked slide. Offhand Use or Grab at cyan region also works. Racking remains available."
+
+["tacz:deagle".support]
+title = "Support grip - BLUE"
+color = "#5599FF"
+hint = "Touch the blue region with the empty offhand for two-hand ADS. No Grab required. Aim still follows the firing hand."
+
+["tacz:deagle".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview at the port. Applies to jam cases, ejected rounds and shell preview; multiplies gun size. Save keeps the value per gun."
+
+["tacz:deagle_golden".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Align the firing hand with the grip. X right, Y up, Z back. Offsets remain visible."
+
+["tacz:deagle_golden".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the gun to follow your controller. Pitch, yaw and roll are degrees."
+
+["tacz:deagle_golden".scale]
+title = "Gun size"
+color = "#FFFFFF"
+hint = "Uniform scale around the firing-hand grip. 100% is the original size. Lock links gun boxes to scale changes; unlock keeps their sizes. Pouch stays independent."
+
+["tacz:deagle_golden".muzzle]
+title = "Bullet origin - CYAN"
+color = "#55FFFF"
+hint = "Place the small cyan marker at the muzzle opening. Negative Z moves forward. This adjusts bullet origin."
+
+["tacz:deagle_golden".magazine]
+title = "Magazine - GREEN"
+color = "#33FF55"
+hint = "Grab inside the green box and pull down. Bring a replacement here and release to insert."
+
+["tacz:deagle_golden".rack]
+title = "Slide - ORANGE"
+color = "#FF9900"
+hint = "Grab orange region. Pull fully back, then push forward or release. Repeat full back/front strokes without releasing Grab to rack again."
+
+["tacz:deagle_golden".pouch]
+title = "Ammo pouch - CYAN"
+color = "#33FFFF"
+hint = "Hold Grab in this head-yaw-aligned box to take a preview. Inventory ammo is checked on insertion."
+
+["tacz:deagle_golden".sight]
+title = "ADS alignment - PURPLE"
+color = "#DD44FF"
+hint = "Place the purple point on the sight line. Put either eye inside the box behind it and look down the barrel. This controls ADS, not scope glass."
+
+["tacz:deagle_golden".port]
+title = "Ejection / casing grab - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. During a stovepipe, grab in its box and pull the casing away."
+
+["tacz:deagle_golden".release]
+title = "Slide release - CYAN"
+color = "#55FFFF"
+hint = "After inserting magazine, main-hand Use releases locked slide. Offhand Use or Grab at cyan region also works. Racking remains available."
+
+["tacz:deagle_golden".support]
+title = "Support grip - BLUE"
+color = "#5599FF"
+hint = "Touch the blue region with the empty offhand for two-hand ADS. No Grab required. Aim still follows the firing hand."
+
+["tacz:deagle_golden".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview at the port. Applies to jam cases, ejected rounds and shell preview; multiplies gun size. Save keeps the value per gun."
+
+["tacz:timeless50".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Align the firing hand with the grip. X right, Y up, Z back. Offsets remain visible."
+
+["tacz:timeless50".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the gun to follow your controller. Pitch, yaw and roll are degrees."
+
+["tacz:timeless50".scale]
+title = "Gun size"
+color = "#FFFFFF"
+hint = "Uniform scale around the firing-hand grip. 100% is the original size. Lock links gun boxes to scale changes; unlock keeps their sizes. Pouch stays independent."
+
+["tacz:timeless50".muzzle]
+title = "Bullet origin - CYAN"
+color = "#55FFFF"
+hint = "Place the small cyan marker at the muzzle opening. Negative Z moves forward. This adjusts bullet origin."
+
+["tacz:timeless50".magazine]
+title = "Magazine - GREEN"
+color = "#33FF55"
+hint = "Grab inside the green box and pull down. Bring a replacement here and release to insert."
+
+["tacz:timeless50".rack]
+title = "Slide - ORANGE"
+color = "#FF9900"
+hint = "Grab orange region. Pull fully back, then push forward or release. Repeat full back/front strokes without releasing Grab to rack again."
+
+["tacz:timeless50".pouch]
+title = "Ammo pouch - CYAN"
+color = "#33FFFF"
+hint = "Hold Grab in this head-yaw-aligned box to take a preview. Inventory ammo is checked on insertion."
+
+["tacz:timeless50".sight]
+title = "ADS alignment - PURPLE"
+color = "#DD44FF"
+hint = "Place the purple point on the sight line. Put either eye inside the box behind it and look down the barrel. This controls ADS, not scope glass."
+
+["tacz:timeless50".port]
+title = "Ejection / casing grab - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. During a stovepipe, grab in its box and pull the casing away."
+
+["tacz:timeless50".release]
+title = "Slide release - CYAN"
+color = "#55FFFF"
+hint = "After inserting magazine, main-hand Use releases locked slide. Offhand Use or Grab at cyan region also works. Racking remains available."
+
+["tacz:timeless50".support]
+title = "Support grip - BLUE"
+color = "#5599FF"
+hint = "Touch the blue region with the empty offhand for two-hand ADS. No Grab required. Aim still follows the firing hand."
+
+["tacz:timeless50".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview at the port. Applies to jam cases, ejected rounds and shell preview; multiplies gun size. Save keeps the value per gun."
+
+["tacz:b93r".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Align the firing hand with the grip. X right, Y up, Z back. Offsets remain visible."
+
+["tacz:b93r".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the gun to follow your controller. Pitch, yaw and roll are degrees."
+
+["tacz:b93r".scale]
+title = "Gun size"
+color = "#FFFFFF"
+hint = "Uniform scale around the firing-hand grip. 100% is the original size. Lock links gun boxes to scale changes; unlock keeps their sizes. Pouch stays independent."
+
+["tacz:b93r".muzzle]
+title = "Bullet origin - CYAN"
+color = "#55FFFF"
+hint = "Place the small cyan marker at the muzzle opening. Negative Z moves forward. This adjusts bullet origin."
+
+["tacz:b93r".magazine]
+title = "Magazine - GREEN"
+color = "#33FF55"
+hint = "Grab inside the green box and pull down. Bring a replacement here and release to insert."
+
+["tacz:b93r".rack]
+title = "Slide - ORANGE"
+color = "#FF9900"
+hint = "Grab orange region. Pull fully back, then push forward or release. Repeat full back/front strokes without releasing Grab to rack again."
+
+["tacz:b93r".pouch]
+title = "Ammo pouch - CYAN"
+color = "#33FFFF"
+hint = "Hold Grab in this head-yaw-aligned box to take a preview. Inventory ammo is checked on insertion."
+
+["tacz:b93r".sight]
+title = "ADS alignment - PURPLE"
+color = "#DD44FF"
+hint = "Place the purple point on the sight line. Put either eye inside the box behind it and look down the barrel. This controls ADS, not scope glass."
+
+["tacz:b93r".port]
+title = "Ejection / casing grab - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. During a stovepipe, grab in its box and pull the casing away."
+
+["tacz:b93r".release]
+title = "Slide release - CYAN"
+color = "#55FFFF"
+hint = "After inserting magazine, main-hand Use releases locked slide. Offhand Use or Grab at cyan region also works. Racking remains available."
+
+["tacz:b93r".support]
+title = "Support grip - BLUE"
+color = "#5599FF"
+hint = "Touch the blue region with the empty offhand for two-hand ADS. No Grab required. Aim still follows the firing hand."
+
+["tacz:b93r".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview at the port. Applies to jam cases, ejected rounds and shell preview; multiplies gun size. Save keeps the value per gun."
+
+["tacz:b93r".selector]
+title = "Fire selector - YELLOW"
+color = "#FFFF00"
+hint = "Place the yellow region at a comfortable selector point. Grab here to cycle the native TaCZ fire modes; test burst interruption."
+
+["tacz:cz75".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Align the firing hand with the grip. X right, Y up, Z back. Offsets remain visible."
+
+["tacz:cz75".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the gun to follow your controller. Pitch, yaw and roll are degrees."
+
+["tacz:cz75".scale]
+title = "Gun size"
+color = "#FFFFFF"
+hint = "Uniform scale around the firing-hand grip. 100% is the original size. Lock links gun boxes to scale changes; unlock keeps their sizes. Pouch stays independent."
+
+["tacz:cz75".muzzle]
+title = "Bullet origin - CYAN"
+color = "#55FFFF"
+hint = "Place the small cyan marker at the muzzle opening. Negative Z moves forward. This adjusts bullet origin."
+
+["tacz:cz75".magazine]
+title = "Magazine - GREEN"
+color = "#33FF55"
+hint = "Grab inside the green box and pull down. Bring a replacement here and release to insert."
+
+["tacz:cz75".rack]
+title = "Slide - ORANGE"
+color = "#FF9900"
+hint = "Grab orange region. Pull fully back, then push forward or release. Repeat full back/front strokes without releasing Grab to rack again."
+
+["tacz:cz75".pouch]
+title = "Ammo pouch - CYAN"
+color = "#33FFFF"
+hint = "Hold Grab in this head-yaw-aligned box to take a preview. Inventory ammo is checked on insertion."
+
+["tacz:cz75".sight]
+title = "ADS alignment - PURPLE"
+color = "#DD44FF"
+hint = "Place the purple point on the sight line. Put either eye inside the box behind it and look down the barrel. This controls ADS, not scope glass."
+
+["tacz:cz75".port]
+title = "Ejection / casing grab - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. During a stovepipe, grab in its box and pull the casing away."
+
+["tacz:cz75".release]
+title = "Slide release - CYAN"
+color = "#55FFFF"
+hint = "After inserting magazine, main-hand Use releases locked slide. Offhand Use or Grab at cyan region also works. Racking remains available."
+
+["tacz:cz75".support]
+title = "Support grip - BLUE"
+color = "#5599FF"
+hint = "Touch the blue region with the empty offhand for two-hand ADS. No Grab required. Aim still follows the firing hand."
+
+["tacz:cz75".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview at the port. Applies to jam cases, ejected rounds and shell preview; multiplies gun size. Save keeps the value per gun."
+
+["tacz:hk_mk23".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Align the firing hand with the grip. X right, Y up, Z back. Offsets remain visible."
+
+["tacz:hk_mk23".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the gun to follow your controller. Pitch, yaw and roll are degrees."
+
+["tacz:hk_mk23".scale]
+title = "Gun size"
+color = "#FFFFFF"
+hint = "Uniform scale around the firing-hand grip. 100% is the original size. Lock links gun boxes to scale changes; unlock keeps their sizes. Pouch stays independent."
+
+["tacz:hk_mk23".muzzle]
+title = "Bullet origin - CYAN"
+color = "#55FFFF"
+hint = "Place the small cyan marker at the muzzle opening. Negative Z moves forward. This adjusts bullet origin."
+
+["tacz:hk_mk23".magazine]
+title = "Magazine - GREEN"
+color = "#33FF55"
+hint = "Grab inside the green box and pull down. Bring a replacement here and release to insert."
+
+["tacz:hk_mk23".rack]
+title = "Slide - ORANGE"
+color = "#FF9900"
+hint = "Grab orange region. Pull fully back, then push forward or release. Repeat full back/front strokes without releasing Grab to rack again."
+
+["tacz:hk_mk23".pouch]
+title = "Ammo pouch - CYAN"
+color = "#33FFFF"
+hint = "Hold Grab in this head-yaw-aligned box to take a preview. Inventory ammo is checked on insertion."
+
+["tacz:hk_mk23".sight]
+title = "ADS alignment - PURPLE"
+color = "#DD44FF"
+hint = "Place the purple point on the sight line. Put either eye inside the box behind it and look down the barrel. This controls ADS, not scope glass."
+
+["tacz:hk_mk23".port]
+title = "Ejection / casing grab - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. During a stovepipe, grab in its box and pull the casing away."
+
+["tacz:hk_mk23".release]
+title = "Slide release - CYAN"
+color = "#55FFFF"
+hint = "After inserting magazine, main-hand Use releases locked slide. Offhand Use or Grab at cyan region also works. Racking remains available."
+
+["tacz:hk_mk23".support]
+title = "Support grip - BLUE"
+color = "#5599FF"
+hint = "Touch the blue region with the empty offhand for two-hand ADS. No Grab required. Aim still follows the firing hand."
+
+["tacz:hk_mk23".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview at the port. Applies to jam cases, ejected rounds and shell preview; multiplies gun size. Save keeps the value per gun."
+
+["tacz:hk_mk23".selector]
+title = "Fire selector - YELLOW"
+color = "#FFFF00"
+hint = "Place the yellow region at a comfortable selector point. Grab here to cycle the native TaCZ fire modes; test burst interruption."
+
+["tacz:rhino357".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Align the firing hand with the grip. X right, Y up, Z back. Offsets remain visible."
+
+["tacz:rhino357".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the gun to follow your controller. Pitch, yaw and roll are degrees."
+
+["tacz:rhino357".scale]
+title = "Gun size"
+color = "#FFFFFF"
+hint = "Uniform scale around the firing-hand grip. 100% is the original size. Lock links gun boxes to scale changes; unlock keeps their sizes. Pouch stays independent."
+
+["tacz:rhino357".muzzle]
+title = "Bullet origin - CYAN"
+color = "#55FFFF"
+hint = "Place the small cyan marker at the muzzle opening. Negative Z moves forward. This adjusts bullet origin."
+
+["tacz:rhino357".magazine]
+title = "Loading point - GREEN"
+color = "#33FF55"
+hint = "With action open, grab ONE compatible round at waist pouch, bring it here and release. Spent cases occupy slots until ejected."
+
+["tacz:rhino357".rack]
+title = "Slide - ORANGE"
+color = "#FF9900"
+hint = "Grab orange region. Move hand sideways 5 cm to toggle open/closed, then release. One toggle per grab; either sideways direction works."
+
+["tacz:rhino357".pouch]
+title = "Loose round pouch"
+color = "#33FFFF"
+hint = "With action open, Grab here for one round preview. Inventory ammo is consumed only on valid green-zone insertion."
+
+["tacz:rhino357".sight]
+title = "ADS alignment - PURPLE"
+color = "#DD44FF"
+hint = "Place the purple point on the sight line. Put either eye inside the box behind it and look down the barrel. This controls ADS, not scope glass."
+
+["tacz:rhino357".port]
+title = "Eject all - PINK"
+color = "#FF3388"
+hint = "With action open, grab here and pull back 5 cm. ALL live rounds and spent cases are discarded; loose objects are cosmetic, not pickups."
+
+["tacz:rhino357".support]
+title = "Support grip - BLUE"
+color = "#5599FF"
+hint = "Touch the blue region with the empty offhand for two-hand ADS. No Grab required. Aim still follows the firing hand."
+
+["tacz:rhino357".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview at the port. Applies to jam cases, ejected rounds and shell preview; multiplies gun size. Save keeps the value per gun."
+
+["tacz:taurus500".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Align the firing hand with the grip. X right, Y up, Z back. Offsets remain visible."
+
+["tacz:taurus500".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the gun to follow your controller. Pitch, yaw and roll are degrees."
+
+["tacz:taurus500".scale]
+title = "Gun size"
+color = "#FFFFFF"
+hint = "Uniform scale around the firing-hand grip. 100% is the original size. Lock links gun boxes to scale changes; unlock keeps their sizes. Pouch stays independent."
+
+["tacz:taurus500".muzzle]
+title = "Bullet origin - CYAN"
+color = "#55FFFF"
+hint = "Place the small cyan marker at the muzzle opening. Negative Z moves forward. This adjusts bullet origin."
+
+["tacz:taurus500".magazine]
+title = "Loading point - GREEN"
+color = "#33FF55"
+hint = "With action open, grab ONE compatible round at waist pouch, bring it here and release. Spent cases occupy slots until ejected."
+
+["tacz:taurus500".rack]
+title = "Slide - ORANGE"
+color = "#FF9900"
+hint = "Grab orange region. Move hand sideways 5 cm to toggle open/closed, then release. One toggle per grab; either sideways direction works."
+
+["tacz:taurus500".pouch]
+title = "Loose round pouch"
+color = "#33FFFF"
+hint = "With action open, Grab here for one round preview. Inventory ammo is consumed only on valid green-zone insertion."
+
+["tacz:taurus500".sight]
+title = "ADS alignment - PURPLE"
+color = "#DD44FF"
+hint = "Place the purple point on the sight line. Put either eye inside the box behind it and look down the barrel. This controls ADS, not scope glass."
+
+["tacz:taurus500".port]
+title = "Eject all - PINK"
+color = "#FF3388"
+hint = "With action open, grab here and pull back 5 cm. ALL live rounds and spent cases are discarded; loose objects are cosmetic, not pickups."
+
+["tacz:taurus500".support]
+title = "Support grip - BLUE"
+color = "#5599FF"
+hint = "Touch the blue region with the empty offhand for two-hand ADS. No Grab required. Aim still follows the firing hand."
+
+["tacz:taurus500".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview at the port. Applies to jam cases, ejected rounds and shell preview; multiplies gun size. Save keeps the value per gun."
+
+["tacz:taurus943".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Align the firing hand with the grip. X right, Y up, Z back. Offsets remain visible."
+
+["tacz:taurus943".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the gun to follow your controller. Pitch, yaw and roll are degrees."
+
+["tacz:taurus943".scale]
+title = "Gun size"
+color = "#FFFFFF"
+hint = "Uniform scale around the firing-hand grip. 100% is the original size. Lock links gun boxes to scale changes; unlock keeps their sizes. Pouch stays independent."
+
+["tacz:taurus943".muzzle]
+title = "Bullet origin - CYAN"
+color = "#55FFFF"
+hint = "Place the small cyan marker at the muzzle opening. Negative Z moves forward. This adjusts bullet origin."
+
+["tacz:taurus943".magazine]
+title = "Loading point - GREEN"
+color = "#33FF55"
+hint = "With action open, grab ONE compatible round at waist pouch, bring it here and release. Spent cases occupy slots until ejected."
+
+["tacz:taurus943".rack]
+title = "Slide - ORANGE"
+color = "#FF9900"
+hint = "Grab orange region. Move hand sideways 5 cm to toggle open/closed, then release. One toggle per grab; either sideways direction works."
+
+["tacz:taurus943".pouch]
+title = "Loose round pouch"
+color = "#33FFFF"
+hint = "With action open, Grab here for one round preview. Inventory ammo is consumed only on valid green-zone insertion."
+
+["tacz:taurus943".sight]
+title = "ADS alignment - PURPLE"
+color = "#DD44FF"
+hint = "Place the purple point on the sight line. Put either eye inside the box behind it and look down the barrel. This controls ADS, not scope glass."
+
+["tacz:taurus943".port]
+title = "Eject all - PINK"
+color = "#FF3388"
+hint = "With action open, grab here and pull back 5 cm. ALL live rounds and spent cases are discarded; loose objects are cosmetic, not pickups."
+
+["tacz:taurus943".support]
+title = "Support grip - BLUE"
+color = "#5599FF"
+hint = "Touch the blue region with the empty offhand for two-hand ADS. No Grab required. Aim still follows the firing hand."
+
+["tacz:taurus943".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview at the port. Applies to jam cases, ejected rounds and shell preview; multiplies gun size. Save keeps the value per gun."
+
+["tacz:lonetrail".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Align the firing hand with the grip. X right, Y up, Z back. Offsets remain visible."
+
+["tacz:lonetrail".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the gun to follow your controller. Pitch, yaw and roll are degrees."
+
+["tacz:lonetrail".scale]
+title = "Gun size"
+color = "#FFFFFF"
+hint = "Uniform scale around the firing-hand grip. 100% is the original size. Lock links gun boxes to scale changes; unlock keeps their sizes. Pouch stays independent."
+
+["tacz:lonetrail".muzzle]
+title = "Bullet origin - CYAN"
+color = "#55FFFF"
+hint = "Place the small cyan marker at the muzzle opening. Negative Z moves forward. This adjusts bullet origin."
+
+["tacz:lonetrail".magazine]
+title = "Loading point - GREEN"
+color = "#33FF55"
+hint = "With action open, grab ONE compatible round at waist pouch, bring it here and release. Spent cases occupy slots until ejected."
+
+["tacz:lonetrail".rack]
+title = "Slide - ORANGE"
+color = "#FF9900"
+hint = "Grab orange region. Move hand sideways 5 cm to toggle open/closed, then release. One toggle per grab; either sideways direction works."
+
+["tacz:lonetrail".pouch]
+title = "Loose round pouch"
+color = "#33FFFF"
+hint = "With action open, Grab here for one round preview. Inventory ammo is consumed only on valid green-zone insertion."
+
+["tacz:lonetrail".sight]
+title = "ADS alignment - PURPLE"
+color = "#DD44FF"
+hint = "Place the purple point on the sight line. Put either eye inside the box behind it and look down the barrel. This controls ADS, not scope glass."
+
+["tacz:lonetrail".port]
+title = "Eject all - PINK"
+color = "#FF3388"
+hint = "With action open, grab here and pull back 5 cm. ALL live rounds and spent cases are discarded; loose objects are cosmetic, not pickups."
+
+["tacz:lonetrail".support]
+title = "Support grip - BLUE"
+color = "#5599FF"
+hint = "Touch the blue region with the empty offhand for two-hand ADS. No Grab required. Aim still follows the firing hand."
+
+["tacz:lonetrail".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview at the port. Applies to jam cases, ejected rounds and shell preview; multiplies gun size. Save keeps the value per gun."

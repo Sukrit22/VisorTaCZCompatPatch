@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CalibrationHintsTest {
     @Test void everySupportedPageHasBundledGunSpecificText(){
-        for(String gun:new String[]{"tacz:glock_17","tacz:m4a1","tacz:m870","tacz:m700","tacz:hk_mp5a5"})
+        for(String gun:new String[]{"tacz:glock_17","tacz:m4a1","tacz:m870","tacz:m700","tacz:hk_mp5a5","tacz:m1911","tacz:p320","tacz:m9a4","tacz:deagle","tacz:deagle_golden","tacz:timeless50","tacz:b93r","tacz:cz75","tacz:hk_mk23","tacz:rhino357","tacz:taurus500","tacz:taurus943","tacz:lonetrail"})
             for(var page:CalibrationLayout.pages(gun+"|tacz:default")){
                 var hint=CalibrationHints.get(gun,page.id());
                 assertNotEquals(page.id(),hint.title());assertTrue(hint.text().length()>20);

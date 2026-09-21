@@ -33,7 +33,10 @@ public final class PhysicalModel implements AutoCloseable {
             if(loose!=null)loose.visible=false;
             if(magazine!=null && Handling.magazineOut(phase)) magazine.visible=false;
             if(magazine!=null && phase==Phase.REMOVING) magazine.offsetY+=travel/(profile.scale()*calibration.gunScale());
-            if(slide!=null) {
+            if(slide!=null && profile.cylinder()) {
+                if(dev.visorcompat.tacz.server.ServerCylinder.open(stack)||phase==Phase.CYLINDER_OPEN||phase==Phase.SHELL||phase==Phase.CYLINDER_HOLD&&travel>0)
+                    slide.zRot+=(float)java.lang.Math.toRadians(PistolProfiles.get(profile).openDegrees());
+            }else if(slide!=null) {
                 float pull=Handling.racking(phase) || phase==Phase.PUMP_HOLD || phase==Phase.PUMP_OPEN?travel:0;
                 if(profile.pump() && phase!=Phase.PUMP_HOLD && dev.visorcompat.tacz.server.ServerPump.open(stack))pull=dev.visorcompat.tacz.physical.PumpCycle.TRAVEL;
                 if(profile.bolt() && !Handling.racking(phase) && dev.visorcompat.tacz.physical.BoltState.open(stack))pull=dev.visorcompat.tacz.physical.PumpCycle.TRAVEL;
@@ -81,7 +84,7 @@ public final class PhysicalModel implements AutoCloseable {
             guide(matrices,Handling.support(profile,c),c.zones().support(),key,"support",local);
         }
         Vector3f forward=pose.getHmd().getRotation().transformDirection(new Vector3f(0,0,-1));
-        if(profile.pump()||PhysicalClient.phase()==Phase.NO_MAG||calibrating){
+        if(profile.pump()||profile.cylinder()||PhysicalClient.phase()==Phase.NO_MAG||calibrating){
             var flat=new Vector3f(forward.x,0,forward.z);if(flat.lengthSquared()<.001f)flat.set(0,0,-1);else flat.normalize();
             var pouch=Handling.pouch(pose.getHmd().getPosition(),forward,gun.worldScale(),c);
             var worldGun=new Matrix4f().translation(gun.hand()).rotate(gun.rotation()).scale(gun.worldScale());

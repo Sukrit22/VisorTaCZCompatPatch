@@ -1,0 +1,147 @@
+[
+  {
+    "id": "m1911",
+    "node": "slide",
+    "model": "tacz:gun/m1911_geo",
+    "ammo": "tacz:45acp",
+    "capacity": 7,
+    "bolt": "closed_bolt",
+    "modes": [
+      "semi"
+    ]
+  },
+  {
+    "id": "p320",
+    "node": "slide",
+    "model": "tacz:gun/p320_geo",
+    "ammo": "tacz:45acp",
+    "capacity": 12,
+    "bolt": "closed_bolt",
+    "modes": [
+      "semi"
+    ]
+  },
+  {
+    "id": "m9a4",
+    "node": "upper",
+    "model": "tacz:gun/m9a4_geo",
+    "ammo": "tacz:9mm",
+    "capacity": 17,
+    "bolt": "closed_bolt",
+    "modes": [
+      "semi"
+    ]
+  },
+  {
+    "id": "deagle",
+    "node": "slide2",
+    "model": "tacz:gun/deagle_geo",
+    "ammo": "tacz:50ae",
+    "capacity": 7,
+    "bolt": "closed_bolt",
+    "modes": [
+      "semi"
+    ]
+  },
+  {
+    "id": "deagle_golden",
+    "node": "slide2",
+    "model": "tacz:gun/deagle_golden_geo",
+    "ammo": "tacz:357mag",
+    "capacity": 9,
+    "bolt": "closed_bolt",
+    "modes": [
+      "semi"
+    ]
+  },
+  {
+    "id": "timeless50",
+    "node": "slide",
+    "model": "tacz:gun/timeless50_geo",
+    "ammo": "tacz:50ae",
+    "capacity": 8,
+    "bolt": "closed_bolt",
+    "modes": [
+      "semi"
+    ]
+  },
+  {
+    "id": "b93r",
+    "node": "upper",
+    "model": "tacz:gun/b93r_geo",
+    "ammo": "tacz:9mm",
+    "capacity": 20,
+    "bolt": "closed_bolt",
+    "modes": [
+      "burst",
+      "semi"
+    ]
+  },
+  {
+    "id": "cz75",
+    "node": "slide",
+    "model": "tacz:gun/cz75_geo",
+    "ammo": "tacz:9mm",
+    "capacity": 16,
+    "bolt": "closed_bolt",
+    "modes": [
+      "auto"
+    ]
+  },
+  {
+    "id": "hk_mk23",
+    "node": "slide",
+    "model": "tacz:gun/hk_mk23_geo",
+    "ammo": "tacz:45acp",
+    "capacity": 12,
+    "bolt": "closed_bolt",
+    "modes": [
+      "semi",
+      "burst"
+    ]
+  },
+  {
+    "id": "rhino357",
+    "node": "cylinder_crane",
+    "model": "tacz:gun/rhino357_geo",
+    "ammo": "tacz:357mag",
+    "capacity": 6,
+    "bolt": "open_bolt",
+    "modes": [
+      "semi"
+    ]
+  },
+  {
+    "id": "taurus500",
+    "node": "cranecylinder",
+    "model": "tacz:gun/taurus500_geo",
+    "ammo": "tacz:500mag",
+    "capacity": 5,
+    "bolt": "open_bolt",
+    "modes": [
+      "semi"
+    ]
+  },
+  {
+    "id": "taurus943",
+    "node": "cylinder_group",
+    "model": "tacz:gun/taurus943_geo",
+    "ammo": "tacz:22wmr",
+    "capacity": 8,
+    "bolt": "open_bolt",
+    "modes": [
+      "semi"
+    ]
+  },
+  {
+    "id": "lonetrail",
+    "node": "breach2",
+    "model": "tacz:gun/lonetrail_geo",
+    "ammo": "tacz:30_06",
+    "capacity": 1,
+    "bolt": "open_bolt",
+    "modes": [
+      "semi"
+    ]
+  }
+]
