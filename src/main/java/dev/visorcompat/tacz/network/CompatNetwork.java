@@ -23,7 +23,7 @@ import java.util.UUID;
 @Mod.EventBusSubscriber(modid = VisorTacz.ID)
 public final class CompatNetwork {
     public static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
-            new ResourceLocation(VisorTacz.ID, "main"), () -> "18", "18"::equals, "18"::equals);
+            new ResourceLocation(VisorTacz.ID, "main"), () -> "19", "19"::equals, "19"::equals);
     private static final Set<UUID> MODE_KNOWN = new HashSet<>();
     private static final Set<UUID> TRANSFER_ANYTIME = new HashSet<>();
     private static final Set<UUID> PHYSICAL = new HashSet<>();

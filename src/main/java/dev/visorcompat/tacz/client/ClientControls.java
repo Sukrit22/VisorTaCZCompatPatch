@@ -90,7 +90,7 @@ public final class ClientControls implements VREventListener {
                 }
                 if (event.isPressEvent() && !supported()) {
                     Minecraft.getInstance().player.displayClientMessage(
-                            Component.literal("TaCZ VR: this gun has no VR profile yet (Glock 17 / M4A1 / M870 / M700 / HK MP5A5 supported)."), true);
+                            Component.literal("TaCZ VR: this gun/display has no VR geometry profile yet. Base TaCZ guns are supported; custom packs need profiles."), true);
                 }
             }
         } else if (event.getActionButton() == input.getActionRightMouse(HandType.MAIN)

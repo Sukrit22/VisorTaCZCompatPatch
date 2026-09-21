@@ -16,7 +16,7 @@ public final class PhysicalClient {
     public static HandAnchor anchor(){return active()&&state!=null&&state.slot()==Minecraft.getInstance().player.getInventory().selected&&state.key().equals(Profiles.key(Minecraft.getInstance().player.getMainHandItem()))?state.anchor():null;}
     private static int lastSlot=-1;
     private static String lastKey="";
-    public static boolean active() { return CompatSettings.physical() && CompatSettings.active() && ClientControls.supported(); }
+    public static boolean active() { return CompatSettings.physical() && CompatSettings.active() && ClientControls.supported() && Profiles.physical(Minecraft.getInstance().player.getMainHandItem()); }
     public static Phase phase() {
         var p=Minecraft.getInstance().player;
         return p!=null && state!=null && state.slot()==p.getInventory().selected && state.key().equals(Profiles.key(p.getMainHandItem())) ? state.phase():Phase.READY;

@@ -10,7 +10,8 @@ public record JamProfile(Vector3f port, float frozenTravel) {
         Calibration calibration
     ) {
         // Default-pack shell pivots, converted using the same grip/model transform.
-        Vector3f shell = PistolProfiles.get(profile)!=null ? new Vector3f(PistolProfiles.get(profile).shell()) : profile.m1911()
+        Vector3f buttonShell=profile.buttonOnly()?ButtonProfiles.shell(profile):null;
+        Vector3f shell = buttonShell!=null?buttonShell:PistolProfiles.get(profile)!=null ? new Vector3f(PistolProfiles.get(profile).shell()) : profile.m1911()
             ? new Vector3f(0, 5.55f, .625f)
             : profile.bolt()
               ? new Vector3f(.375f, 7.4375f, 5.975f)

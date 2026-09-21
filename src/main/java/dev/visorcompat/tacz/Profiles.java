@@ -89,9 +89,13 @@ public final class Profiles {
         Map.entry("tacz:lonetrail", new WeaponProfile(0.6f, 0f, 6.63125f, 2.74375f, 0.00863f, 8.11642f, -12.24776f, 0f, WeaponProfile.Mechanism.LONETRAIL))
     );
 
+    public static java.util.Set<String> ids(){var ids=new java.util.TreeSet<>(PROFILES.keySet());ids.addAll(ButtonProfiles.ids());return java.util.Collections.unmodifiableSet(ids);}
+
     public static WeaponProfile byId(String id) {
-        return PROFILES.get(id);
+        var physical=PROFILES.get(id);return physical!=null?physical:ButtonProfiles.get(id);
     }
+
+    public static boolean physical(ItemStack stack){var p=get(stack);return p!=null&&p.physical();}
 
     public static boolean cylinder(ItemStack stack){var p=get(stack);return p!=null&&p.cylinder();}
 
@@ -124,6 +128,6 @@ public final class Profiles {
                 gun.getGunDisplayId(stack)
             )
             ? null
-            : PROFILES.get(gun.getGunId(stack).toString());
+            : byId(gun.getGunId(stack).toString());
     }
 }

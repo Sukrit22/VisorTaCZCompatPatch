@@ -41,7 +41,7 @@ final class StatusText {
         if(state.equals("JAMMED") && jam.kind()!=dev.visorcompat.tacz.physical.Jam.Kind.NONE)
             state=jam.kind().name().replace('_',' ')+" | LEFT "+jam.remaining();
         if(state.isEmpty())state=AutoAds.aiming()?"ADS":"HIP FIRE";
-        String handling=PhysicalClient.active()?PhysicalClient.phase().name().replace('_',' '):"BUTTONS";
+        String handling=PhysicalClient.active()?PhysicalClient.phase().name().replace('_',' '):"BUTTONS"+(CompatSettings.physical()?" (FALLBACK)":"");
         String target=PhysicalClient.target().name().replace('_',' ');
         if(PhysicalClient.active() && (target.equals("POUCH") || PhysicalClient.phase()==dev.visorcompat.tacz.physical.Handling.Phase.NEW_MAG) && !dev.visorcompat.tacz.physical.PouchAmmo.available(player,stack))target="OUT OF AMMO";
         String optical=com.tacz.guns.compat.oculus.OculusCompat.isUsingRenderPack()?"OPTICS: CLEAR ONLY (SHADERS)":"";

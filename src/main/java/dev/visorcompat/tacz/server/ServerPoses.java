@@ -22,14 +22,14 @@ public final class ServerPoses {
                 || System.nanoTime() - fresh.visorTacz$lastPoseNanos() > 500_000_000L) return null;
         WeaponProfile profile = Profiles.get(player.getMainHandItem());
         if (profile == null || !player.isAlive() || player.isSpectator()) return null;
-        GunPose pose = GunPose.resolve(vr.getPoseData(), profile, player.getOffhandItem().isEmpty() && (!CompatNetwork.physical(player) || ServerPhysical.supporting(player)), CompatNetwork.calibration(player),ServerPhysical.anchor(player));
+        GunPose pose = GunPose.resolve(vr.getPoseData(), profile, player.getOffhandItem().isEmpty() && (!ServerPhysical.enabled(player) || ServerPhysical.supporting(player)), CompatNetwork.calibration(player),ServerPhysical.anchor(player));
         if (pose == null) return null;
         Vec3 head = vr.getPoseData().getHmd().getPositionVec3();
         Vec3 hand = new Vec3(pose.hand());
         Vec3 muzzle = new Vec3(pose.muzzle());
         double scale = pose.worldScale();
         if (!Double.isFinite(head.lengthSqr()) || head.distanceTo(player.position()) > 3 * scale
-                || head.distanceTo(hand) > 1.5 * scale || hand.distanceTo(muzzle) > 1.5 * scale) return null;
+                || head.distanceTo(hand) > 1.5 * scale || hand.distanceTo(muzzle) > 3 * scale) return null;
         // Both segments matter: the whole hand can be on the far side of a wall.
         if (blocked(player, player.getEyePosition(), head) || blocked(player, head, hand)
                 || blocked(player, hand, muzzle)) return null;

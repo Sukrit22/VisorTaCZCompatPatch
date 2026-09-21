@@ -30,7 +30,7 @@ class CalibrationFilesTest {
         var file=dir.resolve("calibration.json");
         assertEquals(CalibrationDefaults.load(),CalibrationFiles.read(file));
         Files.writeString(file,"{\"custom:gun|custom:display\":{\"z\":0.01}}");
-        assertEquals(4,CalibrationFiles.read(file).size());
-        Files.writeString(file,"{}");assertEquals(3,CalibrationFiles.read(file).size());
+        assertEquals(CalibrationDefaults.load().size()+1,CalibrationFiles.read(file).size());
+        Files.writeString(file,"{}");assertEquals(CalibrationDefaults.load().size(),CalibrationFiles.read(file).size());
     }
 }

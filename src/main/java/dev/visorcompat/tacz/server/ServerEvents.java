@@ -20,6 +20,8 @@ public final class ServerEvents {
         String failure=null;
         if(dev.visorcompat.tacz.Profiles.get(stack)==null)
             failure="The server's selected main-hand item is not a supported gun: "+stack.getHoverName().getString()+". Select the gun's hotbar slot before running this command.";
+        else if(!dev.visorcompat.tacz.Profiles.physical(stack))
+            failure="This gun uses button handling. Physical jam simulations are not registered for it.";
         else if(!dev.visorcompat.tacz.network.CompatNetwork.modeKnown(p))
             failure="The server has not received your VR handling mode yet. Reconnect and try again.";
         else if(!dev.visorcompat.tacz.network.CompatNetwork.physical(p))

@@ -38,7 +38,7 @@ public final class ServerPhysical {
         }
     }
     record Sample(Vector3f local, boolean pouch) {}
-    public static boolean enabled(ServerPlayer p) { return CompatNetwork.physical(p) && ServerPoses.isVr(p) && Profiles.get(p.getMainHandItem())!=null; }
+    public static boolean enabled(ServerPlayer p) { return CompatNetwork.physical(p) && ServerPoses.isVr(p) && Profiles.physical(p.getMainHandItem()); }
     public static Phase phase(ServerPlayer p) {if(Profiles.cylinder(p.getMainHandItem()))return ServerCylinder.phase(p);if(Profiles.pump(p.getMainHandItem()))return ServerPump.phase(p);Session s=SESSIONS.get(p.getUUID());return s==null?Phase.READY:s.phase;}
     public static int pull(ServerPlayer p) {if(Profiles.cylinder(p.getMainHandItem()))return ServerCylinder.open(p.getMainHandItem())?16:0;if(Profiles.pump(p.getMainHandItem()))return ServerPump.pull(p);Session s=SESSIONS.get(p.getUUID());return s==null?0:Math.max(0,s.sentPull);}
     public static HandAnchor anchor(ServerPlayer p){var s=SESSIONS.get(p.getUUID());return s!=null&&s.stack==p.getMainHandItem()?s.anchor:null;}

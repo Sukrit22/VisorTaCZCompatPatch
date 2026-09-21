@@ -22,7 +22,7 @@ public final class ControlsScreen extends Screen {
         addRenderableWidget(Button.builder(Component.literal("Reload calibration"),b->{
             b.setMessage(Component.literal(CompatSettings.reloadCalibration()?"Reloaded":"Reload failed"));
         }).bounds(x+132,y+48,128,20).build());
-        addRenderableWidget(Button.builder(Component.literal("Handling: "+(CompatSettings.physical()?"PHYSICAL":"BUTTONS")),b->{
+        addRenderableWidget(Button.builder(Component.literal("Handling: "+CompatSettings.handlingLabel()),b->{
             CompatSettings.setPhysical(!CompatSettings.physical());rebuildWidgets();
         }).bounds(x,y+72,260,20).build());
         addRenderableWidget(Button.builder(Component.literal("Auto ADS: "+CompatSettings.autoAds()),b->{

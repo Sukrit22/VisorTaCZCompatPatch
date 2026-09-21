@@ -71,20 +71,22 @@ public final class PhysicalModel implements AutoCloseable {
         if(!PhysicalClient.active()&&!calibrating)return;
         var stack=Minecraft.getInstance().player.getMainHandItem();String key=Profiles.key(stack);
         var c=CalibrationStore.render(key);var local=Handling.local(gun,PhysicalClient.anchor()!=null?pose.getMainHand().getPosition():pose.getOffhand().getPosition());
+        if(profile.physical()){
         guide(matrices,Handling.magazine(profile,c),c.zones().magazine(),key,"magazine",local);
         var rack=Handling.rack(profile,c,dev.visorcompat.tacz.physical.BoltState.open(stack));
         if(profile.pump()&&dev.visorcompat.tacz.server.ServerPump.open(stack))rack.add(0,0,dev.visorcompat.tacz.physical.PumpCycle.TRAVEL);
         if(profile.bolt()&&dev.visorcompat.tacz.physical.ActionState.lifted(stack))rack.add(0,.035f,0);
         guide(matrices,rack,c.zones().rack(),key,"rack",local);
         if(!profile.manualAction())guide(matrices,Handling.release(profile,c),c.zones().release(),key,"release",local);
+        }
         var port=dev.visorcompat.tacz.physical.JamProfile.of(profile,c).port();
         guide(matrices,port,profile.bolt()?new ZoneSizes.Box(.025f,.025f,.025f):c.zones().port(),key,"port",local);
         if(!profile.pump()){
-            if(profile.selector())guide(matrices,Handling.selector(profile,c),c.zones().selector(),key,"selector",local);
+            if(profile.physical()&&profile.selector())guide(matrices,Handling.selector(profile,c),c.zones().selector(),key,"selector",local);
             guide(matrices,Handling.support(profile,c),c.zones().support(),key,"support",local);
         }
         Vector3f forward=pose.getHmd().getRotation().transformDirection(new Vector3f(0,0,-1));
-        if(profile.pump()||profile.cylinder()||PhysicalClient.phase()==Phase.NO_MAG||calibrating){
+        if(profile.physical()&&(profile.pump()||profile.cylinder()||PhysicalClient.phase()==Phase.NO_MAG||calibrating)){
             var flat=new Vector3f(forward.x,0,forward.z);if(flat.lengthSquared()<.001f)flat.set(0,0,-1);else flat.normalize();
             var pouch=Handling.pouch(pose.getHmd().getPosition(),forward,gun.worldScale(),c);
             var worldGun=new Matrix4f().translation(gun.hand()).rotate(gun.rotation()).scale(gun.worldScale());

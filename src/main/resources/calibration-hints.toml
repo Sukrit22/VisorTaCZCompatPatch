@@ -1066,3 +1066,1443 @@ hint = "Touch the blue region with the empty offhand for two-hand ADS. No Grab r
 title = "Casing size - PINK preview"
 color = "#FF88DD"
 hint = "Resize the casing preview at the port. Applies to jam cases, ejected rounds and shell preview; multiplies gun size. Save keeps the value per gun."
+
+["tacz:aa12".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Move the gun until the firing hand sits naturally on its grip. Saved offsets remain explicit."
+
+["tacz:aa12".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the model to match the firing controller. Check the muzzle against a nearby target."
+
+["tacz:aa12".scale]
+title = "Uniform gun scale"
+color = "#FFFFFF"
+hint = "Scale the whole gun uniformly. Muzzle and model use the same scale; save before testing."
+
+["tacz:aa12".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview. Applies to ejected rounds and cases; some launcher ammo has no shell model."
+
+["tacz:aa12".muzzle]
+title = "Bullet origin"
+color = "#FF4444"
+hint = "Align the origin marker with the front of the muzzle. Check impact alignment at close range after saving."
+
+["tacz:aa12".support]
+title = "Support aim - BLUE"
+color = "#5599FF"
+hint = "Place the empty offhand inside the blue region to support aim. Button-only guns do not require Grab."
+
+["tacz:aa12".sight]
+title = "ADS alignment - PURPLE"
+color = "#BB55FF"
+hint = "Align the purple sight region with the eye position when naturally looking along the sights. Eye alignment activates ADS; two-hand ADS also needs support."
+
+["tacz:aa12".port]
+title = "Ejection position - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. This adjusts cosmetic ejection placement, not a physical grab on button-only guns."
+
+["tacz:ai_awp".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Move the gun until the firing hand sits naturally on its grip. Saved offsets remain explicit."
+
+["tacz:ai_awp".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the model to match the firing controller. Check the muzzle against a nearby target."
+
+["tacz:ai_awp".scale]
+title = "Uniform gun scale"
+color = "#FFFFFF"
+hint = "Scale the whole gun uniformly. Muzzle and model use the same scale; save before testing."
+
+["tacz:ai_awp".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview. Applies to ejected rounds and cases; some launcher ammo has no shell model."
+
+["tacz:ai_awp".muzzle]
+title = "Bullet origin"
+color = "#FF4444"
+hint = "Align the origin marker with the front of the muzzle. Check impact alignment at close range after saving."
+
+["tacz:ai_awp".support]
+title = "Support aim - BLUE"
+color = "#5599FF"
+hint = "Place the empty offhand inside the blue region to support aim. Button-only guns do not require Grab."
+
+["tacz:ai_awp".sight]
+title = "ADS alignment - PURPLE"
+color = "#BB55FF"
+hint = "Align the purple sight region with the eye position when naturally looking along the sights. Eye alignment activates ADS; two-hand ADS also needs support."
+
+["tacz:ai_awp".port]
+title = "Ejection position - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. This adjusts cosmetic ejection placement, not a physical grab on button-only guns."
+
+["tacz:ak47".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Move the gun until the firing hand sits naturally on its grip. Saved offsets remain explicit."
+
+["tacz:ak47".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the model to match the firing controller. Check the muzzle against a nearby target."
+
+["tacz:ak47".scale]
+title = "Uniform gun scale"
+color = "#FFFFFF"
+hint = "Scale the whole gun uniformly. Muzzle and model use the same scale; save before testing."
+
+["tacz:ak47".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview. Applies to ejected rounds and cases; some launcher ammo has no shell model."
+
+["tacz:ak47".muzzle]
+title = "Bullet origin"
+color = "#FF4444"
+hint = "Align the origin marker with the front of the muzzle. Check impact alignment at close range after saving."
+
+["tacz:ak47".support]
+title = "Support aim - BLUE"
+color = "#5599FF"
+hint = "Place the empty offhand inside the blue region to support aim. Button-only guns do not require Grab."
+
+["tacz:ak47".sight]
+title = "ADS alignment - PURPLE"
+color = "#BB55FF"
+hint = "Align the purple sight region with the eye position when naturally looking along the sights. Eye alignment activates ADS; two-hand ADS also needs support."
+
+["tacz:ak47".port]
+title = "Ejection position - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. This adjusts cosmetic ejection placement, not a physical grab on button-only guns."
+
+["tacz:aug".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Move the gun until the firing hand sits naturally on its grip. Saved offsets remain explicit."
+
+["tacz:aug".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the model to match the firing controller. Check the muzzle against a nearby target."
+
+["tacz:aug".scale]
+title = "Uniform gun scale"
+color = "#FFFFFF"
+hint = "Scale the whole gun uniformly. Muzzle and model use the same scale; save before testing."
+
+["tacz:aug".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview. Applies to ejected rounds and cases; some launcher ammo has no shell model."
+
+["tacz:aug".muzzle]
+title = "Bullet origin"
+color = "#FF4444"
+hint = "Align the origin marker with the front of the muzzle. Check impact alignment at close range after saving."
+
+["tacz:aug".support]
+title = "Support aim - BLUE"
+color = "#5599FF"
+hint = "Place the empty offhand inside the blue region to support aim. Button-only guns do not require Grab."
+
+["tacz:aug".sight]
+title = "ADS alignment - PURPLE"
+color = "#BB55FF"
+hint = "Align the purple sight region with the eye position when naturally looking along the sights. Eye alignment activates ADS; two-hand ADS also needs support."
+
+["tacz:aug".port]
+title = "Ejection position - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. This adjusts cosmetic ejection placement, not a physical grab on button-only guns."
+
+["tacz:db_long".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Move the gun until the firing hand sits naturally on its grip. Saved offsets remain explicit."
+
+["tacz:db_long".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the model to match the firing controller. Check the muzzle against a nearby target."
+
+["tacz:db_long".scale]
+title = "Uniform gun scale"
+color = "#FFFFFF"
+hint = "Scale the whole gun uniformly. Muzzle and model use the same scale; save before testing."
+
+["tacz:db_long".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview. Applies to ejected rounds and cases; some launcher ammo has no shell model."
+
+["tacz:db_long".muzzle]
+title = "Bullet origin"
+color = "#FF4444"
+hint = "Align the origin marker with the front of the muzzle. Check impact alignment at close range after saving."
+
+["tacz:db_long".support]
+title = "Support aim - BLUE"
+color = "#5599FF"
+hint = "Place the empty offhand inside the blue region to support aim. Button-only guns do not require Grab."
+
+["tacz:db_long".sight]
+title = "ADS alignment - PURPLE"
+color = "#BB55FF"
+hint = "Align the purple sight region with the eye position when naturally looking along the sights. Eye alignment activates ADS; two-hand ADS also needs support."
+
+["tacz:db_long".port]
+title = "Ejection position - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. This adjusts cosmetic ejection placement, not a physical grab on button-only guns."
+
+["tacz:db_short".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Move the gun until the firing hand sits naturally on its grip. Saved offsets remain explicit."
+
+["tacz:db_short".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the model to match the firing controller. Check the muzzle against a nearby target."
+
+["tacz:db_short".scale]
+title = "Uniform gun scale"
+color = "#FFFFFF"
+hint = "Scale the whole gun uniformly. Muzzle and model use the same scale; save before testing."
+
+["tacz:db_short".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview. Applies to ejected rounds and cases; some launcher ammo has no shell model."
+
+["tacz:db_short".muzzle]
+title = "Bullet origin"
+color = "#FF4444"
+hint = "Align the origin marker with the front of the muzzle. Check impact alignment at close range after saving."
+
+["tacz:db_short".support]
+title = "Support aim - BLUE"
+color = "#5599FF"
+hint = "Place the empty offhand inside the blue region to support aim. Button-only guns do not require Grab."
+
+["tacz:db_short".sight]
+title = "ADS alignment - PURPLE"
+color = "#BB55FF"
+hint = "Align the purple sight region with the eye position when naturally looking along the sights. Eye alignment activates ADS; two-hand ADS also needs support."
+
+["tacz:db_short".port]
+title = "Ejection position - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. This adjusts cosmetic ejection placement, not a physical grab on button-only guns."
+
+["tacz:fn_evolys".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Move the gun until the firing hand sits naturally on its grip. Saved offsets remain explicit."
+
+["tacz:fn_evolys".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the model to match the firing controller. Check the muzzle against a nearby target."
+
+["tacz:fn_evolys".scale]
+title = "Uniform gun scale"
+color = "#FFFFFF"
+hint = "Scale the whole gun uniformly. Muzzle and model use the same scale; save before testing."
+
+["tacz:fn_evolys".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview. Applies to ejected rounds and cases; some launcher ammo has no shell model."
+
+["tacz:fn_evolys".muzzle]
+title = "Bullet origin"
+color = "#FF4444"
+hint = "Align the origin marker with the front of the muzzle. Check impact alignment at close range after saving."
+
+["tacz:fn_evolys".support]
+title = "Support aim - BLUE"
+color = "#5599FF"
+hint = "Place the empty offhand inside the blue region to support aim. Button-only guns do not require Grab."
+
+["tacz:fn_evolys".sight]
+title = "ADS alignment - PURPLE"
+color = "#BB55FF"
+hint = "Align the purple sight region with the eye position when naturally looking along the sights. Eye alignment activates ADS; two-hand ADS also needs support."
+
+["tacz:fn_evolys".port]
+title = "Ejection position - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. This adjusts cosmetic ejection placement, not a physical grab on button-only guns."
+
+["tacz:fn_fal".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Move the gun until the firing hand sits naturally on its grip. Saved offsets remain explicit."
+
+["tacz:fn_fal".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the model to match the firing controller. Check the muzzle against a nearby target."
+
+["tacz:fn_fal".scale]
+title = "Uniform gun scale"
+color = "#FFFFFF"
+hint = "Scale the whole gun uniformly. Muzzle and model use the same scale; save before testing."
+
+["tacz:fn_fal".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview. Applies to ejected rounds and cases; some launcher ammo has no shell model."
+
+["tacz:fn_fal".muzzle]
+title = "Bullet origin"
+color = "#FF4444"
+hint = "Align the origin marker with the front of the muzzle. Check impact alignment at close range after saving."
+
+["tacz:fn_fal".support]
+title = "Support aim - BLUE"
+color = "#5599FF"
+hint = "Place the empty offhand inside the blue region to support aim. Button-only guns do not require Grab."
+
+["tacz:fn_fal".sight]
+title = "ADS alignment - PURPLE"
+color = "#BB55FF"
+hint = "Align the purple sight region with the eye position when naturally looking along the sights. Eye alignment activates ADS; two-hand ADS also needs support."
+
+["tacz:fn_fal".port]
+title = "Ejection position - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. This adjusts cosmetic ejection placement, not a physical grab on button-only guns."
+
+["tacz:g36k".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Move the gun until the firing hand sits naturally on its grip. Saved offsets remain explicit."
+
+["tacz:g36k".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the model to match the firing controller. Check the muzzle against a nearby target."
+
+["tacz:g36k".scale]
+title = "Uniform gun scale"
+color = "#FFFFFF"
+hint = "Scale the whole gun uniformly. Muzzle and model use the same scale; save before testing."
+
+["tacz:g36k".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview. Applies to ejected rounds and cases; some launcher ammo has no shell model."
+
+["tacz:g36k".muzzle]
+title = "Bullet origin"
+color = "#FF4444"
+hint = "Align the origin marker with the front of the muzzle. Check impact alignment at close range after saving."
+
+["tacz:g36k".support]
+title = "Support aim - BLUE"
+color = "#5599FF"
+hint = "Place the empty offhand inside the blue region to support aim. Button-only guns do not require Grab."
+
+["tacz:g36k".sight]
+title = "ADS alignment - PURPLE"
+color = "#BB55FF"
+hint = "Align the purple sight region with the eye position when naturally looking along the sights. Eye alignment activates ADS; two-hand ADS also needs support."
+
+["tacz:g36k".port]
+title = "Ejection position - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. This adjusts cosmetic ejection placement, not a physical grab on button-only guns."
+
+["tacz:hk416d".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Move the gun until the firing hand sits naturally on its grip. Saved offsets remain explicit."
+
+["tacz:hk416d".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the model to match the firing controller. Check the muzzle against a nearby target."
+
+["tacz:hk416d".scale]
+title = "Uniform gun scale"
+color = "#FFFFFF"
+hint = "Scale the whole gun uniformly. Muzzle and model use the same scale; save before testing."
+
+["tacz:hk416d".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview. Applies to ejected rounds and cases; some launcher ammo has no shell model."
+
+["tacz:hk416d".muzzle]
+title = "Bullet origin"
+color = "#FF4444"
+hint = "Align the origin marker with the front of the muzzle. Check impact alignment at close range after saving."
+
+["tacz:hk416d".support]
+title = "Support aim - BLUE"
+color = "#5599FF"
+hint = "Place the empty offhand inside the blue region to support aim. Button-only guns do not require Grab."
+
+["tacz:hk416d".sight]
+title = "ADS alignment - PURPLE"
+color = "#BB55FF"
+hint = "Align the purple sight region with the eye position when naturally looking along the sights. Eye alignment activates ADS; two-hand ADS also needs support."
+
+["tacz:hk416d".port]
+title = "Ejection position - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. This adjusts cosmetic ejection placement, not a physical grab on button-only guns."
+
+["tacz:hk_g3".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Move the gun until the firing hand sits naturally on its grip. Saved offsets remain explicit."
+
+["tacz:hk_g3".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the model to match the firing controller. Check the muzzle against a nearby target."
+
+["tacz:hk_g3".scale]
+title = "Uniform gun scale"
+color = "#FFFFFF"
+hint = "Scale the whole gun uniformly. Muzzle and model use the same scale; save before testing."
+
+["tacz:hk_g3".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview. Applies to ejected rounds and cases; some launcher ammo has no shell model."
+
+["tacz:hk_g3".muzzle]
+title = "Bullet origin"
+color = "#FF4444"
+hint = "Align the origin marker with the front of the muzzle. Check impact alignment at close range after saving."
+
+["tacz:hk_g3".support]
+title = "Support aim - BLUE"
+color = "#5599FF"
+hint = "Place the empty offhand inside the blue region to support aim. Button-only guns do not require Grab."
+
+["tacz:hk_g3".sight]
+title = "ADS alignment - PURPLE"
+color = "#BB55FF"
+hint = "Align the purple sight region with the eye position when naturally looking along the sights. Eye alignment activates ADS; two-hand ADS also needs support."
+
+["tacz:hk_g3".port]
+title = "Ejection position - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. This adjusts cosmetic ejection placement, not a physical grab on button-only guns."
+
+["tacz:kar98".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Move the gun until the firing hand sits naturally on its grip. Saved offsets remain explicit."
+
+["tacz:kar98".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the model to match the firing controller. Check the muzzle against a nearby target."
+
+["tacz:kar98".scale]
+title = "Uniform gun scale"
+color = "#FFFFFF"
+hint = "Scale the whole gun uniformly. Muzzle and model use the same scale; save before testing."
+
+["tacz:kar98".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview. Applies to ejected rounds and cases; some launcher ammo has no shell model."
+
+["tacz:kar98".muzzle]
+title = "Bullet origin"
+color = "#FF4444"
+hint = "Align the origin marker with the front of the muzzle. Check impact alignment at close range after saving."
+
+["tacz:kar98".support]
+title = "Support aim - BLUE"
+color = "#5599FF"
+hint = "Place the empty offhand inside the blue region to support aim. Button-only guns do not require Grab."
+
+["tacz:kar98".sight]
+title = "ADS alignment - PURPLE"
+color = "#BB55FF"
+hint = "Align the purple sight region with the eye position when naturally looking along the sights. Eye alignment activates ADS; two-hand ADS also needs support."
+
+["tacz:kar98".port]
+title = "Ejection position - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. This adjusts cosmetic ejection placement, not a physical grab on button-only guns."
+
+["tacz:m1014".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Move the gun until the firing hand sits naturally on its grip. Saved offsets remain explicit."
+
+["tacz:m1014".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the model to match the firing controller. Check the muzzle against a nearby target."
+
+["tacz:m1014".scale]
+title = "Uniform gun scale"
+color = "#FFFFFF"
+hint = "Scale the whole gun uniformly. Muzzle and model use the same scale; save before testing."
+
+["tacz:m1014".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview. Applies to ejected rounds and cases; some launcher ammo has no shell model."
+
+["tacz:m1014".muzzle]
+title = "Bullet origin"
+color = "#FF4444"
+hint = "Align the origin marker with the front of the muzzle. Check impact alignment at close range after saving."
+
+["tacz:m1014".support]
+title = "Support aim - BLUE"
+color = "#5599FF"
+hint = "Place the empty offhand inside the blue region to support aim. Button-only guns do not require Grab."
+
+["tacz:m1014".sight]
+title = "ADS alignment - PURPLE"
+color = "#BB55FF"
+hint = "Align the purple sight region with the eye position when naturally looking along the sights. Eye alignment activates ADS; two-hand ADS also needs support."
+
+["tacz:m1014".port]
+title = "Ejection position - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. This adjusts cosmetic ejection placement, not a physical grab on button-only guns."
+
+["tacz:m107".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Move the gun until the firing hand sits naturally on its grip. Saved offsets remain explicit."
+
+["tacz:m107".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the model to match the firing controller. Check the muzzle against a nearby target."
+
+["tacz:m107".scale]
+title = "Uniform gun scale"
+color = "#FFFFFF"
+hint = "Scale the whole gun uniformly. Muzzle and model use the same scale; save before testing."
+
+["tacz:m107".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview. Applies to ejected rounds and cases; some launcher ammo has no shell model."
+
+["tacz:m107".muzzle]
+title = "Bullet origin"
+color = "#FF4444"
+hint = "Align the origin marker with the front of the muzzle. Check impact alignment at close range after saving."
+
+["tacz:m107".support]
+title = "Support aim - BLUE"
+color = "#5599FF"
+hint = "Place the empty offhand inside the blue region to support aim. Button-only guns do not require Grab."
+
+["tacz:m107".sight]
+title = "ADS alignment - PURPLE"
+color = "#BB55FF"
+hint = "Align the purple sight region with the eye position when naturally looking along the sights. Eye alignment activates ADS; two-hand ADS also needs support."
+
+["tacz:m107".port]
+title = "Ejection position - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. This adjusts cosmetic ejection placement, not a physical grab on button-only guns."
+
+["tacz:m16a1".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Move the gun until the firing hand sits naturally on its grip. Saved offsets remain explicit."
+
+["tacz:m16a1".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the model to match the firing controller. Check the muzzle against a nearby target."
+
+["tacz:m16a1".scale]
+title = "Uniform gun scale"
+color = "#FFFFFF"
+hint = "Scale the whole gun uniformly. Muzzle and model use the same scale; save before testing."
+
+["tacz:m16a1".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview. Applies to ejected rounds and cases; some launcher ammo has no shell model."
+
+["tacz:m16a1".muzzle]
+title = "Bullet origin"
+color = "#FF4444"
+hint = "Align the origin marker with the front of the muzzle. Check impact alignment at close range after saving."
+
+["tacz:m16a1".support]
+title = "Support aim - BLUE"
+color = "#5599FF"
+hint = "Place the empty offhand inside the blue region to support aim. Button-only guns do not require Grab."
+
+["tacz:m16a1".sight]
+title = "ADS alignment - PURPLE"
+color = "#BB55FF"
+hint = "Align the purple sight region with the eye position when naturally looking along the sights. Eye alignment activates ADS; two-hand ADS also needs support."
+
+["tacz:m16a1".port]
+title = "Ejection position - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. This adjusts cosmetic ejection placement, not a physical grab on button-only guns."
+
+["tacz:m16a4".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Move the gun until the firing hand sits naturally on its grip. Saved offsets remain explicit."
+
+["tacz:m16a4".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the model to match the firing controller. Check the muzzle against a nearby target."
+
+["tacz:m16a4".scale]
+title = "Uniform gun scale"
+color = "#FFFFFF"
+hint = "Scale the whole gun uniformly. Muzzle and model use the same scale; save before testing."
+
+["tacz:m16a4".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview. Applies to ejected rounds and cases; some launcher ammo has no shell model."
+
+["tacz:m16a4".muzzle]
+title = "Bullet origin"
+color = "#FF4444"
+hint = "Align the origin marker with the front of the muzzle. Check impact alignment at close range after saving."
+
+["tacz:m16a4".support]
+title = "Support aim - BLUE"
+color = "#5599FF"
+hint = "Place the empty offhand inside the blue region to support aim. Button-only guns do not require Grab."
+
+["tacz:m16a4".sight]
+title = "ADS alignment - PURPLE"
+color = "#BB55FF"
+hint = "Align the purple sight region with the eye position when naturally looking along the sights. Eye alignment activates ADS; two-hand ADS also needs support."
+
+["tacz:m16a4".port]
+title = "Ejection position - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. This adjusts cosmetic ejection placement, not a physical grab on button-only guns."
+
+["tacz:m249".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Move the gun until the firing hand sits naturally on its grip. Saved offsets remain explicit."
+
+["tacz:m249".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the model to match the firing controller. Check the muzzle against a nearby target."
+
+["tacz:m249".scale]
+title = "Uniform gun scale"
+color = "#FFFFFF"
+hint = "Scale the whole gun uniformly. Muzzle and model use the same scale; save before testing."
+
+["tacz:m249".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview. Applies to ejected rounds and cases; some launcher ammo has no shell model."
+
+["tacz:m249".muzzle]
+title = "Bullet origin"
+color = "#FF4444"
+hint = "Align the origin marker with the front of the muzzle. Check impact alignment at close range after saving."
+
+["tacz:m249".support]
+title = "Support aim - BLUE"
+color = "#5599FF"
+hint = "Place the empty offhand inside the blue region to support aim. Button-only guns do not require Grab."
+
+["tacz:m249".sight]
+title = "ADS alignment - PURPLE"
+color = "#BB55FF"
+hint = "Align the purple sight region with the eye position when naturally looking along the sights. Eye alignment activates ADS; two-hand ADS also needs support."
+
+["tacz:m249".port]
+title = "Ejection position - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. This adjusts cosmetic ejection placement, not a physical grab on button-only guns."
+
+["tacz:m320".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Move the gun until the firing hand sits naturally on its grip. Saved offsets remain explicit."
+
+["tacz:m320".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the model to match the firing controller. Check the muzzle against a nearby target."
+
+["tacz:m320".scale]
+title = "Uniform gun scale"
+color = "#FFFFFF"
+hint = "Scale the whole gun uniformly. Muzzle and model use the same scale; save before testing."
+
+["tacz:m320".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview. Applies to ejected rounds and cases; some launcher ammo has no shell model."
+
+["tacz:m320".muzzle]
+title = "Bullet origin"
+color = "#FF4444"
+hint = "Align the origin marker with the front of the muzzle. Check impact alignment at close range after saving."
+
+["tacz:m320".support]
+title = "Support aim - BLUE"
+color = "#5599FF"
+hint = "Place the empty offhand inside the blue region to support aim. Button-only guns do not require Grab."
+
+["tacz:m320".sight]
+title = "ADS alignment - PURPLE"
+color = "#BB55FF"
+hint = "Align the purple sight region with the eye position when naturally looking along the sights. Eye alignment activates ADS; two-hand ADS also needs support."
+
+["tacz:m320".port]
+title = "Ejection position - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. This adjusts cosmetic ejection placement, not a physical grab on button-only guns."
+
+["tacz:m95".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Move the gun until the firing hand sits naturally on its grip. Saved offsets remain explicit."
+
+["tacz:m95".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the model to match the firing controller. Check the muzzle against a nearby target."
+
+["tacz:m95".scale]
+title = "Uniform gun scale"
+color = "#FFFFFF"
+hint = "Scale the whole gun uniformly. Muzzle and model use the same scale; save before testing."
+
+["tacz:m95".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview. Applies to ejected rounds and cases; some launcher ammo has no shell model."
+
+["tacz:m95".muzzle]
+title = "Bullet origin"
+color = "#FF4444"
+hint = "Align the origin marker with the front of the muzzle. Check impact alignment at close range after saving."
+
+["tacz:m95".support]
+title = "Support aim - BLUE"
+color = "#5599FF"
+hint = "Place the empty offhand inside the blue region to support aim. Button-only guns do not require Grab."
+
+["tacz:m95".sight]
+title = "ADS alignment - PURPLE"
+color = "#BB55FF"
+hint = "Align the purple sight region with the eye position when naturally looking along the sights. Eye alignment activates ADS; two-hand ADS also needs support."
+
+["tacz:m95".port]
+title = "Ejection position - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. This adjusts cosmetic ejection placement, not a physical grab on button-only guns."
+
+["tacz:minigun".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Move the gun until the firing hand sits naturally on its grip. Saved offsets remain explicit."
+
+["tacz:minigun".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the model to match the firing controller. Check the muzzle against a nearby target."
+
+["tacz:minigun".scale]
+title = "Uniform gun scale"
+color = "#FFFFFF"
+hint = "Scale the whole gun uniformly. Muzzle and model use the same scale; save before testing."
+
+["tacz:minigun".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview. Applies to ejected rounds and cases; some launcher ammo has no shell model."
+
+["tacz:minigun".muzzle]
+title = "Bullet origin"
+color = "#FF4444"
+hint = "Align the origin marker with the front of the muzzle. Check impact alignment at close range after saving."
+
+["tacz:minigun".support]
+title = "Support aim - BLUE"
+color = "#5599FF"
+hint = "Place the empty offhand inside the blue region to support aim. Button-only guns do not require Grab."
+
+["tacz:minigun".sight]
+title = "ADS alignment - PURPLE"
+color = "#BB55FF"
+hint = "Align the purple sight region with the eye position when naturally looking along the sights. Eye alignment activates ADS; two-hand ADS also needs support."
+
+["tacz:minigun".port]
+title = "Ejection position - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. This adjusts cosmetic ejection placement, not a physical grab on button-only guns."
+
+["tacz:mk14".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Move the gun until the firing hand sits naturally on its grip. Saved offsets remain explicit."
+
+["tacz:mk14".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the model to match the firing controller. Check the muzzle against a nearby target."
+
+["tacz:mk14".scale]
+title = "Uniform gun scale"
+color = "#FFFFFF"
+hint = "Scale the whole gun uniformly. Muzzle and model use the same scale; save before testing."
+
+["tacz:mk14".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview. Applies to ejected rounds and cases; some launcher ammo has no shell model."
+
+["tacz:mk14".muzzle]
+title = "Bullet origin"
+color = "#FF4444"
+hint = "Align the origin marker with the front of the muzzle. Check impact alignment at close range after saving."
+
+["tacz:mk14".support]
+title = "Support aim - BLUE"
+color = "#5599FF"
+hint = "Place the empty offhand inside the blue region to support aim. Button-only guns do not require Grab."
+
+["tacz:mk14".sight]
+title = "ADS alignment - PURPLE"
+color = "#BB55FF"
+hint = "Align the purple sight region with the eye position when naturally looking along the sights. Eye alignment activates ADS; two-hand ADS also needs support."
+
+["tacz:mk14".port]
+title = "Ejection position - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. This adjusts cosmetic ejection placement, not a physical grab on button-only guns."
+
+["tacz:p90".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Move the gun until the firing hand sits naturally on its grip. Saved offsets remain explicit."
+
+["tacz:p90".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the model to match the firing controller. Check the muzzle against a nearby target."
+
+["tacz:p90".scale]
+title = "Uniform gun scale"
+color = "#FFFFFF"
+hint = "Scale the whole gun uniformly. Muzzle and model use the same scale; save before testing."
+
+["tacz:p90".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview. Applies to ejected rounds and cases; some launcher ammo has no shell model."
+
+["tacz:p90".muzzle]
+title = "Bullet origin"
+color = "#FF4444"
+hint = "Align the origin marker with the front of the muzzle. Check impact alignment at close range after saving."
+
+["tacz:p90".support]
+title = "Support aim - BLUE"
+color = "#5599FF"
+hint = "Place the empty offhand inside the blue region to support aim. Button-only guns do not require Grab."
+
+["tacz:p90".sight]
+title = "ADS alignment - PURPLE"
+color = "#BB55FF"
+hint = "Align the purple sight region with the eye position when naturally looking along the sights. Eye alignment activates ADS; two-hand ADS also needs support."
+
+["tacz:p90".port]
+title = "Ejection position - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. This adjusts cosmetic ejection placement, not a physical grab on button-only guns."
+
+["tacz:qbz_191".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Move the gun until the firing hand sits naturally on its grip. Saved offsets remain explicit."
+
+["tacz:qbz_191".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the model to match the firing controller. Check the muzzle against a nearby target."
+
+["tacz:qbz_191".scale]
+title = "Uniform gun scale"
+color = "#FFFFFF"
+hint = "Scale the whole gun uniformly. Muzzle and model use the same scale; save before testing."
+
+["tacz:qbz_191".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview. Applies to ejected rounds and cases; some launcher ammo has no shell model."
+
+["tacz:qbz_191".muzzle]
+title = "Bullet origin"
+color = "#FF4444"
+hint = "Align the origin marker with the front of the muzzle. Check impact alignment at close range after saving."
+
+["tacz:qbz_191".support]
+title = "Support aim - BLUE"
+color = "#5599FF"
+hint = "Place the empty offhand inside the blue region to support aim. Button-only guns do not require Grab."
+
+["tacz:qbz_191".sight]
+title = "ADS alignment - PURPLE"
+color = "#BB55FF"
+hint = "Align the purple sight region with the eye position when naturally looking along the sights. Eye alignment activates ADS; two-hand ADS also needs support."
+
+["tacz:qbz_191".port]
+title = "Ejection position - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. This adjusts cosmetic ejection placement, not a physical grab on button-only guns."
+
+["tacz:qbz_95".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Move the gun until the firing hand sits naturally on its grip. Saved offsets remain explicit."
+
+["tacz:qbz_95".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the model to match the firing controller. Check the muzzle against a nearby target."
+
+["tacz:qbz_95".scale]
+title = "Uniform gun scale"
+color = "#FFFFFF"
+hint = "Scale the whole gun uniformly. Muzzle and model use the same scale; save before testing."
+
+["tacz:qbz_95".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview. Applies to ejected rounds and cases; some launcher ammo has no shell model."
+
+["tacz:qbz_95".muzzle]
+title = "Bullet origin"
+color = "#FF4444"
+hint = "Align the origin marker with the front of the muzzle. Check impact alignment at close range after saving."
+
+["tacz:qbz_95".support]
+title = "Support aim - BLUE"
+color = "#5599FF"
+hint = "Place the empty offhand inside the blue region to support aim. Button-only guns do not require Grab."
+
+["tacz:qbz_95".sight]
+title = "ADS alignment - PURPLE"
+color = "#BB55FF"
+hint = "Align the purple sight region with the eye position when naturally looking along the sights. Eye alignment activates ADS; two-hand ADS also needs support."
+
+["tacz:qbz_95".port]
+title = "Ejection position - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. This adjusts cosmetic ejection placement, not a physical grab on button-only guns."
+
+["tacz:rpg7".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Move the gun until the firing hand sits naturally on its grip. Saved offsets remain explicit."
+
+["tacz:rpg7".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the model to match the firing controller. Check the muzzle against a nearby target."
+
+["tacz:rpg7".scale]
+title = "Uniform gun scale"
+color = "#FFFFFF"
+hint = "Scale the whole gun uniformly. Muzzle and model use the same scale; save before testing."
+
+["tacz:rpg7".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview. Applies to ejected rounds and cases; some launcher ammo has no shell model."
+
+["tacz:rpg7".muzzle]
+title = "Bullet origin"
+color = "#FF4444"
+hint = "Align the origin marker with the front of the muzzle. Check impact alignment at close range after saving."
+
+["tacz:rpg7".support]
+title = "Support aim - BLUE"
+color = "#5599FF"
+hint = "Place the empty offhand inside the blue region to support aim. Button-only guns do not require Grab."
+
+["tacz:rpg7".sight]
+title = "ADS alignment - PURPLE"
+color = "#BB55FF"
+hint = "Align the purple sight region with the eye position when naturally looking along the sights. Eye alignment activates ADS; two-hand ADS also needs support."
+
+["tacz:rpg7".port]
+title = "Ejection position - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. This adjusts cosmetic ejection placement, not a physical grab on button-only guns."
+
+["tacz:rpk".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Move the gun until the firing hand sits naturally on its grip. Saved offsets remain explicit."
+
+["tacz:rpk".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the model to match the firing controller. Check the muzzle against a nearby target."
+
+["tacz:rpk".scale]
+title = "Uniform gun scale"
+color = "#FFFFFF"
+hint = "Scale the whole gun uniformly. Muzzle and model use the same scale; save before testing."
+
+["tacz:rpk".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview. Applies to ejected rounds and cases; some launcher ammo has no shell model."
+
+["tacz:rpk".muzzle]
+title = "Bullet origin"
+color = "#FF4444"
+hint = "Align the origin marker with the front of the muzzle. Check impact alignment at close range after saving."
+
+["tacz:rpk".support]
+title = "Support aim - BLUE"
+color = "#5599FF"
+hint = "Place the empty offhand inside the blue region to support aim. Button-only guns do not require Grab."
+
+["tacz:rpk".sight]
+title = "ADS alignment - PURPLE"
+color = "#BB55FF"
+hint = "Align the purple sight region with the eye position when naturally looking along the sights. Eye alignment activates ADS; two-hand ADS also needs support."
+
+["tacz:rpk".port]
+title = "Ejection position - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. This adjusts cosmetic ejection placement, not a physical grab on button-only guns."
+
+["tacz:scar_h".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Move the gun until the firing hand sits naturally on its grip. Saved offsets remain explicit."
+
+["tacz:scar_h".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the model to match the firing controller. Check the muzzle against a nearby target."
+
+["tacz:scar_h".scale]
+title = "Uniform gun scale"
+color = "#FFFFFF"
+hint = "Scale the whole gun uniformly. Muzzle and model use the same scale; save before testing."
+
+["tacz:scar_h".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview. Applies to ejected rounds and cases; some launcher ammo has no shell model."
+
+["tacz:scar_h".muzzle]
+title = "Bullet origin"
+color = "#FF4444"
+hint = "Align the origin marker with the front of the muzzle. Check impact alignment at close range after saving."
+
+["tacz:scar_h".support]
+title = "Support aim - BLUE"
+color = "#5599FF"
+hint = "Place the empty offhand inside the blue region to support aim. Button-only guns do not require Grab."
+
+["tacz:scar_h".sight]
+title = "ADS alignment - PURPLE"
+color = "#BB55FF"
+hint = "Align the purple sight region with the eye position when naturally looking along the sights. Eye alignment activates ADS; two-hand ADS also needs support."
+
+["tacz:scar_h".port]
+title = "Ejection position - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. This adjusts cosmetic ejection placement, not a physical grab on button-only guns."
+
+["tacz:scar_l".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Move the gun until the firing hand sits naturally on its grip. Saved offsets remain explicit."
+
+["tacz:scar_l".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the model to match the firing controller. Check the muzzle against a nearby target."
+
+["tacz:scar_l".scale]
+title = "Uniform gun scale"
+color = "#FFFFFF"
+hint = "Scale the whole gun uniformly. Muzzle and model use the same scale; save before testing."
+
+["tacz:scar_l".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview. Applies to ejected rounds and cases; some launcher ammo has no shell model."
+
+["tacz:scar_l".muzzle]
+title = "Bullet origin"
+color = "#FF4444"
+hint = "Align the origin marker with the front of the muzzle. Check impact alignment at close range after saving."
+
+["tacz:scar_l".support]
+title = "Support aim - BLUE"
+color = "#5599FF"
+hint = "Place the empty offhand inside the blue region to support aim. Button-only guns do not require Grab."
+
+["tacz:scar_l".sight]
+title = "ADS alignment - PURPLE"
+color = "#BB55FF"
+hint = "Align the purple sight region with the eye position when naturally looking along the sights. Eye alignment activates ADS; two-hand ADS also needs support."
+
+["tacz:scar_l".port]
+title = "Ejection position - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. This adjusts cosmetic ejection placement, not a physical grab on button-only guns."
+
+["tacz:sks_tactical".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Move the gun until the firing hand sits naturally on its grip. Saved offsets remain explicit."
+
+["tacz:sks_tactical".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the model to match the firing controller. Check the muzzle against a nearby target."
+
+["tacz:sks_tactical".scale]
+title = "Uniform gun scale"
+color = "#FFFFFF"
+hint = "Scale the whole gun uniformly. Muzzle and model use the same scale; save before testing."
+
+["tacz:sks_tactical".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview. Applies to ejected rounds and cases; some launcher ammo has no shell model."
+
+["tacz:sks_tactical".muzzle]
+title = "Bullet origin"
+color = "#FF4444"
+hint = "Align the origin marker with the front of the muzzle. Check impact alignment at close range after saving."
+
+["tacz:sks_tactical".support]
+title = "Support aim - BLUE"
+color = "#5599FF"
+hint = "Place the empty offhand inside the blue region to support aim. Button-only guns do not require Grab."
+
+["tacz:sks_tactical".sight]
+title = "ADS alignment - PURPLE"
+color = "#BB55FF"
+hint = "Align the purple sight region with the eye position when naturally looking along the sights. Eye alignment activates ADS; two-hand ADS also needs support."
+
+["tacz:sks_tactical".port]
+title = "Ejection position - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. This adjusts cosmetic ejection placement, not a physical grab on button-only guns."
+
+["tacz:spas_12".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Move the gun until the firing hand sits naturally on its grip. Saved offsets remain explicit."
+
+["tacz:spas_12".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the model to match the firing controller. Check the muzzle against a nearby target."
+
+["tacz:spas_12".scale]
+title = "Uniform gun scale"
+color = "#FFFFFF"
+hint = "Scale the whole gun uniformly. Muzzle and model use the same scale; save before testing."
+
+["tacz:spas_12".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview. Applies to ejected rounds and cases; some launcher ammo has no shell model."
+
+["tacz:spas_12".muzzle]
+title = "Bullet origin"
+color = "#FF4444"
+hint = "Align the origin marker with the front of the muzzle. Check impact alignment at close range after saving."
+
+["tacz:spas_12".support]
+title = "Support aim - BLUE"
+color = "#5599FF"
+hint = "Place the empty offhand inside the blue region to support aim. Button-only guns do not require Grab."
+
+["tacz:spas_12".sight]
+title = "ADS alignment - PURPLE"
+color = "#BB55FF"
+hint = "Align the purple sight region with the eye position when naturally looking along the sights. Eye alignment activates ADS; two-hand ADS also needs support."
+
+["tacz:spas_12".port]
+title = "Ejection position - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. This adjusts cosmetic ejection placement, not a physical grab on button-only guns."
+
+["tacz:spr15hb".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Move the gun until the firing hand sits naturally on its grip. Saved offsets remain explicit."
+
+["tacz:spr15hb".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the model to match the firing controller. Check the muzzle against a nearby target."
+
+["tacz:spr15hb".scale]
+title = "Uniform gun scale"
+color = "#FFFFFF"
+hint = "Scale the whole gun uniformly. Muzzle and model use the same scale; save before testing."
+
+["tacz:spr15hb".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview. Applies to ejected rounds and cases; some launcher ammo has no shell model."
+
+["tacz:spr15hb".muzzle]
+title = "Bullet origin"
+color = "#FF4444"
+hint = "Align the origin marker with the front of the muzzle. Check impact alignment at close range after saving."
+
+["tacz:spr15hb".support]
+title = "Support aim - BLUE"
+color = "#5599FF"
+hint = "Place the empty offhand inside the blue region to support aim. Button-only guns do not require Grab."
+
+["tacz:spr15hb".sight]
+title = "ADS alignment - PURPLE"
+color = "#BB55FF"
+hint = "Align the purple sight region with the eye position when naturally looking along the sights. Eye alignment activates ADS; two-hand ADS also needs support."
+
+["tacz:spr15hb".port]
+title = "Ejection position - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. This adjusts cosmetic ejection placement, not a physical grab on button-only guns."
+
+["tacz:springfield1873".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Move the gun until the firing hand sits naturally on its grip. Saved offsets remain explicit."
+
+["tacz:springfield1873".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the model to match the firing controller. Check the muzzle against a nearby target."
+
+["tacz:springfield1873".scale]
+title = "Uniform gun scale"
+color = "#FFFFFF"
+hint = "Scale the whole gun uniformly. Muzzle and model use the same scale; save before testing."
+
+["tacz:springfield1873".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview. Applies to ejected rounds and cases; some launcher ammo has no shell model."
+
+["tacz:springfield1873".muzzle]
+title = "Bullet origin"
+color = "#FF4444"
+hint = "Align the origin marker with the front of the muzzle. Check impact alignment at close range after saving."
+
+["tacz:springfield1873".support]
+title = "Support aim - BLUE"
+color = "#5599FF"
+hint = "Place the empty offhand inside the blue region to support aim. Button-only guns do not require Grab."
+
+["tacz:springfield1873".sight]
+title = "ADS alignment - PURPLE"
+color = "#BB55FF"
+hint = "Align the purple sight region with the eye position when naturally looking along the sights. Eye alignment activates ADS; two-hand ADS also needs support."
+
+["tacz:springfield1873".port]
+title = "Ejection position - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. This adjusts cosmetic ejection placement, not a physical grab on button-only guns."
+
+["tacz:type_81".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Move the gun until the firing hand sits naturally on its grip. Saved offsets remain explicit."
+
+["tacz:type_81".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the model to match the firing controller. Check the muzzle against a nearby target."
+
+["tacz:type_81".scale]
+title = "Uniform gun scale"
+color = "#FFFFFF"
+hint = "Scale the whole gun uniformly. Muzzle and model use the same scale; save before testing."
+
+["tacz:type_81".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview. Applies to ejected rounds and cases; some launcher ammo has no shell model."
+
+["tacz:type_81".muzzle]
+title = "Bullet origin"
+color = "#FF4444"
+hint = "Align the origin marker with the front of the muzzle. Check impact alignment at close range after saving."
+
+["tacz:type_81".support]
+title = "Support aim - BLUE"
+color = "#5599FF"
+hint = "Place the empty offhand inside the blue region to support aim. Button-only guns do not require Grab."
+
+["tacz:type_81".sight]
+title = "ADS alignment - PURPLE"
+color = "#BB55FF"
+hint = "Align the purple sight region with the eye position when naturally looking along the sights. Eye alignment activates ADS; two-hand ADS also needs support."
+
+["tacz:type_81".port]
+title = "Ejection position - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. This adjusts cosmetic ejection placement, not a physical grab on button-only guns."
+
+["tacz:ump45".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Move the gun until the firing hand sits naturally on its grip. Saved offsets remain explicit."
+
+["tacz:ump45".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the model to match the firing controller. Check the muzzle against a nearby target."
+
+["tacz:ump45".scale]
+title = "Uniform gun scale"
+color = "#FFFFFF"
+hint = "Scale the whole gun uniformly. Muzzle and model use the same scale; save before testing."
+
+["tacz:ump45".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview. Applies to ejected rounds and cases; some launcher ammo has no shell model."
+
+["tacz:ump45".muzzle]
+title = "Bullet origin"
+color = "#FF4444"
+hint = "Align the origin marker with the front of the muzzle. Check impact alignment at close range after saving."
+
+["tacz:ump45".support]
+title = "Support aim - BLUE"
+color = "#5599FF"
+hint = "Place the empty offhand inside the blue region to support aim. Button-only guns do not require Grab."
+
+["tacz:ump45".sight]
+title = "ADS alignment - PURPLE"
+color = "#BB55FF"
+hint = "Align the purple sight region with the eye position when naturally looking along the sights. Eye alignment activates ADS; two-hand ADS also needs support."
+
+["tacz:ump45".port]
+title = "Ejection position - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. This adjusts cosmetic ejection placement, not a physical grab on button-only guns."
+
+["tacz:uzi".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Move the gun until the firing hand sits naturally on its grip. Saved offsets remain explicit."
+
+["tacz:uzi".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the model to match the firing controller. Check the muzzle against a nearby target."
+
+["tacz:uzi".scale]
+title = "Uniform gun scale"
+color = "#FFFFFF"
+hint = "Scale the whole gun uniformly. Muzzle and model use the same scale; save before testing."
+
+["tacz:uzi".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview. Applies to ejected rounds and cases; some launcher ammo has no shell model."
+
+["tacz:uzi".muzzle]
+title = "Bullet origin"
+color = "#FF4444"
+hint = "Align the origin marker with the front of the muzzle. Check impact alignment at close range after saving."
+
+["tacz:uzi".support]
+title = "Support aim - BLUE"
+color = "#5599FF"
+hint = "Place the empty offhand inside the blue region to support aim. Button-only guns do not require Grab."
+
+["tacz:uzi".sight]
+title = "ADS alignment - PURPLE"
+color = "#BB55FF"
+hint = "Align the purple sight region with the eye position when naturally looking along the sights. Eye alignment activates ADS; two-hand ADS also needs support."
+
+["tacz:uzi".port]
+title = "Ejection position - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. This adjusts cosmetic ejection placement, not a physical grab on button-only guns."
+
+["tacz:vector45".grip]
+title = "Grip position"
+color = "#FFFFFF"
+hint = "Move the gun until the firing hand sits naturally on its grip. Saved offsets remain explicit."
+
+["tacz:vector45".rotation]
+title = "Grip rotation"
+color = "#FFFFFF"
+hint = "Rotate the model to match the firing controller. Check the muzzle against a nearby target."
+
+["tacz:vector45".scale]
+title = "Uniform gun scale"
+color = "#FFFFFF"
+hint = "Scale the whole gun uniformly. Muzzle and model use the same scale; save before testing."
+
+["tacz:vector45".casing]
+title = "Casing size - PINK preview"
+color = "#FF88DD"
+hint = "Resize the casing preview. Applies to ejected rounds and cases; some launcher ammo has no shell model."
+
+["tacz:vector45".muzzle]
+title = "Bullet origin"
+color = "#FF4444"
+hint = "Align the origin marker with the front of the muzzle. Check impact alignment at close range after saving."
+
+["tacz:vector45".support]
+title = "Support aim - BLUE"
+color = "#5599FF"
+hint = "Place the empty offhand inside the blue region to support aim. Button-only guns do not require Grab."
+
+["tacz:vector45".sight]
+title = "ADS alignment - PURPLE"
+color = "#BB55FF"
+hint = "Align the purple sight region with the eye position when naturally looking along the sights. Eye alignment activates ADS; two-hand ADS also needs support."
+
+["tacz:vector45".port]
+title = "Ejection position - PINK"
+color = "#FF3388"
+hint = "Place the pink point at the ejection port. This adjusts cosmetic ejection placement, not a physical grab on button-only guns."

@@ -15,6 +15,7 @@ public record WeaponProfile(
     Mechanism mechanism
 ) {
     public enum Mechanism {
+        BUTTON,
         MAGAZINE,
         PUMP,
         BOLT,
@@ -44,6 +45,9 @@ public record WeaponProfile(
             Mechanism.MAGAZINE
         );
     }
+
+    public boolean buttonOnly(){return mechanism==Mechanism.BUTTON;}
+    public boolean physical(){return !buttonOnly();}
 
     public boolean bolt() {
         return mechanism == Mechanism.BOLT;

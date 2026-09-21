@@ -40,7 +40,7 @@ public final class CompatSettings {
                 "AUTO activates in VR and stays inactive in flatscreen, without commands.",
                 "Use /visor_tacz auto to restore AUTO, or /visor_tacz off for comparison testing.")
                 .define("enabled", true);
-        PHYSICAL = builder.comment("Experimental physical magazine / slide handling for Glock, M4A1, M870, M700 and HK MP5A5. Default: button controls.").define("physicalHandling",false);
+        PHYSICAL = builder.comment("Prefer physical handling where implemented; other registered guns use button controls automatically. Default: buttons.").define("physicalHandling",false);
         TRANSFER_ANYTIME=builder.comment("M700: false permits hand transfer only when bolt handling is needed; true permits transfer anytime. Applies to automatic transfer and main-hand Use.").define("m700TransferAnytime",false);
         TWO_HAND_ADS=builder.comment("Require a held support grip for automatic ADS in physical mode; geometric support in button mode.").define("twoHandAds",true);
         AUTO_ADS=builder.comment("Use physical sight alignment to drive TaCZ ADS.").define("autoAds",true);
@@ -74,12 +74,17 @@ public final class CompatSettings {
     public static boolean active() {
         return followsVisor() && VisorAPI.clientState().stateMode().isActive();
     }
+    public static String handlingLabel(){
+        if(!physical())return "BUTTONS";
+        var player=Minecraft.getInstance().player;
+        return player!=null&&Profiles.get(player.getMainHandItem())!=null&&!Profiles.physical(player.getMainHandItem())?"BUTTONS (AUTO)":"PHYSICAL";
+    }
     private static String statusText() {
         if (!followsVisor()) {
             return "TaCZ VR: OFF (manual override). Use /visor_tacz auto to follow Visor again.";
         }
         return "TaCZ VR: AUTO — " + (active()
-                ? "active (Visor VR is active). ADS: " + (AutoAds.aiming()?"aiming":"lowered")
+                ? "active (Visor VR is active). Handling: "+handlingLabel()+". ADS: " + (AutoAds.aiming()?"aiming":"lowered")
                 : "inactive (Visor VR is not active; normal TaCZ behavior).");
     }
     private static void set(boolean enabled) {
@@ -161,7 +166,7 @@ public final class CompatSettings {
                 .then(Commands.literal("handling")
                     .then(Commands.literal("physical").executes(context -> {
                         PHYSICAL.set(true);SPEC.save();syncState();ClientControls.clearInput();
-                        context.getSource().sendSuccess(()->Component.literal("Experimental physical handling ON. Offhand use: grab magazine, pouch, slide or foregrip. Main use near selector: fire mode."),false);return 1;
+                        context.getSource().sendSuccess(()->Component.literal("Physical handling preferred. Guns without a physical profile automatically use button handling."),false);return 1;
                     }))
                     .then(Commands.literal("buttons").executes(context -> {
                         PHYSICAL.set(false);SPEC.save();PhysicalClient.reset();syncState();ClientControls.clearInput();
@@ -170,7 +175,7 @@ public final class CompatSettings {
                 .then(Commands.literal("calibrate").executes(context -> {
                     var mc = Minecraft.getInstance();
                     if (mc.player == null || Profiles.get(mc.player.getMainHandItem()) == null) {
-                        context.getSource().sendFailure(Component.literal("Hold a supported Glock 17, M4A1, M870, M700 or HK MP5A5 to calibrate."));
+                        context.getSource().sendFailure(Component.literal("Hold a gun with a VR geometry profile to calibrate."));
                         return 0;
                     }
                     String key = Profiles.key(mc.player.getMainHandItem());
