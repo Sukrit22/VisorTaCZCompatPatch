@@ -1,0 +1,60 @@
+# Design prototype only. Project Zero folder targets 1.21.1; runtime 1.20.1 compatibility unverified.
+schema = 1
+
+[[guns]]
+id = "project_zero:famas"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "closed_bolt_magazine"
+ammo_adapter = "native_rounds"
+
+[guns.parts.receiver]
+source = "gun_model"
+node = "main_body"
+
+[guns.parts.bolt]
+source = "gun_model"
+node = "bolt"
+
+[guns.parts.magazine]
+source = "gun_model"
+node = "magazine2" # Actual pack name; must not be hard-coded as magazine.
+
+[guns.parts.cartridge]
+source = "native_ammo_shell"
+
+[guns.joints.bolt_travel]
+part = "bolt"
+kind = "prismatic"
+frame = "gun"
+axis = [0.0, 0.0, 1.0]
+limits = [0.0, 0.055]
+return_mode = "spring"
+
+[guns.zones.rack]
+frame = "gun"
+position = [0.0, 0.12, 0.0]
+size = [0.12, 0.10, 0.12]
+color = [255, 160, 40]
+part = "bolt"
+follow_joint = "bolt_travel"
+
+[guns.zones.magwell]
+frame = "gun"
+position = [0.0, -0.08, 0.15]
+size = [0.12, 0.14, 0.12]
+color = [50, 220, 100]
+part = "receiver"
+
+[guns.bindings.rack]
+zone = "rack"
+gesture = "grab_joint"
+joint = "bolt_travel"
+rear_command = "action.rear"
+forward_command = "action.forward"
+
+[guns.bindings.magazine]
+zone = "magwell"
+gesture = "magazine_transfer"
+part = "magazine"
+command = "magazine.transfer"

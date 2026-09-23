@@ -7,7 +7,10 @@ import static dev.visorcompat.tacz.ZoneSizes.Zone.*;
 public final class CalibrationLayout {
     public record Page(String id,int offset,int count,ZoneSizes.Zone zone) {}
     public static List<Page> pages(String key) {
-        String gun=key.split("\\|",2)[0];var profile=Profiles.byId(gun);var pages=new ArrayList<Page>();
+        return pages(key,Profiles.byId(key.split("\\|",2)[0]));
+    }
+    public static List<Page> pages(String key,WeaponProfile profile){
+        var pages=new ArrayList<Page>();
         pages.add(new Page("grip",0,3,null));pages.add(new Page("rotation",3,3,null));
         pages.add(new Page("scale",30,1,null));pages.add(new Page("casing",58,1,null));pages.add(new Page("muzzle",6,3,null));
         if(profile!=null && !profile.pump())pages.add(new Page("support",9,3,SUPPORT));

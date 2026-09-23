@@ -16,8 +16,10 @@ public final class CalibrationScreen extends Screen {
     private boolean coarse,size,scaleLock;
     private int page,top;
     private String error="";
+    private Calibration lastSaved;
+    private Button saveButton,cancelButton;
     public CalibrationScreen(String key) {
-        super(Component.literal("TaCZ VR calibration"));this.key=key;pages=CalibrationLayout.pages(key);
+        super(Component.literal("TaCZ VR calibration"));this.key=key;pages=CalibrationLayout.pages(key,Profiles.get(net.minecraft.client.Minecraft.getInstance().player.getMainHandItem()));
         if(CalibrationStore.error()!=null)error=CalibrationStore.error();
         var c=CalibrationStore.get(key);scaleLock=c.scaleLock();
         float[] base={c.x(),c.y(),c.z(),c.pitch(),c.yaw(),c.roll(),c.muzzleX(),c.muzzleY(),c.muzzleZ()};
@@ -61,8 +63,12 @@ public final class CalibrationScreen extends Screen {
             if(size){var box=ZoneSizes.DEFAULT.get(current().zone());values[start()]=box.width();values[start()+1]=box.height();values[start()+2]=box.depth();}
             else if(current().offset()==58)values[58]=1;else if(current().offset()==30)scaleTo(1);else Arrays.fill(values,start(),start()+count(),0);update();
         }).bounds(left+155,top+169,145,20).build());
-        addRenderableWidget(Button.builder(Component.literal("Save & close"),b->{try{CalibrationStore.save(key,value());CompatSettings.syncState();onClose();}catch(Exception e){error="Save failed: "+e.getMessage();}}).bounds(left,top+193,145,20).build());
-        addRenderableWidget(Button.builder(Component.literal("Cancel"),b->onClose()).bounds(left+155,top+193,145,20).build());
+        saveButton=addRenderableWidget(Button.builder(Component.literal("Save"),b->{
+            if(value().equals(lastSaved)){onClose();return;}
+            try{var next=value();CalibrationStore.save(key,next);lastSaved=next;error="";update();CompatSettings.syncState();}
+            catch(Exception e){error="Save failed: "+e.getMessage();}
+        }).tooltip(Tooltip.create(Component.literal("Save writes this calibration to file without closing. After saving, Close exits; further edits restore Save."))).bounds(left,top+193,145,20).build());
+        cancelButton=addRenderableWidget(Button.builder(Component.literal("Cancel"),b->onClose()).tooltip(Tooltip.create(Component.literal("Discard edits since the last save and close. Already saved changes remain on disk."))).bounds(left+155,top+193,145,20).build());
         update();ClientControls.clearInput();
     }
     private void adjust(int axis,int sign){
@@ -81,6 +87,7 @@ public final class CalibrationScreen extends Screen {
     }
     private void update(){
         CalibrationStore.previewKey=key;CalibrationStore.preview=value();
+        if(saveButton!=null){boolean saved=value().equals(lastSaved);saveButton.setMessage(Component.literal(saved?"Close":"Save"));saveButton.setWidth(saved?300:145);if(cancelButton!=null)cancelButton.visible=!saved;}
         for(int i=0;i<count();i++)if(readouts[i]!=null){
             int axis=start()+i;boolean rotation=axis>=3&&axis<6,scale=axis==30||axis==58;
             String label=size?new String[]{"Width X","Height Y","Depth Z"}[i]:scale?(axis==58?"Casing size":"Gun size"):rotation?new String[]{"Pitch","Yaw","Roll"}[i]:new String[]{"X right","Y up","Z back"}[i];

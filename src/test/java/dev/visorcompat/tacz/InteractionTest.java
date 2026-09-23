@@ -19,7 +19,7 @@ class InteractionTest {
         assertEquals(Handling.rack(rifle,Calibration.ZERO),Handling.rack(rifle,c));
         assertEquals(c,new Gson().fromJson(new Gson().toJson(c),Calibration.class));
     }
-    private final WeaponProfile rifle=new WeaponProfile(.65f,0,6.875f,-2.65f,0,9.55f,-26.25f,.3f);
+    private final WeaponProfile rifle=Profiles.byId("tacz:m4a1");
     @Test void oldCalibrationMigratesWithoutLosingGrip(){
         var c=new Gson().fromJson("{\"x\":0.01,\"pitch\":5,\"muzzleZ\":-0.02}",Calibration.class);
         assertEquals(.01f,c.x());assertEquals(5,c.pitch());assertEquals(-.02f,c.muzzleZ());assertEquals(InteractionOffsets.ZERO,c.interactions());assertTrue(c.valid());

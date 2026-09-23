@@ -6,7 +6,7 @@ import dev.visorcompat.tacz.*;
 /** Shared gesture geometry, in calibrated gun-local metres. */
 public final class Handling {
     private Handling() {}
-    public enum Phase { READY, REMOVING, OLD_MAG, NO_MAG, NEW_MAG, LOADING, NEED_RACK, RACKING, SUPPORT, RACKING_EMPTY, PLUCKING, PUMP_HOLD, PUMP_OPEN, SHELL, CYLINDER_OPEN, CYLINDER_HOLD }
+    public enum Phase { READY, REMOVING, OLD_MAG, NO_MAG, NEW_MAG, LOADING, NEED_RACK, RACKING, SUPPORT, RACKING_EMPTY, PLUCKING, PUMP_HOLD, PUMP_OPEN, SHELL, CYLINDER_OPEN, CYLINDER_HOLD, LOADER }
     public enum Target { NONE, POUCH, RACK, MAGAZINE, SUPPORT, SELECTOR, CASING, RELEASE }
     public static Target target(Phase phase,Vector3fc local,boolean inPouch,WeaponProfile p,Calibration c) {
         return target(phase,local,inPouch,p,c,false);
@@ -51,36 +51,28 @@ public final class Handling {
         }
         return target(phase,local,pouch,p,c,open,locked);
     }
+    /** Extra acquisition room only for the free hand working an anchored sniper bolt. */
+    public static boolean boltGrab(Vector3fc local,WeaponProfile profile,Calibration c,boolean open,boolean lifted){
+        if(!profile.bolt())return false;
+        var center=rack(profile,c,open);if(lifted)center.add(0,.035f,0);
+        var box=c.zones().rack();return new ZoneSizes.Box(box.width()+.10f,box.height()+.10f,box.depth()+.10f).contains(local,center);
+    }
     public static boolean racking(Phase phase) {return phase==Phase.RACKING || phase==Phase.RACKING_EMPTY;}
     public static boolean fireable(Phase phase) { return phase == Phase.PUMP_HOLD || phase == Phase.READY || phase == Phase.SUPPORT || phase == Phase.OLD_MAG
             || phase == Phase.NO_MAG || phase == Phase.NEW_MAG; }
     public static boolean magazineOut(Phase phase) {
         return phase == Phase.OLD_MAG || phase == Phase.NO_MAG || phase == Phase.NEW_MAG || phase == Phase.RACKING_EMPTY;
     }
-    public static Vector3f magazine(WeaponProfile p) {
-        if(PistolProfiles.get(p)!=null)return new Vector3f(PistolProfiles.get(p).magazine());
-        if(p.pump())return new Vector3f(0,.015f,-.20f);
-        if(p.bolt())return new Vector3f(0,-.045f,-.12f);
-        if(p.smg())return new Vector3f(0,-.07f,-.17f);
-        return p.supportDistance() == 0 ? new Vector3f(-.00025f,-.116f,.108f) : new Vector3f(0,-.076f,-.136f);
-    }
-    public static Vector3f rack(WeaponProfile p) {
-        if(PistolProfiles.get(p)!=null)return new Vector3f(PistolProfiles.get(p).rackPoint());
-        if(p.pump())return new Vector3f(0,.02f,-p.supportDistance());
-        if(p.bolt())return new Vector3f(.065f,.12f,.035f);
-        if(p.smg())return new Vector3f(-.04f,.15f,-.43f);
-        return p.supportDistance() == 0 ? new Vector3f(0,.15f,.01f) : new Vector3f(0,.105f,.07f);
-    }
-    public static Vector3f release(WeaponProfile p,Calibration c){
-        if(p.smg())return rack(p,c).add(0,.035f,.055f).add(c.interactions().release().vector().mul(c.gunScale()));
-        return (p.supportDistance()==0?new Vector3f(-.025f,.06f,.025f):new Vector3f(-.04f,.055f,-.10f)).add(c.interactions().release().vector()).mul(c.gunScale());
-    }
-    public static Vector3f selector(WeaponProfile p) { return new Vector3f(.04f,.03f,0); }
+    private static Vector3f point(WeaponProfile p,String name){var v=DescriptorProfiles.zone(p,name);return v==null?new Vector3f():v;}
+    public static Vector3f magazine(WeaponProfile p){return point(p,"magazine");}
+    public static Vector3f rack(WeaponProfile p){return point(p,"rack");}
+    public static Vector3f release(WeaponProfile p,Calibration c){return point(p,"release").add(c.interactions().release().vector()).mul(c.gunScale());}
+    public static Vector3f selector(WeaponProfile p){return point(p,"selector");}
     public static Vector3f magazine(WeaponProfile p,Calibration c){return magazine(p).add(c.interactions().magazine().vector()).mul(c.gunScale());}
     public static Vector3f rack(WeaponProfile p,Calibration c){return rack(p).add(c.interactions().rack().vector()).mul(c.gunScale());}
     public static Vector3f rack(WeaponProfile p,Calibration c,boolean open){return rack(p,c).add(0,0,p.bolt()&&open?PumpCycle.TRAVEL:0);}
     public static Vector3f selector(WeaponProfile p,Calibration c){return selector(p).add(c.interactions().selector().vector()).mul(c.gunScale());}
-    public static Vector3f support(WeaponProfile p,Calibration c){return p.pump()?rack(p,c):(p.supportDistance()==0?new Vector3f(0,-.015f,-.065f):new Vector3f(0,0,-p.supportDistance())).add(c.interactions().support().vector()).mul(c.gunScale());}
+    public static Vector3f support(WeaponProfile p,Calibration c){if(p.pump())return rack(p,c);return point(p,"support").add(c.interactions().support().vector()).mul(c.gunScale());}
     public static Vector3f pouch(Vector3fc head,Vector3fc forward,float scale,Calibration c) {
         Vector3f flat=new Vector3f(forward.x(),0,forward.z());
         if(flat.lengthSquared()<.001f)flat.set(0,0,-1);else flat.normalize();
@@ -93,6 +85,11 @@ public final class Handling {
     }
     public static boolean inside(Vector3fc point,Vector3fc center,Calibration c,ZoneSizes.Zone zone) {
         return c.zones().get(zone).contains(point,center);
+    }
+    /** Acquire at the calibrated box; retain with 12 cm of extra room on each side. */
+    public static boolean supportRetained(Vector3fc point,Vector3fc center,Calibration c) {
+        var box=c.zones().support();
+        return new ZoneSizes.Box(box.width()+.24f,box.height()+.24f,box.depth()+.24f).contains(point,center);
     }
     public static boolean inPouch(Vector3fc off,Vector3fc head,Vector3fc forward,float scale,Calibration c) {
         return c.zones().pouch().contains(pouchLocal(off,head,forward,scale,c),new Vector3f());

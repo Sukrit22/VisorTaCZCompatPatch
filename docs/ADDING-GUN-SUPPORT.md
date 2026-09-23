@@ -1,6 +1,6 @@
 # Adding a gun: UMP45 walkthrough, Kar98k exercise
 
-> Historical walkthrough: the default-pack pistol batch was implemented in 0.10.0. Do not repeat its registry/enum additions on the current branch. Use `PistolProfiles.java` for current mappings and `TESTING-PISTOLS-0.10.0.md` for testing; these examples describe the earlier learning baseline.
+> Historical walkthrough: the default-pack pistol batch was implemented in 0.10.0. Do not repeat its registry/enum additions on the current branch. Use `src/main/resources/gun-profiles.toml` and [runtime TOML instructions](RUNTIME-PROFILES.md) for current mappings and `TESTING-PISTOLS-0.10.0.md` for testing; these examples describe the earlier learning baseline.
 
 Reviewed against this workspace's **0.9.3** source and pinned TaCZ 1.1.8-hotfix
 default pack. These are instructions, **not installed gun support**. UMP45 and

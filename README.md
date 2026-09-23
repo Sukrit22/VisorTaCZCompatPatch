@@ -1,12 +1,29 @@
 # Visor TaCZ Compatibility Patch
 
+Unpackaged **alpha.8 source** adds M700 re-grip fixes, displacement-based cylinder gestures and an experimental TOML profile switch with SCAR-L/H. [Runtime profile setup](docs/RUNTIME-PROFILES.md) · [Pistol calibration audit](docs/CALIBRATION-AUDIT.md). Source protocol is **24**; the last packaged alpha.7 uses **23**.
+
+
+Alpha.7 handling update: [changes and calibration import](docs/RELEASE-NEXT-HANDLING.md), [pending tests and detailed inspection procedure](docs/TESTING-CURRENT.md).
+
 Experimental Minecraft **1.20.1 Forge** mod that registers as a **Visor addon** and gives TaCZ guns controller aiming and physical VR handling. VR and flatscreen players can share a server.
 
-Current version: **0.11.0** · network protocol **19** · Java **17** · MIT license.
+Current release: **0.12.0-alpha.7** | network protocol **23** | Java **17** | MIT license. Stable checkpoint: **0.11.0**.
+
+**New in alpha.6:** [inspection calibration, handling fixes, crouching holsters and cylinder instructions](docs/PENDING-HANDLING-CHANGES.md). These changes are included in alpha.6.
+
+Alpha.5 adds upward inspection grip orientation, falling/flicked cosmetic magazines, M4/M870 support-hand transfer, experimental one-hand inertia pumping, wider support retention and forgiving pump return. See [controls and pending tests](docs/RELEASE-0.12.0-alpha.5.md).
+
+Alpha.4 adds fine/coarse holster adjustment and Save-without-closing in both calibration editors. After saving, the button becomes Close until values change. See [calibration controls](docs/RELEASE-0.12.0-alpha.4.md).
+
+Alpha.3 fixes holsters rendered above the player and out of alignment with Grip detection. If you lowered holster Height to compensate in alpha.2, restore holster defaults after updating. See [fix and retests](docs/RELEASE-0.12.0-alpha.3.md).
+
+Alpha.2 adds per-gun holster calibration, 30-degree forward pistol holsters, 45-degree downward chest holsters, 75% bundled gun defaults, smoother tossed props, increased inspection travel and session input cleanup. Saved gun profiles still override bundled defaults. See [update notes and focused retests](docs/RELEASE-0.12.0-alpha.2.md).
+
+New experiment: opt-in **Advanced Handling** adds holster/draw, inventory-backed toss/catch with automatic recovery, contextual Grip, and timed cosmetic pistol inspection. This alpha keeps the gun in its original slot; offhand catches are temporary support holds, not offhand firing or hotbar transfer. See [controls, limitations and pending tests](docs/RELEASE-0.12.0-alpha.1.md). The external gun-profile architecture remains an offline prototype.
 
 New in 0.10.0: all 14 pinned default-pack pistols now have profiles. M1911, P320, M9A4, Desert Eagle/Golden, Timeless 50, B93R, CZ75 and MK23 reuse physical magazine/slide handling with per-gun assets. Rhino 357, Taurus 500/943 and Lonetrail add **experimental aggregate cylinder/breech loading**: open, eject all, insert individual rounds, close. This is not individual chamber selection or speedloader support. See [pistol testing](docs/TESTING-PISTOLS-0.10.0.md).
 
-New in 0.11.0: **all 54 base-pack guns have button support**; 18 additionally have physical handling. The other 36 automatically fall back to buttons. See [the complete support list](docs/SUPPORTED-GUNS.md), [calibration import](docs/CALIBRATION-IMPORT-0.11.0.md), and [future data-driven/gun-pack support design](docs/DATA-DRIVEN-GUN-SUPPORT.md). External packs are not yet automatically registered.
+Current alpha.9 source: **all 54 base-pack guns have button support**; 20 additionally have physical handling. The other 34 automatically fall back to buttons. Gun definitions now come exclusively from [runtime TOML profiles](docs/RUNTIME-PROFILES.md). See [the complete support list](docs/SUPPORTED-GUNS.md), [calibration import](docs/CALIBRATION-IMPORT-0.11.0.md), and [future data-driven/gun-pack support design](docs/DATA-DRIVEN-GUN-SUPPORT.md). External packs are not yet automatically registered.
 
 ## Requirements and installation
 
@@ -141,7 +158,7 @@ See [0.7.1 changes and focused retests](docs/RELEASE-0.7.1.md) for scale lock, a
 Use the [rolling manual test tracker](docs/TESTING-CURRENT.md) for remaining tests,
 previous user results, and stable IDs to report pass/fail across releases.
 
-- Latest build: **113 unit tests passed**. Build success is not proof of in-headset correctness.
+- Latest build: **157 unit tests passed**. Build success is not proof of in-headset correctness.
 - Development feedback uses **Pico 4 Ultra + Virtual Desktop + SteamVR**. Controller aiming and M4 support aiming have received successful user feedback; many newer interactions remain under testing.
 - 0.6.1 prepares stencil before world rendering to address scope/depth-format crashes. A subsequent user session reported no crash or blinking. This is not a guarantee for every shader/mod combination.
 - Blinking was also reproduced without this addon, with Visor + base TaCZ, and stopped after a PC restart in that test session; its root cause is not established.
@@ -152,12 +169,16 @@ previous user results, and stable IDs to report pass/fail across releases.
 Use JDK 17. The Gradle wrapper downloads dependencies; local upstream source clones are not needed.
 
 ```powershell
-.\gradlew.bat build
+Set-Location 'E:\visor-compat\visor-compat-tacz'
+$env:JAVA_HOME = 'C:\Program Files\Java\jdk-17'
+.\gradlew.bat build --console=plain
 ```
+
+Adjust the repository and JDK paths if installed elsewhere. Wait for `BUILD SUCCESSFUL`; the first build needs internet and takes longer to download dependencies. Replace the old addon JAR in each instance/server `mods` folder with the new one while Minecraft/server is stopped. Keep only one version of this addon installed.
 
 Linux/macOS: `sh gradlew build`.
 
-Output: `build/libs/visor-compat-tacz-1.20.1-0.11.0.jar`.
+Current source output: `build/libs/visor-compat-tacz-1.20.1-0.12.0-alpha.8.jar`.
 
 `build` includes tests. Development tasks: `runClient` and `runServer`; runtime files stay under `run/`. Accept Minecraft's EULA yourself before using the development server. Dependencies and downloaded upstream sources are not bundled into this repository or output JAR.
 

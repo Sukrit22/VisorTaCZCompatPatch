@@ -1,8 +1,10 @@
 # Gun packs and physical profiles without recompiling
 
+Latest experimental design and supplied-pack findings: [Profile architecture v1](PROFILE-ARCHITECTURE-V1.md), with offline examples in `experiments/profile-v1`. This supersedes the illustrative JSON below; no runtime loader has been added yet.
+
 ## Implemented in 0.11.0
 
-Basic geometry and physical capability are now separate. All 54 pinned default-pack guns can use button controls; 36 new basic profiles come from bundled `button-profiles.json`. The physical engine only runs for explicitly physical-capable profiles. Client controls, server reload rules, remote state and calibration pages respect that distinction.
+Basic geometry and physical capability are now separate. All 54 pinned default-pack guns can use button controls; the single bundled `gun-profiles.toml` catalog now contains 20 physical and 34 button-only profiles. The physical engine only runs for explicitly physical-capable profiles. Client controls, server reload rules, remote state and calibration pages respect that distinction.
 
 The bundled JSON is currently compiled into the JAR. It is NOT yet an external-file loader or automatic pack discovery feature. Unknown gun IDs and alternate displays remain unregistered. This document specifies the next architecture; the example below is not a working config file yet.
 

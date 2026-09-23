@@ -14,7 +14,13 @@ public record GunPose(Vector3f hand, Quaternionf rotation, Vector3f muzzle, Vect
     }
     public static GunPose resolve(VRPlayerPose pose,WeaponProfile profile,boolean emptyOffhand,Calibration calibration,HandAnchor anchor) {
         if (pose == null || profile == null || calibration == null || !calibration.valid()) return null;
-        if(anchor!=null)return anchor.resolve(pose,profile,calibration);
+        if(anchor!=null){
+            var base=anchor.resolve(pose,profile,calibration);
+            if(base==null||!anchor.mainHand()||!emptyOffhand)return base;
+            var support=anchor.support()!=null?anchor.support():dev.visorcompat.tacz.physical.Handling.support(profile,calibration);
+            var q=PoseMath.supportedRotation(base.rotation(),base.hand(),pose.getOffhand().getPosition(),support,base.worldScale(),profile.supportDistance()>0,retention(calibration.zones().support()));
+            return new GunPose(base.hand(),q,new Quaternionf(q).transform(calibration.muzzleOffset(profile.muzzleOffset()).mul(base.worldScale())).add(base.hand()),new Quaternionf(q).transform(new Vector3f(0,0,-1)),base.worldScale());
+        }
         float scale = pose.getWorldScale();
         var main = pose.getMainHand();
         Vector3f hand = new Vector3f(main.getPosition());
@@ -26,10 +32,11 @@ public record GunPose(Vector3f hand, Quaternionf rotation, Vector3f muzzle, Vect
         rotation = calibration.orientation(rotation);
         if (emptyOffhand) rotation = PoseMath.supportedRotation(rotation, hand,pose.getOffhand().getPosition(),
             dev.visorcompat.tacz.physical.Handling.support(profile,calibration),scale,profile.supportDistance()>0,
-            profile.pump()?calibration.zones().rack():calibration.zones().support());
+            retention(profile.pump()?calibration.zones().rack():calibration.zones().support()));
         Vector3f direction = rotation.transform(new Vector3f(0, 0, -1)).normalize();
         Vector3f muzzle = rotation.transform(calibration.muzzleOffset(profile.muzzleOffset()).mul(scale)).add(hand);
         return PoseMath.finite(muzzle) && PoseMath.finite(direction)
                 ? new GunPose(hand, rotation, muzzle, direction, scale) : null;
     }
+    private static ZoneSizes.Box retention(ZoneSizes.Box box){return new ZoneSizes.Box(box.width()+.24f,box.height()+.24f,box.depth()+.24f);}
 }

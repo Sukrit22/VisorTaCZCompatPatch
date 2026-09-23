@@ -21,7 +21,7 @@ import org.vmstudio.visor.api.VisorAPI;
 @Mod.EventBusSubscriber(modid = VisorTacz.ID, value = Dist.CLIENT)
 public final class CompatSettings {
     private static Boolean lastSentActive;
-    private static boolean lastPhysical,lastTransferAnytime;
+    private static boolean lastPhysical,lastTransferAnytime,lastDescriptors;
     private static String lastCalibrationKey;
     private static Calibration lastCalibration;
     private static final ForgeConfigSpec SPEC;
@@ -29,12 +29,33 @@ public final class CompatSettings {
     private static final ForgeConfigSpec.BooleanValue PHYSICAL;
     private static final ForgeConfigSpec.BooleanValue AUTO_ADS, OPTICS, TWO_HAND_ADS, TRANSFER_ANYTIME;
     private static final ForgeConfigSpec.BooleanValue DEBUG_CUBES;
+    private static final ForgeConfigSpec.BooleanValue ADVANCED,TOSS;
+    private static final ForgeConfigSpec.IntValue INSPECT_WINDOW;
+    private static final ForgeConfigSpec.IntValue CATCH_WINDOW;
+    public enum HandlingMode { BUTTON, PHYSICAL, ADVANCED }
+    public static HandlingMode handlingMode(){return !SPEC.isLoaded()?HandlingMode.BUTTON:ADVANCED.get()?HandlingMode.ADVANCED:PHYSICAL.get()?HandlingMode.PHYSICAL:HandlingMode.BUTTON;}
+    public static void cycleHandling(){var modes=HandlingMode.values();setHandlingMode(modes[(handlingMode().ordinal()+1)%modes.length]);}
+    public static void setHandlingMode(HandlingMode mode){
+        AdvancedClient.sessionReset();PhysicalClient.reset();ClientControls.clearInput();
+        ADVANCED.set(mode==HandlingMode.ADVANCED);PHYSICAL.set(mode!=HandlingMode.BUTTON);SPEC.save();forceSync();
+    }
+    private static boolean profilesCompatible=true;
+    public static boolean descriptors(){return true;}
+    public static void backendAck(boolean accepted){
+        if(profilesCompatible==accepted)return;profilesCompatible=accepted;
+        AdvancedClient.sessionReset();PhysicalClient.reset();ClientControls.clearInput();forceSync();
+        var p=Minecraft.getInstance().player;if(p!=null&&!accepted)p.displayClientMessage(Component.literal("TaCZ VR: TOML profiles differ from server or are invalid. Compatibility paused; match profile files and reconnect."),false);
+    }
     public enum Grab { USE, TRIGGER }
     public enum Display { GUN, WRIST, HUD, OFF }
     private static final ForgeConfigSpec.EnumValue<Grab> GRAB;
     private static final ForgeConfigSpec.EnumValue<Display> DISPLAY;
     static {
         var builder = new ForgeConfigSpec.Builder();
+        ADVANCED=builder.comment("Experimental holster/draw, inventory-backed toss and inspection. Off by default.").define("advancedHandling",false);
+        TOSS=builder.comment("Advanced Handling: true allows a catch window before auto-holstering; false returns after inspection grace. Never drops inventory items.").define("advancedToss",true);
+        INSPECT_WINDOW=builder.comment("Milliseconds after releasing Grip in which Use can enter pistol inspection.").defineInRange("advancedInspectWindowMs",250,50,250);
+        CATCH_WINDOW=builder.comment("Airborne gun: Grip shows a provisional hotbar radial; catch wins during this many milliseconds. 0 disables grace.").defineInRange("advancedCatchWindowMs",250,0,500);
         // Keep the original key so existing explicit OFF overrides survive upgrades.
         ENABLED = builder.comment("true = AUTO (default): follow Visor's live VR state; false = manual OFF.",
                 "AUTO activates in VR and stays inactive in flatscreen, without commands.",
@@ -51,6 +72,14 @@ public final class CompatSettings {
         SPEC = builder.build();
     }
     private CompatSettings() {}
+    public static boolean advanced(){return handlingMode()==HandlingMode.ADVANCED;}
+    public static boolean toss(){return !SPEC.isLoaded()||TOSS.get();}
+    public static int inspectWindow(){return SPEC.isLoaded()?INSPECT_WINDOW.get():250;}
+    public static void setAdvanced(boolean v){setHandlingMode(v?HandlingMode.ADVANCED:HandlingMode.PHYSICAL);}
+    public static void setToss(boolean v){TOSS.set(v);SPEC.save();}
+    public static void setInspectWindow(int v){INSPECT_WINDOW.set(v);SPEC.save();}
+    public static int catchWindow(){return SPEC.isLoaded()?CATCH_WINDOW.get():250;}
+    public static void setCatchWindow(int v){CATCH_WINDOW.set(v);SPEC.save();}
     public static void register() {
         ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, SPEC);
     }
@@ -58,7 +87,7 @@ public final class CompatSettings {
     public static Display display(){return SPEC.isLoaded()?DISPLAY.get():Display.GUN;}
     public static void setGrab(Grab value){ClientControls.clearInput();GRAB.set(value);SPEC.save();}
     public static void setDisplay(Display value){DISPLAY.set(value);SPEC.save();}
-    public static void setPhysical(boolean value){PHYSICAL.set(value);SPEC.save();PhysicalClient.reset();syncState();ClientControls.clearInput();}
+    public static void setPhysical(boolean value){setHandlingMode(value?HandlingMode.PHYSICAL:HandlingMode.BUTTON);}
     public static void setTwoHandAds(boolean value){TWO_HAND_ADS.set(value);SPEC.save();}
     public static void setAutoAds(boolean value){AUTO_ADS.set(value);SPEC.save();}
     public static void setOptics(boolean value){OPTICS.set(value);SPEC.save();}
@@ -69,15 +98,15 @@ public final class CompatSettings {
     public static boolean twoHandAds(){return !SPEC.isLoaded()||TWO_HAND_ADS.get();}
     public static boolean autoAds() {return !SPEC.isLoaded() || AUTO_ADS.get();}
     public static boolean optics() {return !SPEC.isLoaded() || OPTICS.get();}
-    public static boolean physical() { return SPEC.isLoaded() && PHYSICAL.get(); }
+    public static boolean physical() { return handlingMode()!=HandlingMode.BUTTON; }
     public static boolean followsVisor() { return !SPEC.isLoaded() || ENABLED.get(); }
     public static boolean active() {
-        return followsVisor() && VisorAPI.clientState().stateMode().isActive();
+        return profilesCompatible && followsVisor() && VisorAPI.clientState().stateMode().isActive();
     }
     public static String handlingLabel(){
-        if(!physical())return "BUTTONS";
+        if(!physical())return "BUTTON";
         var player=Minecraft.getInstance().player;
-        return player!=null&&Profiles.get(player.getMainHandItem())!=null&&!Profiles.physical(player.getMainHandItem())?"BUTTONS (AUTO)":"PHYSICAL";
+        return player!=null&&Profiles.get(player.getMainHandItem())!=null&&!Profiles.physical(player.getMainHandItem())?(advanced()?"ADVANCED (button reload)":"BUTTON (AUTO)"):handlingMode().name();
     }
     private static String statusText() {
         if (!followsVisor()) {
@@ -96,11 +125,11 @@ public final class CompatSettings {
     static void forceSync() {lastSentActive=null;lastCalibrationKey=null;syncState();}
     static boolean reloadCalibration() {
         try {
-            CalibrationStore.reload();ClientControls.clearInput();forceSync();
-            Minecraft.getInstance().gui.getChat().addMessage(Component.literal("Calibration reloaded from config/visor_tacz-calibration.json (bundled defaults for missing profiles)."));
+            InspectionStore.reload();HolsterStore.reload();CalibrationStore.reload();ClientControls.clearInput();forceSync();
+            Minecraft.getInstance().gui.getChat().addMessage(Component.literal("Reloaded gun, holster and inspection calibration; bundled defaults fill missing profiles."));
             return true;
         } catch(java.io.IOException e) {
-            Minecraft.getInstance().gui.getChat().addMessage(Component.literal(e.getMessage()+" Current calibration kept."));
+            Minecraft.getInstance().gui.getChat().addMessage(Component.literal(e.getMessage()+" The failing file was not applied."));
             return false;
         }
     }
@@ -121,19 +150,20 @@ public final class CompatSettings {
             }
         }
         boolean current = active();
-        if (lastSentActive == null || lastSentActive != current || lastPhysical != physical() || lastTransferAnytime != transferAnytime()) {
-            CompatNetwork.CHANNEL.sendToServer(new CompatNetwork.Mode(current,physical(),transferAnytime()));
+        if (lastSentActive == null || lastSentActive != current || lastPhysical != physical() || lastTransferAnytime != transferAnytime() || lastDescriptors != descriptors()) {
+            CompatNetwork.CHANNEL.sendToServer(new CompatNetwork.Mode(current,physical(),transferAnytime(),descriptors(),descriptors()?dev.visorcompat.tacz.DescriptorProfiles.digest():""));
             lastSentActive = current;
-            lastPhysical = physical();lastTransferAnytime=transferAnytime();
+            lastPhysical = physical();lastTransferAnytime=transferAnytime();lastDescriptors=descriptors();
             ClientControls.clearInput();
         }
     }
     @SubscribeEvent public static void login(ClientPlayerNetworkEvent.LoggingIn event) {
-        lastSentActive = null;
+        profilesCompatible=true;lastSentActive = null;
         lastCalibrationKey = null;
         syncState();
     }
     @SubscribeEvent public static void logout(ClientPlayerNetworkEvent.LoggingOut event) {
+        ShotVisual.clear();AdvancedClient.sessionReset();AdvancedRemote.clear();
         lastSentActive = null;
         ClientControls.clearInput();
         PhysicalClient.reset();
@@ -148,6 +178,8 @@ public final class CompatSettings {
                     return 1;
                 })
                 .then(Commands.literal("menu").executes(c->{Minecraft.getInstance().tell(()->Minecraft.getInstance().setScreen(new ControlsScreen()));return 1;}))
+                .then(Commands.literal("reset_input").executes(c->{AdvancedClient.sessionReset();ClientControls.clearInput();forceSync();Minecraft.getInstance().gui.getChat().addMessage(Component.literal("TaCZ VR input and hotbar catch ownership reset."));return 1;}))
+                .then(Commands.literal("recenter_holster").executes(c->{AdvancedClient.recenterHolster();return 1;}))
                 .then(Commands.literal("reload_calibration").executes(c->reloadCalibration()?1:0))
                 .then(Commands.literal("grab")
                     .then(Commands.literal("use").executes(c->{setGrab(Grab.USE);return 1;}))

@@ -1,0 +1,82 @@
+{
+  "tacz:deagle|tacz:default": {
+    "x": 0.0,
+    "y": -0.06999999,
+    "z": 0.03,
+    "pitch": -65.0,
+    "yaw": 0.0,
+    "roll": 0.0
+  },
+  "tacz:glock_17|tacz:default": {
+    "x": 0.0,
+    "y": -0.109999985,
+    "z": 0.01,
+    "pitch": -60.0,
+    "yaw": 0.0,
+    "roll": 0.0
+  },
+  "tacz:m1911|tacz:default": {
+    "x": 0.0,
+    "y": -0.109999985,
+    "z": 0.01,
+    "pitch": -60.0,
+    "yaw": 0.0,
+    "roll": 0.0
+  },
+  "tacz:p320|tacz:default": {
+    "x": 0.0,
+    "y": -0.109999985,
+    "z": 0.01,
+    "pitch": -60.0,
+    "yaw": 0.0,
+    "roll": 0.0
+  },
+  "tacz:m9a4|tacz:default": {
+    "x": 0.0,
+    "y": -0.109999985,
+    "z": 0.01,
+    "pitch": -60.0,
+    "yaw": 0.0,
+    "roll": 0.0
+  },
+  "tacz:b93r|tacz:default": {
+    "x": 0.0,
+    "y": -0.109999985,
+    "z": 0.01,
+    "pitch": -60.0,
+    "yaw": 0.0,
+    "roll": 0.0
+  },
+  "tacz:cz75|tacz:default": {
+    "x": 0.0,
+    "y": -0.109999985,
+    "z": 0.01,
+    "pitch": -60.0,
+    "yaw": 0.0,
+    "roll": 0.0
+  },
+  "tacz:hk_mk23|tacz:default": {
+    "x": 0.0,
+    "y": -0.109999985,
+    "z": 0.01,
+    "pitch": -60.0,
+    "yaw": 0.0,
+    "roll": 0.0
+  },
+  "tacz:deagle_golden|tacz:default": {
+    "x": 0.0,
+    "y": -0.06999999,
+    "z": 0.03,
+    "pitch": -65.0,
+    "yaw": 0.0,
+    "roll": 0.0
+  },
+  "tacz:timeless50|tacz:default": {
+    "x": 0.0,
+    "y": -0.06999999,
+    "z": 0.03,
+    "pitch": -65.0,
+    "yaw": 0.0,
+    "roll": 0.0
+  }
+}

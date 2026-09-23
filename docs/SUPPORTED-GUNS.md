@@ -1,6 +1,8 @@
-# Supported default-pack guns: 0.11.0
+# Supported default-pack guns
 
-Pinned TaCZ 1.1.8-hotfix: 54 guns. Every entry has VR button aiming/shooting/reload support. Physical handling is implemented for 18, including four experimental cylinder/breech workflows. The remaining 36 automatically use Buttons even when the global preference is Physical. These are implemented capabilities, not claims that every gun has passed headset tests.
+Alpha.9 source: **TOML is the only catalog**, with 20 physical guns including experimental SCAR-L/H. See [runtime profile setup](RUNTIME-PROFILES.md).
+
+Pinned TaCZ 1.1.8-hotfix: 54 guns. Every entry has VR button aiming/shooting/reload support. Physical handling is implemented for 20, including four experimental cylinder/breech workflows. The remaining 34 automatically use Buttons even when the global preference is Physical. These are implemented capabilities, not claims that every gun has passed headset tests.
 
 Only default display geometry is covered; alternate displays and external gun packs are not automatically registered in this release.
 
@@ -47,8 +49,8 @@ Only default display geometry is covered; alternate displays and external gun pa
 | `tacz:rhino357` | pistol | Physical (experimental) | muzzle_flash |
 | `tacz:rpg7` | rpg | Buttons only | manual visual estimate |
 | `tacz:rpk` | mg | Buttons only | muzzle_flash |
-| `tacz:scar_h` | rifle | Buttons only | muzzle_flash |
-| `tacz:scar_l` | rifle | Buttons only | muzzle_flash |
+| `tacz:scar_h` | rifle | Physical (experimental) | muzzle_flash |
+| `tacz:scar_l` | rifle | Physical (experimental) | muzzle_flash |
 | `tacz:sks_tactical` | rifle | Buttons only | muzzle_flash |
 | `tacz:spas_12` | shotgun | Buttons only | muzzle_flash |
 | `tacz:spr15hb` | rifle | Buttons only | muzzle_flash |

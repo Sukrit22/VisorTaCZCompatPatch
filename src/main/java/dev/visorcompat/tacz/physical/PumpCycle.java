@@ -6,8 +6,8 @@ public final class PumpCycle {
         return open?(forward(travel,side,vertical)?Transition.CLOSE:Transition.NONE):(rear(travel,side,vertical)?Transition.OPEN:Transition.NONE);
     }
     public static final float TRAVEL=.08f, CLOSED=.018f;
-    public static boolean rear(float travel,float side,float vertical){return Float.isFinite(travel)&&Float.isFinite(side)&&Float.isFinite(vertical)&&travel>=TRAVEL&&Math.abs(side)<.13f&&Math.abs(vertical)<.13f;}
-    public static boolean forward(float travel,float side,float vertical){return Float.isFinite(travel)&&Float.isFinite(side)&&Float.isFinite(vertical)&&travel<=CLOSED&&travel>=-.04f&&Math.abs(side)<.13f&&Math.abs(vertical)<.13f;}
+    public static boolean rear(float travel,float side,float vertical){return Float.isFinite(travel)&&Float.isFinite(side)&&Float.isFinite(vertical)&&travel>=TRAVEL&&Math.abs(side)<.25f&&Math.abs(vertical)<.25f;}
+    public static boolean forward(float travel,float side,float vertical){return Float.isFinite(travel)&&Float.isFinite(side)&&Float.isFinite(vertical)&&travel<=CLOSED&&travel>=-.35f&&Math.abs(side)<.25f&&Math.abs(vertical)<.25f;}
     public static Chamber close(int tube,boolean chamber){return new Chamber(tube,chamber).feed();}
     public static boolean canInsert(int tube,int capacity,int consumed){return tube>=0&&tube<capacity&&consumed==1;}
 }

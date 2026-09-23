@@ -24,6 +24,7 @@ final class StatusText {
         if(cylinder && PhysicalClient.active() && !state.equals("JAMMED") && !state.equals("OVERHEATED")) {
             state=dev.visorcompat.tacz.server.ServerCylinder.open(stack)?"ACTION OPEN":item.getCurrentAmmoCount(stack)>0?"":"EMPTY";
             if(PhysicalClient.phase()==dev.visorcompat.tacz.physical.Handling.Phase.SHELL)state="INSERT ROUND";
+            if(PhysicalClient.phase()==dev.visorcompat.tacz.physical.Handling.Phase.LOADER)state="INSERT SPEEDLOADER";
         }
         if(pump && PhysicalClient.active() && !state.equals("JAMMED") && !state.equals("OVERHEATED")) {
             if(dev.visorcompat.tacz.server.ServerPump.open(stack))state="PUMP OPEN";
@@ -36,12 +37,13 @@ final class StatusText {
             else if(dev.visorcompat.tacz.physical.BoltState.spent(stack) || !item.hasBulletInBarrel(stack))state="CYCLE BOLT";
         }
         if(PhysicalClient.active()&&dev.visorcompat.tacz.physical.ActionState.locked(stack))state="ACTION LOCKED OPEN";
-        if(PhysicalClient.anchor()!=null)state="SUPPORT HAND HOLD | MAIN USE AT GRIP TO RETURN";
+        if(PhysicalClient.supportAnchor())state="SUPPORT HAND HOLD | MAIN USE AT GRIP TO RETURN";
         var jam=dev.visorcompat.tacz.server.ServerJams.read(stack);
         if(state.equals("JAMMED") && jam.kind()!=dev.visorcompat.tacz.physical.Jam.Kind.NONE)
             state=jam.kind().name().replace('_',' ')+" | LEFT "+jam.remaining();
         if(state.isEmpty())state=AutoAds.aiming()?"ADS":"HIP FIRE";
         String handling=PhysicalClient.active()?PhysicalClient.phase().name().replace('_',' '):"BUTTONS"+(CompatSettings.physical()?" (FALLBACK)":"");
+        if(AdvancedClient.active())handling="ADV: "+AdvancedClient.status();
         String target=PhysicalClient.target().name().replace('_',' ');
         if(PhysicalClient.active() && (target.equals("POUCH") || PhysicalClient.phase()==dev.visorcompat.tacz.physical.Handling.Phase.NEW_MAG) && !dev.visorcompat.tacz.physical.PouchAmmo.available(player,stack))target="OUT OF AMMO";
         String optical=com.tacz.guns.compat.oculus.OculusCompat.isUsingRenderPack()?"OPTICS: CLEAR ONLY (SHADERS)":"";

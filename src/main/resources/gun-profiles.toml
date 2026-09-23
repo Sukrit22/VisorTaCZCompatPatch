@@ -1,0 +1,2108 @@
+# Executable schema-1 subset. Geometry uses native pixels; zones use unscaled gun-local metres.
+# User calibration remains a separate overlay. See docs/RUNTIME-PROFILES.md.
+schema = 1
+
+[[guns]]
+id = "tacz:b93r"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "closed_bolt_magazine"
+variant = "B93R"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0.0, 8.0, 1.75]
+muzzle_pixels = [0.0, 9.65625, -6.125]
+support_distance = 0.0
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "upper"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0.0, -0.253125, 0.121875]
+[guns.zones.rack]
+position = [0.0, 0.0632812, 0.0809375]
+[guns.zones.support]
+position = [0, -0.015, -0.065]
+[guns.zones.release]
+position = [-0.025, 0.06, 0.025]
+[guns.zones.selector]
+position = [0.04, 0.03, 0]
+[guns.zones.port]
+position = [0.0, 0.06328125000000001, 0.04593749999999999]
+
+
+[guns.pistol]
+cylinder = false
+selector = true
+ammo = "tacz:9mm"
+open_degrees = 0
+shell_pixels = [0, 9.6875, 2.975]
+sound_folder = "b93r"
+mag_out = "b93r_reload_magout"
+mag_in = "b93r_reload_magin"
+action_back = "b93r_inspect_slide_back"
+action_close = "b93r_inspect_slide_release"
+
+
+[guns.visual]
+shot_node = "upper"
+shot_travel = 0.035
+
+[[guns]]
+id = "tacz:cz75"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "closed_bolt_magazine"
+variant = "CZ75"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0.0, 4.75, 0.0]
+muzzle_pixels = [0.0, 6.2, -7.35]
+support_distance = 0.0
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [-0.0046875, -0.118125, 0.1021875]
+[guns.zones.rack]
+position = [0.00375, 0.0571875, 0.06125]
+[guns.zones.support]
+position = [0, -0.015, -0.065]
+[guns.zones.release]
+position = [-0.025, 0.06, 0.025]
+[guns.zones.selector]
+position = [0.04, 0.03, 0]
+[guns.zones.port]
+position = [0.00375, 0.0571875, 0.02625]
+
+
+[guns.pistol]
+cylinder = false
+selector = false
+ammo = "tacz:9mm"
+open_degrees = 0
+shell_pixels = [0.1, 6.275, 0.7]
+sound_folder = "cz75"
+mag_out = "cz75_reload_magout"
+mag_in = "cz75_reload_magin"
+action_back = "cz75_inspect_slidepull"
+action_close = "cz75_inspect_sliderelease"
+
+
+[guns.visual]
+shot_node = "slide"
+shot_travel = 0.035
+
+[[guns]]
+id = "tacz:deagle"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "closed_bolt_magazine"
+variant = "DEAGLE"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0.0, 4.05, 5.325]
+muzzle_pixels = [0.0, 5.875, -3.2]
+support_distance = 0.0
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide2"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0.0, -0.058125, 0.0440625]
+[guns.zones.rack]
+position = [0.0, 0.07125, 0.051875]
+[guns.zones.support]
+position = [0, -0.015, -0.065]
+[guns.zones.release]
+position = [-0.025, 0.06, 0.025]
+[guns.zones.selector]
+position = [0.04, 0.03, 0]
+[guns.zones.port]
+position = [0.0, 0.07125000000000001, 0.01687500000000003]
+
+
+[guns.pistol]
+cylinder = false
+selector = false
+ammo = "tacz:50ae"
+open_degrees = 0
+shell_pixels = [0, 5.95, 5.775]
+sound_folder = "deagle"
+mag_out = "deagle_reload_magout"
+mag_in = "deagle_reload_magin"
+action_back = "deagle_inspect_slideback"
+action_close = "deagle_inspect_slideclose"
+
+
+[guns.visual]
+shot_node = "slide2"
+shot_travel = 0.035
+
+[[guns]]
+id = "tacz:deagle_golden"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "closed_bolt_magazine"
+variant = "DEAGLE_GOLDEN"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0.0, 4.05, 5.325]
+muzzle_pixels = [0.0, 5.875, -3.2]
+support_distance = 0.0
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide2"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0.0, -0.058125, 0.0440625]
+[guns.zones.rack]
+position = [0.0, 0.07125, 0.051875]
+[guns.zones.support]
+position = [0, -0.015, -0.065]
+[guns.zones.release]
+position = [-0.025, 0.06, 0.025]
+[guns.zones.selector]
+position = [0.04, 0.03, 0]
+[guns.zones.port]
+position = [0.0, 0.07125000000000001, 0.01687500000000003]
+
+
+[guns.pistol]
+cylinder = false
+selector = false
+ammo = "tacz:357mag"
+open_degrees = 0
+shell_pixels = [0, 5.95, 5.775]
+sound_folder = "deagle"
+mag_out = "deagle_reload_magout"
+mag_in = "deagle_reload_magin"
+action_back = "deagle_inspect_slideback"
+action_close = "deagle_inspect_slideclose"
+
+
+[guns.visual]
+shot_node = "slide2"
+shot_travel = 0.035
+
+[[guns]]
+id = "tacz:glock_17"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "closed_bolt_magazine"
+variant = "MAGAZINE"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.65
+grip_pixels = [0.0, 4.225, -0.35]
+muzzle_pixels = [0.00625, 5.35, -7.05]
+support_distance = 0.0
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [-0.00025, -0.116, 0.108]
+[guns.zones.rack]
+position = [0, 0.15, 0.01]
+[guns.zones.support]
+position = [0, -0.015, -0.065]
+[guns.zones.release]
+position = [-0.025, 0.06, 0.025]
+[guns.zones.selector]
+position = [0.04, 0.03, 0]
+[guns.zones.port]
+position = [0.00076171875, 0.04671875, 0.0690625]
+
+
+[guns.visual]
+shot_node = "slide"
+shot_travel = 0.035
+
+[[guns]]
+id = "tacz:hk_mk23"
+manual_cycle_modes = ["SEMI"]
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "closed_bolt_magazine"
+variant = "HK_MK23"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0.0, 5.25, 5.5]
+muzzle_pixels = [0.0, 6.9375, -2.35937]
+support_distance = 0.0
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0.0, -0.046875, 0.05625]
+[guns.zones.rack]
+position = [0.009375, 0.0550781, 0.0642969]
+[guns.zones.support]
+position = [0, -0.015, -0.065]
+[guns.zones.release]
+position = [-0.025, 0.06, 0.025]
+[guns.zones.selector]
+position = [0.04, 0.03, 0]
+[guns.zones.port]
+position = [0.009375, 0.055078125000000006, 0.029296875]
+
+
+[guns.pistol]
+cylinder = false
+selector = true
+ammo = "tacz:45acp"
+open_degrees = 0
+shell_pixels = [0.25, 6.71875, 6.28125]
+sound_folder = "m1911"
+mag_out = "m1911_reload_magout"
+mag_in = "m1911_reload_magin"
+action_back = "m1911_inspect_slide_pull"
+action_close = "m1911_reload_empty_chamber"
+
+
+[guns.visual]
+shot_node = "slide"
+shot_travel = 0.035
+
+[[guns]]
+id = "tacz:hk_mp5a5"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "locking_charging_handle"
+variant = "SMG"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0.0, 7.925, 5.65]
+muzzle_pixels = [0.0, 10.875, -12.975]
+support_distance = 0.25
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "charge_handle"
+[guns.parts.bolt]
+node = "bolt"
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0, -0.07, -0.17]
+[guns.zones.rack]
+position = [-0.04, 0.15, -0.43]
+[guns.zones.support]
+position = [0, 0, -0.25]
+[guns.zones.release]
+position = [-0.04, 0.185, -0.375]
+[guns.zones.selector]
+position = [0.04, 0.03, 0]
+[guns.zones.port]
+position = [0.0075, 0.12843749999999998, -0.1378125]
+
+
+[guns.visual]
+shot_node = "bolt"
+shot_travel = 0.035
+
+[[guns]]
+id = "tacz:lonetrail"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "breech"
+variant = "LONETRAIL"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0.0, 6.63125, 2.74375]
+muzzle_pixels = [0.00863, 8.11642, -12.24776]
+support_distance = 0.0
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "breach2"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0.07, 0.0672656, 0.2346094]
+[guns.zones.rack]
+position = [0.0, 0.0372656, 0.2346094]
+[guns.zones.support]
+position = [0, -0.015, -0.065]
+[guns.zones.release]
+position = [-0.025, 0.06, 0.025]
+[guns.zones.selector]
+position = [0.04, 0.03, 0]
+[guns.zones.port]
+position = [0.07000000125, 0.06726562500000005, 0.23460937499999995]
+
+
+[guns.pistol]
+cylinder = true
+selector = false
+ammo = "tacz:30_06"
+open_degrees = -105
+shell_pixels = [1.8666667, 8.425, 9.0]
+sound_folder = "lonetrail"
+mag_out = "breach_reload_eject"
+mag_in = "breach_reload_insert"
+action_back = "breach_reload_gate_on"
+action_close = "breach_reload_gate_close"
+
+[[guns]]
+id = "tacz:m1911"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "closed_bolt_magazine"
+variant = "M1911"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0.0, 4.075, -0.15]
+muzzle_pixels = [0.0, 5.475, -7.875]
+support_distance = 0.0
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0.0, -0.0780049, 0.0655987]
+[guns.zones.rack]
+position = [0.0, 0.0553125, 0.0640625]
+[guns.zones.support]
+position = [0, -0.015, -0.065]
+[guns.zones.release]
+position = [-0.025, 0.06, 0.025]
+[guns.zones.selector]
+position = [0.04, 0.03, 0]
+[guns.zones.port]
+position = [0.0, 0.05531249999999999, 0.029062499999999998]
+
+
+[guns.pistol]
+cylinder = false
+selector = false
+ammo = "tacz:45acp"
+open_degrees = 0
+shell_pixels = [0, 5.55, 0.625]
+sound_folder = "m1911"
+mag_out = "m1911_reload_magout"
+mag_in = "m1911_reload_magin"
+action_back = "m1911_inspect_slide_pull"
+action_close = "m1911_reload_empty_chamber"
+
+
+[guns.visual]
+shot_node = "slide"
+shot_travel = 0.035
+
+[[guns]]
+id = "tacz:m4a1"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "closed_bolt_magazine"
+variant = "MAGAZINE"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.65
+grip_pixels = [0.0, 6.875, -2.65]
+muzzle_pixels = [0.0, 9.55, -26.25]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "m4a1_pull"
+[guns.parts.bolt]
+node = "m4a1_bolt"
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0, -0.076, -0.136]
+[guns.zones.rack]
+position = [0, 0.105, 0.07]
+[guns.zones.support]
+position = [0, 0, -0.3]
+[guns.zones.release]
+position = [-0.04, 0.055, -0.1]
+[guns.zones.selector]
+position = [0.04, 0.03, 0]
+[guns.zones.port]
+position = [0.008125, 0.11679687500000002, -0.13710937500000003]
+
+
+[guns.visual]
+shot_node = "m4a1_bolt"
+shot_travel = 0.035
+
+[[guns]]
+id = "tacz:m700"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "lifted_bolt"
+variant = "BOLT"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0.125, 4.05, 7.175]
+muzzle_pixels = [0.0, 7.25, -25.0]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "bolt"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0, -0.045, -0.12]
+[guns.zones.rack]
+position = [0.065, 0.12, 0.035]
+[guns.zones.support]
+position = [0, 0, -0.3]
+[guns.zones.release]
+position = [-0.04, 0.055, -0.1]
+[guns.zones.selector]
+position = [0.04, 0.03, 0]
+[guns.zones.port]
+position = [0.01875, 0.12703124999999998, -0.04500000000000001]
+
+[[guns]]
+id = "tacz:m870"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "pump"
+variant = "PUMP"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0.0, 6.825, 5.425]
+muzzle_pixels = [0.0125, 9.125, -23.5]
+support_distance = 0.32
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide2"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0, 0.015, -0.2]
+[guns.zones.rack]
+position = [0, 0.02, -0.32]
+[guns.zones.support]
+position = [0, 0.02, -0.32]
+[guns.zones.release]
+position = [-0.04, 0.055, -0.1]
+[guns.zones.selector]
+position = [0.04, 0.03, 0]
+[guns.zones.port]
+position = [0.0, 0.08156249999999998, -0.1771875]
+
+[[guns]]
+id = "tacz:m9a4"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "closed_bolt_magazine"
+variant = "M9A4"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0.0, 8.0, 1.75]
+muzzle_pixels = [0.0, 9.5625, -4.95312]
+support_distance = 0.0
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "upper"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0.0, -0.15, 0.084375]
+[guns.zones.rack]
+position = [0.0023437, 0.0585938, 0.074258]
+[guns.zones.support]
+position = [0, -0.015, -0.065]
+[guns.zones.release]
+position = [-0.025, 0.06, 0.025]
+[guns.zones.selector]
+position = [0.04, 0.03, 0]
+[guns.zones.port]
+position = [0.00234375, 0.05859375, 0.03925799999999999]
+
+
+[guns.pistol]
+cylinder = false
+selector = false
+ammo = "tacz:9mm"
+open_degrees = 0
+shell_pixels = [0.0625, 9.5625, 2.79688]
+sound_folder = "m9a4"
+mag_out = "m9a4_reload_magout"
+mag_in = "m9a4_reload_magin"
+action_back = "m9a4_inspect_slide"
+action_close = "m9a4_inspect_slide"
+
+
+[guns.visual]
+shot_node = "upper"
+shot_travel = 0.035
+
+[[guns]]
+id = "tacz:p320"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "closed_bolt_magazine"
+variant = "P320"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0.0, 8.0, 1.75]
+muzzle_pixels = [0.0, 9.5, -4.4375]
+support_distance = 0.0
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0.0, 0.0069619, 0.0312581]
+[guns.zones.rack]
+position = [0.0, 0.0609375, 0.044375]
+[guns.zones.support]
+position = [0, -0.015, -0.065]
+[guns.zones.release]
+position = [-0.025, 0.06, 0.025]
+[guns.zones.selector]
+position = [0.04, 0.03, 0]
+[guns.zones.port]
+position = [0.0, 0.06093749999999998, 0.009374999999999994]
+
+
+[guns.pistol]
+cylinder = false
+selector = false
+ammo = "tacz:45acp"
+open_degrees = 0
+shell_pixels = [0, 9.625, 2]
+sound_folder = "p320"
+mag_out = "p320_reload_magout"
+mag_in = "p320_reload_magin"
+action_back = "p320_inspect_slidepull"
+action_close = "p320_inspect_sliderelease"
+
+
+[guns.visual]
+shot_node = "slide"
+shot_travel = 0.035
+
+[[guns]]
+id = "tacz:rhino357"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "cylinder"
+variant = "RHINO357"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0.0, 8.0125, 2.8]
+muzzle_pixels = [0.0, 9.02589, -5.5625]
+support_distance = 0.0
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "cylinder_crane"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0.060625, 0.0365625, -0.0651562]
+[guns.zones.rack]
+position = [-0.009375, 0.0065625, -0.0651562]
+[guns.zones.support]
+position = [0, -0.015, -0.065]
+[guns.zones.release]
+position = [-0.025, 0.06, 0.025]
+[guns.zones.selector]
+position = [0.04, 0.03, 0]
+[guns.zones.port]
+position = [0.06062500124999999, 0.03656250000000005, -0.06515625]
+
+
+[guns.pistol]
+cylinder = true
+selector = false
+ammo = "tacz:357mag"
+open_degrees = 88
+shell_pixels = [1.6166667, 8.9875, 1.0625]
+sound_folder = "rhino357"
+mag_out = "rhino_reload_eject"
+mag_in = "rhino_reload_bulletin"
+action_back = "rhino_reload_cylinder_turn"
+action_close = "rhino_reload_cylinder_close"
+
+
+[guns.visual]
+cylinder = "cy_base"
+hammer = "hammer"
+hammer_degrees = -62.5
+rounds = ["round7", "round8", "round9", "round10", "round11", "round12"]
+heads = []
+loader = "speed_loader"
+hidden = ["loader_and_round"]
+
+[[guns]]
+id = "tacz:scar_h"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "closed_bolt_magazine"
+variant = "MAGAZINE"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 7.125, 7.575]
+muzzle_pixels = [0, 9.35625, -16.375]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "bolt"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [-0.0, -0.07968749999999997, -0.1715625]
+[guns.zones.rack]
+position = [-0.045, 0.03281250000000002, -0.2840625]
+[guns.zones.support]
+position = [0, 0, -0.3]
+[guns.zones.release]
+position = [-0.04, 0.055, -0.1]
+[guns.zones.selector]
+position = [0.04, 0.03, 0]
+[guns.zones.port]
+position = [0.005625, 0.08015624999999998, -0.1246875]
+
+
+[guns.visual]
+shot_node = "bolt"
+shot_travel = 0.035
+
+[[guns]]
+id = "tacz:scar_l"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "closed_bolt_magazine"
+variant = "MAGAZINE"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 6.875, 7.2]
+muzzle_pixels = [0, 9.35625, -16.375]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "bolt"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [-0.0, -0.0703125, -0.15750000000000003]
+[guns.zones.rack]
+position = [-0.045, 0.04218749999999999, -0.27]
+[guns.zones.support]
+position = [0, 0, -0.3]
+[guns.zones.release]
+position = [-0.04, 0.055, -0.1]
+[guns.zones.selector]
+position = [0.04, 0.03, 0]
+[guns.zones.port]
+position = [0.005625, 0.08953124999999995, -0.11062500000000003]
+
+
+[guns.visual]
+shot_node = "bolt"
+shot_travel = 0.035
+
+[[guns]]
+id = "tacz:taurus500"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "cylinder"
+variant = "TAURUS500"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0.0, 8.1, 5.5875]
+muzzle_pixels = [0.0, 10.75, -9.53125]
+support_distance = 0.0
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "cranecylinder"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0.0653125, 0.045, -0.1720312]
+[guns.zones.rack]
+position = [-0.0046875, 0.015, -0.1720312]
+[guns.zones.support]
+position = [0, -0.015, -0.065]
+[guns.zones.release]
+position = [-0.025, 0.06, 0.025]
+[guns.zones.selector]
+position = [0.04, 0.03, 0]
+[guns.zones.port]
+position = [0.06531250124999999, 0.04500000000000004, -0.17203125]
+
+
+[guns.pistol]
+cylinder = true
+selector = false
+ammo = "tacz:500mag"
+open_degrees = 107
+shell_pixels = [1.7416667, 9.3, 1.0]
+sound_folder = "taurus500"
+mag_out = "taurus500_reload_bullet_eject"
+mag_in = "taurus500_reload_bullet_in"
+action_back = "taurus500_reload_cylinder_turn"
+action_close = "taurus500_reload_cylinder_off"
+
+
+[guns.visual]
+cylinder = "cylinder"
+hammer = "hammer"
+hammer_degrees = -40.0
+rounds = ["round1", "round2", "round3", "round4", "round5"]
+heads = ["round_head", "round_head2", "round_head3", "round_head4", "round_head5"]
+loader = "loader"
+hidden = ["round_inspect"]
+
+[[guns]]
+id = "tacz:taurus943"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "cylinder"
+variant = "TAURUS943"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0.0, 4.225, 1.00938]
+muzzle_pixels = [0.0, 5.9875, -5.3125]
+support_distance = 0.0
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "cylinder_group"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0.0641406, 0.0344531, -0.1151955]
+[guns.zones.rack]
+position = [-0.0058594, 0.0044531, -0.1151955]
+[guns.zones.support]
+position = [0, -0.015, -0.065]
+[guns.zones.release]
+position = [-0.025, 0.06, 0.025]
+[guns.zones.selector]
+position = [0.04, 0.03, 0]
+[guns.zones.port]
+position = [0.06414062625, 0.034453125, -0.1151955]
+
+
+[guns.pistol]
+cylinder = true
+selector = false
+ammo = "tacz:22wmr"
+open_degrees = 95.5
+shell_pixels = [1.7104167, 5.14375, -2.0625]
+sound_folder = "taurus943"
+mag_out = "943_reload_bullet_eject"
+mag_in = "943_reload_bullet_insert_1"
+action_back = "943_reload_cylinder_turn"
+action_close = "943_reload_cylinder_close"
+
+
+[guns.visual]
+cylinder = "cylinder"
+hammer = "hammer"
+hammer_degrees = -45.0
+rounds = ["round1", "round2", "round3", "round4", "round5", "round6", "round7", "round8"]
+heads = ["head", "head2", "head3", "head4", "head5", "head6", "head7", "head8"]
+loader = ""
+
+[[guns]]
+id = "tacz:timeless50"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "closed_bolt_magazine"
+variant = "TIMELESS50"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0.0, 8.0, 1.75]
+muzzle_pixels = [0.0, 9.25, -5.6875]
+support_distance = 0.0
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0.0, -0.0751924, 0.0505987]
+[guns.zones.rack]
+position = [0.0, 0.0515625, 0.05375]
+[guns.zones.support]
+position = [0, -0.015, -0.065]
+[guns.zones.release]
+position = [-0.025, 0.06, 0.025]
+[guns.zones.selector]
+position = [0.04, 0.03, 0]
+[guns.zones.port]
+position = [0.0, 0.05156250000000001, 0.01874999999999999]
+
+[guns.pistol]
+cylinder = false
+selector = false
+ammo = "tacz:50ae"
+open_degrees = 0
+shell_pixels = [0, 9.375, 2.25]
+sound_folder = "timeless50"
+mag_out = "timeless50_reload_magout"
+mag_in = "timeless50_reload_magin"
+action_back = "timeless50_inspect_slidepull"
+action_close = "timeless50_inspect_slidepull"
+
+
+
+[guns.visual]
+shot_node = "slide"
+shot_travel = 0.035
+
+[[guns]]
+id = "tacz:aa12"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "button"
+variant = "BUTTON"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 8.05, 2.425]
+muzzle_pixels = [0, 10.775, -25.2]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0, 0, 0]
+[guns.zones.rack]
+position = [0, 0, 0]
+[guns.zones.support]
+position = [0, 0, -0.3]
+[guns.zones.release]
+position = [0, 0, 0]
+[guns.zones.selector]
+position = [0, 0, 0]
+[guns.zones.port]
+position = [0.0178125, 0.11812499999999994, -0.1640625]
+
+[[guns]]
+id = "tacz:ai_awp"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "button"
+variant = "BUTTON"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0.125, 5.05, 7.175]
+muzzle_pixels = [0, 7.75, -33.225]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0, 0, 0]
+[guns.zones.rack]
+position = [0, 0, 0]
+[guns.zones.support]
+position = [0, 0, -0.3]
+[guns.zones.release]
+position = [0, 0, 0]
+[guns.zones.selector]
+position = [0, 0, 0]
+[guns.zones.port]
+position = [0.01171875, 0.10828125000000001, -0.19640624999999998]
+
+[[guns]]
+id = "tacz:ak47"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "button"
+variant = "BUTTON"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 6.825, 5.425]
+muzzle_pixels = [0, 8.55, -21.325]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0, 0, 0]
+[guns.zones.rack]
+position = [0, 0, 0]
+[guns.zones.support]
+position = [0, 0, -0.3]
+[guns.zones.release]
+position = [0, 0, 0]
+[guns.zones.selector]
+position = [0, 0, 0]
+[guns.zones.port]
+position = [0.01875, 0.0871875, -0.195]
+
+[[guns]]
+id = "tacz:aug"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "button"
+variant = "BUTTON"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 7.125, 2.075]
+muzzle_pixels = [0, 8.875, -17]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0, 0, 0]
+[guns.zones.rack]
+position = [0, 0, 0]
+[guns.zones.support]
+position = [0, 0, -0.3]
+[guns.zones.release]
+position = [0, 0, 0]
+[guns.zones.selector]
+position = [0, 0, 0]
+[guns.zones.port]
+position = [0.005625, 0.07078124999999998, 0.3065625]
+
+[[guns]]
+id = "tacz:db_long"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "button"
+variant = "BUTTON"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 6.525, 7.65]
+muzzle_pixels = [0, 9.125, -15]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0, 0, 0]
+[guns.zones.rack]
+position = [0, 0, 0]
+[guns.zones.support]
+position = [0, 0, -0.3]
+[guns.zones.release]
+position = [0, 0, 0]
+[guns.zones.selector]
+position = [0, 0, 0]
+[guns.zones.port]
+position = [0.0, 0.0, 0.0]
+
+[[guns]]
+id = "tacz:db_short"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "button"
+variant = "BUTTON"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 6.525, 7.65]
+muzzle_pixels = [0, 9.125, -15]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0, 0, 0]
+[guns.zones.rack]
+position = [0, 0, 0]
+[guns.zones.support]
+position = [0, 0, -0.3]
+[guns.zones.release]
+position = [0, 0, 0]
+[guns.zones.selector]
+position = [0, 0, 0]
+[guns.zones.port]
+position = [0.0, 0.0, 0.0]
+
+[[guns]]
+id = "tacz:fn_evolys"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "button"
+variant = "BUTTON"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 7, 7]
+muzzle_pixels = [0, 10.375, -23]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0, 0, 0]
+[guns.zones.rack]
+position = [0, 0, 0]
+[guns.zones.support]
+position = [0, 0, -0.3]
+[guns.zones.release]
+position = [0, 0, 0]
+[guns.zones.selector]
+position = [0, 0, 0]
+[guns.zones.port]
+position = [0.0375, 0.11249999999999999, -0.1828125]
+
+[[guns]]
+id = "tacz:fn_fal"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "button"
+variant = "BUTTON"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 6.8875, 6.75]
+muzzle_pixels = [0, 8.875, -26.5]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0, 0, 0]
+[guns.zones.rack]
+position = [0, 0, 0]
+[guns.zones.support]
+position = [0, 0, -0.3]
+[guns.zones.release]
+position = [0, 0, 0]
+[guns.zones.selector]
+position = [0, 0, 0]
+[guns.zones.port]
+position = [0.0046875, 0.09328125, -0.21562499999999998]
+
+[[guns]]
+id = "tacz:g36k"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "button"
+variant = "BUTTON"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 5.75, 3.1]
+muzzle_pixels = [0, 8.1875, -20.5]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0, 0, 0]
+[guns.zones.rack]
+position = [0, 0, 0]
+[guns.zones.support]
+position = [0, 0, -0.3]
+[guns.zones.release]
+position = [0, 0, 0]
+[guns.zones.selector]
+position = [0, 0, 0]
+[guns.zones.port]
+position = [0.0075, 0.09140625, -0.11624999999999999]
+
+[[guns]]
+id = "tacz:hk416d"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "button"
+variant = "BUTTON"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 7.025, 6.65]
+muzzle_pixels = [0, 9.55, -14.6875]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0, 0, 0]
+[guns.zones.rack]
+position = [0, 0, 0]
+[guns.zones.support]
+position = [0, 0, -0.3]
+[guns.zones.release]
+position = [0, 0, 0]
+[guns.zones.selector]
+position = [0, 0, 0]
+[guns.zones.port]
+position = [0.0075, 0.10218749999999999, -0.17765625000000002]
+
+[[guns]]
+id = "tacz:hk_g3"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "button"
+variant = "BUTTON"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 6.625, 14.85]
+muzzle_pixels = [0, 9.875, -15.925]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0, 0, 0]
+[guns.zones.rack]
+position = [0, 0, 0]
+[guns.zones.support]
+position = [0, 0, -0.3]
+[guns.zones.release]
+position = [0, 0, 0]
+[guns.zones.selector]
+position = [0, 0, 0]
+[guns.zones.port]
+position = [0.0075, 0.155625, -0.19874999999999995]
+
+[[guns]]
+id = "tacz:kar98"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "button"
+variant = "BUTTON"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 5.075, 10.7625]
+muzzle_pixels = [0.00012, 7.55963, -26.5507]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0, 0, 0]
+[guns.zones.rack]
+position = [0, 0, 0]
+[guns.zones.support]
+position = [0, 0, -0.3]
+[guns.zones.release]
+position = [0, 0, 0]
+[guns.zones.selector]
+position = [0, 0, 0]
+[guns.zones.port]
+position = [0.00234375, 0.09562499999999999, -0.19031249999999997]
+
+[[guns]]
+id = "tacz:m1014"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "button"
+variant = "BUTTON"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 6.8875, 8.5]
+muzzle_pixels = [0, 9.44063, -24.2625]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0, 0, 0]
+[guns.zones.rack]
+position = [0, 0, 0]
+[guns.zones.support]
+position = [0, 0, -0.3]
+[guns.zones.release]
+position = [0, 0, 0]
+[guns.zones.selector]
+position = [0, 0, 0]
+[guns.zones.port]
+position = [0.01875, 0.09656250000000001, -0.30328125]
+
+[[guns]]
+id = "tacz:m107"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "button"
+variant = "BUTTON"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 7, 14.25]
+muzzle_pixels = [0, 10.18125, -29.35]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0, 0, 0]
+[guns.zones.rack]
+position = [0, 0, 0]
+[guns.zones.support]
+position = [0, 0, -0.3]
+[guns.zones.release]
+position = [0, 0, 0]
+[guns.zones.selector]
+position = [0, 0, 0]
+[guns.zones.port]
+position = [0.0046875, 0.133359375, -0.2728125]
+
+[[guns]]
+id = "tacz:m16a1"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "button"
+variant = "BUTTON"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 7.0125, 7.5]
+muzzle_pixels = [0, 9.60625, -24]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0, 0, 0]
+[guns.zones.rack]
+position = [0, 0, 0]
+[guns.zones.support]
+position = [0, 0, -0.3]
+[guns.zones.release]
+position = [0, 0, 0]
+[guns.zones.selector]
+position = [0, 0, 0]
+[guns.zones.port]
+position = [0.005625, 0.10312499999999997, -0.1228125]
+
+[[guns]]
+id = "tacz:m16a4"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "button"
+variant = "BUTTON"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 6.325, 7.75]
+muzzle_pixels = [0, 9.5625, -24]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0, 0, 0]
+[guns.zones.rack]
+position = [0, 0, 0]
+[guns.zones.support]
+position = [0, 0, -0.3]
+[guns.zones.release]
+position = [0, 0, 0]
+[guns.zones.selector]
+position = [0, 0, 0]
+[guns.zones.port]
+position = [0.009375, 0.12843749999999998, -0.1321875]
+
+[[guns]]
+id = "tacz:m249"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "button"
+variant = "BUTTON"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 4.85, 6.1]
+muzzle_pixels = [0, 8.43125, -23.0062]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0, 0, 0]
+[guns.zones.rack]
+position = [0, 0, 0]
+[guns.zones.support]
+position = [0, 0, -0.3]
+[guns.zones.release]
+position = [0, 0, 0]
+[guns.zones.selector]
+position = [0, 0, 0]
+[guns.zones.port]
+position = [0.039375, 0.08929687500000001, -0.16546874999999997]
+
+[[guns]]
+id = "tacz:m320"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "button"
+variant = "BUTTON"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0.025, 7.975, 0.65]
+muzzle_pixels = [0, 9.875, -10.5]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0, 0, 0]
+[guns.zones.rack]
+position = [0, 0, 0]
+[guns.zones.support]
+position = [0, 0, -0.3]
+[guns.zones.release]
+position = [0, 0, 0]
+[guns.zones.selector]
+position = [0, 0, 0]
+[guns.zones.port]
+position = [-0.0, 0.0, 0.0]
+
+[[guns]]
+id = "tacz:m95"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "button"
+variant = "BUTTON"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 6.95, 2.075]
+muzzle_pixels = [0, 10, -39.1]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0, 0, 0]
+[guns.zones.rack]
+position = [0, 0, 0]
+[guns.zones.support]
+position = [0, 0, -0.3]
+[guns.zones.release]
+position = [0, 0, 0]
+[guns.zones.selector]
+position = [0, 0, 0]
+[guns.zones.port]
+position = [0.014062499999999999, 0.133125, 0.38015625]
+
+[[guns]]
+id = "tacz:minigun"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "button"
+variant = "BUTTON"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 3.825, 23.425]
+muzzle_pixels = [0, 2.5, -24]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0, 0, 0]
+[guns.zones.rack]
+position = [0, 0, 0]
+[guns.zones.support]
+position = [0, 0, -0.3]
+[guns.zones.release]
+position = [0, 0, 0]
+[guns.zones.selector]
+position = [0, 0, 0]
+[guns.zones.port]
+position = [-0.15, -0.1809375, -0.6271875]
+
+[[guns]]
+id = "tacz:mk14"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "button"
+variant = "BUTTON"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 4.55, 10.6]
+muzzle_pixels = [0, 7.30625, -22.35]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0, 0, 0]
+[guns.zones.rack]
+position = [0, 0, 0]
+[guns.zones.support]
+position = [0, 0, -0.3]
+[guns.zones.release]
+position = [0, 0, 0]
+[guns.zones.selector]
+position = [0, 0, 0]
+[guns.zones.port]
+position = [0.0046875, 0.11273437500000001, -0.2109375]
+
+[[guns]]
+id = "tacz:p90"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "button"
+variant = "BUTTON"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 7.25, 3]
+muzzle_pixels = [0, 8, -5.75]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0, 0, 0]
+[guns.zones.rack]
+position = [0, 0, 0]
+[guns.zones.support]
+position = [0, 0, -0.3]
+[guns.zones.release]
+position = [0, 0, 0]
+[guns.zones.selector]
+position = [0, 0, 0]
+[guns.zones.port]
+position = [0.005625, -0.069609375, 0.25125]
+
+[[guns]]
+id = "tacz:qbz_191"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "button"
+variant = "BUTTON"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 6.8875, 6.75]
+muzzle_pixels = [0, 8.95313, -18.42187]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0, 0, 0]
+[guns.zones.rack]
+position = [0, 0, 0]
+[guns.zones.support]
+position = [0, 0, -0.3]
+[guns.zones.release]
+position = [0, 0, 0]
+[guns.zones.selector]
+position = [0, 0, 0]
+[guns.zones.port]
+position = [0.017461124999999997, 0.092109375, -0.189257625]
+
+[[guns]]
+id = "tacz:qbz_95"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "button"
+variant = "BUTTON"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 6.875, 2.1]
+muzzle_pixels = [0, 9.6125, -17.1875]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0, 0, 0]
+[guns.zones.rack]
+position = [0, 0, 0]
+[guns.zones.support]
+position = [0, 0, -0.3]
+[guns.zones.release]
+position = [0, 0, 0]
+[guns.zones.selector]
+position = [0, 0, 0]
+[guns.zones.port]
+position = [0.009375, 0.140625, 0.29625]
+
+[[guns]]
+id = "tacz:rpg7"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "button"
+variant = "BUTTON"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 1
+grip_pixels = [0, 3.575, -1.85]
+muzzle_pixels = [0, 5.45313, -8.15]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0, 0, 0]
+[guns.zones.rack]
+position = [0, 0, 0]
+[guns.zones.support]
+position = [0, 0, -0.3]
+[guns.zones.release]
+position = [0, 0, 0]
+[guns.zones.selector]
+position = [0, 0, 0]
+[guns.zones.port]
+position = [0.0, 0.0, 0.0]
+
+[[guns]]
+id = "tacz:rpk"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "button"
+variant = "BUTTON"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 6.575, 6.35]
+muzzle_pixels = [0, 8.55625, -29.7]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0, 0, 0]
+[guns.zones.rack]
+position = [0, 0, 0]
+[guns.zones.support]
+position = [0, 0, -0.3]
+[guns.zones.release]
+position = [0, 0, 0]
+[guns.zones.selector]
+position = [0, 0, 0]
+[guns.zones.port]
+position = [0.01875, 0.09468749999999998, -0.23812499999999998]
+
+[[guns]]
+id = "tacz:sks_tactical"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "button"
+variant = "BUTTON"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 3.875, 9.675]
+muzzle_pixels = [0, 6.5, -25.625]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0, 0, 0]
+[guns.zones.rack]
+position = [0, 0, 0]
+[guns.zones.support]
+position = [0, 0, -0.3]
+[guns.zones.release]
+position = [0, 0, 0]
+[guns.zones.selector]
+position = [0, 0, 0]
+[guns.zones.port]
+position = [0.0121875, 0.11249999999999999, -0.294375]
+
+[[guns]]
+id = "tacz:spas_12"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "button"
+variant = "BUTTON"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 7.325, 14.675]
+muzzle_pixels = [0, 9.72188, -21.325]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0, 0, 0]
+[guns.zones.rack]
+position = [0, 0, 0]
+[guns.zones.support]
+position = [0, 0, -0.3]
+[guns.zones.release]
+position = [0, 0, 0]
+[guns.zones.selector]
+position = [0, 0, 0]
+[guns.zones.port]
+position = [0.01875, 0.091875, -0.27]
+
+[[guns]]
+id = "tacz:spr15hb"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "button"
+variant = "BUTTON"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 7, 7]
+muzzle_pixels = [0, 9.4875, -27]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0, 0, 0]
+[guns.zones.rack]
+position = [0, 0, 0]
+[guns.zones.support]
+position = [0, 0, -0.3]
+[guns.zones.release]
+position = [0, 0, 0]
+[guns.zones.selector]
+position = [0, 0, 0]
+[guns.zones.port]
+position = [0.0075, 0.10078125, -0.1509375]
+
+[[guns]]
+id = "tacz:springfield1873"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "button"
+variant = "BUTTON"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 7.5, 6.45]
+muzzle_pixels = [0, 10, -39.25]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0, 0, 0]
+[guns.zones.rack]
+position = [0, 0, 0]
+[guns.zones.support]
+position = [0, 0, -0.3]
+[guns.zones.release]
+position = [0, 0, 0]
+[guns.zones.selector]
+position = [0, 0, 0]
+[guns.zones.port]
+position = [0.0, 0.0, 0.0]
+
+[[guns]]
+id = "tacz:type_81"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "button"
+variant = "BUTTON"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 6.8875, 6.75]
+muzzle_pixels = [0, 8.875, -23.8125]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0, 0, 0]
+[guns.zones.rack]
+position = [0, 0, 0]
+[guns.zones.support]
+position = [0, 0, -0.3]
+[guns.zones.release]
+position = [0, 0, 0]
+[guns.zones.selector]
+position = [0, 0, 0]
+[guns.zones.port]
+position = [0.009375, 0.10734374999999999, -0.2071875]
+
+[[guns]]
+id = "tacz:ump45"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "button"
+variant = "BUTTON"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 8.175, 5.75]
+muzzle_pixels = [0, 10.5, -11.0625]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0, 0, 0]
+[guns.zones.rack]
+position = [0, 0, 0]
+[guns.zones.support]
+position = [0, 0, -0.3]
+[guns.zones.release]
+position = [0, 0, 0]
+[guns.zones.selector]
+position = [0, 0, 0]
+[guns.zones.port]
+position = [0.005625, 0.083203125, -0.189375]
+
+[[guns]]
+id = "tacz:uzi"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "button"
+variant = "BUTTON"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0.95, 6.525, 1.1]
+muzzle_pixels = [0, 8.375, -12.25]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0, 0, 0]
+[guns.zones.rack]
+position = [0, 0, 0]
+[guns.zones.support]
+position = [0, 0, -0.3]
+[guns.zones.release]
+position = [0, 0, 0]
+[guns.zones.selector]
+position = [0, 0, 0]
+[guns.zones.port]
+position = [0.045, 0.07781249999999997, 0.0515625]
+
+[[guns]]
+id = "tacz:vector45"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "button"
+variant = "BUTTON"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 11.675, 2.075]
+muzzle_pixels = [0, 11.25, -11.775]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0, 0, 0]
+[guns.zones.rack]
+position = [0, 0, 0]
+[guns.zones.support]
+position = [0, 0, -0.3]
+[guns.zones.release]
+position = [0, 0, 0]
+[guns.zones.selector]
+position = [0, 0, 0]
+[guns.zones.port]
+position = [0.005625, 0.009843749999999972, -0.24281250000000001]

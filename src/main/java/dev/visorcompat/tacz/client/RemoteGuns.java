@@ -29,9 +29,11 @@ public final class RemoteGuns {
     }
     private static CompatNetwork.RemoteState state(AbstractClientPlayer p) {
         var mc=Minecraft.getInstance();var entry=STATES.get(p.getUUID());
+        if(entry!=null){if(entry.state().descriptors()&&!entry.state().profileDigest().equals(DescriptorProfiles.digest()))return null;}
         if(p==mc.player || entry==null || System.nanoTime()-entry.time()>2_500_000_000L || !p.isAlive()
             || p.isSpectator() || p.isInvisibleTo(mc.player) || !entry.state().key().equals(Profiles.key(p.getMainHandItem()))
             || Profiles.get(p.getMainHandItem())==null || !(VisorAPI.getVRPlayer(p) instanceof VRClientPlayer))return null;
+
         return entry.state();
     }
     public static boolean replaces(ItemStack stack,ItemDisplayContext context) {
@@ -57,6 +59,7 @@ public final class RemoteGuns {
             var vr=(VRClientPlayer)VisorAPI.getVRPlayer(player);
             var pose=vr.getPoseData(PlayerPoseType.RENDER);var stack=player.getMainHandItem();var profile=Profiles.get(stack);
             var gun=GunPose.resolve(pose,profile,player.getOffhandItem().isEmpty() && (!state.physical() || (state.phase()==Phase.SUPPORT || state.phase()==Phase.PUMP_HOLD && state.pull()<4)),state.calibration(),state.anchor());
+            gun=AdvancedRemote.pose(player.getUUID(),Profiles.key(stack),gun,profile,state.calibration());
             var display=TimelessAPI.getGunDisplay(stack).orElse(null);
             if(gun==null || display==null || display.getGunModel()==null)continue;
             var model=display.getGunModel();boolean hands=model.getRenderHand(),flash=MuzzleFlashRender.isSelf;
@@ -76,7 +79,7 @@ public final class RemoteGuns {
                 try(var physical=new PhysicalModel(model,profile,state.physical(),state.phase(),state.pull()*.005f,stack,state.calibration())) {
                     model.render(matrices,stack,ItemDisplayContext.THIRD_PERSON_RIGHT_HAND,type,light,OverlayTexture.NO_OVERLAY);
                 } finally {matrices.popPose();}
-                PhysicalModel.detached(matrices,model,profile,gun,pose,type,light,state.physical(),state.phase(),state.calibration().gunScale(),state.magazineLoaded());
+                PhysicalModel.detached(matrices,model,profile,gun,pose,type,light,state.physical(),state.phase(),state.calibration().gunScale(),state.magazineLoaded(),AdvancedRemote.freeMain(player.getUUID()));
                 if(state.physical())PumpVisual.render(matrices,profile,gun,pose,state.phase(),light,state.calibration().gunScale()*state.calibration().casingScale());
                 if(state.physical())JamVisual.render(matrices,stack,profile,state.calibration(),gun,pose,state.phase(),light);
                 mc.renderBuffers().bufferSource().endBatch();

@@ -1,0 +1,68 @@
+# Design prototype only: not loaded by the mod yet.
+schema = 1
+
+[[guns]]
+id = "immersive_armorer:pistol_9mm"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "closed_bolt_magazine"
+ammo_adapter = "native_rounds"
+
+[guns.parts.receiver]
+source = "gun_model"
+node = "gun"
+
+[guns.parts.slide]
+source = "gun_model"
+node = "slide" # Parent of main_slide: move once, not both parent and child.
+
+[guns.parts.magazine]
+source = "gun_model"
+node = "magazine"
+
+[guns.parts.cartridge]
+source = "native_ammo_shell" # Optional cosmetic preview, not inventory authority.
+
+[guns.joints.slide_travel]
+part = "slide"
+kind = "prismatic"
+frame = "gun"
+axis = [0.0, 0.0, 1.0] # +Z rearward; logical gun coordinates
+limits = [0.0, 0.055] # Metres at gun scale 1; estimate pending calibration
+return_mode = "spring"
+
+[guns.zones.rack]
+frame = "gun"
+position = [0.0, 0.09, 0.02] # Interaction estimates, not verified pack pivots
+size = [0.12, 0.10, 0.12]
+color = [255, 160, 40]
+part = "slide"
+follow_joint = "slide_travel"
+
+[guns.zones.magwell]
+frame = "gun"
+position = [0.0, -0.08, 0.06]
+size = [0.12, 0.14, 0.12]
+color = [50, 220, 100]
+part = "receiver"
+
+[guns.bindings.rack]
+zone = "rack"
+gesture = "grab_joint"
+joint = "slide_travel"
+# Mechanism validates what each endpoint means in the current ammo/jam state.
+rear_command = "action.rear"
+forward_command = "action.forward"
+
+[guns.bindings.magazine]
+zone = "magwell"
+gesture = "magazine_transfer"
+part = "magazine"
+command = "magazine.transfer"
+
+[[guns.poses]]
+state = "action.locked_open"
+joint = "slide_travel"
+at = "max"
+# Solver precedence: state interlock -> held gesture -> spring/rest.
+# This persists while locked; it is not a one-shot empty-shot animation.

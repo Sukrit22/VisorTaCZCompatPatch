@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ScaleZonesTest {
-    private final WeaponProfile pump=new WeaponProfile(.6f,0,6.825f,5.425f,.0125f,9.125f,-23.5f,.32f,WeaponProfile.Mechanism.PUMP);
+    private final WeaponProfile pump=Profiles.byId("tacz:m870");
     private Calibration calibration(float scale){return new Calibration(0,.017f,0,13,0,0,0,0,0,InteractionOffsets.ZERO,scale,ZoneSizes.DEFAULT);}
     @Test void oldJsonKeepsOffsetsAndDefaultsToFullSize(){
         var c=new Gson().fromJson("{\"y\":0.08,\"interactions\":{\"rack\":{\"z\":-0.28}}}",Calibration.class);

@@ -1,6 +1,6 @@
 # Adding pistol support: M1911 first, then the remaining default-pack pistols
 
-> Historical walkthrough: the default-pack pistol batch was implemented in 0.10.0. Do not repeat its registry/enum additions on the current branch. Use `PistolProfiles.java` for current mappings and `TESTING-PISTOLS-0.10.0.md` for testing; these examples describe the earlier learning baseline.
+> Historical walkthrough: the default-pack pistol batch was implemented in 0.10.0. Do not repeat its registry/enum additions on the current branch. Use `src/main/resources/gun-profiles.toml` and [runtime TOML instructions](RUNTIME-PROFILES.md) for current mappings and `TESTING-PISTOLS-0.10.0.md` for testing; these examples describe the earlier learning baseline.
 
 Checked against addon 0.9.3 / protocol 17 and the pinned TaCZ 1.1.8-hotfix default pack. This is a development exercise; this document does not register any additional guns. Keep your changes for review before calling the entire batch supported.
 

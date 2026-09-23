@@ -13,6 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class WorldStencilReadyMixin {
     @Inject(method={"renderLevel", "m_109089_"},at=@At("HEAD"))
     private void visorTacz$prepareStencil(CallbackInfo ci) {
+        if(!dev.visorcompat.tacz.client.ClientControls.vrActive())return;
         RenderTarget target=Minecraft.getInstance().getMainRenderTarget();
         if(target.useDepth && target.frameBufferId>=0 && !target.isStencilEnabled()) {
             target.enableStencil();

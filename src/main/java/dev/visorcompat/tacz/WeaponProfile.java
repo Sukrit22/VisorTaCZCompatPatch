@@ -67,25 +67,13 @@ public record WeaponProfile(
 
     public boolean cylinder(){var d=PistolProfiles.get(this);return d!=null&&d.cylinder();}
 
+    public String magazineNode(){var d=DescriptorProfiles.details(this);return d==null?"magazine":d.magazine();}
     public String rackNode() {
-        var d=PistolProfiles.get(this);if(d!=null)return d.rack();
-        return pump()
-            ? "slide2"
-            : bolt()
-              ? "bolt"
-              : smg()
-                ? "charge_handle"
-                : supportDistance == 0
-                  ? "slide"
-                  : "m4a1_pull";
+        var descriptor=DescriptorProfiles.details(this);return descriptor==null?"slide":descriptor.rack();
     }
 
     public String boltNode() {
-        return smg()
-            ? "bolt"
-            : supportDistance > 0 && !manualAction()
-              ? "m4a1_bolt"
-              : null;
+        var descriptor=DescriptorProfiles.details(this);return descriptor==null?null:descriptor.bolt();
     }
 
     public boolean pump() {

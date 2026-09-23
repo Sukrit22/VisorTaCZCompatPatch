@@ -23,7 +23,7 @@ public final class ControlsScreen extends Screen {
             b.setMessage(Component.literal(CompatSettings.reloadCalibration()?"Reloaded":"Reload failed"));
         }).bounds(x+132,y+48,128,20).build());
         addRenderableWidget(Button.builder(Component.literal("Handling: "+CompatSettings.handlingLabel()),b->{
-            CompatSettings.setPhysical(!CompatSettings.physical());rebuildWidgets();
+            CompatSettings.cycleHandling();rebuildWidgets();
         }).bounds(x,y+72,260,20).build());
         addRenderableWidget(Button.builder(Component.literal("Auto ADS: "+CompatSettings.autoAds()),b->{
             CompatSettings.setAutoAds(!CompatSettings.autoAds());rebuildWidgets();
@@ -38,7 +38,8 @@ public final class ControlsScreen extends Screen {
         addRenderableWidget(Button.builder(Component.literal("M700 transfer: "+(CompatSettings.transferAnytime()?"ANYTIME":"BOLT NEEDED")),b->{
             CompatSettings.setTransferAnytime(!CompatSettings.transferAnytime());rebuildWidgets();
         }).tooltip(net.minecraft.client.gui.components.Tooltip.create(Component.literal("BOLT NEEDED: only after firing, with an empty chamber, open/lifted bolt or jam. ANYTIME: transfer whenever support grip is held. Applies to moving away and main Use."))).bounds(x,y+144,260,20).build());
-        addRenderableWidget(Button.builder(Component.literal("Done"),b->onClose()).bounds(x,y+172,260,20).build());
+        addRenderableWidget(Button.builder(Component.literal("Advanced Handling"),b->minecraft.setScreen(new AdvancedScreen())).bounds(x,y+172,170,20).build());
+        addRenderableWidget(Button.builder(Component.literal("Done"),b->onClose()).bounds(x+174,y+172,86,20).build());
         ClientControls.clearInput();
     }
     @Override public boolean isPauseScreen(){return false;}

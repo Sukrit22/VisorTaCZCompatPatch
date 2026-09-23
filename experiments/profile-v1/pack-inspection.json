@@ -1,0 +1,431 @@
+[
+  {
+    "pack": "Immersive Armorer-v1.2.1-for117",
+    "gun_indices": 13,
+    "guns": [
+      {
+        "id": "immersive_armorer:assult_rifle",
+        "bolt": "open_bolt",
+        "reload": "magazine",
+        "script": null,
+        "model": "immersive_armorer:gun/assult_rifle_geo",
+        "missing_markers": [],
+        "parts": [
+          "magazine",
+          "bolt",
+          "additional_magazine"
+        ],
+        "animation_formats": [
+          "gltf"
+        ]
+      },
+      {
+        "id": "immersive_armorer:chemical_thrower",
+        "bolt": "open_bolt",
+        "reload": "fuel",
+        "script": null,
+        "model": "immersive_armorer:gun/chemical_thrower_geo",
+        "missing_markers": [
+          "shell"
+        ],
+        "parts": [
+          "magazine"
+        ],
+        "animation_formats": [
+          "gltf"
+        ]
+      },
+      {
+        "id": "immersive_armorer:double_shotgun",
+        "bolt": "manual_action",
+        "reload": "magazine",
+        "script": "immersive_armorer:double_shotgun_logic",
+        "model": "immersive_armorer:gun/double_shotgun_geo",
+        "missing_markers": [],
+        "parts": [
+          "pump",
+          "bolt",
+          "magazine"
+        ],
+        "animation_formats": [
+          "animation.json"
+        ]
+      },
+      {
+        "id": "immersive_armorer:dual_barrel_cannon",
+        "bolt": "open_bolt",
+        "reload": "magazine",
+        "script": "immersive_armorer:dual_barrel_cannon_logic",
+        "model": "immersive_armorer:gun/dual_barrel_cannon_geo",
+        "missing_markers": [],
+        "parts": [],
+        "animation_formats": [
+          "animation.json"
+        ]
+      },
+      {
+        "id": "immersive_armorer:pistol_9mm",
+        "bolt": "closed_bolt",
+        "reload": "magazine",
+        "script": null,
+        "model": "immersive_armorer:gun/pistol_9mm_geo",
+        "missing_markers": [],
+        "parts": [
+          "slide",
+          "main_slide",
+          "magazine",
+          "additional_magazine"
+        ],
+        "animation_formats": [
+          "gltf"
+        ]
+      },
+      {
+        "id": "immersive_armorer:plasma_gun",
+        "bolt": "manual_action",
+        "reload": "fuel",
+        "script": "immersive_armorer:plasma_gun_logic",
+        "model": "immersive_armorer:gun/plasma_gun_geo",
+        "missing_markers": [
+          "shell"
+        ],
+        "parts": [
+          "magazine"
+        ],
+        "animation_formats": [
+          "animation.json"
+        ]
+      },
+      {
+        "id": "immersive_armorer:pump_shotgun",
+        "bolt": "manual_action",
+        "reload": "magazine",
+        "script": null,
+        "model": "immersive_armorer:gun/pump_shotgun_geo",
+        "missing_markers": [],
+        "parts": [
+          "magazine",
+          "pump",
+          "slide2",
+          "slide",
+          "bolt"
+        ],
+        "animation_formats": [
+          "animation.json"
+        ]
+      },
+      {
+        "id": "immersive_armorer:railgun",
+        "bolt": "open_bolt",
+        "reload": "magazine",
+        "script": null,
+        "model": "immersive_armorer:gun/railgun_geo",
+        "missing_markers": [
+          "shell"
+        ],
+        "parts": [
+          "magazine"
+        ],
+        "animation_formats": [
+          "gltf"
+        ]
+      },
+      {
+        "id": "immersive_armorer:revolver",
+        "bolt": "open_bolt",
+        "reload": "magazine",
+        "script": null,
+        "model": "immersive_armorer:gun/revolver_geo",
+        "missing_markers": [
+          "shell"
+        ],
+        "parts": [],
+        "animation_formats": [
+          "gltf"
+        ]
+      },
+      {
+        "id": "immersive_armorer:short_smg",
+        "bolt": "closed_bolt",
+        "reload": "magazine",
+        "script": null,
+        "model": "immersive_armorer:gun/short_smg_geo",
+        "missing_markers": [],
+        "parts": [
+          "magazine"
+        ],
+        "animation_formats": [
+          "animation.json"
+        ]
+      },
+      {
+        "id": "immersive_armorer:standard_rail_pistol_mk2",
+        "bolt": "open_bolt",
+        "reload": "fuel",
+        "script": null,
+        "model": "immersive_armorer:gun/standard_rail_pistol_mk2_geo",
+        "missing_markers": [
+          "shell"
+        ],
+        "parts": [],
+        "animation_formats": [
+          "gltf"
+        ]
+      },
+      {
+        "id": "immersive_armorer:standard_rail_pistol_mk3",
+        "bolt": "open_bolt",
+        "reload": "fuel",
+        "script": null,
+        "model": "immersive_armorer:gun/standard_rail_pistol_mk3_geo",
+        "missing_markers": [
+          "shell"
+        ],
+        "parts": [],
+        "animation_formats": [
+          "gltf"
+        ]
+      },
+      {
+        "id": "immersive_armorer:standard_rail_smg_mk1",
+        "bolt": "open_bolt",
+        "reload": "fuel",
+        "script": null,
+        "model": "immersive_armorer:gun/standard_rail_smg_mk1_geo",
+        "missing_markers": [
+          "shell"
+        ],
+        "parts": [],
+        "animation_formats": [
+          "gltf"
+        ]
+      }
+    ],
+    "warnings": [
+      "assets/immersive_armorer/display/guns/chemical_thrower_display.json: unquoted flase normalized for inspection only"
+    ]
+  },
+  {
+    "pack": "Project Zero v0.5+1.21.1",
+    "gun_indices": 14,
+    "guns": [
+      {
+        "id": "project_zero:crossbow",
+        "bolt": "open_bolt",
+        "reload": "magazine",
+        "script": null,
+        "model": "project_zero:gun/crossbow_geo",
+        "missing_markers": [
+          "shell"
+        ],
+        "parts": [],
+        "animation_formats": [
+          "animation.json"
+        ]
+      },
+      {
+        "id": "project_zero:famas",
+        "bolt": "closed_bolt",
+        "reload": "magazine",
+        "script": null,
+        "model": "project_zero:gun/famas_geo",
+        "missing_markers": [],
+        "parts": [
+          "magazine2",
+          "bolt"
+        ],
+        "animation_formats": [
+          "animation.json"
+        ]
+      },
+      {
+        "id": "project_zero:fat",
+        "bolt": "open_bolt",
+        "reload": "magazine",
+        "script": null,
+        "model": "project_zero:gun/fat_geo",
+        "missing_markers": [
+          "shell"
+        ],
+        "parts": [
+          "bullet_and_bolt",
+          "bolt",
+          "magazine"
+        ],
+        "animation_formats": [
+          "animation.json"
+        ]
+      },
+      {
+        "id": "project_zero:g11",
+        "bolt": "closed_bolt",
+        "reload": "magazine",
+        "script": null,
+        "model": "project_zero:gun/g11_geo",
+        "missing_markers": [
+          "shell"
+        ],
+        "parts": [
+          "bolt",
+          "magazine"
+        ],
+        "animation_formats": [
+          "animation.json"
+        ]
+      },
+      {
+        "id": "project_zero:hcar",
+        "bolt": "closed_bolt",
+        "reload": "magazine",
+        "script": null,
+        "model": "project_zero:gun/hcar_geo",
+        "missing_markers": [],
+        "parts": [
+          "magazine",
+          "bolt_slide",
+          "bolt2",
+          "magazinecatch"
+        ],
+        "animation_formats": [
+          "animation.json"
+        ]
+      },
+      {
+        "id": "project_zero:l39",
+        "bolt": "closed_bolt",
+        "reload": "magazine",
+        "script": null,
+        "model": "project_zero:gun/l39_geo",
+        "missing_markers": [],
+        "parts": [
+          "bolt",
+          "bolt_line_recycle",
+          "slide_inner_line_crank_bullet_lorder_thingy",
+          "magazine"
+        ],
+        "animation_formats": [
+          "animation.json"
+        ]
+      },
+      {
+        "id": "project_zero:lgs",
+        "bolt": "closed_bolt",
+        "reload": "magazine",
+        "script": null,
+        "model": "project_zero:gun/lgs_geo",
+        "missing_markers": [],
+        "parts": [
+          "bolt",
+          "magazine"
+        ],
+        "animation_formats": [
+          "animation.json"
+        ]
+      },
+      {
+        "id": "project_zero:makarov",
+        "inspection_error": "[Errno 2] No such file or directory: '.upstream\\\\Project Zero v0.5+1.21.1\\\\data\\\\project_zero\\\\data\\\\guns\\\\makarov_data.json'"
+      },
+      {
+        "id": "project_zero:r4",
+        "bolt": "closed_bolt",
+        "reload": "magazine",
+        "script": null,
+        "model": "project_zero:gun/r4_geo",
+        "missing_markers": [],
+        "parts": [
+          "additional_magazine",
+          "magazine",
+          "bolt"
+        ],
+        "animation_formats": [
+          "animation.json"
+        ]
+      },
+      {
+        "id": "project_zero:rossi",
+        "bolt": "open_bolt",
+        "reload": "magazine",
+        "script": null,
+        "model": "project_zero:gun/rossi_geo",
+        "missing_markers": [
+          "shell"
+        ],
+        "parts": [],
+        "animation_formats": [
+          "animation.json"
+        ]
+      },
+      {
+        "id": "project_zero:sig",
+        "bolt": "closed_bolt",
+        "reload": "magazine",
+        "script": null,
+        "model": "project_zero:gun/sig_geo",
+        "missing_markers": [],
+        "parts": [
+          "magazine2",
+          "bolt",
+          "magazine"
+        ],
+        "animation_formats": [
+          "animation.json"
+        ]
+      },
+      {
+        "id": "project_zero:svd",
+        "bolt": "closed_bolt",
+        "reload": "magazine",
+        "script": null,
+        "model": "project_zero:gun/svd_geo",
+        "missing_markers": [],
+        "parts": [
+          "bolt2",
+          "magazine",
+          "Magazine0"
+        ],
+        "animation_formats": [
+          "animation.json"
+        ]
+      },
+      {
+        "id": "project_zero:usp",
+        "bolt": "closed_bolt",
+        "reload": "magazine",
+        "script": null,
+        "model": "project_zero:gun/usp_geo",
+        "missing_markers": [],
+        "parts": [
+          "additional_magazine",
+          "slide_illuminated",
+          "slide_main",
+          "slide_main2",
+          "magazine"
+        ],
+        "animation_formats": [
+          "animation.json"
+        ]
+      },
+      {
+        "id": "project_zero:wa2000",
+        "bolt": "closed_bolt",
+        "reload": "magazine",
+        "script": null,
+        "model": "project_zero:gun/wa2000_geo",
+        "missing_markers": [],
+        "parts": [
+          "bolt_inner",
+          "magazine",
+          "bolt",
+          "bolt5"
+        ],
+        "animation_formats": [
+          "animation.json"
+        ]
+      }
+    ],
+    "warnings": [
+      "data/project_zero/data/guns/fat_data.json: number ending in decimal point normalized for inspection only"
+    ]
+  }
+]

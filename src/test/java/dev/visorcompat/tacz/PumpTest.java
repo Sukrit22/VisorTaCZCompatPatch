@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PumpTest {
-    private final WeaponProfile pump=new WeaponProfile(.6f,0,6.825f,5.425f,0,9,-23,.32f,WeaponProfile.Mechanism.PUMP);
+    private final WeaponProfile pump=Profiles.byId("tacz:m870");
     @Test void partialStrokeDoesNotOpenOrFeed(){
         assertEquals(PumpCycle.Transition.NONE,PumpCycle.transition(false,.04f,0,0));
         assertEquals(PumpCycle.Transition.NONE,PumpCycle.transition(true,.04f,0,0));
@@ -17,8 +17,8 @@ class PumpTest {
         assertEquals(PumpCycle.Transition.CLOSE,PumpCycle.transition(true,0,0,0));
     }
     @Test void sidewaysOrInvalidTrackingCannotCycle(){
-        assertEquals(PumpCycle.Transition.NONE,PumpCycle.transition(false,.10f,.20f,0));
-        assertEquals(PumpCycle.Transition.NONE,PumpCycle.transition(true,0,0,.20f));
+        assertEquals(PumpCycle.Transition.NONE,PumpCycle.transition(false,.10f,.30f,0));
+        assertEquals(PumpCycle.Transition.NONE,PumpCycle.transition(true,0,0,.30f));
         assertEquals(PumpCycle.Transition.NONE,PumpCycle.transition(false,Float.NaN,0,0));
         assertEquals(PumpCycle.Transition.NONE,PumpCycle.transition(true,0,Float.NaN,0));
     }
@@ -44,4 +44,10 @@ class PumpTest {
         assertEquals(Handling.Target.RACK,Handling.target(Handling.Phase.PUMP_OPEN,Handling.rack(pump).add(0,0,.08f),false,pump,Calibration.ZERO));
         assertEquals(Handling.Target.NONE,Handling.target(Handling.Phase.READY,Handling.magazine(pump),false,pump,Calibration.ZERO));
     }
+    @Test void fastForwardOvershootStillCloses(){
+        assertEquals(PumpCycle.Transition.CLOSE,PumpCycle.transition(true,-.20f,.18f,-.18f));
+        assertEquals(PumpCycle.Transition.NONE,PumpCycle.transition(false,-.20f,.18f,-.18f));
+        assertEquals(PumpCycle.Transition.NONE,PumpCycle.transition(true,-.5f,0,0));
+    }
+
 }

@@ -17,12 +17,14 @@ public final class ServerPoses {
         return CompatNetwork.enabled(player) && VisorAPI.getVRPlayer(player) instanceof VRServerPlayer;
     }
     public static GunPose validated(ServerPlayer player) {
+        if(!ServerAdvanced.canInteract(player))return null;
         if (!(VisorAPI.getVRPlayer(player) instanceof VRServerPlayer vr) || !vr.hasPoseData()) return null;
         if (!(vr instanceof FreshPose fresh) || fresh.visorTacz$lastPoseNanos() == 0
                 || System.nanoTime() - fresh.visorTacz$lastPoseNanos() > 500_000_000L) return null;
         WeaponProfile profile = Profiles.get(player.getMainHandItem());
         if (profile == null || !player.isAlive() || player.isSpectator()) return null;
         GunPose pose = GunPose.resolve(vr.getPoseData(), profile, player.getOffhandItem().isEmpty() && (!ServerPhysical.enabled(player) || ServerPhysical.supporting(player)), CompatNetwork.calibration(player),ServerPhysical.anchor(player));
+        pose=ServerAdvanced.mountedPose(player,pose);
         if (pose == null) return null;
         Vec3 head = vr.getPoseData().getHmd().getPositionVec3();
         Vec3 hand = new Vec3(pose.hand());

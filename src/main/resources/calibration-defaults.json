@@ -1,5 +1,397 @@
 {
-  "tacz:glock_17|tacz:default": {
+  "tacz:aa12|tacz:default": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "rack": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "port": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "release": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.225,
+        "height": 0.225,
+        "depth": 0.225
+      },
+      "magazine": {
+        "width": 0.135,
+        "height": 0.135,
+        "depth": 0.135
+      },
+      "rack": {
+        "width": 0.1575,
+        "height": 0.1575,
+        "depth": 0.1575
+      },
+      "selector": {
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.5,
+        "depth": 0.5
+      },
+      "sight": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.5475
+      },
+      "port": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.0525
+      },
+      "release": {
+        "width": 0.045,
+        "height": 0.045,
+        "depth": 0.045
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 1.0
+  },
+  "tacz:ai_awp|tacz:default": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "rack": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "port": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "release": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.225,
+        "height": 0.225,
+        "depth": 0.225
+      },
+      "magazine": {
+        "width": 0.135,
+        "height": 0.135,
+        "depth": 0.135
+      },
+      "rack": {
+        "width": 0.1575,
+        "height": 0.1575,
+        "depth": 0.1575
+      },
+      "selector": {
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.5,
+        "depth": 0.5
+      },
+      "sight": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.5475
+      },
+      "port": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.0525
+      },
+      "release": {
+        "width": 0.045,
+        "height": 0.045,
+        "depth": 0.045
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 1.0
+  },
+  "tacz:ak47|tacz:default": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "rack": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "port": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "release": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.225,
+        "height": 0.225,
+        "depth": 0.225
+      },
+      "magazine": {
+        "width": 0.135,
+        "height": 0.135,
+        "depth": 0.135
+      },
+      "rack": {
+        "width": 0.1575,
+        "height": 0.1575,
+        "depth": 0.1575
+      },
+      "selector": {
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.5,
+        "depth": 0.5
+      },
+      "sight": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.5475
+      },
+      "port": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.0525
+      },
+      "release": {
+        "width": 0.045,
+        "height": 0.045,
+        "depth": 0.045
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 1.0
+  },
+  "tacz:aug|tacz:default": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "rack": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "port": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "release": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.225,
+        "height": 0.225,
+        "depth": 0.225
+      },
+      "magazine": {
+        "width": 0.135,
+        "height": 0.135,
+        "depth": 0.135
+      },
+      "rack": {
+        "width": 0.1575,
+        "height": 0.1575,
+        "depth": 0.1575
+      },
+      "selector": {
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.5,
+        "depth": 0.5
+      },
+      "sight": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.5475
+      },
+      "port": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.0525
+      },
+      "release": {
+        "width": 0.045,
+        "height": 0.045,
+        "depth": 0.045
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 1.0
+  },
+  "tacz:b93r|tacz:default": {
     "x": 0.0,
     "y": 0.07999999,
     "z": -0.02,
@@ -51,22 +443,414 @@
         "z": 0.046000004
       }
     },
-    "gunScale": 0.79999995,
+    "gunScale": 0.75,
     "zones": {
       "support": {
-        "width": 0.16000001,
-        "height": 0.09,
+        "width": 0.15000002,
+        "height": 0.08437501,
+        "depth": 0.09375001
+      },
+      "magazine": {
+        "width": 0.103124976,
+        "height": 0.18750003,
+        "depth": 0.11249999
+      },
+      "rack": {
+        "width": 0.06562497,
+        "height": 0.084374964,
+        "depth": 0.29062498
+      },
+      "selector": {
+        "width": 0.075,
+        "height": 0.075,
+        "depth": 0.075
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.4000001,
+        "depth": 0.20000021
+      },
+      "sight": {
+        "width": 0.065625004,
+        "height": 0.065625004,
+        "depth": 0.68437505
+      },
+      "port": {
+        "width": 0.065625004,
+        "height": 0.065625004,
+        "depth": 0.065625004
+      },
+      "release": {
+        "width": 0.065625004,
+        "height": 0.065625004,
+        "depth": 0.065625004
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 0.79999995
+  },
+  "tacz:cz75|tacz:default": {
+    "x": 0.0,
+    "y": 0.049999997,
+    "z": 0.03,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": -0.12999998,
+        "z": 0.0
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": -0.06999999,
+        "z": 0.01
+      },
+      "rack": {
+        "x": 0.0,
+        "y": 0.01,
+        "z": -0.08999999
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": -0.31999996
+      },
+      "port": {
+        "x": 0.01,
+        "y": 0.01,
+        "z": 0.02
+      },
+      "release": {
+        "x": 0.0,
+        "y": -0.02,
+        "z": -0.01
+      }
+    },
+    "gunScale": 0.6499999,
+    "zones": {
+      "support": {
+        "width": 0.15785709,
+        "height": 0.092857055,
+        "depth": 0.092857055
+      },
+      "magazine": {
+        "width": 0.09842855,
+        "height": 0.11699997,
+        "depth": 0.09842855
+      },
+      "rack": {
+        "width": 0.09285711,
+        "height": 0.0742857,
+        "depth": 0.1857143
+      },
+      "selector": {
+        "width": 0.05199999,
+        "height": 0.05199999,
+        "depth": 0.05199999
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.4000001,
+        "depth": 0.20000021
+      },
+      "sight": {
+        "width": 0.046428572,
+        "height": 0.046428572,
+        "depth": 0.6685713
+      },
+      "port": {
+        "width": 0.045500003,
+        "height": 0.045500003,
+        "depth": 0.045500003
+      },
+      "release": {
+        "width": 0.05757142,
+        "height": 0.05757142,
+        "depth": 0.05757142
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 0.6999999
+  },
+  "tacz:db_long|tacz:default": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "rack": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "port": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "release": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.225,
+        "height": 0.225,
+        "depth": 0.225
+      },
+      "magazine": {
+        "width": 0.135,
+        "height": 0.135,
+        "depth": 0.135
+      },
+      "rack": {
+        "width": 0.1575,
+        "height": 0.1575,
+        "depth": 0.1575
+      },
+      "selector": {
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.5,
+        "depth": 0.5
+      },
+      "sight": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.5475
+      },
+      "port": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.0525
+      },
+      "release": {
+        "width": 0.045,
+        "height": 0.045,
+        "depth": 0.045
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 1.0
+  },
+  "tacz:db_short|tacz:default": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "rack": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "port": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "release": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.225,
+        "height": 0.225,
+        "depth": 0.225
+      },
+      "magazine": {
+        "width": 0.135,
+        "height": 0.135,
+        "depth": 0.135
+      },
+      "rack": {
+        "width": 0.1575,
+        "height": 0.1575,
+        "depth": 0.1575
+      },
+      "selector": {
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.5,
+        "depth": 0.5
+      },
+      "sight": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.5475
+      },
+      "port": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.0525
+      },
+      "release": {
+        "width": 0.045,
+        "height": 0.045,
+        "depth": 0.045
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 1.0
+  },
+  "tacz:deagle_golden|tacz:default": {
+    "x": 0.0,
+    "y": 0.055000003,
+    "z": 0.01,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": -0.13999999,
+        "z": 0.03
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": -0.11999998,
+        "z": 0.049999997
+      },
+      "rack": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": -0.35999992
+      },
+      "port": {
+        "x": 0.02,
+        "y": 0.0,
+        "z": -0.03
+      },
+      "release": {
+        "x": -0.03,
+        "y": -0.049999997,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.21000004,
+        "height": 0.11,
         "depth": 0.1
       },
       "magazine": {
-        "width": 0.10999997,
-        "height": 0.20000002,
+        "width": 0.08999999,
+        "height": 0.18,
         "depth": 0.11999998
       },
       "rack": {
-        "width": 0.06999996,
-        "height": 0.08999996,
-        "depth": 0.30999994
+        "width": 0.11999997,
+        "height": 0.10999997,
+        "depth": 0.17999999
       },
       "selector": {
         "width": 0.08,
@@ -76,7 +860,7 @@
       "pouch": {
         "width": 0.5,
         "height": 0.4000001,
-        "depth": 0.20000021
+        "depth": 0.3000002
       },
       "sight": {
         "width": 0.07,
@@ -89,13 +873,1777 @@
         "depth": 0.07
       },
       "release": {
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
+      }
+    },
+    "scaleLock": false,
+    "casingScale": 0.74999994
+  },
+  "tacz:deagle|tacz:default": {
+    "x": 0.0,
+    "y": 0.055000003,
+    "z": 0.01,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": -0.13999999,
+        "z": 0.03
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": -0.11999998,
+        "z": 0.049999997
+      },
+      "rack": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": -0.35999992
+      },
+      "port": {
+        "x": 0.02,
+        "y": 0.0,
+        "z": -0.03
+      },
+      "release": {
+        "x": -0.03,
+        "y": -0.049999997,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.6499999,
+    "zones": {
+      "support": {
+        "width": 0.21000004,
+        "height": 0.11,
+        "depth": 0.1
+      },
+      "magazine": {
+        "width": 0.08999999,
+        "height": 0.18,
+        "depth": 0.11999998
+      },
+      "rack": {
+        "width": 0.11999997,
+        "height": 0.10999997,
+        "depth": 0.17999999
+      },
+      "selector": {
+        "width": 0.08,
+        "height": 0.08,
+        "depth": 0.08
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.4000001,
+        "depth": 0.3000002
+      },
+      "sight": {
+        "width": 0.07,
+        "height": 0.07,
+        "depth": 0.73
+      },
+      "port": {
         "width": 0.07,
         "height": 0.07,
         "depth": 0.07
+      },
+      "release": {
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
+      }
+    },
+    "scaleLock": false,
+    "casingScale": 0.74999994
+  },
+  "tacz:fn_evolys|tacz:default": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "rack": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "port": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "release": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.225,
+        "height": 0.225,
+        "depth": 0.225
+      },
+      "magazine": {
+        "width": 0.135,
+        "height": 0.135,
+        "depth": 0.135
+      },
+      "rack": {
+        "width": 0.1575,
+        "height": 0.1575,
+        "depth": 0.1575
+      },
+      "selector": {
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.5,
+        "depth": 0.5
+      },
+      "sight": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.5475
+      },
+      "port": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.0525
+      },
+      "release": {
+        "width": 0.045,
+        "height": 0.045,
+        "depth": 0.045
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 1.0
+  },
+  "tacz:fn_fal|tacz:default": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "rack": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "port": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "release": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.225,
+        "height": 0.225,
+        "depth": 0.225
+      },
+      "magazine": {
+        "width": 0.135,
+        "height": 0.135,
+        "depth": 0.135
+      },
+      "rack": {
+        "width": 0.1575,
+        "height": 0.1575,
+        "depth": 0.1575
+      },
+      "selector": {
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.5,
+        "depth": 0.5
+      },
+      "sight": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.5475
+      },
+      "port": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.0525
+      },
+      "release": {
+        "width": 0.045,
+        "height": 0.045,
+        "depth": 0.045
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 1.0
+  },
+  "tacz:g36k|tacz:default": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "rack": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "port": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "release": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.225,
+        "height": 0.225,
+        "depth": 0.225
+      },
+      "magazine": {
+        "width": 0.135,
+        "height": 0.135,
+        "depth": 0.135
+      },
+      "rack": {
+        "width": 0.1575,
+        "height": 0.1575,
+        "depth": 0.1575
+      },
+      "selector": {
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.5,
+        "depth": 0.5
+      },
+      "sight": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.5475
+      },
+      "port": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.0525
+      },
+      "release": {
+        "width": 0.045,
+        "height": 0.045,
+        "depth": 0.045
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 1.0
+  },
+  "tacz:glock_17|tacz:default": {
+    "x": 0.0,
+    "y": 0.059999995,
+    "z": -0.01,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.08999999,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": -0.12999998,
+        "z": 0.07999999
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": -0.109999985,
+        "z": 0.04
+      },
+      "rack": {
+        "x": 0.0,
+        "y": -0.09999999,
+        "z": -0.01
+      },
+      "selector": {
+        "x": -0.07999999,
+        "y": -0.02,
+        "z": -0.02
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.09999999,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": -0.45999983
+      },
+      "port": {
+        "x": 0.02,
+        "y": 0.01,
+        "z": 1.4901161e-08
+      },
+      "release": {
+        "x": -0.02,
+        "y": -0.049999997,
+        "z": 0.046000004
+      }
+    },
+    "gunScale": 0.6499999,
+    "zones": {
+      "support": {
+        "width": 0.14,
+        "height": 0.10312499,
+        "depth": 0.11124999
+      },
+      "magazine": {
+        "width": 0.08937497,
+        "height": 0.16250001,
+        "depth": 0.09749999
+      },
+      "rack": {
+        "width": 0.06687497,
+        "height": 0.07312497,
+        "depth": 0.25187495
+      },
+      "selector": {
+        "width": 0.06499999,
+        "height": 0.06499999,
+        "depth": 0.06499999
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.4000001,
+        "depth": 0.20000021
+      },
+      "sight": {
+        "width": 0.056875,
+        "height": 0.056875,
+        "depth": 0.70312494
+      },
+      "port": {
+        "width": 0.056875,
+        "height": 0.056875,
+        "depth": 0.056875
+      },
+      "release": {
+        "width": 0.056875,
+        "height": 0.056875,
+        "depth": 0.056875
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 0.6499999
+  },
+  "tacz:hk416d|tacz:default": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "rack": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "port": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "release": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.225,
+        "height": 0.225,
+        "depth": 0.225
+      },
+      "magazine": {
+        "width": 0.135,
+        "height": 0.135,
+        "depth": 0.135
+      },
+      "rack": {
+        "width": 0.1575,
+        "height": 0.1575,
+        "depth": 0.1575
+      },
+      "selector": {
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.5,
+        "depth": 0.5
+      },
+      "sight": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.5475
+      },
+      "port": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.0525
+      },
+      "release": {
+        "width": 0.045,
+        "height": 0.045,
+        "depth": 0.045
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 1.0
+  },
+  "tacz:hk_g3|tacz:default": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "rack": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "port": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "release": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.225,
+        "height": 0.225,
+        "depth": 0.225
+      },
+      "magazine": {
+        "width": 0.135,
+        "height": 0.135,
+        "depth": 0.135
+      },
+      "rack": {
+        "width": 0.1575,
+        "height": 0.1575,
+        "depth": 0.1575
+      },
+      "selector": {
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.5,
+        "depth": 0.5
+      },
+      "sight": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.5475
+      },
+      "port": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.0525
+      },
+      "release": {
+        "width": 0.045,
+        "height": 0.045,
+        "depth": 0.045
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 1.0
+  },
+  "tacz:hk_mk23|tacz:default": {
+    "x": 0.0,
+    "y": 0.07999999,
+    "z": -0.02,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.08999999,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": -0.12999998,
+        "z": 0.09999999
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": -0.109999985,
+        "z": 0.04
+      },
+      "rack": {
+        "x": 0.0,
+        "y": -0.09999999,
+        "z": -0.01
+      },
+      "selector": {
+        "x": -0.07999999,
+        "y": -0.02,
+        "z": -0.02
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.09999999,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": -0.45999983
+      },
+      "port": {
+        "x": 0.02,
+        "y": 0.01,
+        "z": 1.4901161e-08
+      },
+      "release": {
+        "x": -0.02,
+        "y": -0.049999997,
+        "z": 0.046000004
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.15000002,
+        "height": 0.08437501,
+        "depth": 0.09375001
+      },
+      "magazine": {
+        "width": 0.103124976,
+        "height": 0.18750003,
+        "depth": 0.11249999
+      },
+      "rack": {
+        "width": 0.06562497,
+        "height": 0.084374964,
+        "depth": 0.29062498
+      },
+      "selector": {
+        "width": 0.075,
+        "height": 0.075,
+        "depth": 0.075
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.4000001,
+        "depth": 0.20000021
+      },
+      "sight": {
+        "width": 0.065625004,
+        "height": 0.065625004,
+        "depth": 0.68437505
+      },
+      "port": {
+        "width": 0.065625004,
+        "height": 0.065625004,
+        "depth": 0.065625004
+      },
+      "release": {
+        "width": 0.065625004,
+        "height": 0.065625004,
+        "depth": 0.065625004
       }
     },
     "scaleLock": true,
     "casingScale": 0.79999995
+  },
+  "tacz:hk_mp5a5|tacz:default": {
+    "x": 0.0,
+    "y": 0.059999995,
+    "z": 0.03,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.059999995,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": 0.049999997,
+        "z": -0.12999998
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": -0.03
+      },
+      "rack": {
+        "x": -0.02,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "selector": {
+        "x": -0.07999999,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": -0.19000001
+      },
+      "port": {
+        "x": 0.03,
+        "y": 0.02,
+        "z": 0.0
+      },
+      "release": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.74999994,
+    "zones": {
+      "support": {
+        "width": 0.10499999,
+        "height": 0.112499975,
+        "depth": 0.22499995
+      },
+      "magazine": {
+        "width": 0.10499999,
+        "height": 0.23249988,
+        "depth": 0.12749998
+      },
+      "rack": {
+        "width": 0.10049994,
+        "height": 0.10049994,
+        "depth": 0.10049994
+      },
+      "selector": {
+        "width": 0.05999999,
+        "height": 0.05999999,
+        "depth": 0.05999999
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.4000001,
+        "depth": 0.20000021
+      },
+      "sight": {
+        "width": 0.052499995,
+        "height": 0.052499995,
+        "depth": 0.5474999
+      },
+      "port": {
+        "width": 0.052499995,
+        "height": 0.052499995,
+        "depth": 0.052499995
+      },
+      "release": {
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 0.79999995
+  },
+  "tacz:kar98|tacz:default": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "rack": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "port": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "release": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.225,
+        "height": 0.225,
+        "depth": 0.225
+      },
+      "magazine": {
+        "width": 0.135,
+        "height": 0.135,
+        "depth": 0.135
+      },
+      "rack": {
+        "width": 0.1575,
+        "height": 0.1575,
+        "depth": 0.1575
+      },
+      "selector": {
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.5,
+        "depth": 0.5
+      },
+      "sight": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.5475
+      },
+      "port": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.0525
+      },
+      "release": {
+        "width": 0.045,
+        "height": 0.045,
+        "depth": 0.045
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 1.0
+  },
+  "tacz:lonetrail|tacz:default": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "rack": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "port": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "release": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.225,
+        "height": 0.225,
+        "depth": 0.225
+      },
+      "magazine": {
+        "width": 0.135,
+        "height": 0.135,
+        "depth": 0.135
+      },
+      "rack": {
+        "width": 0.1575,
+        "height": 0.1575,
+        "depth": 0.1575
+      },
+      "selector": {
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.5,
+        "depth": 0.5
+      },
+      "sight": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.5475
+      },
+      "port": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.0525
+      },
+      "release": {
+        "width": 0.045,
+        "height": 0.045,
+        "depth": 0.045
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 1.0
+  },
+  "tacz:m1014|tacz:default": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "rack": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "port": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "release": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.225,
+        "height": 0.225,
+        "depth": 0.225
+      },
+      "magazine": {
+        "width": 0.135,
+        "height": 0.135,
+        "depth": 0.135
+      },
+      "rack": {
+        "width": 0.1575,
+        "height": 0.1575,
+        "depth": 0.1575
+      },
+      "selector": {
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.5,
+        "depth": 0.5
+      },
+      "sight": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.5475
+      },
+      "port": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.0525
+      },
+      "release": {
+        "width": 0.045,
+        "height": 0.045,
+        "depth": 0.045
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 1.0
+  },
+  "tacz:m107|tacz:default": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "rack": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "port": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "release": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.225,
+        "height": 0.225,
+        "depth": 0.225
+      },
+      "magazine": {
+        "width": 0.135,
+        "height": 0.135,
+        "depth": 0.135
+      },
+      "rack": {
+        "width": 0.1575,
+        "height": 0.1575,
+        "depth": 0.1575
+      },
+      "selector": {
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.5,
+        "depth": 0.5
+      },
+      "sight": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.5475
+      },
+      "port": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.0525
+      },
+      "release": {
+        "width": 0.045,
+        "height": 0.045,
+        "depth": 0.045
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 1.0
+  },
+  "tacz:m16a1|tacz:default": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "rack": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "port": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "release": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.225,
+        "height": 0.225,
+        "depth": 0.225
+      },
+      "magazine": {
+        "width": 0.135,
+        "height": 0.135,
+        "depth": 0.135
+      },
+      "rack": {
+        "width": 0.1575,
+        "height": 0.1575,
+        "depth": 0.1575
+      },
+      "selector": {
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.5,
+        "depth": 0.5
+      },
+      "sight": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.5475
+      },
+      "port": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.0525
+      },
+      "release": {
+        "width": 0.045,
+        "height": 0.045,
+        "depth": 0.045
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 1.0
+  },
+  "tacz:m16a4|tacz:default": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "rack": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "port": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "release": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.225,
+        "height": 0.225,
+        "depth": 0.225
+      },
+      "magazine": {
+        "width": 0.135,
+        "height": 0.135,
+        "depth": 0.135
+      },
+      "rack": {
+        "width": 0.1575,
+        "height": 0.1575,
+        "depth": 0.1575
+      },
+      "selector": {
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.5,
+        "depth": 0.5
+      },
+      "sight": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.5475
+      },
+      "port": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.0525
+      },
+      "release": {
+        "width": 0.045,
+        "height": 0.045,
+        "depth": 0.045
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 1.0
+  },
+  "tacz:m1911|tacz:default": {
+    "x": 0.0,
+    "y": 0.07999999,
+    "z": -0.02,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.08999999,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": -0.12999998,
+        "z": 0.09999999
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": -0.109999985,
+        "z": 0.04
+      },
+      "rack": {
+        "x": 0.0,
+        "y": -0.09999999,
+        "z": -0.01
+      },
+      "selector": {
+        "x": -0.07999999,
+        "y": -0.02,
+        "z": -0.02
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.09999999,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": -0.45999983
+      },
+      "port": {
+        "x": 0.02,
+        "y": 0.01,
+        "z": 1.4901161e-08
+      },
+      "release": {
+        "x": -0.02,
+        "y": -0.049999997,
+        "z": 0.046000004
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.15000002,
+        "height": 0.08437501,
+        "depth": 0.09375001
+      },
+      "magazine": {
+        "width": 0.103124976,
+        "height": 0.18750003,
+        "depth": 0.11249999
+      },
+      "rack": {
+        "width": 0.06562497,
+        "height": 0.084374964,
+        "depth": 0.29062498
+      },
+      "selector": {
+        "width": 0.075,
+        "height": 0.075,
+        "depth": 0.075
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.4000001,
+        "depth": 0.20000021
+      },
+      "sight": {
+        "width": 0.065625004,
+        "height": 0.065625004,
+        "depth": 0.68437505
+      },
+      "port": {
+        "width": 0.065625004,
+        "height": 0.065625004,
+        "depth": 0.065625004
+      },
+      "release": {
+        "width": 0.065625004,
+        "height": 0.065625004,
+        "depth": 0.065625004
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 0.79999995
+  },
+  "tacz:m249|tacz:default": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "rack": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "port": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "release": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.225,
+        "height": 0.225,
+        "depth": 0.225
+      },
+      "magazine": {
+        "width": 0.135,
+        "height": 0.135,
+        "depth": 0.135
+      },
+      "rack": {
+        "width": 0.1575,
+        "height": 0.1575,
+        "depth": 0.1575
+      },
+      "selector": {
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.5,
+        "depth": 0.5
+      },
+      "sight": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.5475
+      },
+      "port": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.0525
+      },
+      "release": {
+        "width": 0.045,
+        "height": 0.045,
+        "depth": 0.045
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 1.0
+  },
+  "tacz:m320|tacz:default": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "rack": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "port": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "release": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.225,
+        "height": 0.225,
+        "depth": 0.225
+      },
+      "magazine": {
+        "width": 0.135,
+        "height": 0.135,
+        "depth": 0.135
+      },
+      "rack": {
+        "width": 0.1575,
+        "height": 0.1575,
+        "depth": 0.1575
+      },
+      "selector": {
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.5,
+        "depth": 0.5
+      },
+      "sight": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.5475
+      },
+      "port": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.0525
+      },
+      "release": {
+        "width": 0.045,
+        "height": 0.045,
+        "depth": 0.045
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 1.0
   },
   "tacz:m4a1|tacz:default": {
     "x": 0.0,
@@ -149,27 +2697,27 @@
         "z": 0.0
       }
     },
-    "gunScale": 0.79999995,
+    "gunScale": 0.6999999,
     "zones": {
       "support": {
-        "width": 0.1,
-        "height": 0.11,
-        "depth": 0.25000006
+        "width": 0.10000001,
+        "height": 0.11000003,
+        "depth": 0.25000015
       },
       "magazine": {
         "width": 0.07999999,
-        "height": 0.17,
-        "depth": 0.10999997
+        "height": 0.16999997,
+        "depth": 0.10999996
       },
       "rack": {
-        "width": 0.15999997,
-        "height": 0.09999996,
-        "depth": 0.08999996
+        "width": 0.15999998,
+        "height": 0.09999997,
+        "depth": 0.08999998
       },
       "selector": {
-        "width": 0.08,
-        "height": 0.08,
-        "depth": 0.08
+        "width": 0.07999999,
+        "height": 0.07999999,
+        "depth": 0.07999999
       },
       "pouch": {
         "width": 0.45000005,
@@ -177,14 +2725,112 @@
         "depth": 0.21000022
       },
       "sight": {
-        "width": 0.07,
-        "height": 0.07,
-        "depth": 0.73
+        "width": 0.07000001,
+        "height": 0.07000001,
+        "depth": 0.7300001
       },
       "port": {
-        "width": 0.07,
-        "height": 0.060000002,
-        "depth": 0.10999999
+        "width": 0.07000001,
+        "height": 0.060000017,
+        "depth": 0.11000001
+      },
+      "release": {
+        "width": 0.060000014,
+        "height": 0.060000014,
+        "depth": 0.060000014
+      }
+    },
+    "scaleLock": false,
+    "casingScale": 0.79999995
+  },
+  "tacz:m700|tacz:default": {
+    "x": 0.0,
+    "y": 0.03,
+    "z": -0.06999999,
+    "pitch": 10.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": 0.03,
+        "z": -0.02
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": 0.049999997,
+        "z": 0.07599998
+      },
+      "rack": {
+        "x": 0.02,
+        "y": -0.04,
+        "z": 0.06999999
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": -0.35999992
+      },
+      "port": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "release": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.79999995,
+    "zones": {
+      "support": {
+        "width": 0.09999991,
+        "height": 0.09999991,
+        "depth": 0.23999996
+      },
+      "magazine": {
+        "width": 0.09999997,
+        "height": 0.11999997,
+        "depth": 0.12999997
+      },
+      "rack": {
+        "width": 0.12999995,
+        "height": 0.12999995,
+        "depth": 0.12999995
+      },
+      "selector": {
+        "width": 0.063999996,
+        "height": 0.063999996,
+        "depth": 0.063999996
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.4000001,
+        "depth": 0.20000021
+      },
+      "sight": {
+        "width": 0.055999994,
+        "height": 0.055999994,
+        "depth": 0.58399993
+      },
+      "port": {
+        "width": 0.055999994,
+        "height": 0.055999994,
+        "depth": 0.055999994
       },
       "release": {
         "width": 0.06,
@@ -293,7 +2939,1869 @@
     "scaleLock": true,
     "casingScale": 0.74999994
   },
-  "tacz:deagle|tacz:default": {
+  "tacz:m95|tacz:default": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "rack": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "port": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "release": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.225,
+        "height": 0.225,
+        "depth": 0.225
+      },
+      "magazine": {
+        "width": 0.135,
+        "height": 0.135,
+        "depth": 0.135
+      },
+      "rack": {
+        "width": 0.1575,
+        "height": 0.1575,
+        "depth": 0.1575
+      },
+      "selector": {
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.5,
+        "depth": 0.5
+      },
+      "sight": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.5475
+      },
+      "port": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.0525
+      },
+      "release": {
+        "width": 0.045,
+        "height": 0.045,
+        "depth": 0.045
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 1.0
+  },
+  "tacz:m9a4|tacz:default": {
+    "x": 0.0,
+    "y": 0.07999999,
+    "z": -0.02,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.08999999,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": -0.12999998,
+        "z": 0.09999999
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": -0.109999985,
+        "z": 0.04
+      },
+      "rack": {
+        "x": 0.0,
+        "y": -0.09999999,
+        "z": -0.01
+      },
+      "selector": {
+        "x": -0.07999999,
+        "y": -0.02,
+        "z": -0.02
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.09999999,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": -0.45999983
+      },
+      "port": {
+        "x": 0.02,
+        "y": 0.01,
+        "z": 1.4901161e-08
+      },
+      "release": {
+        "x": -0.02,
+        "y": -0.049999997,
+        "z": 0.046000004
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.15000002,
+        "height": 0.08437501,
+        "depth": 0.09375001
+      },
+      "magazine": {
+        "width": 0.103124976,
+        "height": 0.18750003,
+        "depth": 0.11249999
+      },
+      "rack": {
+        "width": 0.06562497,
+        "height": 0.084374964,
+        "depth": 0.29062498
+      },
+      "selector": {
+        "width": 0.075,
+        "height": 0.075,
+        "depth": 0.075
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.4000001,
+        "depth": 0.20000021
+      },
+      "sight": {
+        "width": 0.065625004,
+        "height": 0.065625004,
+        "depth": 0.68437505
+      },
+      "port": {
+        "width": 0.065625004,
+        "height": 0.065625004,
+        "depth": 0.065625004
+      },
+      "release": {
+        "width": 0.065625004,
+        "height": 0.065625004,
+        "depth": 0.065625004
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 0.79999995
+  },
+  "tacz:minigun|tacz:default": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "rack": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "port": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "release": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.225,
+        "height": 0.225,
+        "depth": 0.225
+      },
+      "magazine": {
+        "width": 0.135,
+        "height": 0.135,
+        "depth": 0.135
+      },
+      "rack": {
+        "width": 0.1575,
+        "height": 0.1575,
+        "depth": 0.1575
+      },
+      "selector": {
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.5,
+        "depth": 0.5
+      },
+      "sight": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.5475
+      },
+      "port": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.0525
+      },
+      "release": {
+        "width": 0.045,
+        "height": 0.045,
+        "depth": 0.045
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 1.0
+  },
+  "tacz:mk14|tacz:default": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "rack": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "port": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "release": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.225,
+        "height": 0.225,
+        "depth": 0.225
+      },
+      "magazine": {
+        "width": 0.135,
+        "height": 0.135,
+        "depth": 0.135
+      },
+      "rack": {
+        "width": 0.1575,
+        "height": 0.1575,
+        "depth": 0.1575
+      },
+      "selector": {
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.5,
+        "depth": 0.5
+      },
+      "sight": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.5475
+      },
+      "port": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.0525
+      },
+      "release": {
+        "width": 0.045,
+        "height": 0.045,
+        "depth": 0.045
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 1.0
+  },
+  "tacz:p320|tacz:default": {
+    "x": 0.0,
+    "y": 0.07999999,
+    "z": -0.02,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.08999999,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": -0.12999998,
+        "z": 0.09999999
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": -0.109999985,
+        "z": 0.04
+      },
+      "rack": {
+        "x": 0.0,
+        "y": -0.09999999,
+        "z": -0.01
+      },
+      "selector": {
+        "x": -0.07999999,
+        "y": -0.02,
+        "z": -0.02
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.09999999,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": -0.45999983
+      },
+      "port": {
+        "x": 0.02,
+        "y": 0.01,
+        "z": 1.4901161e-08
+      },
+      "release": {
+        "x": -0.02,
+        "y": -0.049999997,
+        "z": 0.046000004
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.15000002,
+        "height": 0.08437501,
+        "depth": 0.09375001
+      },
+      "magazine": {
+        "width": 0.103124976,
+        "height": 0.18750003,
+        "depth": 0.11249999
+      },
+      "rack": {
+        "width": 0.06562497,
+        "height": 0.084374964,
+        "depth": 0.29062498
+      },
+      "selector": {
+        "width": 0.075,
+        "height": 0.075,
+        "depth": 0.075
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.4000001,
+        "depth": 0.20000021
+      },
+      "sight": {
+        "width": 0.065625004,
+        "height": 0.065625004,
+        "depth": 0.68437505
+      },
+      "port": {
+        "width": 0.065625004,
+        "height": 0.065625004,
+        "depth": 0.065625004
+      },
+      "release": {
+        "width": 0.065625004,
+        "height": 0.065625004,
+        "depth": 0.065625004
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 0.79999995
+  },
+  "tacz:p90|tacz:default": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "rack": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "port": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "release": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.225,
+        "height": 0.225,
+        "depth": 0.225
+      },
+      "magazine": {
+        "width": 0.135,
+        "height": 0.135,
+        "depth": 0.135
+      },
+      "rack": {
+        "width": 0.1575,
+        "height": 0.1575,
+        "depth": 0.1575
+      },
+      "selector": {
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.5,
+        "depth": 0.5
+      },
+      "sight": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.5475
+      },
+      "port": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.0525
+      },
+      "release": {
+        "width": 0.045,
+        "height": 0.045,
+        "depth": 0.045
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 1.0
+  },
+  "tacz:qbz_191|tacz:default": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "rack": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "port": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "release": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.225,
+        "height": 0.225,
+        "depth": 0.225
+      },
+      "magazine": {
+        "width": 0.135,
+        "height": 0.135,
+        "depth": 0.135
+      },
+      "rack": {
+        "width": 0.1575,
+        "height": 0.1575,
+        "depth": 0.1575
+      },
+      "selector": {
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.5,
+        "depth": 0.5
+      },
+      "sight": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.5475
+      },
+      "port": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.0525
+      },
+      "release": {
+        "width": 0.045,
+        "height": 0.045,
+        "depth": 0.045
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 1.0
+  },
+  "tacz:qbz_95|tacz:default": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "rack": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "port": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "release": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.225,
+        "height": 0.225,
+        "depth": 0.225
+      },
+      "magazine": {
+        "width": 0.135,
+        "height": 0.135,
+        "depth": 0.135
+      },
+      "rack": {
+        "width": 0.1575,
+        "height": 0.1575,
+        "depth": 0.1575
+      },
+      "selector": {
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.5,
+        "depth": 0.5
+      },
+      "sight": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.5475
+      },
+      "port": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.0525
+      },
+      "release": {
+        "width": 0.045,
+        "height": 0.045,
+        "depth": 0.045
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 1.0
+  },
+  "tacz:rhino357|tacz:default": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "rack": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "port": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "release": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.225,
+        "height": 0.225,
+        "depth": 0.225
+      },
+      "magazine": {
+        "width": 0.135,
+        "height": 0.135,
+        "depth": 0.135
+      },
+      "rack": {
+        "width": 0.1575,
+        "height": 0.1575,
+        "depth": 0.1575
+      },
+      "selector": {
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.5,
+        "depth": 0.5
+      },
+      "sight": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.5475
+      },
+      "port": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.0525
+      },
+      "release": {
+        "width": 0.045,
+        "height": 0.045,
+        "depth": 0.045
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 1.0
+  },
+  "tacz:rpg7|tacz:default": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "rack": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "port": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "release": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.225,
+        "height": 0.225,
+        "depth": 0.225
+      },
+      "magazine": {
+        "width": 0.135,
+        "height": 0.135,
+        "depth": 0.135
+      },
+      "rack": {
+        "width": 0.1575,
+        "height": 0.1575,
+        "depth": 0.1575
+      },
+      "selector": {
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.5,
+        "depth": 0.5
+      },
+      "sight": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.5475
+      },
+      "port": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.0525
+      },
+      "release": {
+        "width": 0.045,
+        "height": 0.045,
+        "depth": 0.045
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 1.0
+  },
+  "tacz:rpk|tacz:default": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "rack": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "port": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "release": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.225,
+        "height": 0.225,
+        "depth": 0.225
+      },
+      "magazine": {
+        "width": 0.135,
+        "height": 0.135,
+        "depth": 0.135
+      },
+      "rack": {
+        "width": 0.1575,
+        "height": 0.1575,
+        "depth": 0.1575
+      },
+      "selector": {
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.5,
+        "depth": 0.5
+      },
+      "sight": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.5475
+      },
+      "port": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.0525
+      },
+      "release": {
+        "width": 0.045,
+        "height": 0.045,
+        "depth": 0.045
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 1.0
+  },
+  "tacz:scar_h|tacz:default": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "rack": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "port": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "release": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.225,
+        "height": 0.225,
+        "depth": 0.225
+      },
+      "magazine": {
+        "width": 0.135,
+        "height": 0.135,
+        "depth": 0.135
+      },
+      "rack": {
+        "width": 0.1575,
+        "height": 0.1575,
+        "depth": 0.1575
+      },
+      "selector": {
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.5,
+        "depth": 0.5
+      },
+      "sight": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.5475
+      },
+      "port": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.0525
+      },
+      "release": {
+        "width": 0.045,
+        "height": 0.045,
+        "depth": 0.045
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 1.0
+  },
+  "tacz:scar_l|tacz:default": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "rack": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "port": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "release": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.225,
+        "height": 0.225,
+        "depth": 0.225
+      },
+      "magazine": {
+        "width": 0.135,
+        "height": 0.135,
+        "depth": 0.135
+      },
+      "rack": {
+        "width": 0.1575,
+        "height": 0.1575,
+        "depth": 0.1575
+      },
+      "selector": {
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.5,
+        "depth": 0.5
+      },
+      "sight": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.5475
+      },
+      "port": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.0525
+      },
+      "release": {
+        "width": 0.045,
+        "height": 0.045,
+        "depth": 0.045
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 1.0
+  },
+  "tacz:sks_tactical|tacz:default": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "rack": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "port": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "release": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.225,
+        "height": 0.225,
+        "depth": 0.225
+      },
+      "magazine": {
+        "width": 0.135,
+        "height": 0.135,
+        "depth": 0.135
+      },
+      "rack": {
+        "width": 0.1575,
+        "height": 0.1575,
+        "depth": 0.1575
+      },
+      "selector": {
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.5,
+        "depth": 0.5
+      },
+      "sight": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.5475
+      },
+      "port": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.0525
+      },
+      "release": {
+        "width": 0.045,
+        "height": 0.045,
+        "depth": 0.045
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 1.0
+  },
+  "tacz:spas_12|tacz:default": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "rack": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "port": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "release": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.225,
+        "height": 0.225,
+        "depth": 0.225
+      },
+      "magazine": {
+        "width": 0.135,
+        "height": 0.135,
+        "depth": 0.135
+      },
+      "rack": {
+        "width": 0.1575,
+        "height": 0.1575,
+        "depth": 0.1575
+      },
+      "selector": {
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.5,
+        "depth": 0.5
+      },
+      "sight": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.5475
+      },
+      "port": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.0525
+      },
+      "release": {
+        "width": 0.045,
+        "height": 0.045,
+        "depth": 0.045
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 1.0
+  },
+  "tacz:spr15hb|tacz:default": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "rack": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "port": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "release": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.225,
+        "height": 0.225,
+        "depth": 0.225
+      },
+      "magazine": {
+        "width": 0.135,
+        "height": 0.135,
+        "depth": 0.135
+      },
+      "rack": {
+        "width": 0.1575,
+        "height": 0.1575,
+        "depth": 0.1575
+      },
+      "selector": {
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.5,
+        "depth": 0.5
+      },
+      "sight": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.5475
+      },
+      "port": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.0525
+      },
+      "release": {
+        "width": 0.045,
+        "height": 0.045,
+        "depth": 0.045
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 1.0
+  },
+  "tacz:springfield1873|tacz:default": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "rack": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "port": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "release": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.225,
+        "height": 0.225,
+        "depth": 0.225
+      },
+      "magazine": {
+        "width": 0.135,
+        "height": 0.135,
+        "depth": 0.135
+      },
+      "rack": {
+        "width": 0.1575,
+        "height": 0.1575,
+        "depth": 0.1575
+      },
+      "selector": {
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.5,
+        "depth": 0.5
+      },
+      "sight": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.5475
+      },
+      "port": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.0525
+      },
+      "release": {
+        "width": 0.045,
+        "height": 0.045,
+        "depth": 0.045
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 1.0
+  },
+  "tacz:taurus500|tacz:default": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "rack": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "port": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "release": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.225,
+        "height": 0.225,
+        "depth": 0.225
+      },
+      "magazine": {
+        "width": 0.135,
+        "height": 0.135,
+        "depth": 0.135
+      },
+      "rack": {
+        "width": 0.1575,
+        "height": 0.1575,
+        "depth": 0.1575
+      },
+      "selector": {
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.5,
+        "depth": 0.5
+      },
+      "sight": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.5475
+      },
+      "port": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.0525
+      },
+      "release": {
+        "width": 0.045,
+        "height": 0.045,
+        "depth": 0.045
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 1.0
+  },
+  "tacz:taurus943|tacz:default": {
+    "x": 0.0,
+    "y": 0.059999995,
+    "z": 0.03,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": -0.12999998,
+        "z": 0.04
+      },
+      "magazine": {
+        "x": -0.109999985,
+        "y": -0.03,
+        "z": 0.12999998
+      },
+      "rack": {
+        "x": -0.059999995,
+        "y": 0.0,
+        "z": 0.059999995
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": -0.059999995
+      },
+      "port": {
+        "x": -0.12999998,
+        "y": -0.02,
+        "z": -0.03
+      },
+      "release": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.6499999,
+    "zones": {
+      "support": {
+        "width": 0.17000002,
+        "height": 0.1,
+        "depth": 0.15
+      },
+      "magazine": {
+        "width": 0.09999999,
+        "height": 0.09999999,
+        "depth": 0.09999999
+      },
+      "rack": {
+        "width": 0.16999997,
+        "height": 0.109999955,
+        "depth": 0.09999996
+      },
+      "selector": {
+        "width": 0.08,
+        "height": 0.08,
+        "depth": 0.08
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.5,
+        "depth": 0.5
+      },
+      "sight": {
+        "width": 0.07,
+        "height": 0.07,
+        "depth": 0.73
+      },
+      "port": {
+        "width": 0.099999994,
+        "height": 0.099999994,
+        "depth": 0.10999999
+      },
+      "release": {
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
+      }
+    },
+    "scaleLock": false,
+    "casingScale": 0.6499999
+  },
+  "tacz:timeless50|tacz:default": {
     "x": 0.0,
     "y": 0.055000003,
     "z": 0.01,
@@ -345,7 +4853,7 @@
         "z": 0.0
       }
     },
-    "gunScale": 0.74999994,
+    "gunScale": 0.75,
     "zones": {
       "support": {
         "width": 0.21000004,
@@ -391,206 +4899,10 @@
     "scaleLock": false,
     "casingScale": 0.74999994
   },
-  "tacz:hk_mp5a5|tacz:default": {
+  "tacz:type_81|tacz:default": {
     "x": 0.0,
-    "y": 0.059999995,
-    "z": 0.03,
-    "pitch": 0.0,
-    "yaw": 0.0,
-    "roll": 0.0,
-    "muzzleX": 0.0,
-    "muzzleY": 0.0,
-    "muzzleZ": 0.059999995,
-    "interactions": {
-      "support": {
-        "x": 0.0,
-        "y": 0.049999997,
-        "z": -0.12999998
-      },
-      "magazine": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": -0.03
-      },
-      "rack": {
-        "x": -0.02,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "selector": {
-        "x": -0.07999999,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "pouch": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "sight": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": -0.19000001
-      },
-      "port": {
-        "x": 0.03,
-        "y": 0.02,
-        "z": 0.0
-      },
-      "release": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      }
-    },
-    "gunScale": 0.74999994,
-    "zones": {
-      "support": {
-        "width": 0.10499999,
-        "height": 0.112499975,
-        "depth": 0.22499995
-      },
-      "magazine": {
-        "width": 0.10499999,
-        "height": 0.23249988,
-        "depth": 0.12749998
-      },
-      "rack": {
-        "width": 0.10049994,
-        "height": 0.10049994,
-        "depth": 0.10049994
-      },
-      "selector": {
-        "width": 0.05999999,
-        "height": 0.05999999,
-        "depth": 0.05999999
-      },
-      "pouch": {
-        "width": 0.5,
-        "height": 0.4000001,
-        "depth": 0.20000021
-      },
-      "sight": {
-        "width": 0.052499995,
-        "height": 0.052499995,
-        "depth": 0.5474999
-      },
-      "port": {
-        "width": 0.052499995,
-        "height": 0.052499995,
-        "depth": 0.052499995
-      },
-      "release": {
-        "width": 0.06,
-        "height": 0.06,
-        "depth": 0.06
-      }
-    },
-    "scaleLock": true,
-    "casingScale": 0.79999995
-  },
-  "tacz:m700|tacz:default": {
-    "x": 0.0,
-    "y": 0.03,
-    "z": -0.06999999,
-    "pitch": 10.0,
-    "yaw": 0.0,
-    "roll": 0.0,
-    "muzzleX": 0.0,
-    "muzzleY": 0.0,
-    "muzzleZ": 0.0,
-    "interactions": {
-      "support": {
-        "x": 0.0,
-        "y": 0.03,
-        "z": -0.02
-      },
-      "magazine": {
-        "x": 0.0,
-        "y": 0.049999997,
-        "z": 0.07599998
-      },
-      "rack": {
-        "x": 0.02,
-        "y": -0.04,
-        "z": 0.06999999
-      },
-      "selector": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "pouch": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "sight": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": -0.35999992
-      },
-      "port": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      },
-      "release": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
-      }
-    },
-    "gunScale": 0.79999995,
-    "zones": {
-      "support": {
-        "width": 0.09999991,
-        "height": 0.09999991,
-        "depth": 0.23999996
-      },
-      "magazine": {
-        "width": 0.09999997,
-        "height": 0.11999997,
-        "depth": 0.12999997
-      },
-      "rack": {
-        "width": 0.12999995,
-        "height": 0.12999995,
-        "depth": 0.12999995
-      },
-      "selector": {
-        "width": 0.063999996,
-        "height": 0.063999996,
-        "depth": 0.063999996
-      },
-      "pouch": {
-        "width": 0.5,
-        "height": 0.4000001,
-        "depth": 0.20000021
-      },
-      "sight": {
-        "width": 0.055999994,
-        "height": 0.055999994,
-        "depth": 0.58399993
-      },
-      "port": {
-        "width": 0.055999994,
-        "height": 0.055999994,
-        "depth": 0.055999994
-      },
-      "release": {
-        "width": 0.06,
-        "height": 0.06,
-        "depth": 0.06
-      }
-    },
-    "scaleLock": true,
-    "casingScale": 0.79999995
-  },
-  "tacz:taurus943|tacz:default": {
-    "x": 0.0,
-    "y": 0.059999995,
-    "z": 0.03,
+    "y": 0.0,
+    "z": 0.0,
     "pitch": 0.0,
     "yaw": 0.0,
     "roll": 0.0,
@@ -600,13 +4912,13 @@
     "interactions": {
       "support": {
         "x": 0.0,
-        "y": -0.12999998,
-        "z": 0.04
+        "y": 0.0,
+        "z": 0.0
       },
       "magazine": {
-        "x": -0.109999985,
-        "y": -0.03,
-        "z": 0.12999998
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
       },
       "rack": {
         "x": 0.0,
@@ -639,27 +4951,27 @@
         "z": 0.0
       }
     },
-    "gunScale": 0.74999994,
+    "gunScale": 0.75,
     "zones": {
       "support": {
-        "width": 0.17000002,
-        "height": 0.1,
-        "depth": 0.15
+        "width": 0.225,
+        "height": 0.225,
+        "depth": 0.225
       },
       "magazine": {
-        "width": 0.09999999,
-        "height": 0.09999999,
-        "depth": 0.09999999
+        "width": 0.135,
+        "height": 0.135,
+        "depth": 0.135
       },
       "rack": {
-        "width": 0.21,
-        "height": 0.21,
-        "depth": 0.21
+        "width": 0.1575,
+        "height": 0.1575,
+        "depth": 0.1575
       },
       "selector": {
-        "width": 0.08,
-        "height": 0.08,
-        "depth": 0.08
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
       },
       "pouch": {
         "width": 0.5,
@@ -667,22 +4979,316 @@
         "depth": 0.5
       },
       "sight": {
-        "width": 0.07,
-        "height": 0.07,
-        "depth": 0.73
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.5475
       },
       "port": {
-        "width": 0.07,
-        "height": 0.07,
-        "depth": 0.07
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.0525
       },
       "release": {
+        "width": 0.045,
+        "height": 0.045,
+        "depth": 0.045
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 1.0
+  },
+  "tacz:ump45|tacz:default": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "rack": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "port": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "release": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.225,
+        "height": 0.225,
+        "depth": 0.225
+      },
+      "magazine": {
+        "width": 0.135,
+        "height": 0.135,
+        "depth": 0.135
+      },
+      "rack": {
+        "width": 0.1575,
+        "height": 0.1575,
+        "depth": 0.1575
+      },
+      "selector": {
         "width": 0.06,
         "height": 0.06,
         "depth": 0.06
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.5,
+        "depth": 0.5
+      },
+      "sight": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.5475
+      },
+      "port": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.0525
+      },
+      "release": {
+        "width": 0.045,
+        "height": 0.045,
+        "depth": 0.045
       }
     },
-    "scaleLock": false,
-    "casingScale": 0.74999994
+    "scaleLock": true,
+    "casingScale": 1.0
+  },
+  "tacz:uzi|tacz:default": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "rack": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "port": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "release": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.225,
+        "height": 0.225,
+        "depth": 0.225
+      },
+      "magazine": {
+        "width": 0.135,
+        "height": 0.135,
+        "depth": 0.135
+      },
+      "rack": {
+        "width": 0.1575,
+        "height": 0.1575,
+        "depth": 0.1575
+      },
+      "selector": {
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.5,
+        "depth": 0.5
+      },
+      "sight": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.5475
+      },
+      "port": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.0525
+      },
+      "release": {
+        "width": 0.045,
+        "height": 0.045,
+        "depth": 0.045
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 1.0
+  },
+  "tacz:vector45|tacz:default": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0,
+    "pitch": 0.0,
+    "yaw": 0.0,
+    "roll": 0.0,
+    "muzzleX": 0.0,
+    "muzzleY": 0.0,
+    "muzzleZ": 0.0,
+    "interactions": {
+      "support": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "magazine": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "rack": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "selector": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "pouch": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "sight": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "port": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "release": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      }
+    },
+    "gunScale": 0.75,
+    "zones": {
+      "support": {
+        "width": 0.225,
+        "height": 0.225,
+        "depth": 0.225
+      },
+      "magazine": {
+        "width": 0.135,
+        "height": 0.135,
+        "depth": 0.135
+      },
+      "rack": {
+        "width": 0.1575,
+        "height": 0.1575,
+        "depth": 0.1575
+      },
+      "selector": {
+        "width": 0.06,
+        "height": 0.06,
+        "depth": 0.06
+      },
+      "pouch": {
+        "width": 0.5,
+        "height": 0.5,
+        "depth": 0.5
+      },
+      "sight": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.5475
+      },
+      "port": {
+        "width": 0.0525,
+        "height": 0.0525,
+        "depth": 0.0525
+      },
+      "release": {
+        "width": 0.045,
+        "height": 0.045,
+        "depth": 0.045
+      }
+    },
+    "scaleLock": true,
+    "casingScale": 1.0
   }
 }

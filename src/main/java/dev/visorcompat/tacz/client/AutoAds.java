@@ -23,17 +23,18 @@ public final class AutoAds {
         var mc=Minecraft.getInstance();
         if(mc.player==null) {owned=false;aiming=false;return;}
         boolean owns=ownsInput(),desired=false;
-        if(owns && PhysicalClient.anchor()==null && mc.screen==null && !mc.isPaused() && mc.player.isAlive()
+        boolean boltSupport=AdvancedClient.active()&&PhysicalClient.active()&&Profiles.bolt(mc.player.getMainHandItem())&&PhysicalClient.supportAnchor();
+        if(owns && (boltSupport||AdvancedClient.firingHold() && !PhysicalClient.supportAnchor()) && mc.screen==null && !mc.isPaused() && mc.player.isAlive()
             && VisorAPI.clientState().stateMode().isFocused()
             && VisorAPI.client().getVRLocalPlayer().getRawController(HandType.MAIN).isTracking()
             && !IGunOperator.fromLivingEntity(mc.player).getSynReloadState().getStateType().isReloading()
-            && (!PhysicalClient.active() || Handling.fireable(PhysicalClient.phase()))) {
+            && (boltSupport || !PhysicalClient.active() || Handling.fireable(PhysicalClient.phase()))) {
             var stack=mc.player.getMainHandItem();var profile=Profiles.get(stack);
             var pose=VisorAPI.client().getVRLocalPlayer().getPoseData(PlayerPoseType.TICK);
             var gun=GunPose.resolve(pose,profile,mc.player.getOffhandItem().isEmpty() && PhysicalClient.supporting(),CalibrationStore.get(Profiles.key(stack)),PhysicalClient.anchor());
             Vector3f sight=OpticGeometry.sight(stack,profile);
             if(sight!=null)sight.add(CalibrationStore.get(Profiles.key(stack)).interactions().sight().vector()).mul(CalibrationStore.get(Profiles.key(stack)).gunScale());
-            boolean supported=!CompatSettings.twoHandAds() || VisorAPI.client().getVRLocalPlayer().getRawController(HandType.OFFHAND).isTracking() && (PhysicalClient.active()?PhysicalClient.supporting():mc.player.getOffhandItem().isEmpty() && gun!=null && Handling.inside(Handling.local(gun,pose.getOffhand().getPosition()),Handling.support(profile,CalibrationStore.get(Profiles.key(stack))),CalibrationStore.get(Profiles.key(stack)),profile.pump()?ZoneSizes.Zone.RACK:ZoneSizes.Zone.SUPPORT));
+            boolean supported=boltSupport&&VisorAPI.client().getVRLocalPlayer().getRawController(HandType.OFFHAND).isTracking() || !CompatSettings.twoHandAds() || VisorAPI.client().getVRLocalPlayer().getRawController(HandType.OFFHAND).isTracking() && (PhysicalClient.active()?PhysicalClient.supporting():mc.player.getOffhandItem().isEmpty() && gun!=null && Handling.inside(Handling.local(gun,pose.getOffhand().getPosition()),Handling.support(profile,CalibrationStore.get(Profiles.key(stack))),CalibrationStore.get(Profiles.key(stack)),profile.pump()?ZoneSizes.Zone.RACK:ZoneSizes.Zone.SUPPORT));
             if(gun!=null && sight!=null && supported) {
                 Vector3f look=pose.getHmd().getRotation().transformDirection(new Vector3f(0,0,-1)).normalize();
                 look=new Quaternionf(gun.rotation()).conjugate().transform(look);

@@ -29,7 +29,7 @@ public final class HandlingEffects {
     private static final ArrayDeque<Round> ROUNDS=new ArrayDeque<>();
     public static void receive(CompatNetwork.Feedback m){
         var mc=Minecraft.getInstance();if(mc.level==null)return;
-        if(m.kind()!=4 || m.gun().getPath().equals("m870") || m.gun().getPath().equals("m700")){
+        if(m.kind()<7&&(m.kind()!=4 || m.gun().getPath().equals("m870") || m.gun().getPath().equals("m700"))){
             var entity=mc.level.getEntity(m.entityId());
             String folder=m.gun().getPath();
             String clip=switch(m.kind()) {
@@ -51,12 +51,16 @@ public final class HandlingEffects {
                 case 0 -> "hk_mp5a5_reload_magout";case 1 -> "hk_mp5a5_reload_magin";
                 case 5 -> "hk_mp5a5_inspect_boltrelease";default -> "hk_mp5a5_inspect_boltback";
             };
+            if(folder.equals("scar_l")||folder.equals("scar_h"))clip=switch(m.kind()){
+                case 0 -> "p05_ar_schotel_reload_empty_magout";case 1 -> "p05_ar_schotel_reload_empty_magin";
+                case 5,6 -> "p05_ar_schotel_inspect_empty_boltclose";default -> "p05_ar_schotel_inspect_empty_boltback";
+            };
             var pistol=dev.visorcompat.tacz.PistolProfiles.get(dev.visorcompat.tacz.Profiles.byId(m.gun().toString()));
             String sound=pistol==null?folder+"/"+clip:pistol.sound(m.kind());
             if(entity!=null)com.tacz.guns.client.sound.SoundPlayManager.playAnimationSound(entity,
                 new net.minecraft.resources.ResourceLocation("tacz",sound),m.kind()==6?.55f:.8f,m.kind()==6?.65f:1f,12);
         }
-        if(m.kind()==3 || m.kind()==4){
+        if(m.kind()==3 || m.kind()==4 || m.kind()==7 || m.kind()==8){
             if(ROUNDS.size()>=64)ROUNDS.removeFirst();ROUNDS.addLast(new Round(m,System.nanoTime()));
         }
     }
@@ -71,12 +75,12 @@ public final class HandlingEffects {
             boolean liveModel=false; // Physical cartridges share casing geometry; projectile entities have unrelated scale.
             var model=liveModel?index.getAmmoEntityModel():index.getShellModel();
             var texture=liveModel?index.getAmmoEntityTextureLocation():index.getShellTextureLocation();
-            boolean generic=m.kind()==3 && (model==null || texture==null);
+            boolean generic=(m.kind()==3||m.kind()==7) && (model==null || texture==null);
             if(!generic && (model==null || texture==null))continue;
             float t=(now-r.start())/1_000_000_000f;
             matrices.pushPose();
             try {
-                matrices.translate(m.x()+m.vx()*t-camera.x,m.y()+m.vy()*t-2.4*t*t*m.scale()-camera.y,m.z()+m.vz()*t-camera.z);
+                matrices.translate(m.x()+m.vx()*t-camera.x,m.y()+m.vy()*t-(m.kind()>=7?4.905:2.4)*t*t*m.scale()-camera.y,m.z()+m.vz()*t-camera.z);
                 matrices.mulPose(Axis.XP.rotationDegrees(t*560));matrices.mulPose(Axis.ZP.rotationDegrees(t*300));
                 float visual=m.scale()*m.gunScale();matrices.scale(visual,visual,visual);
                 if(generic) {

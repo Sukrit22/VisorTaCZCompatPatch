@@ -46,7 +46,7 @@ public final class ServerEvents {
     @SubscribeEvent
     public static void beforeShot(GunShootEvent event) {
         if (event.getLogicalSide().isServer() && event.getShooter() instanceof ServerPlayer player
-                && ServerPoses.isVr(player) && (ServerPoses.validated(player) == null || !ServerPhysical.canFire(player))) {
+                && ServerPoses.isVr(player) && (ServerPoses.validated(player) == null || !ServerPhysical.canFire(player)||!ServerAdvanced.canFire(player))) {
             event.setCanceled(true);
         }
     }
@@ -55,7 +55,7 @@ public final class ServerEvents {
     public static void beforeRound(GunFireEvent event) {
         // TaCZ fires this for every delayed burst round, before consuming ammunition.
         if (event.getLogicalSide().isServer() && event.getShooter() instanceof ServerPlayer player
-                && ServerPoses.isVr(player) && (ServerPoses.validated(player) == null || !ServerPhysical.canFire(player))) {
+                && ServerPoses.isVr(player) && (ServerPoses.validated(player) == null || !ServerPhysical.canFire(player)||!ServerAdvanced.canFire(player))) {
             event.setCanceled(true);
         }
     }
@@ -63,6 +63,7 @@ public final class ServerEvents {
         if(event.phase==net.minecraftforge.event.TickEvent.Phase.END && event.player instanceof ServerPlayer player) {for(var stack:player.getInventory().items){
                 ServerJams.reconcile(player,stack);
                 if(dev.visorcompat.tacz.network.CompatNetwork.modeKnown(player) && dev.visorcompat.tacz.Profiles.get(stack)!=null && (!dev.visorcompat.tacz.network.CompatNetwork.physical(player) || !ServerPoses.isVr(player)) && stack.hasTag()){
+                    stack.getTag().remove(dev.visorcompat.tacz.physical.ManualCycle.SPENT);
                     stack.getTag().remove(ServerCylinder.OPEN);stack.getTag().remove(ServerCylinder.SPENT);
                     stack.getTag().remove(dev.visorcompat.tacz.physical.ActionState.LOCKED);stack.getTag().remove(dev.visorcompat.tacz.physical.ActionState.LIFTED);
                     stack.getTag().remove(ServerPump.OPEN);stack.getTag().remove(ServerPump.SPENT);
@@ -72,6 +73,6 @@ public final class ServerEvents {
             ServerPhysical.tick(player);RemoteSync.tick(player);}
     }
     @SubscribeEvent public static void reload(com.tacz.guns.api.event.common.GunReloadEvent event) {
-        if(event.getLogicalSide().isServer() && event.getEntity() instanceof ServerPlayer player && !ServerPhysical.allowsReload(player)) event.setCanceled(true);
+        if(event.getLogicalSide().isServer() && event.getEntity() instanceof ServerPlayer player && (!ServerPhysical.allowsReload(player)||!ServerAdvanced.canInteract(player))) event.setCanceled(true);
     }
 }
