@@ -63,4 +63,36 @@ class HandAnchorTest {
         assertTrue(steered.direction().x>.2f);assertEquals(same.hand(),steered.hand());
         assertTrue(GunPose.resolve(moved,p,false,Calibration.ZERO,anchor).direction().distance(gun.direction())<1e-5);
     }
+    @Test void repeatedPhysicalBoltReturnsNeverAccumulateSupportOffsets(){
+        var profile=Profiles.byId("tacz:m700");
+        var c=new Calibration(.01f,.035f,-.02f,12,3,0,0,0,0);
+        var main=new Vector3f(0,1.4f,0);var off=new Vector3f(.02f,1.45f,-.3f);
+        var start=both(main,off);var baseline=GunPose.resolve(start,profile,true,c);
+        var held=baseline;
+        for(int cycle=0;cycle<100;cycle++){
+            // Bolt operation leaves the carried gun displaced from the returning grip.
+            held=new GunPose(new Vector3f(held.hand()).add(0,-.03f,0),new Quaternionf(held.rotation()),held.muzzle(),held.direction(),1);
+            var anchors=HandAnchor.regrip(held,start,profile,c,false);
+            assertNull(anchors.main(),"Physical must not redefine the main/support contact");
+            var returned=GunPose.resolve(start,profile,true,c,anchors.main());
+            var nextTransfer=anchors.support().resolve(start,profile,c);
+            assertTrue(returned.hand().distance(baseline.hand())<1e-5);
+            assertTrue(returned.muzzle().distance(baseline.muzzle())<1e-5);
+            assertTrue(nextTransfer.hand().distance(baseline.hand())<1e-5,"Next transfer must use the restored pose");
+            assertEquals(1f,java.lang.Math.abs(nextTransfer.rotation().dot(baseline.rotation())),1e-5);
+            held=nextTransfer;
+        }
+        var moved=both(main,new Vector3f(off).add(.06f,0,0));
+        assertTrue(GunPose.resolve(moved,profile,true,c).direction().distance(baseline.direction())>.05f);
+    }
+    @Test void advancedRegripStillPreservesHeldPoseAndNextTransfer(){
+        var profile=Profiles.byId("tacz:m700");var pose=both(new Vector3f(0,1.4f,0),new Vector3f(0,1.4f,-.3f));
+        var held=new GunPose(new Vector3f(.02f,1.38f,.01f),new Quaternionf().rotateX(.05f),new Vector3f(),new Vector3f(),1);
+        var anchors=HandAnchor.regrip(held,pose,profile,Calibration.ZERO,true);
+        assertNotNull(anchors.main());
+        var returned=GunPose.resolve(pose,profile,true,Calibration.ZERO,anchors.main());
+        assertTrue(returned.hand().distance(held.hand())<1e-5);
+        assertEquals(1f,java.lang.Math.abs(returned.rotation().dot(held.rotation())),1e-5);
+        assertTrue(anchors.support().resolve(pose,profile,Calibration.ZERO).hand().distance(held.hand())<1e-5);
+    }
 }

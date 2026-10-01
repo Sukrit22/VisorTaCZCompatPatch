@@ -60,7 +60,7 @@ public final class HandlingEffects {
             if(entity!=null)com.tacz.guns.client.sound.SoundPlayManager.playAnimationSound(entity,
                 new net.minecraft.resources.ResourceLocation("tacz",sound),m.kind()==6?.55f:.8f,m.kind()==6?.65f:1f,12);
         }
-        if(m.kind()==3 || m.kind()==4 || m.kind()==7 || m.kind()==8){
+        if(m.kind()==3 || m.kind()==4 || m.kind()>=7 && m.kind()<=10){
             if(ROUNDS.size()>=64)ROUNDS.removeFirst();ROUNDS.addLast(new Round(m,System.nanoTime()));
         }
     }
@@ -75,12 +75,12 @@ public final class HandlingEffects {
             boolean liveModel=false; // Physical cartridges share casing geometry; projectile entities have unrelated scale.
             var model=liveModel?index.getAmmoEntityModel():index.getShellModel();
             var texture=liveModel?index.getAmmoEntityTextureLocation():index.getShellTextureLocation();
-            boolean generic=(m.kind()==3||m.kind()==7) && (model==null || texture==null);
+            boolean generic=(m.kind()==3||m.kind()==7||m.kind()==9) && (model==null || texture==null);
             if(!generic && (model==null || texture==null))continue;
             float t=(now-r.start())/1_000_000_000f;
             matrices.pushPose();
             try {
-                matrices.translate(m.x()+m.vx()*t-camera.x,m.y()+m.vy()*t-(m.kind()>=7?4.905:2.4)*t*t*m.scale()-camera.y,m.z()+m.vz()*t-camera.z);
+                matrices.translate(m.x()+m.vx()*t-camera.x,m.y()+m.vy()*t-(m.kind()>=7?dev.visorcompat.tacz.physical.CylinderEjection.drop(t,m.kind()>=9):2.4f*t*t)*m.scale()-camera.y,m.z()+m.vz()*t-camera.z);
                 matrices.mulPose(Axis.XP.rotationDegrees(t*560));matrices.mulPose(Axis.ZP.rotationDegrees(t*300));
                 float visual=m.scale()*m.gunScale();matrices.scale(visual,visual,visual);
                 if(generic) {

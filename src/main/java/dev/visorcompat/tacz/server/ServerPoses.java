@@ -37,7 +37,7 @@ public final class ServerPoses {
                 || blocked(player, hand, muzzle)) return null;
         return pose;
     }
-    private static boolean blocked(ServerPlayer player, Vec3 from, Vec3 to) {
+    public static boolean blocked(ServerPlayer player, Vec3 from, Vec3 to) {
         return player.level().clip(new ClipContext(from, to, ClipContext.Block.COLLIDER,
                 ClipContext.Fluid.NONE, player)).getType() != HitResult.Type.MISS;
     }

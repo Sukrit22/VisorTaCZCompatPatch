@@ -12,7 +12,7 @@ final class CosmeticParts implements AutoCloseable {
     private static BedrockPart find(BedrockPart p,String n){if(p==null)return null;if(n.equals(p.name))return p;for(var c:p.children){var found=find(c,n);if(found!=null)return found;}return null;}
     CosmeticParts(BedrockPart root,WeaponProfile profile,ItemStack stack,Calibration calibration,boolean physical,boolean manualBusy){
         var data=DescriptorProfiles.details(profile);if(data==null)return;var v=data.visual();var gun=IGun.getIGunOrNull(stack);if(gun==null)return;
-        if(!manualBusy&&!dev.visorcompat.tacz.physical.ManualCycle.enabled(stack)){var shot=remember(root,v.shotNode());if(shot!=null)shot.offsetZ+=ShotVisual.cycle(stack)*v.shotTravel()/profile.scale();}
+        if(!manualBusy&&!dev.visorcompat.tacz.physical.ManualCycle.enabled(stack)){var shot=remember(root,v.shotNode());if(shot!=null)shot.offsetZ+=ShotVisual.cycle(stack)*v.shotTravel()/(profile.scale()*calibration.gunScale());}
         if(v.rounds().isEmpty())return;
         int live=Math.max(0,gun.getCurrentAmmoCount(stack));int spent=physical&&stack.hasTag()?Math.max(0,stack.getTag().getInt(dev.visorcompat.tacz.server.ServerCylinder.SPENT)):0;
         for(int i=0;i<v.rounds().size();i++){

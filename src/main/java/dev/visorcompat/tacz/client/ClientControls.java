@@ -100,7 +100,7 @@ public final class ClientControls implements VREventListener {
                 }
             }
         } else if (event.getActionButton() == input.getActionRightMouse(HandType.MAIN)
-                && holdingGun() && canInput()) {
+                && holdingGun() && canInput() && !AdvancedClient.holsteredUsePassesThrough()) {
             // Natural aiming replaces desktop ADS. Main-hand use button becomes reload.
             event.setCanceled(true);
             if (event.isPressEvent() && supported()) {

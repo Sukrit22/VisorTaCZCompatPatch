@@ -51,11 +51,11 @@ public final class Handling {
         }
         return target(phase,local,pouch,p,c,open,locked);
     }
-    /** Extra acquisition room only for the free hand working an anchored sniper bolt. */
+    /** Bolt acquisition uses the same calibrated orange box as its guide. */
     public static boolean boltGrab(Vector3fc local,WeaponProfile profile,Calibration c,boolean open,boolean lifted){
         if(!profile.bolt())return false;
         var center=rack(profile,c,open);if(lifted)center.add(0,.035f,0);
-        var box=c.zones().rack();return new ZoneSizes.Box(box.width()+.10f,box.height()+.10f,box.depth()+.10f).contains(local,center);
+        var box=c.zones().rack();return box.contains(local,center);
     }
     public static boolean racking(Phase phase) {return phase==Phase.RACKING || phase==Phase.RACKING_EMPTY;}
     public static boolean fireable(Phase phase) { return phase == Phase.PUMP_HOLD || phase == Phase.READY || phase == Phase.SUPPORT || phase == Phase.OLD_MAG

@@ -361,10 +361,11 @@ public final class ServerPhysical {
             var pose=((VRServerPlayer)VisorAPI.getVRPlayer(p)).getPoseData();
             var main=pose.getMainHand();var grip=CompatNetwork.calibration(p).position(new Vector3f(main.getPosition()),main.getRotation().getNormalizedRotation(new org.joml.Quaternionf()),gun.worldScale());
             if(grip.distance(gun.hand())>(Profiles.bolt(s.stack)&&ServerAdvanced.active(p)?dev.visorcompat.tacz.physical.RegripZone.ENTER:.16f)*gun.worldScale())return;
-            if(Profiles.bolt(s.stack)&&(BoltState.blocked(s.stack)||GunDurabilityCompat.jammed(s.stack)))return;
-            var restored=ServerAdvanced.active(p)?gun:GunPose.resolve(pose,Profiles.get(s.stack),false,CompatNetwork.calibration(p));
-            s.mainAnchor=Profiles.bolt(s.stack)&&restored!=null?HandAnchor.captureMain(restored,pose):null;
-            if(s.held)release(p,s,null);s.anchor=null;s.held=true;s.phase=Phase.SUPPORT;s.supportAnchor=HandAnchor.capture(gun,pose);
+            if(Profiles.bolt(s.stack)&&(BoltState.open(s.stack)||ActionState.lifted(s.stack)||GunDurabilityCompat.jammed(s.stack)))return;
+            var regrip=HandAnchor.regrip(gun,pose,Profiles.get(s.stack),CompatNetwork.calibration(p),ServerAdvanced.active(p));
+            if(regrip==null)return;
+            if(s.held)release(p,s,null);
+            s.mainAnchor=regrip.main();s.anchor=null;s.held=true;s.phase=Phase.SUPPORT;s.supportAnchor=regrip.support();
         }else if(s.phase==Phase.SUPPORT && s.held && (ServerAdvanced.active(p)||mayTransfer(p,s))){
             s.anchor=HandAnchor.capture(gun,((VRServerPlayer)VisorAPI.getVRPlayer(p)).getPoseData());s.held=false;s.phase=Phase.NEED_RACK;
         }

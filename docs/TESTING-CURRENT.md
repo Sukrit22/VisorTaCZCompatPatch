@@ -1,6 +1,20 @@
-# All pending in-game tests - 0.12.0-alpha.9 (source; not packaged)
+# All pending in-game tests - 0.12.0-alpha.11
 
-One consolidated list, including older unfinished subcases and regressions for changed behavior. **Alpha.6 feedback is recorded below; alpha.7 needs headset/multiplayer testing.** The 157 passing automated tests do not count as in-game passes.
+One consolidated list, including older unfinished subcases and regressions for changed behavior. Earlier feedback is recorded below. Automated tests do not count as headset or multiplayer passes.
+
+## Alpha.11 priority follow-up — awaiting headset testing
+
+Source changes only: no alpha.11 JAR built yet. Install matching client/server builds (protocol **26**) when built. Earlier tables below retain historical version labels; use this version for current testing. Calibration imports remain unchanged.
+
+| ID | Test | Expected |
+|---|---|---|
+| T11-01 | Survival Taurus/Rhino/943: load, fire two, open, place free empty hand 8–45 cm under cylinder and within 12 cm horizontally; shake-unload. Count loaded plus inventory before/after | Remaining live rounds return to inventory once; spent cases never become ammo. Repeat with hand too far, occupied, and full inventory (overflow drops native ammo). Test offhand body carry with main hand underneath |
+| T11-02 | Open partly loaded cylinder; shake with no hand underneath; then reload and pull pink zone slowly versus quickly | Gravity starts gently and accelerates. Pink-zone ejection travels rearward faster with a faster pull, capped against tracking jumps. Fallen cosmetics cannot be picked up afterward |
+| T11-03 | M700 Advanced: shoot, release main grip while support holds, Grip at handle outside orange box; repeat with Grip inside orange box, then cycle and return | Closed spent bolt does not steal handle grab; orange box still grabs bolt. Open/lifted/jammed bolt retains its action requirements. Support continues steering; repeat ten cycles |
+| T11-04 | Advanced holstered magazine pistol: main Use away from handle, then within 12 cm of calibrated grip | Away: input passes to Visor and magazine stays. Near: magazine release works. Check use press/release and move hand away while holding Use |
+| T11-05 | Glock/M4/SCAR/MP5: slow fire, automatic fire, empty, manually rack, jam; repeat at 75% gun scale | Shot slide reaches full configured travel and briefly holds its rear endpoint. Empty/manual/jam poses take priority; no extra ammo consumed by animation |
+| T11-06 | Glock/M4: aim at wall, fire once, then rapid follow-up shots while keeping controller still; repeat with recoil-reducing attachments and flat observer | Gun tilts up/sideways using TaCZ recoil; follow-up bullets follow kicked muzzle. First shot starts at pre-kick aim, recovery returns to controller aim. No camera kick; existing main-controller vibration remains |
+| T11-07 | M870 multi-pellet shot, burst/automatic guns; switch slot, VR/flat, disconnect/rejoin mid-kick; shoot beside wall and through optics | One kick per firing event, not per pellet. No leftover kick on another gun/session, no shooting through wall from kicked muzzle. Check sight alignment and latency on multiplayer; client visuals wait for server confirmation |
 
 ## Alpha.9 priority follow-up — all awaiting headset testing
 
@@ -20,6 +34,7 @@ Use the same alpha.9 build on client/server when it is packaged (protocol 25). T
 | T09-10 | Flatscreen without shaders: play before and after Z, hold scope item, switch attachments; repeat a VR/flat transition | Watch for whole-world flicker or prior crashes. Framebuffer preparation now runs only in VR; this is a candidate isolation change, not a confirmed flicker fix |
 | T09-11 | Flat friend watches shot slide motion, cylinder emptying, loader use; observers with different TOML files | Matching clients see custom rendering; mismatched observer uses native rendering. Remote prefire charging remains pending |
 | T09-12 | Compare all existing grip/holster/inspection fits; test matching versus mismatched TOML on a spare server | Existing saved calibration is unchanged; mismatch pauses compatibility with a message, rather than using Legacy |
+| T09-13 | M700 Physical: hold support, shoot, transfer main hand to bolt, complete stroke, return near handle and press Use; repeat 10 times without releasing support. Then move support hand sideways. Repeat in Advanced | Physical returns to the same calibrated grip each cycle, without the reported cumulative 2–4 cm drop; support still steers. Advanced preserves the held scope pose on regrip. Also release/regrab support and check no stale offset survives |
 
 ## Alpha.8 prior follow-up (profile-switch tests superseded by T09)
 

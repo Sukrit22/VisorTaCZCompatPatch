@@ -7,6 +7,13 @@ public record HandAnchor(Quaternionf rotation,Vector3f offset,boolean mainHand,V
     public HandAnchor(Quaternionf rotation,Vector3f offset){this(rotation,offset,false);}
     public static HandAnchor capture(GunPose gun,VRPlayerPose pose){return capture(gun,pose,false);}
     public static HandAnchor captureMain(GunPose gun,VRPlayerPose pose){return capture(gun,pose,true);}
+    public record Regrip(HandAnchor main,HandAnchor support) {}
+    /** Physical returns to the calibrated grip; only Advanced preserves the held pose. */
+    public static Regrip regrip(GunPose held,VRPlayerPose pose,WeaponProfile profile,Calibration calibration,boolean advanced){
+        var restored=advanced?held:GunPose.resolve(pose,profile,true,calibration);
+        if(restored==null)return null;
+        return new Regrip(advanced&&profile.bolt()?captureMain(restored,pose):null,capture(restored,pose));
+    }
     private static HandAnchor capture(GunPose gun,VRPlayerPose pose,boolean main){
         var controller=main?pose.getMainHand():pose.getOffhand();
         var inverse=controller.getRotation().getNormalizedRotation(new Quaternionf()).conjugate();

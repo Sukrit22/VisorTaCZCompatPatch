@@ -52,7 +52,7 @@ action_close = "b93r_inspect_slide_release"
 
 [guns.visual]
 shot_node = "upper"
-shot_travel = 0.035
+shot_travel = 0.055
 
 [[guns]]
 id = "tacz:cz75"
@@ -104,7 +104,7 @@ action_close = "cz75_inspect_sliderelease"
 
 [guns.visual]
 shot_node = "slide"
-shot_travel = 0.035
+shot_travel = 0.055
 
 [[guns]]
 id = "tacz:deagle"
@@ -156,7 +156,7 @@ action_close = "deagle_inspect_slideclose"
 
 [guns.visual]
 shot_node = "slide2"
-shot_travel = 0.035
+shot_travel = 0.055
 
 [[guns]]
 id = "tacz:deagle_golden"
@@ -208,7 +208,7 @@ action_close = "deagle_inspect_slideclose"
 
 [guns.visual]
 shot_node = "slide2"
-shot_travel = 0.035
+shot_travel = 0.055
 
 [[guns]]
 id = "tacz:glock_17"
@@ -247,7 +247,7 @@ position = [0.00076171875, 0.04671875, 0.0690625]
 
 [guns.visual]
 shot_node = "slide"
-shot_travel = 0.035
+shot_travel = 0.055
 
 [[guns]]
 id = "tacz:hk_mk23"
@@ -300,7 +300,7 @@ action_close = "m1911_reload_empty_chamber"
 
 [guns.visual]
 shot_node = "slide"
-shot_travel = 0.035
+shot_travel = 0.055
 
 [[guns]]
 id = "tacz:hk_mp5a5"
@@ -339,7 +339,7 @@ position = [0.0075, 0.12843749999999998, -0.1378125]
 
 [guns.visual]
 shot_node = "bolt"
-shot_travel = 0.035
+shot_travel = 0.055
 
 [[guns]]
 id = "tacz:lonetrail"
@@ -438,7 +438,7 @@ action_close = "m1911_reload_empty_chamber"
 
 [guns.visual]
 shot_node = "slide"
-shot_travel = 0.035
+shot_travel = 0.055
 
 [[guns]]
 id = "tacz:m4a1"
@@ -477,7 +477,7 @@ position = [0.008125, 0.11679687500000002, -0.13710937500000003]
 
 [guns.visual]
 shot_node = "m4a1_bolt"
-shot_travel = 0.035
+shot_travel = 0.055
 
 [[guns]]
 id = "tacz:m700"
@@ -597,7 +597,7 @@ action_close = "m9a4_inspect_slide"
 
 [guns.visual]
 shot_node = "upper"
-shot_travel = 0.035
+shot_travel = 0.055
 
 [[guns]]
 id = "tacz:p320"
@@ -649,7 +649,7 @@ action_close = "p320_inspect_sliderelease"
 
 [guns.visual]
 shot_node = "slide"
-shot_travel = 0.035
+shot_travel = 0.055
 
 [[guns]]
 id = "tacz:rhino357"
@@ -745,7 +745,7 @@ position = [0.005625, 0.08015624999999998, -0.1246875]
 
 [guns.visual]
 shot_node = "bolt"
-shot_travel = 0.035
+shot_travel = 0.055
 
 [[guns]]
 id = "tacz:scar_l"
@@ -784,7 +784,7 @@ position = [0.005625, 0.08953124999999995, -0.11062500000000003]
 
 [guns.visual]
 shot_node = "bolt"
-shot_travel = 0.035
+shot_travel = 0.055
 
 [[guns]]
 id = "tacz:taurus500"
@@ -949,7 +949,7 @@ action_close = "timeless50_inspect_slidepull"
 
 [guns.visual]
 shot_node = "slide"
-shot_travel = 0.035
+shot_travel = 0.055
 
 [[guns]]
 id = "tacz:aa12"

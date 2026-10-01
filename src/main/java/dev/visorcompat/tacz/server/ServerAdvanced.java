@@ -30,7 +30,14 @@ public final class ServerAdvanced {
         var hand=new org.joml.Vector3f(s.x(),s.y(),s.z());var q=new org.joml.Quaternionf(s.qx(),s.qy(),s.qz(),s.qw()).normalize();
         return new GunPose(hand,q,new org.joml.Quaternionf(q).transform(c.muzzleOffset(profile.muzzleOffset()).mul(normal.worldScale())).add(hand),new org.joml.Quaternionf(q).transform(new org.joml.Vector3f(0,0,-1)),normal.worldScale());
     }
-    public static void use(ServerPlayer p){if(STATES.containsKey(p.getUUID())&&canInteract(p)&&ServerPoses.validated(p)!=null){if(Profiles.cylinder(p.getMainHandItem()))ServerCylinder.armOpen(p);else ServerPhysical.advancedUse(p);}}
+    public static void use(ServerPlayer p){
+        var entry=STATES.get(p.getUUID());
+        if(entry!=null&&entry.state().mount()==1){
+            var gun=ServerPoses.validated(p);if(gun==null||!(org.vmstudio.visor.api.VisorAPI.getVRPlayer(p) instanceof org.vmstudio.visor.api.server.player.VRServerPlayer vr))return;
+            var pose=vr.getPoseData();var hand=pose.getMainHand();var grip=CompatNetwork.calibration(p).position(new org.joml.Vector3f(hand.getPosition()),hand.getRotation().getNormalizedRotation(new org.joml.Quaternionf()),pose.getWorldScale());
+            if(grip.distance(gun.hand())>.12f*gun.worldScale())return;
+        }
+        if(STATES.containsKey(p.getUUID())&&canInteract(p)&&ServerPoses.validated(p)!=null){if(Profiles.cylinder(p.getMainHandItem()))ServerCylinder.armOpen(p);else ServerPhysical.advancedUse(p);}}
     public static void clear(ServerPlayer p){if(STATES.remove(p.getUUID())!=null)CompatNetwork.CHANNEL.send(PacketDistributor.TRACKING_ENTITY.with(()->p),new CompatNetwork.AdvancedRemote(p.getUUID(),CompatNetwork.Advanced.disabled()));}
     public static void clearAll(){STATES.clear();}
 }

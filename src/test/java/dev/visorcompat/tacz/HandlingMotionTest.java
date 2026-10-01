@@ -5,6 +5,13 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class HandlingMotionTest {
+    @Test void boltCannotBeAcquiredOutsideOrangeBox(){
+        var p=Profiles.byId("tacz:m700");var c=Calibration.ZERO;var center=Handling.rack(p,c);
+        assertTrue(Handling.boltGrab(center,p,c,false,false));
+        assertFalse(Handling.boltGrab(new Vector3f(center).add(c.zones().rack().width()/2+.01f,0,0),p,c,false,false));
+        var open=Handling.rack(p,c,true).add(0,.035f,0);assertTrue(Handling.boltGrab(open,p,c,true,true));
+    }
+
     @Test void stationaryMagazineFallsWithoutInventedSidewaysKick(){
         var m=ReleaseMotion.between(new Vector3f(),new Quaternionf(),new Vector3f(),new Quaternionf(),new Vector3f(0,-.1f,0),.05f,1);
         assertEquals(0,m.velocity().length(),1e-6);

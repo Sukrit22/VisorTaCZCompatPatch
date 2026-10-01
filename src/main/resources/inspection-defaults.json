@@ -15,15 +15,15 @@
     "yaw": 0.0,
     "roll": 0.0
   },
-  "tacz:m1911|tacz:default": {
-    "x": 0.0,
-    "y": -0.109999985,
-    "z": 0.01,
+  "tacz:p320|tacz:default": {
+    "x": -0.01,
+    "y": -0.07999999,
+    "z": -1.6298145e-09,
     "pitch": -60.0,
     "yaw": 0.0,
     "roll": 0.0
   },
-  "tacz:p320|tacz:default": {
+  "tacz:m1911|tacz:default": {
     "x": 0.0,
     "y": -0.109999985,
     "z": 0.01,

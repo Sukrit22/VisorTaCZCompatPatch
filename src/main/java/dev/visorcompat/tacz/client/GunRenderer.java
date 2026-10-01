@@ -38,7 +38,8 @@ public final class GunRenderer extends VRHandEffect {
         WeaponProfile profile = Profiles.get(stack);
         if (profile == null) return;
         var pose = VisorAPI.client().getVRLocalPlayer().getPoseData(PlayerPoseType.RENDER);
-        GunPose gun = AdvancedClient.renderPose(GunPose.resolve(pose, profile, mc.player.getOffhandItem().isEmpty() && PhysicalClient.supporting(), CalibrationStore.render(Profiles.key(stack)),PhysicalClient.anchor()));
+        GunPose baseGun = AdvancedClient.renderPose(GunPose.resolve(pose, profile, mc.player.getOffhandItem().isEmpty() && PhysicalClient.supporting(), CalibrationStore.render(Profiles.key(stack)),PhysicalClient.anchor()));
+        GunPose gun=ClientRecoil.apply(mc.player,baseGun,partialTicks);
         if (gun == null) return;
         TimelessAPI.getGunDisplay(stack).ifPresent(display -> {
             var model = display.getGunModel();

@@ -17,7 +17,7 @@ import org.joml.Vector3f;
 public final class ServerCylinder {
     public static final String OPEN="visor_tacz_cylinder_open",SPENT="visor_tacz_cylinder_spent";
     private static final Map<UUID,State> STATES=new HashMap<>();
-    private static class State {ItemStack stack;int slot,ticks;boolean held,done,shell,eject,allowReload,loader;Vector3f start;CylinderMotion motion=new CylinderMotion();CylinderShake shake=new CylinderShake();Vector3f gestureRight;long lastPose;Phase sent;State(ServerPlayer p){stack=p.getMainHandItem();slot=p.getInventory().selected;}}
+    private static class State {ItemStack stack;int slot,ticks;boolean held,done,shell,eject,allowReload,loader;Vector3f start,lastPull;long pullTime;float pullSpeed;CylinderMotion motion=new CylinderMotion();CylinderShake shake=new CylinderShake();Vector3f gestureRight;long lastPose;Phase sent;State(ServerPlayer p){stack=p.getMainHandItem();slot=p.getInventory().selected;}}
     public static boolean open(ItemStack stack){return stack.hasTag()&&stack.getTag().getBoolean(OPEN);}
     private static boolean valid(ServerPlayer p,State s){return s!=null&&s.stack==p.getMainHandItem()&&s.slot==p.getInventory().selected;}
     public static Phase phase(ServerPlayer p){var s=STATES.get(p.getUUID());return !valid(p,s)?Phase.READY:s.shell?(s.loader?Phase.LOADER:Phase.SHELL):s.held?Phase.CYLINDER_HOLD:open(s.stack)?Phase.CYLINDER_OPEN:Phase.READY;}
@@ -37,6 +37,8 @@ public final class ServerCylinder {
     private static void move(ServerPlayer p,State s,Vector3f pos){
         var delta=new Vector3f(pos).sub(s.start);
         if(s.eject){
+            long now=System.nanoTime();if(s.lastPull!=null){float dt=(now-s.pullTime)/1_000_000_000f;if(dt>=.01f){s.pullSpeed=CylinderEjection.pullSpeed(pos.z-s.lastPull.z,dt);s.lastPull.set(pos);s.pullTime=now;}}
+
             if(open(s.stack)&&delta.z>=.045f&&Math.abs(delta.x)<.12f&&Math.abs(delta.y)<.12f){
                 eject(p,s,false);s.done=true;
             }
@@ -52,7 +54,19 @@ public final class ServerCylinder {
         int spent=CylinderCycle.spent(s.stack.getOrCreateTag().getInt(SPENT),live,64);
         if(live+spent==0)return;
         gun.setCurrentAmmoCount(s.stack,0);s.stack.getOrCreateTag().putInt(SPENT,0);
-        HandlingFeedback.cylinderEject(p,pose,live,spent,gravity);p.inventoryMenu.broadcastChanges();
+        int recovered=0;
+        if(live>0&&p.getOffhandItem().isEmpty()&&org.vmstudio.visor.api.VisorAPI.getVRPlayer(p) instanceof org.vmstudio.visor.api.server.player.VRServerPlayer vr){
+            var center=new org.joml.Quaternionf(pose.rotation()).transform(Handling.magazine(Profiles.get(s.stack),CompatNetwork.calibration(p)).mul(pose.worldScale())).add(pose.hand());
+            if(CylinderEjection.canCatch(center,(ServerAdvanced.cylinderOffhand(p)?vr.getPoseData().getMainHand():vr.getPoseData().getOffhand()).getPosition(),pose.worldScale())){
+                var index=com.tacz.guns.api.TimelessAPI.getCommonGunIndex(gun.getGunId(s.stack)).orElse(null);
+                if(index!=null&&IGunOperator.fromLivingEntity(p).needCheckAmmo()&&!index.getGunData().getReloadData().isInfinite()){
+                    if(gun.useDummyAmmo(s.stack)){int before=gun.getDummyAmmoAmount(s.stack);gun.addDummyAmmoAmount(s.stack,live);recovered=Math.max(0,gun.getDummyAmmoAmount(s.stack)-before);}
+                    else{var ammo=com.tacz.guns.api.item.builder.AmmoItemBuilder.create().setId(index.getGunData().getAmmoId()).setCount(live).build();p.getInventory().add(ammo);if(!ammo.isEmpty())p.drop(ammo,false);recovered=live;}
+                    p.displayClientMessage(net.minecraft.network.chat.Component.literal("Recovered "+recovered+" live rounds"),true);
+                }
+            }
+        }
+        HandlingFeedback.cylinderEject(p,pose,live-recovered,spent,gravity,s.pullSpeed);p.inventoryMenu.broadcastChanges();
     }
     private static void gestures(ServerPlayer p,State s){
         var pose=ServerPoses.validated(p);
@@ -95,7 +109,7 @@ public final class ServerCylinder {
         if(s.held||sample==null||!p.getOffhandItem().isEmpty())return;
         var target=Handling.target(phase(p),sample.local(),sample.pouch(),Profiles.get(s.stack),CompatNetwork.calibration(p));
         if(target==Handling.Target.POUCH&&!PouchAmmo.available(p,s.stack)){p.displayClientMessage(net.minecraft.network.chat.Component.literal("TaCZ VR: OUT OF AMMO"),true);return;}
-        if(target==Handling.Target.RACK||target==Handling.Target.CASING||target==Handling.Target.POUCH){s.held=true;s.done=false;s.shell=target==Handling.Target.POUCH;s.loader=loader&&!DescriptorProfiles.details(Profiles.get(s.stack)).visual().loader().isEmpty();s.eject=target==Handling.Target.CASING;s.start=new Vector3f(sample.local());}
+        if(target==Handling.Target.RACK||target==Handling.Target.CASING||target==Handling.Target.POUCH){s.held=true;s.done=false;s.shell=target==Handling.Target.POUCH;s.loader=loader&&!DescriptorProfiles.details(Profiles.get(s.stack)).visual().loader().isEmpty();s.eject=target==Handling.Target.CASING;s.start=new Vector3f(sample.local());s.lastPull=new Vector3f(sample.local());s.pullTime=System.nanoTime();s.pullSpeed=0;}
     }
     private static void insert(ServerPlayer p,State s){
         var api=new ModernKineticGunScriptAPI();api.setItemStack(s.stack);api.setShooter(p);api.setDataHolder(IGunOperator.fromLivingEntity(p).getDataHolder());

@@ -37,6 +37,7 @@ public final class AdvancedClient {
     public static boolean firingHold(){return !active()||!transferred&&hold.state()==AdvancedHold.State.MAIN;}
     public static boolean canFire(){return !active()||!transferred&&hold.canFire();}
     private static boolean cylinderCarry(){return active()&&hold.state()==AdvancedHold.State.SUPPORT&&Profiles.cylinder(Minecraft.getInstance().player.getMainHandItem());}
+    public static boolean holsteredUsePassesThrough(){return active()&&hold.state()==AdvancedHold.State.HOLSTERED&&!regripNear();}
     public static boolean freeMain(){
         if(!active())return false;
         var p=Profiles.get(Minecraft.getInstance().player.getMainHandItem());
@@ -204,7 +205,8 @@ public final class AdvancedClient {
         renderTime=System.nanoTime();
         boolean ready=input&&active()&&transferred&&PhysicalClient.supportAnchor()
             &&Profiles.bolt(Minecraft.getInstance().player.getMainHandItem())
-            &&!dev.visorcompat.tacz.physical.BoltState.blocked(Minecraft.getInstance().player.getMainHandItem())
+            &&!dev.visorcompat.tacz.physical.BoltState.open(Minecraft.getInstance().player.getMainHandItem())
+            &&!dev.visorcompat.tacz.physical.ActionState.lifted(Minecraft.getInstance().player.getMainHandItem())
             &&!dev.visorcompat.tacz.compat.GunDurabilityCompat.jammed(Minecraft.getInstance().player.getMainHandItem())&&!mainBoltGrip;
         if(regripCue.update(ready,ready?gripDistance():Float.POSITIVE_INFINITY))
             VisorAPI.client().getInputManager().triggerHapticPulse(HandType.MAIN,75f,.25f,.035f);
@@ -250,12 +252,12 @@ public final class AdvancedClient {
                 mainBoltGrip=true;send(false);CompatNetwork.CHANNEL.sendToServer(new CompatNetwork.MainAction(false,true,false));e.setCanceled(true);return true;
             }
             if(transferred){
-                // Bolt work wins over nearby trigger-handle re-grip while the support hand owns the rifle.
-                if(PhysicalClient.target()==dev.visorcompat.tacz.physical.Handling.Target.RACK&&(!regripNear()||dev.visorcompat.tacz.physical.BoltState.blocked(Minecraft.getInstance().player.getMainHandItem()))){
+                // The handle wins when nearby; bolt acquisition must stay inside the orange zone.
+                if(PhysicalClient.target()==dev.visorcompat.tacz.physical.Handling.Target.RACK&&!regripNear()){
                     mainBoltGrip=true;CompatNetwork.CHANNEL.sendToServer(new CompatNetwork.MainAction(false,true,false));e.setCanceled(true);return true;
                 }
                 var stack=Minecraft.getInstance().player.getMainHandItem();
-                if(Profiles.bolt(stack)&&(dev.visorcompat.tacz.physical.BoltState.blocked(stack)||dev.visorcompat.tacz.compat.GunDurabilityCompat.jammed(stack))){e.setCanceled(true);return true;}
+                if(Profiles.bolt(stack)&&(dev.visorcompat.tacz.physical.BoltState.open(stack)||dev.visorcompat.tacz.physical.ActionState.lifted(stack)||dev.visorcompat.tacz.compat.GunDurabilityCompat.jammed(stack))){e.setCanceled(true);return true;}
             }
             if(transferred&&regripNear()){
                 transferred=false;ownedGrip=true;ClientControls.stopShooting();CompatNetwork.CHANNEL.sendToServer(new CompatNetwork.MainAction(true,false,false));e.setCanceled(true);return true;
@@ -289,6 +291,7 @@ public final class AdvancedClient {
             if(!hold.canFire()){e.setCanceled(true);return true;}
         }
         if(e.getActionButton()==actions.getActionRightMouse(HandType.MAIN)){
+            if(holsteredUsePassesThrough())return false;
             e.setCanceled(true);
             if(!press){hold.useReleased();if(hold.state()==AdvancedHold.State.INSPECT){hold.release(System.nanoTime(),false);inspectTrigger=false;}return true;}
             ownedUse=true;var stack=Minecraft.getInstance().player.getMainHandItem();

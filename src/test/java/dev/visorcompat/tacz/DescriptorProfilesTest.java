@@ -36,7 +36,7 @@ class DescriptorProfilesTest {
         assertEquals("m4a1_bolt",d.get("tacz:m4a1").visual().shotNode());
     }
     @Test void rejectUnsafeVisualTravelAndUnimplementedFireMode()throws Exception{
-        var text=bundled();assertThrows(IllegalArgumentException.class,()->DescriptorProfiles.parse(text.replace("shot_travel = 0.035","shot_travel = 1.0")));
+        var text=bundled();assertThrows(IllegalArgumentException.class,()->DescriptorProfiles.parse(text.replace("shot_travel = 0.055","shot_travel = 1.0")));
         assertThrows(IllegalArgumentException.class,()->DescriptorProfiles.parse(text.replace("manual_cycle_modes = [\"SEMI\"]","manual_cycle_modes = [\"INVALID\"]")));
     }
     @Test void gunIdLookupDoesNotRequireBindingAStack(){

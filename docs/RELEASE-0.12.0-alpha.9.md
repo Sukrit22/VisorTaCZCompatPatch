@@ -1,5 +1,6 @@
 # 0.12.0-alpha.9 — source changes, not packaged
 
+- M700 Physical regrip resets to the calibrated two-hand pose and refreshes the next support-transfer anchor from that restored pose. Advanced retains pose-preserving regrip. Regression covers 100 repeated Physical returns and Advanced preservation.
 - TOML is the sole gun catalog: 54 base guns, 20 physical and 34 button-only. Java/JSON legacy gun tables and the backend switch are removed. Calibration overlays remain unchanged.
 - Gun lookup no longer depends on per-stack backend binding. This addresses a plausible SCAR support-loss race when ammo synchronization replaces a client item stack; hardware confirmation remains pending.
 - Cosmetic slide/bolt shot cycles for configured physical profiles, including in Button mode. Shared model state is restored after each render.
@@ -11,6 +12,6 @@
 
 Protocol 25 requires matching client/server builds. Identical TOML files are required for compatibility; mismatch/invalid files pause compatibility and emit a diagnostic. There is no silent Legacy fallback.
 
-Validation: 174 unit tests pass; 17 configured visual profiles were checked against the pinned native model bone names with no missing names. No headset, render-output, multiplayer runtime test, JAR build, installation, commit, or push was performed for this source change.
+Validation: 176 unit tests pass; 17 configured visual profiles were checked against the pinned native model bone names with no missing names. No headset, render-output, multiplayer runtime test, JAR build, installation, commit, or push was performed for this source change.
 
-Start with T09-01 through T09-12 in [the consolidated pending checklist](TESTING-CURRENT.md). Authoring details: [runtime profiles](RUNTIME-PROFILES.md).
+Start with T09-01 through T09-13 in [the consolidated pending checklist](TESTING-CURRENT.md). Authoring details: [runtime profiles](RUNTIME-PROFILES.md).

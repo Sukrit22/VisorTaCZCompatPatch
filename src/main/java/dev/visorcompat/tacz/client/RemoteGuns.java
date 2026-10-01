@@ -60,6 +60,7 @@ public final class RemoteGuns {
             var pose=vr.getPoseData(PlayerPoseType.RENDER);var stack=player.getMainHandItem();var profile=Profiles.get(stack);
             var gun=GunPose.resolve(pose,profile,player.getOffhandItem().isEmpty() && (!state.physical() || (state.phase()==Phase.SUPPORT || state.phase()==Phase.PUMP_HOLD && state.pull()<4)),state.calibration(),state.anchor());
             gun=AdvancedRemote.pose(player.getUUID(),Profiles.key(stack),gun,profile,state.calibration());
+            gun=ClientRecoil.apply(player,gun,event.getPartialTick());
             var display=TimelessAPI.getGunDisplay(stack).orElse(null);
             if(gun==null || display==null || display.getGunModel()==null)continue;
             var model=display.getGunModel();boolean hands=model.getRenderHand(),flash=MuzzleFlashRender.isSelf;

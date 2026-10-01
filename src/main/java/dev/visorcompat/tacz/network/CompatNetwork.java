@@ -23,7 +23,7 @@ import java.util.UUID;
 @Mod.EventBusSubscriber(modid = VisorTacz.ID)
 public final class CompatNetwork {
     public static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
-            new ResourceLocation(VisorTacz.ID, "main"), () -> "25", "25"::equals, "25"::equals);
+            new ResourceLocation(VisorTacz.ID, "main"), () -> "26", "26"::equals, "26"::equals);
     private static final Set<UUID> DESCRIPTORS = new HashSet<>();
     private static final Set<UUID> MODE_KNOWN = new HashSet<>();
     private static final Set<UUID> TRANSFER_ANYTIME = new HashSet<>();
@@ -45,7 +45,12 @@ public final class CompatNetwork {
     public record AdvancedUse(){}
     public record DroppedMagazine(net.minecraft.world.item.ItemStack stack,float scale,float modelScale,org.joml.Vector3f position,org.joml.Quaternionf rotation,org.joml.Vector3f velocity,org.joml.Vector3f spin,boolean loaded,boolean descriptors,String profileDigest){}
     public record BackendAck(boolean accepted){}
+    public record RecoilShot(UUID player,String key,long tick,dev.visorcompat.tacz.RecoilMotion.Curve curve){}
     public static void register() {
+        CHANNEL.messageBuilder(RecoilShot.class,14,NetworkDirection.PLAY_TO_CLIENT)
+            .encoder((m,b)->{b.writeUUID(m.player());b.writeUtf(m.key(),512);b.writeLong(m.tick());b.writeFloat(m.curve().ticks());for(float v:m.curve().pitch())b.writeFloat(v);for(float v:m.curve().yaw())b.writeFloat(v);})
+            .decoder(b->{var id=b.readUUID();var key=b.readUtf(512);long tick=b.readLong();float ticks=b.readFloat();float[] p=new float[dev.visorcompat.tacz.RecoilMotion.SAMPLES],y=new float[p.length];for(int i=0;i<p.length;i++)p[i]=b.readFloat();for(int i=0;i<y.length;i++)y[i]=b.readFloat();return new RecoilShot(id,key,tick,new dev.visorcompat.tacz.RecoilMotion.Curve(ticks,p,y));})
+            .consumerMainThread((m,c)->{net.minecraftforge.fml.DistExecutor.unsafeRunWhenOn(net.minecraftforge.api.distmarker.Dist.CLIENT,()->()->dev.visorcompat.tacz.client.ClientRecoil.receive(m));c.get().setPacketHandled(true);}).add();
         CHANNEL.messageBuilder(BackendAck.class,13,NetworkDirection.PLAY_TO_CLIENT)
             .encoder((m,b)->b.writeBoolean(m.accepted())).decoder(b->new BackendAck(b.readBoolean()))
             .consumerMainThread((m,c)->{net.minecraftforge.fml.DistExecutor.unsafeRunWhenOn(net.minecraftforge.api.distmarker.Dist.CLIENT,()->()->dev.visorcompat.tacz.client.CompatSettings.backendAck(m.accepted()));c.get().setPacketHandled(true);}).add();
@@ -149,7 +154,8 @@ public final class CompatNetwork {
         PHYSICAL.remove(event.getEntity().getUUID());TRANSFER_ANYTIME.remove(event.getEntity().getUUID());
         ACTIVE.remove(event.getEntity().getUUID());
         GRIPS.remove(event.getEntity().getUUID());
+        dev.visorcompat.tacz.server.ServerRecoil.clear(event.getEntity().getUUID());
         dev.visorcompat.tacz.server.RemoteSync.remove(event.getEntity().getUUID());
     }
-    @SubscribeEvent public static void stopped(ServerStoppedEvent event) { dev.visorcompat.tacz.server.ServerAdvanced.clearAll();DESCRIPTORS.clear();MODE_KNOWN.clear(); TRANSFER_ANYTIME.clear(); ACTIVE.clear(); PHYSICAL.clear(); GRIPS.clear(); ServerPhysical.stop(); dev.visorcompat.tacz.server.RemoteSync.clear(); }
+    @SubscribeEvent public static void stopped(ServerStoppedEvent event) { dev.visorcompat.tacz.server.ServerRecoil.clearAll(); dev.visorcompat.tacz.server.ServerAdvanced.clearAll();DESCRIPTORS.clear();MODE_KNOWN.clear(); TRANSFER_ANYTIME.clear(); ACTIVE.clear(); PHYSICAL.clear(); GRIPS.clear(); ServerPhysical.stop(); dev.visorcompat.tacz.server.RemoteSync.clear(); }
 }
