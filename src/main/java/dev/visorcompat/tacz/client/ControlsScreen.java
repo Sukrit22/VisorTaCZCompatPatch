@@ -8,7 +8,7 @@ import dev.visorcompat.tacz.Profiles;
 public final class ControlsScreen extends Screen {
     public ControlsScreen(){super(Component.literal("TaCZ VR controls"));}
     @Override protected void init(){
-        int x=width/2-130,y=height/2-96;
+        int x=width/2-130,y=height/2-108;
         addRenderableWidget(Button.builder(Component.literal("Grab: "+CompatSettings.grab()),b->{
             CompatSettings.setGrab(CompatSettings.grab()==CompatSettings.Grab.USE?CompatSettings.Grab.TRIGGER:CompatSettings.Grab.USE);rebuildWidgets();
         }).bounds(x,y,260,20).build());
@@ -38,13 +38,16 @@ public final class ControlsScreen extends Screen {
         addRenderableWidget(Button.builder(Component.literal("M700 transfer: "+(CompatSettings.transferAnytime()?"ANYTIME":"BOLT NEEDED")),b->{
             CompatSettings.setTransferAnytime(!CompatSettings.transferAnytime());rebuildWidgets();
         }).tooltip(net.minecraft.client.gui.components.Tooltip.create(Component.literal("BOLT NEEDED: only after firing, with an empty chamber, open/lifted bolt or jam. ANYTIME: transfer whenever support grip is held. Applies to moving away and main Use."))).bounds(x,y+144,260,20).build());
-        addRenderableWidget(Button.builder(Component.literal("Advanced Handling"),b->minecraft.setScreen(new AdvancedScreen())).bounds(x,y+172,170,20).build());
-        addRenderableWidget(Button.builder(Component.literal("Done"),b->onClose()).bounds(x+174,y+172,86,20).build());
+        addRenderableWidget(Button.builder(Component.literal("VR recoil: "+(CompatSettings.recoil()?"ON":"OFF")),b->{CompatSettings.setRecoil(!CompatSettings.recoil());rebuildWidgets();}).bounds(x,y+168,128,20).build());
+        var physics=addRenderableWidget(Button.builder(Component.literal("Physics calibration"),b->minecraft.setScreen(new PhysicsScreen(Profiles.key(minecraft.player.getMainHandItem())))).bounds(x+132,y+168,128,20).build());
+        physics.active=minecraft.player!=null&&Profiles.get(minecraft.player.getMainHandItem())!=null&&!Profiles.cylinder(minecraft.player.getMainHandItem())&&!Profiles.manualAction(minecraft.player.getMainHandItem());
+        addRenderableWidget(Button.builder(Component.literal("Advanced Handling"),b->minecraft.setScreen(new AdvancedScreen())).bounds(x,y+192,170,20).build());
+        addRenderableWidget(Button.builder(Component.literal("Done"),b->onClose()).bounds(x+174,y+192,86,20).build());
         ClientControls.clearInput();
     }
     @Override public boolean isPauseScreen(){return false;}
     @Override public void render(GuiGraphics g,int x,int y,float partial){
-        g.fill(width/2-140,height/2-118,width/2+140,height/2+104,0xD0101010);
-        g.drawCenteredString(font,title,width/2,height/2-111,0xFFFFFF);super.render(g,x,y,partial);
+        g.fill(width/2-140,height/2-130,width/2+140,height/2+116,0xD0101010);
+        g.drawCenteredString(font,title,width/2,height/2-123,0xFFFFFF);super.render(g,x,y,partial);
     }
 }

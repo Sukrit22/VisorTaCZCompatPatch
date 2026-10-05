@@ -1,0 +1,39 @@
+// Launch the actual release JAR with official Minecraft and unmodified published
+// mods. No generated classes, development mapping JAR or remapped dependencies.
+configurations {
+ productionMods { transitive=false }
+ productionMappings { transitive=false }
+}
+dependencies {
+ productionMods 'net.fabricmc.fabric-api:fabric-api:0.92.6+1.20.1'
+ productionMods 'maven.modrinth:visor:ehts00JW'
+ productionMods "maven.modrinth:tacz-refabricated:${providers.gradleProperty('smokeTacz').getOrElse('3ShZi2cZ')}"
+ productionMods 'fuzs.forgeconfigapiport:forgeconfigapiport-fabric:8.0.3'
+ productionMappings 'net.fabricmc:intermediary:1.20.1:v2'
+}
+def smokeDir=layout.buildDirectory.dir("production-smoke/${project.version}")
+tasks.register('prepareProductionSmoke', Sync) {
+ dependsOn remapJar
+ into(smokeDir.map { it.dir('mods') })
+ from configurations.productionMods
+ from tasks.remapJar.archiveFile
+}
+tasks.register('productionClient', JavaExec) {
+ dependsOn 'prepareProductionSmoke', 'downloadAssets'
+ javaLauncher=javaToolchains.launcherFor { languageVersion=JavaLanguageVersion.of(17) }
+ workingDir smokeDir
+ mainClass='net.fabricmc.loader.impl.launch.knot.KnotClient'
+ systemProperty 'fabric.development','false'
+ // Keep Minecraft libraries and loader dependencies; exclude Loom's transformed
+ // mods, our classes/resources and development-only mapping/launch artifacts.
+ classpath=files(provider {
+  sourceSets.main.runtimeClasspath.files.findAll {
+   it.path.replace('\\','/').contains('/modules-2/') &&
+   !it.name.startsWith('dev-launch-injector')
+  }
+ }) + configurations.productionMappings + files(new File(gradle.gradleUserHomeDir,'caches/fabric-loom/1.20.1/minecraft-client.jar'))
+ args '--username','FabricSmoke','--version','1.20.1','--accessToken','0',
+      '--gameDir',smokeDir.get().asFile.absolutePath,
+      '--assetIndex','1.20.1-5','--assetsDir',new File(gradle.gradleUserHomeDir,'caches/fabric-loom/assets').absolutePath
+ maxHeapSize='2G'
+}

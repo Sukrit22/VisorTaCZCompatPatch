@@ -40,8 +40,7 @@ public abstract class BulletMixin extends Projectile implements BulletPose {
                                   CallbackInfo ci) {
         if (!(shooter instanceof ServerPlayer player) || !ServerPoses.isVr(player)) return;
         EntityKineticBullet self = (EntityKineticBullet) (Object) this;
-        visorTacz$pose = ServerRecoil.pose(player,ServerPoses.validated(player));
-        if(visorTacz$pose!=null && ServerPoses.blocked(player,new Vec3(visorTacz$pose.hand()),new Vec3(visorTacz$pose.muzzle())))visorTacz$pose=null;
+        visorTacz$pose = ServerRecoil.validated(player);
         if (visorTacz$pose == null) {
             self.discard(); // Delayed burst rounds also fail closed when tracking/geometry becomes invalid.
             return;

@@ -21,12 +21,12 @@ side="BOTH"
 [[dependencies.visor_tacz]]
 modId="visor"
 mandatory=true
-versionRange="[0.5.0]"
+versionRange="[0.5.0],[0.6.0-alpha.1],[0.6.0-alpha.2],[0.6.0-alpha.3],[0.6.0]"
 ordering="AFTER"
 side="BOTH"
 [[dependencies.visor_tacz]]
 modId="tacz"
 mandatory=true
-versionRange="[1.1.8-hotfix]"
+versionRange="[1.1.8-hotfix],[1.1.8-hotfix2]"
 ordering="AFTER"
 side="BOTH"

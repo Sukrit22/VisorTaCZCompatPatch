@@ -27,7 +27,7 @@ public final class RemoteGuns {
         if(state.active() && state.calibration().valid())STATES.put(state.player(),new Entry(state,System.nanoTime()));
         else STATES.remove(state.player());
     }
-    private static CompatNetwork.RemoteState state(AbstractClientPlayer p) {
+    static CompatNetwork.RemoteState state(AbstractClientPlayer p) {
         var mc=Minecraft.getInstance();var entry=STATES.get(p.getUUID());
         if(entry!=null){if(entry.state().descriptors()&&!entry.state().profileDigest().equals(DescriptorProfiles.digest()))return null;}
         if(p==mc.player || entry==null || System.nanoTime()-entry.time()>2_500_000_000L || !p.isAlive()

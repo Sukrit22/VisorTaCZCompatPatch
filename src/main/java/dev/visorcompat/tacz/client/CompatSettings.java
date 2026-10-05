@@ -21,14 +21,15 @@ import org.vmstudio.visor.api.VisorAPI;
 @Mod.EventBusSubscriber(modid = VisorTacz.ID, value = Dist.CLIENT)
 public final class CompatSettings {
     private static Boolean lastSentActive;
-    private static boolean lastPhysical,lastTransferAnytime,lastDescriptors;
+    private static boolean lastPhysical,lastTransferAnytime,lastDescriptors,lastRecoil;
     private static String lastCalibrationKey;
     private static Calibration lastCalibration;
+    private static String lastPhysicsKey;private static dev.visorcompat.tacz.PhysicsCalibration lastPhysics;
     private static final ForgeConfigSpec SPEC;
     private static final ForgeConfigSpec.BooleanValue ENABLED;
     private static final ForgeConfigSpec.BooleanValue PHYSICAL;
     private static final ForgeConfigSpec.BooleanValue AUTO_ADS, OPTICS, TWO_HAND_ADS, TRANSFER_ANYTIME;
-    private static final ForgeConfigSpec.BooleanValue DEBUG_CUBES;
+    private static final ForgeConfigSpec.BooleanValue DEBUG_CUBES,RECOIL;
     private static final ForgeConfigSpec.BooleanValue ADVANCED,TOSS;
     private static final ForgeConfigSpec.IntValue INSPECT_WINDOW;
     private static final ForgeConfigSpec.IntValue CATCH_WINDOW;
@@ -66,6 +67,7 @@ public final class CompatSettings {
         TWO_HAND_ADS=builder.comment("Require a held support grip for automatic ADS in physical mode; geometric support in button mode.").define("twoHandAds",true);
         AUTO_ADS=builder.comment("Use physical sight alignment to drive TaCZ ADS.").define("autoAds",true);
         OPTICS=builder.comment("Experimental per-eye reticles and screen-space lens magnification; shaders unsupported.").define("vrOptics",true);
+        RECOIL=builder.comment("Apply VR gun recoil to visuals and follow-up shots. Per-player preference; camera is unaffected.").define("vrRecoil",true);
         DEBUG_CUBES=builder.comment("Show colored interaction and calibration cubes. Visual only; does not change grab zones.").define("debugCubes",true);
         GRAB=builder.comment("Contextual empty-offhand grab: USE or TRIGGER; other interactions pass through.").defineEnum("grabInput",Grab.USE);
         DISPLAY=builder.comment("Live ammo and ADS panel location: GUN, WRIST, HUD (standard GUI overlay) or OFF.").defineEnum("statusDisplay",Display.GUN);
@@ -92,6 +94,8 @@ public final class CompatSettings {
     public static void setAutoAds(boolean value){AUTO_ADS.set(value);SPEC.save();}
     public static void setOptics(boolean value){OPTICS.set(value);SPEC.save();}
     public static void setDebugCubes(boolean value){DEBUG_CUBES.set(value);SPEC.save();}
+    public static boolean recoil(){return !SPEC.isLoaded()||RECOIL.get();}
+    public static void setRecoil(boolean value){RECOIL.set(value);SPEC.save();var p=Minecraft.getInstance().player;if(p!=null)ClientRecoil.clear(p.getUUID());forceSync();}
     public static boolean debugCubes(){return !SPEC.isLoaded() || DEBUG_CUBES.get();}
     public static boolean transferAnytime(){return SPEC.isLoaded()&&TRANSFER_ANYTIME.get();}
     public static void setTransferAnytime(boolean value){ClientControls.clearInput();TRANSFER_ANYTIME.set(value);SPEC.save();syncState();}
@@ -122,11 +126,11 @@ public final class CompatSettings {
         syncState();
         ClientControls.clearInput();
     }
-    static void forceSync() {lastSentActive=null;lastCalibrationKey=null;syncState();}
+    static void forceSync() {lastSentActive=null;lastCalibrationKey=null;lastPhysicsKey=null;syncState();}
     static boolean reloadCalibration() {
         try {
-            InspectionStore.reload();HolsterStore.reload();CalibrationStore.reload();ClientControls.clearInput();forceSync();
-            Minecraft.getInstance().gui.getChat().addMessage(Component.literal("Reloaded gun, holster and inspection calibration; bundled defaults fill missing profiles."));
+            PhysicsStore.reload();InspectionStore.reload();HolsterStore.reload();CalibrationStore.reload();ClientControls.clearInput();forceSync();
+            Minecraft.getInstance().gui.getChat().addMessage(Component.literal("Reloaded physics, gun, holster and inspection calibration; bundled defaults fill missing profiles."));
             return true;
         } catch(java.io.IOException e) {
             Minecraft.getInstance().gui.getChat().addMessage(Component.literal(e.getMessage()+" The failing file was not applied."));
@@ -136,12 +140,14 @@ public final class CompatSettings {
     static void syncState() {
         if (Minecraft.getInstance().getConnection() == null || Minecraft.getInstance().player == null) {
             lastSentActive = null;
-            lastCalibrationKey = null;
+            lastCalibrationKey = null;lastPhysicsKey=null;
             return;
         }
         var stack = Minecraft.getInstance().player.getMainHandItem();
         if (Profiles.get(stack) != null) {
             String key = Profiles.key(stack);
+            var physics=PhysicsStore.saved(key,Profiles.get(stack));
+            if(!key.equals(lastPhysicsKey)||!physics.equals(lastPhysics)){CompatNetwork.CHANNEL.sendToServer(new CompatNetwork.PhysicsSetting(key,physics));lastPhysicsKey=key;lastPhysics=physics;}
             Calibration calibration = CalibrationStore.get(key);
             if (!key.equals(lastCalibrationKey) || !calibration.equals(lastCalibration)) {
                 CompatNetwork.CHANNEL.sendToServer(new CompatNetwork.Grip(key, calibration));
@@ -150,16 +156,16 @@ public final class CompatSettings {
             }
         }
         boolean current = active();
-        if (lastSentActive == null || lastSentActive != current || lastPhysical != physical() || lastTransferAnytime != transferAnytime() || lastDescriptors != descriptors()) {
-            CompatNetwork.CHANNEL.sendToServer(new CompatNetwork.Mode(current,physical(),transferAnytime(),descriptors(),descriptors()?dev.visorcompat.tacz.DescriptorProfiles.digest():""));
+        if (lastSentActive == null || lastSentActive != current || lastPhysical != physical() || lastTransferAnytime != transferAnytime() || lastDescriptors != descriptors() || lastRecoil != recoil()) {
+            CompatNetwork.CHANNEL.sendToServer(new CompatNetwork.Mode(current,physical(),transferAnytime(),descriptors(),descriptors()?dev.visorcompat.tacz.DescriptorProfiles.digest():"",recoil()));
             lastSentActive = current;
-            lastPhysical = physical();lastTransferAnytime=transferAnytime();lastDescriptors=descriptors();
+            lastPhysical = physical();lastTransferAnytime=transferAnytime();lastDescriptors=descriptors();lastRecoil=recoil();
             ClientControls.clearInput();
         }
     }
     @SubscribeEvent public static void login(ClientPlayerNetworkEvent.LoggingIn event) {
         profilesCompatible=true;lastSentActive = null;
-        lastCalibrationKey = null;
+        lastCalibrationKey = null;lastPhysicsKey=null;
         syncState();
     }
     @SubscribeEvent public static void logout(ClientPlayerNetworkEvent.LoggingOut event) {

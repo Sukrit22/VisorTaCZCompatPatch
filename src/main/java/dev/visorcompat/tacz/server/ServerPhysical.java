@@ -392,9 +392,9 @@ public final class ServerPhysical {
         if(s.phase!=Phase.READY&&s.phase!=Phase.NEED_RACK&&s.phase!=Phase.SUPPORT)return;
         var released=ServerPoses.validated(p);
         if(released!=null){
-            var c=CompatNetwork.calibration(p);var offset=new org.joml.Quaternionf(released.rotation()).transform(Handling.magazine(profile).mul(c.gunScale()*released.worldScale()));
-            var old=s.previousGun;var motion=old==null?new dev.visorcompat.tacz.physical.ReleaseMotion(new Vector3f(),new Vector3f()):dev.visorcompat.tacz.physical.ReleaseMotion.between(old.hand(),old.rotation(),released.hand(),released.rotation(),offset,.05f,released.worldScale());
-            CompatNetwork.CHANNEL.send(PacketDistributor.TRACKING_ENTITY_AND_SELF.with(()->p),new CompatNetwork.DroppedMagazine(s.stack.copy(),released.worldScale(),c.gunScale(),new Vector3f(released.hand()).add(offset),new org.joml.Quaternionf(released.rotation()),motion.velocity(),motion.spin(),gun.getCurrentAmmoCount(s.stack)>0,CompatNetwork.descriptors(p),CompatNetwork.descriptors(p)?DescriptorProfiles.digest():""));
+            var c=CompatNetwork.calibration(p);
+            // No historical velocity snapshot: constrained motion is sampled after the latch opens.
+            CompatNetwork.CHANNEL.send(PacketDistributor.TRACKING_ENTITY_AND_SELF.with(()->p),new CompatNetwork.DroppedMagazine(p.getUUID(),p.getInventory().selected,s.stack.copy(),released.worldScale(),c.gunScale(),new Vector3f(released.hand()),new org.joml.Quaternionf(released.rotation()),CompatNetwork.physics(p),gun.getCurrentAmmoCount(s.stack)>0,CompatNetwork.descriptors(p),CompatNetwork.descriptors(p)?DescriptorProfiles.digest():""));
         }
         // Reuse the existing reservation contract; removing the preview does not discard rounds.
         s.stack.getOrCreateTag().putInt(RESERVE,gun.getCurrentAmmoCount(s.stack));gun.setCurrentAmmoCount(s.stack,0);

@@ -1,0 +1,84 @@
+plugins { id 'fabric-loom' version '1.10.5' }
+group='dev.visorcompat.tacz'
+version='0.12.0-alpha.13'
+base.archivesName='visor-compat-tacz-1.20.1-fabric'
+java.toolchain.languageVersion=JavaLanguageVersion.of(17)
+repositories {
+ mavenCentral()
+ ivy { url='https://raw.githubusercontent.com/Sh1roCu/TACZ-Refabricated/6238fc942a0c4ff3ce95f6c5b8d6ccb015eca17c/libs'; patternLayout { artifact '[artifact]-[revision].[ext]' }; metadataSources { artifact() }; content { includeGroup 'dev.visorcompat.dependencies' } }
+ maven { url='https://api.modrinth.com/maven'; content { includeGroup 'maven.modrinth' } }
+ maven { url='https://maven.minecraftforge.net/' }
+ maven { url='https://raw.githubusercontent.com/Fuzss/modresources/main/maven/' }
+}
+// Loom removes nested JARs from remapped dependencies. Expose the upstream
+// runtime libraries explicitly for development launches, without bundling them
+// in our addon. Resolve before Loom configures Minecraft (not in a later task).
+configurations { upstreamBundles { transitive=false } }
+dependencies {
+ upstreamBundles 'maven.modrinth:tacz-refabricated:c6sOTqZb'
+ upstreamBundles 'maven.modrinth:visor:ehts00JW'
+ upstreamBundles 'dev.visorcompat.dependencies:simplebedrockmodel-fabric:2.3.0.1+mc1.20.1'
+}
+def bundledRuntime=[]
+configurations.upstreamBundles.files.each { archive ->
+ def zip=new java.util.zip.ZipFile(archive)
+ try {
+  def metadata=new groovy.json.JsonSlurper().parse(zip.getInputStream(zip.getEntry('fabric.mod.json')))
+  metadata.jars.each { nested ->
+   String name=nested.file.tokenize('/').last()
+   if(name.startsWith('fabric-') || name.startsWith('simplebedrockmodel-'))return
+   def target=layout.buildDirectory.file("upstream-runtime/${archive.name}/${name}").get().asFile
+   byte[] bytes=zip.getInputStream(zip.getEntry(nested.file)).withCloseable { it.readAllBytes() }
+   if(!target.exists() || !java.util.Arrays.equals(target.bytes,bytes)) { target.parentFile.mkdirs();target.bytes=bytes }
+   bundledRuntime.add(target)
+  }
+ } finally { zip.close() }
+}
+dependencies {
+ minecraft 'com.mojang:minecraft:1.20.1'
+ mappings loom.officialMojangMappings()
+ modImplementation 'net.fabricmc:fabric-loader:0.17.2'
+ modImplementation 'net.fabricmc.fabric-api:fabric-api:0.92.6+1.20.1'
+ modImplementation 'maven.modrinth:visor:ehts00JW'
+ modImplementation 'maven.modrinth:tacz-refabricated:c6sOTqZb'
+ modImplementation 'fuzs.forgeconfigapiport:forgeconfigapiport-fabric:8.0.3'
+ modImplementation('dev.visorcompat.dependencies:simplebedrockmodel-fabric:2.3.0.1+mc1.20.1') { transitive=false }
+ compileOnly 'org.apache.commons:commons-math3:3.6.1'
+ modRuntimeOnly files(bundledRuntime)
+ implementation 'com.electronwill.night-config:toml:3.6.6'
+ testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
+}
+loom { mixin { defaultRefmapName='visor_tacz.fabric.refmap.json' } }
+apply from: 'shared-sources.gradle'
+sourceSets.main.java.srcDir layout.buildDirectory.dir('generated/shared')
+sourceSets.main.resources.srcDir '../src/main/resources'
+sourceSets.test.java.srcDir '../src/test/java'
+tasks.named('test') { useJUnitPlatform() }
+processResources {
+ inputs.property 'version', project.version
+ exclude 'META-INF/mods.toml', 'visor_tacz-calibration.json', 'visor_tacz-holsters.json', 'visor_tacz-inspections.json'
+ filesMatching('fabric.mod.json') { expand(version:project.version) }
+ filesMatching('visor_tacz.mixins.json') { filter { line -> line.contains('"minVersion"') ? line+'\n  "refmap": "visor_tacz.fabric.refmap.json",' : line } }
+}
+compileJava.dependsOn generateSharedSources
+tasks.withType(JavaCompile).configureEach { options.encoding='UTF-8' }
+apply from: 'production-smoke.gradle'
+
+tasks.register('verifyProductionJar') {
+ dependsOn remapJar
+ inputs.file(tasks.remapJar.archiveFile)
+ doLast {
+  def zip=new java.util.zip.ZipFile(tasks.remapJar.archiveFile.get().asFile)
+  try {
+   def json=new groovy.json.JsonSlurper()
+   def meta=json.parse(zip.getInputStream(zip.getEntry('fabric.mod.json')))
+   assert meta.version==project.version.toString(): 'Stale packaged version'
+   def refs=json.parse(zip.getInputStream(zip.getEntry('visor_tacz.fabric.refmap.json')))
+   def bullet=refs.mappings['dev/visorcompat/tacz/mixin/BulletMixin']
+   assert bullet && bullet.size()==1: 'Missing constructor refmap'
+   def target=bullet.values().first()
+   assert target.contains('class_1299;') && target.contains('class_1937;') && !target.contains('net/minecraft/world/'): 'Constructor is not mapped to intermediary'
+  } finally { zip.close() }
+ }
+}
+tasks.named('check') { dependsOn 'verifyProductionJar' }

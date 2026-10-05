@@ -1,0 +1,1 @@
+package dev.visorcompat.tacz.fabric.network;public enum NetworkDirection {PLAY_TO_CLIENT,PLAY_TO_SERVER;}

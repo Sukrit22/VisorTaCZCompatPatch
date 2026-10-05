@@ -166,6 +166,8 @@ previous user results, and stable IDs to report pass/fail across releases.
 
 ## Build from source
 
+For the experimental Fabric 1.20.1 variant, see [Fabric build and testing notes](fabric/README.md). The commands below build Forge.
+
 Use JDK 17. The Gradle wrapper downloads dependencies; local upstream source clones are not needed.
 
 ```powershell

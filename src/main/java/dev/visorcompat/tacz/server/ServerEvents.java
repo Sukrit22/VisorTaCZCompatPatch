@@ -46,7 +46,7 @@ public final class ServerEvents {
     @SubscribeEvent
     public static void beforeShot(GunShootEvent event) {
         if (event.getLogicalSide().isServer() && event.getShooter() instanceof ServerPlayer player
-                && ServerPoses.isVr(player) && (ServerPoses.validated(player) == null || !ServerPhysical.canFire(player)||!ServerAdvanced.canFire(player))) {
+                && ServerPoses.isVr(player) && (ServerRecoil.validated(player) == null || !ServerPhysical.canFire(player)||!ServerAdvanced.canFire(player))) {
             event.setCanceled(true);
         }
     }
@@ -56,7 +56,7 @@ public final class ServerEvents {
         if(event.getLogicalSide().isServer() && event.getShooter() instanceof ServerPlayer p && ServerPoses.isVr(p))ServerRecoil.begin(p);
         // TaCZ fires this for every delayed burst round, before consuming ammunition.
         if (event.getLogicalSide().isServer() && event.getShooter() instanceof ServerPlayer player
-                && ServerPoses.isVr(player) && (ServerPoses.validated(player) == null || !ServerPhysical.canFire(player)||!ServerAdvanced.canFire(player))) {
+                && ServerPoses.isVr(player) && (ServerRecoil.validated(player) == null || !ServerPhysical.canFire(player)||!ServerAdvanced.canFire(player))) {
             event.setCanceled(true);
         }
     }

@@ -1,0 +1,1 @@
+package dev.visorcompat.tacz.fabric; public enum Dist {CLIENT,DEDICATED_SERVER;}

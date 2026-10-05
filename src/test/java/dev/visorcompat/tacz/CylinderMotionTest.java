@@ -6,11 +6,28 @@ class CylinderMotionTest {
     @Test void closeRequiresDistanceEffortThenStop(){
         var m=new CylinderMotion();assertEquals(0,m.update(0,.05f,true));
         assertEquals(0,m.update(.04f,.05f,true));assertEquals(0,m.update(.085f,.05f,true));
-        assertEquals(0,m.update(.085f,.05f,true));assertEquals(-1,m.update(.085f,.05f,true));
+        assertEquals(-1,m.update(.085f,.05f,true));
     }
     @Test void slowDriftAndShortMovementDoNotClose(){
         var m=new CylinderMotion();for(int i=0;i<20;i++)assertEquals(0,m.update(i*.005f,.05f,true));
         assertEquals(0,m.update(.095f,.05f,true));assertEquals(0,m.update(.095f,.05f,true));
+    }
+    @Test void repeatedSmallShakesNeverAccumulateIntoClose(){
+        var m=new CylinderMotion();m.update(0,.05f,true);
+        for(int i=0;i<100;i++){
+            assertEquals(0,m.update(.025f,.05f,true));
+            assertEquals(0,m.update(0,.05f,true));
+        }
+    }
+    @Test void slowMovementThenSmallFlickDoesNotUseOldDistance(){
+        var m=new CylinderMotion();m.update(0,.05f,true);
+        for(int i=1;i<=20;i++)assertEquals(0,m.update(i*.005f,.05f,true));
+        assertEquals(0,m.update(.125f,.05f,true));assertEquals(0,m.update(.125f,.05f,true));
+    }
+    @Test void expiredStrokeCannotCloseLater(){
+        var m=new CylinderMotion();m.update(0,.05f,true);m.update(.04f,.05f,true);
+        for(int i=1;i<=10;i++)assertEquals(0,m.update(.04f+i*.006f,.05f,true));
+        assertEquals(0,m.update(.10f,.05f,true));
     }
     @Test void openingNeedsUseThenTwoCentimetresLeft(){
         var m=new CylinderMotion();assertEquals(0,m.update(0,.05f,false));assertEquals(0,m.update(-.03f,.05f,false));

@@ -23,7 +23,7 @@ import java.util.UUID;
 @Mod.EventBusSubscriber(modid = VisorTacz.ID)
 public final class CompatNetwork {
     public static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
-            new ResourceLocation(VisorTacz.ID, "main"), () -> "26", "26"::equals, "26"::equals);
+            new ResourceLocation(VisorTacz.ID, "main"), () -> "27", "27"::equals, "27"::equals);
     private static final Set<UUID> DESCRIPTORS = new HashSet<>();
     private static final Set<UUID> MODE_KNOWN = new HashSet<>();
     private static final Set<UUID> TRANSFER_ANYTIME = new HashSet<>();
@@ -43,20 +43,28 @@ public final class CompatNetwork {
     }
     public record AdvancedRemote(UUID player,Advanced state){}
     public record AdvancedUse(){}
-    public record DroppedMagazine(net.minecraft.world.item.ItemStack stack,float scale,float modelScale,org.joml.Vector3f position,org.joml.Quaternionf rotation,org.joml.Vector3f velocity,org.joml.Vector3f spin,boolean loaded,boolean descriptors,String profileDigest){}
+    public record DroppedMagazine(UUID owner,int slot,net.minecraft.world.item.ItemStack stack,float scale,float modelScale,org.joml.Vector3f position,org.joml.Quaternionf rotation,dev.visorcompat.tacz.PhysicsCalibration physics,boolean loaded,boolean descriptors,String profileDigest){}
     public record BackendAck(boolean accepted){}
-    public record RecoilShot(UUID player,String key,long tick,dev.visorcompat.tacz.RecoilMotion.Curve curve){}
+    public record RecoilShot(UUID player,String key,int slot,long generation,long tick,dev.visorcompat.tacz.RecoilMotion.Curve curve){}
+    public record RecoilReset(UUID player){}
+    public record PhysicsSetting(String key,dev.visorcompat.tacz.PhysicsCalibration value){}
+    private static final Map<UUID,PhysicsSetting> PHYSICS=new HashMap<>();
+    public static dev.visorcompat.tacz.PhysicsCalibration physics(ServerPlayer p){var s=PHYSICS.get(p.getUUID());return s!=null&&s.key().equals(Profiles.key(p.getMainHandItem()))?s.value():dev.visorcompat.tacz.PhysicsCalibration.defaults(Profiles.get(p.getMainHandItem()));}
     public static void register() {
+        CHANNEL.messageBuilder(RecoilReset.class,15,NetworkDirection.PLAY_TO_CLIENT).encoder((m,b)->b.writeUUID(m.player())).decoder(b->new RecoilReset(b.readUUID()))
+            .consumerMainThread((m,c)->{net.minecraftforge.fml.DistExecutor.unsafeRunWhenOn(net.minecraftforge.api.distmarker.Dist.CLIENT,()->()->dev.visorcompat.tacz.client.ClientRecoil.clear(m.player()));c.get().setPacketHandled(true);}).add();
+        CHANNEL.messageBuilder(PhysicsSetting.class,16,NetworkDirection.PLAY_TO_SERVER).encoder((m,b)->{b.writeUtf(m.key(),512);PhysicsCodec.write(b,m.value());}).decoder(b->new PhysicsSetting(b.readUtf(512),PhysicsCodec.read(b)))
+            .consumerMainThread((m,c)->{var p=c.get().getSender();if(p!=null&&m.value().valid())PHYSICS.put(p.getUUID(),m);c.get().setPacketHandled(true);}).add();
         CHANNEL.messageBuilder(RecoilShot.class,14,NetworkDirection.PLAY_TO_CLIENT)
-            .encoder((m,b)->{b.writeUUID(m.player());b.writeUtf(m.key(),512);b.writeLong(m.tick());b.writeFloat(m.curve().ticks());for(float v:m.curve().pitch())b.writeFloat(v);for(float v:m.curve().yaw())b.writeFloat(v);})
-            .decoder(b->{var id=b.readUUID();var key=b.readUtf(512);long tick=b.readLong();float ticks=b.readFloat();float[] p=new float[dev.visorcompat.tacz.RecoilMotion.SAMPLES],y=new float[p.length];for(int i=0;i<p.length;i++)p[i]=b.readFloat();for(int i=0;i<y.length;i++)y[i]=b.readFloat();return new RecoilShot(id,key,tick,new dev.visorcompat.tacz.RecoilMotion.Curve(ticks,p,y));})
+            .encoder((m,b)->{b.writeUUID(m.player());b.writeUtf(m.key(),512);b.writeInt(m.slot());b.writeLong(m.generation());b.writeLong(m.tick());b.writeFloat(m.curve().ticks());for(float v:m.curve().pitch())b.writeFloat(v);for(float v:m.curve().yaw())b.writeFloat(v);})
+            .decoder(b->{var id=b.readUUID();var key=b.readUtf(512);int slot=b.readInt();long generation=b.readLong();long tick=b.readLong();float ticks=b.readFloat();float[] p=new float[dev.visorcompat.tacz.RecoilMotion.SAMPLES],y=new float[p.length];for(int i=0;i<p.length;i++)p[i]=b.readFloat();for(int i=0;i<y.length;i++)y[i]=b.readFloat();return new RecoilShot(id,key,slot,generation,tick,new dev.visorcompat.tacz.RecoilMotion.Curve(ticks,p,y));})
             .consumerMainThread((m,c)->{net.minecraftforge.fml.DistExecutor.unsafeRunWhenOn(net.minecraftforge.api.distmarker.Dist.CLIENT,()->()->dev.visorcompat.tacz.client.ClientRecoil.receive(m));c.get().setPacketHandled(true);}).add();
         CHANNEL.messageBuilder(BackendAck.class,13,NetworkDirection.PLAY_TO_CLIENT)
             .encoder((m,b)->b.writeBoolean(m.accepted())).decoder(b->new BackendAck(b.readBoolean()))
             .consumerMainThread((m,c)->{net.minecraftforge.fml.DistExecutor.unsafeRunWhenOn(net.minecraftforge.api.distmarker.Dist.CLIENT,()->()->dev.visorcompat.tacz.client.CompatSettings.backendAck(m.accepted()));c.get().setPacketHandled(true);}).add();
         CHANNEL.messageBuilder(DroppedMagazine.class,12,NetworkDirection.PLAY_TO_CLIENT)
-            .encoder((m,b)->{b.writeItem(m.stack());b.writeFloat(m.scale());b.writeFloat(m.modelScale());b.writeVector3f(m.position());b.writeQuaternion(m.rotation());b.writeVector3f(m.velocity());b.writeVector3f(m.spin());b.writeBoolean(m.loaded());b.writeBoolean(m.descriptors());b.writeUtf(m.profileDigest(),64);})
-            .decoder(b->new DroppedMagazine(b.readItem(),b.readFloat(),b.readFloat(),b.readVector3f(),b.readQuaternion(),b.readVector3f(),b.readVector3f(),b.readBoolean(),b.readBoolean(),b.readUtf(64)))
+            .encoder((m,b)->{b.writeUUID(m.owner());b.writeInt(m.slot());b.writeItem(m.stack());b.writeFloat(m.scale());b.writeFloat(m.modelScale());b.writeVector3f(m.position());b.writeQuaternion(m.rotation());PhysicsCodec.write(b,m.physics());b.writeBoolean(m.loaded());b.writeBoolean(m.descriptors());b.writeUtf(m.profileDigest(),64);})
+            .decoder(b->new DroppedMagazine(b.readUUID(),b.readInt(),b.readItem(),b.readFloat(),b.readFloat(),b.readVector3f(),b.readQuaternion(),PhysicsCodec.read(b),b.readBoolean(),b.readBoolean(),b.readUtf(64)))
             .consumerMainThread((m,c)->{net.minecraftforge.fml.DistExecutor.unsafeRunWhenOn(net.minecraftforge.api.distmarker.Dist.CLIENT,()->()->dev.visorcompat.tacz.client.MagazineEffects.receive(m));c.get().setPacketHandled(true);}).add();
         CHANNEL.messageBuilder(Advanced.class,9,NetworkDirection.PLAY_TO_SERVER).encoder(Advanced::write).decoder(Advanced::read)
             .consumerMainThread((m,c)->{var p=c.get().getSender();if(p!=null)dev.visorcompat.tacz.server.ServerAdvanced.receive(p,m);c.get().setPacketHandled(true);}).add();
@@ -109,11 +117,12 @@ public final class CompatNetwork {
                 context.get().setPacketHandled(true);
             }).add();
         CHANNEL.messageBuilder(Mode.class, 0, NetworkDirection.PLAY_TO_SERVER)
-                .encoder((message, buffer) -> {buffer.writeBoolean(message.enabled()).writeBoolean(message.physical()).writeBoolean(message.transferAnytime()).writeBoolean(message.descriptors());buffer.writeUtf(message.digest(),64);})
-                .decoder(buffer -> new Mode(buffer.readBoolean(),buffer.readBoolean(),buffer.readBoolean(),buffer.readBoolean(),buffer.readUtf(64)))
+                .encoder((message, buffer) -> {buffer.writeBoolean(message.enabled()).writeBoolean(message.physical()).writeBoolean(message.transferAnytime()).writeBoolean(message.descriptors());buffer.writeUtf(message.digest(),64);buffer.writeBoolean(message.recoil());})
+                .decoder(buffer -> new Mode(buffer.readBoolean(),buffer.readBoolean(),buffer.readBoolean(),buffer.readBoolean(),buffer.readUtf(64),buffer.readBoolean()))
                 .consumerMainThread((message, context) -> {
                     ServerPlayer player = context.get().getSender();
                     if (player != null) {
+                        dev.visorcompat.tacz.server.ServerRecoil.enabled(player,message.recoil());
                         boolean backend=message.descriptors()&&!dev.visorcompat.tacz.DescriptorProfiles.digest().equals("invalid")&&message.digest().equals(dev.visorcompat.tacz.DescriptorProfiles.digest());
                         if(backend!=descriptors(player)){ServerPhysical.clear(player);dev.visorcompat.tacz.server.ServerAdvanced.clear(player);}
                         if(backend)DESCRIPTORS.add(player.getUUID());else DESCRIPTORS.remove(player.getUUID());
@@ -142,7 +151,7 @@ public final class CompatNetwork {
     public static boolean physical(ServerPlayer player) { return PHYSICAL.contains(player.getUUID()); }
     public static boolean transferAnytime(ServerPlayer p){return TRANSFER_ANYTIME.contains(p.getUUID());}
     public static boolean descriptors(ServerPlayer p){return DESCRIPTORS.contains(p.getUUID());}
-    public record Mode(boolean enabled, boolean physical,boolean transferAnytime,boolean descriptors,String digest) {}
+    public record Mode(boolean enabled, boolean physical,boolean transferAnytime,boolean descriptors,String digest,boolean recoil) {}
     public static boolean enabled(ServerPlayer player) { return ACTIVE.contains(player.getUUID()); }
     @SubscribeEvent public static void login(PlayerEvent.PlayerLoggedInEvent event) {
         if(event.getEntity() instanceof ServerPlayer player) ServerPhysical.recoverInventory(player);
@@ -153,9 +162,9 @@ public final class CompatNetwork {
         DESCRIPTORS.remove(event.getEntity().getUUID());MODE_KNOWN.remove(event.getEntity().getUUID());
         PHYSICAL.remove(event.getEntity().getUUID());TRANSFER_ANYTIME.remove(event.getEntity().getUUID());
         ACTIVE.remove(event.getEntity().getUUID());
-        GRIPS.remove(event.getEntity().getUUID());
+        GRIPS.remove(event.getEntity().getUUID());PHYSICS.remove(event.getEntity().getUUID());
         dev.visorcompat.tacz.server.ServerRecoil.clear(event.getEntity().getUUID());
         dev.visorcompat.tacz.server.RemoteSync.remove(event.getEntity().getUUID());
     }
-    @SubscribeEvent public static void stopped(ServerStoppedEvent event) { dev.visorcompat.tacz.server.ServerRecoil.clearAll(); dev.visorcompat.tacz.server.ServerAdvanced.clearAll();DESCRIPTORS.clear();MODE_KNOWN.clear(); TRANSFER_ANYTIME.clear(); ACTIVE.clear(); PHYSICAL.clear(); GRIPS.clear(); ServerPhysical.stop(); dev.visorcompat.tacz.server.RemoteSync.clear(); }
+    @SubscribeEvent public static void stopped(ServerStoppedEvent event) { dev.visorcompat.tacz.server.ServerRecoil.clearAll(); dev.visorcompat.tacz.server.ServerAdvanced.clearAll();DESCRIPTORS.clear();MODE_KNOWN.clear(); TRANSFER_ANYTIME.clear(); ACTIVE.clear(); PHYSICAL.clear(); GRIPS.clear();PHYSICS.clear(); ServerPhysical.stop(); dev.visorcompat.tacz.server.RemoteSync.clear(); }
 }

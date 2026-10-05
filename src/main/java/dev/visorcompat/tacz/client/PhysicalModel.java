@@ -23,6 +23,17 @@ public final class PhysicalModel implements AutoCloseable {
     private final float slideZ, magazineY,boltZ,slideRot;
     public PhysicalModel(BedrockGunModel model,WeaponProfile profile) {
         this(model,profile,PhysicalClient.active(),PhysicalClient.phase(),PhysicalClient.pull(),Minecraft.getInstance().player.getMainHandItem(),CalibrationStore.render(Profiles.key(Minecraft.getInstance().player.getMainHandItem())));
+        var mc=Minecraft.getInstance();var physics=PhysicsStore.get(Profiles.key(mc.player.getMainHandItem()),profile);
+        if(!profile.manualAction()&&!profile.cylinder()){
+            float ratio=physics.slideTravel()/.055f;
+            if(slide!=null)slide.offsetZ=slideZ+(slide.offsetZ-slideZ)*ratio;
+            if(bolt!=null)bolt.offsetZ=boltZ+(bolt.offsetZ-boltZ)*ratio;
+        }
+        if(mc.screen instanceof PhysicsScreen screen){
+            boolean slidePreview=screen.previewMode()==PhysicsScreen.Preview.SLIDE_CLOSED||screen.previewMode()==PhysicsScreen.Preview.SLIDE_REAR;
+            if(magazine!=null&&!slidePreview)magazine.visible=false;
+            if(slidePreview){float pull=screen.previewMode()==PhysicsScreen.Preview.SLIDE_REAR?physics.slideTravel():0;if(slide!=null)slide.offsetZ=slideZ+pull/(profile.scale()*CalibrationStore.render(Profiles.key(mc.player.getMainHandItem())).gunScale());if(bolt!=null)bolt.offsetZ=boltZ+pull/(profile.scale()*CalibrationStore.render(Profiles.key(mc.player.getMainHandItem())).gunScale());}
+        }
         if(slide!=null&&AdvancedClient.inspectionPull()>0)slide.offsetZ+=AdvancedClient.inspectionPull()/(profile.scale()*CalibrationStore.render(Profiles.key(Minecraft.getInstance().player.getMainHandItem())).gunScale());
     }
     public PhysicalModel(BedrockGunModel model,WeaponProfile profile,boolean active,Phase phase,float travel,net.minecraft.world.item.ItemStack stack,Calibration calibration) {

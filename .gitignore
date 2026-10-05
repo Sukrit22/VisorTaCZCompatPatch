@@ -13,3 +13,4 @@ docs/INSTANCE-INSPECTION.md
 *.disabled
 .DS_Store
 Thumbs.db
+player-logs/

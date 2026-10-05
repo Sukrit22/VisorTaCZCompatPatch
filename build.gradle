@@ -4,7 +4,7 @@ plugins {
 }
 
 group = 'dev.visorcompat.tacz'
-version = '0.12.0-alpha.11'
+version = '0.12.0-alpha.12'
 base.archivesName = 'visor-compat-tacz-1.20.1'
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
@@ -63,6 +63,7 @@ tasks.named('jar') {
     finalizedBy 'reobfJar'
 }
 tasks.named('processResources') {
+    exclude 'visor_tacz-calibration.json', 'visor_tacz-holsters.json', 'visor_tacz-inspections.json'
     inputs.property 'version', project.version
     filesMatching('META-INF/mods.toml') { expand(version: project.version) }
 }
