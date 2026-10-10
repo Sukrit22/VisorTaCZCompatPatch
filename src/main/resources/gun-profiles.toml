@@ -955,8 +955,8 @@ shot_travel = 0.055
 id = "tacz:aa12"
 display = "tacz:default"
 model = "tacz_resolved_display"
-mechanism = "button"
-variant = "BUTTON"
+mechanism = "closed_bolt_magazine"
+variant = "MAGAZINE"
 ammo_adapter = "native_rounds"
 [guns.geometry]
 scale = 0.6
@@ -966,24 +966,28 @@ support_distance = 0.3
 [guns.parts.magazine]
 node = "magazine"
 [guns.parts.action]
-node = "slide"
+node = "bolt"
 [guns.parts.bolt]
 node = ""
 [guns.joints.action]
 kind = "template"
 frame = "gun"
 [guns.zones.magazine]
-position = [0, 0, 0]
+position = [-0.0, -0.08, -0.24]
 [guns.zones.rack]
-position = [0, 0, 0]
+position = [0, 0.126, -0.008]
 [guns.zones.support]
 position = [0, 0, -0.3]
 [guns.zones.release]
-position = [0, 0, 0]
+position = [-0.04, 0.055, -0.1]
 [guns.zones.selector]
-position = [0, 0, 0]
+position = [0.04, 0.03, 0]
 [guns.zones.port]
 position = [0.0178125, 0.11812499999999994, -0.1640625]
+[guns.visual]
+shot_node = "bolt"
+shot_travel = 0.055
+
 
 [[guns]]
 id = "tacz:ai_awp"
@@ -1091,8 +1095,8 @@ position = [0.005625, 0.07078124999999998, 0.3065625]
 id = "tacz:db_long"
 display = "tacz:default"
 model = "tacz_resolved_display"
-mechanism = "button"
-variant = "BUTTON"
+mechanism = "breech"
+variant = "DB_LONG"
 ammo_adapter = "native_rounds"
 [guns.geometry]
 scale = 0.6
@@ -1102,16 +1106,16 @@ support_distance = 0.3
 [guns.parts.magazine]
 node = "magazine"
 [guns.parts.action]
-node = "slide"
+node = "front_part"
 [guns.parts.bolt]
 node = ""
 [guns.joints.action]
 kind = "template"
 frame = "gun"
 [guns.zones.magazine]
-position = [0, 0, 0]
+position = [0, 0.0975, 0.1966406]
 [guns.zones.rack]
-position = [0, 0, 0]
+position = [0, 0.0413333, -0.16]
 [guns.zones.support]
 position = [0, 0, -0.3]
 [guns.zones.release]
@@ -1119,14 +1123,26 @@ position = [0, 0, 0]
 [guns.zones.selector]
 position = [0, 0, 0]
 [guns.zones.port]
-position = [0.0, 0.0, 0.0]
-
+position = [0, 0.0975, 0.1966406]
+[guns.pistol]
+cylinder = true
+selector = false
+ammo = "tacz:12g"
+open_degrees = 51.16
+shell_pixels = [0.625, 9.125, 2.40625]
+sound_folder = "db_short"
+mag_out = ""
+mag_in = ""
+action_back = ""
+action_close = ""
+[guns.visual]
+rounds = ["bullet_1", "bullet_2"]
 [[guns]]
 id = "tacz:db_short"
 display = "tacz:default"
 model = "tacz_resolved_display"
-mechanism = "button"
-variant = "BUTTON"
+mechanism = "breech"
+variant = "DB_SHORT"
 ammo_adapter = "native_rounds"
 [guns.geometry]
 scale = 0.6
@@ -1136,16 +1152,16 @@ support_distance = 0.3
 [guns.parts.magazine]
 node = "magazine"
 [guns.parts.action]
-node = "slide"
+node = "front_part"
 [guns.parts.bolt]
 node = ""
 [guns.joints.action]
 kind = "template"
 frame = "gun"
 [guns.zones.magazine]
-position = [0, 0, 0]
+position = [0, 0.0975, 0.1966406]
 [guns.zones.rack]
-position = [0, 0, 0]
+position = [0, 0.0413333, -0.16]
 [guns.zones.support]
 position = [0, 0, -0.3]
 [guns.zones.release]
@@ -1153,8 +1169,20 @@ position = [0, 0, 0]
 [guns.zones.selector]
 position = [0, 0, 0]
 [guns.zones.port]
-position = [0.0, 0.0, 0.0]
-
+position = [0, 0.0975, 0.1966406]
+[guns.pistol]
+cylinder = true
+selector = false
+ammo = "tacz:12g"
+open_degrees = 51.16
+shell_pixels = [0.625, 9.125, 2.40625]
+sound_folder = "db_short"
+mag_out = ""
+mag_in = ""
+action_back = ""
+action_close = ""
+[guns.visual]
+rounds = ["bullet_1", "bullet_2"]
 [[guns]]
 id = "tacz:fn_evolys"
 display = "tacz:default"
@@ -1363,8 +1391,8 @@ position = [0.00234375, 0.09562499999999999, -0.19031249999999997]
 id = "tacz:m1014"
 display = "tacz:default"
 model = "tacz_resolved_display"
-mechanism = "button"
-variant = "BUTTON"
+mechanism = "pump"
+variant = "TUBE_AUTO"
 ammo_adapter = "native_rounds"
 [guns.geometry]
 scale = 0.6
@@ -1374,24 +1402,29 @@ support_distance = 0.3
 [guns.parts.magazine]
 node = "magazine"
 [guns.parts.action]
-node = "slide"
+node = "Bolt"
 [guns.parts.bolt]
 node = ""
 [guns.joints.action]
 kind = "template"
 frame = "gun"
 [guns.zones.magazine]
-position = [0, 0, 0]
+position = [0, 0.015, -0.29]
 [guns.zones.rack]
-position = [0, 0, 0]
+position = [0.045, 0.09, -0.31]
 [guns.zones.support]
-position = [0, 0, -0.3]
+position = [0.045, 0.09, -0.31]
 [guns.zones.release]
-position = [0, 0, 0]
+position = [-0.04, 0.055, -0.1]
 [guns.zones.selector]
-position = [0, 0, 0]
+position = [0.04, 0.03, 0]
 [guns.zones.port]
 position = [0.01875, 0.09656250000000001, -0.30328125]
+[guns.visual]
+shot_node = "Bolt"
+shot_travel = 0.055
+hidden = ["bullet_and_hand", "bullet"]
+
 
 [[guns]]
 id = "tacz:m107"
@@ -1873,8 +1906,8 @@ position = [0.0121875, 0.11249999999999999, -0.294375]
 id = "tacz:spas_12"
 display = "tacz:default"
 model = "tacz_resolved_display"
-mechanism = "button"
-variant = "BUTTON"
+mechanism = "pump"
+variant = "SPAS12"
 ammo_adapter = "native_rounds"
 [guns.geometry]
 scale = 0.6
@@ -1882,26 +1915,31 @@ grip_pixels = [0, 7.325, 14.675]
 muzzle_pixels = [0, 9.72188, -21.325]
 support_distance = 0.3
 [guns.parts.magazine]
-node = "magazine"
+node = "bullet_in_mag"
 [guns.parts.action]
-node = "slide"
+node = "pump"
 [guns.parts.bolt]
-node = ""
+node = "bolt2"
 [guns.joints.action]
 kind = "template"
 frame = "gun"
 [guns.zones.magazine]
-position = [0, 0, 0]
+position = [0, 0.015, -0.28]
 [guns.zones.rack]
-position = [0, 0, 0]
+position = [0, 0.04, -0.55]
 [guns.zones.support]
-position = [0, 0, -0.3]
+position = [0, 0.04, -0.55]
 [guns.zones.release]
-position = [0, 0, 0]
+position = [-0.04, 0.055, -0.1]
 [guns.zones.selector]
-position = [0, 0, 0]
+position = [0.04, 0.03, 0]
 [guns.zones.port]
 position = [0.01875, 0.091875, -0.27]
+[guns.visual]
+shot_node = "bolt2"
+shot_travel = 0.055
+hidden = ["bullet_and_righthand", "bullet_in_mag"]
+
 
 [[guns]]
 id = "tacz:spr15hb"

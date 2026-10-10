@@ -2,6 +2,10 @@ package dev.visorcompat.tacz.physical;
 import org.joml.Vector3fc;
 /** Room-scale metres. Catching is decided once, before the native ammo count is cleared. */
 public final class CylinderEjection {
+    /** Physical preserves live ammunition automatically; Advanced requires a free catching hand. */
+    public static boolean recoverLive(boolean advanced,boolean emptyHand,boolean inCatchArea){
+        return !advanced || emptyHand&&inCatchArea;
+    }
     public static boolean canCatch(Vector3fc cylinder,Vector3fc hand,float scale){
         if(!Float.isFinite(scale)||scale<=0)return false;
         float down=(cylinder.y()-hand.y())/scale,dx=(cylinder.x()-hand.x())/scale,dz=(cylinder.z()-hand.z())/scale;

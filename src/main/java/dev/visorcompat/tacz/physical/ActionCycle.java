@@ -24,6 +24,10 @@ public final class ActionCycle {
         boolean forward=from.z()-to.z()>=.015f || from.z()>=center.z()&&to.z()<center.z()&&from.z()-to.z()>.001f;
         boolean down=from.y()-to.y()>=.015f || from.y()>=center.y()&&to.y()<center.y()&&from.y()-to.y()>.001f;
         if(!forward&&!down)return false;
+        return intersects(from,to,center,box);
+    }
+    private static boolean intersects(org.joml.Vector3fc from,org.joml.Vector3fc to,org.joml.Vector3fc center,dev.visorcompat.tacz.ZoneSizes.Box box){
+        if(!dev.visorcompat.tacz.PoseMath.finite(from)||!dev.visorcompat.tacz.PoseMath.finite(to)||from.distance(to)>.5f)return false;
         float low=0,high=1;
         float[] a={from.x()-center.x(),from.y()-center.y(),from.z()-center.z()};
         float[] d={to.x()-from.x(),to.y()-from.y(),to.z()-from.z()};
@@ -36,6 +40,12 @@ public final class ActionCycle {
     }
     public static boolean boltSlap(org.joml.Vector3fc from,org.joml.Vector3fc to,org.joml.Vector3fc rack,dev.visorcompat.tacz.ZoneSizes.Box box){
         return from.y()-to.y()>.004f && releaseSweep(from,to,new org.joml.Vector3f(rack).add(0,.035f,0),box);
+    }
+    /** The open bolt travels forward through this corridor before it can turn down. */
+    public static boolean boltForwardSweep(org.joml.Vector3fc from,org.joml.Vector3fc to,org.joml.Vector3fc rack,dev.visorcompat.tacz.ZoneSizes.Box box){
+        return from.z()-rack.z()>.025f && to.z()-rack.z()<=.025f && to.z()-rack.z()>=-.06f
+            && intersects(from,to,new org.joml.Vector3f(rack).add(0,.035f,.04f),
+                new dev.visorcompat.tacz.ZoneSizes.Box(box.width(),box.height(),box.depth()+.08f));
     }
     public static boolean regrip(boolean actionBlocked,boolean held,float distance){
         return !actionBlocked&&!held&&Float.isFinite(distance)&&distance<=.085f;

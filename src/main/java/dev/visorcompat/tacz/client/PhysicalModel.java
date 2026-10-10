@@ -20,7 +20,7 @@ public final class PhysicalModel implements AutoCloseable {
     private final BedrockPart magazine,slide,bolt,loose;
     private final boolean looseVisible;
     private final boolean visible;
-    private final float slideZ, magazineY,boltZ,slideRot;
+    private final float slideZ, magazineY,boltZ,slideRot,slideXRot;
     public PhysicalModel(BedrockGunModel model,WeaponProfile profile) {
         this(model,profile,PhysicalClient.active(),PhysicalClient.phase(),PhysicalClient.pull(),Minecraft.getInstance().player.getMainHandItem(),CalibrationStore.render(Profiles.key(Minecraft.getInstance().player.getMainHandItem())));
         var mc=Minecraft.getInstance();var physics=PhysicsStore.get(Profiles.key(mc.player.getMainHandItem()),profile);
@@ -40,7 +40,7 @@ public final class PhysicalModel implements AutoCloseable {
         loose=profile.pump()?find(model.getRootNode(),"bullet_and_lefthand"):null;looseVisible=loose!=null&&loose.visible;
         bolt=profile.boltNode()!=null?find(model.getRootNode(),profile.boltNode()):null;boltZ=bolt==null?0:bolt.offsetZ;
         magazine=find(model.getRootNode(),profile.magazineNode());
-        slide=find(model.getRootNode(),profile.rackNode());slideRot=slide==null?0:slide.zRot;
+        slide=find(model.getRootNode(),profile.rackNode());slideRot=slide==null?0:slide.zRot;slideXRot=slide==null?0:slide.xRot;
         visible=magazine!=null && magazine.visible;magazineY=magazine==null?0:magazine.offsetY;slideZ=slide==null?0:slide.offsetZ;
         cosmetics=new CosmeticParts(model.getRootNode(),profile,stack,calibration,active,active&&(phase!=Phase.READY&&phase!=Phase.SUPPORT||dev.visorcompat.tacz.physical.ActionState.locked(stack)||dev.visorcompat.tacz.server.ServerJams.read(stack).remaining()>0));
         if(active) {
@@ -49,7 +49,7 @@ public final class PhysicalModel implements AutoCloseable {
             if(magazine!=null && phase==Phase.REMOVING) magazine.offsetY+=travel/(profile.scale()*calibration.gunScale());
             if(slide!=null && profile.cylinder()) {
                 if(dev.visorcompat.tacz.server.ServerCylinder.open(stack)||phase==Phase.CYLINDER_OPEN||phase==Phase.SHELL||phase==Phase.LOADER||phase==Phase.CYLINDER_HOLD&&travel>0)
-                    slide.zRot+=(float)java.lang.Math.toRadians(PistolProfiles.get(profile).openDegrees());
+                    {float angle=(float)java.lang.Math.toRadians(PistolProfiles.get(profile).openDegrees());if(profile.doubleBarrel())slide.xRot+=angle;else slide.zRot+=angle;}
             }else if(slide!=null) {
                 float pull=Handling.racking(phase) || phase==Phase.PUMP_HOLD || phase==Phase.PUMP_OPEN?travel:0;
                 if(profile.pump() && phase!=Phase.PUMP_HOLD && dev.visorcompat.tacz.server.ServerPump.open(stack))pull=dev.visorcompat.tacz.physical.PumpCycle.TRAVEL;
@@ -64,12 +64,12 @@ public final class PhysicalModel implements AutoCloseable {
                 if(jam.remaining()>0 && (jam.kind()==dev.visorcompat.tacz.physical.Jam.Kind.STOVEPIPE || jam.kind()==dev.visorcompat.tacz.physical.Jam.Kind.DOUBLE_FEED))
                     {if(bolt!=null)bolt.offsetZ+=java.lang.Math.max(0,.025f-pull)/(profile.scale()*calibration.gunScale());
                     else pull=java.lang.Math.max(pull,.025f);}
-                if(profile.smg()&&bolt!=null)bolt.offsetZ+=pull/(profile.scale()*calibration.gunScale());
+                if((profile.smg()||profile.mechanism()==WeaponProfile.Mechanism.SPAS12)&&bolt!=null)bolt.offsetZ+=pull/(profile.scale()*calibration.gunScale());
                 slide.offsetZ+=pull/(profile.scale()*calibration.gunScale());
             }
         }
     }
-    @Override public void close() { cosmetics.close(); if(magazine!=null){magazine.visible=visible;magazine.offsetY=magazineY;}if(slide!=null){slide.offsetZ=slideZ;slide.zRot=slideRot;}if(bolt!=null)bolt.offsetZ=boltZ;if(loose!=null)loose.visible=looseVisible; }
+    @Override public void close() { cosmetics.close(); if(magazine!=null){magazine.visible=visible;magazine.offsetY=magazineY;}if(slide!=null){slide.offsetZ=slideZ;slide.zRot=slideRot;slide.xRot=slideXRot;}if(bolt!=null)bolt.offsetZ=boltZ;if(loose!=null)loose.visible=looseVisible; }
     private static BedrockPart find(BedrockPart node,String name) {
         if(node==null)return null;if(name.equals(node.name))return node;
         for(var child:node.children){var found=find(child,name);if(found!=null)return found;}return null;
@@ -95,6 +95,7 @@ public final class PhysicalModel implements AutoCloseable {
         }
         var port=dev.visorcompat.tacz.physical.JamProfile.of(profile,c).port();
         guide(matrices,port,profile.bolt()?new ZoneSizes.Box(.025f,.025f,.025f):c.zones().port(),key,"port",local);
+        if(profile.pump()&&profile.selector())guide(matrices,Handling.selector(profile,c),c.zones().selector(),key,"selector",local);
         if(!profile.pump()){
             if(profile.physical()&&profile.selector())guide(matrices,Handling.selector(profile,c),c.zones().selector(),key,"selector",local);
             guide(matrices,Handling.support(profile,c),c.zones().support(),key,"support",local);
@@ -139,10 +140,15 @@ public final class PhysicalModel implements AutoCloseable {
     public static void detached(PoseStack matrices,BedrockGunModel model,WeaponProfile profile,
                                 GunPose gun,VRPlayerPose pose,RenderType type,int light) {
         detached(matrices,model,profile,gun,pose,type,light,PhysicalClient.active(),PhysicalClient.phase(),CalibrationStore.render(Profiles.key(Minecraft.getInstance().player.getMainHandItem())).gunScale(),
-            dev.visorcompat.tacz.physical.PouchAmmo.magazineLoaded(Minecraft.getInstance().player,PhysicalClient.phase()),AdvancedClient.freeMain());
+            dev.visorcompat.tacz.physical.PouchAmmo.magazineLoaded(Minecraft.getInstance().player,PhysicalClient.phase()),AdvancedClient.freeMain(),
+            MagazineGripStore.get(Profiles.key(Minecraft.getInstance().player.getMainHandItem())),dev.visorcompat.tacz.physical.CzMagazine.flipped(Minecraft.getInstance().player.getMainHandItem()));
     }
     public static void detached(PoseStack matrices,BedrockGunModel model,WeaponProfile profile,
                                 GunPose gun,VRPlayerPose pose,RenderType type,int light,boolean active,Phase phase,float modelScale,boolean loaded,boolean mainHand) {
+        detached(matrices,model,profile,gun,pose,type,light,active,phase,modelScale,loaded,mainHand,new InspectionCalibration(0,0,0,0,30,0),false);
+    }
+    private static void detached(PoseStack matrices,BedrockGunModel model,WeaponProfile profile,
+                                GunPose gun,VRPlayerPose pose,RenderType type,int light,boolean active,Phase phase,float modelScale,boolean loaded,boolean mainHand,InspectionCalibration grip,boolean flipped) {
         if(!active || (phase!=Phase.OLD_MAG && phase!=Phase.NEW_MAG)) return;
         List<BedrockPart> parts=new ArrayList<>();
         if(!path(model.getRootNode(),profile.magazineNode(),parts)) return;
@@ -155,7 +161,9 @@ public final class PhysicalModel implements AutoCloseable {
         try {
             matrices.mulPoseMatrix(correction);
             matrices.last().normal().mul(correction.get3x3(new Matrix3f()).invert().transpose());
-            matrices.mulPose(Axis.YP.rotationDegrees(30));
+            matrices.translate(grip.x(),grip.y(),grip.z());
+            matrices.mulPose(Axis.YP.rotationDegrees(grip.yaw()+(flipped?180:0)));
+            matrices.mulPose(Axis.XP.rotationDegrees(grip.pitch()));matrices.mulPose(Axis.ZP.rotationDegrees(grip.roll()));
             matrices.scale(modelScale,modelScale,modelScale);
             Vector3f anchor=profile.grip().add(Handling.magazine(profile));
             matrices.translate(-anchor.x,-anchor.y,-anchor.z);

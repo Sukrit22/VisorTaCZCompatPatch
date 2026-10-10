@@ -91,4 +91,15 @@ class ActionCycleTest {
         assertFalse(ActionCycle.boltSlap(new Vector3f(0,0,0),new Vector3f(0,.08f,0),center,box));
         assertFalse(ActionCycle.boltSlap(new Vector3f(.2f,.08f,0),new Vector3f(.2f,0,0),center,box));
     }
+    @Test void openBoltSweepAcceptsForwardAndDownButNotDownAtRearOrSideways(){
+        var box=new ZoneSizes.Box(.06f,.06f,.06f);var center=new Vector3f();
+        assertTrue(ActionCycle.boltForwardSweep(new Vector3f(0,.07f,.09f),new Vector3f(0,0,0),center,box));
+        assertTrue(ActionCycle.boltForwardSweep(new Vector3f(0,.035f,.035f),new Vector3f(0,.035f,.02f),center,box));
+        assertTrue(ActionCycle.boltForwardSweep(new Vector3f(0,.035f,.030f),new Vector3f(0,.035f,.024f),center,box));
+        assertTrue(ActionCycle.boltForwardSweep(new Vector3f(0,.035f,.026f),new Vector3f(0,.035f,.024f),center,box));
+        assertFalse(ActionCycle.boltForwardSweep(new Vector3f(0,.08f,.08f),new Vector3f(0,0,.08f),center,box));
+        assertFalse(ActionCycle.boltForwardSweep(new Vector3f(.2f,.07f,.09f),new Vector3f(.2f,0,0),center,box));
+        assertFalse(ActionCycle.boltForwardSweep(new Vector3f(0,0,0),new Vector3f(0,.07f,.09f),center,box));
+        assertFalse(ActionCycle.boltForwardSweep(new Vector3f(0,.07f,1),new Vector3f(0,0,0),center,box));
+    }
 }

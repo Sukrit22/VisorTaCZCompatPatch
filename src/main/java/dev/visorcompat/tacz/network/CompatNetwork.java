@@ -23,7 +23,7 @@ import java.util.UUID;
 @Mod.EventBusSubscriber(modid = VisorTacz.ID)
 public final class CompatNetwork {
     public static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
-            new ResourceLocation(VisorTacz.ID, "main"), () -> "27", "27"::equals, "27"::equals);
+            new ResourceLocation(VisorTacz.ID, "main"), () -> "28", "28"::equals, "28"::equals);
     private static final Set<UUID> DESCRIPTORS = new HashSet<>();
     private static final Set<UUID> MODE_KNOWN = new HashSet<>();
     private static final Set<UUID> TRANSFER_ANYTIME = new HashSet<>();
@@ -35,6 +35,7 @@ public final class CompatNetwork {
     public record Feedback(int kind,int entityId,ResourceLocation gun,ResourceLocation ammo,float x,float y,float z,float vx,float vy,float vz,float scale,float gunScale) {}
     public record MainAction(boolean transfer,boolean held,boolean canceled) {}
     public record PistolRelease() {}
+    public record MagazineUse() {}
     public record Advanced(boolean enabled,boolean held,int mount,int slot,String key,float x,float y,float z,float qx,float qy,float qz,float qw){
         public static Advanced disabled(){return new Advanced(false,false,0,-1,"",0,0,0,0,0,0,1);}
         public boolean valid(){float n=qx*qx+qy*qy+qz*qz+qw*qw;return mount>=0&&mount<=4&&(!held||mount==0)&&slot>=0&&slot<9&&Float.isFinite(x+y+z+n)&&n>.9f&&n<1.1f;}
@@ -51,6 +52,8 @@ public final class CompatNetwork {
     private static final Map<UUID,PhysicsSetting> PHYSICS=new HashMap<>();
     public static dev.visorcompat.tacz.PhysicsCalibration physics(ServerPlayer p){var s=PHYSICS.get(p.getUUID());return s!=null&&s.key().equals(Profiles.key(p.getMainHandItem()))?s.value():dev.visorcompat.tacz.PhysicsCalibration.defaults(Profiles.get(p.getMainHandItem()));}
     public static void register() {
+        CHANNEL.messageBuilder(MagazineUse.class,17,NetworkDirection.PLAY_TO_SERVER).encoder((m,b)->{}).decoder(b->new MagazineUse())
+            .consumerMainThread((m,c)->{var p=c.get().getSender();if(p!=null)ServerPhysical.magazineUse(p);c.get().setPacketHandled(true);}).add();
         CHANNEL.messageBuilder(RecoilReset.class,15,NetworkDirection.PLAY_TO_CLIENT).encoder((m,b)->b.writeUUID(m.player())).decoder(b->new RecoilReset(b.readUUID()))
             .consumerMainThread((m,c)->{net.minecraftforge.fml.DistExecutor.unsafeRunWhenOn(net.minecraftforge.api.distmarker.Dist.CLIENT,()->()->dev.visorcompat.tacz.client.ClientRecoil.clear(m.player()));c.get().setPacketHandled(true);}).add();
         CHANNEL.messageBuilder(PhysicsSetting.class,16,NetworkDirection.PLAY_TO_SERVER).encoder((m,b)->{b.writeUtf(m.key(),512);PhysicsCodec.write(b,m.value());}).decoder(b->new PhysicsSetting(b.readUtf(512),PhysicsCodec.read(b)))

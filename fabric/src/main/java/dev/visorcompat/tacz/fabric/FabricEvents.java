@@ -13,6 +13,7 @@ public final class FabricEvents {
  private static ClientControls controls;
  public static void registerControls(ClientControls value){controls=value;}
  public static void register(){
+  net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback.EVENT.register((stack,context,lines)->GunSupportTooltip.append(stack,lines));
   ClientCommandRegistrationCallback.EVENT.register((dispatcher,registry)->CompatSettings.commands(new RegisterClientCommandsEvent(dispatcher)));
   ClientPlayConnectionEvents.JOIN.register((handler,sender,client)->CompatSettings.login(new ClientPlayerNetworkEvent.LoggingIn()));
   ClientPlayConnectionEvents.DISCONNECT.register((handler,client)->{

@@ -18,10 +18,12 @@ public final class ControlsScreen extends Screen {
         addRenderableWidget(Button.builder(Component.literal("Calibrate gun"),b->{
             if(minecraft.player!=null && Profiles.get(minecraft.player.getMainHandItem())!=null)
                 minecraft.setScreen(new CalibrationScreen(Profiles.key(minecraft.player.getMainHandItem())));
-        }).bounds(x,y+48,128,20).build());
+        }).bounds(x,y+48,84,20).build());
+        var magGrip=addRenderableWidget(Button.builder(Component.literal("Mag grip"),b->minecraft.setScreen(new MagazineGripScreen(Profiles.key(minecraft.player.getMainHandItem())))).bounds(x+88,y+48,84,20).build());
+        magGrip.active=minecraft.player!=null&&Profiles.get(minecraft.player.getMainHandItem())!=null&&!Profiles.manualAction(minecraft.player.getMainHandItem());
         addRenderableWidget(Button.builder(Component.literal("Reload calibration"),b->{
             b.setMessage(Component.literal(CompatSettings.reloadCalibration()?"Reloaded":"Reload failed"));
-        }).bounds(x+132,y+48,128,20).build());
+        }).bounds(x+176,y+48,84,20).build());
         addRenderableWidget(Button.builder(Component.literal("Handling: "+CompatSettings.handlingLabel()),b->{
             CompatSettings.cycleHandling();rebuildWidgets();
         }).bounds(x,y+72,260,20).build());

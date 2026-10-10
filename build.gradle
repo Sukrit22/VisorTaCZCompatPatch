@@ -4,7 +4,8 @@ plugins {
 }
 
 group = 'dev.visorcompat.tacz'
-version = '0.12.0-alpha.12'
+//version = '0.12.0-alpha.15'
+version = '0.13.0'
 base.archivesName = 'visor-compat-tacz-1.20.1'
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 

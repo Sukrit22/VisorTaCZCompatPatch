@@ -4,14 +4,17 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 class ButtonProfilesTest {
     @Test void registryCovers54BaseGunsWithIndependentCapabilities(){
-        assertEquals(54,Profiles.ids().size());assertEquals(34,ButtonProfiles.ids().size());
-        assertEquals(20,Profiles.ids().stream().filter(id->Profiles.byId(id).physical()).count());
+        assertEquals(54,Profiles.ids().size());assertEquals(29,ButtonProfiles.ids().size());
+        assertEquals(25,Profiles.ids().stream().filter(id->Profiles.byId(id).physical()).count());
         for(String id:ButtonProfiles.ids()){
             var p=Profiles.byId(id);assertNotNull(p);assertTrue(p.buttonOnly());assertFalse(p.physical());
             assertFalse(p.pump());assertFalse(p.bolt());assertFalse(p.cylinder());
             assertTrue(PoseMath.finite(p.grip()));assertTrue(PoseMath.finite(p.muzzleOffset()));assertTrue(p.muzzleOffset().length()*1.5f<3f);
         }
-        assertTrue(Profiles.byId("tacz:kar98").buttonOnly());assertTrue(Profiles.byId("tacz:aa12").buttonOnly());
+        assertTrue(Profiles.byId("tacz:kar98").buttonOnly());
+        for(String id:new String[]{"tacz:aa12","tacz:spas_12","tacz:m1014","tacz:db_short","tacz:db_long"}){
+            assertTrue(Profiles.byId(id).physical(),id);assertFalse(ButtonProfiles.ids().contains(id),id);
+        }
         assertTrue(Profiles.byId("tacz:m870").physical());assertNull(Profiles.byId("other:unregistered"));
     }
     @Test void buttonCalibrationOmitsNonexistentPhysicalActions(){

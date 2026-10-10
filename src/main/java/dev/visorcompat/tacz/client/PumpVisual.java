@@ -17,7 +17,9 @@ public final class PumpVisual {
     }
     public static void render(PoseStack matrices,WeaponProfile profile,GunPose gun,VRPlayerPose pose,Handling.Phase phase,int light,float size){
         if((!profile.pump()&&!profile.cylinder())||(phase!=Handling.Phase.SHELL&&phase!=Handling.Phase.LOADER))return;
-        var ammo=TimelessAPI.getClientAmmoIndex(new ResourceLocation(profile.cylinder()?PistolProfiles.get(profile).ammo():"tacz:12g")).orElse(null);if(ammo==null)return;
+        var stack=Minecraft.getInstance().player.getMainHandItem();var item=com.tacz.guns.api.item.IGun.getIGunOrNull(stack);if(item==null)return;
+        var ammoId=TimelessAPI.getCommonGunIndex(item.getGunId(stack)).map(i->i.getGunData().getAmmoId()).orElse(null);if(ammoId==null)return;
+        var ammo=TimelessAPI.getClientAmmoIndex(ammoId).orElse(null);if(ammo==null)return;
         // The projectile entity model is not a physical cartridge (often a generic bullet).
         var model=ammo.getShellModel();var texture=ammo.getShellTextureLocation();
         var worldGun=new Matrix4f().translation(gun.hand()).rotate(gun.rotation()).scale(gun.worldScale());
@@ -33,7 +35,7 @@ public final class PumpVisual {
                 if(display!=null&&display.getGunModel()!=null)PhysicalModel.loosePart(matrices,display.getGunModel(),descriptor.visual().loader(),profile.scale(),RenderType.entityCutout(display.getModelTexture()),light);
                 // Cosmetic round ring; insertion authoritatively consumes only available rounds.
                 for(int i=0;i<descriptor.visual().rounds().size();i++){
-                    matrices.pushPose();try{double a=2*Math.PI*i/descriptor.visual().rounds().size();matrices.translate(Math.cos(a)*.022,Math.sin(a)*.022,-.018);
+                    matrices.pushPose();try{double a=2*Math.PI*i/descriptor.visual().rounds().size();if(profile.doubleBarrel())matrices.translate((i-.5)*.026,0,-.018);else matrices.translate(Math.cos(a)*.022,Math.sin(a)*.022,-.018);
                         if(model!=null&&texture!=null){matrices.translate(0,-1.5,0);model.render(matrices,ItemDisplayContext.GROUND,RenderType.entityCutout(texture),light,OverlayTexture.NO_OVERLAY);}
                     }finally{matrices.popPose();}
                 }

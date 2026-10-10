@@ -1,6 +1,42 @@
-# All pending in-game tests - 0.12.0-alpha.11
+# In-game tests and latest feedback
 
 One consolidated list, including older unfinished subcases and regressions for changed behavior. Earlier feedback is recorded below. Automated tests do not count as headset or multiplayer passes.
+
+## Latest feedback — 2026-10-09
+
+Current test release: **0.12.0-alpha.14**, Forge and Fabric, protocol **27**. Historical version/setup text below belongs to its original test batch; use matching current client/server builds for new checks.
+
+Reported passed: T11-01/02/03/04; T09-01/03/04/05/07/08. T11-03's new forward/down sweep is pending below. T11-05 is probable, not confirmed. T11-06 recoil is visible; attachment comparison and observer checks remain pending. T11-07 had no observed problem, but its individual interruption/pellet/optic cases are not separately confirmed.
+
+Partial: T09-02 (jam untested), T09-06 (offhand Use untested), T09-09 (flat transition untested), T09-11 (remote slide/hammer/cylinder and emptying seen; TOML mismatch untested; gun floats too high relative to avatar hand), T09-13 (Advanced passed; Physical Use untested), AH61 (passed locally; flat observer untested). T09-12 and AH60 Physical remain pending.
+
+T09-10: whole-world flicker still reported in Prehistoric World 2 with general PC/browser slowdown after long uptime; restarting helps. Cause is unconfirmed. This is not evidence that hardware performance alone causes the flicker.
+
+### New regression checks
+
+| ID | Procedure | Expected |
+|---|---|---|
+| N01 | MK23 Physical and Advanced: manual mode shot/rack; auto mode last round; compare Button/flat | No automatic hand-rack clip sound on physical shots; real shot and deliberate action sounds remain. Auto-last cause was not reproduced from the bundled upstream clip, so test the installed pack |
+| N02 | Advanced holster gun, Trigger to hit/mine; Use away from handle; draw/fire/holster; switch to pickaxe and repeat press/hold/release | Holstered inputs reach Visor; selected gun does not fire. Tool trigger works after slot changes, focus loss and menus. Include both hand assignments; tool report remains unconfirmed until reproduced/tested |
+| N03 | Pistol and rifle: hold gun, engage/disengage support, transfer bolt hand, holster; open wrist/menu GUI | Occupied hands' world aiming marks disappear; free hands' marks return; GUI cursor remains usable |
+| N04 | Physical revolver: main Use then 2 cm left; open, 8 cm deliberate right stroke and stop; tilt upward and shake; pink eject | Same opening/closing/shake gestures as Advanced. Physical live rounds recover automatically without catching; spent cases never become ammo. Advanced still needs empty catching hand. Check survival totals, full inventory overflow, speedloader and single-round loading |
+| N05 | M700 open bolt: sweep forward and down in one motion through orange handle; repeat straight down at rear, lateral miss and reverse motion | Forward/down chambers once and locks; down-only at rear cannot close open bolt. Test Physical and Advanced with support transfer |
+| N06 | Gun tooltips: base physical gun, button-only gun, unsupported custom gun/display; edit review TOML and reload | B/P/AH reflect actual profiles; pack/calibration labels follow exact gun/display entry. Unlisted stays unverified. Invalid file shows error and does not overwrite file or calibration |
+
+### Why T11-07 exists
+
+It checks recoil **lifecycle**, not a separate handling feature: a shotgun should kick once per shot, not once per pellet; switching item, changing VR mode or reconnecting must not leave kick on another gun. Wall and scope checks catch cases where the kicked model, muzzle and sight disagree. No unusual behavior is a useful result; mark untried subcases separately.
+
+### How to test T09-12
+
+1. Back up calibration files; compare saved grip, holster and inspection fits after reopening the same world. Do not reset them.
+2. On a **spare client/server setup**, use identical executable TOML files under `config/visor_tacz/profiles/` and restart both. Confirm physical controls work.
+3. Change one zone position by 1 cm on the spare client only; restart it and reconnect. Expect a profile-mismatch message and paused compatibility, not alternate mechanics.
+4. Copy the identical changed file to the spare server (same filename), restart both, and confirm compatibility returns. Restore the original files afterward.
+
+The new `gun-reviews.toml` is only a label file: changing it must **not** cause a server mismatch.
+
+For the remote-height issue, capture an observer view containing both the avatar hand and gun, record both clients' Visor versions/body mode/world scale, and compare a vanilla held item at the same hand position. No speculative gun offset correction has been applied.
 
 ## Alpha.11 priority follow-up — awaiting headset testing
 

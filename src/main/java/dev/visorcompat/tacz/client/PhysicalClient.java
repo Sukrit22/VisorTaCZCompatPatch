@@ -13,6 +13,17 @@ import org.vmstudio.visor.api.client.events.input.ActionButtonVREvent;
 public final class PhysicalClient {
     private static CompatNetwork.PhysicalState state;
     private static boolean held,mainHeld,cylinderTrigger,cylinderUse;
+    private static boolean magazineUseHeld;
+    public static boolean magazineUse(org.vmstudio.visor.api.client.events.input.ActionButtonVREvent event,boolean canInput){
+        var input=VisorAPI.client().getInputManager();
+        if(event.getActionButton()!=input.getActionRightMouse(HandType.OFFHAND))return false;
+        if(!event.isPressEvent()&&magazineUseHeld){magazineUseHeld=false;event.setCanceled(true);return true;}
+        var player=Minecraft.getInstance().player;
+        if(!active()||!canInput||!event.isPressEvent()||!held||player==null
+            ||!dev.visorcompat.tacz.physical.CzMagazine.applies(player.getMainHandItem())
+            ||!dev.visorcompat.tacz.physical.CzMagazine.heldPhase(phase()))return false;
+        magazineUseHeld=true;event.setCanceled(true);CompatNetwork.CHANNEL.sendToServer(new CompatNetwork.MagazineUse());return true;
+    }
     public static HandAnchor anchor(){return active()&&state!=null&&state.slot()==Minecraft.getInstance().player.getInventory().selected&&state.key().equals(Profiles.key(Minecraft.getInstance().player.getMainHandItem()))?state.anchor():null;}
     public static boolean supportAnchor(){var a=anchor();return a!=null&&!a.mainHand();}
     private static int lastSlot=-1;
@@ -33,7 +44,7 @@ public final class PhysicalClient {
         if(dev.visorcompat.tacz.physical.ManualCycle.spent(stack))return false;
         if(dev.visorcompat.tacz.physical.ActionState.locked(stack))return false;
         if(Profiles.bolt(stack) && dev.visorcompat.tacz.physical.BoltState.blocked(stack))return false;
-        return !dev.visorcompat.tacz.compat.GunDurabilityCompat.jammed(stack) && Handling.fireable(phase()) && com.tacz.guns.api.item.IGun.getIGunOrNull(stack).hasBulletInBarrel(stack);
+        return !dev.visorcompat.tacz.compat.GunDurabilityCompat.jammed(stack) && Handling.fireable(phase()) && dev.visorcompat.tacz.physical.NativeAction.ready(stack);
     }
     public static boolean supporting() {
         if(!active())return true;
@@ -50,6 +61,9 @@ public final class PhysicalClient {
         var c=CalibrationStore.get(Profiles.key(stack));var gun=GunPose.resolve(pose,profile,false,c);
         if(gun==null)return false;var local=Handling.local(gun,pose.getOffhand().getPosition());
         return phase()==Phase.SUPPORT?Handling.supportRetained(local,Handling.support(profile,c),c):Handling.inside(local,Handling.support(profile,c),c,ZoneSizes.Zone.SUPPORT);
+    }
+    public static boolean supportCursorOccupied(){
+        return active()&&(supporting()||target()==Handling.Target.SUPPORT);
     }
     public static void releaseGrip() {releaseGrip(true);}
     private static void releaseGrip(boolean canceled) {
@@ -137,7 +151,7 @@ public final class PhysicalClient {
         }
         if(event.getActionButton()==input.getActionRightMouse(HandType.MAIN)) {
             event.setCanceled(true);
-            if(event.isPressEvent()){if(Profiles.get(Minecraft.getInstance().player.getMainHandItem()).supportDistance()==0)CompatNetwork.CHANNEL.sendToServer(new CompatNetwork.PistolRelease());else CompatNetwork.CHANNEL.sendToServer(new CompatNetwork.PhysicalSelector());}
+            if(event.isPressEvent()){if(Profiles.cylinder(Minecraft.getInstance().player.getMainHandItem())||Profiles.get(Minecraft.getInstance().player.getMainHandItem()).supportDistance()==0)CompatNetwork.CHANNEL.sendToServer(new CompatNetwork.PistolRelease());else CompatNetwork.CHANNEL.sendToServer(new CompatNetwork.PhysicalSelector());}
             return true;
         }
         return false;
@@ -148,13 +162,13 @@ public final class PhysicalClient {
         boolean changed=state==null || state.phase()!=update.phase();state=update;
         if(changed) {
             String hint=switch(update.phase()) {
-                case CYLINDER_OPEN -> "Open: pouch Grip/Use = speedloader, Trigger = one round; pink pull ejects all; tilt up and shake also ejects";
+                case CYLINDER_OPEN -> "Open: pouch Grip/Use = speedloader, Trigger = one round; pink pull or tilt-up shake ejects; "+(AdvancedClient.active()?"catch live rounds underneath":"live rounds recover automatically");
                 case CYLINDER_HOLD -> "Orange: move sideways 5 cm to open/close, then release; pink: pull back to eject";
                 case PUMP_HOLD -> "Hold fore-end: pull back fully, then push forward to chamber";
                 case PUMP_OPEN -> "Pump open: insert a shell at the side port, or push fore-end forward";
                 case LOADER -> "Move speedloader to green loading zone and release; only available inventory rounds are loaded";
                 case SHELL -> "Move shell from pouch to loading port and release";
-                case READY -> Profiles.cylinder(p.getMainHandItem())?"Ready: grab orange action and move sideways 5 cm to open":"Ready: grab magazine and pull down to reload";
+                case READY -> Profiles.cylinder(p.getMainHandItem())?"Ready: grab orange and move sideways 5 cm; revolvers also open with holding-hand Use then 2 cm left flick":"Ready: grab magazine and pull down to reload";
                 case REMOVING -> "Pull magazine down 7 cm, holding offhand use";
                 case OLD_MAG -> "Release old magazine to stow its remaining rounds";
                 case NO_MAG -> "Grab a replacement at waist pouch (below headset)";

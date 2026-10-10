@@ -16,7 +16,7 @@ class DescriptorProfilesTest {
             assertTrue(Handling.release(p,Calibration.ZERO).distance(d.zones().get("release"))<1e-6,id);
             assertTrue(JamProfile.of(p,Calibration.ZERO).port().distance(d.zones().get("port"))<1e-6,id);
         }
-        assertEquals(20,migrated);
+        assertEquals(25,migrated);
     }
     @Test void newScarsUseOneActionBoneAndNativeMagazineTemplate()throws Exception{
         var d=DescriptorProfiles.parse(bundled());for(String id:new String[]{"tacz:scar_l","tacz:scar_h"}){

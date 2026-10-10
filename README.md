@@ -1,5 +1,8 @@
 # Visor TaCZ Compatibility Patch
 
+New to the code? Start with the [developer project tour](docs/PROJECT-TOUR.md) for
+entrypoints, execution flow, the file map, and the Forge/Fabric source boundary.
+
 Unpackaged **alpha.8 source** adds M700 re-grip fixes, displacement-based cylinder gestures and an experimental TOML profile switch with SCAR-L/H. [Runtime profile setup](docs/RUNTIME-PROFILES.md) · [Pistol calibration audit](docs/CALIBRATION-AUDIT.md). Source protocol is **24**; the last packaged alpha.7 uses **23**.
 
 

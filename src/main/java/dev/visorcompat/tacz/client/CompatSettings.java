@@ -129,7 +129,7 @@ public final class CompatSettings {
     static void forceSync() {lastSentActive=null;lastCalibrationKey=null;lastPhysicsKey=null;syncState();}
     static boolean reloadCalibration() {
         try {
-            PhysicsStore.reload();InspectionStore.reload();HolsterStore.reload();CalibrationStore.reload();ClientControls.clearInput();forceSync();
+            MagazineGripStore.reload();GunReviewStore.reload();PhysicsStore.reload();InspectionStore.reload();HolsterStore.reload();CalibrationStore.reload();ClientControls.clearInput();forceSync();
             Minecraft.getInstance().gui.getChat().addMessage(Component.literal("Reloaded physics, gun, holster and inspection calibration; bundled defaults fill missing profiles."));
             return true;
         } catch(java.io.IOException e) {

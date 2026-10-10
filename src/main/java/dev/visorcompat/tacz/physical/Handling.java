@@ -23,6 +23,7 @@ public final class Handling {
         if(p.pump()) {
             if(phase!=Phase.READY && phase!=Phase.NEED_RACK && phase!=Phase.PUMP_OPEN)return Target.NONE;
             if(inPouch)return Target.POUCH;
+            if(p.selector()&&phase!=Phase.PUMP_OPEN&&inside(local,selector(p,c),c,ZoneSizes.Zone.SELECTOR))return Target.SELECTOR;
             var point=rack(p,c);if(phase==Phase.PUMP_OPEN)point.add(0,0,PumpCycle.TRAVEL);
             return inside(local,point,c,ZoneSizes.Zone.RACK)?Target.RACK:Target.NONE;
         }

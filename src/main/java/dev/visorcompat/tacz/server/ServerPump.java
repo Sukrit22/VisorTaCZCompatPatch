@@ -17,10 +17,10 @@ import net.minecraftforge.network.PacketDistributor;
 public final class ServerPump {
     public static final String OPEN="visor_tacz_pump_open", SPENT="visor_tacz_pump_spent";
     private static final Map<UUID,State> STATES=new HashMap<>();
-    private static class State {HandAnchor anchor;float capturedTravel;org.joml.Vector3f previousHand,velocity=new org.joml.Vector3f();InertialPump inertia=new InertialPump(0,0);ItemStack stack;int slot,pull;boolean held,shell;Phase sent;int sentPull=-1;State(ServerPlayer p){stack=p.getMainHandItem();slot=p.getInventory().selected;}}
+    private static class State {HandAnchor anchor;float capturedTravel;org.joml.Vector3f previousHand,velocity=new org.joml.Vector3f();InertialPump inertia=new InertialPump(0,0);ItemStack stack;int slot,pull;boolean held,shell;long lastSelector;Phase sent;int sentPull=-1;State(ServerPlayer p){stack=p.getMainHandItem();slot=p.getInventory().selected;}}
     public static boolean open(ItemStack stack){return stack.hasTag()&&stack.getTag().getBoolean(OPEN);}
     public static boolean spent(ItemStack stack){return stack.hasTag()&&stack.getTag().getBoolean(SPENT);}
-    public static void shot(ServerPlayer p,ItemStack stack){if(ServerPhysical.enabled(p)&&Profiles.pump(stack))stack.getOrCreateTag().putBoolean(SPENT,true);}
+    public static void shot(ServerPlayer p,ItemStack stack){if(ServerPhysical.enabled(p)&&Profiles.pump(stack))stack.getOrCreateTag().putBoolean(SPENT,dev.visorcompat.tacz.physical.TubeCycle.manual(Profiles.get(stack).mechanism(),IGun.getIGunOrNull(stack).getFireMode(stack).name()));}
     private static boolean valid(ServerPlayer p,State s){return s!=null && s.stack==p.getMainHandItem()&&s.slot==p.getInventory().selected;}
     public static Phase phase(ServerPlayer p){
         var s=STATES.get(p.getUUID());if(!valid(p,s))return Phase.READY;
@@ -35,6 +35,15 @@ public final class ServerPump {
     }
     public static boolean supporting(ServerPlayer p){var s=STATES.get(p.getUUID());return valid(p,s)&&s.anchor==null&&s.held&&!s.shell&&!open(s.stack)&&s.pull<4;}
     public static boolean canFire(ServerPlayer p){var s=STATES.get(p.getUUID());return valid(p,s)&&s.anchor==null&&!s.shell&&!open(s.stack)&&!spent(s.stack)&&s.pull<4&&!GunDurabilityCompat.jammed(s.stack)&&IGun.getIGunOrNull(s.stack).hasBulletInBarrel(s.stack);}
+    public static void selector(ServerPlayer p){
+        var s=STATES.get(p.getUUID());var sample=ServerPhysical.sample(p);
+        if(!valid(p,s)||!ServerPhysical.enabled(p)||!p.isAlive()||p.isSpectator()||s.held||open(s.stack)||sample==null||!p.getOffhandItem().isEmpty())return;
+        var profile=Profiles.get(s.stack);var calibration=CompatNetwork.calibration(p);long now=p.level().getGameTime();
+        if(!profile.selector()||now-s.lastSelector<6||!Handling.inside(sample.local(),Handling.selector(profile,calibration),calibration,ZoneSizes.Zone.SELECTOR))return;
+        IGunOperator.fromLivingEntity(p).fireSelect();s.lastSelector=now;
+        // Switching to the native self-loading mode resolves a pending manual-cycle latch.
+        if(!TubeCycle.manual(profile.mechanism(),IGun.getIGunOrNull(s.stack).getFireMode(s.stack).name()))s.stack.getOrCreateTag().putBoolean(SPENT,false);
+    }
     public static void clear(ServerPlayer p){STATES.remove(p.getUUID());}
     public static void stop(){STATES.clear();}
     public static void cleanup(ServerPlayer p){var s=STATES.get(p.getUUID());if(s!=null&&(!valid(p,s)||!ServerPhysical.enabled(p)||!p.isAlive()||p.isSpectator()))clear(p);}
@@ -58,14 +67,14 @@ public final class ServerPump {
         if(transition==PumpCycle.Transition.OPEN){
             int effect=spent(s.stack)?4:gun.hasBulletInBarrel(s.stack)?3:2;
             gun.setBulletInBarrel(s.stack,false);s.stack.getOrCreateTag().putBoolean(OPEN,true);s.stack.getTag().putBoolean(SPENT,false);
-            HandlingFeedback.emit(p,effect,ServerPoses.validated(p));
+            HandlingFeedback.emit(p,effect,ServerPoses.validated(p));p.inventoryMenu.broadcastChanges();
         } else if(transition==PumpCycle.Transition.CLOSE){
             // Pump completion clears only the optional generic jam, never creates Glock/M4 jam types.
             GunDurabilityCompat.clear(p,s.stack);
             if(!GunDurabilityCompat.jammed(s.stack)){
                 var chamber=PumpCycle.close(gun.getCurrentAmmoCount(s.stack),gun.hasBulletInBarrel(s.stack));
                 gun.setCurrentAmmoCount(s.stack,chamber.magazine());gun.setBulletInBarrel(s.stack,chamber.loaded());
-                s.stack.getOrCreateTag().putBoolean(OPEN,false);s.pull=0;HandlingFeedback.emit(p,5,ServerPoses.validated(p));
+                s.stack.getOrCreateTag().putBoolean(OPEN,false);s.pull=0;p.inventoryMenu.broadcastChanges();HandlingFeedback.emit(p,5,ServerPoses.validated(p));
             }
         }
     }

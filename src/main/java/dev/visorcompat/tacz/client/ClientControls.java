@@ -26,7 +26,13 @@ public final class ClientControls implements VREventListener {
     private boolean triggerHeld;
     private boolean ownsTrigger;
     private boolean ownedLastTick;
+    private int triggerSlot=-1;
+    private String triggerKey="";
     private AnimationStateMachine<?> lastAnimation;
+    private final dev.visorcompat.tacz.physical.DoubleTrigger doubleTrigger = new dev.visorcompat.tacz.physical.DoubleTrigger();
+    private boolean analogOwned;
+    private int analogSlot=-1;
+    private net.minecraft.world.item.ItemStack analogStack;
     private static ClientControls instance;
 
     public ClientControls() { instance = this; }
@@ -38,10 +44,13 @@ public final class ClientControls implements VREventListener {
         if (instance != null) {
             instance.triggerHeld = false;
             instance.ownsTrigger = false;
+            instance.doubleTrigger.reset();
+            instance.analogOwned=false;
+            instance.analogStack=null;
         }
         dev.visorcompat.tacz.mixin.ShootKeyAccess.visorTacz$success(false);
         ShootKey.shootControllerTick(false);
-        ShootKey.SHOOT_KEY.setDown(false);
+        if(vrActive()&&holdingGun()&&!AdvancedClient.holstered())ShootKey.SHOOT_KEY.setDown(false);
     }
 
     public static boolean vrActive() {
@@ -74,18 +83,25 @@ public final class ClientControls implements VREventListener {
     @VREventHandler
     public void onAction(ActionButtonVREvent event) {
         if(Minecraft.getInstance().screen!=null){clearInput();return;}
+        if(PhysicalClient.magazineUse(event,canInput()))return;
         if(AdvancedClient.action(event,canInput()))return;
         if (PhysicalClient.action(event,canInput())) return;
         if (!vrActive()) return;
         var input = VisorAPI.client().getInputManager();
         if (event.getActionButton() == input.getActionLeftMouse(HandType.MAIN)) {
+            if (doubleTriggerAvailable() && canInput() && !AdvancedClient.holstered()) {
+                event.setCanceled(true);
+                triggerHeld=false;ownsTrigger=false;
+                return;
+            }
             if (!event.isPressEvent() && ownsTrigger) {
                 triggerHeld = false;
                 ownsTrigger = false;
-                event.setCanceled(true);
-            } else if (holdingGun() && canInput()) {
+                if(holdingGun()&&!AdvancedClient.holstered())event.setCanceled(true);
+            } else if (holdingGun() && !AdvancedClient.holstered() && canInput()) {
                 event.setCanceled(true);
                 ownsTrigger = event.isPressEvent();
+                if(ownsTrigger){triggerSlot=Minecraft.getInstance().player.getInventory().selected;triggerKey=Profiles.key(Minecraft.getInstance().player.getMainHandItem());}
                 triggerHeld = event.isPressEvent() && supported();
                 if(event.isPressEvent() && supported() && PhysicalClient.active() && !PhysicalClient.canFire()) {
                     var player=Minecraft.getInstance().player;
@@ -127,16 +143,82 @@ public final class ClientControls implements VREventListener {
         if (event.phase != TickEvent.Phase.START) return;
         AdvancedClient.tick(canInput());
         PhysicalClient.tick(canInput());
-        boolean active = vrActive() && holdingGun();
+        boolean active = vrActive() && holdingGun() && !AdvancedClient.holstered();
+        var player=Minecraft.getInstance().player;
+        if(ownsTrigger&&(player==null||triggerSlot!=player.getInventory().selected||!triggerKey.equals(Profiles.key(player.getMainHandItem())))){
+            triggerHeld=false;ownsTrigger=false;
+            dev.visorcompat.tacz.mixin.ShootKeyAccess.visorTacz$success(false);
+        }
         if (!active || !canInput() || !supported() || !PhysicalClient.canFire()) triggerHeld = false;
         if(!AdvancedClient.canFire())triggerHeld=false;
+        boolean analog=doubleTriggerAvailable();
+        if(analog) {
+            var stack=player.getMainHandItem();
+            var gun=IGun.getIGunOrNull(stack);
+            boolean valid=active&&canInput()&&PhysicalClient.canFire()&&AdvancedClient.canFire()
+                    &&gun.getCurrentAmmoCount(stack)>0;
+            boolean changed=analogStack!=stack||analogSlot!=player.getInventory().selected;
+            if(!valid||changed)doubleTrigger.reset();
+            analogStack=stack;analogSlot=player.getInventory().selected;
+            if(valid) {
+                Float value=analogValue();
+                if(value!=null)doubleTrigger.sample(value);else doubleTrigger.reset();
+                // DB-2 burst consumes both shells itself. Select native SEMI before
+                // requesting individual shots; the native selector also informs the server.
+                if(gun.getFireMode(stack)!=com.tacz.guns.api.item.gun.FireMode.SEMI) {
+                    if(!analogOwned)player.displayClientMessage(Component.literal("DB-2 analog trigger: switching to single-shell mode (33% / 90%)."),true);
+                    IClientPlayerGunOperator.fromLocalPlayer(player).fireSelect();
+                    triggerHeld=false;
+                } else {
+                    triggerHeld=false;
+                    var operator=IClientPlayerGunOperator.fromLocalPlayer(player);
+                    if(operator.chargeShoot(doubleTrigger.pending())&&doubleTrigger.pending()) {
+                        var result=operator.shoot();
+                        if(result==com.tacz.guns.api.entity.ShootResult.SUCCESS)doubleTrigger.fired();
+                        else if(result!=com.tacz.guns.api.entity.ShootResult.COOL_DOWN)doubleTrigger.reset();
+                    }
+                }
+            } else triggerHeld=false;
+            analogOwned=true;
+        } else {
+            if(analogOwned)triggerHeld=false;
+            doubleTrigger.reset();analogOwned=false;analogStack=null;
+        }
         if (active || ownedLastTick) {
             ShootKey.shootControllerTick(active && triggerHeld);
             // Prevent the mouse-emulation path from adding a second held trigger source.
-            ShootKey.SHOOT_KEY.setDown(false);
+            if(active)ShootKey.SHOOT_KEY.setDown(false);
         }
         ownedLastTick = active;
         if (!active) ownsTrigger = false;
+    }
+
+    private static boolean doubleTriggerAvailable() {
+        var player=Minecraft.getInstance().player;
+        return player!=null&&vrActive()&&(PhysicalClient.active()||AdvancedClient.active())
+                &&holdingGun()&&"tacz:db_short".equals(IGun.getIGunOrNull(player.getMainHandItem()).getGunId(player.getMainHandItem()).toString())&&analogValue()!=null;
+    }
+    /** Boolean bindings keep the existing Visor input path. */
+    private static Float analogValue() {
+        var input=VisorAPI.client().getInputManager();
+        var profile=input.getProfileManager().getActiveProfile();
+        if(profile==null)return null;
+        var button=profile.getTriggerButton(HandType.MAIN.asControllerType(input.isLeftHanded()));
+        if(button instanceof me.phoenixra.atumvr.core.input.action.types.single.FloatButtonAction action)
+            return action.isActive()?action.getCurrentState():null;
+        if(button instanceof me.phoenixra.atumvr.core.input.action.types.multi.FloatButtonMultiAction.SubActionFloatButton action)
+            return action.isActive()?action.getCurrentState():null;
+        return null;
+    }
+
+    /** Only world aiming marks; menus retain their own cursor and input ownership. */
+    public static boolean hideWorldCursor(HandType hand){
+        var mc=Minecraft.getInstance();
+        if(!vrActive()||!supported()||mc.screen!=null
+            ||VisorAPI.client().getGuiManager().getCursorHandler().isHandFocused(hand))return false;
+        if(AdvancedClient.active())return AdvancedClient.handOccupied(hand);
+        if(PhysicalClient.supportAnchor())return hand==HandType.OFFHAND;
+        return hand==HandType.MAIN||PhysicalClient.supportCursorOccupied();
     }
 
     @VREventHandler
@@ -171,7 +253,7 @@ public final class ClientControls implements VREventListener {
     @SubscribeEvent
     public void beforeShot(GunShootEvent event) {
         if (event.getLogicalSide().isClient() && event.getShooter() == Minecraft.getInstance().player
-                && vrActive() && (!supported() || !canInput() || !PhysicalClient.canFire())) event.setCanceled(true);
+                && vrActive() && (!supported() || !canInput() || !PhysicalClient.canFire() || !AdvancedClient.canFire())) event.setCanceled(true);
     }
 
     @SubscribeEvent(priority=net.minecraftforge.eventbus.api.EventPriority.LOWEST)

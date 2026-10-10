@@ -44,6 +44,10 @@ tasks.register('generateSharedSources') {
     s=s.replace('.sendFailure(', '.sendError(')
    }
    if(source.name=='ClientAddon.java')s=s.replace('MinecraftForge.EVENT_BUS.register(controls);','dev.visorcompat.tacz.fabric.FabricEvents.registerControls(controls);')
+   if(source.name=='GunSupportTooltip.java') {
+    s=s.replace('import net.minecraftforge.event.entity.player.ItemTooltipEvent;','')
+    s=s.replaceAll(/(?m)^\s*public static void tooltip\(ItemTooltipEvent event\)\{[^\n]*\}\s*$/,'')
+   }
    // TaCZ names stay stable, but this constructor descriptor contains Minecraft
    // types. Remap this injection explicitly even though the mixin is unmapped.
    if(source.name=='BulletMixin.java')s=s.replace('@Inject(method = "<init>', '@Inject(remap = true, method = "<init>')

@@ -1,0 +1,454 @@
+# Human calibration verification, separate from the executable gun profiles.
+# Edit config/visor_tacz/gun-reviews.toml; Reload calibration applies edits.
+# B/P/AH are derived from actual loaded profiles, never from this file.
+schema = 1
+
+[[packs]]
+id = "base"
+name = "TaCZ base pack"
+
+# Copy this block for every gun you personally checked. Display IDs matter:
+# calibration for one display/skin does not certify a different display.
+[[guns]]
+id = "tacz:glock_17"
+display = "tacz:default"
+pack = "base"
+name = "Glock 17"
+calibrated = false
+notes = ""
+
+# Another pack can share the same namespace. Link guns explicitly via pack.
+# [[packs]]
+# id = "my_pack"
+# name = "My custom gun pack"
+# [[guns]]
+# id = "example:my_pistol"
+# display = "tacz:default"
+# pack = "my_pack"
+# name = "My pistol"
+# calibrated = true
+# notes = "Grip, muzzle and reload zones checked"
+
+[[guns]]
+id = "tacz:b93r"
+display = "tacz:default"
+pack = "base"
+name = "b93r"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:cz75"
+display = "tacz:default"
+pack = "base"
+name = "cz75"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:deagle"
+display = "tacz:default"
+pack = "base"
+name = "deagle"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:deagle_golden"
+display = "tacz:default"
+pack = "base"
+name = "deagle_golden"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:hk_mk23"
+display = "tacz:default"
+pack = "base"
+name = "hk_mk23"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:hk_mp5a5"
+display = "tacz:default"
+pack = "base"
+name = "hk_mp5a5"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:lonetrail"
+display = "tacz:default"
+pack = "base"
+name = "lonetrail"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:m1911"
+display = "tacz:default"
+pack = "base"
+name = "m1911"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:m4a1"
+display = "tacz:default"
+pack = "base"
+name = "m4a1"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:m700"
+display = "tacz:default"
+pack = "base"
+name = "m700"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:m870"
+display = "tacz:default"
+pack = "base"
+name = "m870"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:m9a4"
+display = "tacz:default"
+pack = "base"
+name = "m9a4"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:p320"
+display = "tacz:default"
+pack = "base"
+name = "p320"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:rhino357"
+display = "tacz:default"
+pack = "base"
+name = "rhino357"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:scar_h"
+display = "tacz:default"
+pack = "base"
+name = "scar_h"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:scar_l"
+display = "tacz:default"
+pack = "base"
+name = "scar_l"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:taurus500"
+display = "tacz:default"
+pack = "base"
+name = "taurus500"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:taurus943"
+display = "tacz:default"
+pack = "base"
+name = "taurus943"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:timeless50"
+display = "tacz:default"
+pack = "base"
+name = "timeless50"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:aa12"
+display = "tacz:default"
+pack = "base"
+name = "aa12"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:ai_awp"
+display = "tacz:default"
+pack = "base"
+name = "ai_awp"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:ak47"
+display = "tacz:default"
+pack = "base"
+name = "ak47"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:aug"
+display = "tacz:default"
+pack = "base"
+name = "aug"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:db_long"
+display = "tacz:default"
+pack = "base"
+name = "db_long"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:db_short"
+display = "tacz:default"
+pack = "base"
+name = "db_short"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:fn_evolys"
+display = "tacz:default"
+pack = "base"
+name = "fn_evolys"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:fn_fal"
+display = "tacz:default"
+pack = "base"
+name = "fn_fal"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:g36k"
+display = "tacz:default"
+pack = "base"
+name = "g36k"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:hk416d"
+display = "tacz:default"
+pack = "base"
+name = "hk416d"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:hk_g3"
+display = "tacz:default"
+pack = "base"
+name = "hk_g3"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:kar98"
+display = "tacz:default"
+pack = "base"
+name = "kar98"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:m1014"
+display = "tacz:default"
+pack = "base"
+name = "m1014"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:m107"
+display = "tacz:default"
+pack = "base"
+name = "m107"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:m16a1"
+display = "tacz:default"
+pack = "base"
+name = "m16a1"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:m16a4"
+display = "tacz:default"
+pack = "base"
+name = "m16a4"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:m249"
+display = "tacz:default"
+pack = "base"
+name = "m249"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:m320"
+display = "tacz:default"
+pack = "base"
+name = "m320"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:m95"
+display = "tacz:default"
+pack = "base"
+name = "m95"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:minigun"
+display = "tacz:default"
+pack = "base"
+name = "minigun"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:mk14"
+display = "tacz:default"
+pack = "base"
+name = "mk14"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:p90"
+display = "tacz:default"
+pack = "base"
+name = "p90"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:qbz_191"
+display = "tacz:default"
+pack = "base"
+name = "qbz_191"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:qbz_95"
+display = "tacz:default"
+pack = "base"
+name = "qbz_95"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:rpg7"
+display = "tacz:default"
+pack = "base"
+name = "rpg7"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:rpk"
+display = "tacz:default"
+pack = "base"
+name = "rpk"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:sks_tactical"
+display = "tacz:default"
+pack = "base"
+name = "sks_tactical"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:spas_12"
+display = "tacz:default"
+pack = "base"
+name = "spas_12"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:spr15hb"
+display = "tacz:default"
+pack = "base"
+name = "spr15hb"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:springfield1873"
+display = "tacz:default"
+pack = "base"
+name = "springfield1873"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:type_81"
+display = "tacz:default"
+pack = "base"
+name = "type_81"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:ump45"
+display = "tacz:default"
+pack = "base"
+name = "ump45"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:uzi"
+display = "tacz:default"
+pack = "base"
+name = "uzi"
+calibrated = false
+notes = ""
+
+[[guns]]
+id = "tacz:vector45"
+display = "tacz:default"
+pack = "base"
+name = "vector45"
+calibrated = false
+notes = ""

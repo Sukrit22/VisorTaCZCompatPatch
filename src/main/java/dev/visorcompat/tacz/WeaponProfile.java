@@ -17,10 +17,10 @@ public record WeaponProfile(
     public enum Mechanism {
         BUTTON,
         MAGAZINE,
-        PUMP,
+        PUMP, SPAS12, TUBE_AUTO,
         BOLT,
         SMG,
-        M1911, P320, M9A4, DEAGLE, DEAGLE_GOLDEN, TIMELESS50, B93R, CZ75, HK_MK23, RHINO357, TAURUS500, TAURUS943, LONETRAIL,
+        M1911, P320, M9A4, DEAGLE, DEAGLE_GOLDEN, TIMELESS50, B93R, CZ75, HK_MK23, RHINO357, TAURUS500, TAURUS943, LONETRAIL, DB_SHORT, DB_LONG,
     }
 
     public WeaponProfile(
@@ -62,9 +62,11 @@ public record WeaponProfile(
     }
 
     public boolean selector() {
-        return (supportDistance > 0 || PistolProfiles.get(this)!=null && PistolProfiles.get(this).selector()) && !manualAction();
+        return mechanism == Mechanism.SPAS12 || (supportDistance > 0 || PistolProfiles.get(this)!=null && PistolProfiles.get(this).selector()) && !manualAction();
     }
 
+    public boolean breakAction(){return mechanism==Mechanism.LONETRAIL||mechanism==Mechanism.DB_SHORT||mechanism==Mechanism.DB_LONG;}
+    public boolean doubleBarrel(){return mechanism==Mechanism.DB_SHORT||mechanism==Mechanism.DB_LONG;}
     public boolean cylinder(){var d=PistolProfiles.get(this);return d!=null&&d.cylinder();}
 
     public String magazineNode(){var d=DescriptorProfiles.details(this);return d==null?"magazine":d.magazine();}
@@ -77,7 +79,7 @@ public record WeaponProfile(
     }
 
     public boolean pump() {
-        return mechanism == Mechanism.PUMP;
+        return mechanism == Mechanism.PUMP || mechanism == Mechanism.SPAS12 || mechanism == Mechanism.TUBE_AUTO;
     }
 
     public boolean m1911() {

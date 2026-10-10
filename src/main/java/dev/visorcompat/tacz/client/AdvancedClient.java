@@ -36,6 +36,17 @@ public final class AdvancedClient {
     public static boolean active(){return CompatSettings.advanced()&&CompatSettings.active()&&ClientControls.supported();}
     public static boolean firingHold(){return !active()||!transferred&&hold.state()==AdvancedHold.State.MAIN;}
     public static boolean canFire(){return !active()||!transferred&&hold.canFire();}
+    public static boolean holstered(){return active()&&hold.state()==AdvancedHold.State.HOLSTERED;}
+    public static boolean handOccupied(HandType hand){
+        if(!active())return false;
+        if(transferred)return hand==HandType.OFFHAND||mainBoltGrip;
+        return switch(hold.state()){
+            case MAIN -> hand==HandType.MAIN||genericSupport||PhysicalClient.supportCursorOccupied();
+            case INSPECT -> hand==HandType.MAIN;
+            case SUPPORT -> hand==carryHand||(hand==HandType.MAIN?ownedGrip:ownedOffGrip);
+            default -> false;
+        };
+    }
     private static boolean cylinderCarry(){return active()&&hold.state()==AdvancedHold.State.SUPPORT&&Profiles.cylinder(Minecraft.getInstance().player.getMainHandItem());}
     public static boolean holsteredUsePassesThrough(){return active()&&hold.state()==AdvancedHold.State.HOLSTERED&&!regripNear();}
     public static boolean freeMain(){
@@ -286,6 +297,7 @@ public final class AdvancedClient {
             if(e.getActionButton()==actions.getActionLeftMouse(HandType.MAIN)&&PhysicalClient.action(e,input))return true;e.setCanceled(true);return true;
         }
         if(e.getActionButton()==actions.getActionLeftMouse(HandType.MAIN)){
+            if(holstered())return false;
             mainTriggerDown=press;if(!press)hold.triggerReleased();
             if(hold.state()==AdvancedHold.State.INSPECT){inspectTrigger=press;e.setCanceled(true);return true;}
             if(!hold.canFire()){e.setCanceled(true);return true;}

@@ -29,7 +29,7 @@ public final class HandlingEffects {
     private static final ArrayDeque<Round> ROUNDS=new ArrayDeque<>();
     public static void receive(CompatNetwork.Feedback m){
         var mc=Minecraft.getInstance();if(mc.level==null)return;
-        if(m.kind()<7&&(m.kind()!=4 || m.gun().getPath().equals("m870") || m.gun().getPath().equals("m700"))){
+        if(m.kind()<7&&(m.kind()!=4 || m.gun().getPath().equals("m870") || m.gun().getPath().equals("spas_12") || m.gun().getPath().equals("m700"))){
             var entity=mc.level.getEntity(m.entityId());
             String folder=m.gun().getPath();
             String clip=switch(m.kind()) {
@@ -42,6 +42,12 @@ public final class HandlingEffects {
                 case 1 -> "m870_reload_loop_shellin_01";
                 case 5 -> "m870_bolt_out";
                 default -> "m870_bolt_in";
+            };
+            if(folder.equals("spas_12"))clip=switch(m.kind()) {
+                case 1 -> "spas12_bulletin";case 5 -> "spas12_pumpon";default -> "spas12_pumpoff";
+            };
+            if(folder.equals("m1014"))clip=switch(m.kind()) {
+                case 1 -> "m1014_bulletinbore";case 5 -> "m1014_rackin";default -> "m1014_rackon";
             };
             if(folder.equals("m700"))clip=switch(m.kind()) {
                 case 0 -> "m700_reload_magout";case 1 -> "m700_reload_magin";
@@ -57,7 +63,7 @@ public final class HandlingEffects {
             };
             var pistol=dev.visorcompat.tacz.PistolProfiles.get(dev.visorcompat.tacz.Profiles.byId(m.gun().toString()));
             String sound=pistol==null?folder+"/"+clip:pistol.sound(m.kind());
-            if(entity!=null)com.tacz.guns.client.sound.SoundPlayManager.playAnimationSound(entity,
+            if(entity!=null&&!sound.isEmpty())com.tacz.guns.client.sound.SoundPlayManager.playAnimationSound(entity,
                 new net.minecraft.resources.ResourceLocation("tacz",sound),m.kind()==6?.55f:.8f,m.kind()==6?.65f:1f,12);
         }
         if(m.kind()==3 || m.kind()==4 || m.kind()>=7 && m.kind()<=10){

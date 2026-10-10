@@ -18,6 +18,10 @@ public final class CalibrationScreen extends Screen {
     private String error="";
     private Calibration lastSaved;
     private Button saveButton,cancelButton;
+    private final DesktopCalibrationPreview desktopPreview=new DesktopCalibrationPreview();
+    private boolean previewOnly;
+    private int panelLeft;
+    private boolean desktop(){return !ClientControls.vrActive();}
     public CalibrationScreen(String key) {
         super(Component.literal("TaCZ VR calibration"));this.key=key;pages=CalibrationLayout.pages(key,Profiles.get(net.minecraft.client.Minecraft.getInstance().player.getMainHandItem()));
         if(CalibrationStore.error()!=null)error=CalibrationStore.error();
@@ -44,7 +48,12 @@ public final class CalibrationScreen extends Screen {
     }
     private void changePage(int direction){page=Math.floorMod(page+direction,pages.size());size=false;rebuildWidgets();}
     @Override protected void init(){
-        int left=width/2-150;top=Math.max(8,height/2-108);Arrays.fill(readouts,null);
+        int left=desktop()&&width>=620?width-310:width/2-150;panelLeft=left;top=Math.max(8,height/2-108);Arrays.fill(readouts,null);
+        if(desktop()){
+            desktopPreview.bounds(width>=620?8:4,4,width>=620?left-16:width-8,height-8);
+            if(width<620)addRenderableWidget(Button.builder(Component.literal(previewOnly?"Back to edits":"Show gun preview"),b->{previewOnly=!previewOnly;rebuildWidgets();}).bounds(left,Math.max(0,top-25),300,20).build());
+        }
+        if(desktop()&&previewOnly&&width<620){ClientControls.clearInput();return;}
         var hint=CalibrationHints.get(key,current().id());
         addRenderableWidget(Button.builder(Component.literal("<"),b->changePage(-1)).bounds(left,top+14,24,20).build());
         addRenderableWidget(Button.builder(Component.literal(hint.title()),b->changePage(1))
@@ -95,12 +104,37 @@ public final class CalibrationScreen extends Screen {
         }
     }
     @Override public void render(GuiGraphics g,int x,int y,float partial){
-        g.fill(width/2-158,top-5,width/2+158,top+218,0xB0101010);
-        g.drawCenteredString(font,title,width/2,top+1,0xFFFFFF);
+        if(desktop()&&(width>=620||previewOnly)&&minecraft.player!=null){
+            var stack=minecraft.player.getMainHandItem();var profile=Profiles.get(stack);
+            if(profile!=null)desktopPreview.render(g,stack,profile,value(),key,current());
+        }
+        if(desktop()&&previewOnly&&width<620){
+            g.fill(panelLeft,Math.max(0,top-25),panelLeft+300,Math.max(0,top-25)+20,0xE0101010);
+            g.drawCenteredString(font,"Back to edits",panelLeft+150,Math.max(0,top-25)+6,0xFFFFFF);return;
+        }
+        g.fill(panelLeft-8,top-5,panelLeft+308,top+218,0xB0101010);
+        g.drawCenteredString(font,title,panelLeft+150,top+1,0xFFFFFF);
         var hint=CalibrationHints.get(key,current().id());var lines=font.split(Component.literal(hint.text()),294);
-        for(int i=0;i<Math.min(3,lines.size());i++)g.drawString(font,lines.get(i),width/2-147,top+132+i*10,hint.color());
+        for(int i=0;i<Math.min(3,lines.size());i++)g.drawString(font,lines.get(i),panelLeft+3,top+132+i*10,hint.color());
         if(!error.isEmpty())g.drawString(font,error,5,Math.max(0,top-15),0xFF6666);
         super.render(g,x,y,partial);
+    }
+    private boolean previewVisible(){return desktop()&&(width>=620||previewOnly);}
+    @Override public boolean keyPressed(int key,int scan,int mods){if(previewVisible()&&desktopPreview.key(key,hasShiftDown()))return true;return super.keyPressed(key,scan,mods);}
+    @Override public boolean mouseClicked(double x,double y,int button){
+        if(desktop()&&previewOnly&&width<620&&x>=panelLeft&&x<=panelLeft+300&&y>=Math.max(0,top-25)&&y<=Math.max(0,top-25)+20){previewOnly=false;rebuildWidgets();return true;}
+        if(previewVisible()&&desktopPreview.press(x,y,button))return true;
+        return super.mouseClicked(x,y,button);
+    }
+    @Override public boolean mouseDragged(double x,double y,int button,double dx,double dy){
+        if(previewVisible()&&desktopPreview.drag(dx,dy))return true;
+        return super.mouseDragged(x,y,button,dx,dy);
+    }
+    @Override public boolean mouseReleased(double x,double y,int button){
+        if(desktopPreview.release())return true;return super.mouseReleased(x,y,button);
+    }
+    @Override public boolean mouseScrolled(double x,double y,double delta){
+        if(previewVisible()&&desktopPreview.scroll(x,y,delta))return true;return super.mouseScrolled(x,y,delta);
     }
     @Override public boolean isPauseScreen(){return false;}
     @Override public void removed(){CalibrationStore.previewKey=null;CalibrationStore.preview=null;ClientControls.clearInput();}
