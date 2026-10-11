@@ -1,6 +1,7 @@
 package dev.visorcompat.tacz.client;
 
 import dev.visorcompat.tacz.Profiles;
+import dev.visorcompat.tacz.PackButtonFallback;
 import com.tacz.guns.api.item.IGun;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -24,6 +25,8 @@ public final class GunSupportTooltip {
         var catalog=GunReviewStore.get();var entry=catalog.guns().get(Profiles.key(stack));
         if(entry!=null)lines.add(Component.literal(catalog.packs().get(entry.pack())).withStyle(ChatFormatting.GRAY));
         boolean calibrated=entry!=null&&entry.calibrated()&&!GunReviewStore.failed();
+        if(PackButtonFallback.generic(profile))lines.add(Component.literal("Generic button geometry: calibrate grip, muzzle and sight for this display.").withStyle(ChatFormatting.YELLOW));
+        if(PackButtonFallback.generic(profile))lines.add(Component.literal("Special pack scripts and grenade actions require in-game verification.").withStyle(ChatFormatting.DARK_GRAY));
         lines.add(Component.literal(GunReviewStore.failed()?"Calibration review file error":"Calibration: "+(calibrated?"verified":"unverified"))
             .withStyle(calibrated?ChatFormatting.GREEN:ChatFormatting.RED));
         if(entry!=null&&!entry.notes().isBlank())lines.add(Component.literal(entry.notes()).withStyle(ChatFormatting.DARK_GRAY));

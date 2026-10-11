@@ -16,7 +16,17 @@ class DescriptorProfilesTest {
             assertTrue(Handling.release(p,Calibration.ZERO).distance(d.zones().get("release"))<1e-6,id);
             assertTrue(JamProfile.of(p,Calibration.ZERO).port().distance(d.zones().get("port"))<1e-6,id);
         }
-        assertEquals(25,migrated);
+        assertEquals(27,migrated);
+    }
+    @Test void akAndUmpUseTheirOwnActionBonesWithoutChangingGripGeometry(){
+        var ak=Profiles.byId("tacz:ak47");var ump=Profiles.byId("tacz:ump45");
+        assertTrue(ak.physical());assertTrue(ump.physical());
+        assertEquals("bolt",ak.rackNode());assertNull(ak.boltNode());
+        assertEquals("ump45_charge_handle",ump.rackNode());assertEquals("ump45_bolt",ump.boltNode());
+        assertEquals("ump45_bolt",DescriptorProfiles.details(ump).visual().shotNode());
+        assertEquals(5.425f,ak.gripZ());assertEquals(5.75f,ump.gripZ());
+        assertEquals(-21.325f,ak.muzzleZ());assertEquals(-11.0625f,ump.muzzleZ());
+        assertNotEquals(0,Handling.rack(ak).lengthSquared());assertNotEquals(0,Handling.rack(ump).lengthSquared());
     }
     @Test void newScarsUseOneActionBoneAndNativeMagazineTemplate()throws Exception{
         var d=DescriptorProfiles.parse(bundled());for(String id:new String[]{"tacz:scar_l","tacz:scar_h"}){

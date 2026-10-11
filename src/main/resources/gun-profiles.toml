@@ -1027,8 +1027,8 @@ position = [0.01171875, 0.10828125000000001, -0.19640624999999998]
 id = "tacz:ak47"
 display = "tacz:default"
 model = "tacz_resolved_display"
-mechanism = "button"
-variant = "BUTTON"
+mechanism = "closed_bolt_magazine"
+variant = "MAGAZINE"
 ammo_adapter = "native_rounds"
 [guns.geometry]
 scale = 0.6
@@ -1038,24 +1038,32 @@ support_distance = 0.3
 [guns.parts.magazine]
 node = "magazine"
 [guns.parts.action]
-node = "slide"
+node = "bolt"
 [guns.parts.bolt]
 node = ""
 [guns.joints.action]
 kind = "template"
 frame = "gun"
+# Initial asset-derived target; headset interaction calibration remains unverified.
 [guns.zones.magazine]
-position = [0, 0, 0]
+position = [0, 0.0028125, -0.1471875]
+# Initial asset-derived target; headset interaction calibration remains unverified.
 [guns.zones.rack]
-position = [0, 0, 0]
+position = [0.05625, 0.080390625, -0.2503125]
 [guns.zones.support]
 position = [0, 0, -0.3]
+# Initial asset-derived target; headset interaction calibration remains unverified.
 [guns.zones.release]
-position = [0, 0, 0]
+position = [0, -0.043828125, -0.08390625]
+# Initial asset-derived target; headset interaction calibration remains unverified.
 [guns.zones.selector]
-position = [0, 0, 0]
+position = [0.03046875, 0.0530128125, 0.065658375]
 [guns.zones.port]
 position = [0.01875, 0.0871875, -0.195]
+
+[guns.visual]
+shot_node = "bolt"
+shot_travel = 0.055
 
 [[guns]]
 id = "tacz:aug"
@@ -2047,8 +2055,8 @@ position = [0.009375, 0.10734374999999999, -0.2071875]
 id = "tacz:ump45"
 display = "tacz:default"
 model = "tacz_resolved_display"
-mechanism = "button"
-variant = "BUTTON"
+mechanism = "closed_bolt_magazine"
+variant = "MAGAZINE"
 ammo_adapter = "native_rounds"
 [guns.geometry]
 scale = 0.6
@@ -2058,24 +2066,32 @@ support_distance = 0.3
 [guns.parts.magazine]
 node = "magazine"
 [guns.parts.action]
-node = "slide"
+node = "ump45_charge_handle"
 [guns.parts.bolt]
-node = ""
+node = "ump45_bolt"
 [guns.joints.action]
 kind = "template"
 frame = "gun"
+# Initial asset-derived target; headset interaction calibration remains unverified.
 [guns.zones.magazine]
-position = [0, 0, 0]
+position = [0, -0.138078375, -0.241802625]
+# Initial asset-derived target; headset interaction calibration remains unverified.
 [guns.zones.rack]
-position = [0, 0, 0]
+position = [-0.05625, 0.146953125, -0.52265625]
 [guns.zones.support]
 position = [0, 0, -0.3]
+# Initial asset-derived target; headset interaction calibration remains unverified.
 [guns.zones.release]
-position = [0, 0, 0]
+position = [-0.0392578125, 0.073828125, -0.158671875]
+# Initial asset-derived target; headset interaction calibration remains unverified.
 [guns.zones.selector]
-position = [0, 0, 0]
+position = [0.0421875, -0.00067575, 0.002267625]
 [guns.zones.port]
 position = [0.005625, 0.083203125, -0.189375]
+
+[guns.visual]
+shot_node = "ump45_bolt"
+shot_travel = 0.055
 
 [[guns]]
 id = "tacz:uzi"

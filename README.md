@@ -26,7 +26,7 @@ New experiment: opt-in **Advanced Handling** adds holster/draw, inventory-backed
 
 New in 0.10.0: all 14 pinned default-pack pistols now have profiles. M1911, P320, M9A4, Desert Eagle/Golden, Timeless 50, B93R, CZ75 and MK23 reuse physical magazine/slide handling with per-gun assets. Rhino 357, Taurus 500/943 and Lonetrail add **experimental aggregate cylinder/breech loading**: open, eject all, insert individual rounds, close. This is not individual chamber selection or speedloader support. See [pistol testing](docs/TESTING-PISTOLS-0.10.0.md).
 
-Current alpha.9 source: **all 54 base-pack guns have button support**; 20 additionally have physical handling. The other 34 automatically fall back to buttons. Gun definitions now come exclusively from [runtime TOML profiles](docs/RUNTIME-PROFILES.md). See [the complete support list](docs/SUPPORTED-GUNS.md), [calibration import](docs/CALIBRATION-IMPORT-0.11.0.md), and [future data-driven/gun-pack support design](docs/DATA-DRIVEN-GUN-SUPPORT.md). External packs are not yet automatically registered.
+Current experimental source: **all 54 base-pack guns have button support; 27 have physical profiles**. AK47 and UMP45 are the newest physical batch and need in-game calibration/testing. Valid loaded pack guns without profiles now receive generic button geometry, with a calibration warning; custom display overrides use the same conservative fallback. Special scripted weapons still need verification. [Gun-pack inventory and limits](docs/GUN-PACK-SUPPORT-INVENTORY.md).
 
 ## Requirements and installation
 
@@ -200,6 +200,6 @@ Built against published Visor `gqaBzrB7` and TaCZ `yOVIzIJR` Modrinth versions. 
 ## Adding another gun
 
 Follow the [UMP45 walkthrough and Kar98k exercise](docs/ADDING-GUN-SUPPORT.md).
-These are historical physical-handling exercises. UMP45 and Kar98 now have button-only support; their physical workflows remain unimplemented.
+These are historical physical-handling exercises. UMP45 now has an experimental physical profile; Kar98 remains button-only.
 
 Historical pistol walkthrough: [M1911 and batch checklist](docs/ADDING-PISTOL-SUPPORT.md). The default-pack pistol batch is now implemented; do not duplicate its registry entries.

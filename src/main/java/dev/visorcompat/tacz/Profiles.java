@@ -2,7 +2,7 @@ package dev.visorcompat.tacz;
 
 import com.tacz.guns.api.DefaultAssets;
 import com.tacz.guns.api.item.IGun;
-import java.util.Map;
+import com.tacz.guns.api.TimelessAPI;
 import net.minecraft.world.item.ItemStack;
 
 public final class Profiles {
@@ -40,11 +40,11 @@ public final class Profiles {
 
     public static WeaponProfile get(ItemStack stack) {
         IGun gun = IGun.getIGunOrNull(stack);
-        return gun == null ||
-            !DefaultAssets.DEFAULT_GUN_DISPLAY_ID.equals(
-                gun.getGunDisplayId(stack)
-            )
-            ? null
-            : byId(gun.getGunId(stack).toString());
+        if (gun == null) return null;
+        var id = gun.getGunId(stack);
+        var index = TimelessAPI.getCommonGunIndex(id).orElse(null);
+        return PackButtonFallback.resolve(byId(id.toString()),
+            DefaultAssets.DEFAULT_GUN_DISPLAY_ID.equals(gun.getGunDisplayId(stack)),
+            index != null, index == null ? "" : index.getType());
     }
 }

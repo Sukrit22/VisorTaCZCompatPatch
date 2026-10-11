@@ -14,7 +14,7 @@ public final class DescriptorProfiles {
     private static final Map<WeaponProfile,Data> DETAILS=Collections.synchronizedMap(new IdentityHashMap<>());
     private static String digest="";
     public static Data details(WeaponProfile p){return DETAILS.get(p);}
-    public static Vector3f zone(WeaponProfile p,String name){var d=details(p);return d==null||!d.zones().containsKey(name)?null:new Vector3f(d.zones().get(name));}
+    public static Vector3f zone(WeaponProfile p,String name){var d=details(p);return d==null?PackButtonFallback.zone(p,name):!d.zones().containsKey(name)?null:new Vector3f(d.zones().get(name));}
     public static WeaponProfile get(String id){var d=all().get(id);return d==null?null:d.profile();}
     public static String digest(){all();return digest;}
     public static Map<String,Data> all(){if(loaded==null)load();return loaded;}

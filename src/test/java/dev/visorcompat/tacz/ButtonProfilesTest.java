@@ -4,8 +4,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 class ButtonProfilesTest {
     @Test void registryCovers54BaseGunsWithIndependentCapabilities(){
-        assertEquals(54,Profiles.ids().size());assertEquals(29,ButtonProfiles.ids().size());
-        assertEquals(25,Profiles.ids().stream().filter(id->Profiles.byId(id).physical()).count());
+        assertEquals(54,Profiles.ids().size());assertEquals(27,ButtonProfiles.ids().size());
+        assertEquals(27,Profiles.ids().stream().filter(id->Profiles.byId(id).physical()).count());
         for(String id:ButtonProfiles.ids()){
             var p=Profiles.byId(id);assertNotNull(p);assertTrue(p.buttonOnly());assertFalse(p.physical());
             assertFalse(p.pump());assertFalse(p.bolt());assertFalse(p.cylinder());
