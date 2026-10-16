@@ -7,7 +7,14 @@
     "PoseFreshnessMixin",
     "BulletMixin",
     "BulletSpreadMixin",
-    "PumpBoltMixin"
+    "DualOperatorContextMixin",
+    "DualCacheContextMixin",
+    "DualBurstContextMixin",
+    "DualScriptWeaponMixin",
+    "DualBulletPropertiesMixin",
+    "DualHeatMixin",
+    "PumpBoltMixin",
+    "HolsteredMiningMixin"
   ],
   "client": [
     "AdsSprintMixin",
@@ -33,7 +40,8 @@
     "GunStencilMixin",
     "StencilEnableMixin",
     "ScopedAccelerationMixin",
-    "HeldHotbarMixin"
+    "HeldHotbarMixin",
+    "AnimationSoundsAccess"
   ],
   "injectors": {
     "defaultRequire": 1

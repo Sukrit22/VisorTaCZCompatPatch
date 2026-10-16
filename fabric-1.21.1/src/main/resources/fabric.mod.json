@@ -1,0 +1,7 @@
+{
+ "schemaVersion":1,"id":"visor_tacz","version":"${version}","name":"Visor TaCZ Compatibility","environment":"*","license":"MIT",
+ "entrypoints":{"main":["dev.visorcompat.tacz.fabric.FabricMain"],"client":["dev.visorcompat.tacz.fabric.FabricClient"]},
+ "mixins":["visor_tacz.mixins.json"],
+ "depends":{"fabricloader":">=0.17.2","fabric-api":"*","minecraft":"1.21.1","java":">=21","visor":">=0.6.0-beta","tacz":"*","forgeconfigapiport":"*"}
+}
+

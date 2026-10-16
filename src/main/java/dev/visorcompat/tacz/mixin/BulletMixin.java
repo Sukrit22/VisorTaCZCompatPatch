@@ -40,17 +40,19 @@ public abstract class BulletMixin extends Projectile implements BulletPose {
                                   CallbackInfo ci) {
         if (!(shooter instanceof ServerPlayer player) || !ServerPoses.isVr(player)) return;
         EntityKineticBullet self = (EntityKineticBullet) (Object) this;
-        visorTacz$pose = ServerRecoil.validated(player);
+        var dual=DualGunOperator.current(player);
+        visorTacz$pose = dual==null?ServerRecoil.validated(player):dual.pose();
         if (visorTacz$pose == null) {
             self.discard(); // Delayed burst rounds also fail closed when tracking/geometry becomes invalid.
             return;
         }
-        ServerRecoil.shot(player,data);
+        if(dual==null)ServerRecoil.shot(player,data);else ServerDual.shot(player,data);
         startPos = new Vec3(visorTacz$pose.muzzle());
         self.setPos(startPos);
         self.xOld = startPos.x;
         self.yOld = startPos.y;
         self.zOld = startPos.z;
+        if(dual!=null)return;
         if(dev.visorcompat.tacz.Profiles.cylinder(stack) && ServerPhysical.enabled(player))dev.visorcompat.tacz.server.ServerCylinder.shot(player,stack);
         else if(dev.visorcompat.tacz.Profiles.pump(stack) && ServerPhysical.enabled(player))ServerPump.shot(player,stack);
         else if(dev.visorcompat.tacz.Profiles.bolt(stack) && ServerPhysical.enabled(player))stack.getOrCreateTag().putBoolean(dev.visorcompat.tacz.physical.BoltState.SPENT,true);

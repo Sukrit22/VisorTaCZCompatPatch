@@ -1,3 +1,5 @@
+> Historical reference. Use [the master checklist and recorded results](TESTING-CURRENT.md) for current testing; do not repeat passed cases from this document.
+
 # Pistol test session: 0.10.0
 
 Use matching 0.10.0 client/server JARs (protocol 18). Keep your saved calibration. These are new, untested-in-VR profiles; do not mark them passed based on Glock alone. Start with shaders off, physical mode on, empty assigned offhand, survival inventory and visible regions.

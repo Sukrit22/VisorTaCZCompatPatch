@@ -1,0 +1,45 @@
+apply from:'../ports/minecraft-1.21.1.gradle'
+tasks.register('generateSharedSources') {
+ inputs.dir('../src/main/java'); inputs.file('shared-sources.gradle'); inputs.file('../ports/minecraft-1.21.1.gradle'); outputs.dir(layout.buildDirectory.dir('generated/shared'))
+ doLast {
+  def out=layout.buildDirectory.dir('generated/shared').get().asFile
+  delete(out)
+  fileTree('../src/main/java').matching { include '**/*.java' }.each { source ->
+   String s=source.getText('UTF-8')
+   s=s.replace('net.minecraftforge.api.distmarker.','net.neoforged.api.distmarker.').replace('net.minecraftforge.eventbus.','net.neoforged.bus.').replace('net.minecraftforge.fml.','net.neoforged.fml.').replace('net.minecraftforge.','net.neoforged.neoforge.')
+   s=s.replace('MinecraftForge','NeoForge').replace('ForgeConfigSpec','ModConfigSpec')
+   s=s.replace('com.tacz.guns.compat.oculus.OculusCompat','com.tacz.guns.compat.iris.IrisCompat').replace('OculusCompat.','IrisCompat.')
+   s=s.replace('net.neoforged.fml.common.Mod;','net.neoforged.fml.common.Mod;\nimport net.neoforged.fml.common.EventBusSubscriber;')
+   s=s.replace('@Mod.EventBusSubscriber','@EventBusSubscriber').replace('Mod.EventBusSubscriber.Bus.','EventBusSubscriber.Bus.')
+   /* s=s.replaceAll(/new ResourceLocation\(([^\n;]*?)\)/, 'ResourceLocation.fromNamespaceAndPath($1)') */
+   s=s.replace('net.neoforged.neoforge.network.', 'dev.visorcompat.tacz.neoforge.network.')
+   s=s.replace('import net.neoforged.neoforge.event.TickEvent;','')
+   def clientPhase=source.name=='AutoAds.java'||source.name=='ClientRecoil.java'?'Post':'Pre'
+   s=s.replace('net.neoforged.neoforge.event.TickEvent.ClientTickEvent','net.neoforged.neoforge.client.event.ClientTickEvent.'+clientPhase)
+   s=s.replace('TickEvent.ClientTickEvent','net.neoforged.neoforge.client.event.ClientTickEvent.'+clientPhase)
+   s=s.replace('net.neoforged.neoforge.event.TickEvent.RenderTickEvent','net.neoforged.neoforge.client.event.RenderFrameEvent.Pre')
+   s=s.replace('TickEvent.RenderTickEvent','net.neoforged.neoforge.client.event.RenderFrameEvent.Pre')
+   s=s.replace('net.neoforged.neoforge.event.TickEvent.PlayerTickEvent','net.neoforged.neoforge.event.tick.PlayerTickEvent.Post')
+   s=s.replaceAll(/(?:net\.neoforged\.neoforge\.event\.)?TickEvent\.Phase\.(START|END)/,'true')
+   s=s.replaceAll(/(?:event|e)\.phase\s*!=\s*true\s*\|\|/,'')
+   s=s.replaceAll(/if\s*\(\s*(?:event|e)\.phase\s*!=\s*true\s*\)\s*return;/,'')
+   s=s.replaceAll(/(?:event|e)\.phase\s*==\s*true\s*&&/,'')
+   s=s.replaceAll(/(?:event|e)\.phase\s*==\s*true/,'true')
+   s=s.replace('event.player','event.getEntity()').replace('event.renderTickTime','event.getPartialTick().getGameTimeDeltaPartialTick(false)')
+   if(source.name in ['DualRemote.java','MagazineEffects.java','RemoteGuns.java'])s=s.replace('getPartialTick()','getPartialTick().getGameTimeDeltaPartialTick(false)')
+   s=s.replace('net.neoforged.fml.DistExecutor','dev.visorcompat.tacz.neoforge.DistExecutor')
+   s=s.replace('ModLoadingContext.get().registerConfig(', 'dev.visorcompat.tacz.VisorTacz.CONTAINER.registerConfig(')
+   s=s.replace('import net.neoforged.neoforge.common.capabilities.ForgeCapabilities;','')
+   s=s.replace('player.getCapability(ForgeCapabilities.ITEM_HANDLER)', 'java.util.Optional.ofNullable(player.getCapability(net.neoforged.neoforge.capabilities.Capabilities.ItemHandler.ENTITY))')
+   s=s.replace('p.getCapability(ForgeCapabilities.ITEM_HANDLER)', 'java.util.Optional.ofNullable(p.getCapability(net.neoforged.neoforge.capabilities.Capabilities.ItemHandler.ENTITY))')
+   if(source.name=='VisorTacz.java') {
+    s=s.replace('public VisorTacz() {','public static net.neoforged.fml.ModContainer CONTAINER;\n    public VisorTacz(net.neoforged.bus.api.IEventBus bus,net.neoforged.fml.ModContainer container) {\n        CONTAINER=container;\n        bus.addListener(dev.visorcompat.tacz.neoforge.network.SimpleChannel::registerPayloads);')
+   }
+   s=minecraft121Transform(s,source)
+   def rel=file('../src/main/java').toPath().relativize(source.toPath()).toString()
+   def target=new File(out,rel);target.parentFile.mkdirs();target.setText(s,'UTF-8')
+  }
+  def helper=new File(out,'dev/visorcompat/tacz/compat/StackData.java');helper.parentFile.mkdirs();helper.setText(minecraft121HelperSource,'UTF-8')
+ }
+}
+

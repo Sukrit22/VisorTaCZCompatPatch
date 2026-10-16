@@ -26,6 +26,12 @@ public final class CompatSettings {
     private static Calibration lastCalibration;
     private static String lastPhysicsKey;private static dev.visorcompat.tacz.PhysicsCalibration lastPhysics;
     private static final ForgeConfigSpec SPEC;
+    private static final ForgeConfigSpec.BooleanValue DUAL;
+    static ForgeConfigSpec.BooleanValue FOUR_MOUNTS,EMPTY_DRAW,LOCK_SELECTED;
+    static ForgeConfigSpec.IntValue MOUNT_ORDER;
+    static ForgeConfigSpec.IntValue[] MOUNT_BINDINGS;
+    static void saveMountSettings(){SPEC.save();}
+    static boolean configReady(){return SPEC.isLoaded();}
     private static final ForgeConfigSpec.BooleanValue ENABLED;
     private static final ForgeConfigSpec.BooleanValue PHYSICAL;
     private static final ForgeConfigSpec.BooleanValue AUTO_ADS, OPTICS, TWO_HAND_ADS, TRANSFER_ANYTIME;
@@ -53,6 +59,13 @@ public final class CompatSettings {
     private static final ForgeConfigSpec.EnumValue<Display> DISPLAY;
     static {
         var builder = new ForgeConfigSpec.Builder();
+        FOUR_MOUNTS=builder.comment("Experimental four hotbar-backed holsters. Enable independent dual wield too. No item copying.").define("fourHolsters",false);
+        EMPTY_DRAW=builder.define("holsterRequireEmptyHand",true);
+        LOCK_SELECTED=builder.define("lockOtherHandSelectedGun",true);
+        MOUNT_ORDER=builder.comment("0 ascending, 1 descending, 2 manual").defineInRange("holsterAssignment",0,0,2);
+        MOUNT_BINDINGS=new ForgeConfigSpec.IntValue[4];String[] mountNames={"right","left","chest","back"};
+        for(int i=0;i<4;i++)MOUNT_BINDINGS[i]=builder.comment("0 disabled, 1-9 hotbar slot").defineInRange("holsterSlot_"+mountNames[i],0,0,9);
+        DUAL=builder.comment("Experimental independent two-gun ownership. Uses native button reload while enabled; physical interactions remain in single-gun mode.").define("independentDualWield",false);
         ADVANCED=builder.comment("Experimental holster/draw, inventory-backed toss and inspection. Off by default.").define("advancedHandling",false);
         TOSS=builder.comment("Advanced Handling: true allows a catch window before auto-holstering; false returns after inspection grace. Never drops inventory items.").define("advancedToss",true);
         INSPECT_WINDOW=builder.comment("Milliseconds after releasing Grip in which Use can enter pistol inspection.").defineInRange("advancedInspectWindowMs",250,50,250);
@@ -74,6 +87,8 @@ public final class CompatSettings {
         SPEC = builder.build();
     }
     private CompatSettings() {}
+    public static boolean dualWield(){return SPEC.isLoaded()&&DUAL.get();}
+    public static void setDualWield(boolean value){DualClient.reset();AdvancedClient.sessionReset();PhysicalClient.reset();ClientControls.clearInput();DUAL.set(value);SPEC.save();forceSync();}
     public static boolean advanced(){return handlingMode()==HandlingMode.ADVANCED;}
     public static boolean toss(){return !SPEC.isLoaded()||TOSS.get();}
     public static int inspectWindow(){return SPEC.isLoaded()?INSPECT_WINDOW.get():250;}
@@ -169,7 +184,7 @@ public final class CompatSettings {
         syncState();
     }
     @SubscribeEvent public static void logout(ClientPlayerNetworkEvent.LoggingOut event) {
-        ShotVisual.clear();AdvancedClient.sessionReset();AdvancedRemote.clear();
+        DualClient.reset();ShotVisual.clear();AdvancedClient.sessionReset();AdvancedRemote.clear();
         lastSentActive = null;
         ClientControls.clearInput();
         PhysicalClient.reset();

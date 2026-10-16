@@ -37,3 +37,20 @@ tasks.register('productionClient', JavaExec) {
       '--assetIndex','1.20.1-5','--assetsDir',new File(gradle.gradleUserHomeDir,'caches/fabric-loom/assets').absolutePath
  maxHeapSize='2G'
 }
+
+// Dedicated-server check of the same remapped release and unmodified dependencies.
+tasks.register('productionServer', JavaExec) {
+ dependsOn 'prepareProductionSmoke'
+ javaLauncher=javaToolchains.launcherFor { languageVersion=JavaLanguageVersion.of(17) }
+ workingDir smokeDir
+ mainClass='net.fabricmc.loader.impl.launch.knot.KnotServer'
+ systemProperty 'fabric.development','false'
+ classpath=files(provider {
+  sourceSets.main.runtimeClasspath.files.findAll {
+   it.path.replace('\\','/').contains('/modules-2/') && !it.name.startsWith('dev-launch-injector')
+  }
+ }) + configurations.productionMappings + files(new File(gradle.gradleUserHomeDir,'caches/fabric-loom/1.20.1/minecraft-extracted_server.jar'))
+ args '--nogui'
+ standardInput=System.in
+ maxHeapSize='2G'
+}

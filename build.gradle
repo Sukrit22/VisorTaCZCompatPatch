@@ -5,7 +5,9 @@ plugins {
 
 group = 'dev.visorcompat.tacz'
 //version = '0.12.0-alpha.15'
-version = '0.13.0'
+//version = '0.13.0' // before dual wield
+version = '0.14.0-alpha.5.1'
+
 base.archivesName = 'visor-compat-tacz-1.20.1'
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
@@ -24,10 +26,12 @@ minecraft {
             arg '-mixin.config=visor_tacz.mixins.json'
         }
         server {
-            workingDirectory project.file('run/server')
+            workingDirectory project.file(project.hasProperty('dualSmoke') ? 'build/dual-smoke' : 'run/server')
             mods { visor_tacz { source sourceSets.main } }
             arg '-mixin.config=visor_tacz.mixins.json'
             args '--nogui'
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', project.file('build/createSrgToMcp/output.srg').absolutePath
         }
     }
 }
@@ -48,7 +52,7 @@ repositories {
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.20.1-47.4.0'
-    implementation fg.deobf('maven.modrinth:visor:gqaBzrB7')
+    implementation fg.deobf("maven.modrinth:visor:${providers.gradleProperty('visorVersion').getOrElse('gqaBzrB7')}")
     implementation fg.deobf('maven.modrinth:timeless-and-classics-zero:yOVIzIJR')
     implementation(fg.deobf('com.github.mcmodderanchor:simplebedrockmodel:2.2.2-forge+mc1.20.1')) { transitive = false }
     // TaCZ supplies this library at runtime through its JarJar dependency.
@@ -56,6 +60,27 @@ dependencies {
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
 }
+
+// Compile against TaCZ's own bundled Lua types; do not bundle another Lua runtime.
+configurations { dualLuaBundle { transitive = false } }
+dependencies { dualLuaBundle 'maven.modrinth:timeless-and-classics-zero:yOVIzIJR' }
+def dualLuaDirectory=layout.buildDirectory.dir('upstream-lua')
+tasks.register('extractDualLua') {
+    inputs.files(configurations.dualLuaBundle)
+    outputs.dir(dualLuaDirectory)
+    doLast {
+        configurations.dualLuaBundle.files.each { archive ->
+            def zip=new java.util.zip.ZipFile(archive)
+            try {zip.entries().each {entry ->
+                if(entry.name.startsWith('META-INF/jarjar/luaj-')&&entry.name.endsWith('.jar')){
+                    def target=new File(dualLuaDirectory.get().asFile,entry.name.tokenize('/').last())
+                    target.parentFile.mkdirs();target.bytes=zip.getInputStream(entry).withCloseable {it.readAllBytes()}
+                }
+            }} finally {zip.close()}
+        }
+    }
+}
+dependencies {compileOnly files(dualLuaDirectory.map {it.file('luaj-core-3.0.8-figura.jar')},dualLuaDirectory.map {it.file('luaj-jse-3.0.8-figura.jar')}).builtBy(tasks.named('extractDualLua'))}
 
 tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
 tasks.named('test') { useJUnitPlatform() }
@@ -72,3 +97,6 @@ tasks.named('processResources') {
 tasks.register('diagnosticClasspath') {
     doLast { file('build/diagnostic-classpath.txt').text = sourceSets.main.runtimeClasspath.asPath }
 }
+
+// Allow clean shutdown and in-world commands during isolated runtime checks.
+tasks.withType(JavaExec).configureEach { if (name == "runServer") standardInput = System.in }

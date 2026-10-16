@@ -37,6 +37,7 @@ tasks.register('generateSharedSources') {
     'new ShaderInstance(event.getResourceProvider(),new ResourceLocation(VisorTacz.ID,"optic"),':'new ShaderInstance(event.getResourceProvider(),"visor_tacz:optic",'
    ]
    replacements.each { a,b -> s=s.replace(a,b) }
+   if(source.name=='DualSounds.java')s=s.replace('ModSounds.GUN.get()', 'ModSounds.GUN')
    if(source.name=='OpticRenderer.java')s=s.replace('event.registerShader(new ShaderInstance(event.getResourceProvider(),"visor_tacz:optic",DefaultVertexFormat.NEW_ENTITY),s->shader=s);','event.registerShader(new ResourceLocation(VisorTacz.ID,"optic"),DefaultVertexFormat.NEW_ENTITY,s->shader=s);')
    if(source.name=='CompatSettings.java') {
     s=s.replace('Commands.literal(', 'net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.literal(')
@@ -50,6 +51,15 @@ tasks.register('generateSharedSources') {
    }
    // TaCZ names stay stable, but this constructor descriptor contains Minecraft
    // types. Remap this injection explicitly even though the mixin is unmapped.
+   if(source.name=='HolsteredMiningMixin.java') {
+    s=s.replace('import net.minecraftforge.event.entity.player.PlayerInteractEvent;', '')
+    s=s.replace('PlayerInteractEvent.LeftClickBlock event,CallbackInfo ci', 'net.minecraft.world.entity.player.Player player,net.minecraft.world.level.Level world,net.minecraft.world.InteractionHand hand,net.minecraft.core.BlockPos pos,net.minecraft.core.Direction direction,org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<net.minecraft.world.InteractionResult> ci')
+    s=s.replace('var player=event.getEntity();','')
+    s=s.replace('ci.cancel()', 'ci.setReturnValue(net.minecraft.world.InteractionResult.PASS)')
+   }
+   if(source.name=='DualScriptWeaponMixin.java') {
+    s=s.replace('Lnet/minecraft/world/entity/LivingEntity;m_21205_()Lnet/minecraft/world/item/ItemStack;', 'Lnet/minecraft/class_1309;method_6047()Lnet/minecraft/class_1799;')
+   }
    if(source.name=='BulletMixin.java')s=s.replace('@Inject(method = "<init>', '@Inject(remap = true, method = "<init>')
    // Minecraft targets and Minecraft method overrides need intermediary remapping;
    // TaCZ/Visor methods such as InputExtraCheck.isInGame retain their API names.

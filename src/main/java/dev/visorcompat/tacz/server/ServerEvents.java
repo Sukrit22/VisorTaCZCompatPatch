@@ -45,6 +45,8 @@ public final class ServerEvents {
     }
     @SubscribeEvent
     public static void beforeShot(GunShootEvent event) {
+        ServerButtonJams.shoot(event);
+        if(event.getLogicalSide().isServer()&&event.getShooter() instanceof ServerPlayer p&&ServerDual.active(p)){var op=DualGunOperator.current(p);if(op==null||op.pose()==null)event.setCanceled(true);return;}
         if (event.getLogicalSide().isServer() && event.getShooter() instanceof ServerPlayer player
                 && ServerPoses.isVr(player) && (ServerRecoil.validated(player) == null || !ServerPhysical.canFire(player)||!ServerAdvanced.canFire(player))) {
             event.setCanceled(true);
@@ -53,6 +55,9 @@ public final class ServerEvents {
 
     @SubscribeEvent
     public static void beforeRound(GunFireEvent event) {
+        ServerButtonJams.fire(event);
+        if(event.getLogicalSide().isServer()&&event.getShooter() instanceof ServerPlayer p&&ServerDual.active(p))ServerDual.begin(p);
+        if(event.getLogicalSide().isServer()&&event.getShooter() instanceof ServerPlayer p&&ServerDual.active(p)){var op=DualGunOperator.current(p);if(op==null||op.pose()==null)event.setCanceled(true);return;}
         if(event.getLogicalSide().isServer() && event.getShooter() instanceof ServerPlayer p && ServerPoses.isVr(p))ServerRecoil.begin(p);
         // TaCZ fires this for every delayed burst round, before consuming ammunition.
         if (event.getLogicalSide().isServer() && event.getShooter() instanceof ServerPlayer player
@@ -61,6 +66,7 @@ public final class ServerEvents {
         }
     }
     @SubscribeEvent public static void tick(net.minecraftforge.event.TickEvent.PlayerTickEvent event) {
+        ServerButtonJams.tick(event);
         if(event.phase==net.minecraftforge.event.TickEvent.Phase.END && event.player instanceof ServerPlayer player) {for(var stack:player.getInventory().items){
                 ServerJams.reconcile(player,stack);
                 if(dev.visorcompat.tacz.network.CompatNetwork.modeKnown(player) && dev.visorcompat.tacz.Profiles.get(stack)!=null && (!dev.visorcompat.tacz.network.CompatNetwork.physical(player) || !ServerPoses.isVr(player)) && stack.hasTag()){
@@ -71,9 +77,11 @@ public final class ServerEvents {
                     stack.getTag().remove(dev.visorcompat.tacz.physical.BoltState.OPEN);stack.getTag().remove(dev.visorcompat.tacz.physical.BoltState.SPENT);
                 }
             }
-            ServerRecoil.tick(player);ServerPhysical.tick(player);RemoteSync.tick(player);}
+            ServerDual.tick(player);if(!ServerDual.active(player)){ServerRecoil.tick(player);ServerPhysical.tick(player);RemoteSync.tick(player);}}
     }
     @SubscribeEvent public static void reload(com.tacz.guns.api.event.common.GunReloadEvent event) {
+        ServerButtonJams.reload(event);
+        if(event.getLogicalSide().isServer()&&event.getEntity() instanceof ServerPlayer p&&ServerDual.active(p)){if(DualGunOperator.current(p)==null)event.setCanceled(true);return;}
         if(event.getLogicalSide().isServer() && event.getEntity() instanceof ServerPlayer player && (!ServerPhysical.allowsReload(player)||!ServerAdvanced.canInteract(player))) event.setCanceled(true);
     }
 }

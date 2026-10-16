@@ -1,0 +1,3 @@
+pluginManagement { repositories { maven { url='https://maven.fabricmc.net/' }; gradlePluginPortal(); mavenCentral() } }
+rootProject.name='visor-compat-tacz-fabric-1.21.1'
+

@@ -42,6 +42,15 @@ public final class ServerRecoil {
             CompatNetwork.CHANNEL.send(PacketDistributor.TRACKING_ENTITY_AND_SELF.with(()->p),new CompatNetwork.RecoilShot(p.getUUID(),Profiles.key(p.getMainHandItem()),s.slot,s.generation,start,curve));
         }catch(IllegalArgumentException ignored){/* An invalid optional pack recoil curve must not break a shot. */}
     }
+    public static boolean isEnabled(ServerPlayer p){return !DISABLED.contains(p.getUUID());}
+    public static RecoilMotion.Curve dualCurve(GunData data,com.tacz.guns.resource.modifier.AttachmentCacheProperty cache){
+        var recoil=data.getRecoil();if(recoil==null)return null;float pitch=1,yaw=1;
+        if(cache!=null){ParameterizedCachePair<Float,Float> mods=cache.getCache(RecoilModifier.ID);if(mods!=null){pitch=(float)mods.left().eval(1f);yaw=(float)mods.right().eval(1f);}}
+        try{var pc=recoil.genPitchSplineFunction(pitch);var yc=recoil.genYawSplineFunction(yaw);double duration=Math.min(1900,Math.max(end(pc),end(yc)));if(duration<=0)return null;
+            float[] ps=new float[RecoilMotion.SAMPLES],ys=new float[RecoilMotion.SAMPLES];for(int i=1;i<ps.length-1;i++){double at=(duration+100)*i/(ps.length-1);ps[i]=sample(pc,at);ys[i]=sample(yc,at);}
+            var curve=new RecoilMotion.Curve((float)(duration+100)/50,ps,ys);return curve.valid()?curve:null;
+        }catch(IllegalArgumentException ex){return null;}
+    }
     private static double end(PolynomialSplineFunction f){return f==null?0:f.getKnots()[f.getKnots().length-1];}
     private static float sample(PolynomialSplineFunction f,double at){if(f==null)return 0;double end=end(f);return (float)(at<=end?f.value(at):f.value(end)*Math.max(0,1-(at-end)/100));}
 }

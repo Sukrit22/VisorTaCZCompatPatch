@@ -1,0 +1,32 @@
+{
+  "minecraft": "1.21.1",
+  "java": 21,
+  "loader": "Fabric 0.17.2",
+  "fabric_api": "0.116.17+1.21.1",
+  "dependencies": [
+    {
+      "project": "p5sM2GSi",
+      "version": "0.6.0-beta+mc1.21.1-fabric",
+      "version_id": "7i7UZxdB",
+      "url": "https://cdn.modrinth.com/data/p5sM2GSi/versions/7i7UZxdB/Visor-0.6.0-beta%2Bmc1.21.1-fabric.jar",
+      "sha512": "ef507083590fc7fee598b466dae9bb005763df00cd62a4bf6a438de6774a2be725fa0954aee2dca79d372978acbbb48bc0f009cfab75f81b3a819c6ea86ddd00",
+      "sha1": "6f3eace0ca5023fe1767bc6b5b6f76ec2afc2bbc"
+    },
+    {
+      "project": "1j76DVHU",
+      "version": "1.21.1-0.7.1-forge1.1.8-hotfix2",
+      "version_id": "veM4XOhW",
+      "url": "https://cdn.modrinth.com/data/1j76DVHU/versions/veM4XOhW/TACZ-Refabricated-1.21.1-0.7.1-forge1.1.8-hotfix2.jar",
+      "sha512": "f3ef350f67cd251af59c6b27e4ca3349f8840d763e13b6f2662dea868428fa9ba17b29c2e8e2d56f991055e41b04ad61b51bc63b968331a03f37baf5a63278fd",
+      "sha1": "60dfc215c91dc541364be075d5c106cea9363e77"
+    },
+    {
+      "project": "ohNO6lps",
+      "version": "v21.1.6-1.21.1-Fabric",
+      "version_id": "N5qzq0XV",
+      "url": "https://cdn.modrinth.com/data/ohNO6lps/versions/N5qzq0XV/ForgeConfigAPIPort-v21.1.6-1.21.1-Fabric.jar",
+      "sha512": "cd9296e78ba969f7aed6e3692aa25eb61c102c79c55ca5f9592576bacaa26feab5d5d48fa30cf07ca852e0f1d42afc4d4558feff69a67b225183d2bc15898cf9",
+      "sha1": "18bf1f21cd2db6dcd4e42db85eae54e2a49a48ee"
+    }
+  ]
+}

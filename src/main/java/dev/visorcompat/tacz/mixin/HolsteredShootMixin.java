@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class HolsteredShootMixin {
     @Inject(method="autoShoot",at=@At("HEAD"),cancellable=true)
     private static void visorTacz$holstered(CallbackInfo ci){
-        if(AdvancedClient.holstered()){
+        if(AdvancedClient.holstered()||dev.visorcompat.tacz.client.DualClient.active()){
             com.tacz.guns.client.gameplay.LocalPlayerSprint.stopSprint=false;
             ci.cancel();
         }

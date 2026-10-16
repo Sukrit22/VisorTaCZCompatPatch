@@ -23,7 +23,7 @@ import java.util.UUID;
 @Mod.EventBusSubscriber(modid = VisorTacz.ID)
 public final class CompatNetwork {
     public static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
-            new ResourceLocation(VisorTacz.ID, "main"), () -> "28", "28"::equals, "28"::equals);
+            new ResourceLocation(VisorTacz.ID, "main"), () -> "32", "32"::equals, "32"::equals);
     private static final Set<UUID> DESCRIPTORS = new HashSet<>();
     private static final Set<UUID> MODE_KNOWN = new HashSet<>();
     private static final Set<UUID> TRANSFER_ANYTIME = new HashSet<>();
@@ -52,6 +52,7 @@ public final class CompatNetwork {
     private static final Map<UUID,PhysicsSetting> PHYSICS=new HashMap<>();
     public static dev.visorcompat.tacz.PhysicsCalibration physics(ServerPlayer p){var s=PHYSICS.get(p.getUUID());return s!=null&&s.key().equals(Profiles.key(p.getMainHandItem()))?s.value():dev.visorcompat.tacz.PhysicsCalibration.defaults(Profiles.get(p.getMainHandItem()));}
     public static void register() {
+        DualNetwork.register();ButtonJamNetwork.register();
         CHANNEL.messageBuilder(MagazineUse.class,17,NetworkDirection.PLAY_TO_SERVER).encoder((m,b)->{}).decoder(b->new MagazineUse())
             .consumerMainThread((m,c)->{var p=c.get().getSender();if(p!=null)ServerPhysical.magazineUse(p);c.get().setPacketHandled(true);}).add();
         CHANNEL.messageBuilder(RecoilReset.class,15,NetworkDirection.PLAY_TO_CLIENT).encoder((m,b)->b.writeUUID(m.player())).decoder(b->new RecoilReset(b.readUUID()))
@@ -61,7 +62,7 @@ public final class CompatNetwork {
         CHANNEL.messageBuilder(RecoilShot.class,14,NetworkDirection.PLAY_TO_CLIENT)
             .encoder((m,b)->{b.writeUUID(m.player());b.writeUtf(m.key(),512);b.writeInt(m.slot());b.writeLong(m.generation());b.writeLong(m.tick());b.writeFloat(m.curve().ticks());for(float v:m.curve().pitch())b.writeFloat(v);for(float v:m.curve().yaw())b.writeFloat(v);})
             .decoder(b->{var id=b.readUUID();var key=b.readUtf(512);int slot=b.readInt();long generation=b.readLong();long tick=b.readLong();float ticks=b.readFloat();float[] p=new float[dev.visorcompat.tacz.RecoilMotion.SAMPLES],y=new float[p.length];for(int i=0;i<p.length;i++)p[i]=b.readFloat();for(int i=0;i<y.length;i++)y[i]=b.readFloat();return new RecoilShot(id,key,slot,generation,tick,new dev.visorcompat.tacz.RecoilMotion.Curve(ticks,p,y));})
-            .consumerMainThread((m,c)->{net.minecraftforge.fml.DistExecutor.unsafeRunWhenOn(net.minecraftforge.api.distmarker.Dist.CLIENT,()->()->dev.visorcompat.tacz.client.ClientRecoil.receive(m));c.get().setPacketHandled(true);}).add();
+            .consumerMainThread((m,c)->{net.minecraftforge.fml.DistExecutor.unsafeRunWhenOn(net.minecraftforge.api.distmarker.Dist.CLIENT,()->()->{dev.visorcompat.tacz.client.ClientRecoil.receive(m);dev.visorcompat.tacz.client.DualRecoil.receive(m);});c.get().setPacketHandled(true);}).add();
         CHANNEL.messageBuilder(BackendAck.class,13,NetworkDirection.PLAY_TO_CLIENT)
             .encoder((m,b)->b.writeBoolean(m.accepted())).decoder(b->new BackendAck(b.readBoolean()))
             .consumerMainThread((m,c)->{net.minecraftforge.fml.DistExecutor.unsafeRunWhenOn(net.minecraftforge.api.distmarker.Dist.CLIENT,()->()->dev.visorcompat.tacz.client.CompatSettings.backendAck(m.accepted()));c.get().setPacketHandled(true);}).add();
@@ -160,7 +161,8 @@ public final class CompatNetwork {
         if(event.getEntity() instanceof ServerPlayer player) ServerPhysical.recoverInventory(player);
     }
     @SubscribeEvent public static void logout(PlayerEvent.PlayerLoggedOutEvent event) {
-        if(event.getEntity() instanceof ServerPlayer p)dev.visorcompat.tacz.server.ServerAdvanced.clear(p);
+        dev.visorcompat.tacz.server.ServerButtonJams.logout(event);
+        if(event.getEntity() instanceof ServerPlayer p){dev.visorcompat.tacz.server.ServerDual.logout(p);dev.visorcompat.tacz.server.ServerAdvanced.clear(p);}
         if(event.getEntity() instanceof ServerPlayer player) ServerPhysical.clear(player);
         DESCRIPTORS.remove(event.getEntity().getUUID());MODE_KNOWN.remove(event.getEntity().getUUID());
         PHYSICAL.remove(event.getEntity().getUUID());TRANSFER_ANYTIME.remove(event.getEntity().getUUID());
@@ -169,5 +171,6 @@ public final class CompatNetwork {
         dev.visorcompat.tacz.server.ServerRecoil.clear(event.getEntity().getUUID());
         dev.visorcompat.tacz.server.RemoteSync.remove(event.getEntity().getUUID());
     }
-    @SubscribeEvent public static void stopped(ServerStoppedEvent event) { dev.visorcompat.tacz.server.ServerRecoil.clearAll(); dev.visorcompat.tacz.server.ServerAdvanced.clearAll();DESCRIPTORS.clear();MODE_KNOWN.clear(); TRANSFER_ANYTIME.clear(); ACTIVE.clear(); PHYSICAL.clear(); GRIPS.clear();PHYSICS.clear(); ServerPhysical.stop(); dev.visorcompat.tacz.server.RemoteSync.clear(); }
+    @SubscribeEvent public static void stopped(ServerStoppedEvent event) { dev.visorcompat.tacz.server.ServerButtonJams.stopped(event); dev.visorcompat.tacz.server.ServerDual.clearAll(); dev.visorcompat.tacz.server.ServerRecoil.clearAll(); dev.visorcompat.tacz.server.ServerAdvanced.clearAll();DESCRIPTORS.clear();MODE_KNOWN.clear(); TRANSFER_ANYTIME.clear(); ACTIVE.clear(); PHYSICAL.clear(); GRIPS.clear();PHYSICS.clear(); ServerPhysical.stop(); dev.visorcompat.tacz.server.RemoteSync.clear(); }
 }
+

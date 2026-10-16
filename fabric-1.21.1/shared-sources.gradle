@@ -1,0 +1,86 @@
+apply from: '../ports/minecraft-1.21.1.gradle'
+tasks.register('generateSharedSources') {
+ inputs.dir('../src/main/java'); inputs.file('shared-sources.gradle'); inputs.file('../ports/minecraft-1.21.1.gradle')
+ outputs.dir(layout.buildDirectory.dir('generated/shared'))
+ doLast {
+  def out=layout.buildDirectory.dir('generated/shared').get().asFile
+  delete(out)
+  fileTree('../src/main/java').matching { include '**/*.java'; exclude '**/VisorTacz.java' }.each { source ->
+   String s=source.getText('UTF-8')
+   s=s.replaceAll(/(?s)@Mod\.EventBusSubscriber\([^)]*\)/,'').replaceAll(/@SubscribeEvent(?:\([^)]*\))?/,'')
+   s=s.replaceAll(/(?m)^import net\.minecraftforge\.(eventbus\.api\..*|fml\.common\.Mod|fml\.ModLoadingContext|common\.capabilities\.ForgeCapabilities);\s*$/,'')
+   def replacements=[
+    'net.minecraftforge.event.TickEvent':'dev.visorcompat.tacz.fabric.event.TickEvent',
+    'net.minecraftforge.event.entity.player.PlayerEvent':'dev.visorcompat.tacz.fabric.event.PlayerEvent',
+    'net.minecraftforge.event.server.ServerStoppedEvent':'dev.visorcompat.tacz.fabric.event.ServerStoppedEvent',
+    'net.minecraftforge.event.RegisterCommandsEvent':'dev.visorcompat.tacz.fabric.event.RegisterCommandsEvent',
+    'net.minecraftforge.client.event.InputEvent':'cn.sh1rocu.tacz.api.event.InputEvent',
+    'net.minecraftforge.client.event.':'dev.visorcompat.tacz.fabric.event.',
+    'net.minecraftforge.api.distmarker.Dist':'dev.visorcompat.tacz.fabric.Dist',
+    'net.minecraftforge.fml.DistExecutor':'dev.visorcompat.tacz.fabric.DistExecutor',
+    'net.minecraftforge.fml.LogicalSide':'cn.sh1rocu.tacz.api.LogicalSide',
+    'net.minecraftforge.common.MinecraftForge':'dev.visorcompat.tacz.fabric.FabricEvents',
+    'MinecraftForge.EVENT_BUS.post':'dev.visorcompat.tacz.fabric.FabricGunEvents.post',
+    'dev.visorcompat.tacz.fabric.FabricEvents.EVENT_BUS.post':'dev.visorcompat.tacz.fabric.FabricGunEvents.post',
+    'com.tacz.guns.compat.oculus.OculusCompat':'com.tacz.guns.compat.iris.IrisCompat',
+    'OculusCompat.':'IrisCompat.',
+    'net.minecraftforge.fml.loading.FMLPaths':'dev.visorcompat.tacz.fabric.FMLPaths',
+    'net.minecraftforge.fml.ModList':'dev.visorcompat.tacz.fabric.ModList',
+    'net.minecraftforge.network.simple.SimpleChannel':'dev.visorcompat.tacz.fabric.network.SimpleChannel',
+    'net.minecraftforge.network.':'dev.visorcompat.tacz.fabric.network.',
+    'IClientItemExtensions.of(stack.getItem()).getCustomRenderer()':'((cn.sh1rocu.tacz.api.extension.IItem)stack.getItem()).getCustomRenderer()',
+    'import net.minecraftforge.client.extensions.common.IClientItemExtensions;':'',
+    'ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, SPEC);':'fuzs.forgeconfigapiport.api.config.v3.ForgeConfigRegistry.INSTANCE.register(VisorTacz.ID,ModConfig.Type.CLIENT,SPEC);',
+    'player.getCapability(ForgeCapabilities.ITEM_HANDLER)':'((cn.sh1rocu.tacz.api.mixin.ItemHandlerCapability)player).tacz$getItemHandler(null)',
+    'p.getCapability(ForgeCapabilities.ITEM_HANDLER)':'((cn.sh1rocu.tacz.api.mixin.ItemHandlerCapability)p).tacz$getItemHandler(null)',
+    'target.isStencilEnabled()':'((cn.sh1rocu.tacz.api.mixin.RenderTargetStencil)target).tacz$isStencilEnabled()',
+    'target.enableStencil()':'((cn.sh1rocu.tacz.api.mixin.RenderTargetStencil)target).tacz$enableStencil()',
+    'new ShaderInstance(event.getResourceProvider(),new ResourceLocation(VisorTacz.ID,"optic"),':'new ShaderInstance(event.getResourceProvider(),"visor_tacz:optic",'
+    ,'net.minecraftforge.common.ForgeConfigSpec':'net.neoforged.neoforge.common.ModConfigSpec'
+    ,'ForgeConfigSpec':'ModConfigSpec'
+    ,'net.minecraftforge.fml.config.ModConfig':'net.neoforged.fml.config.ModConfig'
+   ]
+   replacements.each { a,b -> s=s.replace(a,b) }
+   if(source.name=='DualSounds.java')s=s.replace('ModSounds.GUN.get()', 'ModSounds.GUN')
+   if(source.name=='OpticRenderer.java')s=s.replace('event.registerShader(new ShaderInstance(event.getResourceProvider(),"visor_tacz:optic",DefaultVertexFormat.NEW_ENTITY),s->shader=s);','event.registerShader(new ResourceLocation(VisorTacz.ID,"optic"),DefaultVertexFormat.NEW_ENTITY,s->shader=s);')
+   if(source.name=='CompatSettings.java') {
+    s=s.replace('Commands.literal(', 'net.fabricmc.fabric.api.client.command.v2.ClientCommandManager.literal(')
+    s=s.replaceAll(/\.sendSuccess\(\(\)->(Component\.literal\("[^"]*"\)),false\)/, '.sendFeedback($1)')
+    s=s.replace('.sendFailure(', '.sendError(')
+   }
+   if(source.name=='ClientAddon.java')s=s.replace('MinecraftForge.EVENT_BUS.register(controls);','dev.visorcompat.tacz.fabric.FabricEvents.registerControls(controls);')
+   if(source.name=='GunSupportTooltip.java') {
+    s=s.replace('import net.minecraftforge.event.entity.player.ItemTooltipEvent;','')
+    s=s.replaceAll(/(?m)^\s*public static void tooltip\(ItemTooltipEvent event\)\{[^\n]*\}\s*$/,'')
+   }
+   // TaCZ names stay stable, but this constructor descriptor contains Minecraft
+   // types. Remap this injection explicitly even though the mixin is unmapped.
+   if(source.name=='HolsteredMiningMixin.java') {
+    s=s.replace('import net.minecraftforge.event.entity.player.PlayerInteractEvent;', '')
+    s=s.replace('PlayerInteractEvent.LeftClickBlock event,CallbackInfo ci', 'net.minecraft.world.entity.player.Player player,net.minecraft.world.level.Level world,net.minecraft.world.InteractionHand hand,net.minecraft.core.BlockPos pos,net.minecraft.core.Direction direction,org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable<net.minecraft.world.InteractionResult> ci')
+    s=s.replace('var player=event.getEntity();','')
+    s=s.replace('ci.cancel()', 'ci.setReturnValue(net.minecraft.world.InteractionResult.PASS)')
+   }
+   if(source.name=='DualScriptWeaponMixin.java') {
+    s=s.replace('Lnet/minecraft/world/entity/LivingEntity;m_21205_()Lnet/minecraft/world/item/ItemStack;', 'Lnet/minecraft/class_1309;method_6047()Lnet/minecraft/class_1799;')
+   }
+   if(source.name=='BulletMixin.java')s=s.replace('@Inject(method = "<init>', '@Inject(remap = true, method = "<init>')
+   // Minecraft targets and Minecraft method overrides need intermediary remapping;
+   // TaCZ/Visor methods such as InputExtraCheck.isInGame retain their API names.
+   if(source.name in ['WorldStencilReadyMixin.java','AdsSprintMixin.java','RemoteGunMixin.java']) {
+    s=s.replace('remap=false','remap=true').replace('remap = false','remap = true')
+    s=s.replaceAll(/,\s*"m_[0-9]+_"/,'')
+   }
+   // Each TaCZ model declares one render method. Avoid unmapped Mojang class
+   // names in descriptor selectors while retaining TaCZ's stable method name.
+   if(source.name in ['GunStencilMixin.java','OpticLensMixin.java'])
+    s=s.replaceAll(/method="render\([^"]+"/, 'method="render"')
+   s=minecraft121Transform(s,source)
+   def rel=file('../src/main/java').toPath().relativize(source.toPath()).toString()
+   def target=new File(out,rel);target.parentFile.mkdirs();target.setText(s,'UTF-8')
+  }
+  def helper=new File(out,'dev/visorcompat/tacz/compat/StackData.java');helper.parentFile.mkdirs();helper.setText(minecraft121HelperSource,'UTF-8')
+ }
+}
+
+

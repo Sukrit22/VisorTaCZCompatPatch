@@ -10,6 +10,11 @@ final class StatusText {
     static String[] lines() {
         var player=Minecraft.getInstance().player;
         if(player==null)return new String[0];
+        if(DualClient.active()){
+            var main=DualStatus.lines(org.vmstudio.visor.api.common.HandType.MAIN);
+            var off=DualStatus.lines(org.vmstudio.visor.api.common.HandType.OFFHAND);
+            return java.util.stream.Stream.concat(java.util.Arrays.stream(main),java.util.Arrays.stream(off)).toArray(String[]::new);
+        }
         var stack=player.getMainHandItem();
         var item=IGun.getIGunOrNull(stack);
         if(item==null)return new String[0];
@@ -49,6 +54,8 @@ final class StatusText {
         String target=PhysicalClient.target().name().replace('_',' ');
         if(PhysicalClient.active() && (target.equals("POUCH") || PhysicalClient.phase()==dev.visorcompat.tacz.physical.Handling.Phase.NEW_MAG) && !dev.visorcompat.tacz.physical.PouchAmmo.available(player,stack))target="OUT OF AMMO";
         String optical=com.tacz.guns.compat.oculus.OculusCompat.isUsingRenderPack()?"OPTICS: CLEAR ONLY (SHADERS)":"";
+        if(CompatSettings.handlingMode()==CompatSettings.HandlingMode.BUTTON && dev.visorcompat.tacz.compat.GunDurabilityCompat.jammed(stack) && dev.visorcompat.tacz.compat.GunDurabilityCompat.supported())
+            return new String[]{ammo,"JAMMED | "+handling,ButtonJamClient.loading()};
         return new String[]{ammo,state+" | "+handling,target.equals("NONE")?optical:"GRAB: "+target};
     }
 }

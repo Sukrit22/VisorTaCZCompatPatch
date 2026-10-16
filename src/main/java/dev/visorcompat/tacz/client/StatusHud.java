@@ -15,7 +15,7 @@ public final class StatusHud {
         event.registerAboveAll("ammo_ads",(gui,graphics,partial,width,height)->{
             var mc=Minecraft.getInstance();
             if(CompatSettings.display()!=CompatSettings.Display.HUD || !ClientControls.vrActive()
-                    || !ClientControls.supported() || mc.screen!=null || mc.options.hideGui
+                    || (!DualClient.active()&&!ClientControls.supported()) || mc.screen!=null || mc.options.hideGui
                     || com.tacz.guns.compat.oculus.OculusCompat.isRenderShadow())return;
             String[] lines=StatusText.lines();
             int panelWidth=0,count=0;

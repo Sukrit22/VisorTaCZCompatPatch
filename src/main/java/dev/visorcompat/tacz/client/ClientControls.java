@@ -37,6 +37,7 @@ public final class ClientControls implements VREventListener {
 
     public ClientControls() { instance = this; }
     public static void clearInput() {
+        ButtonJamClient.reset();
         stopShooting();
         PhysicalClient.releaseGrip();
     }
@@ -75,6 +76,7 @@ public final class ClientControls implements VREventListener {
 
     @VREventHandler public void session(org.vmstudio.visor.api.client.events.SessionStateChangedVREvent event) {
         if(event.becameUnfocused() || event.becameFocused() || event.becameInactive()) {
+            DualClient.reset();
             AdvancedClient.sessionReset();
             clearInput();
             if(event.becameFocused())CompatSettings.forceSync();
@@ -82,7 +84,11 @@ public final class ClientControls implements VREventListener {
     }
     @VREventHandler
     public void onAction(ActionButtonVREvent event) {
-        if(Minecraft.getInstance().screen!=null){clearInput();return;}
+        if(Minecraft.getInstance().screen!=null){DualClient.reset();clearInput();return;}
+        if(DualClient.action(event,canInput()))return;
+        if(DualClient.active())return;
+        if(ButtonJamClient.action(event,canInput()))return;
+        if(ButtonJamClient.busy()){event.setCanceled(true);return;}
         if(PhysicalClient.magazineUse(event,canInput()))return;
         if(AdvancedClient.action(event,canInput()))return;
         if (PhysicalClient.action(event,canInput())) return;
@@ -141,6 +147,12 @@ public final class ClientControls implements VREventListener {
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public void tick(TickEvent.ClientTickEvent event) {
         if (event.phase != TickEvent.Phase.START) return;
+        ButtonJamClient.tick(canInput());
+        DualClient.tick(canInput());
+        if(DualClient.active()){
+            stopShooting();
+            AdvancedClient.tick(false);PhysicalClient.tick(false);return;
+        }
         AdvancedClient.tick(canInput());
         PhysicalClient.tick(canInput());
         boolean active = vrActive() && holdingGun() && !AdvancedClient.holstered();
@@ -151,6 +163,7 @@ public final class ClientControls implements VREventListener {
         }
         if (!active || !canInput() || !supported() || !PhysicalClient.canFire()) triggerHeld = false;
         if(!AdvancedClient.canFire())triggerHeld=false;
+        if(ButtonJamClient.busy())triggerHeld=false;
         boolean analog=doubleTriggerAvailable();
         if(analog) {
             var stack=player.getMainHandItem();
@@ -214,8 +227,9 @@ public final class ClientControls implements VREventListener {
     /** Only world aiming marks; menus retain their own cursor and input ownership. */
     public static boolean hideWorldCursor(HandType hand){
         var mc=Minecraft.getInstance();
-        if(!vrActive()||!supported()||mc.screen!=null
+        if(!vrActive()||(!DualClient.active()&&!supported())||mc.screen!=null
             ||VisorAPI.client().getGuiManager().getCursorHandler().isHandFocused(hand))return false;
+        if(DualClient.active())return DualClient.held(hand);
         if(AdvancedClient.active())return AdvancedClient.handOccupied(hand);
         if(PhysicalClient.supportAnchor())return hand==HandType.OFFHAND;
         return hand==HandType.MAIN||PhysicalClient.supportCursorOccupied();
@@ -223,6 +237,7 @@ public final class ClientControls implements VREventListener {
 
     @VREventHandler
     public void handState(HandRenderStateVREvent event) {
+        if(DualClient.assigned(event.getHandType()) && event.getState().isWorldHand()){event.setState(HandRenderState.WORLD_HAND_NO_ITEM);return;}
         if (vrActive() && supported() && event.getHandType() == HandType.MAIN
                 && (event.getState().isWorldHand() || Minecraft.getInstance().screen instanceof InspectionScreen || Minecraft.getInstance().screen instanceof HolsterScreen || Minecraft.getInstance().screen instanceof CalibrationScreen || Minecraft.getInstance().screen instanceof com.tacz.guns.client.gui.GunRefitScreen)) event.setState(HandRenderState.WORLD_HAND_NO_ITEM);
     }
@@ -253,7 +268,7 @@ public final class ClientControls implements VREventListener {
     @SubscribeEvent
     public void beforeShot(GunShootEvent event) {
         if (event.getLogicalSide().isClient() && event.getShooter() == Minecraft.getInstance().player
-                && vrActive() && (!supported() || !canInput() || !PhysicalClient.canFire() || !AdvancedClient.canFire())) event.setCanceled(true);
+                && vrActive() && (!supported() || !canInput() || ButtonJamClient.busy() || !PhysicalClient.canFire() || !AdvancedClient.canFire())) event.setCanceled(true);
     }
 
     @SubscribeEvent(priority=net.minecraftforge.eventbus.api.EventPriority.LOWEST)

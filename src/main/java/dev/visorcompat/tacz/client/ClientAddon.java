@@ -12,6 +12,7 @@ public final class ClientAddon implements VisorAddon {
         VisorAPI.eventBus().registerListener(this, controls);
         MinecraftForge.EVENT_BUS.register(controls);
         VisorAPI.addonManager().getRegistries().handEffects().registerComponent(new GunRenderer(this));
+        VisorAPI.addonManager().getRegistries().handEffects().registerComponent(new DualGunRenderer(this));
         VisorAPI.addonManager().getRegistries().handEffects().registerComponent(new StatusPanel(this));
         VisorAPI.addonManager().getRegistries().gameEffects().registerComponent(new LateGunRenderer(this));
     }

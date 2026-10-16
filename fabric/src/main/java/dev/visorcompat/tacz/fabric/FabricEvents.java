@@ -17,7 +17,7 @@ public final class FabricEvents {
   ClientCommandRegistrationCallback.EVENT.register((dispatcher,registry)->CompatSettings.commands(new RegisterClientCommandsEvent(dispatcher)));
   ClientPlayConnectionEvents.JOIN.register((handler,sender,client)->CompatSettings.login(new ClientPlayerNetworkEvent.LoggingIn()));
   ClientPlayConnectionEvents.DISCONNECT.register((handler,client)->{
-   var event=new ClientPlayerNetworkEvent.LoggingOut();CompatSettings.logout(event);ClientRecoil.logout(event);HandlingEffects.logout(event);MagazineEffects.logout(event);RemoteGuns.logout(event);
+   var event=new ClientPlayerNetworkEvent.LoggingOut();CompatSettings.logout(event);ClientRecoil.logout(event);HandlingEffects.logout(event);MagazineEffects.logout(event);RemoteGuns.logout(event);DualRemote.logout(event);
   });
   var inputPhase=new net.minecraft.resources.ResourceLocation("visor_tacz","input");
   ClientTickEvents.START_CLIENT_TICK.addPhaseOrdering(inputPhase,net.fabricmc.fabric.api.event.Event.DEFAULT_PHASE);
@@ -37,7 +37,7 @@ public final class FabricEvents {
   });
   WorldRenderEvents.AFTER_ENTITIES.register(context->{
    var event=new RenderLevelStageEvent(context.matrixStack(),context.camera(),context.tickDelta());
-   RemoteGuns.render(event);HandlingEffects.render(event);MagazineEffects.render(event);
+   RemoteGuns.render(event);DualRemote.render(event);HandlingEffects.render(event);MagazineEffects.render(event);
   });
   CoreShaderRegistrationCallback.EVENT.register(context->OpticRenderer.shaders(new RegisterShadersEvent(context)));
   StatusHud.register(new RegisterGuiOverlaysEvent());

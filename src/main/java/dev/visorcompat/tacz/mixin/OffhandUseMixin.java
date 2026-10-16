@@ -14,6 +14,7 @@ public abstract class OffhandUseMixin {
     @Inject(method="onClickInput",at=@At("HEAD"),cancellable=true)
     private static void visorTacz$offhand(InputEvent.InteractionKeyMappingTriggered event,CallbackInfo ci) {
         var player=Minecraft.getInstance().player;
+        if(dev.visorcompat.tacz.client.DualClient.active()){ci.cancel();return;}
         if(ClientControls.vrActive() && player!=null
             && (event.isAttack() && dev.visorcompat.tacz.client.AdvancedClient.holstered()
                 || event.isUseItem() && (dev.visorcompat.tacz.client.AdvancedClient.holsteredUsePassesThrough()

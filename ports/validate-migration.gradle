@@ -1,0 +1,23 @@
+// Standalone validation: gradlew -p ports validateMigration
+apply from: 'minecraft-1.21.1.gradle'
+
+tasks.register('validateMigration') {
+    doLast {
+        int mutations = 0
+        fileTree('../src/main/java').matching { include '**/*.java' }.each { source ->
+            String before = source.getText('UTF-8')
+            String after = minecraft121Transform(before, source)
+            assert !(after =~ /\.(getOrCreateTag|getTag|hasTag)\(/).find(): source
+            assert !(after =~ /StackData\.read\([^)]*\)\.(put\w*|remove)\(/).find(): source
+            assert !(after =~ /new\s+(?:net\.minecraft\.resources\.)?ResourceLocation\(/).find(): source
+            assert !(after =~ /\.(readItem|writeItem)\(/).find(): source
+            mutations += (after =~ /StackData\.(putBoolean|putInt|putString|remove)\(/).count
+        }
+        assert mutations > 40: "Expected actual root source mutations, found ${mutations}"
+        assert minecraft121Transform('new ResourceLocation(descriptor.id())', file('PumpVisual.java')) == 'ResourceLocation.parse(descriptor.id())'
+        assert minecraft121Transform('new ResourceLocation(asset.getNamespace(),"a,b"+asset.getPath())', file('DualSounds.java')) == 'ResourceLocation.fromNamespaceAndPath(asset.getNamespace(),"a,b"+asset.getPath())'
+        assert minecraft121Transform('b.writeItem(m.stack());', file('Network.java')) == 'net.minecraft.world.item.ItemStack.OPTIONAL_STREAM_CODEC.encode((net.minecraft.network.RegistryFriendlyByteBuf)b,m.stack());'
+        assert minecraft121Transform('b.readItem()', file('Network.java')) == 'net.minecraft.world.item.ItemStack.OPTIONAL_STREAM_CODEC.decode((net.minecraft.network.RegistryFriendlyByteBuf)b)'
+        println "Validated shared migration, including ${mutations} persisted component mutation sites"
+    }
+}

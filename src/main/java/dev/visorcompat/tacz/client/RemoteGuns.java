@@ -28,6 +28,7 @@ public final class RemoteGuns {
         else STATES.remove(state.player());
     }
     static CompatNetwork.RemoteState state(AbstractClientPlayer p) {
+        if(DualRemote.active(p.getUUID()))return null;
         var mc=Minecraft.getInstance();var entry=STATES.get(p.getUUID());
         if(entry!=null){if(entry.state().descriptors()&&!entry.state().profileDigest().equals(DescriptorProfiles.digest()))return null;}
         if(p==mc.player || entry==null || System.nanoTime()-entry.time()>2_500_000_000L || !p.isAlive()

@@ -24,7 +24,7 @@ public final class GunRenderer extends VRHandEffect {
     @Override public String getId() { return "tacz_gun"; }
     @Override public boolean isGlobal() { return true; }
     @Override public boolean isVisible(VRDecorator decorator, HandType hand, boolean guiHand) {
-        return !guiHand && hand == HandType.MAIN && ClientControls.vrActive()
+        return !DualClient.active() && !guiHand && hand == HandType.MAIN && ClientControls.vrActive()
                 && !com.tacz.guns.compat.oculus.OculusCompat.isRenderShadow()
                 && (Minecraft.getInstance().screen == null || Minecraft.getInstance().screen instanceof PhysicsScreen || Minecraft.getInstance().screen instanceof InspectionScreen || Minecraft.getInstance().screen instanceof HolsterScreen || Minecraft.getInstance().screen instanceof CalibrationScreen || Minecraft.getInstance().screen instanceof com.tacz.guns.client.gui.GunRefitScreen) && ClientControls.supported();
     }

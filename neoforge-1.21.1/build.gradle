@@ -1,0 +1,48 @@
+plugins { id 'net.neoforged.moddev' version '2.0.141' }
+group='dev.visorcompat.tacz'
+version='0.14.0-alpha.5.1+1.21.1'
+base.archivesName='visor-compat-tacz-1.21.1-neoforge'
+java.toolchain.languageVersion=JavaLanguageVersion.of(21)
+repositories { mavenCentral(); maven { url='https://api.modrinth.com/maven' } }
+configurations { upstreamBundles { transitive=false } }
+dependencies { upstreamBundles 'maven.modrinth:tacz-1.21.1:62q6mB5Q' }
+def nestedDirectory=layout.buildDirectory.dir('upstream-runtime')
+tasks.register('extractUpstreamLibraries') {
+ inputs.files(configurations.upstreamBundles); outputs.dir(nestedDirectory)
+ doLast {
+  configurations.upstreamBundles.files.each { archive ->
+   def zip=new java.util.zip.ZipFile(archive)
+   try { zip.entries().each { entry ->
+    if(entry.name.startsWith('META-INF/jarjar/')&&entry.name.endsWith('.jar')) {
+     def target=new File(nestedDirectory.get().asFile,entry.name.tokenize('/').last());target.parentFile.mkdirs()
+     target.bytes=zip.getInputStream(entry).withCloseable { it.readAllBytes() }
+    }
+   }} finally { zip.close() }
+  }
+ }
+}
+neoForge {
+ version='21.1.219'
+ mods { visor_tacz { sourceSet sourceSets.main } }
+ runs {
+  client { client(); gameDirectory=file('run/client') }
+  server { server(); programArgument '--nogui'; gameDirectory=file('build/server-smoke') }
+ }
+}
+dependencies {
+ implementation 'maven.modrinth:visor:TfyC5Jd9'
+ implementation 'maven.modrinth:tacz-1.21.1:62q6mB5Q'
+ compileOnly 'org.apache.commons:commons-math3:3.6.1'
+ compileOnly fileTree(nestedDirectory) { include '*.jar' }
+ testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
+}
+apply from:'shared-sources.gradle'
+sourceSets.main.java.srcDir layout.buildDirectory.dir('generated/shared')
+sourceSets.main.resources.srcDir '../src/main/resources'
+sourceSets.test.java.srcDir '../src/test/java'
+compileJava.dependsOn generateSharedSources
+compileJava.dependsOn extractUpstreamLibraries
+tasks.withType(JavaCompile).configureEach { options.encoding='UTF-8'; options.compilerArgs += ['-Xmaxerrs','500'] }
+tasks.named('test') { useJUnitPlatform() }
+processResources { exclude 'META-INF/mods.toml','fabric.mod.json','visor_tacz-calibration.json','visor_tacz-holsters.json','visor_tacz-inspections.json'; filesMatching('META-INF/neoforge.mods.toml') { expand(version:project.version) } }
+minecraft121InstallTests()

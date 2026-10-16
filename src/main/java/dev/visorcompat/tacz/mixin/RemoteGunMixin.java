@@ -11,6 +11,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class RemoteGunMixin {
     @Inject(method={"renderByItem","m_108829_"},at=@At("HEAD"),cancellable=true)
     private void visorTacz$remote(ItemStack stack,ItemDisplayContext context,PoseStack matrices,MultiBufferSource buffer,int light,int overlay,CallbackInfo ci) {
-        if(RemoteGuns.replaces(stack,context))ci.cancel();
+        if(dev.visorcompat.tacz.client.DualRemote.replaces(stack,context)||RemoteGuns.replaces(stack,context))ci.cancel();
     }
 }

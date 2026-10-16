@@ -33,7 +33,7 @@ public final class AdvancedClient {
     private static dev.visorcompat.tacz.physical.PropGrip carryGrip;
     private static HandType holsterSide=HandType.MAIN;
     private AdvancedClient(){}
-    public static boolean active(){return CompatSettings.advanced()&&CompatSettings.active()&&ClientControls.supported();}
+    public static boolean active(){return !DualClient.active()&&CompatSettings.advanced()&&CompatSettings.active()&&ClientControls.supported();}
     public static boolean firingHold(){return !active()||!transferred&&hold.state()==AdvancedHold.State.MAIN;}
     public static boolean canFire(){return !active()||!transferred&&hold.canFire();}
     public static boolean holstered(){return active()&&hold.state()==AdvancedHold.State.HOLSTERED;}
@@ -91,7 +91,7 @@ public final class AdvancedClient {
         var stack=Minecraft.getInstance().player.getMainHandItem();var c=CalibrationStore.get(Profiles.key(stack));var p=Profiles.get(stack);
         return new GunPose(new Vector3f(position),new Quaternionf(rotation),new Quaternionf(rotation).transform(c.muzzleOffset(p.muzzleOffset()).mul(scale)).add(position),new Quaternionf(rotation).transform(new Vector3f(0,0,-1)),scale);
     }
-    private static GunPose holster(){
+    public static float holsterHeading(){
         var mc=Minecraft.getInstance();var vr=VisorAPI.client().getVRLocalPlayer();var pose=vr.getPoseData(PlayerPoseType.TICK);
         float scale=pose.getWorldScale();var head=pose.getHmd().getPosition();
         if(!Float.isFinite(headingOffset)){
@@ -113,7 +113,11 @@ public final class AdvancedClient {
                 headingOffset+=Math.max(-.12f,Math.min(.12f,delta));
             }
         }
-        float yaw=headingOffset+pose.getRotationY();
+        return headingOffset+pose.getRotationY();
+    }
+    private static GunPose holster(){
+        var mc=Minecraft.getInstance();var vr=VisorAPI.client().getVRLocalPlayer();var pose=vr.getPoseData(PlayerPoseType.TICK);
+        float scale=pose.getWorldScale();var head=pose.getHmd().getPosition();float yaw=holsterHeading();
         boolean pistol=Profiles.get(mc.player.getMainHandItem()).supportDistance()==0;
         float side=(vr.isLeftHanded()?-1:1)*(holsterSide==HandType.MAIN?1:-1);
         var c=HolsterStore.get(Profiles.key(mc.player.getMainHandItem()),pistol);

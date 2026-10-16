@@ -20,6 +20,8 @@ public final class ServerAdvanced {
         var e=STATES.get(p.getUUID());return e==null||e.state().held()&&e.state().slot()==p.getInventory().selected&&e.state().key().equals(Profiles.key(p.getMainHandItem()))&&System.nanoTime()-e.time()<500_000_000L;
     }
     private static boolean fresh(ServerPlayer p,Entry e){return e!=null&&e.state().slot()==p.getInventory().selected&&e.state().key().equals(Profiles.key(p.getMainHandItem()))&&System.nanoTime()-e.time()<500_000_000L;}
+    /** The inventory gun is a prop away from the hand; stale state cannot grant interactions. */
+    public static boolean holstered(ServerPlayer p){var e=STATES.get(p.getUUID());return ServerPoses.isVr(p)&&p.isAlive()&&!p.isSpectator()&&fresh(p,e)&&!e.state().held()&&Profiles.get(p.getMainHandItem())!=null;}
     public static boolean freeMain(ServerPlayer p){var e=STATES.get(p.getUUID());var profile=Profiles.get(p.getMainHandItem());return fresh(p,e)&&(e.state().mount()==1||e.state().mount()==2)&&profile!=null&&profile.supportDistance()==0&&!profile.manualAction();}
     public static boolean cylinderCarry(ServerPlayer p){var e=STATES.get(p.getUUID());return fresh(p,e)&&(e.state().mount()==3||e.state().mount()==4)&&Profiles.cylinder(p.getMainHandItem());}
     public static boolean cylinderOffhand(ServerPlayer p){var e=STATES.get(p.getUUID());return cylinderCarry(p)&&e.state().mount()==4;}
