@@ -330,7 +330,9 @@ public final class ServerPhysical {
         }
         s.stack.getOrCreateTag().putBoolean(BoltState.OPEN,next==ActionCycle.Bolt.OPEN);
         ActionState.lifted(s.stack,next!=ActionCycle.Bolt.LOWERED);
-        if(next==ActionCycle.Bolt.LOWERED){s.phase=s.rackFrom==Phase.NO_MAG?Phase.NO_MAG:readyAmmo(s.stack)?Phase.READY:Phase.NEED_RACK;s.held=false;}
+        // Closing the bolt does not release the user's action-part Grab. Keep the
+        // racking phase until release, so lifting again starts another full cycle.
+
         p.inventoryMenu.broadcastChanges();
     }
 
@@ -411,14 +413,29 @@ public final class ServerPhysical {
         s.mainInput=true;
         try{if(canceled)release(p,s,null);else grip(p,held);}finally{s.mainInput=false;}
     }
+    /** Lock only a deliberately held, fully rearward magazine-pistol slide. No feed/refund. */
+    private static boolean lockHeldSlide(ServerPlayer p,Session s){
+        if(s==null||s.stack!=p.getMainHandItem()||!s.held||!s.pulled||!Handling.racking(s.phase))return false;
+        var profile=Profiles.get(s.stack);
+        if(profile==null||profile.mechanism()!=WeaponProfile.Mechanism.MAGAZINE||profile.supportDistance()!=0
+            ||profile.smg()||GunDurabilityCompat.jammed(s.stack)||ServerPoses.validated(p)==null)return false;
+        var sample=sample(p);if(sample==null)return false;
+        var position=sample.local();
+        if(ActionCycle.rack(false,position.z-s.start.z,position.x-s.start.x,position.y-s.start.y)!=dev.visorcompat.tacz.physical.PumpCycle.Transition.OPEN)return false;
+        ActionState.locked(s.stack,true);s.pulled=false;s.held=false;
+        s.phase=s.rackFrom==Phase.NO_MAG?Phase.NO_MAG:Phase.NEED_RACK;
+        p.inventoryMenu.broadcastChanges();send(p,s,s.phase,0);return true;
+    }
     public static void pistolRelease(ServerPlayer p){
         if(enabled(p)&&Profiles.cylinder(p.getMainHandItem())){ServerCylinder.armOpen(p);return;}
-        var s=SESSIONS.get(p.getUUID());if(!enabled(p)||s==null||s.stack!=p.getMainHandItem()||Profiles.get(s.stack).supportDistance()!=0||s.held&&s.phase!=Phase.SUPPORT)return;
+        var s=SESSIONS.get(p.getUUID());if(enabled(p)&&lockHeldSlide(p,s))return;
+        if(!enabled(p)||s==null||s.stack!=p.getMainHandItem()||Profiles.get(s.stack).supportDistance()!=0||s.held&&s.phase!=Phase.SUPPORT)return;
         boolean support=s.phase==Phase.SUPPORT;if(support)s.phase=Phase.READY;
         releaseAction(p,s);if(support)s.phase=Phase.SUPPORT;
     }
     public static void advancedUse(ServerPlayer p){
-        var s=SESSIONS.get(p.getUUID());if(!enabled(p)||s==null||s.stack!=p.getMainHandItem()||s.anchor!=null||s.held&&s.phase!=Phase.SUPPORT||s.ticks-s.lastControl<6)return;
+        var s=SESSIONS.get(p.getUUID());if(enabled(p)&&lockHeldSlide(p,s))return;
+        if(!enabled(p)||s==null||s.stack!=p.getMainHandItem()||s.anchor!=null||s.held&&s.phase!=Phase.SUPPORT||s.ticks-s.lastControl<6)return;
         var profile=Profiles.get(s.stack);if(profile.manualAction())return;
         var gun=IGun.getIGunOrNull(s.stack);
         if(dev.visorcompat.tacz.physical.ActionState.locked(s.stack)&&(gun.getCurrentAmmoCount(s.stack)>0||s.phase==Phase.NO_MAG)){

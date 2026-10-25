@@ -26,6 +26,7 @@ public final class StatusPanel extends VRHandEffect {
             && !com.tacz.guns.compat.oculus.OculusCompat.isRenderShadow();
     }
     @Override public void render(HandType hand,VRRenderPass pass,PoseStack matrices,boolean gui,float partial){
+        if(!gui && pass.isEye() && !LateGunRenderer.drawing && !com.tacz.guns.compat.oculus.OculusCompat.isUsingRenderPack()){LateGunRenderer.defer(this,hand,pass,matrices,partial);return;}
         var mc=Minecraft.getInstance();if(mc.player==null)return;
         boolean dual=DualClient.active();
         var stack=dual?DualClient.stack(hand):mc.player.getMainHandItem();var item=IGun.getIGunOrNull(stack);if(item==null)return;
@@ -34,7 +35,7 @@ public final class StatusPanel extends VRHandEffect {
         if(!dual)gun=AdvancedClient.renderPose(gun);
         if(gun==null)return;
         Vector3f anchor;
-        if(CompatSettings.display()==CompatSettings.Display.GUN)anchor=gun.rotation().transform(new Vector3f(.10f,.13f,.03f).mul(gun.worldScale())).add(gun.hand());
+        if(CompatSettings.display()==CompatSettings.Display.GUN)anchor=gun.rotation().transform(new Vector3f(item.getGunId(stack).toString().equals("tacz:m700")?.18f:.10f,.13f,.03f).mul(gun.worldScale())).add(gun.hand());
         else {var wrist=dual?pose.getHand(hand):pose.getOffhand();anchor=wrist.getRotation().transformDirection(new Vector3f(0,.10f,.10f).mul(gun.worldScale())).add(wrist.getPosition());}
         var body=pose.getBody().getHand(hand).getPose();
         var old=new Matrix4f().translation(body.getPosition()).mul(body.getRotation()).scale(gun.worldScale());

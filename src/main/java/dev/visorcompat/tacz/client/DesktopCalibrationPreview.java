@@ -120,11 +120,11 @@ final class DesktopCalibrationPreview {
                     case SUPPORT->Handling.support(profile,c);case MAGAZINE->Handling.magazine(profile,c);
                     case RACK->Handling.rack(profile,c);case SELECTOR->Handling.selector(profile,c);
                     case RELEASE->Handling.release(profile,c);case PORT->JamProfile.of(profile,c).port();
-                    case SIGHT->{var p=OpticGeometry.sight(stack,profile);yield p==null?null:p.add(c.interactions().sight().vector()).mul(c.gunScale()).add(0,0,.015f+c.zones().sight().depth()/2);}
+                    case SIGHT->{var ads=OpticGeometry.ads(stack,profile,c,true);yield ads==null?null:new Vector3f(ads.sight()).add(0,0,.015f+ads.box().depth()/2);}
                     default->null;
                 };
                 if(center==null)continue;
-                int color=CalibrationHints.get(key,page.id()).color();highlight=page.id().equals(selected.id());box(g,center,c.zones().get(page.zone()),c,true,color);highlight=false;
+                int color=CalibrationHints.get(key,page.id()).color();highlight=page.id().equals(selected.id());box(g,center,page.zone()==ZoneSizes.Zone.SIGHT?OpticGeometry.ads(stack,profile,c,true).box():c.zones().get(page.zone()),c,true,color);highlight=false;
                 if(page.id().equals(selected.id())){var p=projected(new Vector3f(center),c,true);g.drawString(mc.font,CalibrationHints.get(key,page.id()).title(),Math.round(p.x)+4,Math.round(top+height*.48f-p.y),color);}
             }
             highlight=selected.id().equals("muzzle");box(g,c.muzzleOffset(profile.muzzleOffset()),new ZoneSizes.Box(.012f,.012f,.012f),c,true,CalibrationHints.get(key,"muzzle").color());highlight=false;

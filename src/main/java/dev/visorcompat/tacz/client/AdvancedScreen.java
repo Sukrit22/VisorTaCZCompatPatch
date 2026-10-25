@@ -4,6 +4,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.network.chat.Component;
 public final class AdvancedScreen extends Screen {
+    private int page;
     public AdvancedScreen(){super(Component.literal("Advanced Handling (experimental)"));}
     @Override protected void init(){int x=width/2-150,y=Math.max(26,height/2-126);
         addRenderableWidget(Button.builder(Component.literal("Handling: "+CompatSettings.handlingMode()),b->{CompatSettings.cycleHandling();rebuildWidgets();}).bounds(x,y,300,20).build());
@@ -21,9 +22,21 @@ public final class AdvancedScreen extends Screen {
         addRenderableWidget(Button.builder(Component.literal("Calibrate inspection grip"),b->{
             if(minecraft.player!=null){var p=dev.visorcompat.tacz.Profiles.get(minecraft.player.getMainHandItem());if(p!=null&&p.supportDistance()==0&&!p.manualAction())minecraft.setScreen(new InspectionScreen(dev.visorcompat.tacz.Profiles.key(minecraft.player.getMainHandItem()),true));}
         }).tooltip(net.minecraft.client.gui.components.Tooltip.create(Component.literal("Magazine pistols: adjust inspection position and rotation with live preview."))).bounds(x,y+168,300,20).build());
-        addRenderableWidget(Button.builder(Component.literal("Independent dual wield: "+(CompatSettings.dualWield()?"ON":"OFF")),b->{CompatSettings.setDualWield(!CompatSettings.dualWield());rebuildWidgets();}).tooltip(net.minecraft.client.gui.components.Tooltip.create(Component.literal("Experimental: assign two guns with Visor. Grip draws; release holsters; Trigger fires; Use reloads. Physical reloads and charged guns are not supported here yet."))).bounds(x,y+192,300,20).build());
+        addRenderableWidget(Button.builder(Component.literal("Independent dual wield: "+(CompatSettings.dualWield()?"ON":"OFF")),b->{CompatSettings.setDualWield(!CompatSettings.dualWield());rebuildWidgets();}).tooltip(net.minecraft.client.gui.components.Tooltip.create(Component.literal("Experimental: assign two guns with Visor. Grip draws; release holsters; Trigger fires; Use reloads. Physical dual Glock is experimental; other guns use Button handling."))).bounds(x,y+192,300,20).build());
         addRenderableWidget(Button.builder(Component.literal("Four holsters / assignment rules"),b->minecraft.setScreen(new FourHolsterScreen())).bounds(x,y+216,300,20).build());
-        addRenderableWidget(Button.builder(Component.literal("Back"),b->minecraft.setScreen(new ControlsScreen())).bounds(x,y+240,300,20).build());
+        // Visor can provide a shorter GUI canvas than the desktop. Paginate rows,
+        // reserving navigation and Back at the bottom rather than letting them overflow.
+        var buttons=children().stream().filter(v->v instanceof Button).map(v->(Button)v).toList();
+        var rows=buttons.stream().map(Button::getY).distinct().sorted().toList();
+        int capacity=Math.max(1,(height-84)/24),count=Math.max(1,(rows.size()+capacity-1)/capacity);
+        page=Math.min(page,count-1);int panelWidth=Math.min(300,width-24),left=(width-panelWidth)/2;
+        for(var button:buttons){int row=rows.indexOf(button.getY());button.visible=row/capacity==page;
+            button.setX(left+(button.getX()-x)*panelWidth/300);button.setWidth(button.getWidth()*panelWidth/300);
+            button.setY(28+(row%capacity)*24);
+        }
+        var previous=addRenderableWidget(Button.builder(Component.literal("< Previous"),b->{page--;rebuildWidgets();}).bounds(left,height-50,panelWidth/2-2,20).build());previous.active=page>0;
+        var next=addRenderableWidget(Button.builder(Component.literal("Next > "+(page+1)+"/"+count),b->{page++;rebuildWidgets();}).bounds(left+panelWidth/2+2,height-50,panelWidth/2-2,20).build());next.active=page<count-1;
+        addRenderableWidget(Button.builder(Component.literal("Back"),b->minecraft.setScreen(new ControlsScreen())).bounds(left,height-26,panelWidth,20).build());
     }
     @Override public boolean isPauseScreen(){return false;}
     @Override public void render(GuiGraphics g,int x,int y,float dt){

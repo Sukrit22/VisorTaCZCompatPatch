@@ -8,8 +8,9 @@ public record InteractionOffsets(Point support,Point magazine,Point rack,Point s
     public record Point(float x,float y,float z) {
         public static final Point ZERO=new Point(0,0,0);
         public Vector3f vector(){return new Vector3f(x,y,z);}
-        public boolean valid(){return Float.isFinite(x)&&Float.isFinite(y)&&Float.isFinite(z)
-            && Math.abs(x)<=.5f && Math.abs(y)<=.5f && Math.abs(z)<=.5f;}
+        public boolean valid(){return valid(.5f);}
+        public boolean valid(float limit){return Float.isFinite(x)&&Float.isFinite(y)&&Float.isFinite(z)
+            && Math.abs(x)<=limit && Math.abs(y)<=limit && Math.abs(z)<=limit;}
     }
     public static final InteractionOffsets ZERO=new InteractionOffsets(null,null,null,null,null,null,null);
     public InteractionOffsets(Point support,Point magazine,Point rack,Point selector,Point pouch,Point sight) {this(support,magazine,rack,selector,pouch,sight,null);}
@@ -19,5 +20,5 @@ public record InteractionOffsets(Point support,Point magazine,Point rack,Point s
         pouch=pouch==null?Point.ZERO:pouch;sight=sight==null?Point.ZERO:sight;port=port==null?Point.ZERO:port;release=release==null?Point.ZERO:release;
     }
     public Point[] points(){return new Point[]{support,magazine,rack,selector,pouch,sight,port,release};}
-    public boolean valid(){for(var p:points())if(!p.valid())return false;return true;}
+    public boolean valid(){var all=points();for(int i=0;i<all.length;i++)if(!all[i].valid(i==5?2f:.5f))return false;return true;}
 }

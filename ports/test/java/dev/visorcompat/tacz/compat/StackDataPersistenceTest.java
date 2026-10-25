@@ -11,12 +11,20 @@ import net.minecraft.server.Bootstrap;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.CustomData;
+import com.mojang.blaze3d.vertex.PoseStack;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
 
 /** Run with the target's real Minecraft runtime, without a running game or test framework. */
 public final class StackDataPersistenceTest {
     public static void main(String[] args) {
         SharedConstants.tryDetectVersion();
         Bootstrap.bootStrap();
+        PoseStack poses = new PoseStack();
+        Matrix4f correction = new Matrix4f().rotateY((float)Math.PI / 2);
+        poses.mulPose(correction);
+        check(poses.last().normal().equals(new Matrix3f(correction), 0.00001f),
+            "matrix pose multiplication applies normal correction exactly once");
         ItemStack fresh = new ItemStack(Items.STONE);
         check(!StackData.has(fresh), "new stack has no custom data");
         StackData.putBoolean(fresh, "visor_tacz_open", true);

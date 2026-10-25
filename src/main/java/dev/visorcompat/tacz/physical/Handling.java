@@ -73,7 +73,7 @@ public final class Handling {
     public static Vector3f rack(WeaponProfile p,Calibration c){return rack(p).add(c.interactions().rack().vector()).mul(c.gunScale());}
     public static Vector3f rack(WeaponProfile p,Calibration c,boolean open){return rack(p,c).add(0,0,p.bolt()&&open?PumpCycle.TRAVEL:0);}
     public static Vector3f selector(WeaponProfile p,Calibration c){return selector(p).add(c.interactions().selector().vector()).mul(c.gunScale());}
-    public static Vector3f support(WeaponProfile p,Calibration c){if(p.pump())return rack(p,c);return point(p,"support").add(c.interactions().support().vector()).mul(c.gunScale());}
+    public static Vector3f support(WeaponProfile p,Calibration c){if(p.pump()&&p.mechanism()!=WeaponProfile.Mechanism.TUBE_AUTO)return rack(p,c);return point(p,"support").add(c.interactions().support().vector()).mul(c.gunScale());}
     public static Vector3f pouch(Vector3fc head,Vector3fc forward,float scale,Calibration c) {
         Vector3f flat=new Vector3f(forward.x(),0,forward.z());
         if(flat.lengthSquared()<.001f)flat.set(0,0,-1);else flat.normalize();

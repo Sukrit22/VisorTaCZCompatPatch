@@ -1,6 +1,6 @@
 # Master test checklist and user results
 
-Updated **2026-10-13**. Current candidate: **0.14.0-alpha.4**, matching client/server, protocol **31**. This file is the active tracker; older release checklists are historical evidence.
+Updated **2026-10-18**. Current source candidate: **0.14.0-alpha.9**, matching client/server, protocol **34**. This file is the active tracker; older release checklists are historical evidence.
 
 ## How to use this without repeating work
 
@@ -10,7 +10,7 @@ Updated **2026-10-13**. Current candidate: **0.14.0-alpha.4**, matching client/s
 - **PENDING**: no explicit result yet. **OPEN ISSUE**: unresolved report, no new fix claimed; investigate when ready rather than repeatedly test unchanged code.
 - **MONITOR**: report recurrence, no forced repeated reproduction. **MERGED**: use its replacement; do not run twice.
 
-Start with **DW20–DW26**, then **BJ01–BJ02**. Then choose untested subcases for the mechanism you are working on. Keep Independent dual wield **OFF** for legacy single-gun Physical/Advanced tests. Dual currently uses button reload. Old single-gun passes do not certify dual mode, and dual changes do not automatically invalidate those passes.
+Start with the alpha.8 targeted checks below; preserve previous passes. Then choose untested subcases for the mechanism you are working on. Keep Independent dual wield **OFF** for legacy single-gun Physical/Advanced tests. Alpha.8 adds experimental Physical Glock17 in either dual hand; other dual guns use Button handling. Old single-gun passes do not certify dual mode, and dual changes do not automatically invalidate those passes.
 
 Preserve personal calibration. Use Survival and record inventory + gun + chamber for ammo tests. Save geometry before testing server interactions. Record gun/pack ID, loader, mode, handedness, shaders, version and logs for failures. Template: `0.14.0-alpha.4 DW23 PARTIAL — Glock reload audible, CZ75 silent; Forge, right-handed`. A subcase result updates only that subcase.
 
@@ -18,9 +18,75 @@ Alpha.5 source adds the opt-in four-holster foundation; it still uses dual Butto
 
 Automated evidence: alpha.4 passed **236 tests per loader**, Forge/Fabric packaging and gun-equipped server smoke tests. These are not headset, audio, stereo, actual mining or multiplayer gameplay passes.
 
+Alpha.6 automated evidence: 267 tests per Forge/Fabric 1.20.1 and Fabric 1.21.1 target; 268 on NeoForge 1.21.1. No headset validation or packaged JAR in this update.
+
+Alpha.7 automated evidence: all four compiled; 285 tests passed per Forge/Fabric1.20.1 and Fabric1.21.1, 286 on NeoForge1.21.1. Headset checks below remain pending.
+
+Alpha.8 automated evidence: 303 tests per Forge/Fabric 1.20.1 and Fabric 1.21.1 target, 304 on NeoForge 1.21.1. These cover reservation accounting, ADS calibration persistence, sound selection and existing regressions; full VR interaction and reconnect behavior still need the tests below.
+
+## Alpha.9 targeted checks after alpha.8 feedback
+
+Automated validation: 314 tests each on Forge/Fabric 1.20.1 and Fabric 1.21.1; 315 on NeoForge 1.21.1. No headset pass or packaged JAR is claimed.
+
+Do **not** rerun every A7 RETEST. Preserve passes; use the narrow outstanding checks below and A8-LIFE. A8-LIFE tests native inventory/stack replacement plus reserved magazine recovery across transitions; pure accounting tests cannot simulate every live inventory packet or VR disconnect.
+
+| ID | Status | Procedure |
+| --- | --- | --- |
+| A9-FEEDBACK | PENDING | Dual Glock each hand separately then both: confirmed shot produces that gun's flash, slide motion and casing; manual live-round rack produces one live round and appropriate slide sound. Other gun must not animate or eject. |
+| A9-ADS | PENDING | After geometry changes, inspect named holographic/red-dot purple marker with debug ON outside calibration. Review old negative workaround offsets rather than overwrite them automatically. With stable support, lower gun from eye and return repeatedly; ADS reacquires without sideways hunting. Save/reload attachment overrides remains A8-ADS. |
+| A9-SUPPORT | PENDING | M1014 calibration has separate blue Support and orange Rack pages. Save support position/size at foregrip; verify support aim and action handle remain independent. |
+
+## Alpha.8 targeted checks
+
+Protocol34, matching client/server. The first Physical dual milestone targets Glock17; unsupported guns remain Button. Advanced dual manipulation and finger spinning are not enabled.
+
+| ID | Status | Procedure |
+| --- | --- | --- |
+| A8-GLOCK | **PARTIAL** — alpha.8 removal and slide pull PASS; inventory count untested. Missing muzzle flash/ejection/slide feedback OPEN; see A9-FEEDBACK. | Physical mode + independent dual: Glock in right, other gun stowed. Remove magazine with free hand, obtain ammo-backed magazine at pouch, insert, rack and fire. Repeat with Glock left. Gun/chamber/inventory count conserved. |
+| A8-TWO | **PASS (reported scope)** — alpha.8 seems OK; conservation remains A8-LIFE. | Two Glocks held: neither hand can simultaneously manipulate the other gun. Stow one, reload the other; repeat reversed. No shared reload or wrong-slot ammo changes. |
+| A8-LIFE | **PENDING** — reservation recovery and item identity edge cases; not a confirmed alpha.8 duplication report. | Stow/reselect, disconnect, tracking loss and inventory-delete during removed-mag/rack stages. No duplicate/refunded twice rounds, no resurrected item, and unrelated gun remains usable. |
+| A8-AIM | **PARTIAL** — M4/M700 support PASS; ADS re-entry inconsistent; M1014 support misplaced and calibration page missing. See A9-ADS/A9-SUPPORT. | Dual long gun with other hand available under foregrip: model and shot aim both respond to support hand. Stowed gun selection counts as available; actually held second gun prevents support. M1014 has separate support and action zones. |
+| A8-AUDIO | **PASS** — alpha.8 user report; no routine repeat. | Main M700 cycles once audibly, matching offhand; DB2/DB4 and AA12 reload audible in either hand. |
+| A8-ADS | **PENDING** — user has not tested attachment save/reload isolation; scope positions investigated separately in A9-ADS. | Gun base ADS offset retained; select attachment/view context, adjust offset and size, save, change optic and return. Each context retains own correction. Verify purple guide and ADS agree in single/dual. |
+| A8-BOLT | **PASS** — alpha.8 user report. | Advanced M700: keep Grab on bolt through up/back/front/down, then lift again without releasing. Gun stays supported; no auto-transfer to handle or unintended holster. Release bolt then deliberately grab handle normally. |
+| A8-MENU | **PASS** — alpha.8; rearrangement is future polish. | Open Advanced Handling in short VR canvas: navigate pages; Back remains visible and clickable. Desktop still usable. |
+| A8-HINT | **PASS** — alpha.8 improved. | M700 support/return hint uses short stacked lines, less horizontal scope obstruction. |
+
+## Alpha.7 targeted checks
+
+Alpha.6 passes above/below stay passed. DW22 is no longer marked RETEST. AH59 had no result text, so remains pending. This historical alpha.7 section predates the alpha.8 Physical Glock milestone; Advanced independent dual remains deferred.
+
+| ID | Status | Procedure |
+| --- | --- | --- |
+| A7-FIRE | **PASS** - user alpha.7 result; preserve tested scope. | Rhino, Taurus 500, Taurus 943 in each dual hand: press/hold trigger, native charge delay then shot; release early cancels. Simultaneous fire remains independent. |
+| A7-CYCLE | **PASS cycling / PARTIAL interruption** — alpha.8 cycling OK; holstered Button reload continues as current behavior. Interruptions consolidated into A8-LIFE. | Same manual-action gun right then left: automatic native Button cycling must agree; compare ammo/chamber, reload and interruption. |
+| A7-AUDIO | **MERGED** — A8-AUDIO covers M700/DB/AA12. Only untested SPAS-12/M1014 audio remains optional coverage. | SPAS-12, M1014, AA12 and break-action shotguns: dual reload clips audible per hand, including stages. |
+| A7-ADS | **MERGED** — A9-ADS tracks remaining acquisition issue; support attachment passed for M4/M700. | Dual long gun with other gun stowed: free hand under barrel, eye aligned. ADS should affect native spread, and supporting hand cursor hides. Move hand away, ADS ends when required. |
+| A7-OPTICS | **PARTIAL** — user alpha.7 probably OK; no blanket repeat. Exact advertised 2x pistol optic ID remains pending; ADS marker placement is A9-ADS. | Single and dual 1x lenses preserve muzzle/barrel in aperture. Magnified lenses retain scene zoom. Exact advertised2x sight ID pending. |
+| A7-FLICK | **PASS** - user alpha.7 result; preserve tested scope. | Debug guides ON: orange 2cm left open / 8cm right close. Full deliberate stroke then slow/reverse closes once; tiny shakes do not close. |
+| A7-BOLT | **SUPERSEDED** - misunderstood request; auto handle regrip reverted. User wants continued bolt Grab through down/up cycles. See A8-BOLT. | Advanced M700: keep Grab held through bolt down and move hand to handle. Regrip without release/repress; cannot regrip remotely or with bolt open. |
+| A7-LOCK | **PASS Glock / PENDING other pistols** - user alpha.7. | Single Physical/Advanced magazine pistol: hold slide fully back, press main Use, release slide. It stays locked, no extra feed/refund; later Use releases it. Dual physical lock awaits per-gun physical sessions. |
+| A7-HUD | **PASS** - user alpha.7 result; preserve tested scope. | M700 on-gun HUD shifted 8cm right; wrist placement unchanged. |
+| A7-MOUNTS | **PASS** - user alpha.7 result; preserve tested scope. | Four Holsters preset R5 L7 C2 B6: right5, left7, chest2, back6. Existing saved bindings are retained until preset pressed. |
+
+## Alpha.6 targeted checks
+
+These are source fixes, not headset passes. Match protocol 33 on client/server (alpha.5.1 uses 32).
+
+| ID | Status | Focused check |
+| --- | --- | --- |
+| A6-JAM | **PASS** - user alpha.6 result; preserve tested scope. | Supported durability installed: jam each dual Glock in turn. Hold that hand's Use two seconds; progress and clear only that gun. Early release/stow/focus loss/slot change cancels progress. Other hand remains usable. |
+| A6-LOCK | **PASS** - user alpha.6 result; preserve tested scope. | Dual OFF: offhand selected gun cannot block main; main reservation remains. Dual ON: both reservations block radial stealing. Ordinary items behave normally. |
+| A6-DRAW | **PASS** - user alpha.6 result; preserve tested scope. | Draw back shotgun right, stow, draw same gun left; reverse. Fresh Grab inside zone succeeds despite selected reservation; actually held guns cannot be stolen. Holding Grab before entering still cannot draw. Inventory count unchanged. |
+| A6-OPTICS | RETEST | Each hand then both: 1x and QMK-152 without shaders. Clear lenses, correct reticles and existing magnification in both eyes. Shader magnification limitation remains. |
+| A6-CATCH | **PASS** - user alpha.6 result; preserve tested scope. | Advanced revolver live rounds visibly fall then disappear at catching-hand height; recovered count exactly once. Spent rounds keep falling. Physical auto-recovery unchanged. |
+| A6-CURSOR | **PASS** - user alpha.6 result; preserve tested scope. | Holding our gun hides native TaCZ central cursor; hit markers remain. Flat/addon-off and unclaimed interactions retain behavior. Other addons' own reticles are outside this native hook. |
+| A6-HUD | **PASS** - user alpha.6 result; preserve tested scope. | Stereo alignment PASS alpha.5.1. Water overlap needs retest after deferred draw change, each eye without shaders. Shader ordering separate. |
+| A6-POSE | PENDING multiplayer confirmation | Local native held-item duplicate suppression added: check Visor third-person has only our custom gun per drawable binding. Arm mismatch, full offhand avatar behavior and three pose options remain OPEN. Multiplayer needs a separate observer. See THIRD-PERSON-POSE-DESIGN.md. |
+
 ## Important limits and superseded requirements
 
-- Button hold-Use jam clearing is single-gun only; dual durability synchronization remains pending. Independent dual optic zoom and physical dual reload are not ready acceptance tests.
+- Alpha.6 adds per-hand Button hold-Use durability clearing and dual lens rendering; headset checks pending. Physical dual reload remains pending.
 - Original 0.7.x black-optics blanket failure is superseded by the 0.8.0 old/new-world success report. Named optic/decal subcases remain below. Shader-pack magnification is unsupported, not a failed zoom test.
 - M870/M700 use generic jams; their rejection of pistol-style dud/double-feed is not automatically a bug.
 - Physical revolvers recover live rounds automatically; Advanced requires catching under the action. Loose cosmetic props themselves are not pickups. Old “always discard every live round” expectations are obsolete.
@@ -32,15 +98,15 @@ Automated evidence: alpha.4 passed **236 tests per loader**, Forge/Fabric packag
 
 | ID | Result / remaining scope | Procedure and expected behavior |
 |---|---|---|
-| FIX-N01 | **RETEST** — MK23 manual-shot and auto-last-shot unwanted action sound reported. Candidate sound routing needs this focused headset check. | MK23 Physical and Advanced: manual mode shot/rack; auto mode last round; compare Button/flat / No automatic hand-rack clip sound on physical shots; real shot and deliberate action sounds remain. Auto-last cause was not reproduced from the bundled upstream clip, so test the installed pack |
-| G02 | **RETEST** — Eject timing and round count reported OK; full forward return then another rack without releasing failed. Check that held repeated stroke specifically; new shot/reload sound fixes do not certify physical action sound quality. | Partial rack ejects nothing, full rack ejects once at rearward completion, holding there repeats nothing. Five complete live racks discard five rounds if available. Record sound and live/spent size issues. |
-| DW20 | **RETEST** — Both guns reholstered on one-hand slot change; per-hand binding and ammo-object reset changed in alpha.4. | Keep right gun drawn; change only left hotbar between guns, tool and empty slot. Repeat reversed. — Unchanged hand stays drawn; its reload is not cancelled. |
-| DW21 | **RETEST** — Offhand-only Glock invisible and two-shotgun holster visibility reported; alpha.4 changes per-hand rendering/activation. | Main selected slot empty, offhand Glock; then two shotguns. — Each assigned gun visible and independently drawable. |
-| DW22 | **RETEST** — Simultaneous Glock audio odd and pistol inherited mixed shotgun cooldown; native operator/audio routing changed. | Fire shotgun and Glock, then two Glocks simultaneously. — Glock keeps its own firing interval; both shot sounds play. |
-| DW23 | **RETEST** — Glock/Deagle/CZ75 reload silent while shotgun worked; native animation keyframe audio added. | Reload Glock, Deagle and CZ75 independently and together; cancel one. — Native keyframe sounds play, cancelled gun stops its own sequence. |
+| FIX-N01 | **PASS** - user reports OK on alpha.5.1; preserve tested scope. | MK23 Physical and Advanced: manual mode shot/rack; auto mode last round; compare Button/flat / No automatic hand-rack clip sound on physical shots; real shot and deliberate action sounds remain. Auto-last cause was not reproduced from the bundled upstream clip, so test the installed pack |
+| G02 | **PASS** - user reports OK on alpha.5.1; preserve tested scope. | Partial rack ejects nothing, full rack ejects once at rearward completion, holding there repeats nothing. Five complete live racks discard five rounds if available. Record sound and live/spent size issues. |
+| DW20 | **PASS** - user reports OK on alpha.5.1. Explicit cross-hand holster transfer is a separate new check. | Keep right gun drawn; change only left hotbar between guns, tool and empty slot. Repeat reversed. — Unchanged hand stays drawn; its reload is not cancelled. |
+| DW21 | **PASS (local first-person scope)** - user reports OK on alpha.5.1. Third-person/multiplayer models and arm alignment remain separate open issues. | Main selected slot empty, offhand Glock; then two shotguns. — Each assigned gun visible and independently drawable. |
+| DW22 | **PASS** - user alpha.6 result; preserve tested scope. | Fire shotgun and Glock, then two Glocks simultaneously. — Glock keeps its own firing interval; both shot sounds play. |
+| DW23 | **PASS** - user alpha.6 result; preserve tested scope. | Reload Glock, Deagle and CZ75 independently and together; cancel one. — Native keyframe sounds play, cancelled gun stops its own sequence. |
 | DW24 | **RETEST** — New Button/dual purple-eye + blue-support ADS; opposite holstered gun now counts free. Test two-hand ADS ON, then OFF separately. | Hold one gun near eye with opposite hand in blue support zone; holster opposite gun, then draw it or select a tool. — Purple + blue zones enable ADS; occupied support hand blocks two-hand ADS. |
-| DW25 | **RETEST** — Snow/water contrast and differing eye text shading reported; opaque plate/shared orientation changed. | Compare both eyes over snow/water using GUN and WRIST HUD. — Dark readable background; consistent text between eyes. |
-| DW26 | **RETEST** — Holstered Trigger produced block dust without break progress; TaCZ blocker bypass added. Test dirt by holding Trigger, then pickaxe on suitable blocks. | Holster gun and mine dirt; draw it and repeat; switch to pickaxe. — Holstered gun allows fist-speed mining, drawn gun fires, pickaxe mines normally. |
+| DW25 | **PASS** - user alpha.6 result; preserve tested scope. | Compare both eyes over snow/water using GUN and WRIST HUD. — Dark readable background; consistent text between eyes. |
+| DW26 | **PASS** - user alpha.6 result; preserve tested scope. | Holster gun and mine dirt; draw it and repeat; switch to pickaxe. — Holstered gun allows fist-speed mining, drawn gun fires, pickaxe mines normally. |
 | NEW-MAG | **RETEST** — User reported old 1–2-second-like velocity/angle behavior; physics changed after earlier basic ejection checks. No new explicit pass. | Glock/M4 magazine ejection: stationary down/tilted, then flick after release. Watch initial slot constraint then free fall; no stale prior-motion launch. Slow/fast flick; count ammo through interruption. |
 | NEW-REJOIN | **RETEST** — Old 0.8.0 report of Physical ceasing after rejoin; later M870 old-world case too. Do not create a new world as the first workaround. | Physical gun in existing world: leave/rejoin, compare another gun and fresh stack in same world, preserve logs/config. |
 
@@ -48,26 +114,25 @@ Automated evidence: alpha.4 passed **236 tests per loader**, Forge/Fabric packag
 
 | ID | Result / remaining scope | Procedure and expected behavior |
 |---|---|---|
-| H4-01 | **PENDING** — alpha.5 source, four holsters opt-in. | Four holsters / assignment rules: enable, put two pistols and two rifles in hotbar with tools between. Ascending/descending maps correct slots; all four visible with a tool selected. No extra inventory items. |
-| H4-02 | **PENDING** — manual binding validation. | Bind all mounts; wrong gun class and duplicate binding stay empty with one chat line, not per-tick spam. Replace invalid with valid then invalid again: one new warning. Disabled mount stays empty. |
-| H4-03 | **PENDING** — symmetric selection lock. | Lock ON: either radial and main wheel/number selection cannot steal other selected TaCZ slot. OFF: unheld collision follows Visor. Held gun protected regardless; ordinary tool collision unchanged. |
-| H4-04 | **PENDING** — draw ownership. | Empty required ON: selected mounted/holstered gun counts empty, actual tool blocks draw. OFF: draw switches away from tool and tool remains in original slot. Held gun cannot be replaced. Release returns gun to its reserved mount. |
-| H4-05 | **PENDING** — cross-mod Grab regression. | Hold Grab outside mount, move inside: no draw. Release/repress inside draws once. An already-cancelled press cannot draw. Release remains handled after leaving zone; menu/focus loss does not auto-regrab. Test while holding another mod's item. |
-| H4-06 | **PENDING** — mount calibration and lifecycle. | Calibrate each mount, Save/Close/Cancel, reload/rejoin; old JSON unchanged. Change scan/binding while gun held: mount reservation stable until released. Inventory-delete gun: no stale render/return; compare INV01. |
-
-| FIX-N03 | **PENDING** — Added after latest T11/T09 results; no later explicit result. This is not a repeat of passed older behavior. | Pistol and rifle: hold gun, engage/disengage support, transfer bolt hand, holster; open wrist/menu GUI / Occupied hands' world aiming marks disappear; free hands' marks return; GUI cursor remains usable |
-| FIX-N04 | **PENDING** — Added after latest T11/T09 results; no later explicit result. This is not a repeat of passed older behavior. | Physical revolver: main Use then 2 cm left; open, 8 cm deliberate right stroke and stop; tilt upward and shake; pink eject / Same opening/closing/shake gestures as Advanced. Physical live rounds recover automatically without catching; spent cases never become ammo. Advanced still needs empty catching hand. Check survival totals, full inventory overflow, speedloader and single-round loading |
-| FIX-N05 | **PENDING** — Added after latest T11/T09 results; no later explicit result. This is not a repeat of passed older behavior. | M700 open bolt: sweep forward and down in one motion through orange handle; repeat straight down at rear, lateral miss and reverse motion / Forward/down chambers once and locks; down-only at rear cannot close open bolt. Test Physical and Advanced with support transfer |
-| FIX-N06 | **PENDING** — Added after latest T11/T09 results; no later explicit result. This is not a repeat of passed older behavior. | Gun tooltips: base physical gun, button-only gun, unsupported custom gun/display; edit review TOML and reload / B/P/AH reflect actual profiles; pack/calibration labels follow exact gun/display entry. Unlisted stays unverified. Invalid file shows error and does not overwrite file or calibration |
+| H4-01 | **PASS** - user alpha.6 result; preserve tested scope. | Four holsters / assignment rules: enable, put two pistols and two rifles in hotbar with tools between. Ascending/descending maps correct slots; all four visible with a tool selected. No extra inventory items. |
+| H4-02 | **PASS** - user alpha.6 result; preserve tested scope. | Bind all mounts; wrong gun class and duplicate binding stay empty with one chat line, not per-tick spam. Replace invalid with valid then invalid again: one new warning. Disabled mount stays empty. |
+| H4-03 | **PASS** - user alpha.6 result; preserve tested scope. | Lock ON: either radial and main wheel/number selection cannot steal other selected TaCZ slot. OFF: unheld collision follows Visor. Held gun protected regardless; ordinary tool collision unchanged. |
+| H4-04 | **PASS** - user alpha.6 result; preserve tested scope. | Empty required ON: selected mounted/holstered gun counts empty, actual tool blocks draw. OFF: draw switches away from tool and tool remains in original slot. Held gun cannot be replaced. Release returns gun to its reserved mount. |
+| H4-05 | **PASS** - user alpha.6 result; preserve tested scope. | Hold Grab outside mount, move inside: no draw. Release/repress inside draws once. An already-cancelled press cannot draw. Release remains handled after leaving zone; menu/focus loss does not auto-regrab. Test while holding another mod's item. |
+| H4-06 | **PENDING** — mount calibration and lifecycle. | Four Holsters menu: calibrate one mount, Save/Close, rejoin and verify saved position. Reopen, change position then Cancel: saved position returns. Draw a gun, change assignment rule while still holding it: its mount should not jump until stowed. Finally inventory-drop/delete that gun: no model or real item should return (INV01). Do each subcase separately. |
+| FIX-N03 | **PASS** - user alpha.6 result; preserve tested scope. Dual support-hand cursor exception tracked in A7-ADS. | Pistol and rifle: hold gun, engage/disengage support, transfer bolt hand, holster; open wrist/menu GUI / Occupied hands' world aiming marks disappear; free hands' marks return; GUI cursor remains usable |
+| FIX-N04 | **PASS** - user alpha.6 result; preserve tested scope. Cylinder close effort tracked in A7-FLICK. | Physical revolver: main Use then 2 cm left; open, 8 cm deliberate right stroke and stop; tilt upward and shake; pink eject / Same opening/closing/shake gestures as Advanced. Physical live rounds recover automatically without catching; spent cases never become ammo. Advanced still needs empty catching hand. Check survival totals, full inventory overflow, speedloader and single-round loading |
+| FIX-N05 | **PASS** - user alpha.6 result; preserve tested scope. Held bolt-to-handle transition tracked in A7-BOLT. | M700 open bolt: sweep forward and down in one motion through orange handle; repeat straight down at rear, lateral miss and reverse motion / Forward/down chambers once and locks; down-only at rear cannot close open bolt. Test Physical and Advanced with support transfer |
+| FIX-N06 | **PASS** - user alpha.6 result; preserve tested scope. Held bolt-to-handle transition tracked in A7-BOLT. | Gun tooltips: base physical gun, button-only gun, unsupported custom gun/display; edit review TOML and reload / B/P/AH reflect actual profiles; pack/calibration labels follow exact gun/display entry. Unlisted stays unverified. Invalid file shows error and does not overwrite file or calibration |
 | T09-12 | **PENDING** — No explicit user result recorded. Test once; record gun and subcase rather than marking every profile passed. | Compare all existing grip/holster/inspection fits; test matching versus mismatched TOML on a spare server / Existing saved calibration is unchanged; mismatch pauses compatibility with a message, rather than using Legacy |
-| AH52 | **PENDING** — No explicit user result recorded. Test once; record gun and subcase rather than marking every profile passed. | Controls: cycle Button -> Physical -> Advanced -> Button. Button keeps native reload; Physical has no holster/toss/inspection. Switching mid reload recovers reserved ammo once. |
-| AH55 | **PENDING** — No explicit user result recorded. Test once; record gun and subcase rather than marking every profile passed. | Grab body with either hand, grab a second part with the other, release first, repeat. No snap during carry handoff. Return the gun's handle to its holster and release the final hand; no toss required. |
-| AH56 | **PENDING** — No explicit user result recorded. Test once; record gun and subcase rather than marking every profile passed. | While held, offhand radial cannot select the gun's occupied hotbar slot; other slots still work. After holstering, slot selection is normal. |
-| AH57 | **PENDING** — No explicit user result recorded. Test once; record gun and subcase rather than marking every profile passed. | Advanced one-hand pistol reload: hold body in offhand OR leave gun holstered; main Use drops mag. Main Grip at pouch retrieves replacement; move to green magwell and release Grip. Use releases locked slide; otherwise rack with free main Grip. No shots until normal main grip restored. Repeat partial magazine, empty magazine, disconnect and focus loss; count inventory + gun + chamber. No airborne reload. |
-| AH58 | **PENDING** — No explicit user result recorded. Test once; record gun and subcase rather than marking every profile passed. | Empty locked pistol: Use drops magazine; release Use, wait briefly, press Use again. Slide closes with NO_MAG preserved and no round created. Insert mag, rack, verify count. |
+| AH52 | **PASS** - user alpha.6 result; preserve tested scope. | Controls: cycle Button -> Physical -> Advanced -> Button. Button keeps native reload; Physical has no holster/toss/inspection. Switching mid reload recovers reserved ammo once. |
+| AH55 | **PASS** - user alpha.6 result; preserve tested scope. | Grab body with either hand, grab a second part with the other, release first, repeat. No snap during carry handoff. Return the gun's handle to its holster and release the final hand; no toss required. |
+| AH56 | **PASS** - user alpha.6 result; preserve tested scope. | While held, offhand radial cannot select the gun's occupied hotbar slot; other slots still work. After holstering, slot selection is normal. |
+| AH57 | **PASS** - user alpha.6 result; preserve tested scope. New deliberate slide lock tracked in A7-LOCK. | Advanced one-hand pistol reload: hold body in offhand OR leave gun holstered; main Use drops mag. Main Grip at pouch retrieves replacement; move to green magwell and release Grip. Use releases locked slide; otherwise rack with free main Grip. No shots until normal main grip restored. Repeat partial magazine, empty magazine, disconnect and focus loss; count inventory + gun + chamber. No airborne reload. |
+| AH58 | **PENDING** — No explicit user result recorded. Test once; record gun and subcase rather than marking every profile passed. | Single Advanced Glock: fire until empty and slide locks back. Press Use once to remove magazine, release Use, wait about half a second, press Use again. Slide closes but magazine remains absent; Trigger cannot create a shot. Insert magazine and rack; check ammo count. |
 | AH59 | **PENDING** — No explicit user result recorded. Test once; record gun and subcase rather than marking every profile passed. | Inspection/carry at high refresh: smooth between game ticks. Repeat looking around and moving wrist; compare tossed prop. |
-| AH47 | **PENDING** — No explicit user result recorded. Test once; record gun and subcase rather than marking every profile passed. | Glock waist and M4/P90 chest holsters: visible grip equals pickup location. Downward roomscale crouch follows two-thirds of head movement (30 cm head -> 20 cm holster). Walk and stop to test gradual recenter; stationary looking should not orbit holster. Test lean, roomscale, snap turn, left hand and world scale. Movement is a head-based estimate, not torso tracking. Saved Y numbers retained; menu shows Y from eyes. |
-| AH05 | **PENDING** — No explicit user result recorded. Test once; record gun and subcase rather than marking every profile passed. | Toss, catch main hand while Trigger held / Catches without firing; release/repress Trigger to shoot |
+| AH47 | **PASS** - user alpha.6 result; preserve tested scope. | Glock waist and M4/P90 chest holsters: visible grip equals pickup location. Downward roomscale crouch follows two-thirds of head movement (30 cm head -> 20 cm holster). Walk and stop to test gradual recenter; stationary looking should not orbit holster. Test lean, roomscale, snap turn, left hand and world scale. Movement is a head-based estimate, not torso tracking. Saved Y numbers retained; menu shows Y from eyes. |
+| AH05 | **PENDING** — No explicit user result recorded. Test once; record gun and subcase rather than marking every profile passed. | Toss using Grab release, then catch with Grab while Trigger is already held. Trigger is not the catch button. Catch must not fire; release/repress Trigger to shoot |
 | AH06 | **PENDING** — No explicit user result recorded. Test once; record gun and subcase rather than marking every profile passed. | Toss into empty offhand; return to main hand / SUPPORT hold, no offhand shots, pistol holster changes side; original slot unchanged; main re-grab restores shooting |
 | AH07 | **PENDING** — No explicit user result recorded. Test once; record gun and subcase rather than marking every profile passed. | Occupied offhand; attempt catch / Does not overwrite the item or catch through it |
 | AH08 | **PENDING** — No explicit user result recorded. Test once; record gun and subcase rather than marking every profile passed. | Release then hold Use at 50/100/250 ms settings; Trigger; Grip while Use held / INSPECT within window only; slide preview; no ammo changes; Use release does not eject magazine after re-grip |
@@ -279,7 +344,7 @@ Back up calibration. Use a spare client/server with identical executable TOML un
 
 ## Per-gun result scope
 
-P01–P07 apply separately to Glock 17, M1911, P320, M9A4, Deagle, Golden Deagle, Timeless 50, B93R, CZ75, MK23. V01–V07 apply separately to Rhino 357, Taurus 500, Taurus 943 and the applicable Lonetrail breech behavior. A Glock pass or copied calibration does not certify the other pistols. P320 was specifically reported uncalibrated; verify its local override versus bundled fit. MK23 manual-mode basic behavior passed T09-08, but sound retest FIX-N01 remains.
+P01–P07 apply separately to Glock 17, M1911, P320, M9A4, Deagle, Golden Deagle, Timeless 50, B93R, CZ75, MK23. V01–V07 apply separately to Rhino 357, Taurus 500, Taurus 943 and the applicable Lonetrail breech behavior. A Glock pass or copied calibration does not certify the other pistols. P320 was specifically reported uncalibrated; verify its local override versus bundled fit. MK23 manual-mode basic behavior passed T09-08, and sound check FIX-N01 passed on alpha.5.1.
 
 | Gun/group | Retained evidence | Still not certified |
 |---|---|---|

@@ -38,6 +38,14 @@ public final class DualRemote {
     }
     public static boolean replaces(ItemStack stack,ItemDisplayContext context){
         var mc=Minecraft.getInstance();if(mc.level==null||com.tacz.guns.compat.oculus.OculusCompat.isRenderShadow()||(context!=ItemDisplayContext.THIRD_PERSON_RIGHT_HAND&&context!=ItemDisplayContext.THIRD_PERSON_LEFT_HAND))return false;
+        // Local hand effects already draw both selected guns in the Visor observer pass.
+        // The remote snapshot path intentionally excludes self, but the native item layer
+        // must still yield or it adds an uncalibrated duplicate main-hand gun.
+        if(mc.player!=null&&ClientControls.vrActive()&&DualClient.active()){
+            for(var hand:org.vmstudio.visor.api.common.HandType.values()){
+                if(stack==DualClient.stack(hand)&&drawable(stack,DualClient.pose(hand,org.vmstudio.visor.api.client.player.pose.PlayerPoseType.RENDER)))return true;
+            }
+        }
         for(var p:mc.level.players()){
             var v=state(p.getUUID());if(v==null)continue;
             if(stack==p.getMainHandItem()&&drawable(v.main(),v.mainPose()))return true;

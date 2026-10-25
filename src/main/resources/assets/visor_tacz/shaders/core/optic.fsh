@@ -9,10 +9,18 @@ out vec4 fragColor;
 void main() {
     vec2 uv = (gl_FragCoord.xy - Viewport.xy) / Viewport.zw;
     vec2 pixels = (uv - AimUV) * Viewport.zw;
-    if (Scope < 0.5) {
-        float coverage = 1.0 - smoothstep(1.0, 2.1, length(pixels));
-        vec3 scene = texture(Sampler0, uv).rgb;
-        fragColor = vec4(mix(scene, vec3(1.0, 0.07, 0.025), coverage), 1.0);
+    if (Zoom <= 1.0001) {
+        // An unmagnified aperture is transparent. Replaying the pre-gun scene
+        // here erases the barrel/muzzle and any other gun seen through the lens.
+        float coverage;
+        if (Scope < 0.5) {
+            coverage = 1.0 - smoothstep(1.0, 2.1, length(pixels));
+        } else {
+            coverage = min(abs(pixels.x), abs(pixels.y)) < 0.8
+                && max(abs(pixels.x), abs(pixels.y)) < 12.0 ? 1.0 : 0.0;
+        }
+        if (coverage <= 0.0) discard;
+        fragColor = vec4(1.0, 0.07, 0.025, coverage);
         return;
     }
     vec2 sampleUV = AimUV + (uv - AimUV) / max(Zoom, 1.0);

@@ -63,8 +63,8 @@ public final class CompatSettings {
         EMPTY_DRAW=builder.define("holsterRequireEmptyHand",true);
         LOCK_SELECTED=builder.define("lockOtherHandSelectedGun",true);
         MOUNT_ORDER=builder.comment("0 ascending, 1 descending, 2 manual").defineInRange("holsterAssignment",0,0,2);
-        MOUNT_BINDINGS=new ForgeConfigSpec.IntValue[4];String[] mountNames={"right","left","chest","back"};
-        for(int i=0;i<4;i++)MOUNT_BINDINGS[i]=builder.comment("0 disabled, 1-9 hotbar slot").defineInRange("holsterSlot_"+mountNames[i],0,0,9);
+        MOUNT_BINDINGS=new ForgeConfigSpec.IntValue[4];String[] mountNames={"right","left","chest","back"};int[] defaultSlots={5,7,2,6};
+        for(int i=0;i<4;i++)MOUNT_BINDINGS[i]=builder.comment("0 disabled, 1-9 hotbar slot").defineInRange("holsterSlot_"+mountNames[i],defaultSlots[i],0,9);
         DUAL=builder.comment("Experimental independent two-gun ownership. Uses native button reload while enabled; physical interactions remain in single-gun mode.").define("independentDualWield",false);
         ADVANCED=builder.comment("Experimental holster/draw, inventory-backed toss and inspection. Off by default.").define("advancedHandling",false);
         TOSS=builder.comment("Advanced Handling: true allows a catch window before auto-holstering; false returns after inspection grace. Never drops inventory items.").define("advancedToss",true);

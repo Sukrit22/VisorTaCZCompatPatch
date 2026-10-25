@@ -16,7 +16,8 @@ public final class FourHolsterScreen extends Screen {
    var assign=Button.builder(Component.literal(name+": "+(FourHolsterSettings.order()==2?(FourHolsterSettings.binding(i)<0?"disabled":"slot "+(FourHolsterSettings.binding(i)+1)):(slot<0?"empty":"slot "+(slot+1)))),b->{FourHolsterSettings.cycleBinding(m);FourHolsters.tick();rebuildWidgets();}).bounds(x,y,195,20).build();assign.active=FourHolsterSettings.order()==2;addRenderableWidget(assign);
    var edit=Button.builder(Component.literal("Calibrate"),b->minecraft.setScreen(new HolsterScreen(Profiles.key(FourHolsters.stack(m)),m))).bounds(x+200,y,110,20).build();edit.active=slot>=0;addRenderableWidget(edit);y+=23;
   }
-  addRenderableWidget(Button.builder(Component.literal("Back"),b->minecraft.setScreen(new AdvancedScreen())).bounds(x,y+2,310,20).build());
+  addRenderableWidget(Button.builder(Component.literal("Preset: R5 L7 C2 B6"),b->{FourHolsterSettings.manualPreset();FourHolsters.tick();rebuildWidgets();}).bounds(x,y+2,195,20).build());
+  addRenderableWidget(Button.builder(Component.literal("Back"),b->minecraft.setScreen(new AdvancedScreen())).bounds(x+200,y+2,110,20).build());
  }
  @Override public boolean isPauseScreen(){return false;}
  @Override public void render(GuiGraphics g,int x,int y,float dt){renderBackground(g);g.drawCenteredString(font,title,width/2,8,0xffffff);super.render(g,x,y,dt);}

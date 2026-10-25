@@ -6,6 +6,17 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PoseMathTest {
+    @Test void adsAndAlignmentShareRawSupportRetentionGate(){
+        var raw=new Quaternionf();var hand=new Vector3f();var support=new Vector3f(0,0,-.4f);
+        var other=new Vector3f(.16f,0,-.4f);var strict=new ZoneSizes.Box(.2f,.2f,.2f);
+        var retained=new ZoneSizes.Box(.44f,.44f,.44f);
+        assertFalse(PoseMath.supporting(raw,hand,other,support,1,true,strict));
+        assertTrue(PoseMath.supporting(raw,hand,other,support,1,true,retained));
+        var aligned=PoseMath.supportedRotation(raw,hand,other,support,1,true,retained);
+        assertTrue(aligned.transform(new Vector3f(0,0,-1)).distance(new Vector3f(other).normalize())<1e-5);
+        assertFalse(PoseMath.supporting(raw,hand,new Vector3f(.5f,0,-.1f),support,1,true,retained));
+        assertFalse(PoseMath.supporting(raw,hand,other,support,1,false,retained));
+    }
     @Test void minecraftAnglesMatchControllerAxes() {
         assertEquals(180, Math.abs(PoseMath.yaw(new Vector3f(0, 0, -1))), .001);
         assertEquals(-90, PoseMath.yaw(new Vector3f(1, 0, 0)), .001);

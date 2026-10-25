@@ -5,6 +5,28 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class OpticMathTest {
+    @Test void desktopAdsZoomDoesNotMagnifySightOnlyModels() {
+        assertEquals(1,OpticMath.lensZoom(1.5f,false,true,false));
+        assertEquals(1,OpticMath.lensZoom(2.5f,false,true,false));
+        assertEquals(1,OpticMath.lensZoom(1,true,false,true));
+        assertEquals(6,OpticMath.lensZoom(6,true,false,true));
+    }
+    @Test void explicitOpticalPowerOverridesSightButNotHybridBackup() {
+        assertEquals(2,OpticMath.lensZoom(1.5f,false,true,false,2f));
+        assertEquals(1,OpticMath.lensZoom(6.25f,true,false,true,1f));
+        assertEquals(1,OpticMath.lensZoom(6.25f,true,true,false,2f));
+        assertEquals(2,OpticMath.lensZoom(6.25f,true,true,true,2f));
+    }
+    @Test void hybridBackupOcularRemainsUnmagnified() {
+        assertEquals(1,OpticMath.lensZoom(4,true,true,false));
+        assertEquals(4,OpticMath.lensZoom(4,true,true,true));
+    }
+    @Test void malformedZoomCannotPoisonShader() {
+        assertEquals(1,OpticMath.lensZoom(Float.NaN,false,true,false));
+        assertEquals(1,OpticMath.lensZoom(Float.POSITIVE_INFINITY,true,false,true));
+        assertEquals(1,OpticMath.lensZoom(-2,true,false,true));
+        assertEquals(16,OpticMath.lensZoom(100,true,false,true));
+    }
     private final Vector3f sight=new Vector3f(0,.04f,-.15f);
     private final Vector3f forward=new Vector3f(0,0,-1);
     @Test void acceptsEyeBehindAlignedSight() {

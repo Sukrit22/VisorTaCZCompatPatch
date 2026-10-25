@@ -40,7 +40,7 @@ public abstract class HeldHotbarMixin {
         if(selected==slotOffhand&&selected>=0&&selected<9){
             boolean gun=IGun.getIGunOrNull(player.getInventory().getItem(selected))!=null;
             boolean held=CompatSettings.dualWield()&&DualClient.boundSlot(HandType.OFFHAND)==selected&&DualClient.held(HandType.OFFHAND);
-            if(HotbarCollisionPolicy.protects(gun,held,CompatSettings.active()&&FourHolsterSettings.lockSelected())){
+            if(HotbarCollisionPolicy.protects(gun,held,CompatSettings.active()&&FourHolsterSettings.lockSelected(),CompatSettings.dualWield(),false,false)){
                 slotMain=HotbarCollisionPolicy.previousSelection(true,visorTacz$previousMain,selected);
                 player.getInventory().selected=slotMain;
                 slotMainBack=slotOffhandBack=-2;
@@ -63,7 +63,7 @@ public abstract class HeldHotbarMixin {
         boolean gun=IGun.getIGunOrNull(player.getInventory().getItem(occupied))!=null;
         boolean held=owner==HandType.MAIN&&visorTacz$advancedHeld==occupied;
         held|=CompatSettings.dualWield()&&DualClient.boundSlot(owner)==occupied&&DualClient.held(owner);
-        if(!HotbarCollisionPolicy.protects(gun,held,CompatSettings.active()&&FourHolsterSettings.lockSelected()))return;
+        if(!HotbarCollisionPolicy.protects(gun,held,CompatSettings.active()&&FourHolsterSettings.lockSelected(),CompatSettings.dualWield(),owner==HandType.MAIN,DualClient.drawingSlot()==occupied))return;
         // The argument identifies the displaced owner: MAIN means OFFHAND is selecting.
         if(owner==HandType.MAIN){
             slotOffhand=HotbarCollisionPolicy.previousSelection(false,visorTacz$previousOff,occupied);

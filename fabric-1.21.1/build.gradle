@@ -1,6 +1,6 @@
 plugins { id 'fabric-loom' version '1.10.5' }
 group='dev.visorcompat.tacz'
-version = '0.14.0-alpha.5.1+1.21.1'
+version = '0.14.0-alpha.9+1.21.1'
 base.archivesName='visor-compat-tacz-1.21.1-fabric'
 java.toolchain.languageVersion=JavaLanguageVersion.of(21)
 repositories {
@@ -42,7 +42,7 @@ dependencies {
  modRuntimeOnly files(bundledRuntime.findAll { !it.name.startsWith('simplebedrockmodel-') })
  modImplementation files(bundledRuntime.findAll { it.name.startsWith('simplebedrockmodel-') })
  compileOnly files(bundledRuntime.findAll { it.name.startsWith('luaj-') })
- implementation 'com.electronwill.night-config:toml:3.6.6'
+ implementation 'com.electronwill.night-config:toml:3.8.0'
  testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
 }
 loom { mixin { defaultRefmapName='visor_tacz.fabric.refmap.json' } }
@@ -55,6 +55,7 @@ processResources {
  inputs.property 'version', project.version
  exclude 'META-INF/mods.toml', 'visor_tacz-calibration.json', 'visor_tacz-holsters.json', 'visor_tacz-inspections.json'
  filesMatching('fabric.mod.json') { expand(version:project.version) }
+ filesMatching('pack.mcmeta') { filter { line -> line.replaceAll(/"pack_format"\s*:\s*15/, '"pack_format": 34') } }
  filesMatching('visor_tacz.mixins.json') { filter { line -> line.contains('"minVersion"') ? line+'\n  "refmap": "visor_tacz.fabric.refmap.json",' : line } }
 }
 compileJava.dependsOn generateSharedSources
@@ -70,6 +71,8 @@ tasks.register('verifyProductionJar') {
    def json=new groovy.json.JsonSlurper()
    def meta=json.parse(zip.getInputStream(zip.getEntry('fabric.mod.json')))
    assert meta.version==project.version.toString(): 'Stale packaged version'
+   assert meta.depends.minecraft=='1.21.1' && meta.depends.java=='>=21': 'Wrong Minecraft/Java target'
+   assert json.parse(zip.getInputStream(zip.getEntry('pack.mcmeta'))).pack.pack_format==34: 'Wrong pack format'
    def refs=json.parse(zip.getInputStream(zip.getEntry('visor_tacz.fabric.refmap.json')))
    def bullet=refs.mappings['dev/visorcompat/tacz/mixin/BulletMixin']
    assert bullet && bullet.size()==1: 'Missing constructor refmap'
@@ -84,4 +87,6 @@ tasks.named('check') { dependsOn 'verifyProductionJar' }
 minecraft121InstallTests()
 
 
+
+apply from: 'production-smoke.gradle'
 

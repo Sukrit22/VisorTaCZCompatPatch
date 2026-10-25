@@ -1,6 +1,6 @@
 plugins { id 'fabric-loom' version '1.10.5' }
 group='dev.visorcompat.tacz'
-version = '0.14.0-alpha.5.1'
+version = '0.14.0-alpha.9'
 base.archivesName='visor-compat-tacz-1.20.1-fabric'
 java.toolchain.languageVersion=JavaLanguageVersion.of(17)
 repositories {

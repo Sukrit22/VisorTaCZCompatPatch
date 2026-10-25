@@ -30,6 +30,24 @@ ext.minecraft121Transform = { String text, File source ->
     }
     replacements.reverseEach { r -> text = text.substring(0,r[0]) + r[2] + text.substring(r[1]) }
     text = text.replace('.getFrameTime()', '.getTimer().getGameTimeDeltaPartialTick(true)')
+    text = text.replace('.mulPoseMatrix(', '.mulPose(')
+    // 1.21 PoseStack.mulPose(Matrix4f) updates the normal matrix itself.
+    // Retaining the 1.20 explicit inverse-transpose would apply the correction twice.
+    text = text.replaceAll(/matrices\.last\(\)\.normal\(\)\.mul\(correction\.get3x3\(new (?:org\.joml\.)?Matrix3f\(\)\)\.invert\(\)\.transpose\(\)\);/, '')
+    if (source.name == 'LateGunRenderer.java') {
+        text = text.replace('view.pushPose()', 'view.pushMatrix()').replace('view.popPose()', 'view.popMatrix()')
+            .replace('view.last().pose().set(', 'view.set(')
+    }
+    if (source.name in ['AdvancedScreen.java', 'FourHolsterScreen.java']) {
+        text = text.replace('renderBackground(g)', 'renderBackground(g,x,y,dt)')
+    }
+    if (source.name in ['CalibrationScreen.java', 'MagazineGripScreen.java']) {
+        text = text.replace('mouseScrolled(double x,double y,double delta)', 'mouseScrolled(double x,double y,double horizontal,double delta)')
+            .replace('super.mouseScrolled(x,y,delta)', 'super.mouseScrolled(x,y,horizontal,delta)')
+    }
+    if (source.name in ['OpticGeometry.java', 'OpticRenderer.java']) {
+        text = text.replace('gun.getAttachment(stack,', 'gun.getAttachment(net.minecraft.client.Minecraft.getInstance().level.registryAccess(),stack,')
+    }
     // Packet transports must provide RegistryFriendlyByteBuf for registry-aware item components.
     // OPTIONAL_STREAM_CODEC retains the old writeItem/readItem representation of empty stacks.
     text = text.replaceAll(/([A-Za-z_$][\w$]*)\.readItem\(\)/) { all, buffer ->
@@ -37,6 +55,10 @@ ext.minecraft121Transform = { String text, File source ->
     }
     text = text.replaceAll(/([A-Za-z_$][\w$]*)\.writeItem\(/) { all, buffer ->
         "net.minecraft.world.item.ItemStack.OPTIONAL_STREAM_CODEC.encode((net.minecraft.network.RegistryFriendlyByteBuf)${buffer},"
+    }
+    // 1.21 SlotModel takes packed ARGB instead of four float channels.
+    if (source.name == 'DualEffects.java') {
+        text = text.replace('OverlayTexture.NO_OVERLAY,1,1,1,1)', 'OverlayTexture.NO_OVERLAY,0xFFFFFFFF)')
     }
     if (source.name == 'StatusPanel.java') {
         text = text.replace('.vertex(', '.addVertex(').replace('.color(', '.setColor(').replace('.uv2(', '.setLight(').replace('.endVertex()', '')

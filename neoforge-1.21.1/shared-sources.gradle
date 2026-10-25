@@ -11,8 +11,10 @@ tasks.register('generateSharedSources') {
    s=s.replace('com.tacz.guns.compat.oculus.OculusCompat','com.tacz.guns.compat.iris.IrisCompat').replace('OculusCompat.','IrisCompat.')
    s=s.replace('net.neoforged.fml.common.Mod;','net.neoforged.fml.common.Mod;\nimport net.neoforged.fml.common.EventBusSubscriber;')
    s=s.replace('@Mod.EventBusSubscriber','@EventBusSubscriber').replace('Mod.EventBusSubscriber.Bus.','EventBusSubscriber.Bus.')
-   /* s=s.replaceAll(/new ResourceLocation\(([^\n;]*?)\)/, 'ResourceLocation.fromNamespaceAndPath($1)') */
    s=s.replace('net.neoforged.neoforge.network.', 'dev.visorcompat.tacz.neoforge.network.')
+   s=s.replace('dev.visorcompat.tacz.neoforge.network.simple.SimpleChannel','dev.visorcompat.tacz.neoforge.network.SimpleChannel')
+   s=s.replace('net.neoforged.neoforge.common.NeoForge.EVENT_BUS.post(', 'dev.visorcompat.tacz.neoforge.GunEvents.post(').replace('NeoForge.EVENT_BUS.post(', 'dev.visorcompat.tacz.neoforge.GunEvents.post(')
+   if(source.name=='StatusHud.java')s=s.replace('RegisterGuiOverlaysEvent','RegisterGuiLayersEvent').replace('event.registerAboveAll("ammo_ads",(gui,graphics,partial,width,height)->{','event.registerAboveAll(net.minecraft.resources.ResourceLocation.fromNamespaceAndPath(VisorTacz.ID,"ammo_ads"),(graphics,partial)->{')
    s=s.replace('import net.neoforged.neoforge.event.TickEvent;','')
    def clientPhase=source.name=='AutoAds.java'||source.name=='ClientRecoil.java'?'Post':'Pre'
    s=s.replace('net.neoforged.neoforge.event.TickEvent.ClientTickEvent','net.neoforged.neoforge.client.event.ClientTickEvent.'+clientPhase)

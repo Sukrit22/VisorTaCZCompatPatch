@@ -11,6 +11,10 @@ import java.util.*;
 public final class CalibrationScreen extends Screen {
     private final String key;
     private final float[] values=new float[59];
+    private final float[] attachmentValues=new float[59];
+    private final String sightContext;
+    private boolean attachmentEditing,overrideBox;
+    private SightCalibration savedSight;
     private final List<CalibrationLayout.Page> pages;
     private final Button[] readouts=new Button[3];
     private boolean coarse,size,scaleLock;
@@ -26,6 +30,11 @@ public final class CalibrationScreen extends Screen {
         super(Component.literal("TaCZ VR calibration"));this.key=key;pages=CalibrationLayout.pages(key,Profiles.get(net.minecraft.client.Minecraft.getInstance().player.getMainHandItem()));
         if(CalibrationStore.error()!=null)error=CalibrationStore.error();
         var c=CalibrationStore.get(key);scaleLock=c.scaleLock();
+        sightContext=OpticGeometry.context(net.minecraft.client.Minecraft.getInstance().player.getMainHandItem());
+        savedSight=SightCalibrationStore.get(sightContext);overrideBox=savedSight.box()!=null;
+        attachmentValues[24]=savedSight.x();attachmentValues[25]=savedSight.y();attachmentValues[26]=savedSight.z();
+        var sightBox=savedSight.dimensions(c);attachmentValues[46]=sightBox.width();attachmentValues[47]=sightBox.height();attachmentValues[48]=sightBox.depth();
+        if(SightCalibrationStore.error()!=null)error=SightCalibrationStore.error();
         float[] base={c.x(),c.y(),c.z(),c.pitch(),c.yaw(),c.roll(),c.muzzleX(),c.muzzleY(),c.muzzleZ()};
         System.arraycopy(base,0,values,0,9);int n=9;
         for(int i=0;i<8;i++){var p=c.interactions().points()[i];n=i==7?55:9+i*3;values[n++]=p.x();values[n++]=p.y();values[n++]=p.z();}
@@ -36,6 +45,10 @@ public final class CalibrationScreen extends Screen {
     private CalibrationLayout.Page current(){return pages.get(page);}
     private int start(){return size?31+current().zone().ordinal()*3:current().offset();}
     private int count(){return size?3:current().count();}
+    private boolean attachmentPage(){return attachmentEditing&&current().zone()==ZoneSizes.Zone.SIGHT;}
+    private float[] edited(){return attachmentPage()?attachmentValues:values;}
+    private SightCalibration sightValue(){return new SightCalibration(attachmentValues[24],attachmentValues[25],attachmentValues[26],overrideBox?new ZoneSizes.Box(attachmentValues[46],attachmentValues[47],attachmentValues[48]):null);}
+    private boolean saved(){return value().equals(lastSaved)&&sightValue().equals(savedSight);}
     private Calibration value(){
         var p=new InteractionOffsets.Point[8];var b=new ZoneSizes.Box[8];
         for(int i=0;i<8;i++){
@@ -56,8 +69,9 @@ public final class CalibrationScreen extends Screen {
         if(desktop()&&previewOnly&&width<620){ClientControls.clearInput();return;}
         var hint=CalibrationHints.get(key,current().id());
         addRenderableWidget(Button.builder(Component.literal("<"),b->changePage(-1)).bounds(left,top+14,24,20).build());
-        addRenderableWidget(Button.builder(Component.literal(hint.title()),b->changePage(1))
-            .tooltip(Tooltip.create(Component.literal(hint.text()))).bounds(left+28,top+14,244,20).build());
+        boolean sightPage=current().zone()==ZoneSizes.Zone.SIGHT;
+        addRenderableWidget(Button.builder(Component.literal(sightPage?(attachmentEditing?"Sight: attachment + view":"Sight: gun baseline"):hint.title()),b->{if(sightPage){attachmentEditing=!attachmentEditing;rebuildWidgets();}else changePage(1);})
+            .tooltip(Tooltip.create(Component.literal(sightPage?"Click to switch gun baseline / attachment adjustment. Additive offsets; dimensions can inherit gun baseline. Context: "+sightContext:hint.text()))).bounds(left+28,top+14,244,20).build());
         addRenderableWidget(Button.builder(Component.literal(">"),b->changePage(1)).bounds(left+276,top+14,24,20).build());
         if(current().zone()!=null)addRenderableWidget(Button.builder(Component.literal(size?"Editing: box width / height / depth":"Editing: position (click for box size)"),b->{size=!size;rebuildWidgets();}).bounds(left,top+37,300,20).build());
         if(current().offset()==30)addRenderableWidget(Button.builder(Component.literal(scaleLock?"Scale link: LOCKED":"Scale link: UNLOCKED"),b->{scaleLock=!scaleLock;rebuildWidgets();}).tooltip(Tooltip.create(Component.literal("When locked, changing gun scale also resizes gun interaction boxes. Pouch stays independent."))).bounds(left,top+37,300,20).build());
@@ -68,25 +82,27 @@ public final class CalibrationScreen extends Screen {
             addRenderableWidget(Button.builder(Component.literal("+"),b->adjust(axis,1)).bounds(left+265,y,35,20).build());
         }
         addRenderableWidget(Button.builder(Component.literal(coarse?"Coarse steps":"Fine steps"),b->{coarse=!coarse;rebuildWidgets();}).bounds(left,top+169,145,20).build());
-        addRenderableWidget(Button.builder(Component.literal(size?"Default box size":(current().offset()==30||current().offset()==58)?"Reset to 100%":"Zero this page"),b->{
-            if(size){var box=ZoneSizes.DEFAULT.get(current().zone());values[start()]=box.width();values[start()+1]=box.height();values[start()+2]=box.depth();}
-            else if(current().offset()==58)values[58]=1;else if(current().offset()==30)scaleTo(1);else Arrays.fill(values,start(),start()+count(),0);update();
+        addRenderableWidget(Button.builder(Component.literal(size?(attachmentPage()?"Inherit gun box":"Default box size"):(current().offset()==30||current().offset()==58)?"Reset to 100%":"Zero this page"),b->{
+            if(size){var box=attachmentPage()?value().zones().sight():ZoneSizes.DEFAULT.get(current().zone());edited()[start()]=box.width();edited()[start()+1]=box.height();edited()[start()+2]=box.depth();if(attachmentPage())overrideBox=false;}
+            else if(current().offset()==58)values[58]=1;else if(current().offset()==30)scaleTo(1);else Arrays.fill(edited(),start(),start()+count(),0);update();
         }).bounds(left+155,top+169,145,20).build());
         saveButton=addRenderableWidget(Button.builder(Component.literal("Save"),b->{
-            if(value().equals(lastSaved)){onClose();return;}
-            try{var next=value();CalibrationStore.save(key,next);lastSaved=next;error="";update();CompatSettings.syncState();}
+            if(saved()){onClose();return;}
+            try{var next=value();CalibrationStore.save(key,next);if(!sightValue().equals(savedSight))SightCalibrationStore.save(sightContext,sightValue());lastSaved=next;savedSight=sightValue();error="";update();CompatSettings.syncState();}
             catch(Exception e){error="Save failed: "+e.getMessage();}
         }).tooltip(Tooltip.create(Component.literal("Save writes this calibration to file without closing. After saving, Close exits; further edits restore Save."))).bounds(left,top+193,145,20).build());
         cancelButton=addRenderableWidget(Button.builder(Component.literal("Cancel"),b->onClose()).tooltip(Tooltip.create(Component.literal("Discard edits since the last save and close. Already saved changes remain on disk."))).bounds(left+155,top+193,145,20).build());
         update();ClientControls.clearInput();
     }
     private void adjust(int axis,int sign){
+        if(attachmentPage()&&size&&!overrideBox){var box=value().zones().sight();attachmentValues[46]=box.width();attachmentValues[47]=box.height();attachmentValues[48]=box.depth();}
         boolean rotation=axis>=3&&axis<6,scale=axis==30||axis==58;
         float step=scale?(coarse?.05f:.01f):rotation?(coarse?10:1):(coarse?.01f:.001f);
-        float min=axis==58?.1f:scale?.5f:(axis>=31&&axis<55)?.01f:rotation?-180:axis>=9?-.5f:-.25f;
-        float max=axis==58?3f:scale?1.5f:(axis>=31&&axis<55)?1.5f:rotation?180:axis>=9?.5f:.25f;
-        float next=Math.max(min,Math.min(max,values[axis]+step*sign));
-        if(axis==30)scaleTo(next);else values[axis]=next;update();
+        boolean sightAxis=axis>=24&&axis<=26;
+        float min=axis==58?.1f:scale?.5f:(axis>=31&&axis<55)?.01f:rotation?-180:sightAxis?-2f:axis>=9?-.5f:-.25f;
+        float max=axis==58?3f:scale?1.5f:(axis>=31&&axis<55)?1.5f:rotation?180:sightAxis?2f:axis>=9?.5f:.25f;
+        float next=Math.max(min,Math.min(max,edited()[axis]+step*sign));
+        if(axis==30)scaleTo(next);else edited()[axis]=next;if(attachmentPage()&&size)overrideBox=true;update();
     }
     private void scaleTo(float next){
         if(scaleLock){int i=31;for(var box:value().zones().resizeMounted(next/values[30]).boxes()){
@@ -96,11 +112,13 @@ public final class CalibrationScreen extends Screen {
     }
     private void update(){
         CalibrationStore.previewKey=key;CalibrationStore.preview=value();
-        if(saveButton!=null){boolean saved=value().equals(lastSaved);saveButton.setMessage(Component.literal(saved?"Close":"Save"));saveButton.setWidth(saved?300:145);if(cancelButton!=null)cancelButton.visible=!saved;}
+        SightCalibrationStore.previewKey=sightContext;SightCalibrationStore.preview=sightValue();
+        if(saveButton!=null){boolean saved=saved();saveButton.setMessage(Component.literal(saved?"Close":"Save"));saveButton.setWidth(saved?300:145);if(cancelButton!=null)cancelButton.visible=!saved;}
         for(int i=0;i<count();i++)if(readouts[i]!=null){
             int axis=start()+i;boolean rotation=axis>=3&&axis<6,scale=axis==30||axis==58;
             String label=size?new String[]{"Width X","Height Y","Depth Z"}[i]:scale?(axis==58?"Casing size":"Gun size"):rotation?new String[]{"Pitch","Yaw","Roll"}[i]:new String[]{"X right","Y up","Z back"}[i];
-            readouts[i].setMessage(Component.literal(String.format(Locale.ROOT,"%s: %.1f %s",label,values[axis]*(scale?100:rotation?1:1000),scale?"%":rotation?"deg":"mm")));
+            float display=attachmentPage()&&size&&!overrideBox?new float[]{value().zones().sight().width(),value().zones().sight().height(),value().zones().sight().depth()}[i]:edited()[axis];
+            readouts[i].setMessage(Component.literal(String.format(Locale.ROOT,"%s: %.1f %s",label,display*(scale?100:rotation?1:1000),scale?"%":rotation?"deg":"mm")));
         }
     }
     @Override public void render(GuiGraphics g,int x,int y,float partial){
@@ -137,5 +155,5 @@ public final class CalibrationScreen extends Screen {
         if(previewVisible()&&desktopPreview.scroll(x,y,delta))return true;return super.mouseScrolled(x,y,delta);
     }
     @Override public boolean isPauseScreen(){return false;}
-    @Override public void removed(){CalibrationStore.previewKey=null;CalibrationStore.preview=null;ClientControls.clearInput();}
+    @Override public void removed(){CalibrationStore.previewKey=null;CalibrationStore.preview=null;SightCalibrationStore.previewKey=null;SightCalibrationStore.preview=null;ClientControls.clearInput();}
 }

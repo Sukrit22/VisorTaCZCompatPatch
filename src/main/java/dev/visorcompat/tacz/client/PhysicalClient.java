@@ -162,13 +162,13 @@ public final class PhysicalClient {
         boolean changed=state==null || state.phase()!=update.phase();state=update;
         if(changed) {
             String hint=switch(update.phase()) {
-                case CYLINDER_OPEN -> "Open: pouch Grip/Use = speedloader, Trigger = one round; pink pull or tilt-up shake ejects; "+(AdvancedClient.active()?"catch live rounds underneath":"live rounds recover automatically");
+                case CYLINDER_OPEN -> "Open: move 8 cm right then slow/stop to close; pouch Grip/Use = speedloader, Trigger = one round; pink pull or tilt-up shake ejects; "+(AdvancedClient.active()?"catch live rounds underneath":"live rounds recover automatically");
                 case CYLINDER_HOLD -> "Orange: move sideways 5 cm to open/close, then release; pink: pull back to eject";
                 case PUMP_HOLD -> "Hold fore-end: pull back fully, then push forward to chamber";
                 case PUMP_OPEN -> "Pump open: insert a shell at the side port, or push fore-end forward";
                 case LOADER -> "Move speedloader to green loading zone and release; only available inventory rounds are loaded";
                 case SHELL -> "Move shell from pouch to loading port and release";
-                case READY -> Profiles.cylinder(p.getMainHandItem())?"Ready: grab orange and move sideways 5 cm; revolvers also open with holding-hand Use then 2 cm left flick":"Ready: grab magazine and pull down to reload";
+                case READY -> Profiles.cylinder(p.getMainHandItem())?"Ready: grab orange and move 2 cm left to open; or holding-hand Use then 2 cm left flick":"Ready: grab magazine and pull down to reload";
                 case REMOVING -> "Pull magazine down 7 cm, holding offhand use";
                 case OLD_MAG -> "Release old magazine to stow its remaining rounds";
                 case NO_MAG -> "Grab a replacement at waist pouch (below headset)";

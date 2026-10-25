@@ -56,6 +56,8 @@ final class StatusText {
         String optical=com.tacz.guns.compat.oculus.OculusCompat.isUsingRenderPack()?"OPTICS: CLEAR ONLY (SHADERS)":"";
         if(CompatSettings.handlingMode()==CompatSettings.HandlingMode.BUTTON && dev.visorcompat.tacz.compat.GunDurabilityCompat.jammed(stack) && dev.visorcompat.tacz.compat.GunDurabilityCompat.supported())
             return new String[]{ammo,"JAMMED | "+handling,ButtonJamClient.loading()};
+        if(PhysicalClient.supportAnchor())return new String[]{ammo,"SUPPORT HAND HOLD",handling,
+            AdvancedClient.active()?"GRAB HANDLE TO RETURN":"USE AT GRIP TO RETURN",target.equals("NONE")?optical:"GRAB: "+target};
         return new String[]{ammo,state+" | "+handling,target.equals("NONE")?optical:"GRAB: "+target};
     }
 }

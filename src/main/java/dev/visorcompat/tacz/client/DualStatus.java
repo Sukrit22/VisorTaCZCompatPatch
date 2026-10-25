@@ -49,7 +49,8 @@ public final class DualStatus {
   var entry=STATES.get(slot);if(entry==null||System.nanoTime()-entry.received()>1_000_000_000L||!Profiles.key(stack).equals(entry.state().key()))return new String[]{"SYNCING..."};
   var s=entry.state();String ammo=(Profiles.cylinder(stack)?"LIVE ":Profiles.pump(stack)?"TUBE ":"MAG ")+s.ammo();
   if(!Profiles.cylinder(stack))ammo+=dev.visorcompat.tacz.physical.NativeAction.openBolt(stack)?" | OPEN BOLT":" | CH "+(s.chamber()?1:0);
-  String action=s.action()==1?"RELOADING":s.action()==2?"CYCLING":!DualClient.held(hand)?"HOLSTERED":dev.visorcompat.tacz.compat.GunDurabilityCompat.jammed(stack)?"JAMMED":gun.isOverheatLocked(stack)?"OVERHEATED":s.ammo()==0&&!s.chamber()?"EMPTY":!dev.visorcompat.tacz.physical.NativeAction.ready(stack)?"USE TO CYCLE":DualAds.aiming(hand)?"ADS":"READY";
+  String action=s.action()==3?"CLEARING JAM "+Math.max(0,Math.min(100,(40-s.remaining())*100/40))+"%":s.action()==1?"RELOADING":s.action()==2?"CYCLING":!DualClient.held(hand)?"HOLSTERED":dev.visorcompat.tacz.compat.GunDurabilityCompat.jammed(stack)?"JAMMED":gun.isOverheatLocked(stack)?"OVERHEATED":s.ammo()==0&&!s.chamber()?"EMPTY":!dev.visorcompat.tacz.physical.NativeAction.ready(stack)?"USE TO CYCLE":DualAds.aiming(hand)?"ADS":"READY";
+  if(DualPhysicalClient.supported(hand)&&DualClient.held(hand))action=DualPhysicalClient.status(hand);
   return new String[]{(hand==HandType.MAIN?"MAIN | ":"OFF | ")+ammo,action};
  }
  private static void stop(int slot){var timeline=TIMELINES.remove(slot);if(timeline!=null)timeline.stop();var old=SOUNDS.remove(slot);if(old!=null)old.setStop();}

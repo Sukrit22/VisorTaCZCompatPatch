@@ -13,7 +13,7 @@ public final class CalibrationLayout {
         var pages=new ArrayList<Page>();
         pages.add(new Page("grip",0,3,null));pages.add(new Page("rotation",3,3,null));
         pages.add(new Page("scale",30,1,null));pages.add(new Page("casing",58,1,null));pages.add(new Page("muzzle",6,3,null));
-        if(profile!=null && !profile.pump())pages.add(new Page("support",9,3,SUPPORT));
+        if(profile!=null && (!profile.pump() || profile.mechanism()==WeaponProfile.Mechanism.TUBE_AUTO))pages.add(new Page("support",9,3,SUPPORT));
         if(profile!=null&&profile.buttonOnly()){
             pages.add(new Page("sight",24,3,SIGHT));pages.add(new Page("port",27,3,null));return List.copyOf(pages);
         }

@@ -53,8 +53,7 @@ public final class FourHolsters {
  public static int nearby(HandType hand){
   if(!active()||DualClient.held(hand)||(FourHolsterSettings.emptyRequired()&&!free(hand)))return -1;
   var vr=VisorAPI.client().getVRLocalPlayer();var point=vr.getPoseData(PlayerPoseType.TICK).getHand(hand).getPosition();int best=-1;float distance=Float.MAX_VALUE;
-  var other=hand==HandType.MAIN?HandType.OFFHAND:HandType.MAIN;int otherSlot=other==HandType.MAIN?Minecraft.getInstance().player.getInventory().selected:vr.getOffhandSlot();
-  for(int i=0;i<4;i++){if(slots[i]<0||heldSlot(slots[i])||(FourHolsterSettings.lockSelected()&&slots[i]==otherSlot))continue;var p=pose(i,PlayerPoseType.TICK);if(p==null)continue;float d=point.distance(p.hand());if(d<.22f*p.worldScale()&&d<distance){best=i;distance=d;}}
+  for(int i=0;i<4;i++){if(slots[i]<0||heldSlot(slots[i]))continue;var p=pose(i,PlayerPoseType.TICK);if(p==null)continue;float d=point.distance(p.hand());if(d<.22f*p.worldScale()&&d<distance){best=i;distance=d;}}
   return best;
  }
 }

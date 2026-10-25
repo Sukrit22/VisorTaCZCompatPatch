@@ -37,4 +37,14 @@ class HandlingFollowupTest {
         assertFalse(gson.fromJson("{\"casingScale\":0}",Calibration.class).valid());
         assertFalse(gson.fromJson("{\"casingScale\":3.1}",Calibration.class).valid());
     }
+    @Test void m1014SupportSitsUnderBarrelOutsideRackAndHonorsSavedOffsets(){
+        var p=Profiles.byId("tacz:m1014");var c=CalibrationDefaults.load().get("tacz:m1014|tacz:default");
+        var support=Handling.support(p,c);var rack=Handling.rack(p,c);
+        assertTrue(support.y<rack.y);
+        assertTrue(rack.y-support.y>(c.zones().support().height()+c.zones().rack().height())/2);
+        assertEquals(Handling.Target.RACK,Handling.target(Handling.Phase.READY,rack,false,p,c));
+        var offsets=new InteractionOffsets(new InteractionOffsets.Point(.02f,-.03f,.04f),null,null,null,null,null,null,null);
+        var custom=new Calibration(0,0,0,0,0,0,0,0,0,offsets,c.gunScale(),c.zones());
+        assertTrue(new Vector3f(support).add(offsets.support().vector().mul(c.gunScale())).distance(Handling.support(p,custom))<1e-6);
+    }
 }

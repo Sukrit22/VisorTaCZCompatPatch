@@ -12,6 +12,11 @@ class CalibrationHintsTest {
                 assertTrue(hint.color()>=0 && hint.color()<=0xFFFFFF);
             }
     }
+    @Test void semiAutomaticTubeGunHasSeparateSupportCalibration(){
+        var pages=CalibrationLayout.pages("tacz:m1014|tacz:default");
+        assertEquals(ZoneSizes.Zone.SUPPORT,pages.stream().filter(p->p.id().equals("support")).findFirst().orElseThrow().zone());
+        assertTrue(pages.stream().anyMatch(p->p.id().equals("rack")));
+    }
     @Test void unsupportedActionsAreNotOffered(){
         var pump=CalibrationLayout.pages("tacz:m870|tacz:default");
         assertTrue(pump.stream().noneMatch(p->p.id().equals("support")||p.id().equals("selector")));

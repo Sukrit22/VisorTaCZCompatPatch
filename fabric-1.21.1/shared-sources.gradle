@@ -30,7 +30,7 @@ tasks.register('generateSharedSources') {
     'net.minecraftforge.network.':'dev.visorcompat.tacz.fabric.network.',
     'IClientItemExtensions.of(stack.getItem()).getCustomRenderer()':'((cn.sh1rocu.tacz.api.extension.IItem)stack.getItem()).getCustomRenderer()',
     'import net.minecraftforge.client.extensions.common.IClientItemExtensions;':'',
-    'ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, SPEC);':'fuzs.forgeconfigapiport.api.config.v3.ForgeConfigRegistry.INSTANCE.register(VisorTacz.ID,ModConfig.Type.CLIENT,SPEC);',
+    'ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, SPEC);':'fuzs.forgeconfigapiport.fabric.api.neoforge.v4.NeoForgeConfigRegistry.INSTANCE.register(VisorTacz.ID,ModConfig.Type.CLIENT,SPEC);',
     'player.getCapability(ForgeCapabilities.ITEM_HANDLER)':'((cn.sh1rocu.tacz.api.mixin.ItemHandlerCapability)player).tacz$getItemHandler(null)',
     'p.getCapability(ForgeCapabilities.ITEM_HANDLER)':'((cn.sh1rocu.tacz.api.mixin.ItemHandlerCapability)p).tacz$getItemHandler(null)',
     'target.isStencilEnabled()':'((cn.sh1rocu.tacz.api.mixin.RenderTargetStencil)target).tacz$isStencilEnabled()',
@@ -82,5 +82,3 @@ tasks.register('generateSharedSources') {
   def helper=new File(out,'dev/visorcompat/tacz/compat/StackData.java');helper.parentFile.mkdirs();helper.setText(minecraft121HelperSource,'UTF-8')
  }
 }
-
-

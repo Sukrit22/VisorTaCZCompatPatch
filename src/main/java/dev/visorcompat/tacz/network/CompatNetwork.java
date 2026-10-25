@@ -23,7 +23,7 @@ import java.util.UUID;
 @Mod.EventBusSubscriber(modid = VisorTacz.ID)
 public final class CompatNetwork {
     public static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
-            new ResourceLocation(VisorTacz.ID, "main"), () -> "32", "32"::equals, "32"::equals);
+            new ResourceLocation(VisorTacz.ID, "main"), () -> "34", "34"::equals, "34"::equals);
     private static final Set<UUID> DESCRIPTORS = new HashSet<>();
     private static final Set<UUID> MODE_KNOWN = new HashSet<>();
     private static final Set<UUID> TRANSFER_ANYTIME = new HashSet<>();
@@ -32,7 +32,11 @@ public final class CompatNetwork {
     private static final Map<UUID, Grip> GRIPS = new HashMap<>();
     private CompatNetwork() {}
 
-    public record Feedback(int kind,int entityId,ResourceLocation gun,ResourceLocation ammo,float x,float y,float z,float vx,float vy,float vz,float scale,float gunScale) {}
+    public record Feedback(int kind,int entityId,ResourceLocation gun,ResourceLocation ammo,float x,float y,float z,float vx,float vy,float vz,float scale,float gunScale,float catchY) {
+        public Feedback(int kind,int entityId,ResourceLocation gun,ResourceLocation ammo,float x,float y,float z,float vx,float vy,float vz,float scale,float gunScale){
+            this(kind,entityId,gun,ammo,x,y,z,vx,vy,vz,scale,gunScale,Float.NaN);
+        }
+    }
     public record MainAction(boolean transfer,boolean held,boolean canceled) {}
     public record PistolRelease() {}
     public record MagazineUse() {}
@@ -84,8 +88,8 @@ public final class CompatNetwork {
             .decoder(b->new MainAction(b.readBoolean(),b.readBoolean(),b.readBoolean()))
             .consumerMainThread((m,c)->{var p=c.get().getSender();if(p!=null){if(m.transfer())ServerPhysical.transfer(p);else ServerPhysical.mainGrip(p,m.held(),m.canceled());}c.get().setPacketHandled(true);}).add();
         CHANNEL.messageBuilder(Feedback.class,6,NetworkDirection.PLAY_TO_CLIENT)
-            .encoder((m,b)->{b.writeVarInt(m.kind());b.writeVarInt(m.entityId());b.writeResourceLocation(m.gun());b.writeResourceLocation(m.ammo());b.writeFloat(m.x());b.writeFloat(m.y());b.writeFloat(m.z());b.writeFloat(m.vx());b.writeFloat(m.vy());b.writeFloat(m.vz());b.writeFloat(m.scale());b.writeFloat(m.gunScale());})
-            .decoder(b->new Feedback(b.readVarInt(),b.readVarInt(),b.readResourceLocation(),b.readResourceLocation(),b.readFloat(),b.readFloat(),b.readFloat(),b.readFloat(),b.readFloat(),b.readFloat(),b.readFloat(),b.readFloat()))
+            .encoder((m,b)->{b.writeVarInt(m.kind());b.writeVarInt(m.entityId());b.writeResourceLocation(m.gun());b.writeResourceLocation(m.ammo());b.writeFloat(m.x());b.writeFloat(m.y());b.writeFloat(m.z());b.writeFloat(m.vx());b.writeFloat(m.vy());b.writeFloat(m.vz());b.writeFloat(m.scale());b.writeFloat(m.gunScale());b.writeFloat(m.catchY());})
+            .decoder(b->new Feedback(b.readVarInt(),b.readVarInt(),b.readResourceLocation(),b.readResourceLocation(),b.readFloat(),b.readFloat(),b.readFloat(),b.readFloat(),b.readFloat(),b.readFloat(),b.readFloat(),b.readFloat(),b.readFloat()))
             .consumerMainThread((m,c)->{net.minecraftforge.fml.DistExecutor.unsafeRunWhenOn(net.minecraftforge.api.distmarker.Dist.CLIENT,()->()->dev.visorcompat.tacz.client.HandlingEffects.receive(m));c.get().setPacketHandled(true);}).add();
         CHANNEL.messageBuilder(RemoteState.class,5,NetworkDirection.PLAY_TO_CLIENT)
             .encoder((m,b)->{b.writeUUID(m.player());b.writeUtf(m.key(),512);b.writeBoolean(m.active());b.writeBoolean(m.physical());
@@ -158,7 +162,7 @@ public final class CompatNetwork {
     public record Mode(boolean enabled, boolean physical,boolean transferAnytime,boolean descriptors,String digest,boolean recoil) {}
     public static boolean enabled(ServerPlayer player) { return ACTIVE.contains(player.getUUID()); }
     @SubscribeEvent public static void login(PlayerEvent.PlayerLoggedInEvent event) {
-        if(event.getEntity() instanceof ServerPlayer player) ServerPhysical.recoverInventory(player);
+        if(event.getEntity() instanceof ServerPlayer player) { ServerPhysical.recoverInventory(player); dev.visorcompat.tacz.server.DualPhysicalServer.recoverInventory(player); }
     }
     @SubscribeEvent public static void logout(PlayerEvent.PlayerLoggedOutEvent event) {
         dev.visorcompat.tacz.server.ServerButtonJams.logout(event);

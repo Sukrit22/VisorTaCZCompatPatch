@@ -1,6 +1,19 @@
 # Minecraft 1.21.1 ports
 
-These targets are under development. A configured build or successful compilation alone does not establish VR compatibility. The 1.20.1 targets remain separate.
+These are experimental ports. Both targets now build and pass automated tests and dedicated-server checks. Client rendering and headset gameplay remain untested. The 1.20.1 targets remain separate.
+
+## Verified on 2026-10-16
+
+| Check | Fabric | NeoForge |
+| --- | --- | --- |
+| Full build | Passed | Passed |
+| Shared JUnit tests | 257 passed | 258 passed, including the platform-initialized persistence test |
+| Component and item-packet persistence regression | Passed through `testStackData` | Passed through the NeoForge test harness |
+| Release JAR metadata/resources | Passed | Passed |
+| Dedicated server with equipped M870 zombie | Passed; clean console shutdown | Passed; lazy script class load explicitly confirmed; clean shutdown |
+| Client and headset | Pending | Pending |
+
+Build version: `0.14.0-alpha.5.1+1.21.1`. The original 1.20.1 builds were not replaced or installed into any instance.
 
 | Target | Project directory | Java | Visor dependency | TaCZ dependency |
 | --- | --- | --- | --- | --- |

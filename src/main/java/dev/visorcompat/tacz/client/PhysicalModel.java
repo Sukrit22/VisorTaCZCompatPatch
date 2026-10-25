@@ -82,21 +82,24 @@ public final class PhysicalModel implements AutoCloseable {
     public static void guides(PoseStack matrices,WeaponProfile profile,GunPose gun,VRPlayerPose pose) {
         if(!CompatSettings.debugCubes() && !(Minecraft.getInstance().screen instanceof CalibrationScreen))return;
         boolean calibrating=Minecraft.getInstance().screen instanceof CalibrationScreen;
-        if(!PhysicalClient.active()&&!calibrating)return;
         var stack=Minecraft.getInstance().player.getMainHandItem();String key=Profiles.key(stack);
         var c=CalibrationStore.render(key);var local=Handling.local(gun,AdvancedClient.freeMain()||PhysicalClient.supportAnchor()?pose.getMainHand().getPosition():pose.getOffhand().getPosition());
+        sightGuides(matrices,stack,profile,c,gun,pose,false);
+        if(!PhysicalClient.active()&&!calibrating)return;
         if(profile.physical()){
         guide(matrices,Handling.magazine(profile,c),c.zones().magazine(),key,"magazine",local);
         var rack=Handling.rack(profile,c,dev.visorcompat.tacz.physical.BoltState.open(stack));
         if(profile.pump()&&dev.visorcompat.tacz.server.ServerPump.open(stack))rack.add(0,0,dev.visorcompat.tacz.physical.PumpCycle.TRAVEL);
         if(profile.bolt()&&dev.visorcompat.tacz.physical.ActionState.lifted(stack))rack.add(0,.035f,0);
         guide(matrices,rack,c.zones().rack(),key,"rack",local);
+        if(profile.cylinder()&&!profile.breakAction()&&profile.mechanism()!=WeaponProfile.Mechanism.LONETRAIL)
+            cylinderStrokeGuide(matrices,rack,gun,pose,dev.visorcompat.tacz.server.ServerCylinder.open(stack));
         if(!profile.manualAction())guide(matrices,Handling.release(profile,c),c.zones().release(),key,"release",local);
         }
         var port=dev.visorcompat.tacz.physical.JamProfile.of(profile,c).port();
         guide(matrices,port,profile.bolt()?new ZoneSizes.Box(.025f,.025f,.025f):c.zones().port(),key,"port",local);
         if(profile.pump()&&profile.selector())guide(matrices,Handling.selector(profile,c),c.zones().selector(),key,"selector",local);
-        if(!profile.pump()){
+        if(!profile.pump()||profile.mechanism()==WeaponProfile.Mechanism.TUBE_AUTO){
             if(profile.physical()&&profile.selector())guide(matrices,Handling.selector(profile,c),c.zones().selector(),key,"selector",local);
             guide(matrices,Handling.support(profile,c),c.zones().support(),key,"support",local);
         }
@@ -111,23 +114,38 @@ public final class PhysicalModel implements AutoCloseable {
                 guide(matrices,new Vector3f(),c.zones().pouch(),key,"pouch",Handling.pouchLocal(AdvancedClient.freeMain()?pose.getMainHand().getPosition():pose.getOffhand().getPosition(),pose.getHmd().getPosition(),forward,gun.worldScale(),c));
             }finally{matrices.popPose();}
         }
-        if(calibrating){
-            var sight=OpticGeometry.sight(stack,profile);
+    }
+    public static void sightGuides(PoseStack matrices,net.minecraft.world.item.ItemStack stack,WeaponProfile profile,Calibration c,GunPose gun,VRPlayerPose pose,boolean offhand){
+        String key=Profiles.key(stack);
+            var ads=OpticGeometry.ads(stack,profile,c,true);
+            var sight=ads==null?null:ads.sight();
             if(sight!=null){
-                sight.add(c.interactions().sight().vector()).mul(c.gunScale());
                 var eye=Handling.local(gun,pose.getHmd().getPosition());
                 if(pose instanceof org.vmstudio.visor.api.client.player.pose.VRPlayerPoseClient clientPose){
                     var left=Handling.local(gun,clientPose.getEyeLeft().getPosition());
                     var right=Handling.local(gun,clientPose.getEyeRight().getPosition());
-                    var center=new Vector3f(sight).add(0,0,.015f+c.zones().sight().depth()/2);
-                    eye=c.zones().sight().contains(left,center)?left:right;
+                    var center=new Vector3f(sight).add(0,0,.015f+ads.box().depth()/2);
+                    eye=ads.box().contains(left,center)?left:right;
                 }
-                guide(matrices,new Vector3f(sight).add(0,0,.015f+c.zones().sight().depth()/2),c.zones().sight(),key,"sight",eye);
+                guide(matrices,new Vector3f(sight).add(0,0,.015f+ads.box().depth()/2),ads.box(),key,"sight",eye);
                 guide(matrices,sight,new ZoneSizes.Box(.01f,.01f,.01f),key,"sight",eye);
                 // Thin forward marker makes the direction of the sight line explicit.
                 guide(matrices,new Vector3f(sight).add(0,0,-.06f),new ZoneSizes.Box(.002f,.002f,.12f),key,"sight",eye);
             }
-        }
+    }
+    private static void cylinderStrokeGuide(PoseStack matrices,Vector3f rack,GunPose gun,VRPlayerPose pose,boolean open){
+        // Distances are room metres, independent of gun model calibration or hand.
+        var right=pose.getHmd().getRotation().transformDirection(new Vector3f(1,0,0));right.y=0;
+        if(right.lengthSquared()<.1f)right.set(1,0,0);else right.normalize();
+        new Quaternionf(gun.rotation()).conjugate().transform(right);
+        float length=open?dev.visorcompat.tacz.physical.CylinderMotion.CLOSE_DISTANCE:-dev.visorcompat.tacz.physical.CylinderMotion.OPEN_DISTANCE;
+        matrices.pushPose();
+        try{
+            matrices.translate(rack.x,rack.y,rack.z);matrices.mulPose(new Quaternionf().rotationTo(new Vector3f(1,0,0),right));
+            var buffer=Minecraft.getInstance().renderBuffers().bufferSource().getBuffer(RenderType.lines());
+            LevelRenderer.renderLineBox(matrices,buffer,java.lang.Math.min(0,length),-.0015,-.0015,java.lang.Math.max(0,length),.0015,.0015,1,.48f,0,1);
+            LevelRenderer.renderLineBox(matrices,buffer,length-.002,-.009,-.009,length+.002,.009,.009,1,.48f,0,1);
+        }finally{matrices.popPose();}
     }
     private static void guide(PoseStack matrices,Vector3f pos,ZoneSizes.Box size,String key,String action,Vector3f hand){
         int color=CalibrationHints.get(key,action).color();boolean inside=size.contains(hand,pos);

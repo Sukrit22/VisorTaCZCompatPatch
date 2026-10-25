@@ -15,6 +15,9 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 public abstract class PhysicalShotSoundMixin {
     @Redirect(method={"update","updateSoundOnly"},at=@At(value="INVOKE",target="Lcom/tacz/guns/api/client/animation/ObjectAnimation;getSoundChannel()Lcom/tacz/guns/api/client/animation/ObjectAnimationSoundChannel;"))
     private ObjectAnimationSoundChannel physicalShotSound(ObjectAnimation animation){
+        // DualStatus owns reload/bolt playback for both inventory slots. The native
+        // animation runner also advances the selected slot, otherwise doubling it.
+        if(dev.visorcompat.tacz.client.DualClient.active()&&dev.visorcompat.tacz.client.DualReloadSounds.ownsAnimation(animation.name))return null;
         var player=Minecraft.getInstance().player;
         if(player!=null && PhysicalClient.active() && animation.name.startsWith("shoot")){
             var stack=player.getMainHandItem();var gun=IGun.getIGunOrNull(stack);

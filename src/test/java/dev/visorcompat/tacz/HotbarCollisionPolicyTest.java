@@ -4,6 +4,17 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class HotbarCollisionPolicyTest {
+    @Test void onlyMainReservesWhenDualIsDisabled(){
+        assertTrue(HotbarCollisionPolicy.protects(true,false,true,false,true,false));
+        assertFalse(HotbarCollisionPolicy.protects(true,false,true,false,false,false));
+        assertTrue(HotbarCollisionPolicy.protects(true,false,true,true,false,false));
+    }
+    @Test void holsterDrawCanTakeSelectedButNeverHeldGun(){
+        for(boolean main:new boolean[]{true,false}){
+            assertFalse(HotbarCollisionPolicy.protects(true,false,true,true,main,true));
+            assertTrue(HotbarCollisionPolicy.protects(true,true,true,true,main,true));
+        }
+    }
     @Test void selectedLockCanBeDisabledButHeldGunCannotBeStolen(){
         assertTrue(HotbarCollisionPolicy.protects(true,false,true));
         assertFalse(HotbarCollisionPolicy.protects(true,false,false));

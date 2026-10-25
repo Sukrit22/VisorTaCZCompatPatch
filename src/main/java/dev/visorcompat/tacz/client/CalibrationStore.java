@@ -31,6 +31,7 @@ public final class CalibrationStore {
         if(preview!=null)throw new IOException("Save or cancel the calibration preview before reloading");
         try {
             var next=dev.visorcompat.tacz.CalibrationFiles.read(FILE);
+            SightCalibrationStore.reload();
             saved=next;loadError=null;
         } catch(IOException e) {
             loadError="Cannot reload calibration: "+e.getMessage()+". Fix the file and reload again.";

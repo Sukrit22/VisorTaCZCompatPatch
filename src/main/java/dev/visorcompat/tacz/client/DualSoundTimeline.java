@@ -20,11 +20,20 @@ public final class DualSoundTimeline {
   var gun=IGun.getIGunOrNull(stack);var index=gun==null?null:TimelessAPI.getCommonGunIndex(gun.getGunId(stack)).orElse(null);
   int ext=index==null?0:com.tacz.guns.util.AttachmentDataUtils.getMagExtendLevel(stack,index.getGunData());
   var animation=ext>0&&animations.containsKey(name+"_xmag")?animations.get(name+"_xmag"):animations.get(name);
+  append(animation,0);
+  if(cues.isEmpty()&&(name.equals(com.tacz.guns.sound.SoundManager.RELOAD_EMPTY_SOUND)||name.equals(com.tacz.guns.sound.SoundManager.RELOAD_TACTICAL_SOUND))&&index!=null){
+   var lengths=new HashMap<String,Double>();animations.forEach((key,value)->lengths.put(key,(double)value.getMaxEndTimeS()));
+   int needed=com.tacz.guns.util.AttachmentDataUtils.getAmmoCountWithAttachment(stack,index.getGunData())-gun.getCurrentAmmoCount(stack);
+   boolean alternate=gun.getFireMode(stack)==com.tacz.guns.api.item.gun.FireMode.BURST;
+   for(var segment:DualReloadSounds.plan(lengths,name.equals(com.tacz.guns.sound.SoundManager.RELOAD_EMPTY_SOUND),alternate,needed))append(animations.get(segment.name()),segment.second());
+  }
+  cues.sort(Comparator.comparingDouble(Cue::second));
+ }
+ private void append(com.tacz.guns.api.client.animation.ObjectAnimation animation,double offset){
   if(animation==null||animation.getSoundChannel()==null||animation.getSoundChannel().content==null)return;
   var content=animation.getSoundChannel().content;
   if(content.keyframeTimeS==null||content.keyframeSoundName==null)return;
-  for(int i=0;i<Math.min(content.keyframeTimeS.length,content.keyframeSoundName.length);i++)if(Double.isFinite(content.keyframeTimeS[i])&&content.keyframeTimeS[i]>=0&&content.keyframeSoundName[i]!=null)cues.add(new Cue(content.keyframeTimeS[i],content.keyframeSoundName[i]));
-  cues.sort(Comparator.comparingDouble(Cue::second));
+  for(int i=0;i<Math.min(content.keyframeTimeS.length,content.keyframeSoundName.length);i++)if(Double.isFinite(content.keyframeTimeS[i])&&content.keyframeTimeS[i]>=0&&DualSounds.available(content.keyframeSoundName[i]))cues.add(new Cue(offset+content.keyframeTimeS[i],content.keyframeSoundName[i]));
  }
  public boolean empty(){return cues.isEmpty();}
  public void tick(int slot){if(start==0)start=System.nanoTime();double elapsed=(System.nanoTime()-start)/1e9;

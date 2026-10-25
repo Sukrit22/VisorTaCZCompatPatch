@@ -6,6 +6,11 @@ public final class HotbarCollisionPolicy {
     public static boolean protects(boolean gun, boolean held, boolean lockSelected) {
         return gun && (held || lockSelected);
     }
+    /** Explicit holster draws override selection reservations, never a held gun. */
+    public static boolean protects(boolean gun, boolean held, boolean lockSelected,
+                                   boolean dual, boolean ownerMain, boolean holsterDraw) {
+        return (dual || ownerMain) && protects(gun, held, lockSelected && !holsterDraw);
+    }
     public static int previousSelection(boolean selectingMain, int previous, int ownerSlot) {
         if (previous >= 0 && previous < 9 && previous != ownerSlot) return previous;
         // An offhand can be empty. Minecraft's selected main slot must remain valid.

@@ -1,6 +1,6 @@
 plugins { id 'net.neoforged.moddev' version '2.0.141' }
 group='dev.visorcompat.tacz'
-version='0.14.0-alpha.5.1+1.21.1'
+version='0.14.0-alpha.9+1.21.1'
 base.archivesName='visor-compat-tacz-1.21.1-neoforge'
 java.toolchain.languageVersion=JavaLanguageVersion.of(21)
 repositories { mavenCentral(); maven { url='https://api.modrinth.com/maven' } }
@@ -24,6 +24,7 @@ tasks.register('extractUpstreamLibraries') {
 neoForge {
  version='21.1.219'
  mods { visor_tacz { sourceSet sourceSets.main } }
+ unitTest { enable(); testedMod=mods.visor_tacz }
  runs {
   client { client(); gameDirectory=file('run/client') }
   server { server(); programArgument '--nogui'; gameDirectory=file('build/server-smoke') }
@@ -40,9 +41,43 @@ apply from:'shared-sources.gradle'
 sourceSets.main.java.srcDir layout.buildDirectory.dir('generated/shared')
 sourceSets.main.resources.srcDir '../src/main/resources'
 sourceSets.test.java.srcDir '../src/test/java'
+sourceSets.test.compileClasspath += sourceSets.main.compileClasspath
+sourceSets.test.runtimeClasspath += sourceSets.main.runtimeClasspath
 compileJava.dependsOn generateSharedSources
 compileJava.dependsOn extractUpstreamLibraries
 tasks.withType(JavaCompile).configureEach { options.encoding='UTF-8'; options.compilerArgs += ['-Xmaxerrs','500'] }
 tasks.named('test') { useJUnitPlatform() }
-processResources { exclude 'META-INF/mods.toml','fabric.mod.json','visor_tacz-calibration.json','visor_tacz-holsters.json','visor_tacz-inspections.json'; filesMatching('META-INF/neoforge.mods.toml') { expand(version:project.version) } }
-minecraft121InstallTests()
+processResources {
+ inputs.property 'version',project.version
+ inputs.property 'packFormat',34
+ inputs.property 'mixinCompatibility','JAVA_21'
+ exclude 'META-INF/mods.toml','fabric.mod.json','visor_tacz-calibration.json','visor_tacz-holsters.json','visor_tacz-inspections.json'
+ filesMatching('META-INF/neoforge.mods.toml') { expand(version:project.version) }
+ filesMatching('pack.mcmeta') { filter { it.replace('"pack_format": 15','"pack_format": 34').replace('"pack_format":15','"pack_format":34') } }
+ filesMatching('visor_tacz.mixins.json') { filter { it.replace('"JAVA_17"','"JAVA_21"') } }
+}
+sourceSets.test.java.srcDir '../ports/test/java'
+tasks.register('testStackData') { dependsOn 'test' }
+tasks.register('verifyProductionJar') {
+ dependsOn tasks.named('jar')
+ inputs.file(tasks.jar.archiveFile)
+ doLast {
+  def zip=new java.util.zip.ZipFile(tasks.jar.archiveFile.get().asFile)
+  try {
+   assert zip.getEntry('META-INF/neoforge.mods.toml') != null
+   assert zip.getEntry('META-INF/mods.toml') == null
+   assert zip.getEntry('fabric.mod.json') == null
+   def metadata=zip.getInputStream(zip.getEntry('META-INF/neoforge.mods.toml')).getText('UTF-8')
+   assert metadata.contains('version="'+project.version+'"')
+   assert metadata.contains('versionRange="[1.21.1]"') && !metadata.contains('1.20.1')
+   def pack=new groovy.json.JsonSlurper().parse(zip.getInputStream(zip.getEntry('pack.mcmeta')))
+   assert pack.pack.pack_format==34
+   def mixins=new groovy.json.JsonSlurper().parse(zip.getInputStream(zip.getEntry('visor_tacz.mixins.json')))
+   assert mixins.required && mixins.injectors.defaultRequire==1
+   assert zip.getEntry('dev/visorcompat/tacz/compat/StackData.class')!=null
+   assert zip.getEntry('dev/visorcompat/tacz/neoforge/network/SimpleChannel.class')!=null
+  } finally {zip.close()}
+ }
+}
+tasks.named('check') { dependsOn 'verifyProductionJar' }
+tasks.withType(JavaExec).configureEach { if(name=='runServer')standardInput=System.in }

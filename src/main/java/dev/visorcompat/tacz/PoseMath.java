@@ -27,16 +27,24 @@ public final class PoseMath {
     public static Quaternionf supportedRotation(Quaternionf main,Vector3fc hand,Vector3fc offhand,
                                                 Vector3fc support,float scale,boolean enabled,ZoneSizes.Box zone) {
         Quaternionf result = new Quaternionf(main);
-        if (!enabled || !finite(offhand) || !finite(support) || support.lengthSquared()<.0025f) return result;
+        if(!supporting(main,hand,offhand,support,scale,enabled,zone))return result;
         Vector3f local=new Vector3f(support);
-        Vector3f expected=result.transform(new Vector3f(local)).mul(scale).add(hand);
         Vector3f forward=result.transform(local.normalize());
         Vector3f delta = new Vector3f(offhand).sub(hand);
+        delta.normalize();
+        return new Quaternionf().rotationTo(forward, delta).mul(result).normalize();
+    }
+    /** Shared eligibility for model alignment and contextual ADS; evaluate before alignment. */
+    public static boolean supporting(Quaternionf main,Vector3fc hand,Vector3fc offhand,
+                                     Vector3fc support,float scale,boolean enabled,ZoneSizes.Box zone){
+        if(!enabled||!finite(offhand)||!finite(support)||support.lengthSquared()<.0025f)return false;
+        Vector3f expected=new Quaternionf(main).transform(new Vector3f(support)).mul(scale).add(hand);
+        Vector3f forward=new Quaternionf(main).transform(new Vector3f(support).normalize());
+        Vector3f delta=new Vector3f(offhand).sub(hand);
         // Snap only near the foregrip, with a meaningful hand separation and modest angle.
         var handLocal=new Quaternionf(main).conjugate().transform(new Vector3f(offhand).sub(hand)).div(scale);
-        if ((zone==null?expected.distance(offhand) > .12f * scale:!zone.contains(handLocal,support)) || delta.length() < .15f * scale) return result;
+        if ((zone==null?expected.distance(offhand) > .12f * scale:!zone.contains(handLocal,support)) || delta.length() < .15f * scale) return false;
         delta.normalize();
-        if (forward.dot(delta) < .8f) return result;
-        return new Quaternionf().rotationTo(forward, delta).mul(result).normalize();
+        return forward.dot(delta)>=.8f;
     }
 }

@@ -35,14 +35,14 @@ public final class AutoAds {
             int supportSlot=VisorAPI.client().getVRLocalPlayer().getOffhandSlot();
             boolean supportEmpty=supportSlot>=0&&supportSlot<9?mc.player.getInventory().getItem(supportSlot).isEmpty():mc.player.getOffhandItem().isEmpty();
             var gun=GunPose.resolve(pose,profile,supportEmpty && PhysicalClient.supporting(),CalibrationStore.get(Profiles.key(stack)),PhysicalClient.anchor());
-            Vector3f sight=OpticGeometry.sight(stack,profile);
-            if(sight!=null)sight.add(CalibrationStore.get(Profiles.key(stack)).interactions().sight().vector()).mul(CalibrationStore.get(Profiles.key(stack)).gunScale());
+            var ads=OpticGeometry.ads(stack,profile,CalibrationStore.get(Profiles.key(stack)),false);
+            Vector3f sight=ads==null?null:ads.sight();
             boolean supported=boltSupport&&VisorAPI.client().getVRLocalPlayer().getRawController(HandType.OFFHAND).isTracking() || !CompatSettings.twoHandAds() || VisorAPI.client().getVRLocalPlayer().getRawController(HandType.OFFHAND).isTracking() && (PhysicalClient.active()?PhysicalClient.supporting():supportEmpty && gun!=null && Handling.inside(Handling.local(gun,pose.getOffhand().getPosition()),Handling.support(profile,CalibrationStore.get(Profiles.key(stack))),CalibrationStore.get(Profiles.key(stack)),ZoneSizes.Zone.SUPPORT));
             if(gun!=null && sight!=null && supported) {
                 Vector3f look=pose.getHmd().getRotation().transformDirection(new Vector3f(0,0,-1)).normalize();
                 look=new Quaternionf(gun.rotation()).conjugate().transform(look);
-                desired=OpticMath.aligned(Handling.local(gun,pose.getEyeLeft().getPosition()),look,sight,aiming,CalibrationStore.get(Profiles.key(stack)).zones().sight())
-                    || OpticMath.aligned(Handling.local(gun,pose.getEyeRight().getPosition()),look,sight,aiming,CalibrationStore.get(Profiles.key(stack)).zones().sight());
+                desired=OpticMath.aligned(Handling.local(gun,pose.getEyeLeft().getPosition()),look,sight,aiming,ads.box())
+                    || OpticMath.aligned(Handling.local(gun,pose.getEyeRight().getPosition()),look,sight,aiming,ads.box());
             }
         }
         if(desired)mc.player.setSprinting(false);

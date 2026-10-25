@@ -1,0 +1,57 @@
+// Launch the actual release JAR with official Minecraft and unmodified published
+// mods. No generated classes, development mapping JAR or remapped dependencies.
+configurations {
+ productionMods { transitive=false }
+ productionMappings { transitive=false }
+}
+dependencies {
+ productionMods 'net.fabricmc.fabric-api:fabric-api:0.116.17+1.21.1'
+ productionMods 'maven.modrinth:visor:7i7UZxdB'
+ productionMods "maven.modrinth:tacz-refabricated:${providers.gradleProperty('smokeTacz').getOrElse('veM4XOhW')}"
+ productionMods 'maven.modrinth:forge-config-api-port:N5qzq0XV'
+ productionMappings 'net.fabricmc:intermediary:1.21.1:v2'
+}
+def smokeDir=layout.buildDirectory.dir("production-smoke/${project.version}")
+tasks.register('prepareProductionSmoke', Sync) {
+ dependsOn remapJar
+ into(smokeDir.map { it.dir('mods') })
+ from configurations.productionMods
+ from tasks.remapJar.archiveFile
+}
+tasks.register('productionClient', JavaExec) {
+ dependsOn 'prepareProductionSmoke', 'downloadAssets'
+ javaLauncher=javaToolchains.launcherFor { languageVersion=JavaLanguageVersion.of(21) }
+ workingDir smokeDir
+ mainClass='net.fabricmc.loader.impl.launch.knot.KnotClient'
+ systemProperty 'fabric.development','false'
+ // Keep Minecraft libraries and loader dependencies; exclude Loom's transformed
+ // mods, our classes/resources and development-only mapping/launch artifacts.
+ classpath=files(provider {
+  sourceSets.main.runtimeClasspath.files.findAll {
+   it.path.replace('\\','/').contains('/modules-2/') &&
+   !it.name.startsWith('dev-launch-injector')
+  }
+ }) + configurations.productionMappings + files(new File(gradle.gradleUserHomeDir,'caches/fabric-loom/1.21.1/minecraft-client.jar'))
+ args '--username','FabricSmoke','--version','1.21.1','--accessToken','0',
+      '--gameDir',smokeDir.get().asFile.absolutePath,
+      '--assetIndex','17','--assetsDir',new File(gradle.gradleUserHomeDir,'caches/fabric-loom/assets').absolutePath
+ maxHeapSize='2G'
+}
+
+// Dedicated-server check of the same remapped release and unmodified dependencies.
+tasks.register('productionServer', JavaExec) {
+ dependsOn 'prepareProductionSmoke'
+ javaLauncher=javaToolchains.launcherFor { languageVersion=JavaLanguageVersion.of(21) }
+ workingDir smokeDir
+ mainClass='net.fabricmc.loader.impl.launch.knot.KnotServer'
+ systemProperty 'fabric.development','false'
+ classpath=files(provider {
+  sourceSets.main.runtimeClasspath.files.findAll {
+   it.path.replace('\\','/').contains('/modules-2/') && !it.name.startsWith('dev-launch-injector')
+  }
+ }) + configurations.productionMappings + files(new File(gradle.gradleUserHomeDir,'caches/fabric-loom/1.21.1/minecraft-extracted_server.jar'))
+ args '--nogui'
+ standardInput=System.in
+ maxHeapSize='2G'
+}
+

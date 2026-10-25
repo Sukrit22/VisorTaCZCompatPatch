@@ -8,10 +8,15 @@ import org.vmstudio.visor.api.common.HandType;
 import org.vmstudio.visor.api.client.player.pose.PlayerPoseType;
 /** Native TaCZ asset playback at the actual gun, without shared entity/sound concurrency eviction. */
 public final class DualSounds {
+ public static boolean available(ResourceLocation asset){
+  if(asset==null)return false;
+  var resource=new ResourceLocation(asset.getNamespace(),"tacz_sounds/"+asset.getPath()+".ogg");
+  return Minecraft.getInstance().getResourceManager().getResource(resource).isPresent();
+ }
  public static GunSoundInstance play(int slot,ResourceLocation asset,float volume,float pitch,int distance){
   var mc=Minecraft.getInstance();if(mc.player==null||asset==null||!DualClient.active())return null;
-  var resource=new ResourceLocation(asset.getNamespace(),"tacz_sounds/"+asset.getPath()+".ogg");if(mc.getResourceManager().getResource(resource).isEmpty())return null;
-  var hand=slot==mc.player.getInventory().selected?HandType.MAIN:HandType.OFFHAND;
+  if(!available(asset))return null;
+  HandType hand=null;for(var candidate:HandType.values())if(DualClient.boundSlot(candidate)==slot){hand=candidate;break;}if(hand==null)return null;
   var pose=DualClient.pose(hand,PlayerPoseType.TICK);if(pose==null)return null;
   var sound=new LocatedSound(asset,volume,pitch,distance,pose.muzzle());mc.getSoundManager().play(sound);return sound;
  }

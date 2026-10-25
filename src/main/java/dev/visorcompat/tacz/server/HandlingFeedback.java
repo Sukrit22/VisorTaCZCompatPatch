@@ -10,6 +10,9 @@ import org.joml.Vector3f;
 
 public final class HandlingFeedback {
     public static void cylinderEject(ServerPlayer p,GunPose pose,int live,int spent,boolean gravity,float pullSpeed){
+        cylinderEject(p,pose,live,spent,gravity,pullSpeed,Float.NaN);
+    }
+    public static void cylinderEject(ServerPlayer p,GunPose pose,int live,int spent,boolean gravity,float pullSpeed,float catchY){
         var stack=p.getMainHandItem();var gun=IGun.getIGunOrNull(stack);if(gun==null)return;
         var index=TimelessAPI.getCommonGunIndex(gun.getGunId(stack)).orElse(null);if(index==null)return;
         var c=CompatNetwork.calibration(p);var profile=Profiles.get(stack);
@@ -19,7 +22,7 @@ public final class HandlingFeedback {
             var spread=new Vector3f((float)Math.cos(angle)*.014f,(float)Math.sin(angle)*.014f,0).mul(c.gunScale());
             var pos=new org.joml.Quaternionf(pose.rotation()).transform(new Vector3f(center).add(spread).mul(pose.worldScale())).add(pose.hand());
             var velocity=new org.joml.Quaternionf(pose.rotation()).transform(new Vector3f(0,0,gravity?0:Math.max(.05f,pullSpeed)).mul(pose.worldScale()));
-            CompatNetwork.CHANNEL.send(PacketDistributor.TRACKING_ENTITY_AND_SELF.with(()->p),new CompatNetwork.Feedback(gravity?(i<live?9:10):(i<live?7:8),p.getId(),gun.getGunId(stack),index.getGunData().getAmmoId(),pos.x,pos.y,pos.z,velocity.x,velocity.y,velocity.z,pose.worldScale(),c.gunScale()*c.casingScale()));
+            CompatNetwork.CHANNEL.send(PacketDistributor.TRACKING_ENTITY_AND_SELF.with(()->p),new CompatNetwork.Feedback(gravity?(i<live?9:10):(i<live?7:8),p.getId(),gun.getGunId(stack),index.getGunData().getAmmoId(),pos.x,pos.y,pos.z,velocity.x,velocity.y,velocity.z,pose.worldScale(),c.gunScale()*c.casingScale(),i<live?catchY:Float.NaN));
         }
         if(!gravity)emit(p,2,pose);
     }

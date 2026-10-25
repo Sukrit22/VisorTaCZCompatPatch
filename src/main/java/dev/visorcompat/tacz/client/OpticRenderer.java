@@ -38,12 +38,15 @@ public final class OpticRenderer {
         event.registerShader(new ShaderInstance(event.getResourceProvider(),new ResourceLocation(VisorTacz.ID,"optic"),DefaultVertexFormat.NEW_ENTITY),s->shader=s);
     }
     public static void begin(VRRenderPass pass,float worldScale) {
+        begin(pass,worldScale,Minecraft.getInstance().player==null?ItemStack.EMPTY:Minecraft.getInstance().player.getMainHandItem());
+    }
+    public static void begin(VRRenderPass pass,float worldScale,ItemStack stack) {
         local=false;
         gunPass=ClientControls.vrActive() && pass.isEye();
         if(!ClientControls.vrActive() || !CompatSettings.optics() || shader==null || !pass.isEye() || OculusCompat.isUsingRenderPack())return;
         var mc=Minecraft.getInstance();
         if(mc.player==null || mc.screen!=null)return;
-        var stack=mc.player.getMainHandItem();var gun=IGun.getIGunOrNull(stack);if(gun==null)return;
+        var gun=IGun.getIGunOrNull(stack);if(gun==null)return;
         var scope=com.tacz.guns.api.item.attachment.AttachmentType.SCOPE;
         if(gun.getAttachment(stack,scope).isEmpty() && gun.getBuiltinAttachment(stack,scope).isEmpty())return;
         mc.renderBuffers().bufferSource().endBatch();
@@ -60,7 +63,11 @@ public final class OpticRenderer {
         var paths=access.visorTacz$oculars();var scopes=access.visorTacz$scopeOculars();
         if(paths==null)return;
         float magnification=IGun.getIGunOrNull(stack).getAimingZoom(stack);
-        magnification=Float.isFinite(magnification)?java.lang.Math.max(1,java.lang.Math.min(16,magnification)):1;
+        var item=IGun.getIGunOrNull(stack);
+        var attachmentType=com.tacz.guns.api.item.attachment.AttachmentType.SCOPE;
+        var attachmentId=item.getAttachmentId(stack,attachmentType);
+        if(com.tacz.guns.api.DefaultAssets.isEmptyAttachmentId(attachmentId))attachmentId=item.getBuiltInAttachmentId(stack,attachmentType);
+        Float opticalOverride=OpticZoomStore.get(attachmentId.toString());
         var buffers=Minecraft.getInstance().renderBuffers().bufferSource();
         buffers.endBatch();
         boolean stencil=GL11.glIsEnabled(GL11.GL_STENCIL_TEST);
@@ -68,7 +75,9 @@ public final class OpticRenderer {
         try {
             for(int i=0;i<paths.size();i++) {
                 var path=paths.get(i);if(path==null || path.isEmpty())continue;
-                boolean scope=model.isScope() && (!model.isSight() || scopes.get(i));
+                boolean scopeOcular=scopes!=null && i<scopes.size() && Boolean.TRUE.equals(scopes.get(i));
+                boolean scope=model.isScope() && (!model.isSight() || scopeOcular);
+                float zoom=OpticMath.lensZoom(magnification,model.isScope(),model.isSight(),scopeOcular,opticalOverride);
                 matrices.pushPose();
                 try {
                     OpticGeometry.path(matrices,path);
@@ -83,8 +92,8 @@ public final class OpticRenderer {
                     boolean valid=relief>.025f*scale && relief<.65f*scale && lateral<.04f*scale;
                     shader.safeGetUniform("Viewport").set((float)viewport[0],(float)viewport[1],(float)viewport[2],(float)viewport[3]);
                     shader.safeGetUniform("AimUV").set(aim.x,aim.y);
-                    shader.safeGetUniform("Zoom").set(scope?magnification:1);
-                    shader.safeGetUniform("Scope").set(scope?1f:0f);
+                    shader.safeGetUniform("Zoom").set(zoom);
+                    shader.safeGetUniform("Scope").set(scope||zoom>1?1f:0f);
                     shader.safeGetUniform("EyeValid").set(valid?1f:0f);
                 } finally {matrices.popPose();}
                 // Use the optic's actual ocular mesh as the aperture; no global stencil clear.

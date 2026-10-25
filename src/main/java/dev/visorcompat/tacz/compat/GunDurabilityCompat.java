@@ -39,6 +39,25 @@ public final class GunDurabilityCompat {
         if(!jammed(stack))return false;
         return setJammed(player,stack,false);
     }
+    /** Dual caller already validates the held binding; never redirect the native packet to another gun. */
+    public static boolean clearBound(ServerPlayer player,ItemStack stack) {
+        if(stack==player.getMainHandItem())return clear(player,stack);
+        if(stack.isEmpty()||!jammed(stack)||!available())return false;
+        int slot=-1;
+        for(int i=0;i<9;i++)if(player.getInventory().getItem(i)==stack){slot=i;break;}
+        if(slot<0)return false;
+        try {
+            if(modifiers.invoke(null,stack)==null)return false;
+            stack.getOrCreateTag().putBoolean("Jammed",false);
+            // gundb's boolean-only packet targets the main hand. Inventory sync targets this exact slot.
+            player.connection.send(new net.minecraft.network.protocol.game.ClientboundContainerSetSlotPacket(-2,0,slot,stack.copy()));
+            player.inventoryMenu.broadcastChanges();
+            return true;
+        } catch(ReflectiveOperationException | LinkageError e) {
+            com.mojang.logging.LogUtils.getLogger().error("TaCZ VR: cannot clear bound dual jam",e);
+            return false;
+        }
+    }
     /** Operator-only test command also uses the native client sync packet. */
     public static boolean setJammed(ServerPlayer player,ItemStack stack,boolean jammed) {
         if(stack!=player.getMainHandItem() || !available())return false;

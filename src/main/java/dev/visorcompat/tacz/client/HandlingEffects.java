@@ -73,7 +73,10 @@ public final class HandlingEffects {
     @SubscribeEvent public static void logout(ClientPlayerNetworkEvent.LoggingOut e){ROUNDS.clear();}
     @SubscribeEvent public static void render(RenderLevelStageEvent e){
         if(e.getStage()!=RenderLevelStageEvent.Stage.AFTER_ENTITIES || OculusCompat.isRenderShadow())return;
-        long now=System.nanoTime();ROUNDS.removeIf(r->now-r.start()>1_250_000_000L);
+        long now=System.nanoTime();ROUNDS.removeIf(r->{
+            var m=r.data();float age=(now-r.start())/1_000_000_000f;
+            return age>(Float.isFinite(m.catchY())?2.5f:1.25f)||dev.visorcompat.tacz.physical.CylinderEjection.reachedCatch(m.y(),m.vy(),m.scale(),age,m.kind()>=9,m.catchY());
+        });
         var mc=Minecraft.getInstance();if(mc.level==null || ROUNDS.isEmpty())return;
         var camera=e.getCamera().getPosition();var matrices=e.getPoseStack();
         for(var r:ROUNDS){

@@ -17,7 +17,7 @@ import org.joml.Vector3f;
 public final class ServerCylinder {
     public static final String OPEN="visor_tacz_cylinder_open",SPENT="visor_tacz_cylinder_spent";
     private static final Map<UUID,State> STATES=new HashMap<>();
-    private static class State {ItemStack stack;int slot,ticks,lastAmmo;boolean held,done,shell,eject,allowReload,loader;Vector3f start,lastPull;long pullTime;float pullSpeed,startAngle;BreakActionMotion breakMotion=new BreakActionMotion();CylinderMotion motion=new CylinderMotion();CylinderShake shake=new CylinderShake();Vector3f gestureRight;long lastPose;Phase sent;State(ServerPlayer p){stack=p.getMainHandItem();slot=p.getInventory().selected;var gun=IGun.getIGunOrNull(stack);lastAmmo=gun==null?0:gun.getCurrentAmmoCount(stack);}}
+    private static class State {ItemStack stack;int slot,ticks,lastAmmo;boolean held,done,shell,eject,allowReload,loader;Vector3f start,lastPull,grabRight;long pullTime;float pullSpeed,startAngle;BreakActionMotion breakMotion=new BreakActionMotion();CylinderMotion motion=new CylinderMotion();CylinderShake shake=new CylinderShake();Vector3f gestureRight;long lastPose;Phase sent;State(ServerPlayer p){stack=p.getMainHandItem();slot=p.getInventory().selected;var gun=IGun.getIGunOrNull(stack);lastAmmo=gun==null?0:gun.getCurrentAmmoCount(stack);}}
     public static boolean open(ItemStack stack){return stack.hasTag()&&stack.getTag().getBoolean(OPEN);}
     private static boolean valid(ServerPlayer p,State s){return s!=null&&s.stack==p.getMainHandItem()&&s.slot==p.getInventory().selected;}
     public static Phase phase(ServerPlayer p){var s=STATES.get(p.getUUID());return !valid(p,s)?Phase.READY:s.shell?(s.loader?Phase.LOADER:Phase.SHELL):s.held?Phase.CYLINDER_HOLD:open(s.stack)?Phase.CYLINDER_OPEN:Phase.READY;}
@@ -55,7 +55,7 @@ public final class ServerCylinder {
             if(open(s.stack)&&delta.z>=.045f&&Math.abs(delta.x)<.12f&&Math.abs(delta.y)<.12f){
                 eject(p,s,false);s.done=true;
             }
-        }else if(CylinderCycle.toggle(delta.x,delta.y,delta.z)){
+        }else if(s.grabRight!=null&&CylinderCycle.stroke(delta.dot(s.grabRight),delta.y,delta.z,open(s.stack))){
             s.motion.reset();boolean wasOpen=open(s.stack);s.stack.getOrCreateTag().putBoolean(OPEN,!wasOpen);s.done=true;
             if(wasOpen)GunDurabilityCompat.clear(p,s.stack);
             HandlingFeedback.emit(p,wasOpen?5:2,ServerPoses.validated(p));p.inventoryMenu.broadcastChanges();
@@ -73,10 +73,12 @@ public final class ServerCylinder {
         if(live+spent==0)return;
         gun.setCurrentAmmoCount(s.stack,0);s.stack.getOrCreateTag().putInt(SPENT,0);
         int recovered=0;
-        boolean caught=false;
+        boolean caught=false;float catchY=Float.NaN;
         if(ServerAdvanced.active(p)&&p.getOffhandItem().isEmpty()&&org.vmstudio.visor.api.VisorAPI.getVRPlayer(p) instanceof org.vmstudio.visor.api.server.player.VRServerPlayer vr){
             var center=new org.joml.Quaternionf(pose.rotation()).transform(Handling.magazine(Profiles.get(s.stack),CompatNetwork.calibration(p)).mul(pose.worldScale())).add(pose.hand());
-            caught=CylinderEjection.canCatch(center,(ServerAdvanced.cylinderOffhand(p)?vr.getPoseData().getMainHand():vr.getPoseData().getOffhand()).getPosition(),pose.worldScale());
+            var catchHand=(ServerAdvanced.cylinderOffhand(p)?vr.getPoseData().getMainHand():vr.getPoseData().getOffhand()).getPosition();
+            caught=CylinderEjection.canCatch(center,catchHand,pose.worldScale());
+            if(caught)catchY=catchHand.y();
         }
         if(live>0&&CylinderEjection.recoverLive(ServerAdvanced.active(p),p.getOffhandItem().isEmpty(),caught)){
             var index=com.tacz.guns.api.TimelessAPI.getCommonGunIndex(gun.getGunId(s.stack)).orElse(null);
@@ -86,7 +88,9 @@ public final class ServerCylinder {
                 p.displayClientMessage(net.minecraft.network.chat.Component.literal("Recovered "+recovered+" live rounds"),true);
             }
         }
-        HandlingFeedback.cylinderEject(p,pose,live-recovered,spent,gravity,s.pullSpeed);p.inventoryMenu.broadcastChanges();
+        // The refund remains a single server operation. Advanced catches still travel
+        // visibly to the validated hand height; this feedback never grants ammunition.
+        HandlingFeedback.cylinderEject(p,pose,caught?live:live-recovered,spent,gravity,s.pullSpeed,catchY);p.inventoryMenu.broadcastChanges();
     }
     private static void gestures(ServerPlayer p,State s){
         var pose=ServerPoses.validated(p);
@@ -136,7 +140,10 @@ public final class ServerCylinder {
         if(s.held||sample==null||!p.getOffhandItem().isEmpty())return;
         var target=Handling.target(phase(p),sample.local(),sample.pouch(),Profiles.get(s.stack),CompatNetwork.calibration(p));
         if(target==Handling.Target.POUCH&&!PouchAmmo.available(p,s.stack)){p.displayClientMessage(net.minecraft.network.chat.Component.literal("TaCZ VR: OUT OF AMMO"),true);return;}
-        if(target==Handling.Target.RACK||target==Handling.Target.CASING||target==Handling.Target.POUCH){s.held=true;s.done=false;s.shell=target==Handling.Target.POUCH;s.loader=loader&&(Profiles.get(s.stack).doubleBarrel()||!DescriptorProfiles.details(Profiles.get(s.stack)).visual().loader().isEmpty());s.eject=target==Handling.Target.CASING;s.start=new Vector3f(sample.local());s.startAngle=grabAngle(p,s,sample.local());s.lastPull=new Vector3f(sample.local());s.pullTime=System.nanoTime();s.pullSpeed=0;}
+        if(target==Handling.Target.RACK||target==Handling.Target.CASING||target==Handling.Target.POUCH){s.held=true;s.done=false;s.shell=target==Handling.Target.POUCH;s.loader=loader&&(Profiles.get(s.stack).doubleBarrel()||!DescriptorProfiles.details(Profiles.get(s.stack)).visual().loader().isEmpty());s.eject=target==Handling.Target.CASING;s.start=new Vector3f(sample.local());
+            var grabPose=ServerPoses.validated(p);
+            s.grabRight=grabPose==null?null:new org.joml.Quaternionf(grabPose.rotation()).conjugate().transform(s.gestureRight==null?new Vector3f(1,0,0):new Vector3f(s.gestureRight));
+            s.startAngle=grabAngle(p,s,sample.local());s.lastPull=new Vector3f(sample.local());s.pullTime=System.nanoTime();s.pullSpeed=0;}
     }
     private static void insert(ServerPlayer p,State s){
         var api=new ModernKineticGunScriptAPI();api.setItemStack(s.stack);api.setShooter(p);api.setDataHolder(IGunOperator.fromLivingEntity(p).getDataHolder());

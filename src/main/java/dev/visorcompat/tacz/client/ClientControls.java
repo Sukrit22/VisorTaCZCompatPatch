@@ -229,7 +229,7 @@ public final class ClientControls implements VREventListener {
         var mc=Minecraft.getInstance();
         if(!vrActive()||(!DualClient.active()&&!supported())||mc.screen!=null
             ||VisorAPI.client().getGuiManager().getCursorHandler().isHandFocused(hand))return false;
-        if(DualClient.active())return DualClient.held(hand);
+        if(DualClient.active())return DualClient.held(hand)||DualAds.supporting(hand==HandType.MAIN?HandType.OFFHAND:HandType.MAIN);
         if(AdvancedClient.active())return AdvancedClient.handOccupied(hand);
         if(PhysicalClient.supportAnchor())return hand==HandType.OFFHAND;
         return hand==HandType.MAIN||PhysicalClient.supportCursorOccupied();

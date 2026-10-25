@@ -29,6 +29,7 @@ public final class DualGunOperator implements IGunOperator {
     private final LivingEntityAmmoCheck ammo;
     private ReloadState reloadState = new ReloadState();
     private boolean closed;
+    private final DualCharge charge = new DualCharge();
 
     public DualGunOperator(ServerPlayer player, Supplier<ItemStack> slot, Supplier<GunPose> pose) {
         this(player, slot, pose, slot.get(), new ShooterDataHolder(), true);
@@ -124,20 +125,54 @@ public final class DualGunOperator implements IGunOperator {
     }
     public ShootResult shot(float pitch, float yaw, long timestamp) {
         if (!valid() || pose() == null) return ShootResult.NOT_DRAW;
-        // Charging needs independent trigger-progress state; never bypass its native gate.
-        var gun = com.tacz.guns.api.item.IGun.getIGunOrNull(weapon);
-        var index = com.tacz.guns.api.TimelessAPI.getCommonGunIndex(gun.getGunId(weapon)).orElse(null);
-        if (index != null && index.getGunData().getChargeData(gun.getFireMode(weapon)) != null)
-            return ShootResult.UNKNOWN_FAIL;
         // This timestamp is relative to this weapon's stable server clock.
         return shoot(() -> pitch, () -> yaw, timestamp);
     }
+    /** Advance native charge semantics once per server tick, using this hand's trigger only. */
+    public ShootResult triggerShot(boolean requested,boolean down,float pitch,float yaw) {
+        var gun=com.tacz.guns.api.item.IGun.getIGunOrNull(weapon);
+        var index=gun==null?null:com.tacz.guns.api.TimelessAPI.getCommonGunIndex(gun.getGunId(weapon)).orElse(null);
+        var cfg=index==null?null:index.getGunData().getChargeData(gun.getFireMode(weapon));
+        if(cfg==null){charge.reset();return requested?shot(pitch,yaw):null;}
+        boolean usable=valid()&&pose()!=null&&!data.reloadStateType.isReloading()&&!data.isBolting&&draw.getDrawCoolDown()==0;
+        if(!usable){charge.reset();return null;}
+        var settings=new DualCharge.Settings(DualCharge.Mode.valueOf(cfg.getChargeType().name()),Math.max(0,cfg.getIncreasePerTick()),Math.max(0,cfg.getDecreasePerTick()),Math.max(0,cfg.getDecreaseOnFire()),cfg.getMaxCharge(),Math.min(cfg.getFireThreshold(),cfg.getMaxCharge()));
+        boolean ready=shoot.getShootCoolDown()==0;
+        if(!charge.tick(settings,requested,down,cfg.isChargeDuringCooldown()||ready,ready))return null;
+        var result=shoot(()->pitch,()->yaw,System.currentTimeMillis()-data.baseTimestamp,charge.progress());
+        if(result==ShootResult.SUCCESS)charge.fired(settings);
+        return result;
+    }
+    /** Complete a validated physical magazine insertion within this weapon's native scope. */
+    public boolean loadPhysicalMagazine(Runnable restoreRemovedRounds){
+        if(!valid())return false;
+        return scoped(()->{
+            var api=new com.tacz.guns.item.ModernKineticGunScriptAPI();api.setItemStack(weapon);api.setShooter(player);api.setDataHolder(data);
+            if(api.getGunIndex()==null||net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(new com.tacz.guns.api.event.common.GunReloadEvent(player,weapon,net.minecraftforge.fml.LogicalSide.SERVER)))return false;
+            restoreRemovedRounds.run();
+            int needed=Math.max(0,api.getNeededAmmoAmount());
+            boolean consume=api.isReloadingNeedConsumeAmmo()&&!api.getGunIndex().getGunData().getReloadData().isInfinite();
+            if(needed>0)api.putAmmoInMagazine(consume?api.consumeAmmoFromPlayer(needed):needed);
+            return true;
+        });
+    }
+    public void beginPhysicalHandling(){
+        scoped(()->{reload.cancelReload();data.reloadTimestamp=-1;data.reloadStateType=ReloadState.StateType.NOT_RELOADING;reloadState=new ReloadState();return null;});charge.reset();
+    }
+    public void resetCharge(){charge.reset();}
     public void tick() {
         if (!valid()) { close(); return; }
         scoped(() -> {
             reloadState = reload.tickReloadState();
             bolt.tickBolt();
-            if (weapon.getItem() instanceof AbstractGunItem gun) gun.tickHeat(data, weapon, player);
+            // Native desktop auto-bolt belongs to the selected-hand client. Dual hands need their own route.
+            var gun=com.tacz.guns.api.item.IGun.getIGunOrNull(weapon);
+            if(gun!=null&&!gun.hasBulletInBarrel(weapon)&&pose()!=null){
+                var index=com.tacz.guns.api.TimelessAPI.getCommonGunIndex(gun.getGunId(weapon)).orElse(null);
+                if(index!=null&&index.getGunData().getBolt()==com.tacz.guns.resource.pojo.data.gun.Bolt.MANUAL_ACTION
+                        &&(gun.useInventoryAmmo(weapon)||gun.getCurrentAmmoCount(weapon)>0))bolt.bolt();
+            }
+            if (weapon.getItem() instanceof AbstractGunItem heatGun) heatGun.tickHeat(data, weapon, player);
             return null;
         });
     }

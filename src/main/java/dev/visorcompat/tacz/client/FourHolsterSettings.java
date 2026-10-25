@@ -9,6 +9,10 @@ public final class FourHolsterSettings {
  public static void enable(boolean value){DualClient.reset();CompatSettings.FOUR_MOUNTS.set(value);CompatSettings.saveMountSettings();}
  public static void toggleEmpty(){CompatSettings.EMPTY_DRAW.set(!emptyRequired());CompatSettings.saveMountSettings();}
  public static void toggleLock(){CompatSettings.LOCK_SELECTED.set(!lockSelected());CompatSettings.saveMountSettings();}
+ public static void manualPreset(){
+  int[] slots={5,7,2,6};for(int i=0;i<4;i++)CompatSettings.MOUNT_BINDINGS[i].set(slots[i]);
+  CompatSettings.MOUNT_ORDER.set(2);CompatSettings.saveMountSettings();
+ }
  public static void cycleOrder(){CompatSettings.MOUNT_ORDER.set((order()+1)%3);CompatSettings.saveMountSettings();}
  public static void cycleBinding(int i){CompatSettings.MOUNT_BINDINGS[i].set((binding(i)+2)%10);CompatSettings.saveMountSettings();}
 }

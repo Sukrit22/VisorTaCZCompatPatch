@@ -11,6 +11,8 @@ tasks.register('validateMigration') {
             assert !(after =~ /StackData\.read\([^)]*\)\.(put\w*|remove)\(/).find(): source
             assert !(after =~ /new\s+(?:net\.minecraft\.resources\.)?ResourceLocation\(/).find(): source
             assert !(after =~ /\.(readItem|writeItem)\(/).find(): source
+            assert !after.contains('.mulPoseMatrix('): source
+            assert !after.contains('normal().mul(correction.get3x3'): source
             mutations += (after =~ /StackData\.(putBoolean|putInt|putString|remove)\(/).count
         }
         assert mutations > 40: "Expected actual root source mutations, found ${mutations}"
