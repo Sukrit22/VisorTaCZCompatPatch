@@ -1,5 +1,7 @@
 # Minecraft 1.21.1 ports
 
+For current source build commands and version distinctions, see [BUILDING.md](BUILDING.md). The validation table below records the older alpha.5.1 port milestone; current alpha.9 source validation is recorded in [the master checklist](TESTING-CURRENT.md).
+
 These are experimental ports. Both targets now build and pass automated tests and dedicated-server checks. Client rendering and headset gameplay remain untested. The 1.20.1 targets remain separate.
 
 ## Verified on 2026-10-16

@@ -1,5 +1,7 @@
 # Visor multi-version architecture and gun-addon interoperability
 
+Update 2026-10-26: [pinned multiplatform template review and staged adoption plan](VISOR-ADDON-MULTIPLATFORM-REVIEW.md).
+
 Review date: 2026-10-16. This is a proposal, not an implemented compatibility guarantee.
 
 Evidence: Visor `dev` commit `89ebd958eeb60aa0892177fe15d55932a5a3d1e8`, the published Visor 0.6.0-beta Forge JAR, our current source, and the user-supplied conversation with the other developer. Their repository/build is not available; their features below are intentions, not verified implementations.

@@ -1,205 +1,88 @@
 # Visor TaCZ Compatibility Patch
 
-New to the code? Start with the [developer project tour](docs/PROJECT-TOUR.md) for
-entrypoints, execution flow, the file map, and the Forge/Fabric source boundary.
+A Visor VR addon for TaCZ: controller aiming, muzzle-origin shots, physical weapon handling, calibration, and experimental dual wield with body holsters. VR and flatscreen players can share a server.
 
-Unpackaged **alpha.8 source** adds M700 re-grip fixes, displacement-based cylinder gestures and an experimental TOML profile switch with SCAR-L/H. [Runtime profile setup](docs/RUNTIME-PROFILES.md) · [Pistol calibration audit](docs/CALIBRATION-AUDIT.md). Source protocol is **24**; the last packaged alpha.7 uses **23**.
+**[Download the 0.14.0 release](https://github.com/Sukrit22/VisorTaCZCompatPatch/releases/tag/0.14.0)** · [Build instructions](docs/BUILDING.md) · [Controls and test tracker](docs/TESTING-CURRENT.md) · [Developer tour](docs/PROJECT-TOUR.md)
 
+## Release versus current source
 
-Alpha.7 handling update: [changes and calibration import](docs/RELEASE-NEXT-HANDLING.md), [pending tests and detailed inspection procedure](docs/TESTING-CURRENT.md).
+The **0.14.0** GitHub release is a download collection. Its uploaded binaries are different alpha builds; the release label does not change their embedded version or protocol:
 
-Experimental Minecraft **1.20.1 Forge** mod that registers as a **Visor addon** and gives TaCZ guns controller aiming and physical VR handling. VR and flatscreen players can share a server.
-
-Current release: **0.12.0-alpha.7** | network protocol **23** | Java **17** | MIT license. Stable checkpoint: **0.11.0**.
-
-**New in alpha.6:** [inspection calibration, handling fixes, crouching holsters and cylinder instructions](docs/PENDING-HANDLING-CHANGES.md). These changes are included in alpha.6.
-
-Alpha.5 adds upward inspection grip orientation, falling/flicked cosmetic magazines, M4/M870 support-hand transfer, experimental one-hand inertia pumping, wider support retention and forgiving pump return. See [controls and pending tests](docs/RELEASE-0.12.0-alpha.5.md).
-
-Alpha.4 adds fine/coarse holster adjustment and Save-without-closing in both calibration editors. After saving, the button becomes Close until values change. See [calibration controls](docs/RELEASE-0.12.0-alpha.4.md).
-
-Alpha.3 fixes holsters rendered above the player and out of alignment with Grip detection. If you lowered holster Height to compensate in alpha.2, restore holster defaults after updating. See [fix and retests](docs/RELEASE-0.12.0-alpha.3.md).
-
-Alpha.2 adds per-gun holster calibration, 30-degree forward pistol holsters, 45-degree downward chest holsters, 75% bundled gun defaults, smoother tossed props, increased inspection travel and session input cleanup. Saved gun profiles still override bundled defaults. See [update notes and focused retests](docs/RELEASE-0.12.0-alpha.2.md).
-
-New experiment: opt-in **Advanced Handling** adds holster/draw, inventory-backed toss/catch with automatic recovery, contextual Grip, and timed cosmetic pistol inspection. This alpha keeps the gun in its original slot; offhand catches are temporary support holds, not offhand firing or hotbar transfer. See [controls, limitations and pending tests](docs/RELEASE-0.12.0-alpha.1.md). The external gun-profile architecture remains an offline prototype.
-
-New in 0.10.0: all 14 pinned default-pack pistols now have profiles. M1911, P320, M9A4, Desert Eagle/Golden, Timeless 50, B93R, CZ75 and MK23 reuse physical magazine/slide handling with per-gun assets. Rhino 357, Taurus 500/943 and Lonetrail add **experimental aggregate cylinder/breech loading**: open, eject all, insert individual rounds, close. This is not individual chamber selection or speedloader support. See [pistol testing](docs/TESTING-PISTOLS-0.10.0.md).
-
-Current experimental source: **all 54 base-pack guns have button support; 27 have physical profiles**. AK47 and UMP45 are the newest physical batch and need in-game calibration/testing. Valid loaded pack guns without profiles now receive generic button geometry, with a calibration warning; custom display overrides use the same conservative fallback. Special scripted weapons still need verification. [Gun-pack inventory and limits](docs/GUN-PACK-SUPPORT-INVENTORY.md).
-
-## Requirements and installation
-
-| Component | Required version |
+| Minecraft / loader | Uploaded binary version |
 | --- | --- |
-| Minecraft | 1.20.1 |
-| Forge | 47.4.0 or newer in the 47.x series |
-| Visor | 0.5.0 |
-| Timeless and Classics Zero (TaCZ) | 1.1.8-hotfix |
-| Gun Durability (`gundb`) | Optional; integration targets 2.2.2 only |
+| 1.20.1 Forge | 0.14.0-alpha.6 |
+| 1.20.1 Fabric | 0.14.0-alpha.5.1 |
+| 1.21.1 Fabric | 0.14.0-alpha.5.1+1.21.1 |
+| 1.21.1 NeoForge | 0.14.0-alpha.5.1+1.21.1 |
 
-Build the JAR below and install it, Visor, and TaCZ on **all clients and the server**. Single-player includes the server component internally. Keep addon versions consistent across players/server. No Prehistoric World 2 modpack or custom gun pack is required.
+**Current source on `main`: 0.14.0-alpha.9, protocol 34** (1.21.1 adds `+1.21.1`). The release tag points to this source history, but the attached older JARs do not contain every source feature below. In particular, the Physical dual Glock milestone and alpha.9 feedback/ADS fixes require a newer build. Use matching addon builds on client and server; do not mix artifacts merely because they share the GitHub release page. See [alpha.8](docs/UPDATE-0.14.0-alpha.8.md) and [alpha.9 changes](docs/UPDATE-0.14.0-alpha.9.md).
 
-The addon follows Visor's VR state automatically. Flatscreen players keep normal TaCZ controls; some rendering compatibility fixes also apply in flatscreen. Physical handling is opt-in through `/visor_tacz menu`.
+## Installation
 
-## Features
+Choose the JAR for **both** your Minecraft version and loader. Install the addon and compatible Visor/TaCZ dependencies on clients and the server. Single-player includes the server internally. No particular modpack or custom gun pack is required.
 
-New in 0.9.3: repeat held racks; MP5 held forward return; M700 downward bolt slap and automatic re-grip when the hand returns; touch-only pistol support; immediate native ammo transfer on physical magazine insertion; detached magazines turned sideways 30 degrees; reversed jam casing ends. M870/M700 still use generic durability jams, not the three visual jam simulations.
-
-Implemented in **0.11.0**; newer gestures still need headset and multiplayer testing.
-
-### Gun-specific physical handling
-
-| Default TaCZ gun | Implemented handling |
-| --- | --- |
-| **Glock 17** | Magazine removal/replacement, slide racking, empty-shot slide lock, main-hand Use or calibrated slide-release region, support-hand region for two-hand ADS |
-| **M4A1** | Magazine removal/replacement, charging handle, empty-shot bolt lock, calibrated bolt-release region, foregrip support aiming and fire selector |
-| **M870** | Inventory-backed individual shells, closed-pump underside tube loading, open-pump side-port chamber loading, manual pump and fore-end support; spent shell ejects during pumping |
-| **M700** | Detachable magazine, lift-back-forward-lower bolt cycle, temporary support-hand carry so the main hand can operate the bolt; transfer policy **BOLT NEEDED** (default) or **ANYTIME** |
-| **New magazine pistols** | M1911, P320, M9A4, Deagle/Golden, Timeless 50, B93R, CZ75, MK23: profile-specific physical magazine/slide handling; VR tests pending |
-| **Experimental cylinder/breech pistols** | Rhino 357, Taurus 500/943, Lonetrail: open, eject all, load individual rounds, close; aggregate ammo state, no individual chamber selection |
-| **HK MP5A5** | Magazine replacement, rearward charging-handle pull to latch, button-free forward sweep or downward slap through release region, button release fallback, support aiming and fire selector |
-
-Magazine replacement draws compatible ammunition from inventory through TaCZ’s native ammo API when the physical magazine is inserted. Magazines are not separate persistent inventory items. Hand transfer is currently M700-specific and requires the support grip to remain held.
-
-### Shared VR integration
-
-- Registers as a Visor addon and follows VR state automatically; per-player OFF/AUTO and Physical/Buttons controls. VR and flatscreen players can share a server.
-- Controller-aligned gun models and server-authoritative shots from the calibrated muzzle, including supported aim. TaCZ retains damage, spread, rate of fire and native ammunition rules.
-- Remote calibrated weapons and moving parts, including M700 support-hand carry. Body/hand IK remains Visor-owned.
-- Sight-aligned automatic ADS, with a **two-hand support requirement enabled by default** and a menu toggle. Glock support enables ADS while aim direction stays with the firing controller.
-- Configurable contextual offhand **Use or Trigger** grabs, haptics, action sounds, muzzle flashes, and live/spent casing visuals.
-- Experimental per-eye red dots and scope magnification with shader packs **off**.
-- Ammo/ADS panel on gun, wrist, ordinary GUI HUD, or off. Standard HUD placement can use Visor overlay presets.
-- Interrupted-magazine recovery and saved open-action/charging requirements. Recovery retains committed ammunition changes rather than rewinding inventory; held gestures are transient.
-
-### Calibration and settings
-
-- Per-gun saved grip position/rotation, muzzle origin, support, magazine/loading port, rack/pump, selector, pouch, sight, ejection port and applicable action-release regions.
-- Uniform **gun scale 50-150%**, independent XYZ interaction-box dimensions, and a default-on scale link for mounted boxes. The pouch remains independent.
-- **Casing scale 10-300%**, multiplying gun scale, with an in-menu preview. Applies to jam obstructions, ejections and M870 held-shell visuals.
-- Bundled starting profiles retain explicit offsets; personal JSON overrides them. Reload calibration through the menu or command without restarting.
-- Per-gun author-editable bundled TOML hints. Hide debug regions during play while keeping calibration guides visible in the calibration screen.
-- Persistent per-player M700 transfer preference: **BOLT NEEDED** permits transfer after a shot, with an empty chamber, open/lifted bolt or jam; **ANYTIME** also permits it when ready to fire. Both automatic movement and main-hand Use follow the selected rule.
-
-### Optional durability jams
-
-With **gundb 2.2.2**, Glock/M4/MP5 and the new conventional magazine pistols support stovepipe, double feed and dud states. Stovepipes can be plucked or racked; double feeds require magazine removal and two obstruction ejections; duds are cleared by racking. M870/M700 and the experimental cylinder/breech pistols support generic jam clearing through their manual action cycle.
-
-Stovepipe visuals lie across the bore with an upward tilt. Double-feed visuals reuse casing geometry. A dud has no protruding obstruction: the blocked trigger clicks and HUD identifies it. No magazine-tap requirement is implemented. Normal gun handling works without Durability; forced jam tests require the optional integration.
-
-See the [0.9.1 handling guide](docs/RELEASE-0.9.1.md), [0.9.3 transfer controls](docs/RELEASE-0.11.0.md), and [consolidated test checklist](docs/TESTING-CURRENT.md) for sequences, prior results and outstanding tests.
-
-## Controls and setup
-
-Start with `/visor_tacz menu`. Bindings follow Visor's logical main/offhand, including its handedness setting. In two-handed mode, the offhand's **assigned hotbar item** must be empty for physical grabs, not just the vanilla offhand slot.
-
-| Action | Button handling | Physical handling |
+| Target | Java | Dependencies |
 | --- | --- | --- |
-| Main-hand attack / trigger | Fire | Fire when ready; grab bolt during M700 support-hand carry |
-| Main-hand use | Reload | Glock slide release; M700 hand transfer/return; other guns change mode when offhand is at selector |
-| Offhand use | Cycle fire mode with empty offhand | Contextual grab by default; also presses an applicable release region |
-| Offhand trigger | Normal Visor behavior | Optional contextual grab via menu |
+| Forge 1.20.1 | 17 | Forge 47.4.x; Visor; TaCZ 1.1.8-hotfix/hotfix2 |
+| Fabric 1.20.1 | 17 | Fabric Loader 0.17.2+; Fabric API; Visor; TaCZ: Refabricated; Forge Config API Port |
+| Fabric 1.21.1 | 21 | Fabric Loader 0.17.2+; Fabric API; Visor 0.6.0-beta or compatible later build; TaCZ: Refabricated; Forge Config API Port |
+| NeoForge 1.21.1 | 21 | NeoForge 21.1; Visor 0.6.0-beta or compatible later build; the targeted NeoForge TaCZ port |
 
-Physical grabbing claims valid interaction zones; other actions pass through. Losing tracking/focus, changing items, or opening menus releases owned input. Press again to resume firing.
+The [build guide](docs/BUILDING.md) identifies the pinned development dependencies and metadata. A permissive dependency range is not a claim that every upstream version has been tested. **Gun Durability (`gundb`) is optional**; the detailed jam adapter targets 2.2.2.
 
-**Magazine guns:** grab the magazine, pull down, release, take a replacement from the waist pouch, move it to the magwell, and release. After an empty reload, chamber using the gun's action or supported release control.
+Open **`/visor_tacz menu`**. Activation follows Visor's VR state automatically. Flatscreen users retain native TaCZ controls; some compatibility fixes still apply outside VR. `/visor_tacz off` disables per-player VR integration, not the loaded mod or all mixins. Remove the JAR and restart for a complete isolation test.
 
-**M700:** hold the fore-end, then move the main hand more than 16 cm away or press main-hand Use to transfer, subject to the selected policy. Main trigger grabs the bolt. Return automatically by moving the main hand near the grip after closing the bolt, or use main-hand Use near the grip or release support. A downward slap can lower the closed, raised bolt.
+## Handling and support
 
-**MP5:** pull back and push forward while holding Grab to rack. To park the handle at the rear, release Grab, reload, then sweep the empty hand forward or downward through the cyan release region without pressing a button. Empty firing alone does not latch it.
-
-**M870:** with pump closed, release a pouch shell at the green underside port to fill the tube. With pump open, release at the pink side port to load the chamber, then close the pump. Valid insertion consumes one compatible inventory round. The fully forward held pump also provides support aiming.
-
-**Calibration:** hold the gun, choose Calibrate gun, adjust, then Save & close. Translation readouts are millimetres; JSON stores metres. Rotation is in degrees. The purple sight marker controls automatic ADS alignment, not the rendered scope lens.
-
-## Commands and files
-
-| Command | Purpose |
+| Mode | Behavior |
 | --- | --- |
-| `/visor_tacz menu` | Settings, calibration, reload button, debug cubes |
-| `/visor_tacz calibrate` | Calibrate the held supported gun |
-| `/visor_tacz reload_calibration` | Reload the JSON and sync the held profile |
-| `/visor_tacz auto` | Follow Visor VR state (default); `on` is an alias |
-| `/visor_tacz off` | Disable per-player VR gun integration |
-| `/visor_tacz status` | Show current activation state in chat |
-| `/visor_tacz handling physical` / `buttons` | Choose handling mode |
-| `/visor_tacz grab use` / `trigger` | Choose offhand grab input |
-| `/visor_tacz display gun` / `wrist` / `hud` / `off` | Choose ammo/ADS display |
-| `/visor_tacz ads auto` / `off` | Automatic ADS |
-| `/visor_tacz optics on` / `off` | Experimental VR optic rendering |
-| `/visor_tacz_test jam [stovepipe\|double_feed\|dud\|misfire]` | Operator-only test with compatible Gun Durability; M870/M700 only accept generic/stovepipe test |
+| **Button** | Controller aiming and native ammunition/reload behavior. Broad base-gun support and conservative fallback for loaded custom-pack guns. |
+| **Physical** | Gun-specific magazine, slide/bolt/pump/cylinder and loading interactions. Uses TaCZ inventory ammunition, not separate persistent magazine items. |
+| **Advanced** | Experimental holster/draw, free-hand transfer, toss/catch and inspection interactions built on supported mechanisms. |
 
-Settings: `config/visor_tacz-client.toml`. Calibration: `config/visor_tacz-calibration.json`, on **each player's client**. See [sharing and installing calibration](docs/CALIBRATION-SHARING.md).
+The bundled TOML catalog contains **54 base guns: 27 physical profiles and 27 button-only profiles**. A profile's existence is not a calibration or headset-test certification. Custom gun packs receive generic Button fallback where possible; unusual scripts and replacement models still need checking.
 
-`off` **does not unload the mod**: render stability/startup patches and remote-player rendering remain. For a clean isolation test, remove this addon's JAR and restart. If Visor was disabled at login, enabling VR may require reconnecting because Visor 0.5.0 establishes server VR identity at login.
+Physical profiles cover magazine pistols, Rhino/Taurus revolvers and Lonetrail, M4A1, SCAR-L/H, AK47, MP5, UMP45, M700, M870, SPAS-12, M1014, AA12 and DB-2/DB-4. Mechanism completeness varies. See [support list](docs/SUPPORTED-GUNS.md), [runtime TOML profiles](docs/RUNTIME-PROFILES.md), [adding guns](docs/ADDING-GUN-SUPPORT.md), and [pistol authoring](docs/ADDING-PISTOL-SUPPORT.md).
 
-## Known issues and not implemented
+### Dual wield and four holsters
 
-| Area | Current limitation |
-| --- | --- |
-| Optics | Later user report says scopes work in old/new worlds; PK06 magnification remains unresolved. Individual optic, decal and shader cases still require targeted tests. |
-| Shader-pack optics | Custom magnification is disabled; shader framebuffer/compositing integration is not implemented. |
-| Scope quality | Uses the current eye image, not an independent high-resolution scope camera; generic reticles replace pack artwork. |
-| Other guns/packs | No universal profile generator or external profile-pack loader. Replaced/custom geometry requires implementation and calibration. |
-| Two guns | No dual wield or addon-specific main-hand selector. |
-| Attachments | Native TaCZ attachment GUI; no physical attachment insertion/removal. |
-| Recoil | No added controller-driven physical recoil simulation. |
-| Physical inventory | No independently counted magazine items, recoverable dropped rounds/magazines, general item pouch, holsters, or free weapon pickup. |
-| Other mechanisms | No individual cylinder-slot selection, speedloaders, direct M700 chamber loading, physical safety controls, or universal support beyond the registered default-pack profiles. M870 side-port loading and gun-specific action releases are implemented. |
-| Jams | Detailed three-type handling covers supported conventional magazine pistols plus M4/MP5 and requires the optional integration. Model-specific frozen-action polish, dedicated cues and a magazine-tap requirement remain unfinished. Heat/cook-off simulation is not added. |
-| Networking | Latest Visor pose is used, not latency-rewound poses. Stale tracking or obstructed muzzle positions can reject shots. |
-| Validation | M700 transfer, MP5 swept release, new Glock controls, casing calibration and two-hand ADS still need 0.9.3 headset confirmation. Broader shader, handedness and multiplayer tests remain open. |
+- Independent per-hand Button shooting/reloading; per-gun HUD and audio.
+- Configurable right/left handgun holsters and chest/back long-gun mounts. Automatic hotbar rules or explicit bindings; contextual fresh Grab draws the gun.
+- Experimental **Physical Glock 17 in either hand** in current source. Stow the other gun to free a controller for manipulation. Other dual guns still use Button handling.
+- Full dual Physical/Advanced parity is unfinished. Single-gun tests do not certify dual mechanics.
 
-World scale is restricted to 0.
-. Third-party gun scripts that replace TaCZ's shooting/reload behavior are not guaranteed compatible. The addon does not repair weapon durability or bypass ordinary cooldowns.
+### Shared features
 
-See [0.7.1 changes and focused retests](docs/RELEASE-0.7.1.md) for scale lock, ammo visuals, input changes, and optics candidates.
+- Calibrated controller models and server-authoritative muzzle-origin shooting; TaCZ retains native damage, ammunition, spread and cooldown rules.
+- Two-hand supported aiming and eye-aligned automatic ADS; configurable two-hand ADS requirement and recoil.
+- Red dots and experimental per-eye scope magnification. Shader-pack magnification remains unsupported.
+- Gun, wrist or ordinary GUI ammo/ADS HUD; configurable contextual Use/Trigger grabs and debug regions.
+- Gun-specific action sounds, moving parts and live/spent round visuals. Latest dual feedback is part of alpha.9 source.
+- Optional durability jams, including supported stovepipe, double-feed and dud interactions; other mechanisms use generic action clearing.
 
-## Verification status
+## Calibration and authoring
 
-Use the [rolling manual test tracker](docs/TESTING-CURRENT.md) for remaining tests,
-previous user results, and stable IDs to report pass/fail across releases.
+Calibrate grip position/rotation, uniform gun size, muzzle, supported interaction regions and XYZ box sizes, casing size, holsters and inspection grip. Desktop calibration includes mouse rotation, axis views and a hand placeholder. **Save** writes without closing; it becomes **Close** until you edit again.
 
-- Latest build: **157 unit tests passed**. Build success is not proof of in-headset correctness.
-- Development feedback uses **Pico 4 Ultra + Virtual Desktop + SteamVR**. Controller aiming and M4 support aiming have received successful user feedback; many newer interactions remain under testing.
-- 0.6.1 prepares stencil before world rendering to address scope/depth-format crashes. A subsequent user session reported no crash or blinking. This is not a guarantee for every shader/mod combination.
-- Blinking was also reproduced without this addon, with Visor + base TaCZ, and stopped after a PC restart in that test session; its root cause is not established.
-- Graphics diagnostic tools reproduce/check specific OpenGL behavior. Dedicated development server startup was checked to the EULA gate, not a full multiplayer playthrough.
+Personal calibration overrides bundled defaults. `/visor_tacz reload_calibration` reloads supported calibration JSON; it does not reload runtime gun TOML. [Share/import calibration](docs/CALIBRATION-SHARING.md) · [ADS baseline and attachment/view corrections](docs/ADS-CALIBRATION.md) · [Gun-pack support/review markers](docs/GUN-REVIEW-MARKERS.md)
 
-## Build from source
+Runtime TOML binds models and zones to existing Java mechanisms without recompiling. It is not an arbitrary state-machine or animation scripting language. [Authoring map and limits](docs/GUN-AUTHORING-MAP.md)
 
-For the experimental Fabric 1.20.1 variant, see [Fabric build and testing notes](fabric/README.md). The commands below build Forge.
+## Known limits and validation
 
-Use JDK 17. The Gradle wrapper downloads dependencies; local upstream source clones are not needed.
+- Calibration and physical fit vary by gun and pack. Shotguns, newer profiles, handedness and remote player poses still need targeted testing.
+- Magnified scopes use the current eye image, not a separate high-resolution camera. Shader integration remains unfinished.
+- Native attachment GUI remains; physical attachment insertion/removal is not implemented.
+- No independent persistent magazine inventory, general item pouch, finger-spinning implementation, or complete dual Physical/Advanced handling.
+- Multiplayer arm placement remains partly Visor-owned. The proposed shared gun-provider/holster ownership API is a design, not a shipped interoperability layer.
+- Latest source passed 314 tests per Forge/Fabric 1.20.1 and Fabric 1.21.1 target, 315 on NeoForge 1.21.1. This does not certify headset rendering or live multiplayer inventory transitions. The 1.21.1 ports remain experimental.
 
-```powershell
-Set-Location 'E:\visor-compat\visor-compat-tacz'
-$env:JAVA_HOME = 'C:\Program Files\Java\jdk-17'
-.\gradlew.bat build --console=plain
-```
+Use the [master checklist](docs/TESTING-CURRENT.md): it retains reported passes and identifies narrow retests. Historical release notes describe their own versions, not necessarily current behavior.
 
-Adjust the repository and JDK paths if installed elsewhere. Wait for `BUILD SUCCESSFUL`; the first build needs internet and takes longer to download dependencies. Replace the old addon JAR in each instance/server `mods` folder with the new one while Minecraft/server is stopped. Keep only one version of this addon installed.
+## Build and contribute
 
-Linux/macOS: `sh gradlew build`.
+See [all four build commands and artifact paths](docs/BUILDING.md). Shared authored code lives under `src/main`; do not edit generated files under a target's `build/generated/shared` directory.
 
-Current source output: `build/libs/visor-compat-tacz-1.20.1-0.12.0-alpha.8.jar`.
+Development now proceeds on **`main`**. Earlier experiment branches are retained as checkpoints; their commits are included in `main`. The [Visor multiplatform template review](docs/VISOR-ADDON-MULTIPLATFORM-REVIEW.md) describes a staged route toward clearer common/platform modules without silently raising minimum Visor versions or dropping TaCZ port-specific behavior.
 
-`build` includes tests. Development tasks: `runClient` and `runServer`; runtime files stay under `run/`. Accept Minecraft's EULA yourself before using the development server. Dependencies and downloaded upstream sources are not bundled into this repository or output JAR.
-
-## Contributing and bug reports
-
-Use this repository's Issues for reports. Include addon/Visor/TaCZ/Forge versions, gun and attachment IDs, gun pack, VR/flatscreen mode, shader name/on-off state, reproduction steps, and relevant crash report/log. Share calibration JSON when alignment is involved. Review logs for personal information before posting.
-
-Source areas: `client` for rendering/input/settings, `server` for authoritative poses and physical state, `physical` for shared interaction logic, `network` for synchronization, and `mixin` for integration hooks. Bundled calibration is `src/main/resources/calibration-defaults.json`.
-
-See [current release notes](docs/RELEASE-0.11.0.md), [physical handling details](docs/RELEASE-0.9.1.md), and [calibration sharing](docs/CALIBRATION-SHARING.md). Older versioned notes are historical and may describe superseded behavior; this README describes 0.11.0.
-
-Built against published Visor `gqaBzrB7` and TaCZ `yOVIzIJR` Modrinth versions. Reference source pins: Visor `3d56cd0a75c0e1ba5e73e3b10d64165b1b3e0bef`, TaCZ `b43eb84c38e9768d8e73c8b14f0b845669704b38`. This is a community compatibility addon, not an official Visor or TaCZ release. MIT applies to this repository's original code; upstream projects retain their own licenses.
-
-## Adding another gun
-
-Follow the [UMP45 walkthrough and Kar98k exercise](docs/ADDING-GUN-SUPPORT.md).
-These are historical physical-handling exercises. UMP45 now has an experimental physical profile; Kar98 remains button-only.
-
-Historical pistol walkthrough: [M1911 and batch checklist](docs/ADDING-PISTOL-SUPPORT.md). The default-pack pistol batch is now implemented; do not duplicate its registry entries.
+MIT license. Visor, TaCZ and gun-pack assets remain owned by their respective projects.
