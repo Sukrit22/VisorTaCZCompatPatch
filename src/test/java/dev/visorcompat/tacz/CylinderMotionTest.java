@@ -71,4 +71,19 @@ class CylinderMotionTest {
         m.armOpen();m.update(0,.05f,true,true);m.update(.04f,.05f,true,true);m.update(.085f,.5f,true,true);
         assertEquals(0,m.update(.085f,.05f,true,true));
     }
+    @Test void slowEightCentimetreSettleDoesNotCloseWithoutASnap(){
+        // Reaches the full 8 cm and comes to rest, but the stroke never reached a real
+        // flick speed: peak 0.4 m/s < CLOSE_FLICK_SPEED. This is the "move a little and
+        // it closes" false positive the gate eliminates.
+        var m=new CylinderMotion();m.update(0,.05f,true);
+        m.update(.02f,.05f,true);m.update(.04f,.05f,true);
+        m.update(.06f,.05f,true);m.update(.08f,.05f,true);
+        assertEquals(0,m.update(.08f,.05f,true));
+        assertEquals(0,m.update(.08f,.05f,true));
+    }
+    @Test void realFlickStillClosesAfterDeceleration(){
+        var m=new CylinderMotion();m.update(0,.05f,true);
+        m.update(.04f,.05f,true);m.update(.085f,.05f,true);
+        assertEquals(-1,m.update(.085f,.05f,true));
+    }
 }

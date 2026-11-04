@@ -24,7 +24,7 @@ public final class ServerCylinder {
         var s=STATES.get(p.getUUID());if(changed&&s!=null)s.motion.reset();
     }
     public static void forgetSettings(ServerPlayer p){OPEN_USE.remove(p.getUUID());CLOSE_USE.remove(p.getUUID());}
-    private static class State {ItemStack stack;int slot,ticks,lastAmmo;boolean held,done,shell,eject,allowReload,loader;Vector3f start,lastPull,grabRight;long pullTime;float pullSpeed,startAngle;BreakActionMotion breakMotion=new BreakActionMotion();CylinderMotion motion=new CylinderMotion();CylinderShake shake=new CylinderShake();Vector3f gestureRight;long lastPose;Phase sent;State(ServerPlayer p){stack=p.getMainHandItem();slot=p.getInventory().selected;var gun=IGun.getIGunOrNull(stack);lastAmmo=gun==null?0:gun.getCurrentAmmoCount(stack);}}
+    private static class State {ItemStack stack;int slot,ticks,lastAmmo;boolean held,done,shell,eject,allowReload,loader;long closeCooldownUntil;Vector3f start,lastPull,grabRight;long pullTime;float pullSpeed,startAngle;BreakActionMotion breakMotion=new BreakActionMotion();CylinderMotion motion=new CylinderMotion();CylinderShake shake=new CylinderShake();Vector3f gestureRight;long lastPose;Phase sent;State(ServerPlayer p){stack=p.getMainHandItem();slot=p.getInventory().selected;var gun=IGun.getIGunOrNull(stack);lastAmmo=gun==null?0:gun.getCurrentAmmoCount(stack);}}
     public static boolean open(ItemStack stack){return stack.hasTag()&&stack.getTag().getBoolean(OPEN);}
     private static boolean valid(ServerPlayer p,State s){return s!=null&&s.stack==p.getMainHandItem()&&s.slot==p.getInventory().selected;}
     public static Phase phase(ServerPlayer p){var s=STATES.get(p.getUUID());return !valid(p,s)?Phase.READY:s.shell?(s.loader?Phase.LOADER:Phase.SHELL):s.held?Phase.CYLINDER_HOLD:open(s.stack)?Phase.CYLINDER_OPEN:Phase.READY;}
@@ -107,7 +107,10 @@ public final class ServerCylinder {
         long time=fresh.visorTacz$lastPoseNanos();if(time==s.lastPose)return;
         var data=vr.getPoseData();
         if(s.gestureRight==null){s.gestureRight=data.getHmd().getRotation().transformDirection(new Vector3f(1,0,0));s.gestureRight.y=0;if(s.gestureRight.lengthSquared()<.1f)s.gestureRight.set(1,0,0);s.gestureRight.normalize();}
-        float position=new Vector3f((ServerAdvanced.cylinderOffhand(p)?data.getOffhand():data.getMainHand()).getPosition()).sub(data.getHmd().getPosition()).dot(s.gestureRight)/pose.worldScale();
+        // Measure the flick against the player's feet (body origin), not the HMD. Feet are
+        // the player's own locomotion frame: walking/running moves hand and body together,
+        // so it cancels out, and head sway no longer registers as a false stroke.
+        float position=new Vector3f((ServerAdvanced.cylinderOffhand(p)?data.getOffhand():data.getMainHand()).getPosition()).sub((float)p.getX(),(float)p.getY(),(float)p.getZ()).dot(s.gestureRight)/pose.worldScale();
         float dt=s.lastPose==0?.05f:(time-s.lastPose)/1_000_000_000f;
         if(Profiles.get(s.stack).breakAction()){
             float pitch=(float)Math.asin(Math.max(-1,Math.min(1,pose.direction().y)));
@@ -116,7 +119,22 @@ public final class ServerCylinder {
         }
         if(!s.held&&Profiles.get(s.stack).mechanism()!=WeaponProfile.Mechanism.LONETRAIL){
             int action=s.motion.update(position,dt,open(s.stack),open(s.stack)?CLOSE_USE.getOrDefault(p.getUUID(),false):OPEN_USE.getOrDefault(p.getUUID(),true));
-            if(action!=0){s.stack.getOrCreateTag().putBoolean(OPEN,action>0);if(action<0)GunDurabilityCompat.clear(p,s.stack);HandlingFeedback.emit(p,action>0?2:5,pose);p.inventoryMenu.broadcastChanges();}
+            if(action!=0){
+                if(action>0){
+                    // Debounce: the opening flick's own return is not a close; ignore close
+                    // gestures for a short window after opening so "move a little" can't re-close.
+                    s.closeCooldownUntil=System.nanoTime()+400_000_000L;
+                    s.stack.getOrCreateTag().putBoolean(OPEN,true);
+                    HandlingFeedback.emit(p,2,pose);
+                }else{
+                    if(s.closeCooldownUntil==0||System.nanoTime()>=s.closeCooldownUntil){
+                        s.stack.getOrCreateTag().putBoolean(OPEN,false);
+                        GunDurabilityCompat.clear(p,s.stack);
+                        HandlingFeedback.emit(p,5,pose);
+                    }else s.motion.reset(); // swallow a premature close so it can't fire after the window
+                }
+                p.inventoryMenu.broadcastChanges();
+            }
         }else s.motion.reset();
         float height=((ServerAdvanced.cylinderOffhand(p)?data.getOffhand():data.getMainHand()).getPosition().y()-data.getHmd().getPosition().y())/pose.worldScale();
         if(s.shake.update(height,dt,open(s.stack)&&!s.held&&CylinderCycle.fallsOut(pose.direction().y)))eject(p,s,true);
@@ -128,7 +146,7 @@ public final class ServerCylinder {
         if(!(org.vmstudio.visor.api.VisorAPI.getVRPlayer(p) instanceof org.vmstudio.visor.api.server.player.VRServerPlayer vr))return;
         var pose=vr.getPoseData();s.gestureRight=pose.getHmd().getRotation().transformDirection(new Vector3f(1,0,0));s.gestureRight.y=0;
         if(s.gestureRight.lengthSquared()<.1f)s.gestureRight.set(1,0,0);s.gestureRight.normalize();s.motion.armOpen();
-        float position=new Vector3f((ServerAdvanced.cylinderOffhand(p)?pose.getOffhand():pose.getMainHand()).getPosition()).sub(pose.getHmd().getPosition()).dot(s.gestureRight)/pose.getWorldScale();
+        float position=new Vector3f((ServerAdvanced.cylinderOffhand(p)?pose.getOffhand():pose.getMainHand()).getPosition()).sub((float)p.getX(),(float)p.getY(),(float)p.getZ()).dot(s.gestureRight)/pose.getWorldScale();
         s.motion.update(position,.05f,open(s.stack),open(s.stack)?CLOSE_USE.getOrDefault(p.getUUID(),false):OPEN_USE.getOrDefault(p.getUUID(),true));
     }
 
