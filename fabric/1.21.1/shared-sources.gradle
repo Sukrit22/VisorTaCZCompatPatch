@@ -1,11 +1,11 @@
-apply from: '../ports/minecraft-1.21.1.gradle'
+apply from: '../../ports/minecraft-1.21.1.gradle'
 tasks.register('generateSharedSources') {
- inputs.dir('../src/main/java'); inputs.file('shared-sources.gradle'); inputs.file('../ports/minecraft-1.21.1.gradle')
+ inputs.dir('../../src/main/java'); inputs.file('shared-sources.gradle'); inputs.file('../../ports/minecraft-1.21.1.gradle')
  outputs.dir(layout.buildDirectory.dir('generated/shared'))
  doLast {
   def out=layout.buildDirectory.dir('generated/shared').get().asFile
   delete(out)
-  fileTree('../src/main/java').matching { include '**/*.java'; exclude '**/VisorTacz.java' }.each { source ->
+  fileTree('../../src/main/java').matching { include '**/*.java'; exclude '**/VisorTacz.java' }.each { source ->
    String s=source.getText('UTF-8')
    s=s.replaceAll(/(?s)@Mod\.EventBusSubscriber\([^)]*\)/,'').replaceAll(/@SubscribeEvent(?:\([^)]*\))?/,'')
    s=s.replaceAll(/(?m)^import net\.minecraftforge\.(eventbus\.api\..*|fml\.common\.Mod|fml\.ModLoadingContext|common\.capabilities\.ForgeCapabilities);\s*$/,'')
@@ -76,7 +76,7 @@ tasks.register('generateSharedSources') {
    if(source.name in ['GunStencilMixin.java','OpticLensMixin.java'])
     s=s.replaceAll(/method="render\([^"]+"/, 'method="render"')
    s=minecraft121Transform(s,source)
-   def rel=file('../src/main/java').toPath().relativize(source.toPath()).toString()
+   def rel=file('../../src/main/java').toPath().relativize(source.toPath()).toString()
    def target=new File(out,rel);target.parentFile.mkdirs();target.setText(s,'UTF-8')
   }
   def helper=new File(out,'dev/visorcompat/tacz/compat/StackData.java');helper.parentFile.mkdirs();helper.setText(minecraft121HelperSource,'UTF-8')

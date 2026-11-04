@@ -25,7 +25,7 @@ forge/1.20.1/
 neoforge/1.21.1/
 ```
 
-This is the destination, not a description of all current folders. Existing root/Fabric/NeoForge projects and commands remain in place during migration. Only `common/core`, the initial `common/26.2` adapter and `fabric/26.2` development target are implemented so far.
+The Fabric targets now live at `fabric/1.20.1`, `fabric/1.21.1` and `fabric/26.2`; NeoForge lives at `neoforge/1.21.1`. The root project remains Forge1.20.1, with shared integration source still in root `src`. The future `common/integration`, common1.20.1/1.21.1 adapters, Fabric shared hooks and `forge/1.20.1` move are not implemented yet. Build commands use the new target paths; see [BUILDING.md](BUILDING.md).
 
 ## What changed now
 

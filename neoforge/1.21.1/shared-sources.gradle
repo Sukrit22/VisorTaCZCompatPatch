@@ -1,10 +1,10 @@
-apply from:'../ports/minecraft-1.21.1.gradle'
+apply from:'../../ports/minecraft-1.21.1.gradle'
 tasks.register('generateSharedSources') {
- inputs.dir('../src/main/java'); inputs.file('shared-sources.gradle'); inputs.file('../ports/minecraft-1.21.1.gradle'); outputs.dir(layout.buildDirectory.dir('generated/shared'))
+ inputs.dir('../../src/main/java'); inputs.file('shared-sources.gradle'); inputs.file('../../ports/minecraft-1.21.1.gradle'); outputs.dir(layout.buildDirectory.dir('generated/shared'))
  doLast {
   def out=layout.buildDirectory.dir('generated/shared').get().asFile
   delete(out)
-  fileTree('../src/main/java').matching { include '**/*.java' }.each { source ->
+  fileTree('../../src/main/java').matching { include '**/*.java' }.each { source ->
    String s=source.getText('UTF-8')
    s=s.replace('net.minecraftforge.api.distmarker.','net.neoforged.api.distmarker.').replace('net.minecraftforge.eventbus.','net.neoforged.bus.').replace('net.minecraftforge.fml.','net.neoforged.fml.').replace('net.minecraftforge.','net.neoforged.neoforge.')
    s=s.replace('MinecraftForge','NeoForge').replace('ForgeConfigSpec','ModConfigSpec')
@@ -38,7 +38,7 @@ tasks.register('generateSharedSources') {
     s=s.replace('public VisorTacz() {','public static net.neoforged.fml.ModContainer CONTAINER;\n    public VisorTacz(net.neoforged.bus.api.IEventBus bus,net.neoforged.fml.ModContainer container) {\n        CONTAINER=container;\n        bus.addListener(dev.visorcompat.tacz.neoforge.network.SimpleChannel::registerPayloads);')
    }
    s=minecraft121Transform(s,source)
-   def rel=file('../src/main/java').toPath().relativize(source.toPath()).toString()
+   def rel=file('../../src/main/java').toPath().relativize(source.toPath()).toString()
    def target=new File(out,rel);target.parentFile.mkdirs();target.setText(s,'UTF-8')
   }
   def helper=new File(out,'dev/visorcompat/tacz/compat/StackData.java');helper.parentFile.mkdirs();helper.setText(minecraft121HelperSource,'UTF-8')

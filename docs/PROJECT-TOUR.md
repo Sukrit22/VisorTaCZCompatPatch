@@ -30,10 +30,10 @@ it also registers settings and our Visor addon. A dedicated server does not run
 the client registration branch.
 
 For Fabric, the entrypoint names are explicit in
-[fabric.mod.json](../fabric/src/main/resources/fabric.mod.json):
+[fabric.mod.json](../fabric/1.20.1/src/main/resources/fabric.mod.json):
 
-- `main` calls [FabricMain.onInitialize()](../fabric/src/main/java/dev/visorcompat/tacz/fabric/FabricMain.java).
-- `client` calls [FabricClient.onInitializeClient()](../fabric/src/main/java/dev/visorcompat/tacz/fabric/FabricClient.java) on a client.
+- `main` calls [FabricMain.onInitialize()](../fabric/1.20.1/src/main/java/dev/visorcompat/tacz/fabric/FabricMain.java).
+- `client` calls [FabricClient.onInitializeClient()](../fabric/1.20.1/src/main/java/dev/visorcompat/tacz/fabric/FabricClient.java) on a client.
 
 The Fabric JSON key `main` means a loader entrypoint; it does not require a Java
 `public static void main(String[] args)` method.
@@ -206,7 +206,7 @@ their Java behavior with a scripting language.
 | Instance `config/visor_tacz-holsters.json`, `visor_tacz-inspections.json`, `visor_tacz-physics.json` | Player's other saved calibrations |
 | Instance `config/visor_tacz-client.toml` | Menu preferences registered by `CompatSettings` |
 | `src/main/resources/META-INF/mods.toml` | Forge identity and allowed dependency versions |
-| `fabric/src/main/resources/fabric.mod.json` | Fabric identity, entrypoints and allowed dependency versions |
+| `fabric/1.20.1/src/main/resources/fabric.mod.json` | Fabric identity, entrypoints and allowed dependency versions |
 | `src/main/resources/visor_tacz.mixins.json` | Common/client mixin class lists |
 | `src/main/resources/assets/visor_tacz/shaders/core/optic.*` | Optic shader program and its configuration |
 
@@ -241,9 +241,9 @@ fully loader-neutral `common` module.
 ```mermaid
 flowchart TD
     Java[Authored Java: root src/main/java] --> Forge[Forge compiles it directly]
-    Java --> Transform[fabric/shared-sources.gradle]
-    Transform --> Generated[fabric/build/generated/shared]
-    Adapters[fabric/src/main/java: entrypoints and adapters] --> Fabric[Fabric compiles adapted Java plus adapters]
+    Java --> Transform[fabric/1.20.1/shared-sources.gradle]
+    Transform --> Generated[fabric/1.20.1/build/generated/shared]
+    Adapters[fabric/1.20.1/src/main/java: entrypoints and adapters] --> Fabric[Fabric compiles adapted Java plus adapters]
     Generated --> Fabric
     Resources[Root resources: TOML, defaults, shaders, mixins] --> Forge
     Resources --> Fabric
@@ -252,14 +252,14 @@ flowchart TD
     Tests[Root src/test/java] --> Forge
     Tests --> Fabric
     Forge --> ForgeJar[build/libs: Forge JAR]
-    Fabric --> FabricJar[fabric/build/libs: remapped Fabric JAR]
+    Fabric --> FabricJar[fabric/1.20.1/build/libs: remapped Fabric JAR]
 ```
 
-`fabric/shared-sources.gradle` generates an adapted copy at build time. It replaces
+`fabric/1.20.1/shared-sources.gradle` generates an adapted copy at build time. It replaces
 Forge imports/API calls, removes Forge event annotations, adjusts registration
 and makes selected mixin remapping changes. It excludes the root `VisorTacz`
 entrypoint; Fabric supplies its own ID-holder class with the same package/name.
-**Never edit `fabric/build/generated/shared`: the next generation overwrites it.**
+**Never edit `fabric/1.20.1/build/generated/shared`: the next generation overwrites it.**
 
 | Concern | Forge | Fabric |
 |---|---|---|
@@ -268,7 +268,7 @@ entrypoint; Fabric supplies its own ID-holder class with the same package/name.
 | Networking | Forge `SimpleChannel` | Our adapter under `fabric/.../network`, using Fabric networking |
 | Configuration | Forge config API | Forge Config API Port |
 | Rendering adapters | Forge/TaCZ renderer and Oculus paths | Fabric/TaCZ renderer and Iris paths |
-| Build | Root `build.gradle`, ForgeGradle | `fabric/build.gradle`, Loom and runtime remapping |
+| Build | Root `build.gradle`, ForgeGradle | `fabric/1.20.1/build.gradle`, Loom and runtime remapping |
 
 A shared bug fix normally starts in root Java and benefits both builds. A new
 Forge event handler does **not** automatically gain Fabric wiring: update
@@ -286,17 +286,17 @@ release version strings.
 
 | Path | Purpose |
 |---|---|
-| `build.gradle`, `fabric/build.gradle` | Dependencies, release version, compilation, resources, test/package tasks |
+| `build.gradle`, `fabric/1.20.1/build.gradle` | Dependencies, release version, compilation, resources, test/package tasks |
 | `settings.gradle`, `fabric/settings.gradle` | Gradle project names and plugin repositories; Fabric is a separate Gradle project |
 | `gradlew.bat`, `gradlew`, `gradle/wrapper/*` | Pinned Gradle wrapper; run from a terminal |
 | `gradle.properties`, `fabric/gradle.properties` | Gradle JVM/daemon settings |
 | `src/test/java` | Shared JUnit tests; useful examples of expected state/math/file behavior |
-| `fabric/production-smoke.gradle` | Launches the packaged/remapped Fabric JAR in a production-style desktop environment |
+| `fabric/1.20.1/production-smoke.gradle` | Launches the packaged/remapped Fabric JAR in a production-style desktop environment |
 | `docs/` | Guides, test checklists, historical release notes and designs |
 | `experiments/` | Prototypes/design examples; not the accepted runtime TOML schema |
 | `.upstream/` | Downloaded/reference upstream material; useful for inspecting TaCZ assets |
 | `tools/`, `scripts/` | Diagnostic utilities and asset checks, not startup entrypoints |
-| `build/`, `fabric/build/`, `.gradle/` | Generated output/cache; not authored source |
+| `build/`, `fabric/1.20.1/build/`, `.gradle/` | Generated output/cache; not authored source |
 | `run/`, `fabric/run/` | Development instances, potentially including settings and worlds |
 | `player-logs/`, `logs/`, `*.log` | Diagnostic evidence; not part of compiled gameplay |
 
@@ -314,14 +314,14 @@ $env:JAVA_HOME = 'C:\Program Files\Java\jdk-17'
 .\gradlew.bat build --console=plain
 
 # Fabric JAR, using the same gameplay source/resources/tests
-.\gradlew.bat -p fabric build --console=plain
+.\gradlew.bat -p fabric/1.20.1 build --console=plain
 ```
 
 Use `--offline` when the required dependencies are already cached. Forge JARs
-go to `build/libs`; installable remapped Fabric JARs go to `fabric/build/libs`.
+go to `build/libs`; installable remapped Fabric JARs go to `fabric/1.20.1/build/libs`.
 Development launches use `runClient`/`runServer` in the respective project.
 Fabric additionally has `productionClient` to test the packaged runtime JAR;
-read [fabric/README.md](../fabric/README.md) before using it. It opens a desktop
+read [fabric/1.20.1/README.md](../fabric/1.20.1/README.md) before using it. It opens a desktop
 client and does not establish Pico/Android or headset gameplay compatibility.
 
 Build/tests do not validate controller reach, stereo optics, all multiplayer
@@ -350,7 +350,7 @@ callback registration. For example:
 ```powershell
 rg -n 'onAction|PhysicalGrip|PhysicalState' src/main/java
 rg -n '@SubscribeEvent|@VREventHandler|@Inject' src/main/java
-rg -n 'ServerEvents::|controls.tick|controls.animation' fabric/src/main/java
+rg -n 'ServerEvents::|controls.tick|controls.animation' fabric/1.20.1/src/main/java
 ```
 
 | Desired change | Start with |

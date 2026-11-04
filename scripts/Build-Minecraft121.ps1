@@ -18,9 +18,9 @@ $previousJavaHome = $env:JAVA_HOME
 try {
     $env:JAVA_HOME = $JavaHome
     $targets = switch ($Loader) {
-        'Fabric' { 'fabric-1.21.1' }
-        'NeoForge' { 'neoforge-1.21.1' }
-        'Both' { 'fabric-1.21.1'; 'neoforge-1.21.1' }
+        'Fabric' { 'fabric/1.21.1' }
+        'NeoForge' { 'neoforge/1.21.1' }
+        'Both' { 'fabric/1.21.1'; 'neoforge/1.21.1' }
     }
     foreach ($target in $targets) {
         $buildArgs = @('-p', (Join-Path $repo $target), 'build', '--console=plain')

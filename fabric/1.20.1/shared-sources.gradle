@@ -1,10 +1,10 @@
 tasks.register('generateSharedSources') {
- inputs.dir('../src/main/java'); inputs.file('shared-sources.gradle')
+ inputs.dir('../../src/main/java'); inputs.file('shared-sources.gradle')
  outputs.dir(layout.buildDirectory.dir('generated/shared'))
  doLast {
   def out=layout.buildDirectory.dir('generated/shared').get().asFile
   delete(out)
-  fileTree('../src/main/java').matching { include '**/*.java'; exclude '**/VisorTacz.java' }.each { source ->
+  fileTree('../../src/main/java').matching { include '**/*.java'; exclude '**/VisorTacz.java' }.each { source ->
    String s=source.getText('UTF-8')
    s=s.replaceAll(/(?s)@Mod\.EventBusSubscriber\([^)]*\)/,'').replaceAll(/@SubscribeEvent(?:\([^)]*\))?/,'')
    s=s.replaceAll(/(?m)^import net\.minecraftforge\.(eventbus\.api\..*|fml\.common\.Mod|fml\.ModLoadingContext|common\.capabilities\.ForgeCapabilities);\s*$/,'')
@@ -71,7 +71,7 @@ tasks.register('generateSharedSources') {
    // names in descriptor selectors while retaining TaCZ's stable method name.
    if(source.name in ['GunStencilMixin.java','OpticLensMixin.java'])
     s=s.replaceAll(/method="render\([^"]+"/, 'method="render"')
-   def rel=file('../src/main/java').toPath().relativize(source.toPath()).toString()
+   def rel=file('../../src/main/java').toPath().relativize(source.toPath()).toString()
    def target=new File(out,rel);target.parentFile.mkdirs();target.setText(s,'UTF-8')
   }
  }

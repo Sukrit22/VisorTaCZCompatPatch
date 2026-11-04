@@ -27,7 +27,7 @@ Charged guns, physical dual reload, support aiming and independent optics are no
 - Forge: 229 tests passed; reobfuscated JAR built. Development dedicated server reached a loaded world with reference-map remapping enabled.
 - Fabric: 229 tests passed; remapped JAR built. Production dedicated server used that JAR, unmodified published Visor/TaCZ dependencies, and Fabric Loader 0.17.2; loaded a world, spawned a zombie, and saved/shut down cleanly.
 - These checks verify compilation, pure state tests and server startup. They do not verify two-player shooting, client rendering, controllers, headset behavior or gunpack scripts.
-- Artifacts are in `build/libs` (Forge) and `fabric/build/libs` (Fabric), named `0.14.0-alpha.1`. They were not installed into a user instance.
+- Artifacts are in `build/libs` (Forge) and `fabric/1.20.1/build/libs` (Fabric), named `0.14.0-alpha.1`. They were not installed into a user instance.
 
 ## alpha.2 crash fix
 

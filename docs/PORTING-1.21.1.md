@@ -19,8 +19,8 @@ Build version: `0.14.0-alpha.5.1+1.21.1`. The original 1.20.1 builds were not re
 
 | Target | Project directory | Java | Visor dependency | TaCZ dependency |
 | --- | --- | --- | --- | --- |
-| Fabric 1.21.1 | `fabric-1.21.1` | JDK 21 | `7i7UZxdB` (0.6.0-beta) | `veM4XOhW` (Refabricated 0.7.1 / 1.1.8-hotfix2) |
-| NeoForge 1.21.1 | `neoforge-1.21.1` | JDK 21 | `TfyC5Jd9` (0.6.0-beta) | `62q6mB5Q` (1.1.8-hotfix-r7) |
+| Fabric 1.21.1 | `fabric/1.21.1` | JDK 21 | `7i7UZxdB` (0.6.0-beta) | `veM4XOhW` (Refabricated 0.7.1 / 1.1.8-hotfix2) |
+| NeoForge 1.21.1 | `neoforge/1.21.1` | JDK 21 | `TfyC5Jd9` (0.6.0-beta) | `62q6mB5Q` (1.1.8-hotfix-r7) |
 
 IDs refer to Modrinth releases. These are independent upstream TaCZ ports; matching Minecraft versions do not guarantee identical internal APIs.
 
@@ -48,8 +48,8 @@ Equivalent direct commands:
 
 ```powershell
 $env:JAVA_HOME = 'C:\path\to\jdk-21'
-.\gradlew.bat -p fabric-1.21.1 build --console=plain
-.\gradlew.bat -p neoforge-1.21.1 build --console=plain
+.\gradlew.bat -p fabric/1.21.1 build --console=plain
+.\gradlew.bat -p neoforge/1.21.1 build --console=plain
 ```
 
 Outputs belong in each target's `build/libs` directory. Do not install a Fabric JAR on NeoForge, or use either 1.21.1 JAR in a 1.20.1 instance.

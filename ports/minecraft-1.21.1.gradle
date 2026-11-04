@@ -107,7 +107,7 @@ public final class StackData {
 
 // Optional dependency-free runtime regression test against each loader's real Minecraft classes.
 ext.minecraft121InstallTests = {
-    sourceSets.test.java.srcDir(file('../ports/test/java'))
+    sourceSets.test.java.srcDir(file('../../ports/test/java'))
     tasks.register('testStackData', JavaExec) {
         dependsOn tasks.named('testClasses')
         classpath = sourceSets.test.runtimeClasspath
