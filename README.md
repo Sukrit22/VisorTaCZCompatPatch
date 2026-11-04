@@ -83,7 +83,7 @@ Use the [master checklist](docs/TESTING-CURRENT.md): it retains reported passes 
 
 ## Build and contribute
 
-See [all four build commands and artifact paths](docs/BUILDING.md). Shared authored code lives under `src/main`; do not edit generated files under a target's `build/generated/shared` directory.
+Build all supported targets on Windows with `./gradlew.bat -p all build --console=plain`; releases collect in `all/build/libs`. This also checks the development-only26.2 target without packaging it. See [build commands, JDK selection and artifact paths](docs/BUILDING.md). Shared authored code lives under `src/main`; do not edit generated files under a target's `build/generated/shared` directory.
 
 Development now proceeds on **`main`**. Earlier experiment branches are retained as checkpoints; their commits are included in `main`. The [Visor multiplatform template review](docs/VISOR-ADDON-MULTIPLATFORM-REVIEW.md) describes a staged route toward clearer common/platform modules without silently raising minimum Visor versions or dropping TaCZ port-specific behavior.
 

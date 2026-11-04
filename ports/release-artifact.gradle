@@ -1,0 +1,12 @@
+// Export the exact production artifact, never select the newest historical JAR.
+tasks.register('exportReleaseArtifact') {
+    dependsOn 'build'
+    doLast {
+        def producer = tasks.findByName('remapJar') ?: tasks.named('jar').get()
+        def artifact = producer.archiveFile.get().asFile
+        if (!artifact.isFile()) throw new GradleException("Missing release artifact: ${artifact}")
+        def output = layout.buildDirectory.file('release-artifact.json').get().asFile
+        output.parentFile.mkdirs()
+        output.text = groovy.json.JsonOutput.toJson([version: project.version.toString(), path: artifact.absolutePath])
+    }
+}

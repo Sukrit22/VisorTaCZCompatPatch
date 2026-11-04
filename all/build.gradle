@@ -1,0 +1,12 @@
+// Each target needs its own Gradle/JDK process; do not mix loader plugins here.
+tasks.register('build', Exec) {
+    workingDir '..'
+    // Prefer PowerShell7 when available, avoiding cross-version module paths
+    // inherited by Windows PowerShell5 from a PowerShell7 parent terminal.
+    def candidates = [new File(System.getenv('ProgramFiles') ?: 'C:/Program Files', 'PowerShell/7/pwsh.exe')]
+    candidates.addAll((System.getenv('PATH') ?: '').split(java.io.File.pathSeparator).collect { new File(it, 'pwsh.exe') })
+    def pwsh = candidates.find { it.isFile() }
+    environment.remove('PSModulePath')
+    commandLine pwsh != null ? pwsh.absolutePath : 'powershell.exe', '-NoProfile', '-ExecutionPolicy', 'Bypass',
+        '-File', file('../scripts/Build-All.ps1').absolutePath
+}

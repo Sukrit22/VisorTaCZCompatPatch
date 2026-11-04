@@ -1,6 +1,6 @@
 # Developer tour: where to start
 
-This guide describes the source layout inspected on 2026-10-06. Start here if you
+This guide describes the source layout inspected on 2026-10-06. Build paths were updated on 2026-11-04; Forge lives in `forge/1.20.1`, while shared authored source remains in root `src`. Start here if you
 can read Java but have not written a Minecraft mod. Older release paragraphs and
 design documents describe earlier snapshots; the implementation and build files
 are the authority for current behavior.
@@ -268,7 +268,7 @@ entrypoint; Fabric supplies its own ID-holder class with the same package/name.
 | Networking | Forge `SimpleChannel` | Our adapter under `fabric/.../network`, using Fabric networking |
 | Configuration | Forge config API | Forge Config API Port |
 | Rendering adapters | Forge/TaCZ renderer and Oculus paths | Fabric/TaCZ renderer and Iris paths |
-| Build | Root `build.gradle`, ForgeGradle | `fabric/1.20.1/build.gradle`, Loom and runtime remapping |
+| Build | `forge/1.20.1/build.gradle`, ForgeGradle | `fabric/1.20.1/build.gradle`, Loom and runtime remapping |
 
 A shared bug fix normally starts in root Java and benefits both builds. A new
 Forge event handler does **not** automatically gain Fabric wiring: update
@@ -286,7 +286,7 @@ release version strings.
 
 | Path | Purpose |
 |---|---|
-| `build.gradle`, `fabric/1.20.1/build.gradle` | Dependencies, release version, compilation, resources, test/package tasks |
+| `forge/1.20.1/build.gradle`, `fabric/1.20.1/build.gradle` | Dependencies, release version, compilation, resources, test/package tasks |
 | `settings.gradle`, `fabric/settings.gradle` | Gradle project names and plugin repositories; Fabric is a separate Gradle project |
 | `gradlew.bat`, `gradlew`, `gradle/wrapper/*` | Pinned Gradle wrapper; run from a terminal |
 | `gradle.properties`, `fabric/gradle.properties` | Gradle JVM/daemon settings |
@@ -318,7 +318,7 @@ $env:JAVA_HOME = 'C:\Program Files\Java\jdk-17'
 ```
 
 Use `--offline` when the required dependencies are already cached. Forge JARs
-go to `build/libs`; installable remapped Fabric JARs go to `fabric/1.20.1/build/libs`.
+go to `forge/1.20.1/build/libs`; installable remapped Fabric JARs go to `fabric/1.20.1/build/libs`.
 Development launches use `runClient`/`runServer` in the respective project.
 Fabric additionally has `productionClient` to test the packaged runtime JAR;
 read [fabric/1.20.1/README.md](../fabric/1.20.1/README.md) before using it. It opens a desktop

@@ -5,3 +5,5 @@ pluginManagement {
     }
 }
 rootProject.name = 'visor-compat-tacz'
+// Preserve root wrapper commands while the actual Forge project owns its output.
+rootProject.projectDir = file('forge/1.20.1')

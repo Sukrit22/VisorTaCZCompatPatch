@@ -102,4 +102,8 @@ tasks.register('diagnosticClasspath') {
 tasks.withType(JavaExec).configureEach { if (name == "runServer") standardInput = System.in }
 
 // Authored platform-independent mechanics: compiled directly, never rewritten.
-sourceSets.main.java.srcDir 'common/core/src/main/java'
+sourceSets.main.java.srcDirs '../../src/main/java', '../../common/core/src/main/java'
+sourceSets.main.resources.srcDir '../../src/main/resources'
+sourceSets.test.java.srcDir '../../src/test/java'
+
+apply from: '../../ports/release-artifact.gradle'

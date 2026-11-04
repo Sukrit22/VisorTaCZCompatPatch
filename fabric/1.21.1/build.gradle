@@ -93,3 +93,5 @@ apply from: 'production-smoke.gradle'
 
 // Authored platform-independent mechanics: compiled directly, never rewritten.
 sourceSets.main.java.srcDir '../../common/core/src/main/java'
+
+apply from: '../../ports/release-artifact.gradle'
