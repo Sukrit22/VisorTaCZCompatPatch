@@ -2,12 +2,16 @@ package dev.visorcompat.tacz.physical;
 /** A deliberate lateral stroke followed by deceleration, measured in head-relative metres. */
 public final class CylinderMotion {
     public static final float OPEN_DISTANCE=.02f,CLOSE_DISTANCE=.08f;
-    private float origin,last,elapsed,distance,peakSpeed;private boolean started,armed,moving;
-    public void reset(){started=false;armed=false;moving=false;elapsed=distance=peakSpeed=0;}
+    private float origin,last,elapsed,distance,peakSpeed,armedElapsed;private boolean started,armed,moving;
+    public void reset(){started=false;armed=false;moving=false;elapsed=distance=peakSpeed=armedElapsed=0;}
     public void armOpen(){reset();armed=true;}
-    public int update(float position,float dt,boolean open){
+    public int update(float position,float dt,boolean open){return update(position,dt,open,!open);}
+    public int update(float position,float dt,boolean open,boolean requireUse){
         if(!Float.isFinite(position)||!Float.isFinite(dt)||dt<=0||dt>.15f){reset();return 0;}
-        if(!open&&!armed){reset();return 0;}
+        if(requireUse){
+            if(!armed){reset();return 0;}
+            armedElapsed+=dt;if(armedElapsed>1.2f){reset();return 0;}
+        }
         if(!started){origin=last=position;started=true;return 0;}
         float delta=position-last,speed=delta/dt;last=position;
         if(!open){

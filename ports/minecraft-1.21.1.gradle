@@ -41,7 +41,10 @@ ext.minecraft121Transform = { String text, File source ->
     if (source.name in ['AdvancedScreen.java', 'FourHolsterScreen.java']) {
         text = text.replace('renderBackground(g)', 'renderBackground(g,x,y,dt)')
     }
-    if (source.name in ['CalibrationScreen.java', 'MagazineGripScreen.java']) {
+    if (source.name == 'TacticalScreen.java') {
+        text = text.replace('renderBackground(g)', 'renderBackground(g,x,y,partial)')
+    }
+    if (source.name in ['CalibrationScreen.java', 'MagazineGripScreen.java', 'TacticalScreen.java']) {
         text = text.replace('mouseScrolled(double x,double y,double delta)', 'mouseScrolled(double x,double y,double horizontal,double delta)')
             .replace('super.mouseScrolled(x,y,delta)', 'super.mouseScrolled(x,y,horizontal,delta)')
     }

@@ -48,6 +48,7 @@ public final class PhysicalClient {
     }
     public static boolean supporting() {
         if(!active())return true;
+        if(TacticalClient.busy())return false;
         if(supportAnchor())return false;
         var mc=Minecraft.getInstance();var stack=mc.player.getMainHandItem();var profile=Profiles.get(stack);
         if(profile.supportDistance()!=0)return phase()==Phase.SUPPORT || (phase()==Phase.PUMP_HOLD && pull()<.02f);
@@ -71,12 +72,13 @@ public final class PhysicalClient {
         if(mainHeld && Minecraft.getInstance().getConnection()!=null)CompatNetwork.CHANNEL.sendToServer(new CompatNetwork.MainAction(false,false,true));
         mainHeld=false;held=false;
     }
-    public static void reset() { releaseGrip();state=null;lastSlot=-1;lastKey=""; }
+    public static void reset() { TacticalClient.reset();releaseGrip();state=null;lastSlot=-1;lastKey=""; }
     public static void tick(boolean input) {
+        TacticalClient.tick();if(!input)TacticalClient.reset();
         var p=Minecraft.getInstance().player;
         String key=p==null?"":Profiles.key(p.getMainHandItem());
         int slot=p==null?-1:p.getInventory().selected;
-        if(slot!=lastSlot || !key.equals(lastKey)) { releaseGrip();state=null;lastSlot=slot;lastKey=key; }
+        if(slot!=lastSlot || !key.equals(lastKey)) { TacticalClient.reset();releaseGrip();state=null;lastSlot=slot;lastKey=key; }
         if(!active() || !input || !p.getOffhandItem().isEmpty()
             || !VisorAPI.client().getVRLocalPlayer().getRawController(HandType.OFFHAND).isTracking()) releaseGrip();
     }
@@ -168,7 +170,7 @@ public final class PhysicalClient {
                 case PUMP_OPEN -> "Pump open: insert a shell at the side port, or push fore-end forward";
                 case LOADER -> "Move speedloader to green loading zone and release; only available inventory rounds are loaded";
                 case SHELL -> "Move shell from pouch to loading port and release";
-                case READY -> Profiles.cylinder(p.getMainHandItem())?"Ready: grab orange and move 2 cm left to open; or holding-hand Use then 2 cm left flick":"Ready: grab magazine and pull down to reload";
+                case READY -> Profiles.cylinder(p.getMainHandItem())?"Ready: grab orange and move 2 cm left; or "+(CompatSettings.cylinderOpenUse()?"holding-hand Use then ":"")+"2 cm left flick":"Ready: grab magazine and pull down to reload";
                 case REMOVING -> "Pull magazine down 7 cm, holding offhand use";
                 case OLD_MAG -> "Release old magazine to stow its remaining rounds";
                 case NO_MAG -> "Grab a replacement at waist pouch (below headset)";

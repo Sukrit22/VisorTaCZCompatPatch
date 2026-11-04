@@ -1,6 +1,6 @@
 # Building every supported target
 
-Run these commands from the repository root. Use a **JDK**, not a JRE. The current source version is `0.14.0-alpha.9`; the 1.21.1 targets append `+1.21.1`. Build version strings are presently in each target's `build.gradle`.
+Run these commands from the repository root. Use a **JDK**, not a JRE. The current source version is `0.14.0-alpha.10`; the 1.21.1 targets append `+1.21.1`. Build version strings are presently in each target's `build.gradle`.
 
 The `0.14.0` GitHub tag and download collection contain older uploaded alpha binaries; rebuilding its tagged source does not reproduce those older assets. See the README release table. This guide builds the current checkout, leaving release assets and existing game instances unchanged.
 
@@ -33,10 +33,10 @@ On Linux/macOS use `./gradlew` and the corresponding JDK installation for `JAVA_
 
 | Target | Output folder | Current installable filename |
 | --- | --- | --- |
-| Forge 1.20.1 | `build/libs` | `visor-compat-tacz-1.20.1-0.14.0-alpha.9.jar` |
-| Fabric 1.20.1 | `fabric/build/libs` | `visor-compat-tacz-1.20.1-fabric-0.14.0-alpha.9.jar` |
-| Fabric 1.21.1 | `fabric-1.21.1/build/libs` | `visor-compat-tacz-1.21.1-fabric-0.14.0-alpha.9+1.21.1.jar` |
-| NeoForge 1.21.1 | `neoforge-1.21.1/build/libs` | `visor-compat-tacz-1.21.1-neoforge-0.14.0-alpha.9+1.21.1.jar` |
+| Forge 1.20.1 | `build/libs` | `visor-compat-tacz-1.20.1-0.14.0-alpha.10.jar` |
+| Fabric 1.20.1 | `fabric/build/libs` | `visor-compat-tacz-1.20.1-fabric-0.14.0-alpha.10.jar` |
+| Fabric 1.21.1 | `fabric-1.21.1/build/libs` | `visor-compat-tacz-1.21.1-fabric-0.14.0-alpha.10+1.21.1.jar` |
+| NeoForge 1.21.1 | `neoforge-1.21.1/build/libs` | `visor-compat-tacz-1.21.1-neoforge-0.14.0-alpha.10+1.21.1.jar` |
 
 Select the normal production JAR, not a sources/dev JAR. Do not rename a JAR to claim a different loader or Minecraft version. Install matching addon versions on server and clients. Nothing in these commands installs to CurseForge automatically.
 
@@ -66,3 +66,22 @@ There is currently **no Forge 1.21.1 or NeoForge 1.20.1 target**, and no general
 ## Linear development workflow
 
 All existing experimental branch tips were ancestors of `codex/independent-dual-wield`; `main` was fast-forwarded to that history. Continue new work on `main`, or use short-lived branches for risky changes and merge them when ready. Old branch names and the published `0.14.0` tag are retained; no history rewrite is needed.
+
+
+## Fabric26.2 development target and extracted core
+
+This is a migration/API-check target, **not a playable addon build**. See [architecture/status](ARCHITECTURE-MULTIVERSION.md) and [target instructions](../fabric/26.2/README.md). Use JDK25 and the target's wrapper:
+
+```powershell
+.\scripts\Prepare-Fabric26.ps1
+$env:JAVA_HOME = 'C:\path\to\jdk-25'
+.\fabric\26.2\gradlew.bat -p fabric/26.2 check --console=plain
+```
+
+Standalone shared mechanics, using JDK17 and the existing root wrapper:
+
+```powershell
+.\gradlew.bat -p common/core check --console=plain
+```
+
+Existing four target commands remain valid. `common/core` source is compiled directly by every target; edit it there rather than recreating files in root source or generated folders.

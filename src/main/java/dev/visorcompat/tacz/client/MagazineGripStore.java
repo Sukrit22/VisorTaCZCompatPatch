@@ -26,6 +26,8 @@ public final class MagazineGripStore {
     }
     public static String error(){load();return error;}
     public static InspectionCalibration get(String key){load();return key.equals(previewKey)&&preview!=null?preview:saved.getOrDefault(key,MagazineGripFiles.DEFAULT);}
+    /** Persisted ordinary grip, excluding any unsaved editor preview. */
+    public static InspectionCalibration savedValue(String key){load();return saved.getOrDefault(key,MagazineGripFiles.DEFAULT);}
     public static void save(String key,InspectionCalibration value)throws IOException{
         load();if(error!=null)throw new IOException(error);
         if(value==null||!value.valid())throw new IOException("Magazine grip values outside limits");

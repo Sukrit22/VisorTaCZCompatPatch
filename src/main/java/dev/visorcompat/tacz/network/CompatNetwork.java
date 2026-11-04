@@ -23,7 +23,7 @@ import java.util.UUID;
 @Mod.EventBusSubscriber(modid = VisorTacz.ID)
 public final class CompatNetwork {
     public static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
-            new ResourceLocation(VisorTacz.ID, "main"), () -> "34", "34"::equals, "34"::equals);
+            new ResourceLocation(VisorTacz.ID, "main"), () -> "36", "36"::equals, "36"::equals);
     private static final Set<UUID> DESCRIPTORS = new HashSet<>();
     private static final Set<UUID> MODE_KNOWN = new HashSet<>();
     private static final Set<UUID> TRANSFER_ANYTIME = new HashSet<>();
@@ -38,6 +38,7 @@ public final class CompatNetwork {
         }
     }
     public record MainAction(boolean transfer,boolean held,boolean canceled) {}
+    public record CylinderFlickSettings(boolean openUse,boolean closeUse) {}
     public record PistolRelease() {}
     public record MagazineUse() {}
     public record Advanced(boolean enabled,boolean held,int mount,int slot,String key,float x,float y,float z,float qx,float qy,float qz,float qw){
@@ -48,7 +49,9 @@ public final class CompatNetwork {
     }
     public record AdvancedRemote(UUID player,Advanced state){}
     public record AdvancedUse(){}
-    public record DroppedMagazine(UUID owner,int slot,net.minecraft.world.item.ItemStack stack,float scale,float modelScale,org.joml.Vector3f position,org.joml.Quaternionf rotation,dev.visorcompat.tacz.PhysicsCalibration physics,boolean loaded,boolean descriptors,String profileDigest){}
+    public record DroppedMagazine(UUID owner,int slot,net.minecraft.world.item.ItemStack stack,float scale,float modelScale,org.joml.Vector3f position,org.joml.Quaternionf rotation,dev.visorcompat.tacz.PhysicsCalibration physics,boolean loaded,boolean descriptors,String profileDigest,boolean free){
+        public DroppedMagazine(UUID owner,int slot,net.minecraft.world.item.ItemStack stack,float scale,float modelScale,org.joml.Vector3f position,org.joml.Quaternionf rotation,dev.visorcompat.tacz.PhysicsCalibration physics,boolean loaded,boolean descriptors,String profileDigest){this(owner,slot,stack,scale,modelScale,position,rotation,physics,loaded,descriptors,profileDigest,false);}
+    }
     public record BackendAck(boolean accepted){}
     public record RecoilShot(UUID player,String key,int slot,long generation,long tick,dev.visorcompat.tacz.RecoilMotion.Curve curve){}
     public record RecoilReset(UUID player){}
@@ -56,7 +59,11 @@ public final class CompatNetwork {
     private static final Map<UUID,PhysicsSetting> PHYSICS=new HashMap<>();
     public static dev.visorcompat.tacz.PhysicsCalibration physics(ServerPlayer p){var s=PHYSICS.get(p.getUUID());return s!=null&&s.key().equals(Profiles.key(p.getMainHandItem()))?s.value():dev.visorcompat.tacz.PhysicsCalibration.defaults(Profiles.get(p.getMainHandItem()));}
     public static void register() {
-        DualNetwork.register();ButtonJamNetwork.register();
+        DualNetwork.register();ButtonJamNetwork.register();TacticalNetwork.register();
+        CHANNEL.messageBuilder(CylinderFlickSettings.class,28,NetworkDirection.PLAY_TO_SERVER)
+            .encoder((m,b)->{b.writeBoolean(m.openUse());b.writeBoolean(m.closeUse());})
+            .decoder(b->new CylinderFlickSettings(b.readBoolean(),b.readBoolean()))
+            .consumerMainThread((m,c)->{var p=c.get().getSender();if(p!=null)dev.visorcompat.tacz.server.ServerCylinder.flickSettings(p,m.openUse(),m.closeUse());c.get().setPacketHandled(true);}).add();
         CHANNEL.messageBuilder(MagazineUse.class,17,NetworkDirection.PLAY_TO_SERVER).encoder((m,b)->{}).decoder(b->new MagazineUse())
             .consumerMainThread((m,c)->{var p=c.get().getSender();if(p!=null)ServerPhysical.magazineUse(p);c.get().setPacketHandled(true);}).add();
         CHANNEL.messageBuilder(RecoilReset.class,15,NetworkDirection.PLAY_TO_CLIENT).encoder((m,b)->b.writeUUID(m.player())).decoder(b->new RecoilReset(b.readUUID()))
@@ -71,8 +78,8 @@ public final class CompatNetwork {
             .encoder((m,b)->b.writeBoolean(m.accepted())).decoder(b->new BackendAck(b.readBoolean()))
             .consumerMainThread((m,c)->{net.minecraftforge.fml.DistExecutor.unsafeRunWhenOn(net.minecraftforge.api.distmarker.Dist.CLIENT,()->()->dev.visorcompat.tacz.client.CompatSettings.backendAck(m.accepted()));c.get().setPacketHandled(true);}).add();
         CHANNEL.messageBuilder(DroppedMagazine.class,12,NetworkDirection.PLAY_TO_CLIENT)
-            .encoder((m,b)->{b.writeUUID(m.owner());b.writeInt(m.slot());b.writeItem(m.stack());b.writeFloat(m.scale());b.writeFloat(m.modelScale());b.writeVector3f(m.position());b.writeQuaternion(m.rotation());PhysicsCodec.write(b,m.physics());b.writeBoolean(m.loaded());b.writeBoolean(m.descriptors());b.writeUtf(m.profileDigest(),64);})
-            .decoder(b->new DroppedMagazine(b.readUUID(),b.readInt(),b.readItem(),b.readFloat(),b.readFloat(),b.readVector3f(),b.readQuaternion(),PhysicsCodec.read(b),b.readBoolean(),b.readBoolean(),b.readUtf(64)))
+            .encoder((m,b)->{b.writeUUID(m.owner());b.writeInt(m.slot());b.writeItem(m.stack());b.writeFloat(m.scale());b.writeFloat(m.modelScale());b.writeVector3f(m.position());b.writeQuaternion(m.rotation());PhysicsCodec.write(b,m.physics());b.writeBoolean(m.loaded());b.writeBoolean(m.descriptors());b.writeUtf(m.profileDigest(),64);b.writeBoolean(m.free());})
+            .decoder(b->new DroppedMagazine(b.readUUID(),b.readInt(),b.readItem(),b.readFloat(),b.readFloat(),b.readVector3f(),b.readQuaternion(),PhysicsCodec.read(b),b.readBoolean(),b.readBoolean(),b.readUtf(64),b.readBoolean()))
             .consumerMainThread((m,c)->{net.minecraftforge.fml.DistExecutor.unsafeRunWhenOn(net.minecraftforge.api.distmarker.Dist.CLIENT,()->()->dev.visorcompat.tacz.client.MagazineEffects.receive(m));c.get().setPacketHandled(true);}).add();
         CHANNEL.messageBuilder(Advanced.class,9,NetworkDirection.PLAY_TO_SERVER).encoder(Advanced::write).decoder(Advanced::read)
             .consumerMainThread((m,c)->{var p=c.get().getSender();if(p!=null)dev.visorcompat.tacz.server.ServerAdvanced.receive(p,m);c.get().setPacketHandled(true);}).add();
@@ -166,7 +173,8 @@ public final class CompatNetwork {
     }
     @SubscribeEvent public static void logout(PlayerEvent.PlayerLoggedOutEvent event) {
         dev.visorcompat.tacz.server.ServerButtonJams.logout(event);
-        if(event.getEntity() instanceof ServerPlayer p){dev.visorcompat.tacz.server.ServerDual.logout(p);dev.visorcompat.tacz.server.ServerAdvanced.clear(p);}
+        if(event.getEntity() instanceof ServerPlayer p)dev.visorcompat.tacz.server.TacticalServer.logout(p);
+        if(event.getEntity() instanceof ServerPlayer p){dev.visorcompat.tacz.server.ServerCylinder.forgetSettings(p);dev.visorcompat.tacz.server.ServerDual.logout(p);dev.visorcompat.tacz.server.ServerAdvanced.clear(p);}
         if(event.getEntity() instanceof ServerPlayer player) ServerPhysical.clear(player);
         DESCRIPTORS.remove(event.getEntity().getUUID());MODE_KNOWN.remove(event.getEntity().getUUID());
         PHYSICAL.remove(event.getEntity().getUUID());TRANSFER_ANYTIME.remove(event.getEntity().getUUID());
@@ -175,6 +183,6 @@ public final class CompatNetwork {
         dev.visorcompat.tacz.server.ServerRecoil.clear(event.getEntity().getUUID());
         dev.visorcompat.tacz.server.RemoteSync.remove(event.getEntity().getUUID());
     }
-    @SubscribeEvent public static void stopped(ServerStoppedEvent event) { dev.visorcompat.tacz.server.ServerButtonJams.stopped(event); dev.visorcompat.tacz.server.ServerDual.clearAll(); dev.visorcompat.tacz.server.ServerRecoil.clearAll(); dev.visorcompat.tacz.server.ServerAdvanced.clearAll();DESCRIPTORS.clear();MODE_KNOWN.clear(); TRANSFER_ANYTIME.clear(); ACTIVE.clear(); PHYSICAL.clear(); GRIPS.clear();PHYSICS.clear(); ServerPhysical.stop(); dev.visorcompat.tacz.server.RemoteSync.clear(); }
+    @SubscribeEvent public static void stopped(ServerStoppedEvent event) { dev.visorcompat.tacz.server.ServerButtonJams.stopped(event); dev.visorcompat.tacz.server.ServerDual.clearAll(); dev.visorcompat.tacz.server.ServerRecoil.clearAll(); dev.visorcompat.tacz.server.ServerAdvanced.clearAll();DESCRIPTORS.clear();MODE_KNOWN.clear(); TRANSFER_ANYTIME.clear(); ACTIVE.clear(); PHYSICAL.clear(); GRIPS.clear();PHYSICS.clear(); ServerPhysical.stop();dev.visorcompat.tacz.server.TacticalServer.stop(); dev.visorcompat.tacz.server.RemoteSync.clear(); }
 }
 

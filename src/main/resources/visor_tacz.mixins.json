@@ -14,7 +14,8 @@
     "DualBulletPropertiesMixin",
     "DualHeatMixin",
     "PumpBoltMixin",
-    "HolsteredMiningMixin"
+    "HolsteredMiningMixin",
+    "HipFireMixin"
   ],
   "client": [
     "AdsSprintMixin",

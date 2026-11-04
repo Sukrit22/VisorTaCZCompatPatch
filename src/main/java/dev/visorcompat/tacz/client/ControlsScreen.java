@@ -43,8 +43,9 @@ public final class ControlsScreen extends Screen {
         addRenderableWidget(Button.builder(Component.literal("VR recoil: "+(CompatSettings.recoil()?"ON":"OFF")),b->{CompatSettings.setRecoil(!CompatSettings.recoil());rebuildWidgets();}).bounds(x,y+168,128,20).build());
         var physics=addRenderableWidget(Button.builder(Component.literal("Physics calibration"),b->minecraft.setScreen(new PhysicsScreen(Profiles.key(minecraft.player.getMainHandItem())))).bounds(x+132,y+168,128,20).build());
         physics.active=minecraft.player!=null&&Profiles.get(minecraft.player.getMainHandItem())!=null&&!Profiles.cylinder(minecraft.player.getMainHandItem())&&!Profiles.manualAction(minecraft.player.getMainHandItem());
-        addRenderableWidget(Button.builder(Component.literal("Advanced Handling"),b->minecraft.setScreen(new AdvancedScreen())).bounds(x,y+192,170,20).build());
-        addRenderableWidget(Button.builder(Component.literal("Done"),b->onClose()).bounds(x+174,y+192,86,20).build());
+        addRenderableWidget(Button.builder(Component.literal("Advanced Handling"),b->minecraft.setScreen(new AdvancedScreen())).bounds(x,y+192,108,20).build());
+        addRenderableWidget(Button.builder(Component.literal("Done"),b->onClose()).bounds(x+198,y+192,62,20).build());
+        addRenderableWidget(Button.builder(Component.literal("Accuracy"),b->minecraft.setScreen(new HipFireScreen())).bounds(x+112,y+192,82,20).build());
         ClientControls.clearInput();
     }
     @Override public boolean isPauseScreen(){return false;}

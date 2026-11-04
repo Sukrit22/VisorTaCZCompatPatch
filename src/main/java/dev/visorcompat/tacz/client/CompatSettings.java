@@ -21,6 +21,8 @@ import org.vmstudio.visor.api.VisorAPI;
 @Mod.EventBusSubscriber(modid = VisorTacz.ID, value = Dist.CLIENT)
 public final class CompatSettings {
     private static Boolean lastSentActive;
+    private static Boolean lastOpenUse,lastCloseUse;
+    private static final ForgeConfigSpec.BooleanValue CYLINDER_OPEN_USE,CYLINDER_CLOSE_USE;
     private static boolean lastPhysical,lastTransferAnytime,lastDescriptors,lastRecoil;
     private static String lastCalibrationKey;
     private static Calibration lastCalibration;
@@ -59,6 +61,8 @@ public final class CompatSettings {
     private static final ForgeConfigSpec.EnumValue<Display> DISPLAY;
     static {
         var builder = new ForgeConfigSpec.Builder();
+        CYLINDER_OPEN_USE=builder.comment("Revolver opening flick requires pressing holding-hand Use first. Physical and Advanced.").define("cylinderOpenRequiresUse",true);
+        CYLINDER_CLOSE_USE=builder.comment("Revolver closing flick requires pressing holding-hand Use first. Physical and Advanced.").define("cylinderCloseRequiresUse",false);
         FOUR_MOUNTS=builder.comment("Experimental four hotbar-backed holsters. Enable independent dual wield too. No item copying.").define("fourHolsters",false);
         EMPTY_DRAW=builder.define("holsterRequireEmptyHand",true);
         LOCK_SELECTED=builder.define("lockOtherHandSelectedGun",true);
@@ -95,6 +99,10 @@ public final class CompatSettings {
     public static void setAdvanced(boolean v){setHandlingMode(v?HandlingMode.ADVANCED:HandlingMode.PHYSICAL);}
     public static void setToss(boolean v){TOSS.set(v);SPEC.save();}
     public static void setInspectWindow(int v){INSPECT_WINDOW.set(v);SPEC.save();}
+    public static boolean cylinderOpenUse(){return !SPEC.isLoaded()||CYLINDER_OPEN_USE.get();}
+    public static boolean cylinderCloseUse(){return SPEC.isLoaded()&&CYLINDER_CLOSE_USE.get();}
+    public static void setCylinderOpenUse(boolean v){CYLINDER_OPEN_USE.set(v);SPEC.save();forceSync();}
+    public static void setCylinderCloseUse(boolean v){CYLINDER_CLOSE_USE.set(v);SPEC.save();forceSync();}
     public static int catchWindow(){return SPEC.isLoaded()?CATCH_WINDOW.get():250;}
     public static void setCatchWindow(int v){CATCH_WINDOW.set(v);SPEC.save();}
     public static void register() {
@@ -144,7 +152,7 @@ public final class CompatSettings {
     static void forceSync() {lastSentActive=null;lastCalibrationKey=null;lastPhysicsKey=null;syncState();}
     static boolean reloadCalibration() {
         try {
-            MagazineGripStore.reload();GunReviewStore.reload();PhysicsStore.reload();InspectionStore.reload();HolsterStore.reload();CalibrationStore.reload();ClientControls.clearInput();forceSync();
+            MagazineGripStore.reload();TacticalStore.reload();GunReviewStore.reload();PhysicsStore.reload();InspectionStore.reload();HolsterStore.reload();CalibrationStore.reload();ClientControls.clearInput();forceSync();
             Minecraft.getInstance().gui.getChat().addMessage(Component.literal("Reloaded physics, gun, holster and inspection calibration; bundled defaults fill missing profiles."));
             return true;
         } catch(java.io.IOException e) {
@@ -153,10 +161,15 @@ public final class CompatSettings {
         }
     }
     static void syncState() {
+        TacticalClient.sync();
         if (Minecraft.getInstance().getConnection() == null || Minecraft.getInstance().player == null) {
-            lastSentActive = null;
+            lastSentActive = null;lastOpenUse=null;lastCloseUse=null;
             lastCalibrationKey = null;lastPhysicsKey=null;
             return;
+        }
+        if(lastOpenUse==null||lastCloseUse==null||lastOpenUse!=cylinderOpenUse()||lastCloseUse!=cylinderCloseUse()){
+            CompatNetwork.CHANNEL.sendToServer(new CompatNetwork.CylinderFlickSettings(cylinderOpenUse(),cylinderCloseUse()));
+            lastOpenUse=cylinderOpenUse();lastCloseUse=cylinderCloseUse();
         }
         var stack = Minecraft.getInstance().player.getMainHandItem();
         if (Profiles.get(stack) != null) {

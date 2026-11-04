@@ -32,13 +32,13 @@ public final class MagazineEffects {
         if(p==mc.player){if(!ClientControls.vrActive())return null;return ClientRecoil.apply(p,AdvancedClient.renderPose(GunPose.resolve(pose,profile,p.getOffhandItem().isEmpty()&&PhysicalClient.supporting(),CalibrationStore.render(Profiles.key(p.getMainHandItem())),PhysicalClient.anchor())),partial);}
         var state=RemoteGuns.state(p);if(state==null)return null;var base=GunPose.resolve(pose,profile,p.getOffhandItem().isEmpty()&&state.phase()==dev.visorcompat.tacz.physical.Handling.Phase.SUPPORT,state.calibration(),state.anchor());return ClientRecoil.apply(p,AdvancedRemote.pose(p.getUUID(),Profiles.key(p.getMainHandItem()),base,profile,state.calibration()),partial);
     }
-    private static Vector3f origin(CompatNetwork.DroppedMagazine m,GunPose g){return new Quaternionf(g.rotation()).transform(m.physics().origin(Profiles.get(m.stack())).mul(m.scale()*m.modelScale())).add(g.hand());}
+    private static Vector3f origin(CompatNetwork.DroppedMagazine m,GunPose g){return m.free()?new Vector3f(m.position()):new Quaternionf(g.rotation()).transform(m.physics().origin(Profiles.get(m.stack())).mul(m.scale()*m.modelScale())).add(g.hand());}
     private static GunPose fallback(CompatNetwork.DroppedMagazine m){return new GunPose(m.position(),m.rotation(),m.position(),new Vector3f(0,0,-1),m.scale());}
     private static void advance(Prop p,float partial,boolean simulation){
         if(p.frame==frame)return;p.frame=frame;long now=System.nanoTime();float dt=(now-p.last)/1e9f;p.last=now;var m=p.data;var mc=Minecraft.getInstance();var owner=mc.level.getPlayerByUUID(m.owner());
-        boolean bound=owner instanceof AbstractClientPlayer&&Profiles.key(owner.getMainHandItem()).equals(Profiles.key(m.stack()))&&(owner!=mc.player||owner.getInventory().selected==m.slot());
+        boolean bound=!m.free()&&owner instanceof AbstractClientPlayer&&Profiles.key(owner.getMainHandItem()).equals(Profiles.key(m.stack()))&&(owner!=mc.player||owner.getInventory().selected==m.slot());
         var current=bound?gun((AbstractClientPlayer)owner,partial):null;
-        if(p.motion==null){var g=current==null?fallback(m):current;p.motion=new MagazineMotion(origin(m,g),g.rotation(),m.physics().exitDirection(),m.physics().travel()*m.modelScale()*m.scale(),m.physics().friction(),m.scale());return;}
+        if(p.motion==null){var g=current==null?fallback(m):current;p.motion=new MagazineMotion(origin(m,g),g.rotation(),m.physics().exitDirection(),m.physics().travel()*m.modelScale()*m.scale(),m.physics().friction(),m.scale());if(m.free())p.motion.detach();return;}
         if(current==null)p.motion.detach();
         else if(!simulation&&owner==mc.player&&!dev.visorcompat.tacz.physical.Handling.magazineOut(PhysicalClient.phase()))p.motion.detach();
         var o=current==null?p.motion.position():origin(m,current);var q=current==null?p.motion.rotation():current.rotation();p.motion.advance(o,q,dt);
@@ -61,7 +61,7 @@ public final class MagazineEffects {
         var matrices=e.getPoseStack();var camera=e.getCamera().getPosition();matrices.pushPose();
         try{matrices.translate(position.x-camera.x,position.y-camera.y,position.z-camera.z);matrices.mulPose(rotation);matrices.scale(m.scale(),m.scale(),m.scale());
             // Origin calibration moves the rail reference, not the native seated model.
-            var off=m.physics();matrices.pushPose();matrices.translate(-off.offsetX()*m.modelScale(),-off.offsetY()*m.modelScale(),-off.offsetZ()*m.modelScale());
+            var off=m.physics();matrices.pushPose();if(!m.free())matrices.translate(-off.offsetX()*m.modelScale(),-off.offsetY()*m.modelScale(),-off.offsetZ()*m.modelScale());
             PhysicalModel.looseMagazine(matrices,display.getGunModel(),profile,m.modelScale(),display.enablesTransparency()?RenderType.entityTranslucent(display.getModelTexture()):RenderType.entityCutout(display.getModelTexture()),0xF000F0,m.loaded());matrices.popPose();
             if(guide){float k=m.modelScale();var c=m.physics();var buf=Minecraft.getInstance().renderBuffers().bufferSource().getBuffer(RenderType.lines());LevelRenderer.renderLineBox(matrices,buf,-c.width()*k/2,-c.height()*k/2,-c.depth()*k/2,c.width()*k/2,c.height()*k/2,c.depth()*k/2,1,1,1,1);var a=c.exitDirection().mul(c.travel()*k);LevelRenderer.renderLineBox(matrices,buf,Math.min(0,a.x)-.002,Math.min(0,a.y)-.002,Math.min(0,a.z)-.002,Math.max(0,a.x)+.002,Math.max(0,a.y)+.002,Math.max(0,a.z)+.002,0,1,1,1);}
         }finally{matrices.popPose();}

@@ -79,6 +79,7 @@ public final class RemoteGuns {
                 var type=display.enablesTransparency()?RenderType.entityTranslucent(display.getModelTexture()):RenderType.entityCutout(display.getModelTexture());
                 int light=mc.getEntityRenderDispatcher().getPackedLightCoords(player,event.getPartialTick());
                 try(var physical=new PhysicalModel(model,profile,state.physical(),state.phase(),state.pull()*.005f,stack,state.calibration())) {
+                    physical.chamberGuide(gun);
                     model.render(matrices,stack,ItemDisplayContext.THIRD_PERSON_RIGHT_HAND,type,light,OverlayTexture.NO_OVERLAY);
                 } finally {matrices.popPose();}
                 PhysicalModel.detached(matrices,model,profile,gun,pose,type,light,state.physical(),state.phase(),state.calibration().gunScale(),state.magazineLoaded(),AdvancedRemote.freeMain(player.getUUID()));

@@ -13,4 +13,6 @@ docs/INSTANCE-INSPECTION.md
 *.disabled
 .DS_Store
 Thumbs.db
+__pycache__/
+*.pyc
 player-logs/

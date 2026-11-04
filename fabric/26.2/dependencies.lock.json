@@ -1,0 +1,45 @@
+{
+  "minecraft": "26.2",
+  "java": 25,
+  "artifacts": [
+    {
+      "name": "Visor-0.6.1+mc26.2-fabric.jar",
+      "url": "https://cdn.modrinth.com/data/p5sM2GSi/versions/egOqPxop/Visor-0.6.1%2Bmc26.2-fabric.jar",
+      "sha256": "017dc136da3a29fe6fab39edc5136f9d162a6c3965224d642c61fbf43e141ac8",
+      "sha512": "efd723edb691755a9c69b6af86328e6f22ab4257f2d433e96baad0957ca9449e4ad64ded415126919d6252d458107a14c165fcd09e232c04e7ee3f88f6a07d1a",
+      "metadata": {
+        "id": "visor",
+        "version": "0.6.1",
+        "depends": {
+          "fabricloader": ">=0.19.5",
+          "fabric-api": "*",
+          "minecraft": ">=26.2 <26.3",
+          "java": ">=25"
+        }
+      }
+    },
+    {
+      "name": "TACZ-Refabricated-26.2-1.1.8+fabric.26.2.R3-hotfix4.jar",
+      "url": "https://github.com/q14433686-arch/TaCZ_Refabricated_Unofficial/releases/download/26.2%E7%9A%84mod%E6%96%87%E4%BB%B6_R3_HOTFIX-4/TACZ-Refabricated-26.2-1.1.8%2Bfabric.26.2.R3-hotfix4.jar",
+      "sha256": "2d7793b92f52410d7361cad0923a229559c283df2beb24f6ca2e05037824d288",
+      "metadata": {
+        "id": "tacz",
+        "version": "1.1.8+fabric.26.2.R3-hotfix4",
+        "depends": {
+          "fabricloader": ">=0.19.3",
+          "fabric-api": "*",
+          "minecraft": "26.2",
+          "java": ">=25",
+          "forgeconfigapiport": ">=26.2.1"
+        }
+      },
+      "download_api": "https://api.github.com/repos/q14433686-arch/TaCZ_Refabricated_Unofficial/releases/assets/679869134"
+    }
+  ],
+  "fabric_loader": "0.19.5",
+  "fabric_api": "0.155.2+26.2",
+  "loom": "1.17.21",
+  "gradle": "9.7.1",
+  "visor_template_commit": "559576bc031369c4da17aa0a8515de5a0321800a",
+  "tacz_source_commit": "f9ae55af2b50"
+}

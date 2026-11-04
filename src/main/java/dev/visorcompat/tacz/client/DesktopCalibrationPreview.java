@@ -87,6 +87,34 @@ final class DesktopCalibrationPreview {
         }finally{g.disableScissor();}
         g.drawString(mc.font,"Tan outline: magazine hand placeholder",left+7,top+height-14,0xDFB58B);
     }
+    /** Gun-frame entry/seated rail; same Y-X-Z Euler order used by tactical gameplay. */
+    void renderTactical(GuiGraphics g,ItemStack stack,WeaponProfile profile,Calibration c,String key,TacticalCalibration tactical){
+        var pages=CalibrationLayout.pages(key,profile);
+        var selected=pages.stream().filter(p->p.zone()==ZoneSizes.Zone.MAGAZINE).findFirst().orElse(pages.get(0));
+        render(g,stack,profile,c,key,selected);
+        var p=tactical.magwellEntry();float r=(float)Math.PI/180;
+        var rotation=new Quaternionf().rotateY(p.yaw()*r).rotateX(p.pitch()*r).rotateZ(p.roll()*r);
+        var entry=Handling.magazine(profile,c).add(p.x(),p.y(),p.z());
+        var axis=rotation.transform(new Vector3f(0,1,0));
+        var seated=new Vector3f(axis).mul(tactical.seatedDepth()).add(entry);
+        g.enableScissor(left,top+43,left+width,top+height-20);
+        try{
+            line(g,projected(new Vector3f(entry),c,true),projected(new Vector3f(seated),c,true),0xFFDD66);
+            Vector3f right=rotation.transform(new Vector3f(1,0,0)),back=rotation.transform(new Vector3f(0,0,1));
+            float radius=tactical.entryRadius();
+            for(int i=0;i<48;i++){
+                double a=i*Math.PI/24,b=(i+1)*Math.PI/24;
+                var first=new Vector3f(entry).add(new Vector3f(right).mul((float)Math.cos(a)*radius)).add(new Vector3f(back).mul((float)Math.sin(a)*radius));
+                var second=new Vector3f(entry).add(new Vector3f(right).mul((float)Math.cos(b)*radius)).add(new Vector3f(back).mul((float)Math.sin(b)*radius));
+                line(g,projected(first,c,true),projected(second,c,true),0x55DDFF);
+            }
+            float cross=.015f;
+            for(var v:new Vector3f[]{right,back})line(g,projected(new Vector3f(seated).sub(new Vector3f(v).mul(cross)),c,true),projected(new Vector3f(seated).add(new Vector3f(v).mul(cross)),c,true),0x66FF88);
+            line(g,projected(new Vector3f(seated).sub(new Vector3f(axis).mul(tactical.seatedTolerance())),c,true),projected(new Vector3f(seated).add(new Vector3f(axis).mul(tactical.seatedTolerance())),c,true),0x66FF88);
+        }finally{g.disableScissor();}
+        g.fill(left,top+height-20,left+width,top+height,0xFF182028);
+        g.drawString(Minecraft.getInstance().font,"Cyan: entry | Yellow: rail | Green: seated tolerance",left+7,top+height-14,0xFFFFFF);
+    }
     void render(GuiGraphics g,ItemStack stack,WeaponProfile profile,Calibration c,String key,CalibrationLayout.Page selected){
         animate();var mc=Minecraft.getInstance();g.fill(left,top,left+width,top+height,0xE0182028);
         g.drawString(mc.font,"Drag to rotate | Scroll to zoom",left+7,top+7,0xCCCCCC);

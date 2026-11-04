@@ -89,6 +89,7 @@ public final class ClientControls implements VREventListener {
         if(DualClient.active())return;
         if(ButtonJamClient.action(event,canInput()))return;
         if(ButtonJamClient.busy()){event.setCanceled(true);return;}
+        if(TacticalClient.action(event,canInput()))return;
         if(PhysicalClient.magazineUse(event,canInput()))return;
         if(AdvancedClient.action(event,canInput()))return;
         if (PhysicalClient.action(event,canInput())) return;

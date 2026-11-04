@@ -89,6 +89,7 @@ public final class GunRenderer extends VRHandEffect {
                         : RenderType.entityCutout(display.getModelTexture());
                 int light=mc.getEntityRenderDispatcher().getPackedLightCoords(mc.player,partialTicks);
                 try (var physical=new PhysicalModel(model,profile)) {
+                    physical.chamberGuide(gun);
                     model.render(matrices, stack, ItemDisplayContext.THIRD_PERSON_RIGHT_HAND, type,light,OverlayTexture.NO_OVERLAY);
                 } finally { matrices.popPose(); }
                 PhysicalModel.detached(matrices,model,profile,gun,pose,type,light);

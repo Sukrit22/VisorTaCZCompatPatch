@@ -1,0 +1,44 @@
+plugins { id 'net.fabricmc.fabric-loom' version '1.17.21' }
+group='dev.visorcompat.tacz'
+version='26.2-port-development'
+java.toolchain.languageVersion=JavaLanguageVersion.of(25)
+repositories { mavenCentral(); maven { url='https://api.modrinth.com/maven' } }
+def locks=new groovy.json.JsonSlurper().parse(file('dependencies.lock.json'))
+def artifacts=locks.artifacts.collect { file("build/upstream/${it.name}") }
+tasks.register('verifyPinnedDependencies') {
+ doLast {
+  locks.artifacts.each { a ->
+   def f=file("build/upstream/${a.name}")
+   assert f.isFile(): 'Run scripts/Prepare-Fabric26.ps1 first'
+   def sha=java.security.MessageDigest.getInstance('SHA-256').digest(f.bytes).encodeHex().toString()
+   assert sha==a.sha256: "Upstream dependency checksum mismatch: ${a.name}"
+  }
+ }
+}
+dependencies {
+ minecraft 'com.mojang:minecraft:26.2'
+ implementation 'net.fabricmc:fabric-loader:0.19.5'
+ implementation 'net.fabricmc.fabric-api:fabric-api:0.155.2+26.2'
+ compileOnly files(artifacts)
+ testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
+ testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.10.2'
+}
+sourceSets.main.java.srcDir '../../common/core/src/main/java'
+sourceSets.test.java { srcDir '../../src/test/java'; include '**/StackData26Test.java', '**/CylinderMotionTest.java', '**/ChamberGuideTest.java', '**/TacticalLedgerTest.java', '**/ShotMotionTest.java', '**/PumpCycleTest.java', '**/AdvancedHoldTest.java', '**/InertialPumpTest.java' }
+tasks.named('compileJava') { dependsOn 'verifyPinnedDependencies' }
+tasks.named('test') { useJUnitPlatform() }
+tasks.withType(JavaCompile).configureEach { options.encoding='UTF-8' }
+// This target is an API migration harness, not a playable addon yet.
+// Prevent a partial core/API-check artifact being mistaken for a release.
+tasks.named('jar') { enabled=false }
+tasks.matching { it.name=='sourcesJar' }.configureEach { enabled=false }
+
+sourceSets.main.java.srcDir '../../common/26.2/src/main/java'
+sourceSets {
+ apiProbe {
+  java.srcDir 'src/probe/java'
+  compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+ }
+}
+tasks.named('compileApiProbeJava') { dependsOn 'compileJava' }
+tasks.named('check') { dependsOn 'compileApiProbeJava' }

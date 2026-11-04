@@ -1,0 +1,20 @@
+plugins { id 'java-library' }
+group='dev.visorcompat.tacz'
+version='0.1.0'
+java.toolchain.languageVersion=JavaLanguageVersion.of(providers.gradleProperty('coreJava').getOrElse('17').toInteger())
+repositories { mavenCentral() }
+dependencies { testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'; testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.10.2' }
+sourceSets.test.java {
+ srcDir '../../src/test/java'
+ include '**/CylinderMotionTest.java', '**/ChamberGuideTest.java', '**/TacticalLedgerTest.java', '**/ShotMotionTest.java', '**/PumpCycleTest.java', '**/AdvancedHoldTest.java', '**/InertialPumpTest.java'
+}
+tasks.named('test') { useJUnitPlatform() }
+tasks.withType(JavaCompile).configureEach { options.encoding='UTF-8' }
+tasks.register('verifyCoreBoundary') {
+ doLast {
+  fileTree('src/main/java').matching { include '**/*.java' }.each { f ->
+   assert !(f.getText('UTF-8') =~ /(?:net\.minecraft|net\.fabricmc|net\.minecraftforge|net\.neoforged|com\.tacz|org\.vmstudio|dev\.visorcompat\.tacz\.(?:client|server|network))/).find(): "Platform dependency in core: $f"
+  }
+ }
+}
+tasks.named('check') { dependsOn 'verifyCoreBoundary' }

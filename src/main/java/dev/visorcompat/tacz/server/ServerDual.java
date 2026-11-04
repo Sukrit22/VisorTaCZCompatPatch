@@ -51,7 +51,7 @@ public final class ServerDual {
   if(a==null&&b==null){clear(p);return;}
   var s=STATES.get(p.getUUID());
   if(s==null){
-   ((com.tacz.guns.api.entity.IGunOperator)p).cancelReload();((com.tacz.guns.api.entity.IGunOperator)p).getDataHolder().isBolting=false;ServerPhysical.clear(p);ServerAdvanced.clear(p);DualPhysicalServer.recoverInventory(p);s=new State(p,m);STATES.put(p.getUUID(),s);
+   ((com.tacz.guns.api.entity.IGunOperator)p).cancelReload();((com.tacz.guns.api.entity.IGunOperator)p).getDataHolder().isBolting=false;TacticalServer.normalizeInventory(p);ServerPhysical.clear(p);ServerAdvanced.clear(p);DualPhysicalServer.recoverInventory(p);s=new State(p,m);STATES.put(p.getUUID(),s);
   }
   for(int h=0;h<2;h++){
    int slot=h==0?m.mainSlot():m.offSlot();var stack=slotStack(p,slot);

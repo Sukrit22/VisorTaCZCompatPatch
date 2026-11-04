@@ -87,9 +87,11 @@ public final class ServerPhysical {
     }
     /** Recover saved reservations even if the gun was not selected at login. */
     public static void recoverInventory(ServerPlayer p) {
+        TacticalServer.normalizeInventory(p);
         for(int i=0;i<p.getInventory().getContainerSize();i++)restore(p.getInventory().getItem(i));
     }
     public static void clear(ServerPlayer p) {
+        TacticalServer.cancel(p);
         ServerPump.clear(p);ServerCylinder.clear(p);
         Session s=SESSIONS.remove(p.getUUID());
         if(s!=null) {
@@ -111,6 +113,7 @@ public final class ServerPhysical {
         return new Sample(Handling.local(gun,off),Handling.inPouch(off,pose.getHmd().getPosition(),forward,gun.worldScale(),CompatNetwork.calibration(p)));
     }
     public static void tick(ServerPlayer p) {
+        TacticalServer.tick(p);
         ServerPump.cleanup(p);ServerCylinder.cleanup(p);
         Session s=SESSIONS.get(p.getUUID());
         if(s!=null && (!enabled(p) || !p.isAlive() || p.isSpectator() || s.stack!=p.getMainHandItem() || s.slot!=p.getInventory().selected)) {
@@ -145,9 +148,10 @@ public final class ServerPhysical {
                 s.anchor=s.supportAnchor;s.held=false;s.phase=Phase.NEED_RACK;
             }
         }
+        if(TacticalServer.enabled(p)&&!s.held&&!Handling.racking(s.phase))s.phase=dev.visorcompat.tacz.physical.TacticalState.out(s.stack)?Phase.NO_MAG:readyAmmo(s.stack)?Phase.READY:Phase.NEED_RACK;
         Sample pose=sample(p);
         if(pose==null || !p.getOffhandItem().isEmpty()){if(s.held)release(p,s,null);s.anchor=null;s.mainAnchor=null;if(s.phase==Phase.SUPPORT)s.phase=Phase.READY;}
-        if(pose!=null && !s.held && Profiles.get(s.stack).supportDistance()==0
+        if(pose!=null && !s.held && !TacticalServer.busy(p) && Profiles.get(s.stack).supportDistance()==0
             && (s.phase==Phase.READY||s.phase==Phase.NEED_RACK||s.phase==Phase.SUPPORT)){
             var center=Handling.support(Profiles.get(s.stack),CompatNetwork.calibration(p));
             boolean touch=p.getOffhandItem().isEmpty()&&(s.phase==Phase.SUPPORT?Handling.supportRetained(pose.local(),center,CompatNetwork.calibration(p)):Handling.inside(pose.local(),center,CompatNetwork.calibration(p),ZoneSizes.Zone.SUPPORT));
@@ -205,11 +209,14 @@ public final class ServerPhysical {
         s.phase=readyAmmo(s.stack)?Phase.READY:Phase.NEED_RACK;
     }
     public static void cancelGrip(ServerPlayer p) {
+        TacticalServer.cancel(p);
         if(Profiles.cylinder(p.getMainHandItem())){ServerCylinder.grip(p,false,true);return;}
         if(Profiles.pump(p.getMainHandItem())){ServerPump.grip(p,false,true);return;}
         var s=SESSIONS.get(p.getUUID());if(s!=null){release(p,s,null);s.anchor=null;s.mainAnchor=null;}
     }
     public static void grip(ServerPlayer p, boolean held) {
+        if(TacticalServer.input(p,false,held,false))return;
+        if(TacticalServer.busy(p))return;
         if(Profiles.cylinder(p.getMainHandItem())){ServerCylinder.grip(p,held,false);return;}
         if(Profiles.pump(p.getMainHandItem())){ServerPump.grip(p,held,false);return;}
         Session current=SESSIONS.get(p.getUUID());
@@ -363,6 +370,12 @@ public final class ServerPhysical {
         // Commit ejection immediately; holding the action open must not eject again.
         gun.setBulletInBarrel(s.stack,false);
     }
+    public static boolean authorizeTacticalInsertion(ServerPlayer p){
+        var s=SESSIONS.get(p.getUUID());if(s==null||s.stack!=p.getMainHandItem()||!TacticalServer.enabled(p))return false;
+        s.allowReload=true;
+        try{return !net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(new com.tacz.guns.api.event.common.GunReloadEvent(p,s.stack,net.minecraftforge.fml.LogicalSide.SERVER))&&p.getMainHandItem()==s.stack;}
+        finally{s.allowReload=false;}
+    }
     private static void insert(ServerPlayer p, Session s) {
         var api=new com.tacz.guns.item.ModernKineticGunScriptAPI();
         api.setItemStack(s.stack);api.setShooter(p);
@@ -435,6 +448,7 @@ public final class ServerPhysical {
     }
     public static void advancedUse(ServerPlayer p){
         var s=SESSIONS.get(p.getUUID());if(enabled(p)&&lockHeldSlide(p,s))return;
+        if(TacticalServer.enabled(p)&&s!=null&&(!ActionState.locked(s.stack)||!dev.visorcompat.tacz.physical.TacticalState.out(s.stack)&&IGun.getIGunOrNull(s.stack).getCurrentAmmoCount(s.stack)==0)){TacticalServer.eject(p);return;}
         if(!enabled(p)||s==null||s.stack!=p.getMainHandItem()||s.anchor!=null||s.held&&s.phase!=Phase.SUPPORT||s.ticks-s.lastControl<6)return;
         var profile=Profiles.get(s.stack);if(profile.manualAction())return;
         var gun=IGun.getIGunOrNull(s.stack);

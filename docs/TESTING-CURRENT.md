@@ -1,6 +1,18 @@
 # Master test checklist and user results
 
-Updated **2026-10-18**. Current source candidate: **0.14.0-alpha.9**, matching client/server, protocol **34**. This file is the active tracker; older release checklists are historical evidence.
+Updated **2026-11-04**. Current working source includes alpha.10 changes and the revolver flick settings; matching client/server, protocol **36**. Build labels remain target-specific; use matching rebuilt artifacts. This file is the active tracker; older release checklists are historical evidence.
+
+## Revolver flick Use settings — new targeted checks
+
+Menu: `/visor_tacz menu` → Controls → Advanced Handling (use page controls if needed). Applies to single-gun Physical and Advanced revolvers; Independent dual OFF. Defaults: **opening Use required ON**, **closing Use required OFF**. Press holding-hand Use then flick within 1.2 seconds; holding Use is not required. Contextual Grab opening/closing remains available. Break-action/Lonetrail controls are unchanged.
+
+| ID | Status | Check |
+| --- | --- | --- |
+| CY-USE01 | PENDING | Defaults: 2 cm left flick alone cannot open; press Use then flick opens. Deliberate 8 cm right stroke with slowdown closes without Use. |
+| CY-USE02 | PENDING | Turn opening requirement OFF: left flick opens without Use. Turn closing requirement ON: right flick alone cannot close; fresh Use followed by the stroke closes. Wait over 1.2 seconds after Use: permission expires. |
+| CY-USE03 | PENDING | Check both Physical and Advanced. Save/rejoin retains options; contextual Grab still works. Changing options mid-stroke must require a fresh stroke. |
+
+Protocol36 requires matching rebuilt client/server. Automated motion tests pass; these headset checks remain pending. All previous PASS results below are retained.
 
 ## How to use this without repeating work
 
@@ -10,7 +22,7 @@ Updated **2026-10-18**. Current source candidate: **0.14.0-alpha.9**, matching c
 - **PENDING**: no explicit result yet. **OPEN ISSUE**: unresolved report, no new fix claimed; investigate when ready rather than repeatedly test unchanged code.
 - **MONITOR**: report recurrence, no forced repeated reproduction. **MERGED**: use its replacement; do not run twice.
 
-Start with the alpha.8 targeted checks below; preserve previous passes. Then choose untested subcases for the mechanism you are working on. Keep Independent dual wield **OFF** for legacy single-gun Physical/Advanced tests. Alpha.8 adds experimental Physical Glock17 in either dual hand; other dual guns use Button handling. Old single-gun passes do not certify dual mode, and dual changes do not automatically invalidate those passes.
+Start with alpha.10 targeted checks for this change; preserve previous passes. Then choose untested subcases for the mechanism you are working on. Keep Independent dual wield **OFF** for legacy single-gun Physical/Advanced tests. Alpha.8 adds experimental Physical Glock17 in either dual hand; other dual guns use Button handling. Old single-gun passes do not certify dual mode, and dual changes do not automatically invalidate those passes.
 
 Preserve personal calibration. Use Survival and record inventory + gun + chamber for ammo tests. Save geometry before testing server interactions. Record gun/pack ID, loader, mode, handedness, shaders, version and logs for failures. Template: `0.14.0-alpha.4 DW23 PARTIAL — Glock reload audible, CZ75 silent; Forge, right-handed`. A subcase result updates only that subcase.
 
@@ -23,6 +35,24 @@ Alpha.6 automated evidence: 267 tests per Forge/Fabric 1.20.1 and Fabric 1.21.1 
 Alpha.7 automated evidence: all four compiled; 285 tests passed per Forge/Fabric1.20.1 and Fabric1.21.1, 286 on NeoForge1.21.1. Headset checks below remain pending.
 
 Alpha.8 automated evidence: 303 tests per Forge/Fabric 1.20.1 and Fabric 1.21.1 target, 304 on NeoForge 1.21.1. These cover reservation accounting, ADS calibration persistence, sound selection and existing regressions; full VR interaction and reconnect behavior still need the tests below.
+
+## Alpha.10 targeted checks
+
+Automated validation: 335 tests per Forge/Fabric 1.20.1 and Fabric 1.21.1; 336 on NeoForge 1.21.1, plus 1.21.1 component-persistence checks. Headset/runtime checks below remain pending.
+
+Use a saved test world and **Survival, Advanced, Independent dual OFF**. Start with Glock, then M4. Count inventory + installed magazine + chamber + both held magazines. Those reservations are why lifecycle tests matter. Do not repeat unrelated passed scope/bolt/dual cases.
+
+| ID | Status | Procedure |
+| --- | --- | --- |
+| A10-SWAP | PENDING | Standard: fire several rounds, Use-hold replacement at pouch, Grab-pull old, insert replacement while retaining Use. Return old to pouch and release Grab. Check totals and chamber, no second consumption on insertion. Repeat empty/no inventory ammo and reinsert old instead. |
+| A10-ALT | PENDING | Save alternative. Grab replacement, Use-pull old, insert replacement. Release Grab then freshly Grab support while retaining Use. Aim/fire, release support, return old to pouch, release Use. No radial capture or accidental discard. |
+| A10-GUIDE | PENDING | Save grip/entry poses and tolerances. Vary extraction wrist angle. Align either mag, feel entry pulse, shake slightly, seat; withdraw early and retry. Cancel does not write; Save leaves Close; reload retains values. Check short VR panel and desktop X/Y/Z. |
+| A10-DROP | PENDING | Release partially loaded mag away from pouch: cosmetic drop and rounds lost. Return another to pouch: exact refund once. Creative/infinite mags must not manufacture Survival ammo. |
+| A10-LIFE | PENDING | With held mags: stow/reselect, tracking loss, flat, reconnect, then enable dual separately. No double refund/stale rail/unrelated gun changes. Inventory-drag-drop/delete never resurrects gun. Full inventory refunds overflow as ammo items. |
+| A10-REMOVE | PENDING | Run `/visor_tacz_prepare_uninstall` with carried reservations: seated ammo/chamber unchanged, held rounds recovered once. Repeat command. Retrieve stored gun and repeat. Only then test without addon in world copy. |
+| A10-ROUNDS | PENDING | Loaded/empty magazine top; chambered/empty chamber; partial action opening and tilt. Visual motion bounded, count unchanged. Full stroke still owns actual ejection. Native model parts must exist. |
+| A10-ACCURACY | PENDING | Controls > Accuracy: compare native/ADS-equivalent hip-fire at fixed distance with recoil ON. Kick affects follow-up shots; flat stays native; pellet rules remain. Dedicated server non-OP cannot self-enable, OP can grant per player. |
+| A10-LEGACY | PENDING | Physical, not Advanced: ordinary Glock reload retains previous behavior. Dual Physical Glock stays on existing path, not tactical. Targeted input-routing check only. |
 
 ## Alpha.9 targeted checks after alpha.8 feedback
 

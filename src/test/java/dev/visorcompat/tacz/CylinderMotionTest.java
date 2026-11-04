@@ -54,4 +54,21 @@ class CylinderMotionTest {
         assertFalse(dev.visorcompat.tacz.physical.CylinderCycle.stroke(.02f,0,0,false));
         assertFalse(dev.visorcompat.tacz.physical.CylinderCycle.stroke(.08f,.13f,0,true));
     }
+    @Test void openingCanBeConfiguredWithoutUse(){
+        var m=new CylinderMotion();assertEquals(0,m.update(0,.05f,false,false));
+        assertEquals(1,m.update(-.025f,.05f,false,false));
+    }
+    @Test void closingCanRequireUseAndConsumesThePress(){
+        var m=new CylinderMotion();m.update(0,.05f,true,true);m.update(.04f,.05f,true,true);
+        m.update(.085f,.05f,true,true);assertEquals(0,m.update(.085f,.05f,true,true));
+        m.armOpen();m.update(0,.05f,true,true);m.update(.04f,.05f,true,true);m.update(.085f,.05f,true,true);
+        assertEquals(-1,m.update(.085f,.05f,true,true));
+        assertEquals(0,m.update(.2f,.05f,true,true));
+    }
+    @Test void closingUsePermissionExpiresAndTrackingLossCancelsIt(){
+        var m=new CylinderMotion();m.armOpen();for(int i=0;i<26;i++)assertEquals(0,m.update(0,.05f,true,true));
+        m.update(.04f,.05f,true,true);m.update(.085f,.05f,true,true);assertEquals(0,m.update(.085f,.05f,true,true));
+        m.armOpen();m.update(0,.05f,true,true);m.update(.04f,.05f,true,true);m.update(.085f,.5f,true,true);
+        assertEquals(0,m.update(.085f,.05f,true,true));
+    }
 }

@@ -1,6 +1,6 @@
 plugins { id 'fabric-loom' version '1.10.5' }
 group='dev.visorcompat.tacz'
-version = '0.14.0-alpha.9'
+version = '0.14.1'
 base.archivesName='visor-compat-tacz-1.20.1-fabric'
 java.toolchain.languageVersion=JavaLanguageVersion.of(17)
 repositories {
@@ -83,3 +83,6 @@ tasks.register('verifyProductionJar') {
  }
 }
 tasks.named('check') { dependsOn 'verifyProductionJar' }
+
+// Authored platform-independent mechanics: compiled directly, never rewritten.
+sourceSets.main.java.srcDir '../common/core/src/main/java'

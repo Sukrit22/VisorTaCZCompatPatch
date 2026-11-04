@@ -17,6 +17,11 @@ import java.util.*;
 
 public final class PhysicalModel implements AutoCloseable {
     private final CosmeticParts cosmetics;
+    private record RoundState(BedrockPart part,boolean visible,float x,float y,float z) {}
+    private final List<RoundState> rounds=new ArrayList<>();
+    private final List<BedrockPart> chamberPath=new ArrayList<>();
+    private final float roundScale;
+    private final boolean guideActive;
     private final BedrockPart magazine,slide,bolt,loose;
     private final boolean looseVisible;
     private final boolean visible;
@@ -37,6 +42,20 @@ public final class PhysicalModel implements AutoCloseable {
         if(slide!=null&&AdvancedClient.inspectionPull()>0)slide.offsetZ+=AdvancedClient.inspectionPull()/(profile.scale()*CalibrationStore.render(Profiles.key(Minecraft.getInstance().player.getMainHandItem())).gunScale());
     }
     public PhysicalModel(BedrockGunModel model,WeaponProfile profile,boolean active,Phase phase,float travel,net.minecraft.world.item.ItemStack stack,Calibration calibration) {
+        roundScale=profile.scale()*calibration.gunScale();guideActive=active&&!profile.manualAction()&&!profile.cylinder();
+        var nativeGun=com.tacz.guns.api.item.IGun.getIGunOrNull(stack);
+        if(active&&nativeGun!=null&&!profile.cylinder()){
+            // Named native geometry only: never duplicate a magazine round into the chamber.
+            var top=find(find(model.getRootNode(),profile.magazineNode()),"bullet_in_mag");
+            rememberRound(top);if(top!=null)top.visible=nativeGun.getCurrentAmmoCount(stack)>0;
+            for(String name:List.of("bullet_in_barrel","bullet_in_chamber")){
+                var candidate=new ArrayList<BedrockPart>();
+                if(path(model.getRootNode(),name,candidate)){
+                    var chamber=candidate.get(candidate.size()-1);rememberRound(chamber);chamber.visible=nativeGun.hasBulletInBarrel(stack);
+                    if(chamberPath.isEmpty())chamberPath.addAll(candidate);
+                }
+            }
+        }
         loose=profile.pump()?find(model.getRootNode(),"bullet_and_lefthand"):null;looseVisible=loose!=null&&loose.visible;
         bolt=profile.boltNode()!=null?find(model.getRootNode(),profile.boltNode()):null;boltZ=bolt==null?0:bolt.offsetZ;
         magazine=find(model.getRootNode(),profile.magazineNode());
@@ -45,7 +64,7 @@ public final class PhysicalModel implements AutoCloseable {
         cosmetics=new CosmeticParts(model.getRootNode(),profile,stack,calibration,active,active&&(phase!=Phase.READY&&phase!=Phase.SUPPORT||dev.visorcompat.tacz.physical.ActionState.locked(stack)||dev.visorcompat.tacz.server.ServerJams.read(stack).remaining()>0));
         if(active) {
             if(loose!=null)loose.visible=false;
-            if(magazine!=null && Handling.magazineOut(phase)) magazine.visible=false;
+            if(magazine!=null && (Handling.magazineOut(phase)||dev.visorcompat.tacz.physical.TacticalState.out(stack))) magazine.visible=false;
             if(magazine!=null && phase==Phase.REMOVING) magazine.offsetY+=travel/(profile.scale()*calibration.gunScale());
             if(slide!=null && profile.cylinder()) {
                 if(dev.visorcompat.tacz.server.ServerCylinder.open(stack)||phase==Phase.CYLINDER_OPEN||phase==Phase.SHELL||phase==Phase.LOADER||phase==Phase.CYLINDER_HOLD&&travel>0)
@@ -69,7 +88,26 @@ public final class PhysicalModel implements AutoCloseable {
             }
         }
     }
-    @Override public void close() { cosmetics.close(); if(magazine!=null){magazine.visible=visible;magazine.offsetY=magazineY;}if(slide!=null){slide.offsetZ=slideZ;slide.zRot=slideRot;slide.xRot=slideXRot;}if(bolt!=null)bolt.offsetZ=boltZ;if(loose!=null)loose.visible=looseVisible; }
+    private void rememberRound(BedrockPart part){if(part!=null)rounds.add(new RoundState(part,part.visible,part.offsetX,part.offsetY,part.offsetZ));}
+    /** Bounded cosmetic settling, evaluated from the rendered pose without ticking shared models. */
+    public PhysicalModel chamberGuide(GunPose gun){
+        if(!guideActive||gun==null||chamberPath.isEmpty()||!(roundScale>0))return this;
+        var part=chamberPath.get(chamberPath.size()-1);if(!part.visible)return this;
+        // An action-owned round already inherits that mechanism's travel; do not add a
+        // second displacement without pack-specific geometry and extraction semantics.
+        for(int i=0;i<chamberPath.size()-1;i++)if(chamberPath.get(i)==slide||chamberPath.get(i)==bolt)return this;
+        float opening=java.lang.Math.max(slide==null?0:(slide.offsetZ-slideZ)*roundScale,bolt==null?0:(bolt.offsetZ-boltZ)*roundScale);
+        var gravity=new Quaternionf(gun.rotation()).conjugate().transform(new Vector3f(0,-1,0));
+        float distance=dev.visorcompat.tacz.physical.ChamberGuide.displacement(opening,gravity.z);
+        // Bedrock offsets live in the parent coordinate system, including authored rotations.
+        var parentRotation=new Quaternionf();
+        for(int i=0;i<chamberPath.size()-1;i++){var p=chamberPath.get(i);parentRotation.rotateZYX(p.zRot,p.yRot,p.xRot);}
+        var delta=parentRotation.conjugate().transform(new Vector3f(0,0,distance/roundScale));
+        var saved=rounds.stream().filter(s->s.part()==part).findFirst().orElseThrow();
+        part.offsetX=saved.x()+delta.x;part.offsetY=saved.y()+delta.y;part.offsetZ=saved.z()+delta.z;
+        return this;
+    }
+    @Override public void close() { cosmetics.close();for(var s:rounds){s.part().visible=s.visible();s.part().offsetX=s.x();s.part().offsetY=s.y();s.part().offsetZ=s.z();} if(magazine!=null){magazine.visible=visible;magazine.offsetY=magazineY;}if(slide!=null){slide.offsetZ=slideZ;slide.zRot=slideRot;slide.xRot=slideXRot;}if(bolt!=null)bolt.offsetZ=boltZ;if(loose!=null)loose.visible=looseVisible; }
     private static BedrockPart find(BedrockPart node,String name) {
         if(node==null)return null;if(name.equals(node.name))return node;
         for(var child:node.children){var found=find(child,name);if(found!=null)return found;}return null;
@@ -157,6 +195,7 @@ public final class PhysicalModel implements AutoCloseable {
     }
     public static void detached(PoseStack matrices,BedrockGunModel model,WeaponProfile profile,
                                 GunPose gun,VRPlayerPose pose,RenderType type,int light) {
+        if(TacticalVisual.render(matrices,model,profile,gun,pose,type,light))return;
         detached(matrices,model,profile,gun,pose,type,light,PhysicalClient.active(),PhysicalClient.phase(),CalibrationStore.render(Profiles.key(Minecraft.getInstance().player.getMainHandItem())).gunScale(),
             dev.visorcompat.tacz.physical.PouchAmmo.magazineLoaded(Minecraft.getInstance().player,PhysicalClient.phase()),AdvancedClient.freeMain(),
             MagazineGripStore.get(Profiles.key(Minecraft.getInstance().player.getMainHandItem())),dev.visorcompat.tacz.physical.CzMagazine.flipped(Minecraft.getInstance().player.getMainHandItem()));

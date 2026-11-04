@@ -25,10 +25,11 @@ public final class MagazineGripScreen extends Screen {
     private void set(InspectionCalibration c){values[0]=c.x();values[1]=c.y();values[2]=c.z();values[3]=c.pitch();values[4]=c.yaw();values[5]=c.roll();publish();}
     private void publish(){MagazineGripStore.previewKey=key;MagazineGripStore.preview=value();}
     @Override protected void init(){
-        panelLeft=width>=620?width-310:width/2-150;top=Math.max(30,height/2-100);
+        panelLeft=width>=620?width-310:width/2-150;top=Math.max(CompatSettings.advanced()?54:30,height/2-100);
         preview.bounds(width>=620?8:4,4,width>=620?panelLeft-16:width-8,height-8);
         if(width<620)addRenderableWidget(Button.builder(Component.literal(previewOnly?"Back to edits":"Show magazine preview"),b->{previewOnly=!previewOnly;rebuildWidgets();}).bounds(panelLeft,top-24,300,20).build());
         if(previewOnly&&width<620){ClientControls.clearInput();return;}
+        if(CompatSettings.advanced())addRenderableWidget(Button.builder(Component.literal("Tactical magazine poses / guide"),b->{String gunId=key.contains("|")?key.substring(0,key.indexOf('|')):key;minecraft.setScreen(new TacticalScreen(gunId,key));}).bounds(panelLeft,top-49,300,20).build());
         String[] names={"X right","Y up","Z back","Pitch","Yaw","Roll"};
         for(int i=0;i<6;i++){
             int axis=i,row=top+i*23;

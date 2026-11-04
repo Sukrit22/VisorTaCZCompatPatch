@@ -58,6 +58,7 @@ public final class DualGunRenderer extends VRHandEffect {
                 com.tacz.guns.client.model.functional.ShellRender.isSelf=false;
                 mc.gameRenderer.lightTexture().turnOnLightLayer();
                 try(var state=new PhysicalModel(model,profile,physical,DualPhysicalClient.phase(stack),DualPhysicalClient.pull(stack),stack,c)){
+                    state.chamberGuide(gun);
                     model.render(matrices,stack,hand==HandType.MAIN?ItemDisplayContext.THIRD_PERSON_RIGHT_HAND:ItemDisplayContext.THIRD_PERSON_LEFT_HAND,type,light,OverlayTexture.NO_OVERLAY);
                 }
             }finally{matrices.popPose();}

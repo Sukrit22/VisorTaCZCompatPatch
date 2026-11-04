@@ -15,7 +15,7 @@ The **0.14.0** GitHub release is a download collection. Its uploaded binaries ar
 | 1.21.1 Fabric | 0.14.0-alpha.5.1+1.21.1 |
 | 1.21.1 NeoForge | 0.14.0-alpha.5.1+1.21.1 |
 
-**Current source on `main`: 0.14.0-alpha.9, protocol 34** (1.21.1 adds `+1.21.1`). The release tag points to this source history, but the attached older JARs do not contain every source feature below. In particular, the Physical dual Glock milestone and alpha.9 feedback/ADS fixes require a newer build. Use matching addon builds on client and server; do not mix artifacts merely because they share the GitHub release page. See [alpha.8](docs/UPDATE-0.14.0-alpha.8.md) and [alpha.9 changes](docs/UPDATE-0.14.0-alpha.9.md).
+**Current working-tree candidate: 0.14.0-alpha.10, protocol 35** (1.21.1 adds `+1.21.1`). The release tag predates this candidate, and attached older JARs do not contain every source feature below. In particular, the Physical dual Glock milestone and alpha.9 feedback/ADS fixes require a newer build. Use matching addon builds on client and server; do not mix artifacts merely because they share the GitHub release page. See [alpha.8](docs/UPDATE-0.14.0-alpha.8.md), [alpha.9](docs/UPDATE-0.14.0-alpha.9.md) and [alpha.10 changes](docs/UPDATE-0.14.0-alpha.10.md).
 
 ## Installation
 
@@ -57,6 +57,8 @@ Physical profiles cover magazine pistols, Rhino/Taurus revolvers and Lonetrail, 
 - Two-hand supported aiming and eye-aligned automatic ADS; configurable two-hand ADS requirement and recoil.
 - Red dots and experimental per-eye scope magnification. Shader-pack magnification remains unsupported.
 - Gun, wrist or ordinary GUI ammo/ADS HUD; configurable contextual Use/Trigger grabs and debug regions.
+- Experimental Advanced single-gun [tactical magazine reload](docs/TACTICAL-RELOAD.md): two control mappings, pouch refunds and per-gun insertion calibration.
+- Server-authorized ADS-equivalent hip-fire spread, preserving recoil and native pellet/heat rules.
 - Gun-specific action sounds, moving parts and live/spent round visuals. Latest dual feedback is part of alpha.9 source.
 - Optional durability jams, including supported stovepipe, double-feed and dud interactions; other mechanisms use generic action clearing.
 
@@ -75,7 +77,7 @@ Runtime TOML binds models and zones to existing Java mechanisms without recompil
 - Native attachment GUI remains; physical attachment insertion/removal is not implemented.
 - No independent persistent magazine inventory, general item pouch, finger-spinning implementation, or complete dual Physical/Advanced handling.
 - Multiplayer arm placement remains partly Visor-owned. The proposed shared gun-provider/holster ownership API is a design, not a shipped interoperability layer.
-- Latest source passed 314 tests per Forge/Fabric 1.20.1 and Fabric 1.21.1 target, 315 on NeoForge 1.21.1. This does not certify headset rendering or live multiplayer inventory transitions. The 1.21.1 ports remain experimental.
+- Alpha.10 source passed 335 tests per Forge/Fabric 1.20.1 and Fabric 1.21.1 target, 336 on NeoForge 1.21.1. This does not certify headset rendering or live multiplayer inventory transitions. The 1.21.1 ports remain experimental.
 
 Use the [master checklist](docs/TESTING-CURRENT.md): it retains reported passes and identifies narrow retests. Historical release notes describe their own versions, not necessarily current behavior.
 
@@ -86,3 +88,7 @@ See [all four build commands and artifact paths](docs/BUILDING.md). Shared autho
 Development now proceeds on **`main`**. Earlier experiment branches are retained as checkpoints; their commits are included in `main`. The [Visor multiplatform template review](docs/VISOR-ADDON-MULTIPLATFORM-REVIEW.md) describes a staged route toward clearer common/platform modules without silently raising minimum Visor versions or dropping TaCZ port-specific behavior.
 
 MIT license. Visor, TaCZ and gun-pack assets remain owned by their respective projects.
+
+Model mapping: [find native TaCZ bones and regenerate the per-gun catalogue](docs/GUN-MODEL-PARTS-GUIDE.md).
+
+Architecture work: [shared core and Fabric26.2 migration status](docs/ARCHITECTURE-MULTIVERSION.md). The 26.2 target currently checks APIs/tests only; no playable 26.x artifact is available.

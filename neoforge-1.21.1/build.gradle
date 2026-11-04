@@ -1,6 +1,6 @@
 plugins { id 'net.neoforged.moddev' version '2.0.141' }
 group='dev.visorcompat.tacz'
-version='0.14.0-alpha.9+1.21.1'
+version='0.14.0-alpha.10+1.21.1'
 base.archivesName='visor-compat-tacz-1.21.1-neoforge'
 java.toolchain.languageVersion=JavaLanguageVersion.of(21)
 repositories { mavenCentral(); maven { url='https://api.modrinth.com/maven' } }
@@ -81,3 +81,6 @@ tasks.register('verifyProductionJar') {
 }
 tasks.named('check') { dependsOn 'verifyProductionJar' }
 tasks.withType(JavaExec).configureEach { if(name=='runServer')standardInput=System.in }
+
+// Authored platform-independent mechanics: compiled directly, never rewritten.
+sourceSets.main.java.srcDir '../common/core/src/main/java'

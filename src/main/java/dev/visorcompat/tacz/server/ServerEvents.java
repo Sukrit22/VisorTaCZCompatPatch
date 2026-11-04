@@ -7,6 +7,11 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public final class ServerEvents {
     @SubscribeEvent public static void commands(net.minecraftforge.event.RegisterCommandsEvent event) {
+        HipFirePolicy.commands(event.getDispatcher());
+        event.getDispatcher().register(net.minecraft.commands.Commands.literal("visor_tacz_prepare_uninstall").executes(c->{
+            var p=c.getSource().getPlayerOrException();TacticalServer.normalizeInventory(p);ServerPhysical.clear(p);DualPhysicalServer.clear(p);
+            c.getSource().sendSuccess(()->net.minecraft.network.chat.Component.literal("Prepared carried guns: detached ammunition recovered. Bring stored/dropped guns into inventory and repeat before removing the addon; then disconnect without starting another reload."),false);return 1;
+        }));
         var jam=net.minecraft.commands.Commands.literal("jam").executes(c->testJam(c.getSource(),dev.visorcompat.tacz.physical.Jam.Kind.STOVEPIPE));
         for(var kind:dev.visorcompat.tacz.physical.Jam.Kind.values())if(kind!=dev.visorcompat.tacz.physical.Jam.Kind.NONE)
             jam.then(net.minecraft.commands.Commands.literal(kind.name().toLowerCase(java.util.Locale.ROOT)).executes(c->testJam(c.getSource(),kind)));
