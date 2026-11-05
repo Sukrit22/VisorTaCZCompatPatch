@@ -11,6 +11,10 @@ public final class CylinderMotion {
     public void reset(){started=false;armed=false;moving=false;elapsed=distance=peakSpeed=armedElapsed=0;}
     public void armOpen(){reset();armed=true;}
     public int update(float position,float dt,boolean open){return update(position,dt,open,!open);}
+    public int update(float position,float dt,boolean open,boolean requireUse,boolean blocked){
+        if(blocked){reset();return 0;}
+        return update(position,dt,open,requireUse);
+    }
     public int update(float position,float dt,boolean open,boolean requireUse){
         if(!Float.isFinite(position)||!Float.isFinite(dt)||dt<=0||dt>.15f){reset();return 0;}
         if(requireUse){

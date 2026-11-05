@@ -148,6 +148,7 @@ public final class ClientControls implements VREventListener {
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public void tick(TickEvent.ClientTickEvent event) {
         if (event.phase != TickEvent.Phase.START) return;
+        CylinderRoomClient.tick(canInput());
         ButtonJamClient.tick(canInput());
         DualClient.tick(canInput());
         if(DualClient.active()){
