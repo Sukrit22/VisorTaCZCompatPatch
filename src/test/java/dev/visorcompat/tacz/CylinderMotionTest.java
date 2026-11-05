@@ -71,4 +71,59 @@ class CylinderMotionTest {
         m.armOpen();m.update(0,.05f,true,true);m.update(.04f,.05f,true,true);m.update(.085f,.5f,true,true);
         assertEquals(0,m.update(.085f,.05f,true,true));
     }
+    @Test void slowEightCentimetreSettleDoesNotCloseWithoutASnap(){
+        // Reaches the full 8 cm and comes to rest, but the stroke never reached a real
+        // flick speed: peak 0.4 m/s < CLOSE_FLICK_SPEED. This is the "move a little and
+        // it closes" false positive the gate eliminates.
+        var m=new CylinderMotion();m.update(0,.05f,true);
+        m.update(.02f,.05f,true);m.update(.04f,.05f,true);
+        m.update(.06f,.05f,true);m.update(.08f,.05f,true);
+        assertEquals(0,m.update(.08f,.05f,true));
+        assertEquals(0,m.update(.08f,.05f,true));
+    }
+    @Test void realFlickStillClosesAfterDeceleration(){
+        var m=new CylinderMotion();m.update(0,.05f,true);
+        m.update(.04f,.05f,true);m.update(.085f,.05f,true);
+        assertEquals(-1,m.update(.085f,.05f,true));
+    }
+
+    @Test void cooldownDiscardsStrokeThatStartedBeforeExpiry(){
+        var m=new CylinderMotion();
+        m.update(0,.05f,true,false,true);
+        m.update(.04f,.05f,true,false,true); // returning hand at 350 ms
+        assertEquals(0,m.update(.085f,.05f,true,false,false)); // 400 ms: new baseline
+        assertEquals(0,m.update(.085f,.05f,true,false,false));
+        m.update(.125f,.05f,true,false,false);m.update(.17f,.05f,true,false,false);
+        assertEquals(-1,m.update(.17f,.05f,true,false,false)); // deliberate new flick
+    }
+    @Test void blockedMotionCannotKeepUsePermission(){
+        var m=new CylinderMotion();m.armOpen();
+        m.update(0,.05f,true,true,true);
+        m.update(.04f,.05f,true,true,false);m.update(.085f,.05f,true,true,false);
+        assertEquals(0,m.update(.085f,.05f,true,true,false));
+    }
+    @Test void headAndWorldChangesCannotMoveAStationaryRoomHand(){
+        var m=new CylinderMotion();
+        // Server uses the fixed room axis captured at arm/start, never the changing HMD axis.
+        for(float yaw:new float[]{0,.4f,.8f,1.2f,1.6f}){
+            var sample=new dev.visorcompat.tacz.physical.RoomFlickSample(.25f,1,.4f,-.25f,1,.4f,(float)Math.cos(yaw),(float)Math.sin(yaw));
+            assertTrue(sample.valid());
+            assertEquals(0,m.update(sample.lateral(false,1,0),.05f,true,false));
+        }
+    }
+    @Test void roomHandFlickWorksForEitherHoldingHand(){
+        for(boolean off:new boolean[]{false,true}){
+            var m=new CylinderMotion();int action=0;
+            for(float x:new float[]{0,.04f,.085f,.085f}){
+                var sample=new dev.visorcompat.tacz.physical.RoomFlickSample(off?0:x,1,0,off?x:0,1,0,1,0);
+                action=m.update(sample.lateral(off,1,0),.05f,true,false);
+            }
+            assertEquals(-1,action);
+        }
+    }
+    @Test void malformedRoomSamplesAreRejected(){
+        assertFalse(new dev.visorcompat.tacz.physical.RoomFlickSample(Float.NaN,0,0,0,0,0,1,0).valid());
+        assertFalse(new dev.visorcompat.tacz.physical.RoomFlickSample(0,0,0,0,0,0,0,0).valid());
+        assertFalse(new dev.visorcompat.tacz.physical.RoomFlickSample(1000,0,0,0,0,0,1,0).valid());
+    }
 }

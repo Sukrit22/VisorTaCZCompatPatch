@@ -23,7 +23,7 @@ import java.util.UUID;
 @Mod.EventBusSubscriber(modid = VisorTacz.ID)
 public final class CompatNetwork {
     public static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
-            new ResourceLocation(VisorTacz.ID, "main"), () -> "36", "36"::equals, "36"::equals);
+            new ResourceLocation(VisorTacz.ID, "main"), () -> "37", "37"::equals, "37"::equals);
     private static final Set<UUID> DESCRIPTORS = new HashSet<>();
     private static final Set<UUID> MODE_KNOWN = new HashSet<>();
     private static final Set<UUID> TRANSFER_ANYTIME = new HashSet<>();
@@ -38,6 +38,7 @@ public final class CompatNetwork {
         }
     }
     public record MainAction(boolean transfer,boolean held,boolean canceled) {}
+    public record CylinderRoom(int slot,String key,dev.visorcompat.tacz.physical.RoomFlickSample sample) {}
     public record CylinderFlickSettings(boolean openUse,boolean closeUse) {}
     public record PistolRelease() {}
     public record MagazineUse() {}
@@ -59,6 +60,10 @@ public final class CompatNetwork {
     private static final Map<UUID,PhysicsSetting> PHYSICS=new HashMap<>();
     public static dev.visorcompat.tacz.PhysicsCalibration physics(ServerPlayer p){var s=PHYSICS.get(p.getUUID());return s!=null&&s.key().equals(Profiles.key(p.getMainHandItem()))?s.value():dev.visorcompat.tacz.PhysicsCalibration.defaults(Profiles.get(p.getMainHandItem()));}
     public static void register() {
+        CHANNEL.messageBuilder(CylinderRoom.class,29,NetworkDirection.PLAY_TO_SERVER)
+            .encoder((m,b)->{b.writeInt(m.slot());b.writeUtf(m.key(),512);var r=m.sample();b.writeFloat(r.mx());b.writeFloat(r.my());b.writeFloat(r.mz());b.writeFloat(r.ox());b.writeFloat(r.oy());b.writeFloat(r.oz());b.writeFloat(r.rx());b.writeFloat(r.rz());})
+            .decoder(b->new CylinderRoom(b.readInt(),b.readUtf(512),new dev.visorcompat.tacz.physical.RoomFlickSample(b.readFloat(),b.readFloat(),b.readFloat(),b.readFloat(),b.readFloat(),b.readFloat(),b.readFloat(),b.readFloat())))
+            .consumerMainThread((m,c)->{var p=c.get().getSender();if(p!=null)dev.visorcompat.tacz.server.ServerCylinder.room(p,m);c.get().setPacketHandled(true);}).add();
         DualNetwork.register();ButtonJamNetwork.register();TacticalNetwork.register();
         CHANNEL.messageBuilder(CylinderFlickSettings.class,28,NetworkDirection.PLAY_TO_SERVER)
             .encoder((m,b)->{b.writeBoolean(m.openUse());b.writeBoolean(m.closeUse());})

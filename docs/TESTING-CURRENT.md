@@ -1,6 +1,6 @@
 # Master test checklist and user results
 
-Updated **2026-11-04**. Current working source includes alpha.10 changes and the revolver flick settings; matching client/server, protocol **36**. Build labels remain target-specific; use matching rebuilt artifacts. This file is the active tracker; older release checklists are historical evidence.
+Updated **2026-11-05**. Current working source includes alpha.10 changes and the revolver flick settings; matching client/server, protocol **37**. Build labels remain target-specific; use matching rebuilt artifacts. This file is the active tracker; older release checklists are historical evidence.
 
 ## Revolver flick Use settings — new targeted checks
 
@@ -12,7 +12,17 @@ Menu: `/visor_tacz menu` → Controls → Advanced Handling (use page controls i
 | CY-USE02 | PENDING | Turn opening requirement OFF: left flick opens without Use. Turn closing requirement ON: right flick alone cannot close; fresh Use followed by the stroke closes. Wait over 1.2 seconds after Use: permission expires. |
 | CY-USE03 | PENDING | Check both Physical and Advanced. Save/rejoin retains options; contextual Grab still works. Changing options mid-stroke must require a fresh stroke. |
 
-Protocol36 requires matching rebuilt client/server. Automated motion tests pass; these headset checks remain pending. All previous PASS results below are retained.
+Protocol37 requires matching rebuilt client/server. Automated motion tests pass; these headset checks remain pending. All previous PASS results below are retained.
+
+## PR1 room-space revolver flick fix
+
+New packet37 requires matching rebuilt client/server. Room samples are used for single-gun Physical/Advanced cylinder flicks; other mechanisms and gravity unload are unchanged. No headset pass is implied by automated tests.
+
+| ID | Status | Check |
+| --- | --- | --- |
+| CY-ROOM01 | PENDING | With cylinder open and closing Use OFF, keep the gun hand still and lean/look left-right. Also walk with joystick and snap-turn. Cylinder must stay open. Then make a deliberate 8 cm right flick and stop: it closes. |
+| CY-ROOM02 | PENDING | Flick open, immediately return the hand inside 400 ms, then stop just after 400 ms: it must stay open. A new deliberate flick after cooldown closes. Repeat after opening via contextual Grab. |
+| CY-ROOM03 | PENDING | Repeat Physical/Advanced, left/right handedness, Use gates ON/OFF. If closing requires Use, press it after cooldown. Reconnect, switch guns and lose controller tracking: no stored motion should close the next gun. |
 
 ## How to use this without repeating work
 
