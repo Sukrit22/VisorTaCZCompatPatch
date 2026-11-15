@@ -430,5 +430,133 @@
     "pitch": 0.0,
     "yaw": 90.0,
     "roll": 35.0
+  },
+  "tacz:ak12|tacz:default": {
+    "x": 0.0,
+    "y": 1.0700008,
+    "z": -0.060000025,
+    "pitch": 0.0,
+    "yaw": 90.0,
+    "roll": 35.0
+  },
+  "tacz:ak74m|tacz:default": {
+    "x": 0.0,
+    "y": 1.0700008,
+    "z": -0.060000025,
+    "pitch": 0.0,
+    "yaw": 90.0,
+    "roll": 35.0
+  },
+  "tacz:hcar|tacz:default": {
+    "x": 0.0,
+    "y": 1.0700008,
+    "z": -0.060000025,
+    "pitch": 0.0,
+    "yaw": 90.0,
+    "roll": 35.0
+  },
+  "tacz:hk_mp7a1|tacz:default": {
+    "x": 0.0,
+    "y": 1.0700008,
+    "z": -0.060000025,
+    "pitch": 0.0,
+    "yaw": 90.0,
+    "roll": 35.0
+  },
+  "tacz:hm50b|tacz:default": {
+    "x": 0.0,
+    "y": 1.0700008,
+    "z": -0.060000025,
+    "pitch": 0.0,
+    "yaw": 90.0,
+    "roll": 35.0
+  },
+  "tacz:m1866|tacz:default": {
+    "x": 0.0,
+    "y": 1.0700008,
+    "z": -0.060000025,
+    "pitch": 0.0,
+    "yaw": 90.0,
+    "roll": 35.0
+  },
+  "tacz:m1897|tacz:default": {
+    "x": 0.0,
+    "y": 1.0700008,
+    "z": -0.060000025,
+    "pitch": 0.0,
+    "yaw": 90.0,
+    "roll": 35.0
+  },
+  "tacz:mcx_spear_lt|tacz:default": {
+    "x": 0.0,
+    "y": 1.0700008,
+    "z": -0.060000025,
+    "pitch": 0.0,
+    "yaw": 90.0,
+    "roll": 35.0
+  },
+  "tacz:mk18|tacz:default": {
+    "x": 0.0,
+    "y": 1.0700008,
+    "z": -0.060000025,
+    "pitch": 0.0,
+    "yaw": 90.0,
+    "roll": 35.0
+  },
+  "tacz:mrad|tacz:default": {
+    "x": 0.0,
+    "y": 1.0700008,
+    "z": -0.060000025,
+    "pitch": 0.0,
+    "yaw": 90.0,
+    "roll": 35.0
+  },
+  "tacz:pkm|tacz:default": {
+    "x": 0.0,
+    "y": 1.0700008,
+    "z": -0.060000025,
+    "pitch": 0.0,
+    "yaw": 90.0,
+    "roll": 35.0
+  },
+  "tacz:qr_24|tacz:default": {
+    "x": 0.0,
+    "y": 1.0700008,
+    "z": -0.060000025,
+    "pitch": 0.0,
+    "yaw": 90.0,
+    "roll": 35.0
+  },
+  "tacz:scar_mk20|tacz:default": {
+    "x": 0.0,
+    "y": 1.0700008,
+    "z": -0.060000025,
+    "pitch": 0.0,
+    "yaw": 90.0,
+    "roll": 35.0
+  },
+  "tacz:svd|tacz:default": {
+    "x": 0.0,
+    "y": 1.0700008,
+    "z": -0.060000025,
+    "pitch": 0.0,
+    "yaw": 90.0,
+    "roll": 35.0
+  },
+  "tacz:tec_9|tacz:default": {
+    "x": 0.25,
+    "y": 0.9200007,
+    "z": 0.010000005,
+    "pitch": -60.0,
+    "yaw": 0.0,
+    "roll": 0.0
+  },
+  "tacz:urgi|tacz:default": {
+    "x": 0.0,
+    "y": 1.0700008,
+    "z": -0.060000025,
+    "pitch": 0.0,
+    "yaw": 90.0,
+    "roll": 35.0
   }
 }

@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class BoltCycleTest {
     @Test void newProfilesExposeCorrectMechanismsAndParts(){
         var rifle=Profiles.byId("tacz:m700");var smg=Profiles.byId("tacz:hk_mp5a5");
-        assertTrue(rifle.bolt());assertTrue(rifle.manualAction());assertFalse(rifle.selector());assertEquals("bolt",rifle.rackNode());
+        assertTrue(rifle.bolt());assertTrue(rifle.manualAction());assertFalse(rifle.selector());assertEquals("bullet_and_bolt",rifle.rackNode());
         assertTrue(smg.smg());assertFalse(smg.manualAction());assertTrue(smg.selector());assertEquals("charge_handle",smg.rackNode());
         assertEquals(.6f,rifle.scale());assertEquals(.6f,smg.scale());
     }

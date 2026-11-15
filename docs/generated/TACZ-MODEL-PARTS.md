@@ -8,7 +8,9 @@ Animation columns name authored clips/channels; they do not prove runtime motion
 | --- | --- | --- | --- |
 | tacz:aa12 | shotgun | tacz:aa12_display | data/tacz/index/guns/aa12.json |
 | tacz:ai_awp | sniper | tacz:ai_awp_display | data/tacz/index/guns/ai_awp.json |
+| tacz:ak12 | rifle | tacz:ak12_display | data/tacz/index/guns/ak12.json |
 | tacz:ak47 | rifle | tacz:ak47_display | data/tacz/index/guns/ak47.json |
+| tacz:ak74m | rifle | tacz:ak74m_display | data/tacz/index/guns/ak74m.json |
 | tacz:aug | rifle | tacz:aug_display | data/tacz/index/guns/aug.json |
 | tacz:b93r | pistol | tacz:b93r_display | data/tacz/index/guns/b93r.json |
 | tacz:cz75 | pistol | tacz:cz75_display | data/tacz/index/guns/cz75.json |
@@ -20,16 +22,21 @@ Animation columns name authored clips/channels; they do not prove runtime motion
 | tacz:fn_fal | rifle | tacz:fn_fal_display | data/tacz/index/guns/fn_fal.json |
 | tacz:g36k | rifle | tacz:g36k_display | data/tacz/index/guns/g36k.json |
 | tacz:glock_17 | pistol | tacz:glock_17_display | data/tacz/index/guns/glock_17.json |
+| tacz:hcar | rifle | tacz:hcar_display | data/tacz/index/guns/hcar.json |
 | tacz:hk416d | rifle | tacz:hk416d_display | data/tacz/index/guns/hk416d.json |
 | tacz:hk_g3 | rifle | tacz:hk_g3_display | data/tacz/index/guns/hk_g3.json |
 | tacz:hk_mk23 | pistol | tacz:hk_mk23_display | data/tacz/index/guns/hk_mk23.json |
 | tacz:hk_mp5a5 | smg | tacz:hk_mp5a5_display | data/tacz/index/guns/hk_mp5a5.json |
+| tacz:hk_mp7a1 | smg | tacz:hk_mp7a1_display | data/tacz/index/guns/hk_mp7a1.json |
+| tacz:hm50b | sniper | tacz:hm50b_display | data/tacz/index/guns/hm50b.json |
 | tacz:kar98 | sniper | tacz:kar98_display | data/tacz/index/guns/kar98.json |
 | tacz:lonetrail | pistol | tacz:lonetrail_display | data/tacz/index/guns/lonetrail.json |
 | tacz:m1014 | shotgun | tacz:m1014_display | data/tacz/index/guns/m1014.json |
 | tacz:m107 | sniper | tacz:m107_display | data/tacz/index/guns/m107.json |
 | tacz:m16a1 | rifle | tacz:m16a1_display | data/tacz/index/guns/m16a1.json |
 | tacz:m16a4 | rifle | tacz:m16a4_display | data/tacz/index/guns/m16a4.json |
+| tacz:m1866 | dmr | tacz:m1866_display | data/tacz/index/guns/m1866.json |
+| tacz:m1897 | shotgun | tacz:m1897_display | data/tacz/index/guns/m1897.json |
 | tacz:m1911 | pistol | tacz:m1911_display | data/tacz/index/guns/m1911.json |
 | tacz:m249 | mg | tacz:m249_display | data/tacz/index/guns/m249.json |
 | tacz:m320 | rpg | tacz:m320_display | data/tacz/index/guns/m320.json |
@@ -38,26 +45,35 @@ Animation columns name authored clips/channels; they do not prove runtime motion
 | tacz:m870 | shotgun | tacz:m870_display | data/tacz/index/guns/m870.json |
 | tacz:m95 | sniper | tacz:m95_display | data/tacz/index/guns/m95.json |
 | tacz:m9a4 | pistol | tacz:m9a4_display | data/tacz/index/guns/m9a4.json |
+| tacz:mcx_spear_lt | rifle | tacz:mcx_spear_lt_display | data/tacz/index/guns/mcx_spear_lt.json |
 | tacz:minigun | mg | tacz:minigun_display | data/tacz/index/guns/minigun.json |
-| tacz:mk14 | rifle | tacz:mk14_display | data/tacz/index/guns/mk14.json |
+| tacz:mk14 | dmr | tacz:mk14_display | data/tacz/index/guns/mk14.json |
+| tacz:mk18 | rifle | tacz:mk18_display | data/tacz/index/guns/mk18.json |
+| tacz:mrad | sniper | tacz:mrad_display | data/tacz/index/guns/mrad.json |
 | tacz:p320 | pistol | tacz:p320_display | data/tacz/index/guns/p320.json |
 | tacz:p90 | smg | tacz:p90_display | data/tacz/index/guns/p90.json |
+| tacz:pkm | mg | tacz:pkm_display | data/tacz/index/guns/pkm.json |
 | tacz:qbz_191 | rifle | tacz:qbz_191_display | data/tacz/index/guns/qbz_191.json |
 | tacz:qbz_95 | rifle | tacz:qbz_95_display | data/tacz/index/guns/qbz_95.json |
+| tacz:qr_24 | rifle | tacz:qr_24_display | data/tacz/index/guns/qr_24.json |
 | tacz:rhino357 | pistol | tacz:rhino357_display | data/tacz/index/guns/rhino357.json |
 | tacz:rpg7 | rpg | tacz:rpg7_display | data/tacz/index/guns/rpg7.json |
 | tacz:rpk | mg | tacz:rpk_display | data/tacz/index/guns/rpk.json |
 | tacz:scar_h | rifle | tacz:scar_h_display | data/tacz/index/guns/scar_h.json |
 | tacz:scar_l | rifle | tacz:scar_l_display | data/tacz/index/guns/scar_l.json |
-| tacz:sks_tactical | rifle | tacz:sks_tactical_display | data/tacz/index/guns/sks_tactical.json |
+| tacz:scar_mk20 | dmr | tacz:scar_mk20_display | data/tacz/index/guns/scar_mk20.json |
+| tacz:sks_tactical | dmr | tacz:sks_tactical_display | data/tacz/index/guns/sks_tactical.json |
 | tacz:spas_12 | shotgun | tacz:spas_12_display | data/tacz/index/guns/spas_12.json |
-| tacz:spr15hb | rifle | tacz:spr15hb_display | data/tacz/index/guns/spr15hb.json |
+| tacz:spr15hb | dmr | tacz:spr15hb_display | data/tacz/index/guns/spr15hb.json |
 | tacz:springfield1873 | sniper | tacz:springfield1873_display | data/tacz/index/guns/springfield1873.json |
+| tacz:svd | sniper | tacz:svd_display | data/tacz/index/guns/svd.json |
 | tacz:taurus500 | pistol | tacz:taurus500_display | data/tacz/index/guns/taurus500.json |
 | tacz:taurus943 | pistol | tacz:taurus943_display | data/tacz/index/guns/taurus943.json |
+| tacz:tec_9 | pistol | tacz:tec_9_display | data/tacz/index/guns/tec_9.json |
 | tacz:timeless50 | pistol | tacz:timeless50_display | data/tacz/index/guns/timeless50.json |
 | tacz:type_81 | rifle | tacz:type_81_display | data/tacz/index/guns/type_81.json |
 | tacz:ump45 | smg | tacz:ump45_display | data/tacz/index/guns/ump45.json |
+| tacz:urgi | rifle | tacz:urgi_display | data/tacz/index/guns/urgi.json |
 | tacz:uzi | smg | tacz:uzi_display | data/tacz/index/guns/uzi.json |
 | tacz:vector45 | smg | tacz:vector45_display | data/tacz/index/guns/vector45.json |
 
@@ -151,8 +167,8 @@ Geometry: `geometry.aa_12`; **84 bones**.
 | ground | positioning | [0, -1.9, -0.725] | - | 0 |  |
 | fixed | positioning | [0.9, 11.025, -0.325] | [0, 90, 0] | 0 |  |
 | view | - | [0, 0, 0] | - | 0 |  |
-| idle_view | view | [3.25, 15.65234, 11.84766] | - | 0 |  |
-| iron_view | view | [0, 15.2, 9] | - | 0 |  |
+| idle_view | view | [3.25, 15.65234, 12.84766] | - | 0 |  |
+| iron_view | view | [0, 15.2, 12] | - | 0 |  |
 | refit_view | view | [23, 11, -1] | [0, 89.9, 0] | 0 |  |
 | refit_muzzle_view | view | [11, 9, -26] | [0, 90, 0] | 0 |  |
 | refit_grip_view | view | [7.8, 7.4, -12] | [0, 90, 0] | 0 |  |
@@ -170,121 +186,193 @@ Animation: `assets/tacz/animations/ai_awp.animation.json`
 
 LOD reference: `{'model': 'tacz:gun/lod/ai_awp', 'texture': 'tacz:gun/lod/ai_awp'}`
 
-Geometry: `geometry.ai_awp_json - Converted`; **111 bones**.
+Geometry: `geometry.unknown`; **77 bones**.
 
 | Bone | Parent | Pivot (native pixels) | Rotation | Cubes | Authored animation channels |
 | --- | --- | --- | --- | --- | --- |
-| root | - | [0, 4, 9] | - | 0 | static_idle: position,rotation; draw: position,rotation; put_away: position,rotation; shoot: position,rotation; bolt: position,rotation; reload_tactical: position,rotation; reload_empty: position,rotation; inspect: position,rotation; inspect_empty: position,rotation |
+| root | - | [0, 4, 9] | - | 0 | static_idle: position,rotation; crawl_start: position,rotation; crawl_end: position,rotation; crawl_bipod: position,rotation; crawl_bipod_end: position,rotation; draw: position,rotation; put_away: position,rotation; shoot: position,rotation; shoot_last: position,rotation; bolt: position,rotation; reload_tactical: position,rotation; reload_empty: position,rotation; inspect: position,rotation; inspect_empty: position,rotation |
 | AWP | root | [0, 4, 9] | - | 0 |  |
 | gun_and_righthand | AWP | [0, 5, 8] | - | 0 | inspect: position,rotation; inspect_empty: position,rotation |
 | righthand | gun_and_righthand | [6, 19, 8] | - | 0 | static_idle: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; bolt: position,rotation,scale; reload_tactical: position,rotation,scale; reload_empty: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale |
 | righthand_pos | righthand | [0, 8, 8] | - | 1 |  |
 | AWP_body | gun_and_righthand | [0, 0, 0] | - | 0 |  |
 | gun_pos | AWP_body | [0, 0, 0] | - | 0 |  |
-| scope_pos | gun_pos | [0, 8.825, 3.1] | - | 0 |  |
-| muzzle_flash | gun_pos | [0, 7.75, -33.225] | - | 0 |  |
-| muzzle_pos | gun_pos | [0, 7.75, -32.875] | - | 0 |  |
+| scope_pos | gun_pos | [0, 8.81971, 4.1] | - | 0 |  |
+| muzzle_flash | gun_pos | [0, 7.68651, -35.225] | - | 0 |  |
+| muzzle_pos | gun_pos | [0, 7.6875, -32.74471] | - | 0 |  |
 | shell | gun_pos | [-0.1875, 7.9375, 1.9375] | - | 0 |  |
-| barrel_default | AWP_body | [0, 5.875, -10.8125] | - | 0 |  |
-| barrel | barrel_default | [0, 8, 0] | - | 8 |  |
-| rail | barrel_default | [0.875, 0, -8] | - | 1 |  |
-| group14 | rail | [0.875, 0, -8] | - | 0 |  |
-| group15 | rail | [0.875, 0, -8] | - | 0 |  |
-| group16 | rail | [0.875, 0, -8] | - | 0 |  |
-| group17 | rail | [0.875, 0, -8] | - | 0 |  |
-| group18 | rail | [0.875, 0, -8] | - | 0 |  |
-| group19 | rail | [0.875, 0, -8] | - | 0 |  |
-| group20 | rail | [0.875, 0, -8] | - | 0 |  |
-| group21 | rail | [0.875, 0, -8] | - | 0 |  |
-| group22 | rail | [0.875, 0, -8] | - | 0 |  |
-| group23 | rail | [0.875, 0, -8] | - | 0 |  |
-| group24 | rail | [0.875, 0, -8] | - | 12 |  |
-| group25 | rail | [0.875, 0, -8] | - | 15 |  |
-| group26 | rail | [0.875, 0, -8] | - | 0 |  |
-| group27 | rail | [0.875, 0, -8] | - | 0 |  |
-| group28 | rail | [0.875, 0, -8] | - | 0 |  |
-| bipoddmrsniper | barrel_default | [0, 16.0625, 0.125] | - | 0 |  |
-| base | bipoddmrsniper | [0.5, 15.71875, -13.375] | - | 0 |  |
-| octagon4 | base | [0, 16.0625, 0.125] | - | 17 |  |
-| right | bipoddmrsniper | [-0.8692, 4.8726, -14.625] | [0, 0, 22.5] | 0 |  |
-| r_ | right | [-0.89101, 4.88163, -19.05487] | [0, 0, -22.5] | 0 |  |
-| octagon3 | r_ | [0, 16.0625, 0.125] | - | 26 |  |
-| left | bipoddmrsniper | [0.8692, 4.8726, -14.625] | [0, 0, -22.5] | 0 |  |
-| l_ | left | [0.891, 4.88163, -19.05487] | [0, 0, 22.5] | 0 |  |
-| octagon | l_ | [0, 16.0625, 0.125] | - | 26 |  |
-| ai_awp_default | AWP_body | [0, 0, 0] | - | 0 |  |
-| pins | ai_awp_default | [0, 8, 0] | - | 0 |  |
-| group9 | pins | [0.78125, -0.0625, -8] | - | 0 |  |
-| group10 | pins | [0.78125, 0, -8] | - | 0 |  |
-| group11 | pins | [0.78125, 0, -8] | - | 0 |  |
-| group12 | pins | [0.78125, -0.0625, -8] | - | 0 |  |
-| group13 | pins | [0.90626, -0.25, -8.125] | - | 8 |  |
-| trigger | ai_awp_default | [0, 8, 0] | - | 6 |  |
-| receiver | ai_awp_default | [0, 8, 0] | - | 18 |  |
+| ai_awp_default | AWP_body | [0, 0, 0] | - | 66 |  |
+| stock2 | ai_awp_default | [0, -11.5, 2.8125] | - | 195 |  |
+| group2 | stock2 | [0, 3.57721, 23.4574] | - | 29 |  |
+| group3 | stock2 | [0, 20.34451, 18.61742] | - | 22 |  |
+| group8 | stock2 | [-0.92321, 6.64063, -12.94532] | - | 8 |  |
+| group7 | ai_awp_default | [0.24976, 4.74965, -2.84616] | - | 14 |  |
+| barrel | ai_awp_default | [0, 8, 0] | - | 44 |  |
 | bolt_group | AWP_body | [0, 0, 0] | - | 0 | bolt: position; reload_empty: position; inspect: position; inspect_empty: position |
-| bolt_rotate | bolt_group | [0, 7.71875, 0] | - | 2 | bolt: rotation; reload_empty: rotation; inspect: rotation; inspect_empty: rotation |
-| bone2 | bolt_rotate | [0, 7.7226, 3.75] | [0, 0, 22.5] | 4 |  |
-| ball | bolt_rotate | [-2.21094, 6.12499, 6.73437] | - | 17 |  |
-| bolt_fix | bolt_group | [0, 8, 0] | - | 0 |  |
-| group | bolt_fix | [0.84376, 0, -8] | - | 13 |  |
-| striker | group | [-0.13811, 7.26563, 7.94531] | - | 1 | static_bolt_caught: position; bolt: position; reload_empty: position |
-| safety | bolt_fix | [0, 8, 0] | - | 2 |  |
-| lower | AWP_body | [0, 0, 0] | - | 0 |  |
-| cheeksupport | lower | [0, 8, 0] | - | 0 |  |
-| group4 | cheeksupport | [0.78125, 0, -8] | - | 8 |  |
-| group5 | cheeksupport | [0.78125, 0, -8] | - | 10 |  |
-| group6 | cheeksupport | [0.78125, 0, -8] | - | 7 |  |
-| pins2 | lower | [0, 8, 0] | - | 0 |  |
-| group32 | pins2 | [0.78125, -0.0625, -8] | - | 5 |  |
-| group31 | pins2 | [0.78125, 0, -8] | - | 5 |  |
-| group3 | pins2 | [0.78125, 0, -8] | - | 5 |  |
-| group2 | pins2 | [0.78125, -0.0625, -8] | - | 5 |  |
-| stock | lower | [0, 8, 0] | - | 102 |  |
-| group29 | stock | [0.78125, -3.0625, -8] | - | 5 |  |
-| group30 | stock | [0, 3.30308, 11.93163] | - | 32 |  |
-| screws | lower | [0, 3.6875, 21.3125] | - | 10 |  |
-| sight | AWP_body | [0, 0, 0] | - | 0 |  |
-| iron_sight | sight | [0.05022, 9.18445, 5.16193] | - | 0 |  |
-| frontsight | iron_sight | [0, 8, 0.25] | - | 0 |  |
-| group8 | frontsight | [0, 4.7375, -20.75] | - | 25 |  |
-| sight_illuminated | frontsight | [0, 9.12656, -31.66406] | - | 1 |  |
-| rearsight | iron_sight | [0.05022, 9.18445, 5.16193] | - | 21 |  |
-| group7 | rearsight | [0.875, 0.625, -8.8125] | - | 0 |  |
-| bullet_shell | AWP_body | [-0.03856, 7.57936, -1.00655] | - | 8 | bolt: scale; reload_empty: position,rotation,scale; inspect: scale; inspect_empty: position,scale |
-| bullet_in_barrel | AWP_body | [0, 7.79688, -1.25] | - | 0 | inspect: position,rotation; inspect_empty: position |
-| shell_part | bullet_in_barrel | [-0.03856, 7.57936, -2.53155] | - | 8 |  |
-| head | bullet_in_barrel | [-0.03856, 7.70793, -3.41222] | - | 4 |  |
-| constraint | AWP_body | [0, 9.3, -5.475] | - | 0 | static_idle: position,rotation; draw: position,rotation; put_away: position,rotation; shoot: position,rotation; reload_tactical: position,rotation; reload_empty: position,rotation |
+| bolt_rotate | bolt_group | [0, 7.71875, 0] | - | 4 | bolt: rotation; reload_empty: rotation; inspect: rotation; inspect_empty: rotation |
+| ball | bolt_rotate | [-2.21094, 10.99999, -3.01563] | - | 21 |  |
+| bolt_fix | bolt_group | [0, 8, 0] | - | 34 |  |
+| group12 | bolt_fix | [-1e-05, 2.76694, 13.85157] | - | 1 | static_bolt_caught: position; shoot: position |
+| bullet_in_bolt | bolt_group | [0, 7.7969, -1.25] | - | 0 | bolt: position,rotation,scale; reload_empty: position,rotation,scale; inspect: scale |
+| shell_part2 | bullet_in_bolt | [-0.03856, 7.57936, -2.53155] | - | 0 |  |
+| 86x4 | shell_part2 | [0, 7.95337, -0.4375] | [90, 0, 0] | 18 |  |
+| head2 | bullet_in_bolt | [-0.03856, 7.70793, -3.41222] | - | 0 | static_bolt_caught: scale; bolt: scale; reload_empty: scale; inspect_empty: scale |
+| 86x8 | head2 | [0, 8.95337, -0.4375] | [90, 0, 0] | 9 |  |
+| bipoddmrsniper2 | AWP_body | [0.16667, 8.58124, -14.08333] | - | 0 |  |
+| bone | bipoddmrsniper2 | [-0.25693, 6.0216, -14.25] | - | 17 |  |
+| R | bipoddmrsniper2 | [-1.00842, 5.01277, -14.5] | - | 26 | crawl_start: rotation; crawl: rotation; crawl_end: rotation; crawl_bipod: rotation; crawl_bipod_end: rotation; crawl_handdown: rotation; crawl_handup: rotation; shoot: rotation; shoot_last: rotation |
+| L | bipoddmrsniper2 | [1.0084, 5.02154, -14.5] | - | 26 | crawl_start: rotation; crawl: rotation; crawl_end: rotation; crawl_bipod: rotation; crawl_bipod_end: rotation; crawl_handdown: rotation; crawl_handup: rotation; shoot: rotation; shoot_last: rotation |
+| sight | AWP_body | [0, -0.375, -9] | - | 0 |  |
+| fore | sight | [0.0625, 10.6875, 2.875] | - | 0 |  |
+| fore_extd | fore | [0, -8, -24.15625] | - | 11 |  |
+| fore_sight_illuminated | fore_extd | [0, 8.99891, -3.21875] | - | 1 |  |
+| fore_base | fore | [-1e-05, 8.80567, -3.71635] | - | 7 |  |
+| rear | sight | [-1e-05, 8.80567, 5.78365] | - | 0 |  |
+| rear_extd | rear | [-0.00493, 9.72968, 6.34375] | - | 19 |  |
+| rear_sight_illuminated | rear_extd | [-0.05355, 9.59375, 6.34375] | - | 3 |  |
+| rear_base | rear | [-0.00521, 9.13072, 5.54876] | - | 7 |  |
+| muzzle_default | AWP_body | [0, 7.77646, -33.5625] | - | 28 |  |
+| bullet_in_barrel | AWP_body | [0, 7.7969, -1.25] | - | 0 | inspect: position,rotation; inspect_empty: position |
+| shell_part | bullet_in_barrel | [-0.03856, 7.57936, -2.53155] | - | 0 |  |
+| 86x5 | shell_part | [0, 7.95337, -0.4375] | [90, 0, 0] | 18 |  |
+| head | bullet_in_barrel | [-0.03856, 7.70793, -3.41222] | - | 0 |  |
+| 86x3 | head | [0, 8.95337, -0.4375] | [90, 0, 0] | 9 |  |
+| constraint | AWP_body | [0, 9.3, -5.475] | - | 0 | static_idle: position,rotation; crawl: position,rotation; draw: position,rotation; put_away: position,rotation; shoot: position,rotation; shoot_last: position,rotation; reload_tactical: position,rotation; reload_empty: position,rotation |
+| mag_release | AWP_body | [0, 4.12198, 4.6807] | - | 1 |  |
 | mag_and_lefthand | AWP | [0, 5.35, 2.175] | - | 0 | reload_tactical: position,rotation; inspect: position,rotation; inspect_empty: position,rotation |
 | magzine_and_bullet | mag_and_lefthand | [0, 5.35, 2.175] | - | 0 | reload_empty: position,rotation |
-| bullet | magzine_and_bullet | [0.00037, 6.82515, 2.35154] | - | 12 | reload_tactical: scale; reload_empty: scale; inspect: scale; inspect_empty: scale |
+| bullet | magzine_and_bullet | [0.00037, 6.82515, 2.35154] | - | 0 | static_bolt_caught: scale; reload_tactical: scale; reload_empty: scale; inspect: scale; inspect_empty: scale |
+| 86x6 | bullet | [0, 6.95337, 4.5625] | [90, 0, 0] | 28 |  |
 | magzine | magzine_and_bullet | [0, 5.35, 2.175] | - | 0 |  |
 | bullet_in_mag | magzine | [0, 6.825, 2.525] | - | 0 | reload_empty: position |
-| bullet_in_mag2 | bullet_in_mag | [0, 8.875, 0] | - | 0 |  |
-| bullet3 | bullet_in_mag2 | [8, 0.625, -8] | - | 12 |  |
+| 86x2 | bullet_in_mag | [0, 6.95337, 4.5625] | [90, 0, 0] | 28 |  |
+| mag_standard | magzine | [-3, -0.125, 0] | - | 10 |  |
 | mag_extended_1 | magzine | [0, -0.09375, 0] | - | 0 |  |
-| mag | mag_extended_1 | [3, 3.97979, 6.99186] | - | 15 |  |
-| mag_standard | magzine | [-3, -0.125, 0] | - | 0 |  |
-| mag2 | mag_standard | [0, 5.00727, 6.82661] | - | 13 |  |
-| plate | mag2 | [0, 2.51104, 7.05436] | - | 0 |  |
+| mag | mag_extended_1 | [3, 3.97979, 6.99186] | - | 10 |  |
 | mag_extended_2 | magzine | [0, -0.09375, 0] | - | 0 |  |
-| mag3 | mag_extended_2 | [3, 3.97979, 6.99186] | - | 15 |  |
+| mag2 | mag_extended_2 | [3, 3.97979, 6.99186] | - | 10 |  |
 | mag_extended_3 | magzine | [0, -0.09375, 0] | - | 0 |  |
-| mag4 | mag_extended_3 | [3, 3.97979, 6.99186] | - | 15 |  |
-| lefthand | mag_and_lefthand | [-6, 19, 8] | - | 0 | static_idle: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; bolt: position,rotation,scale; reload_tactical: position,rotation,scale; reload_empty: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale |
+| mag3 | mag_extended_3 | [3, 3.97979, 6.99186] | - | 10 |  |
+| lefthand | mag_and_lefthand | [-6, 19, 8] | - | 0 | static_idle: position,rotation,scale; crawl_start: position,rotation; crawl: position,rotation; crawl_end: position,rotation; crawl_bipod_end: position,rotation; crawl_handdown: position,rotation; crawl_handup: position,rotation; draw: position,rotation,scale; put_away: position,rotation,scale; bolt: position,rotation,scale; reload_tactical: position,rotation,scale; reload_empty: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale |
 | lefthand_pos | lefthand | [0, 8, 8] | - | 1 |  |
-| camera | - | [3.03238, 10.23011, 14.02848] | - | 0 | draw: rotation; put_away: rotation; shoot: rotation; bolt: rotation; reload_tactical: rotation; reload_empty: rotation; inspect: rotation; inspect_empty: rotation |
 | positioning | - | [0.5, -3.95, -11.225] | - | 0 |  |
 | ground | positioning | [0.15, 0.475, -6.825] | - | 0 |  |
-| fixed | positioning | [2.575, 6.65, -3.925] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [2.575, 4.99375, 6.95] | [0, 90, 0] | 0 |  |
 | thirdperson_hand | positioning | [0.125, 5.05, 7.175] | - | 0 |  |
 | views | - | [3.4, 4.175, 0] | - | 0 |  |
-| iron_view | views | [0, 9.3, 14.5] | - | 0 |  |
-| idle_view | views | [3.03238, 10.23011, 14.02848] | - | 0 |  |
-| refit_view | views | [30.4, 5.175, -11] | [0, 89.9, 0] | 0 |  |
+| iron_view | views | [0, 9.9375, 14.5] | - | 0 |  |
+| idle_view | views | [3.03238, 10.23011, 15.02848] | - | 0 |  |
+| refit_view | views | [35.4, 5.175, -9] | [0, 89.9, 0] | 0 |  |
 | refit_muzzle_view | views | [12.35, 7.85, -39.75] | [0, 120, 0] | 0 |  |
 | refit_scope_view | views | [11.4, 8.175, 8.95] | [0, 50, 0] | 0 |  |
 | refit_extended_mag_view | views | [12.88122, -4.37673, 1] | [0, 90, 35] | 0 |  |
+| camera | - | [3.03238, 10.23011, 15.02848] | - | 0 | crawl_start: rotation; crawl_end: rotation; crawl_bipod: rotation; crawl_bipod_end: rotation; draw: rotation; put_away: rotation; shoot: rotation; shoot_last: rotation; bolt: rotation; reload_tactical: rotation; reload_empty: rotation; inspect: rotation; inspect_empty: rotation |
+
+## tacz:ak12_display
+
+Display: `assets/tacz/display/guns/ak12_display.json`
+
+Model: `assets/tacz/geo_models/gun/ak12_geo.json`
+
+Animation: `assets/tacz/animations/ak12.animation.json`
+
+LOD reference: `{'model': 'tacz:gun/lod/ak12', 'texture': 'tacz:gun/lod/ak12'}`
+
+Geometry: `geometry.ak12 - Converted`; **91 bones**.
+
+| Bone | Parent | Pivot (native pixels) | Rotation | Cubes | Authored animation channels |
+| --- | --- | --- | --- | --- | --- |
+| root | - | [0, 7.6, 14.3] | - | 0 | switch_auto: position,rotation; switch_semi: position,rotation; reload_empty: position,rotation; reload_empty_xmag_1: position,rotation; reload_empty_xmag_2: position,rotation; reload_empty_xmag_3: position,rotation; reload_tactical: position,rotation; reload_tactical_xmag_1: position,rotation; reload_tactical_xmag_2: position,rotation; reload_tactical_xmag_3: position,rotation; inspect: position,rotation; inspect_empty: position,rotation; draw: position,rotation; put_away: position,rotation; shoot: position,rotation; shoot_last: position,rotation |
+| gun_and_righthand | root | [0, 7.3, 15.3] | - | 0 |  |
+| AK12 | gun_and_righthand | [0, 7.3, 15.3] | - | 0 |  |
+| bolt | AK12 | [0.5, 2.125, 0] | - | 0 | static_bolt_caught: position; reload_empty: position; reload_empty_xmag_1: position; reload_empty_xmag_2: position; reload_empty_xmag_3: position; inspect: position; inspect_empty: position; shoot: position |
+| bolt3 | bolt | [0.40815, 9.87649, 6.75503] | - | 16 |  |
+| bullet_in_barrel | bolt | [0, 9.20313, 6.54688] | [90, 0, 0] | 0 | shoot: position,rotation,scale; shoot_last: position,rotation,scale |
+| group6 | bullet_in_barrel | [0, 9.20313, 6.54688] | - | 8 |  |
+| group7 | bullet_in_barrel | [-1e-05, 10.392, 6.55491] | [-90, 0, 0] | 4 |  |
+| stock_default | AK12 | [0.5, 35.3125, 7.125] | - | 57 |  |
+| bone6 | stock_default | [0, 42.50572, 25.01181] | [0, 0, 90] | 4 |  |
+| attachment_adapter | AK12 | [0, 7.3, 15.3] | - | 0 |  |
+| ar_stock_adapter | attachment_adapter | [0, 8.44445, 20.25] | - | 5 |  |
+| mag_release | AK12 | [0, 6.5038, 12.5006] | - | 8 | reload_empty: rotation; reload_empty_xmag_1: rotation; reload_empty_xmag_2: rotation; reload_empty_xmag_3: rotation; reload_tactical: rotation; reload_tactical_xmag_1: rotation; reload_tactical_xmag_2: rotation; reload_tactical_xmag_3: rotation; inspect: rotation; inspect_empty: rotation |
+| gun_body | AK12 | [-7.5, 8, 8] | - | 0 |  |
+| upper2 | gun_body | [0, 27, 8.3125] | - | 22 |  |
+| rail6 | upper2 | [0.0003, 37.80488, 5.94532] | [0, 0, -180] | 45 |  |
+| lower2 | gun_body | [-8, 35.35876, 24.56966] | - | 0 |  |
+| group23 | lower2 | [-8, 35.35876, 24.31966] | - | 61 |  |
+| bone7 | group23 | [-0.84777, 35.38072, 19.38681] | [0, 0, 90] | 4 |  |
+| deco2 | lower2 | [-8, 34.5625, 21.375] | - | 23 |  |
+| bone2 | deco2 | [0, 34.90094, 9.67461] | [45, 0, 0] | 6 |  |
+| bone8 | deco2 | [-0.125, 35.9353, 17.79] | [-130, 0, 0] | 6 |  |
+| bone33 | deco2 | [0.28478, 35.3593, 19.89007] | [180, 0, 0] | 13 |  |
+| grip | lower2 | [0, 40.3125, 16.5625] | - | 31 |  |
+| barrel2 | AK12 | [0, 8, 8] | - | 0 |  |
+| rail3 | barrel2 | [0.09283, 10.18201, -7.59375] | - | 13 |  |
+| gasblock2 | barrel2 | [-7, 8, 8] | - | 1 |  |
+| octagon12 | gasblock2 | [0, 8.875, -5.1875] | - | 4 |  |
+| foresight | barrel2 | [0, 8.875, -9.78125] | - | 18 |  |
+| foresight_illuminated | foresight | [-0.03125, 11.37938, -9.76621] | - | 1 |  |
+| bone | foresight | [0, 10.27594, -9.76289] | [15, 0, 0] | 3 |  |
+| octagon13 | barrel2 | [0, 8, 8] | - | 4 |  |
+| gastube2 | barrel2 | [0, 7.9375, 8] | - | 0 |  |
+| octagon14 | gastube2 | [-7, 7.9375, 8] | - | 4 |  |
+| octagon15 | gastube2 | [-7, 7.9375, 8] | - | 4 |  |
+| octagon16 | gastube2 | [-7, 7.9375, 8] | - | 4 |  |
+| octagon17 | gastube2 | [0, 7.9375, 8] | - | 7 |  |
+| handguard3 | AK12 | [0, 43, -0.125] | - | 46 |  |
+| rail4 | handguard3 | [0.09247, 44.49451, 0.96875] | - | 28 |  |
+| rail5 | handguard3 | [0.0003, 45.80488, -0.61718] | [0, 0, -180] | 24 |  |
+| rail7 | handguard3 | [-0.9372, 43.80488, 2.96206] | [0, 0, 90] | 16 |  |
+| rail8 | handguard3 | [0.9372, 43.80488, 2.96206] | [0, 0, -90] | 16 |  |
+| selector | AK12 | [0, 8.5337, 16.0472] | [-60, 0, 0] | 5 | static_auto: rotation; static_semi: rotation; switch_auto: rotation; switch_semi: rotation |
+| muzzle_default | AK12 | [0, 8.875, -11.21719] | - | 28 |  |
+| sight | AK12 | [-7.76563, 35, 8.6875] | - | 21 |  |
+| bone4 | sight | [-0.0325, 38.38932, 17.45007] | [-2, 0, 0] | 11 |  |
+| bone5 | bone4 | [-0.2309, 33.98091, 9.46651] | - | 5 |  |
+| sight_illuminated | bone5 | [0, 0, 0] | - | 2 |  |
+| positioning2 | AK12 | [0, 7, -1.425] | - | 0 |  |
+| muzzle_flash | positioning2 | [0, 8.6875, -14] | - | 0 |  |
+| muzzle_pos | positioning2 | [0, 8.6875, -10.23437] | - | 0 |  |
+| laser_pos | positioning2 | [-1.055, 8.8051, -0.5625] | [0, 0, -90] | 0 |  |
+| scope_pos | positioning2 | [0, 10.9235, 15.1875] | - | 0 |  |
+| stock_pos | positioning2 | [0, 8.41878, 21.83366] | - | 0 |  |
+| grip_pos | positioning2 | [0, 7.375, 2.27149] | - | 0 |  |
+| shell | positioning2 | [-0.2, 9.75099, 9.2875] | - | 0 |  |
+| constraint | AK12 | [0, 11.3, 9.3] | - | 0 | static_idle: position,rotation; reload_empty: position,rotation; reload_empty_xmag_1: position,rotation; reload_empty_xmag_2: position,rotation; reload_empty_xmag_3: position,rotation; reload_tactical: position,rotation; reload_tactical_xmag_1: position,rotation; reload_tactical_xmag_2: position,rotation; reload_tactical_xmag_3: position,rotation; shoot: position,rotation; shoot_last: position,rotation |
+| bone9 | gun_and_righthand | [0, 3.4, 9.5] | - | 0 | inspect: position,rotation; inspect_empty: position,rotation |
+| righthand | bone9 | [6, 19, 8] | - | 0 | static_idle: position,rotation,scale; switch_auto: position,rotation,scale; switch_semi: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag_1: position,rotation,scale; reload_empty_xmag_2: position,rotation,scale; reload_empty_xmag_3: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_xmag_1: position,rotation,scale; reload_tactical_xmag_2: position,rotation,scale; reload_tactical_xmag_3: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale |
+| righthand_pos | righthand | [0, 8, 8] | - | 1 |  |
+| additional_magazine | bone9 | [0, 3.4, 9.5] | - | 0 | reload_empty: position,rotation,scale; reload_empty_xmag_1: position,rotation,scale; reload_empty_xmag_2: position,rotation,scale; reload_empty_xmag_3: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_xmag_1: position,rotation,scale; reload_tactical_xmag_2: position,rotation,scale; reload_tactical_xmag_3: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale |
+| mag_and_lefthand | root | [0, 3.4, 9.5] | - | 0 | reload_empty: position,rotation; reload_empty_xmag_1: position,rotation; reload_empty_xmag_2: position,rotation; reload_empty_xmag_3: position,rotation; reload_tactical: position,rotation; reload_tactical_xmag_1: position,rotation; reload_tactical_xmag_2: position,rotation; reload_tactical_xmag_3: position,rotation |
+| lefthand | mag_and_lefthand | [-6, 19, 8] | - | 0 | static_idle: position,rotation,scale; switch_auto: position,rotation,scale; switch_semi: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag_1: position,rotation,scale; reload_empty_xmag_2: position,rotation,scale; reload_empty_xmag_3: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_xmag_1: position,rotation,scale; reload_tactical_xmag_2: position,rotation,scale; reload_tactical_xmag_3: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale |
+| lefthand_pos | lefthand | [0, 8, 8] | - | 1 |  |
+| mag_and_bullet | mag_and_lefthand | [0, 3.4, 9.5] | - | 0 | reload_empty: scale; reload_empty_xmag_1: scale; reload_empty_xmag_2: scale; reload_empty_xmag_3: scale; reload_tactical: scale; reload_tactical_xmag_1: scale; reload_tactical_xmag_2: scale; reload_tactical_xmag_3: scale; inspect: position,rotation; inspect_empty: position,rotation |
+| magazine | mag_and_bullet | [0, 3.4, 9.5] | - | 0 |  |
+| bullet_in_mag | magazine | [0, 8.14063, 10.90625] | [90, 0, 0] | 0 |  |
+| group4 | bullet_in_mag | [0, 8.14063, 10.90625] | - | 8 |  |
+| group5 | bullet_in_mag | [-1e-05, 9.3295, 10.91428] | [-90, 0, 0] | 4 |  |
+| mag_standard | magazine | [-0.00783, 4.43583, 9.4826] | - | 65 |  |
+| mag_extended_1 | magazine | [0, 2.03446, 7.68508] | - | 29 |  |
+| mag_extended_2 | magazine | [0, 2.03446, 7.68508] | - | 29 |  |
+| mag_extended_3 | magazine | [0, 4.19455, 9.20674] | - | 34 |  |
+| bullet | mag_and_bullet | [0, 8.14063, 10.90625] | [90, 0, 0] | 0 | static_bolt_caught: scale; reload_empty: scale; reload_empty_xmag_1: scale; reload_empty_xmag_2: scale; reload_empty_xmag_3: scale; inspect: scale; inspect_empty: scale |
+| group2 | bullet | [0, 8.14063, 10.90625] | - | 8 |  |
+| group3 | bullet | [-1e-05, 9.3295, 10.91428] | [-90, 0, 0] | 4 |  |
+| camera | - | [2.45, 12.45, 24.02] | - | 0 | switch_auto: rotation; switch_semi: rotation; reload_empty: rotation; reload_empty_xmag_1: rotation; reload_empty_xmag_2: rotation; reload_empty_xmag_3: rotation; reload_tactical: rotation; reload_tactical_xmag_1: rotation; reload_tactical_xmag_2: rotation; reload_tactical_xmag_3: rotation; inspect: rotation; inspect_empty: rotation; draw: rotation; put_away: rotation; shoot: rotation; shoot_last: rotation |
+| views | - | [0, 0, 0] | - | 0 |  |
+| idle_view | views | [2.45, 12.45, 24.02] | [0, 0, -2.5] | 0 |  |
+| iron_view | views | [0, 11.52, 23.5] | - | 0 |  |
+| refit_view | views | [25.5, 7, 6] | [0, 89.9, 0] | 0 |  |
+| refit_muzzle_view | views | [12, 9, -19] | [0, 120, 0] | 0 |  |
+| refit_stock_view | views | [12, 7, 25] | [0, 90, 0] | 0 |  |
+| refit_scope_view | views | [10, 12, 21] | [0, 50, 0] | 0 |  |
+| refit_extended_mag_view | views | [11.525, 1.275, 15.7875] | [-15, 63.76338, 0] | 0 |  |
+| refit_grip_view | views | [11, 6, 4.5] | [0, 90, 0] | 0 |  |
+| refit_laser_view | views | [-7, 11.5, -6.25] | [15, -135, 0] | 0 |  |
+| positioning | - | [0, 0, 0] | - | 0 |  |
+| fixed | positioning | [1.35, 7.18125, 14.29375] | [0, 90, 0] | 0 |  |
+| ground | positioning | [0, -7, 9] | - | 0 |  |
+| thirdperson_hand | positioning | [0, 7.2, 15.425] | - | 0 |  |
 
 ## tacz:ak47_display
 
@@ -300,15 +388,10 @@ Geometry: `geometry.ak47`; **94 bones**.
 
 | Bone | Parent | Pivot (native pixels) | Rotation | Cubes | Authored animation channels |
 | --- | --- | --- | --- | --- | --- |
-| camera | - | [2.5, 12, 13.75] | - | 0 | draw: rotation; put_away: rotation; switch_auto: rotation; switch_semi: rotation; reload_tactical: rotation; reload_tactical_xmag: rotation; reload_empty: rotation; reload_empty_xmag: rotation; inspect: rotation; inspect_xmag: rotation; inspect_empty: rotation; inspect_empty_xmag: rotation; shoot: rotation |
+| camera | - | [2.5, 12, 14.75] | [0, 0, -2.5] | 0 | draw: rotation; put_away: rotation; switch_auto: rotation; switch_semi: rotation; reload_tactical: rotation; reload_tactical_xmag: rotation; reload_empty: rotation; reload_empty_xmag: rotation; inspect: rotation; inspect_xmag: rotation; inspect_empty: rotation; inspect_empty_xmag: rotation; shoot: rotation |
 | root | - | [0, 8.2, 6.5] | - | 0 | draw: position,rotation; put_away: position,rotation; switch_auto: position,rotation; switch_semi: position,rotation; reload_tactical: position,rotation; reload_tactical_xmag: position,rotation; reload_empty: position,rotation; reload_empty_xmag: position,rotation; inspect: position,rotation; inspect_xmag: position,rotation; inspect_empty: position,rotation; inspect_empty_xmag: position,rotation; shoot: position,rotation |
 | bone2 | root | [0, 8, 2] | - | 0 |  |
 | AKM | bone2 | [0, 0, 0] | - | 0 |  |
-| stock_default | AKM | [0.5, 7.375, 10.125] | - | 0 |  |
-| wood | stock_default | [0, 8.5862, 10.86158] | - | 29 |  |
-| bone | wood | [0.752, 4.875, 20.1875] | [1, 0, 0] | 4 |  |
-| steel | stock_default | [0.37435, 8.75379, 17.25] | - | 7 |  |
-| group16 | steel | [0, 8.5, 10.8125] | - | 2 |  |
 | positioning2 | AKM | [0, 0, 0] | - | 0 |  |
 | stock_pos | positioning2 | [0, 8.65, 13.425] | - | 0 |  |
 | muzzle_pos | positioning2 | [0, 8.55, -19.325] | - | 0 |  |
@@ -341,14 +424,19 @@ Geometry: `geometry.ak47`; **94 bones**.
 | rail2 | mount | [8, 0, -8] | - | 0 |  |
 | group | rail2 | [8, -0.125, -8] | - | 29 |  |
 | attachment_adapter | AKM | [-0.01863, 9.17121, -1.04084] | - | 0 |  |
-| oem_stock_heavy | attachment_adapter | [-0.125, 5.10636, 16.39399] | [-5, 0, 0] | 23 |  |
-| group14 | oem_stock_heavy | [-0.59911, 5.49464, 24.79688] | - | 7 |  |
-| bone4 | oem_stock_heavy | [0.75, 12.40625, 10.48438] | - | 2 |  |
-| oem_stock_light | attachment_adapter | [-0.01863, 9.17121, -1.04084] | - | 0 |  |
-| oem_stock_tactical | attachment_adapter | [0, 7.875, 7.625] | [-5, 0, 0] | 0 |  |
-| octagon | oem_stock_tactical | [0, 8, 0] | - | 4 |  |
-| group22 | oem_stock_tactical | [-0.0625, 7.875, 8.125] | - | 9 |  |
-| group23 | oem_stock_tactical | [0.5625, 5.0419, 21.15158] | - | 16 |  |
+| oem_stock_heavy | attachment_adapter | [-0.125, 7.85636, 7.64399] | [-5, 0, 0] | 23 |  |
+| group14 | oem_stock_heavy | [-0.59911, 6.26772, 25.00326] | - | 7 |  |
+| bone4 | oem_stock_heavy | [0.75, 13.17933, 10.69076] | - | 2 |  |
+| oem_stock_light | attachment_adapter | [-0.01863, 7.87434, 7.63104] | [-5, 0, 0] | 0 |  |
+| octagon | oem_stock_light | [0, 8, 0] | - | 4 |  |
+| group22 | oem_stock_light | [-0.0625, 7.875, 8.125] | - | 9 |  |
+| group23 | oem_stock_light | [0.5625, 5.0419, 21.15158] | - | 16 |  |
+| oem_stock_tactical | attachment_adapter | [0, 7.875, 7.625] | - | 0 |  |
+| stock_tac | oem_stock_tactical | [0.5, 7.375, 10.125] | - | 0 |  |
+| wood2 | stock_tac | [0, 8.5862, 10.86158] | - | 29 |  |
+| bone3 | wood2 | [0.752, 4.875, 20.1875] | [1, 0, 0] | 4 |  |
+| steel2 | stock_tac | [0.37435, 8.75379, 17.25] | - | 7 |  |
+| group2 | steel2 | [0, 8.5, 10.8125] | - | 2 |  |
 | ar_stock_adapter | attachment_adapter | [-0.01863, 9.17121, -1.04084] | - | 27 |  |
 | bolt | AKM | [-0.48863, 17.54799, -0.0625] | - | 17 | reload_empty: position; reload_empty_xmag: position; inspect: position; inspect_xmag: position; inspect_empty: position; inspect_empty_xmag: position; shoot: position |
 | akm_default | AKM | [0, 8, 0] | - | 0 |  |
@@ -383,17 +471,106 @@ Geometry: `geometry.ak47`; **94 bones**.
 | righthand | bone2 | [6, 19, 0] | - | 0 | static_idle: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; switch_auto: position,rotation,scale; switch_semi: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_xmag: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag: position,rotation,scale; inspect: position,rotation,scale; inspect_xmag: position,rotation,scale; inspect_empty: position,rotation,scale; inspect_empty_xmag: position,rotation,scale |
 | righthand_pos | righthand | [0, 8, 0] | - | 1 |  |
 | views | - | [2, 12, 12] | - | 0 |  |
-| idle_view | views | [2.5, 12, 13.75] | - | 0 |  |
-| iron_view | views | [0, 10.8875, 10.15625] | - | 0 |  |
-| refit_view | views | [20, 9, -2] | [0, 89.9, 0] | 0 |  |
+| idle_view | views | [2.5, 12, 14.75] | [0, 0, -2.5] | 0 |  |
+| iron_view | views | [0, 10.8875, 12.5] | - | 0 |  |
+| refit_view | views | [26, 9, 0] | [0, 89.9, 0] | 0 |  |
 | refit_muzzle_view | views | [12, 9, -26] | [0, 120, 0] | 0 |  |
 | refit_stock_view | views | [12, 9, 12] | [0, 90, 0] | 0 |  |
 | refit_scope_view | views | [10, 12, 9] | [0, 50, 0] | 0 |  |
 | refit_extended_mag_view | views | [8.525, 1.275, 4.35] | [-15, 63.76338, 0] | 0 |  |
 | positioning | - | [0, 0, 0] | - | 0 |  |
-| fixed | positioning | [1.35, 8.275, -0.05] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [1.35, 7.05625, 5.10625] | [0, 90, 0] | 0 |  |
 | ground | positioning | [0, -4, 2] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 6.825, 5.425] | - | 0 |  |
+
+## tacz:ak74m_display
+
+Display: `assets/tacz/display/guns/ak74m_display.json`
+
+Model: `assets/tacz/geo_models/gun/ak74m_geo.json`
+
+Animation: `assets/tacz/animations/ak74m.animation.json`
+
+LOD reference: `{'model': 'tacz:gun/lod/ak74m', 'texture': 'tacz:gun/lod/ak74m'}`
+
+Geometry: `geometry.unknown`; **74 bones**.
+
+| Bone | Parent | Pivot (native pixels) | Rotation | Cubes | Authored animation channels |
+| --- | --- | --- | --- | --- | --- |
+| root | - | [0, 7.3, 2.3] | - | 0 | switch_auto: position,rotation; switch_semi: position,rotation; draw: position,rotation; put_away: position,rotation; reload_tactical: position,rotation; reload_tactical_xmag: position,rotation; reload_empty: position,rotation; reload_empty_xmag: position,rotation; inspect: position,rotation; inspect_xmag: position,rotation; inspect_empty: position,rotation; inspect_empty_xmag: position,rotation; shoot: position,rotation |
+| ak74_default | root | [0, 7.3, 2.3] | - | 0 | reload_empty: rotation |
+| mag_and_lefthand | ak74_default | [0, 3.4, -3.5] | - | 0 | reload_tactical: position,rotation; reload_empty_xmag: position,rotation |
+| mag_and_bullet | mag_and_lefthand | [0, 3.4, -3.5] | - | 0 | reload_tactical: scale; reload_tactical_xmag: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag: scale; inspect: position,rotation; inspect_xmag: position,rotation; inspect_empty: position,rotation; inspect_empty_xmag: position,rotation |
+| magazine | mag_and_bullet | [0, 3.4, -3.5] | - | 0 |  |
+| bullet_in_mag | magazine | [0, 8.0625, -2.3125] | [90, 0, 0] | 0 |  |
+| group4 | bullet_in_mag | [0, 8.0625, -2.3125] | - | 8 |  |
+| group5 | bullet_in_mag | [-1e-05, 9.25138, -2.30447] | [-90, 0, 0] | 4 |  |
+| mag_standard | magazine | [0.00027, 3.94902, -4.39485] | - | 47 |  |
+| mag_extended_1 | magazine | [0, 2.05008, -5.56492] | - | 29 |  |
+| mag_extended_2 | magazine | [0, 2.05008, -5.56492] | - | 29 |  |
+| mag_extended_3 | magazine | [0, 4.21017, -4.04326] | - | 34 |  |
+| bullet | mag_and_bullet | [0, 8.0625, -2.3125] | [90, 0, 0] | 0 | inspect: scale; inspect_xmag: scale; inspect_empty: scale; inspect_empty_xmag: scale |
+| group2 | bullet | [0, 8.0625, -2.3125] | - | 8 |  |
+| group3 | bullet | [-1e-05, 9.25138, -2.30447] | [-90, 0, 0] | 4 |  |
+| lefthand | mag_and_lefthand | [-6, 19, 0] | - | 0 | static_idle: position,rotation,scale; switch_auto: position,rotation,scale; switch_semi: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_xmag: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag: position,rotation,scale; inspect: position,rotation,scale; inspect_xmag: position,rotation,scale; inspect_empty: position,rotation,scale; inspect_empty_xmag: position,rotation,scale |
+| lefthand_pos | lefthand | [0, 8, 0] | - | 1 |  |
+| gun_and_righthand | ak74_default | [0, 7.3, 2.3] | - | 0 |  |
+| ak74m | gun_and_righthand | [0, 7.3, 2.3] | - | 0 |  |
+| barrel | ak74m | [-8, 8, 2] | - | 57 |  |
+| sight_illuminated | barrel | [0.0221, 10.875, -23.41584] | - | 1 |  |
+| sight | ak74m | [0, 0, -6] | - | 0 |  |
+| cover | sight | [0, 8.92233, 5.5] | - | 67 |  |
+| grip | sight | [0, 5.14033, 4.50318] | [-2.5, 0, 0] | 12 |  |
+| handguard_default | ak74m | [-0.02502, 8.28368, -9.8923] | - | 62 |  |
+| handguard_tactical | ak74m | [0, -15, 0] | - | 0 |  |
+| b30 | handguard_tactical | [-0.75606, 8.55485, -12.89318] | - | 429 |  |
+| b31 | handguard_tactical | [-0.8125, 9.22454, -12.84375] | - | 236 |  |
+| mount | ak74m | [0, 9.07763, 0.03125] | - | 0 |  |
+| b33 | mount | [0, 9.07763, 0.03125] | - | 101 |  |
+| group8 | b33 | [0.625, 9.92469, -5.42662] | - | 25 |  |
+| rk3 | mount | [0, 0, -6] | - | 43 |  |
+| gun_body | ak74m | [0, 0, -6] | - | 0 |  |
+| lower | gun_body | [-8, 8.04626, 11.13216] | - | 191 |  |
+| selector | ak74m | [-0.86314, 8.00668, 2.8985] | - | 31 | static_auto: rotation; static_semi: rotation; switch_auto: rotation; switch_semi: rotation |
+| bolt | ak74m | [-0.784, 9.03439, -4.48477] | - | 0 | reload_empty: position; reload_empty_xmag: position; inspect: position; inspect_xmag: position; inspect_empty: position; inspect_empty_xmag: position; shoot: position |
+| group | bolt | [-0.82703, 9.17835, -7.375] | - | 15 |  |
+| bullet_in_barrel | bolt | [0, 8.6875, -6.65625] | [90, 0, 0] | 0 | shoot: scale |
+| group6 | bullet_in_barrel | [0, 8.6875, -6.65625] | - | 8 |  |
+| group7 | bullet_in_barrel | [-1e-05, 9.87638, -6.64822] | [-90, 0, 0] | 4 |  |
+| mag_release | ak74m | [0, 5.875, -0.75] | - | 2 | reload_tactical: rotation; reload_tactical_xmag: rotation; reload_empty: rotation; reload_empty_xmag: rotation; inspect: rotation; inspect_xmag: rotation; inspect_empty: rotation; inspect_empty_xmag: rotation |
+| stock_default | ak74m | [0.81773, 7.61665, 5.66044] | [-4, 0, 0] | 106 |  |
+| muzzle_default | ak74m | [0, 8.5, -26.36213] | - | 34 |  |
+| attachment_adapter | ak74m | [0, 23, 15] | - | 0 |  |
+| oem_stock_tactical | attachment_adapter | [0, 23, 15] | - | 0 |  |
+| pt3 | oem_stock_tactical | [0, 23, 15] | - | 178 |  |
+| ar_stock_adapter | attachment_adapter | [0, 1.69445, -4.5625] | - | 5 |  |
+| positioning2 | ak74m | [0, 7, -1.425] | - | 0 |  |
+| muzzle_flash | positioning2 | [0, 8.5, -27] | - | 0 |  |
+| muzzle_pos | positioning2 | [0, 8.5, -23.81614] | - | 0 |  |
+| laser_pos | positioning2 | [-1.3125, 8.57233, -14.6875] | [0, 0, -90] | 0 |  |
+| scope_pos | positioning2 | [0, 10.6875, 1.875] | - | 0 |  |
+| stock_pos | positioning2 | [0, 7.6844, 8.02116] | - | 0 |  |
+| grip_pos | positioning2 | [0, 7.20887, -12.04101] | - | 0 |  |
+| shell | positioning2 | [-0.2, 8.93849, -4.025] | - | 0 |  |
+| additional_magazine | ak74m | [0, 3.4, -3.5] | - | 0 | reload_tactical: position,rotation,scale; reload_tactical_xmag: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag: position,rotation,scale; inspect: scale; inspect_xmag: scale; inspect_empty: scale; inspect_empty_xmag: scale; shoot: scale |
+| constraint | ak74m | [0, 7.75, -3] | - | 0 | static_idle: position,rotation; reload_tactical: position,rotation; reload_tactical_xmag: position,rotation; reload_empty: position,rotation; reload_empty_xmag: position,rotation; shoot: position,rotation |
+| righthand | gun_and_righthand | [6, 19, 0] | - | 0 | static_idle: position,rotation,scale; switch_auto: position,rotation,scale; switch_semi: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_xmag: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag: position,rotation,scale; inspect: position,rotation,scale; inspect_xmag: position,rotation,scale; inspect_empty: position,rotation,scale; inspect_empty_xmag: position,rotation,scale |
+| righthand_pos | righthand | [0, 8, 0] | - | 1 |  |
+| camera | - | [3.3, 12.6, 11.5] | - | 0 | switch_auto: rotation; switch_semi: rotation; draw: rotation; put_away: rotation; reload_tactical: rotation; reload_tactical_xmag: rotation; reload_empty: rotation; reload_empty_xmag: rotation; inspect: rotation; inspect_xmag: rotation; inspect_empty: rotation; inspect_empty_xmag: rotation; shoot: rotation |
+| views | - | [0, 0, 0] | - | 0 |  |
+| idle_view | views | [3.3, 12, 11.5] | [0, 0, 2.5] | 0 |  |
+| iron_view | views | [0, 10.84375, 9.5] | - | 0 |  |
+| refit_view | views | [25.5, 9, -7] | [0, 89.9, 0] | 0 |  |
+| refit_muzzle_view | views | [12, 9, -33] | [0, 120, 0] | 0 |  |
+| refit_stock_view | views | [12, 7, 10] | [0, 90, 0] | 0 |  |
+| refit_scope_view | views | [10, 12, 9] | [0, 50, 0] | 0 |  |
+| refit_extended_mag_view | views | [8.525, 1.275, 0.7875] | [-15, 63.76338, 0] | 0 |  |
+| refit_grip_view | views | [11, 6, -11] | [0, 90, 0] | 0 |  |
+| refit_laser_view | views | [-7, 6.5, -21] | [-15, -135, 0] | 0 |  |
+| positioning | - | [0, 0, 0] | - | 0 |  |
+| fixed | positioning | [1.35, 6.80625, 0.98125] | [0, 90, 0] | 0 |  |
+| ground | positioning | [0, -4, -2] | - | 0 |  |
+| thirdperson_hand | positioning | [0, 6.7625, 2.2375] | - | 0 |  |
 
 ## tacz:aug_display
 
@@ -425,7 +602,7 @@ Geometry: `geometry.aug (1)`; **77 bones**.
 | bone3 | mag_extended_3 | [0, -1.81254, 8.34664] | - | 20 |  |
 | bone | mag_extended_3 | [0, -1.81254, 8.34664] | - | 12 |  |
 | bullet_in_mag | magazine | [8, 1.125, -7.875] | - | 12 |  |
-| bullet | magazine | [8, 1.125, -7.875] | - | 12 | reload_tactical: scale; reload_empty: scale; inspect: scale; inspect_empty: scale |
+| bullet | magazine | [8, 1.125, -7.875] | - | 12 | static_bolt_caught: scale; reload_tactical: scale; reload_empty: scale; inspect: scale; inspect_empty: scale |
 | gun_and_righthand | root | [0, 0, 0] | - | 0 | inspect: position,rotation; inspect_empty: position,rotation |
 | righthand | gun_and_righthand | [6, 19, 8] | - | 0 | static_idle: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; reload_tactical: position,rotation,scale; reload_empty: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale |
 | righthand_pos | righthand | [0, 8, 8] | - | 1 |  |
@@ -476,9 +653,9 @@ Geometry: `geometry.aug (1)`; **77 bones**.
 | positioning | - | [0, 0, -8] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 7.125, 2.075] | - | 0 |  |
 | ground | positioning | [0, -2, 4] | - | 0 |  |
-| fixed | positioning | [1.25, 9.25, 4] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [1.25, 7.07813, 0.76563] | [0, 90, 0] | 0 |  |
 | view | - | [0, 0, 0] | - | 0 |  |
-| idle_view | view | [2.75, 12.05625, 13.5] | - | 0 |  |
+| idle_view | view | [2.75, 12.05625, 14.5] | - | 0 |  |
 | iron_view | view | [0, 12.0625, 10.5] | - | 0 |  |
 | refit_view | view | [24, 9, 0] | [0, 89.9, 0] | 0 |  |
 | refit_muzzle_view | view | [8, 9, -25] | [0, 135, 0] | 0 |  |
@@ -548,8 +725,8 @@ Geometry: `geometry.m92fs`; **59 bones**.
 | lefthand | mag_and_lefthand | [-6, 19, 0] | - | 0 | static_idle: position,rotation,scale; switch_semi: position,rotation,scale; switch_burst: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_xmag_1: position,rotation,scale; reload_tactical_xmag_2: position,rotation,scale; reload_tactical_xmag_3: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag_1: position,rotation,scale; reload_empty_xmag_2: position,rotation,scale; reload_empty_xmag_3: position,rotation,scale; inspect: position,rotation,scale; inspect_xmag_1: position,rotation,scale; inspect_xmag_2: position,rotation,scale; inspect_xmag_3: position,rotation,scale; inspect_empty: position,rotation,scale; inspect_empty_xmag_1: position,rotation,scale; inspect_empty_xmag_2: position,rotation,scale; inspect_empty_xmag_3: position,rotation,scale |
 | lefthand_pos | lefthand | [0, 8, 0] | - | 1 |  |
 | view | - | [0, 0, 0] | - | 0 |  |
-| iron_view | view | [0, 10.32813, 13] | - | 0 |  |
-| idle_view | view | [3, 11.25, 13] | - | 0 |  |
+| iron_view | view | [0, 10.32813, 14.5] | - | 0 |  |
+| idle_view | view | [3, 11.25, 14] | - | 0 |  |
 | refit_view | view | [16, 8, 0] | [0, 89.9, 0] | 0 |  |
 | refit_muzzle_view | view | [8.875, 6.475, -10] | [0, 120, 0] | 0 |  |
 | refit_scope_view | view | [10.35, 10.225, 6.2] | [0, 67.5, 0] | 0 |  |
@@ -559,7 +736,7 @@ Geometry: `geometry.m92fs`; **59 bones**.
 | positioning | - | [0, 0, 0] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 8, 1.75] | - | 0 |  |
 | ground | positioning | [0, -3, 0] | - | 0 |  |
-| fixed | positioning | [1, 8, 0] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [1, 8, 0.6875] | [0, 90, 0] | 0 |  |
 
 ## tacz:cz75_display
 
@@ -630,11 +807,11 @@ Geometry: `geometry.cz75_retextured - Converted`; **64 bones**.
 | camera | - | [1.125, 8.75, 11.5] | - | 0 | draw: rotation; put_away: rotation; reload_tactical: rotation; reload_empty: rotation; inspect: rotation; inspect_empty: rotation; shoot: rotation |
 | positioning | - | [0, 0, 0] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 4.75, 0] | - | 0 |  |
-| fixed | positioning | [0.6, 4.575, -0.625] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [0.6, 4.77813, -0.8125] | [0, 90, 0] | 0 |  |
 | gournd | positioning | [0, -2, -1.175] | - | 0 |  |
 | view | - | [0, 0, 0] | - | 0 |  |
-| iron_view | view | [0, 6.88125, 12.76875] | - | 0 |  |
-| idle_view | view | [1.75, 8.5, 11.5] | - | 0 |  |
+| iron_view | view | [0, 6.88125, 13.0] | - | 0 |  |
+| idle_view | view | [1.75, 8.5, 12.5] | - | 0 |  |
 | refit_scope_view | view | [5.675, 7.275, 6.7] | [0, 45, 0] | 0 |  |
 | refit_muzzle_view | view | [9.05, 6.4, -6.975] | [0, 90, 0] | 0 |  |
 | refit_extended_mag_view | view | [9.725, 0.375, 2.85] | [0, 90, 0] | 0 |  |
@@ -656,7 +833,7 @@ Geometry: `geometry.unknown`; **34 bones**.
 | --- | --- | --- | --- | --- | --- |
 | root | - | [0, 7, 6.5] | - | 0 | draw: position,rotation; put_away: position,rotation; reload_tactical: position,rotation; reload_empty: position,rotation; inspect: position,rotation; inspect_empty: position,rotation; shoot: position,rotation |
 | Db | root | [0, 7, 6.625] | - | 0 | inspect: rotation; inspect_empty: rotation |
-| constraint | Db | [0, 10.025, -7.925] | - | 0 | static_idle: position,rotation |
+| constraint | Db | [0, 10.025, -5] | - | 0 | static_idle: position,rotation; shoot: position,rotation |
 | rightHand | Db | [6, 19, 8] | - | 0 | static_idle: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; reload_tactical: position,rotation,scale; reload_empty: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale |
 | righthand_pos | rightHand | [0, 8, 8] | - | 1 |  |
 | rear_part | Db | [0, 7.78125, 0.89063] | - | 0 | reload_tactical: rotation |
@@ -681,12 +858,12 @@ Geometry: `geometry.unknown`; **34 bones**.
 | positioning | - | [0, 0, -8] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 6.525, 7.65] | - | 0 |  |
 | ground | positioning | [0, -0.9, 0.65] | - | 0 |  |
-| fixed | positioning | [0, 9.1, 1.6] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [0, 6.6, 5.6] | [0, 90, 0] | 0 |  |
 | views | - | [0, 0, 0] | - | 0 |  |
 | refit_stock_view | views | [15, 6, 11] | [0, 90, 0] | 0 |  |
 | refit_view | views | [25, 9, 0] | [0, 89.9, 0] | 0 |  |
-| idle_view | views | [3.38125, 12.15625, 11.525] | - | 0 |  |
-| iron_view | views | [0, 10, 8] | - | 0 |  |
+| idle_view | views | [3.38125, 12.15625, 12.525] | - | 0 |  |
+| iron_view | views | [0, 10.25, 10] | [0.5, 0, 0] | 0 |  |
 | refit_extended_mag_view | views | [10.525, 13.275, 11.35] | [15, 60, 0] | 0 |  |
 
 ## tacz:db_short_display
@@ -703,7 +880,7 @@ Geometry: `geometry.unknown`; **36 bones**.
 
 | Bone | Parent | Pivot (native pixels) | Rotation | Cubes | Authored animation channels |
 | --- | --- | --- | --- | --- | --- |
-| root | - | [0, 7, 6.225] | - | 0 | draw: position,rotation; put_away: position,rotation; reload_tactical: position,rotation; reload_empty: position,rotation; inspect: position,rotation; inspect_empty: position,rotation; shoot: position,rotation; shoot_burst: position,rotation |
+| root | - | [0, 7, 6.225] | - | 0 | draw: position,rotation; put_away: position,rotation; reload_tactical: position,rotation; reload_empty: position,rotation; reload_empty_easter: position,rotation; inspect: position,rotation; inspect_empty: position,rotation; shoot: position,rotation; shoot_burst: position,rotation |
 | Db | root | [0, 7, 6.625] | - | 0 | inspect: rotation; inspect_empty: rotation |
 | constraint | Db | [0, 10.025, -7.925] | - | 0 | static_idle: position,rotation; shoot_burst: position,rotation |
 | rightHand | Db | [6, 19, 8] | - | 0 | static_idle: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; reload_tactical: position,rotation,scale; reload_empty: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale |
@@ -715,29 +892,29 @@ Geometry: `geometry.unknown`; **36 bones**.
 | oem_stock_tactical | attachment_adapter | [0, 6.94414, 11.2442] | - | 42 |  |
 | bone | oem_stock_tactical | [0, 2.0822, 16.50993] | - | 7 |  |
 | stock_default | rear_part | [0, 0.94414, 11.2442] | - | 20 |  |
-| lever | rear_part | [0, 9.76409, 3.89015] | - | 10 | reload_tactical: rotation; reload_empty: rotation; inspect: rotation; inspect_empty: rotation |
-| front_part | Db | [0, 7.78125, 0.89063] | - | 0 | reload_empty: rotation; inspect: rotation; inspect_empty: rotation |
+| lever | rear_part | [0, 9.76409, 3.89015] | - | 10 | reload_tactical: rotation; reload_empty: rotation; reload_empty_easter: rotation; inspect: rotation; inspect_empty: rotation |
+| front_part | Db | [0, 7.78125, 0.89063] | - | 0 | reload_empty: rotation; reload_empty_easter: rotation; inspect: rotation; inspect_empty: rotation |
 | ejector | front_part | [0.11271, 9.24778, 2.7375] | - | 4 | reload_tactical: position; reload_empty: position |
 | wood_hg | front_part | [0.625, 7.62722, -1.23437] | - | 18 |  |
 | barrel | front_part | [0.625, 9.375, -0.5] | - | 0 |  |
 | barrels | barrel | [0, 5.84161, 0.16073] | - | 40 |  |
 | steel | barrel | [-0.27784, 8.10938, 0.20424] | - | 5 |  |
-| bullet_1 | front_part | [0.625, 9.125, 2.40625] | - | 8 | reload_tactical: position,rotation; reload_empty: position,rotation |
-| bullet_2 | front_part | [-0.625, 9.125, 2.40625] | - | 8 | reload_empty: position,rotation |
+| bullet_1 | front_part | [0.625, 9.125, 2.40625] | - | 8 | reload_tactical: position,rotation; reload_empty: position,rotation; reload_empty_easter: position,rotation |
+| bullet_2 | front_part | [-0.625, 9.125, 2.40625] | - | 8 | reload_empty: position,rotation; reload_empty_easter: position,rotation |
 | positioning2 | Db | [0, 7, 6.625] | - | 0 |  |
 | muzzle_flash | positioning2 | [0, 9.125, -15] | - | 0 |  |
-| leftHand | root | [-6, 19, 8] | - | 0 | static_idle: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; reload_tactical: position,rotation,scale; reload_empty: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale |
+| leftHand | root | [-6, 19, 8] | - | 0 | static_idle: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; reload_tactical: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_easter: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale |
 | lefthand_pos | leftHand | [0, 8, 8] | - | 1 |  |
 | camera | - | [3.38125, 12.15625, 11.525] | - | 0 | draw: rotation; put_away: rotation; reload_tactical: rotation; reload_empty: rotation; inspect: rotation; inspect_empty: rotation; shoot: rotation; shoot_burst: rotation |
 | positioning | - | [0, 0, -8] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 6.525, 7.65] | - | 0 |  |
 | ground | positioning | [0, -0.9, 0.65] | - | 0 |  |
-| fixed | positioning | [0, 9.1, 1.6] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [0, 6.6, 5.6] | [0, 90, 0] | 0 |  |
 | views | - | [0, 0, 0] | - | 0 |  |
 | refit_stock_view | views | [15, 6, 11] | [0, 90, 0] | 0 |  |
 | refit_view | views | [25, 9, 0] | [0, 89.9, 0] | 0 |  |
-| idle_view | views | [3.38125, 12.15625, 11.525] | - | 0 |  |
-| iron_view | views | [0, 10, 8] | - | 0 |  |
+| idle_view | views | [3.38125, 12.15625, 12.525] | - | 0 |  |
+| iron_view | views | [0, 10, 10] | - | 0 |  |
 | refit_extended_mag_view | views | [10.525, 13.275, 11.35] | [15, 60, 0] | 0 |  |
 
 ## tacz:deagle_display
@@ -820,10 +997,10 @@ Geometry: `geometry.deagle_50_cc`; **75 bones**.
 | positioning | - | [0, 0, -8] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 4.05, 5.325] | - | 0 |  |
 | ground | positioning | [0, -4.175, 2.975] | - | 0 |  |
-| fixed | positioning | [0.825, 5.875, 3.225] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [0.825, 4.125, 4.475] | [0, 90, 0] | 0 |  |
 | view | - | [0, 0, 0] | - | 0 |  |
-| iron_view | view | [0, 6.8125, 19.275] | - | 0 |  |
-| idle_view | view | [2, 8, 16.5] | - | 0 |  |
+| iron_view | view | [0, 6.8125, 19.0] | - | 0 |  |
+| idle_view | view | [2, 8, 18.5] | - | 0 |  |
 | refit_view | view | [15.475, 3.55, 3.2] | [0, 89.9, 0] | 0 |  |
 | refit_muzzle_view | view | [8.875, 5.475, -10] | [0, 120, 0] | 0 |  |
 | refit_scope_view | view | [6.35, 7.225, 6.2] | [0, 50, 0] | 0 |  |
@@ -911,10 +1088,10 @@ Geometry: `geometry.deagle_50_cc`; **77 bones**.
 | positioning | - | [0, 0, 0] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 4.05, 5.325] | - | 0 |  |
 | ground | positioning | [0, -4.175, 2.975] | - | 0 |  |
-| fixed | positioning | [0.825, 5.875, 3.225] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [0.825, 4.125, 4.4125] | [0, 90, 0] | 0 |  |
 | view | - | [0, 0, 0] | - | 0 |  |
-| iron_view | view | [0, 6.8125, 19.275] | - | 0 |  |
-| idle_view | view | [2, 8, 16.5] | - | 0 |  |
+| iron_view | view | [0, 6.8125, 19.0] | - | 0 |  |
+| idle_view | view | [2, 8, 18.5] | - | 0 |  |
 | refit_view | view | [15.475, 3.55, 3.2] | [0, 89.9, 0] | 0 |  |
 | refit_muzzle_view | view | [8.875, 5.475, -10] | [0, 120, 0] | 0 |  |
 | refit_scope_view | view | [6.35, 7.225, 6.2] | [0, 50, 0] | 0 |  |
@@ -1066,7 +1243,7 @@ Geometry: `geometry.fn_evolys`; **143 bones**.
 | righthand | gun_and_righthand | [6, 19, 0] | - | 0 | static_idle: position,rotation,scale; static_ammo_display: position,rotation,scale; static_bolt_caught: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_easter: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_easter: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale |
 | righthand_pos | righthand | [0, 8, 0] | - | 1 |  |
 | views | - | [2, 12, 12] | - | 0 |  |
-| idle_view | views | [3.5, 14.5, 17.5] | [0, 0, -5] | 0 |  |
+| idle_view | views | [3.5, 14.5, 18.5] | [0, 0, -5] | 0 |  |
 | iron_view | views | [0, 14.25, 16.5] | - | 0 |  |
 | refit_view | views | [30, 9, 0] | [0, 89.9, 0] | 0 |  |
 | refit_muzzle_view | views | [16, 9, -30] | [0, 120, 0] | 0 |  |
@@ -1075,7 +1252,7 @@ Geometry: `geometry.fn_evolys`; **143 bones**.
 | refit_scope_view | views | [10, 14, 11] | [0, 50, 0] | 0 |  |
 | refit_extended_mag_view | views | [16, 12, -6] | [-180, 67.5, 157.5] | 0 |  |
 | positioning | - | [0, 0, 0] | - | 0 |  |
-| fixed | positioning | [2, 10, 2] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [2, 6.9375, 5.1875] | [0, 90, 0] | 0 |  |
 | ground | positioning | [0, -4, 0] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 7, 7] | - | 0 |  |
 | camera | - | [3.5, 14.5, 15.925] | - | 0 | static_idle: position; crawl_start: rotation; crawl_end: rotation; crawl_bipod: rotation; crawl_bipod_end: rotation; crawl_handdown: rotation; static_ammo_display: position; static_bolt_caught: position; inspect: position,rotation; inspect_empty: position,rotation; shoot: rotation; reload_tactical: position,rotation; reload_tactical_easter: position,rotation; reload_empty: position,rotation; reload_empty_easter: position,rotation; draw: position,rotation; put_away: rotation |
@@ -1090,7 +1267,7 @@ Animation: `assets/tacz/animations/fn_fal.animation.json`
 
 LOD reference: `{'model': 'tacz:gun/lod/fn_fal', 'texture': 'tacz:gun/lod/fn_fal'}`
 
-Geometry: `geometry.unknown`; **92 bones**.
+Geometry: `geometry.unknown`; **93 bones**.
 
 | Bone | Parent | Pivot (native pixels) | Rotation | Cubes | Authored animation channels |
 | --- | --- | --- | --- | --- | --- |
@@ -1111,8 +1288,9 @@ Geometry: `geometry.unknown`; **92 bones**.
 | mag_release | mag_well | [-0.5, 6.97658, 3.375] | - | 3 | reload_empty: rotation; reload_tactical_xmag: rotation; reload_tactical: rotation; reload_empty_xmag: rotation; inspect: rotation; inspect_empty: rotation |
 | trigger | lower | [0, 0, 0] | - | 15 |  |
 | upper_cap | default_gun | [0, 0.5, 0] | - | 12 |  |
-| barrel | default_gun | [0, 10.0625, -14] | - | 48 |  |
-| rearsight | default_gun | [8, 8.62207, 11.83746] | - | 16 |  |
+| barrel | default_gun | [0, 10.0625, -14] | - | 47 |  |
+| rearsight | default_gun | [8, 8.62207, 11.83746] | - | 14 |  |
+| sight_illuminated | rearsight | [0, 11.0625, -15.625] | - | 3 |  |
 | pins | default_gun | [0, 8, 0] | - | 16 |  |
 | belt | default_gun | [0, 7.24616, -17.54233] | - | 24 |  |
 | safety | default_gun | [0.77841, 7.5096, 6.93703] | - | 10 | static_semi: rotation; static_auto: rotation; switch_semi: rotation; switch_auto: rotation |
@@ -1157,7 +1335,7 @@ Geometry: `geometry.unknown`; **92 bones**.
 | additional_magazine | fal | [0, 5, 1] | - | 0 | reload_empty: scale; reload_tactical_xmag: position,rotation,scale; reload_tactical: position,rotation,scale; reload_empty_xmag: scale; inspect: scale; inspect_empty: scale |
 | mag_and_lefthand | root | [0, 5, 1] | - | 0 | reload_empty: position,rotation; reload_tactical_xmag: position,rotation; reload_tactical: position,rotation; reload_empty_xmag: position,rotation; inspect: position,rotation; inspect_empty: position,rotation |
 | magazine_bullet | mag_and_lefthand | [0, 5, 1] | - | 0 | reload_empty: position,rotation,scale; reload_empty_xmag: position,rotation,scale; inspect: position,rotation; inspect_empty: position,rotation |
-| bullet | magazine_bullet | [0, 8.48168, 0.75] | [90, 0, 0] | 12 | reload_empty: scale; reload_tactical_xmag: scale; reload_tactical: scale; reload_empty_xmag: scale; inspect: scale; inspect_empty: scale |
+| bullet | magazine_bullet | [0, 8.48168, 0.75] | [90, 0, 0] | 12 | reload_empty: scale; reload_tactical_xmag: scale; static_bolt_caught: scale; reload_tactical: scale; reload_empty_xmag: scale; inspect: scale; inspect_empty: scale |
 | magazine | magazine_bullet | [0, 5, 1] | - | 0 | reload_tactical_xmag: position,scale; reload_tactical: position,scale |
 | bullet_in_mag | magazine | [0, 8.48168, 0.75] | [90, 0, 0] | 12 | reload_empty: scale; reload_empty_xmag: scale |
 | mag_standard | magazine | [0, 1.5962, 2.61082] | - | 0 |  |
@@ -1172,19 +1350,19 @@ Geometry: `geometry.unknown`; **92 bones**.
 | lefthand_pos | lefthand | [0, 8, 0] | - | 1 | put_away: position |
 | constraint | root | [0, 11.125, 0.25] | - | 0 | reload_empty: position,rotation; reload_tactical_xmag: position,rotation; static_idle: position,rotation; reload_tactical: position,rotation; reload_empty_xmag: position,rotation; shoot: position,rotation |
 | view | - | [0, 0, 0] | - | 0 |  |
-| iron_view | view | [0, 11.125, 15.5] | - | 0 |  |
-| idle_view | view | [3.125, 11.875, 17.0625] | - | 0 |  |
-| refit_view | view | [23, 9, 0] | [0, 89.9, 0] | 0 |  |
-| refit_extended_mag_view | view | [12, 0, 1] | [0, 90, 30] | 0 |  |
-| refit_muzzle_view | view | [12, 10.25, -28] | [0, 120, 0] | 0 |  |
-| refit_scope_view | view | [8, 12.5, 10.3] | [0, 70, 0] | 0 |  |
-| refit_laser_view | view | [12, 13.75, -23] | [15, 135, 0] | 0 |  |
-| refit_grip_view | view | [9.375, 6.375, -8.3125] | [0, 90, 0] | 0 |  |
-| refit_stock_view | view | [16, 10.25, 12] | [0, 90, 0] | 0 |  |
+| iron_view | view | [0, 11.125, 16] | - | 0 |  |
+| idle_view | view | [3.125, 11.875, 18.0625] | - | 0 |  |
+| refit_view | view | [32, 9, 0] | [0, 89.9, 0] | 0 |  |
+| refit_extended_mag_view | view | [24, 0, 1] | [0, 90, 15] | 0 |  |
+| refit_muzzle_view | view | [24, 10.25, -32] | [0, 120, 0] | 0 |  |
+| refit_scope_view | view | [24, 12.5, 10.3] | [0, 70, 0] | 0 |  |
+| refit_laser_view | view | [20, 13.75, -28] | [15, 135, 0] | 0 |  |
+| refit_grip_view | view | [24, 6.375, -8.3125] | [0, 90, 0] | 0 |  |
+| refit_stock_view | view | [24, 10.25, 12] | [0, 90, 0] | 0 |  |
 | positioning | - | [0, 0, 0] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 6.8875, 6.75] | - | 0 |  |
 | ground | positioning | [0, -5, 0] | - | 0 |  |
-| fixed | positioning | [1, 8.75, -1] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [1, 6.82813, 5.625] | [0, 90, 0] | 0 |  |
 | camera | - | [3.125, 11.875, 17.0625] | - | 0 | reload_empty: rotation; reload_tactical_xmag: rotation; switch_semi: rotation; switch_auto: rotation; reload_tactical: rotation; reload_empty_xmag: rotation; inspect: rotation; inspect_empty: rotation; shoot: rotation; draw: rotation; put_away: rotation |
 
 ## tacz:g36k_display
@@ -1204,7 +1382,7 @@ Geometry: `geometry.aug (1)`; **91 bones**.
 | root | - | [0, 6.2, 3] | - | 0 | switch_auto: position,rotation; switch_semi: position,rotation; shoot: position,rotation; draw: position,rotation; put_away: position,rotation; reload_tactical: position,rotation; reload_tactical_xmag_1: position,rotation; reload_tactical_xmag_2: position,rotation; reload_tactical_xmag_3: position,rotation; reload_empty: position,rotation; reload_empty_xmag_1: position,rotation; reload_empty_xmag_2: position,rotation; reload_empty_xmag_3: position,rotation; inspect: position,rotation; inspect_xmag_1: position,rotation; inspect_xmag_2: position,rotation; inspect_xmag_3: position,rotation; inspect_empty: position,rotation; inspect_empty_xmag_1: position,rotation; inspect_empty_xmag_2: position,rotation; inspect_empty_xmag_3: position,rotation |
 | mag_and_lefthand | root | [0, 5, -1] | - | 0 | reload_tactical: position,rotation; reload_tactical_xmag_1: position,rotation; reload_tactical_xmag_2: position,rotation; reload_tactical_xmag_3: position,rotation; reload_empty: position,rotation; reload_empty_xmag_1: position,rotation; reload_empty_xmag_2: position,rotation; reload_empty_xmag_3: position,rotation; inspect: position,rotation; inspect_xmag_1: position,rotation; inspect_xmag_2: position,rotation; inspect_xmag_3: position,rotation; inspect_empty: position,rotation; inspect_empty_xmag_1: position,rotation; inspect_empty_xmag_2: position,rotation; inspect_empty_xmag_3: position,rotation |
 | mag_and_bullet | mag_and_lefthand | [-0.5, -16.625, 0.0625] | - | 0 | reload_tactical: scale; reload_tactical_xmag_1: scale; reload_tactical_xmag_3: scale; reload_empty: scale; reload_empty_xmag_1: position,scale; reload_empty_xmag_2: scale; reload_empty_xmag_3: scale; inspect_empty: scale; inspect_empty_xmag_1: scale; inspect_empty_xmag_2: scale; inspect_empty_xmag_3: scale |
-| bullet | mag_and_bullet | [0, 7.625, 0] | [90, 0, -45] | 14 | reload_tactical: scale; reload_tactical_xmag_1: scale; reload_tactical_xmag_2: scale; reload_tactical_xmag_3: scale; reload_empty: scale; reload_empty_xmag_1: scale; reload_empty_xmag_2: scale; reload_empty_xmag_3: scale; inspect: scale; inspect_xmag_1: scale; inspect_xmag_2: scale; inspect_xmag_3: scale; inspect_empty: scale; inspect_empty_xmag_1: scale; inspect_empty_xmag_2: scale; inspect_empty_xmag_3: scale |
+| bullet | mag_and_bullet | [0, 7.625, 0] | [90, 0, -45] | 14 | static_bolt_caught: scale; reload_tactical: scale; reload_tactical_xmag_1: scale; reload_tactical_xmag_2: scale; reload_tactical_xmag_3: scale; reload_empty: scale; reload_empty_xmag_1: scale; reload_empty_xmag_2: scale; reload_empty_xmag_3: scale; inspect: scale; inspect_xmag_1: scale; inspect_xmag_2: scale; inspect_xmag_3: scale; inspect_empty: scale; inspect_empty_xmag_1: scale; inspect_empty_xmag_2: scale; inspect_empty_xmag_3: scale |
 | magazine | mag_and_bullet | [0, 5, -1] | - | 0 |  |
 | mag_standard | magazine | [-0.5, -16.6875, 0.25] | - | 49 |  |
 | mag_extended_1 | magazine | [0, 5.22326, -1.60627] | - | 48 |  |
@@ -1281,10 +1459,10 @@ Geometry: `geometry.aug (1)`; **91 bones**.
 | positioning | - | [0, 0, -8] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 5.75, 3.1] | - | 0 |  |
 | ground | positioning | [0, -3, 0] | - | 0 |  |
-| fixed | positioning | [0, 8.1, -1] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [0, 5.75625, 2.25] | [0, 90, 0] | 0 |  |
 | view | - | [0, 0, 0] | - | 0 |  |
-| iron_view | view | [0, 11.8125, 9.75] | - | 0 |  |
-| idle_view | view | [3, 12.5, 12] | - | 0 |  |
+| iron_view | view | [0, 11.8125, 11] | - | 0 |  |
+| idle_view | view | [3, 12.5, 13] | - | 0 |  |
 | refit_view | view | [24, 8, 0] | [0, 89.9, 0] | 0 |  |
 | refit_muzzle_view | view | [16, 9, -34] | [0, 120, 0] | 0 |  |
 | refit_stock_view | view | [20, 8, 14] | [0, 90, 0] | 0 |  |
@@ -1348,22 +1526,152 @@ Geometry: `geometry.glock_17 - Converted`; **57 bones**.
 | sight_illuminated | slide | [0.85625, 12, 8.688] | - | 4 |  |
 | scope_pos | slide | [0, 5.8, 3.225] | - | 0 |  |
 | latter | slide | [-0.01875, 8, 0] | - | 3 |  |
-| constraint | g17 | [0, 6.025, -6.825] | - | 0 | static_idle: position,rotation; reload_tactical: position,rotation; reload_tactical_xmag: position,rotation; reload_empty: position,rotation; reload_empty_xmag: position,rotation; shoot: position,rotation |
+| constraint | g17 | [0, 6.275, 0.175] | - | 0 | static_idle: position,rotation; reload_tactical: position,rotation; reload_tactical_xmag: position,rotation; reload_empty: position,rotation; reload_empty_xmag: position,rotation; shoot: position,rotation |
 | shell | g17 | [-0.01875, 5.375, 1.35] | [0, 15, 0] | 0 |  |
 | laser_pos | g17 | [0, 4.0625, -3.8125] | [0, 0, -180] | 0 |  |
 | camera | - | [0.85, 9, 14] | - | 0 | static_idle: rotation; draw: rotation; put_away: rotation; reload_tactical: rotation; reload_tactical_xmag: rotation; reload_empty: rotation; reload_empty_xmag: rotation; inspect: rotation; inspect_empty: rotation; shoot: rotation |
-| iron_view | - | [0, 6, 14.75] | - | 0 |  |
-| idle_view | - | [0.85, 9, 14] | - | 0 |  |
+| iron_view | - | [0, 6, 15.5] | - | 0 |  |
+| idle_view | - | [0.875, 8.5, 15] | [0, 0, -5] | 0 |  |
 | positioning | - | [0, 0, 0] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 4.225, -0.35] | - | 0 |  |
 | ground | positioning | [0, -1.9, -0.35] | - | 0 |  |
-| fixed | positioning | [0.7, 3.6, -0.175] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [0.7, 4.02187, -0.6125] | [0, 90, 0] | 0 |  |
 | refit | - | [0, 0, 0] | - | 0 |  |
-| refit_view | refit | [13, 5, 0] | [0, 89.9, 0] | 0 |  |
-| refit_extended_mag_view | refit | [7, 1, 0] | [0, 112.5, 0] | 0 |  |
-| refit_scope_view | refit | [5, 7, 6] | [0, 47.5, 0] | 0 |  |
-| refit_muzzle_view | refit | [7, 5.35, -12] | [0, 120, 0] | 0 |  |
-| refit_laser_view | refit | [8, 3.375, -10] | [0, 120, 0] | 0 |  |
+| refit_view | refit | [16, 3, 0] | [0, 89.9, 0] | 0 |  |
+| refit_extended_mag_view | refit | [16, 1, -3] | [0, 112.5, 0] | 0 |  |
+| refit_scope_view | refit | [12, 7, 8] | [0, 47.5, 0] | 0 |  |
+| refit_muzzle_view | refit | [16, 5.35, -18] | [0, 120, 0] | 0 |  |
+| refit_laser_view | refit | [12, 3.375, -10] | [0, 120, 0] | 0 |  |
+
+## tacz:hcar_display
+
+Display: `assets/tacz/display/guns/hcar_display.json`
+
+Model: `assets/tacz/geo_models/gun/hcar_geo.json`
+
+Animation: `assets/tacz/animations/hcar.animation.json`
+
+LOD reference: `{'model': 'tacz:gun/lod/hcar', 'texture': 'tacz:gun/lod/hcar'}`
+
+Geometry: `geometry.hcar`; **115 bones**.
+
+| Bone | Parent | Pivot (native pixels) | Rotation | Cubes | Authored animation channels |
+| --- | --- | --- | --- | --- | --- |
+| root | - | [0, 9, 6] | - | 0 | static_idle: position,rotation; crawl_start: position,rotation; crawl_end: position,rotation; crawl_bipod: position,rotation; crawl_bipod_end: position,rotation; crawl_handdown: position,rotation; crawl_handup: position,rotation; reload_tactical: position,rotation; reload_tactical_xmag_1: position,rotation; reload_tactical_xmag_2: position,rotation; reload_tactical_xmag_3: position,rotation; reload_empty: position,rotation; reload_empty_xmag_1: position,rotation; reload_empty_xmag_2: position,rotation; reload_empty_xmag_3: position,rotation; inspect: position,rotation; inspect_xmag_3: position,rotation; inspect_empty: position,rotation; inspect_empty_xmag_3: position,rotation; shoot: position,rotation; draw: position,rotation; put_away: position,rotation; switch_auto: position,rotation; switch_burst: position,rotation |
+| gun_and_righthand | root | [0, -1, 0] | - | 0 |  |
+| default_gun | gun_and_righthand | [0, 7, 0] | - | 0 |  |
+| constraint | default_gun | [0, 13.5, 0] | - | 0 | static_idle: position,rotation; crawl: position,rotation; reload_tactical: position,rotation; reload_tactical_xmag_1: position,rotation; reload_tactical_xmag_2: position,rotation; reload_tactical_xmag_3: position,rotation; reload_empty: position,rotation; reload_empty_xmag_1: position,rotation; reload_empty_xmag_2: position,rotation; reload_empty_xmag_3: position,rotation; shoot: position,rotation |
+| gas_lock | default_gun | [0, 9.75, -25.90625] | - | 26 |  |
+| attachment_adapter | default_gun | [0, 9.4375, 15.25] | - | 0 |  |
+| 1ar_stock_adapter | default_gun | [0, 9.6875, 14] | - | 11 |  |
+| base | default_gun | [0, 7, 0] | - | 0 |  |
+| trigger | base | [0, 6.79256, 6.79849] | - | 3 |  |
+| grip | base | [0, 3.64861, 10.95882] | - | 26 |  |
+| frame | base | [1, -1, -8] | - | 222 |  |
+| pins | frame | [0, 7, 0] | - | 2 |  |
+| octagon6 | pins | [-0.48438, 8.6875, 3.3125] | - | 4 |  |
+| octagon7 | pins | [0, 8.6875, -2.375] | - | 4 |  |
+| octagon8 | pins | [-0.48438, 8.625, 9.0625] | - | 4 |  |
+| body | base | [0, 11.21967, 4.60355] | - | 11 |  |
+| lower | base | [-0.875, 6.875, 2.5625] | - | 32 |  |
+| handguard | base | [0.39625, 9.39645, -2.09489] | - | 54 |  |
+| front | base | [-1, -0.25, -9.125] | - | 87 |  |
+| barrel | base | [0, 9.75, -24.75] | - | 29 |  |
+| rails | base | [0, 7, 0] | - | 0 |  |
+| top_rail | rails | [0, 7, 0] | - | 99 |  |
+| frontrail | rails | [0, 7, 0] | - | 0 |  |
+| group9 | frontrail | [0.41919, 8.44508, -9.625] | - | 16 |  |
+| group6 | frontrail | [-0.41919, 8.44508, -9.625] | - | 16 |  |
+| group11 | frontrail | [0.41919, 8.44508, -9.625] | - | 16 |  |
+| bipod | base | [0, 7.125, 0] | - | 0 |  |
+| basepod | bipod | [-0.4375, 7.5, -12.4375] | - | 29 |  |
+| L | bipod | [2.64952, 7, -11.375] | [5, 0, -30] | 25 | crawl_start: rotation; crawl: rotation; crawl_end: rotation; crawl_bipod: rotation; crawl_bipod_end: rotation; crawl_handdown: rotation; crawl_handup: rotation; shoot: rotation |
+| group26 | L | [1.68743, 6.88442, -11.375] | - | 0 |  |
+| R | bipod | [-2.64952, 7, -11.375] | [5, 0, 30] | 25 | crawl_start: rotation; crawl: rotation; crawl_end: rotation; crawl_bipod: rotation; crawl_bipod_end: rotation; crawl_handdown: rotation; crawl_handup: rotation; shoot: rotation |
+| group23 | R | [-1.68743, 6.88442, -11.375] | - | 0 |  |
+| sight_base | base | [-0.00101, 12.67952, 13.11817] | - | 0 |  |
+| fore_base | sight_base | [-0.00521, 13.06822, -11.57624] | - | 8 |  |
+| sight | base | [0, 7, 0] | - | 0 |  |
+| fore | sight | [0, 12.1875, -8.875] | - | 0 |  |
+| group13 | fore | [0, 10.5, -14.90625] | - | 7 |  |
+| fore_sight_illuminated | group13 | [0, 12.93641, -10.78125] | - | 1 |  |
+| rear | sight | [0, 12.1875, -8.875] | - | 0 |  |
+| group2 | rear | [-0.0625, 12.99891, 8.09375] | - | 22 |  |
+| rear_base | rear | [0, 0, 0] | - | 8 |  |
+| sight_folded | base | [0, 7, 0] | - | 0 |  |
+| fore2 | sight_folded | [0, 12.94477, -10.78125] | [-90, 0, 0] | 8 |  |
+| holes | base | [0, 11.125, -16.16667] | - | 0 |  |
+| group16 | holes | [0, 11.125, -13.66667] | - | 0 |  |
+| hole22 | group16 | [0, 11.125, -13.875] | [0, 0, 45] | 4 |  |
+| hole23 | group16 | [0, 11.125, -13.875] | [0, 0, -45] | 4 |  |
+| hole24 | group16 | [0, 11.125, -13.25] | - | 4 |  |
+| group15 | holes | [0, 11.125, -18.66667] | - | 0 |  |
+| hole18 | group15 | [0, 11.125, -18.875] | [0, 0, 45] | 4 |  |
+| hole19 | group15 | [0, 11.125, -18.875] | [0, 0, -45] | 4 |  |
+| hole20 | group15 | [0, 11.125, -18.25] | - | 4 |  |
+| hole5 | group15 | [0, 11.125, -19.25] | - | 4 |  |
+| group14 | holes | [0, 11.125, -17.66667] | - | 0 |  |
+| hole14 | group14 | [0, 11.125, -17.875] | [0, 0, 45] | 4 |  |
+| hole15 | group14 | [0, 11.125, -17.875] | [0, 0, -45] | 4 |  |
+| hole16 | group14 | [0, 11.125, -17.25] | - | 4 |  |
+| group12 | holes | [0, 11.125, -16.66667] | - | 0 |  |
+| hole10 | group12 | [0, 11.125, -16.875] | [0, 0, 45] | 4 |  |
+| hole11 | group12 | [0, 11.125, -16.875] | [0, 0, -45] | 4 |  |
+| hole12 | group12 | [0, 11.125, -16.25] | - | 4 |  |
+| group4 | holes | [0, 11.125, -15.66667] | - | 0 |  |
+| hole6 | group4 | [0, 11.125, -15.875] | [0, 0, 45] | 4 |  |
+| hole7 | group4 | [0, 11.125, -15.875] | [0, 0, -45] | 4 |  |
+| hole8 | group4 | [0, 11.125, -15.25] | - | 4 |  |
+| group3 | holes | [0, 11.125, -14.66667] | - | 0 |  |
+| hole4 | group3 | [0, 11.125, -14.875] | [0, 0, 45] | 4 |  |
+| hole3 | group3 | [0, 11.125, -14.875] | [0, 0, -45] | 4 |  |
+| hole2 | group3 | [0, 11.125, -14.25] | - | 4 |  |
+| safety | default_gun | [0.34444, 8.18125, 7.38807] | - | 5 | static_auto: rotation; static_burst: rotation; switch_auto: rotation; switch_burst: rotation |
+| bolt | default_gun | [0, 7, 0] | - | 17 | reload_empty: position; reload_empty_xmag_1: position; reload_empty_xmag_2: position; reload_empty_xmag_3: position; inspect: position; inspect_xmag_3: position; shoot: position; static_bolt_caught: position |
+| bullet_in_barrel | bolt | [0, 10.12231, -4.15625] | [90, 0, 0] | 12 |  |
+| pulls | default_gun | [1.17613, 9.8125, 2.92835] | - | 0 | reload_empty: position; reload_empty_xmag_1: position; reload_empty_xmag_2: position; reload_empty_xmag_3: position; inspect: position; inspect_xmag_3: position |
+| rot | pulls | [1.17613, 9.8125, 2.92835] | - | 8 | reload_empty: rotation; reload_empty_xmag_1: rotation; reload_empty_xmag_2: rotation; reload_empty_xmag_3: rotation; shoot: rotation |
+| slide | pulls | [1.03975, 9.8125, 3.48169] | - | 8 |  |
+| muzzle_default | default_gun | [0, 11.125, -27.4375] | - | 38 |  |
+| octagon15 | muzzle_default | [0, 11.125, -27.8125] | - | 4 |  |
+| mag_release | default_gun | [0, 7.19378, 3.38081] | - | 3 | reload_tactical: rotation; reload_tactical_xmag_1: rotation; reload_tactical_xmag_2: rotation; reload_tactical_xmag_3: rotation; reload_empty: rotation; reload_empty_xmag_1: rotation; reload_empty_xmag_2: rotation; reload_empty_xmag_3: rotation; inspect: rotation; inspect_xmag_3: rotation; inspect_empty: rotation; inspect_empty_xmag_3: rotation |
+| positioning2 | default_gun | [0, 7, 13] | - | 0 |  |
+| muzzle_flash | positioning2 | [0, 11.125, -24.5] | - | 0 |  |
+| muzzle_pos | positioning2 | [0, 11.125, -23.0625] | - | 0 |  |
+| shell | positioning2 | [-0.5, 11.25, 0.75] | - | 0 |  |
+| scope_pos | positioning2 | [0, 12.6875, 7.24375] | - | 0 |  |
+| stock_pos | positioning2 | [0, 9.75, 16.25] | - | 0 |  |
+| laser_pos | positioning2 | [1.3125, 9.9375, -11.25] | [0, 0, 90] | 0 |  |
+| righthand | gun_and_righthand | [6, 19, 0] | - | 0 | static_idle: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_xmag_1: position,rotation,scale; reload_tactical_xmag_2: position,rotation,scale; reload_tactical_xmag_3: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag_1: position,rotation,scale; reload_empty_xmag_2: position,rotation,scale; reload_empty_xmag_3: position,rotation,scale; inspect: position,rotation,scale; inspect_xmag_3: position,rotation,scale; inspect_empty: position,rotation,scale; inspect_empty_xmag_3: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; switch_auto: position,rotation,scale; switch_burst: position,rotation,scale |
+| righthand_pos | righthand | [0, 8, 0] | - | 1 |  |
+| mag_and_lefthand | root | [0, 6, 0] | - | 0 | reload_tactical: position,rotation; reload_tactical_xmag_1: position,rotation; reload_tactical_xmag_2: position,rotation; reload_tactical_xmag_3: position,rotation; reload_empty: position,rotation; reload_empty_xmag_1: position,rotation; reload_empty_xmag_2: position,rotation; reload_empty_xmag_3: position,rotation; inspect: position,rotation; inspect_xmag_3: position,rotation; inspect_empty: position,rotation; inspect_empty_xmag_3: position,rotation |
+| lefthand | mag_and_lefthand | [-6, 19, 0] | - | 0 | static_idle: position,rotation,scale; crawl_start: position,rotation; crawl: position,rotation; crawl_end: position,rotation; crawl_handdown: position,rotation; crawl_handup: position,rotation; reload_tactical: position,rotation,scale; reload_tactical_xmag_1: position,rotation,scale; reload_tactical_xmag_2: position,rotation,scale; reload_tactical_xmag_3: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag_1: position,rotation,scale; reload_empty_xmag_2: position,rotation,scale; reload_empty_xmag_3: position,rotation,scale; inspect: position,rotation,scale; inspect_xmag_3: position,rotation,scale; inspect_empty: position,rotation,scale; inspect_empty_xmag_3: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; switch_auto: position,rotation,scale; switch_burst: position,rotation,scale |
+| lefthand_pos | lefthand | [0, 8, 0] | - | 1 |  |
+| mag_and_bullet | mag_and_lefthand | [0, 6, 0] | - | 0 |  |
+| bullet | mag_and_bullet | [0, 8.23168, 0.5] | [90, 0, 0] | 12 | reload_tactical: scale; reload_empty: scale; reload_empty_xmag_1: scale; reload_empty_xmag_2: scale; reload_empty_xmag_3: scale; inspect: scale; inspect_xmag_3: scale; inspect_empty: scale; inspect_empty_xmag_3: scale; static_bolt_caught: scale |
+| magazine | mag_and_bullet | [0, 9, 0] | - | 0 | reload_empty: position,rotation,scale; reload_empty_xmag_1: position,rotation,scale; reload_empty_xmag_2: position,rotation,scale |
+| bullet_in_mag | magazine | [0, 8.23168, 0.5] | [90, 0, 0] | 12 |  |
+| mag_standard | magazine | [0, 7, 0] | - | 0 |  |
+| mag | mag_standard | [0, 1.53805, 1.25254] | - | 11 |  |
+| mag_extended_1 | magazine | [-2, 7, 0] | - | 0 |  |
+| mag2 | mag_extended_1 | [0, 0.03805, 1.25254] | - | 16 |  |
+| mag_extended_2 | magazine | [-9, 7, 0] | - | 0 |  |
+| extd_mag2 | mag_extended_2 | [-3, 1.53805, 1.25254] | - | 17 |  |
+| mag_extended_3 | magazine | [0, 1.53805, 1.25254] | - | 92 |  |
+| positioning | - | [0, 0, -8] | - | 0 |  |
+| thirdperson_hand | positioning | [0, 8, 8] | - | 0 |  |
+| ground | positioning | [0, -2, 0] | - | 0 |  |
+| fixed | positioning | [1.125, 7.86563, 6.1625] | [0, 90, 0] | 0 |  |
+| view | - | [0, 2, 0] | - | 0 |  |
+| iron_view | view | [0, 13.84375, 14.5] | - | 0 |  |
+| idle_view | view | [3.2553, 14.3971, 16.3732] | - | 0 |  |
+| refit_view | view | [30, 10, -4] | [0, 89, 0] | 0 |  |
+| refit_muzzle_view | view | [20, 11, -40] | [0, 120, 0] | 0 |  |
+| refit_stock_view | view | [15, 9, 21.6] | [0, 90, 0] | 0 |  |
+| refit_scope_view | view | [10, 14.5, 13.3] | [0, 50, 0] | 0 |  |
+| refit_extended_mag_view | view | [14, 0, -5] | [-180, 72.5, -170] | 0 |  |
+| refit_laser_view | view | [12, 14, -24] | [15, 135, 0] | 0 |  |
+| camera | - | [3.25528, 14.39714, 15.3732] | - | 0 | crawl_start: rotation; crawl_end: rotation; crawl_bipod: rotation; crawl_bipod_end: rotation; crawl_handdown: rotation; reload_tactical: rotation; reload_tactical_xmag_1: rotation; reload_tactical_xmag_2: rotation; reload_tactical_xmag_3: rotation; reload_empty: rotation; reload_empty_xmag_1: rotation; reload_empty_xmag_2: rotation; reload_empty_xmag_3: rotation; inspect: rotation; inspect_xmag_3: rotation; inspect_empty: rotation; inspect_empty_xmag_3: rotation; shoot: rotation; draw: rotation; put_away: rotation; switch_auto: rotation; switch_burst: rotation |
 
 ## tacz:hk416d_display
 
@@ -1379,12 +1687,12 @@ Geometry: `geometry.unknown`; **86 bones**.
 
 | Bone | Parent | Pivot (native pixels) | Rotation | Cubes | Authored animation channels |
 | --- | --- | --- | --- | --- | --- |
-| root | - | [0, 7, 6.575] | - | 0 | switch_auto: position,rotation; reload_tactical: position,rotation; reload_tactical_xmag_1: position,rotation; reload_tactical_xmag_2: position,rotation; reload_tactical_xmag_3: position,rotation; reload_empty: position,rotation; reload_empty_xmag_1: position,rotation; reload_empty_xmag_2: position,rotation; reload_empty_xmag_3: position,rotation; inspect: position,rotation; inspect_xmag_12: position,rotation; inspect_xmag_3: position,rotation; inspect_empty: position,rotation; inspect_empty_xmag_3: position,rotation; shoot: position,rotation; draw: position,rotation; put_away: position,rotation |
+| root | - | [0, 7, 6.575] | - | 0 | switch_auto: position,rotation; switch_semi: position,rotation; reload_tactical: position,rotation; reload_tactical_xmag_1: position,rotation; reload_tactical_xmag_2: position,rotation; reload_tactical_xmag_3: position,rotation; reload_empty: position,rotation; reload_empty_xmag_1: position,rotation; reload_empty_xmag_2: position,rotation; reload_empty_xmag_3: position,rotation; inspect: position,rotation; inspect_xmag_12: position,rotation; inspect_xmag_3: position,rotation; inspect_empty: position,rotation; inspect_empty_xmag_3: position,rotation; shoot: position,rotation; draw: position,rotation; put_away: position,rotation |
 | magazine_and_hand | root | [0, 5, 1] | - | 0 | reload_tactical: position,rotation; reload_tactical_xmag_1: position,rotation; reload_tactical_xmag_2: position,rotation; reload_tactical_xmag_3: position,rotation; reload_empty: position,rotation; reload_empty_xmag_1: position,rotation; reload_empty_xmag_2: position,rotation; reload_empty_xmag_3: position,rotation; inspect: position,rotation; inspect_xmag_12: position,rotation; inspect_xmag_3: rotation; inspect_empty: position,rotation; inspect_empty_xmag_3: position,rotation |
-| lefthand | magazine_and_hand | [-6, 19, 0] | - | 0 | static_idle: position,rotation,scale; switch_auto: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_xmag_1: position,rotation,scale; reload_tactical_xmag_2: position,rotation,scale; reload_tactical_xmag_3: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag_1: position,rotation,scale; reload_empty_xmag_2: position,rotation,scale; reload_empty_xmag_3: position,rotation,scale; inspect: position,rotation,scale; inspect_xmag_12: position,rotation,scale; inspect_xmag_3: position,rotation,scale; inspect_empty: position,rotation,scale; inspect_empty_xmag_3: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale |
+| lefthand | magazine_and_hand | [-6, 19, 0] | - | 0 | static_idle: position,rotation,scale; switch_auto: position,rotation,scale; switch_semi: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_xmag_1: position,rotation,scale; reload_tactical_xmag_2: position,rotation,scale; reload_tactical_xmag_3: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag_1: position,rotation,scale; reload_empty_xmag_2: position,rotation,scale; reload_empty_xmag_3: position,rotation,scale; inspect: position,rotation,scale; inspect_xmag_12: position,rotation,scale; inspect_xmag_3: position,rotation,scale; inspect_empty: position,rotation,scale; inspect_empty_xmag_3: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale |
 | lefthand_pos | lefthand | [0, 8, 0] | - | 1 |  |
 | magazine_bullet | magazine_and_hand | [0, 5, 2] | - | 0 | reload_tactical: scale; reload_tactical_xmag_1: scale; reload_tactical_xmag_2: scale; reload_empty: scale; reload_empty_xmag_1: scale; reload_empty_xmag_2: scale; reload_empty_xmag_3: position,rotation,scale; inspect_empty: scale; inspect_empty_xmag_3: scale |
-| bullet | magazine_bullet | [4, 8.975, -6] | - | 0 | reload_tactical: scale; reload_tactical_xmag_1: scale; reload_tactical_xmag_2: scale; reload_tactical_xmag_3: scale; reload_empty: scale; reload_empty_xmag_1: scale; reload_empty_xmag_2: scale; inspect: scale; inspect_xmag_12: scale; inspect_empty: scale; inspect_empty_xmag_3: scale |
+| bullet | magazine_bullet | [4, 8.975, -6] | - | 0 | static_bolt_caught: scale; reload_tactical: scale; reload_tactical_xmag_1: scale; reload_tactical_xmag_2: scale; reload_tactical_xmag_3: scale; reload_empty: scale; reload_empty_xmag_1: scale; reload_empty_xmag_2: scale; reload_empty_xmag_3: scale; inspect: scale; inspect_xmag_12: scale; inspect_empty: scale; inspect_empty_xmag_3: scale |
 | group3 | bullet | [-4, 8.16427, -4.375] | - | 12 |  |
 | magazine | magazine_bullet | [0, 5, 2] | - | 0 |  |
 | bullet_in_mag | magazine | [3, 8.975, -6] | - | 0 |  |
@@ -1397,7 +1705,7 @@ Geometry: `geometry.unknown`; **86 bones**.
 | mag4 | mag_extended_3 | [0, 17.875, -8.1875] | - | 100 |  |
 | gun_and_righthand | root | [0, 7, -1.425] | - | 0 |  |
 | hk416a5 | gun_and_righthand | [0, 7, -1.425] | - | 0 |  |
-| constraint | hk416a5 | [0, 13.025, -6.6] | - | 0 | static_idle: position,rotation; switch_auto: position,rotation; reload_tactical: position,rotation; reload_tactical_xmag_1: position,rotation; reload_tactical_xmag_2: position,rotation; reload_tactical_xmag_3: position,rotation; reload_empty: position,rotation; reload_empty_xmag_1: position,rotation; reload_empty_xmag_2: position,rotation; reload_empty_xmag_3: position,rotation; inspect_xmag_3: position,rotation; shoot: position,rotation |
+| constraint | hk416a5 | [0, 13.025, -6.6] | - | 0 | static_idle: position,rotation; switch_auto: position,rotation; switch_semi: position,rotation; reload_tactical: position,rotation; reload_tactical_xmag_1: position,rotation; reload_tactical_xmag_2: position,rotation; reload_tactical_xmag_3: position,rotation; reload_empty: position,rotation; reload_empty_xmag_1: position,rotation; reload_empty_xmag_2: position,rotation; reload_empty_xmag_3: position,rotation; inspect_xmag_3: position,rotation; shoot: position,rotation |
 | attachment_adapter | hk416a5 | [0, 20, -8] | - | 0 |  |
 | gun_body | hk416a5 | [0, 8, -8] | - | 0 |  |
 | gun_body2 | gun_body | [0, 8, 1] | - | 191 |  |
@@ -1405,7 +1713,7 @@ Geometry: `geometry.unknown`; **86 bones**.
 | grip | gun_body2 | [0, 10.8125, 0] | - | 49 |  |
 | deco2 | gun_body | [0, -7.64062, -0.54687] | - | 0 |  |
 | release | deco2 | [0.83727, 8.45696, 3.5391] | [0, 0, 5] | 9 | static_bolt_caught: rotation; reload_empty: rotation; reload_empty_xmag_1: rotation; reload_empty_xmag_2: rotation; reload_empty_xmag_3: rotation; inspect_empty: rotation; inspect_empty_xmag_3: rotation |
-| Safety | deco2 | [0, 7.92162, 6.6255] | - | 6 | static_auto: rotation; static_semi: rotation; switch_auto: rotation |
+| Safety | deco2 | [0, 7.92162, 6.6255] | - | 6 | static_auto: rotation; static_semi: rotation; switch_auto: rotation; switch_semi: rotation |
 | octagon42 | Safety | [-0.03125, -8.0625, -1.1875] | - | 6 |  |
 | MagazineCatch | deco2 | [0.32031, 7.82032, -4.59375] | - | 16 | reload_tactical: position; reload_tactical_xmag_1: position; reload_tactical_xmag_2: position; reload_tactical_xmag_3: position; reload_empty: position; reload_empty_xmag_1: position; reload_empty_xmag_2: position; reload_empty_xmag_3: position; inspect: position; inspect_xmag_12: position; inspect_empty: position; inspect_empty_xmag_3: position |
 | gas_block | gun_body | [0.02667, 7.9375, -9.51587] | - | 11 |  |
@@ -1421,16 +1729,16 @@ Geometry: `geometry.unknown`; **86 bones**.
 | octagon9 | muzzle_default | [0, 8.54688, -21.6875] | - | 4 |  |
 | a5_sights | hk416a5 | [0.0625, 8, -8.25] | - | 0 |  |
 | sight | a5_sights | [-0.0625, 11.63281, -1.4375] | - | 0 |  |
+| rearsight2 | sight | [0, 11.65489, 6.55984] | [-90, 0, 0] | 1 |  |
+| rearsight_base | sight | [0.5625, 0, -16.25] | - | 15 |  |
 | rearsight | sight | [0, 12.93614, 6.55984] | - | 10 |  |
 | foresight | sight | [-0.0625, 11.19531, -10.0625] | - | 8 |  |
 | sight_illuminated | foresight | [0, 12.66271, -10.00266] | - | 1 |  |
 | bone2 | foresight | [0, 12.9375, -10] | [90, 0, -22.5] | 8 |  |
 | sight_folded | a5_sights | [-0.0625, 11.63281, -1.4375] | - | 0 |  |
-| rearsight2 | sight_folded | [0, 11.65489, 6.55984] | [-90, 0, 0] | 10 |  |
 | foresight2 | sight_folded | [-0.0625, 11.19531, -10.0625] | [90, 0, 0] | 7 |  |
 | sight_illuminated2 | foresight2 | [0, 12.89708, -10.00265] | [-90, 0, 0] | 2 |  |
 | bone3 | foresight2 | [0, 12.9375, -10] | [90, 0, -22.5] | 8 |  |
-| rearsight_base | a5_sights | [0.5625, 0, -16.25] | - | 15 |  |
 | handguard | hk416a5 | [0.04444, -0.12369, -8.3072] | - | 22 |  |
 | rail2 | handguard | [1.00032, 15.52365, -7.64967] | [0, 0, -90] | 36 |  |
 | rail3 | handguard | [-1.00032, 15.52365, -7.64967] | [0, 0, 90] | 36 |  |
@@ -1448,20 +1756,20 @@ Geometry: `geometry.unknown`; **86 bones**.
 | shell | positioning2 | [-0.2, 9.75, 1.9125] | - | 0 |  |
 | dust_cover | hk416a5 | [-0.84945, 9.36584, 2.12501] | - | 5 | inspect: rotation; inspect_xmag_12: rotation |
 | additional_magazine | hk416a5 | [0, 5, 2] | - | 0 | reload_tactical: position,rotation; reload_tactical_xmag_1: position,rotation; reload_tactical_xmag_2: position,rotation; reload_tactical_xmag_3: scale; reload_empty: position,rotation; reload_empty_xmag_1: position,rotation; reload_empty_xmag_2: position,rotation; reload_empty_xmag_3: position,rotation,scale; inspect: scale; inspect_xmag_12: scale; inspect_empty: scale; inspect_empty_xmag_3: scale |
-| righthand | gun_and_righthand | [6, 19, 0] | - | 0 | static_idle: position,rotation,scale; switch_auto: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_xmag_1: position,rotation,scale; reload_tactical_xmag_2: position,rotation,scale; reload_tactical_xmag_3: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag_1: position,rotation,scale; reload_empty_xmag_2: position,rotation,scale; reload_empty_xmag_3: position,rotation,scale; inspect: position,rotation,scale; inspect_xmag_12: position,rotation,scale; inspect_xmag_3: position,rotation,scale; inspect_empty: position,rotation,scale; inspect_empty_xmag_3: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale |
+| righthand | gun_and_righthand | [6, 19, 0] | - | 0 | static_idle: position,rotation,scale; switch_auto: position,rotation,scale; switch_semi: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_xmag_1: position,rotation,scale; reload_tactical_xmag_2: position,rotation,scale; reload_tactical_xmag_3: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag_1: position,rotation,scale; reload_empty_xmag_2: position,rotation,scale; reload_empty_xmag_3: position,rotation,scale; inspect: position,rotation,scale; inspect_xmag_12: position,rotation,scale; inspect_xmag_3: position,rotation,scale; inspect_empty: position,rotation,scale; inspect_empty_xmag_3: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale |
 | righthand_pos | righthand | [0, 8, 0] | - | 1 |  |
-| camera | - | [3, 13.15625, 6.05] | - | 0 | switch_auto: rotation; reload_tactical: rotation; reload_tactical_xmag_1: rotation; reload_tactical_xmag_2: rotation; reload_tactical_xmag_3: rotation; reload_empty: rotation; reload_empty_xmag_1: rotation; reload_empty_xmag_2: rotation; reload_empty_xmag_3: rotation; inspect: rotation; inspect_xmag_12: rotation; inspect_xmag_3: rotation; inspect_empty: rotation; inspect_empty_xmag_3: rotation; shoot: rotation; draw: rotation; put_away: rotation |
+| camera | - | [3, 13.15625, 6.05] | - | 0 | switch_auto: rotation; switch_semi: rotation; reload_tactical: rotation; reload_tactical_xmag_1: rotation; reload_tactical_xmag_2: rotation; reload_tactical_xmag_3: rotation; reload_empty: rotation; reload_empty_xmag_1: rotation; reload_empty_xmag_2: rotation; reload_empty_xmag_3: rotation; inspect: rotation; inspect_xmag_12: rotation; inspect_xmag_3: rotation; inspect_empty: rotation; inspect_empty_xmag_3: rotation; shoot: rotation; draw: rotation; put_away: rotation |
 | positioning | - | [0, 0, 0] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 7.025, 6.65] | - | 0 |  |
 | ground | positioning | [0, -0.9, 4.65] | - | 0 |  |
-| fixed | positioning | [0.875, 9.625, 5.1] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [0.875, 7.04688, 4.6625] | [0, 90, 0] | 0 |  |
 | view | - | [0, 0, 0] | - | 0 |  |
-| iron_view | view | [0, 12.93509, 13] | - | 0 |  |
-| idle_view | view | [3.25, 13.40625, 14.8] | - | 0 |  |
-| refit_view | view | [23, 10, 3] | [0, 89.9, 0] | 0 |  |
+| iron_view | view | [0, 12.93509, 14] | - | 0 |  |
+| idle_view | view | [3.25, 13.40625, 15.8] | - | 0 |  |
+| refit_view | view | [32, 10, 0] | [0, 89.9, 0] | 0 |  |
 | refit_muzzle_view | view | [10, 9, -20] | [0, 120, 0] | 0 |  |
 | refit_stock_view | view | [10, 9, 12.6] | [0, 90, 0] | 0 |  |
-| refit_scope_view | view | [8, 12.5, 5.3] | [0, 50, 0] | 0 |  |
+| refit_scope_view | view | [8, 12.5, 9.3] | [0, 50, 0] | 0 |  |
 | refit_extended_mag_view | view | [8, -2, 2] | [0, 90, 35] | 0 |  |
 | refit_laser_view | view | [7, 10, -6] | [0, 70, 0] | 0 |  |
 | refit_grip_view | view | [5.8, 5.4, -6] | [0, 90, 0] | 0 |  |
@@ -1503,7 +1811,7 @@ Geometry: `geometry.scar_h`; **113 bones**.
 | G3_default_body | bone | [0, 8, 13.86] | - | 0 | inspect: position,rotation; inspect_xmag: position,rotation; inspect_empty: position,rotation; inspect_empty_xmag: position,rotation |
 | righthand | G3_default_body | [6, 19, 8] | - | 0 | static_idle: position,rotation,scale; switch_semi: position,rotation,scale; switch_auto: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_xmag: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag: position,rotation,scale; inspect: position,rotation,scale; inspect_xmag: position,rotation,scale; inspect_empty: position,rotation,scale; inspect_empty_xmag: position,rotation,scale |
 | righthand_pos | righthand | [0, 8, 8] | - | 1 |  |
-| constraint | G3_default_body | [0, 12.625, 0.5] | - | 0 | static_idle: position,rotation; switch_semi: position,rotation; switch_auto: position,rotation; reload_tactical_xmag: position,rotation; reload_empty_xmag: position,rotation |
+| constraint | G3_default_body | [0, 12.5625, 5.5] | - | 0 | static_idle: position,rotation; switch_semi: position,rotation; switch_auto: position,rotation; reload_tactical_xmag: position,rotation; reload_empty_xmag: position,rotation; shoot: position,rotation |
 | handguard_tactical | G3_default_body | [0, 8, 8.875] | - | 0 |  |
 | base | handguard_tactical | [-0.09467, 8.77145, -4.625] | - | 22 |  |
 | group2 | base | [-0.375, 5.67678, 6.625] | - | 34 |  |
@@ -1544,20 +1852,15 @@ Geometry: `geometry.scar_h`; **113 bones**.
 | octagon8 | sight2 | [0, 8, 8.875] | - | 0 |  |
 | octagon9 | sight2 | [0, 8, 8.875] | - | 3 |  |
 | barrel | G3_default_gun | [0, 9.875, -10.4375] | - | 16 |  |
-| sight | G3_default_gun | [0.5, 7.5, 8.375] | - | 21 |  |
+| sight | G3_default_gun | [0.5, 7.5, 8.375] | - | 22 |  |
 | sight_illuminated | G3_default_body | [0, 12.40625, -9.25] | - | 1 |  |
-| stock_default | G3_default_body | [0, 6.09724, 31.98202] | - | 0 |  |
-| group16 | stock_default | [0, 6.5625, 29.875] | - | 8 |  |
-| group17 | stock_default | [0.5, 9.1875, 21.875] | - | 25 |  |
-| group18 | group17 | [0.82157, 7.75, 27.06239] | - | 0 |  |
-| group | stock_default | [0, 14.09724, 31.73202] | - | 11 |  |
 | mount | G3_default_body | [0.375, 11.63572, 12.75] | - | 36 |  |
+| stock_default | G3_default_body | [0, 2, 8.875] | - | 18 |  |
 | attachment_adapter | G3_default_body | [0, 8, 13.86] | - | 0 |  |
-| oem_stock_light | attachment_adapter | [0, 2, 8.875] | - | 18 |  |
-| oem_stock_tactical | attachment_adapter | [8, -20, 0.875] | - | 0 |  |
-| stock | oem_stock_tactical | [12.52656, -10.32897, 0.875] | - | 0 |  |
+| oem_stock_light | attachment_adapter | [8, -20, 0.875] | - | 0 |  |
+| stock | oem_stock_light | [12.52656, -10.32897, 0.875] | - | 0 |  |
 | group15 | stock | [-0.12507, -11.57346, 27.2461] | - | 25 |  |
-| tube2 | oem_stock_tactical | [0, -12, 8.875] | - | 4 |  |
+| tube2 | oem_stock_light | [0, -12, 8.875] | - | 4 |  |
 | oem_stock_heavy | attachment_adapter | [0, -3, 8.875] | - | 0 |  |
 | heavystock | oem_stock_heavy | [8, -11, 0.875] | - | 31 |  |
 | pins | heavystock | [0.125, -3.47937, 23.40625] | - | 4 |  |
@@ -1567,6 +1870,11 @@ Geometry: `geometry.scar_h`; **113 bones**.
 | cheekrest | heavystock | [-0.63254, 3.02848, 28.39596] | - | 33 |  |
 | octagon11 | heavystock | [0, -3, 8.875] | - | 6 |  |
 | octagon | heavystock | [0, -3, 8.875] | - | 4 |  |
+| oem_stock_tactical | attachment_adapter | [0, 6.09724, 31.98202] | - | 0 |  |
+| group16 | oem_stock_tactical | [0, 6.5625, 29.875] | - | 8 |  |
+| group17 | oem_stock_tactical | [0.5, 9.1875, 21.875] | - | 25 |  |
+| group18 | group17 | [0.82157, 7.75, 27.06239] | - | 0 |  |
+| group | oem_stock_tactical | [0, 14.09724, 31.73202] | - | 11 |  |
 | ar_stock_adapter | attachment_adapter | [7.98137, 11.48371, -1.91584] | - | 0 |  |
 | bone2 | ar_stock_adapter | [0, -2.125, 10.125] | - | 22 |  |
 | positioning2 | G3_default_body | [0, 7, 6.575] | - | 0 |  |
@@ -1582,11 +1890,11 @@ Geometry: `geometry.scar_h`; **113 bones**.
 | positioning | - | [8, 0, -8] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 6.625, 14.85] | - | 0 |  |
 | ground | positioning | [0, -0.9, 8.65] | - | 0 |  |
-| fixed | positioning | [1.15625, 9.1, 9.225] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [1.15625, 6.99063, 13.58438] | [0, 90, 0] | 0 |  |
 | view | - | [8, 0, 0] | - | 0 |  |
-| idle_view | view | [2.725, 13.25, 24.5] | - | 0 |  |
-| iron_view | view | [0, 12.51875, 21] | - | 0 |  |
-| refit_view | view | [24, 10, 8] | [0, 89.9, 0] | 0 |  |
+| idle_view | view | [2.725, 13.25, 25.5] | - | 0 |  |
+| iron_view | view | [0, 12.51875, 25] | - | 0 |  |
+| refit_view | view | [32, 10, 8] | [0, 89.9, 0] | 0 |  |
 | refit_muzzle_view | view | [14, 8, -25] | [0, 120, 0] | 0 |  |
 | refit_stock_view | view | [12, 7, 24] | [0, 90, 0] | 0 |  |
 | refit_scope_view | view | [14, 12.05, 6.3] | [0, 120, 0] | 0 |  |
@@ -1613,7 +1921,7 @@ Geometry: `geometry.mk23`; **60 bones**.
 | lefthand | mag_and_lefthand | [-6, 19, 0.5] | - | 0 | static_idle: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; shoot_pump: position,rotation; shoot_pump_last: position,rotation; static_semi: position,rotation,scale; static_pump: position,rotation,scale; switch_semi: position,rotation,scale; switch_pump: position,rotation,scale; switch_semi_empty: position,rotation,scale; switch_pump_empty: position,rotation,scale; static_bolt_caught: position,rotation,scale; static_bolt_caught_pump: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_xmag_1: position,rotation,scale; reload_tactical_xmag_2: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag_1: position,rotation,scale; reload_empty_xmag_2: position,rotation,scale; reload_empty_pump: position,rotation,scale; reload_empty_pump_xmag_1: position,rotation,scale; reload_empty_pump_xmag_2: position,rotation,scale; bolt: position,rotation,scale; inspect: position,rotation,scale; inspect_pump: position,rotation,scale; inspect_empty: position,rotation,scale; inspect_empty_pump: position,rotation,scale |
 | lefthand_pos | lefthand | [0, 8, 0.5] | - | 1 |  |
 | magazine_bullet | mag_and_lefthand | [0, 4, 7] | - | 0 | static_idle: scale; shoot_pump: scale; shoot_pump_last: scale; switch_semi: scale; switch_pump: scale; switch_semi_empty: scale; switch_pump_empty: scale; static_bolt_caught: scale; reload_tactical: scale; reload_tactical_xmag_1: scale; reload_tactical_xmag_2: scale; reload_empty: scale; reload_empty_xmag_1: scale; reload_empty_xmag_2: scale; reload_empty_pump: scale; reload_empty_pump_xmag_1: scale; reload_empty_pump_xmag_2: scale; bolt: scale; inspect: position,rotation,scale; inspect_pump: position,rotation,scale; inspect_empty: position,rotation,scale; inspect_empty_pump: position,rotation,scale |
-| bullet | magazine_bullet | [0, 6.53125, 6.75] | [87.5, 0, 0] | 5 | shoot_pump: scale; shoot_pump_last: scale; switch_semi_empty: scale; switch_pump_empty: scale; static_bolt_caught: scale; inspect: scale; inspect_pump: scale; inspect_empty: scale; inspect_empty_pump: scale |
+| bullet | magazine_bullet | [0, 6.53125, 6.75] | [87.5, 0, 0] | 5 | shoot_pump: scale; shoot_pump_last: scale; switch_semi_empty: scale; switch_pump_empty: scale; static_bolt_caught: scale; reload_empty: scale; reload_empty_xmag_1: scale; reload_empty_xmag_2: scale; reload_empty_pump: scale; reload_empty_pump_xmag_1: scale; reload_empty_pump_xmag_2: scale; inspect: scale; inspect_pump: scale; inspect_empty: scale; inspect_empty_pump: scale |
 | magazine | magazine_bullet | [0, 4, 7] | - | 0 |  |
 | bullet_in_mag | magazine | [0, 6.53125, 6.75] | [87.5, 0, 0] | 5 | shoot_pump: position; shoot_pump_last: scale |
 | mag_standard | magazine | [-0.31185, 2.70313, 5.34532] | - | 17 |  |
@@ -1655,14 +1963,14 @@ Geometry: `geometry.mk23`; **60 bones**.
 | muzzle_flash | positioning2 | [0, 6.9375, -2.35937] | - | 0 |  |
 | shell | positioning2 | [-0.25, 6.71875, 6.28125] | [0, 20, 0] | 0 |  |
 | laser_pos | positioning2 | [0, 5.59376, 0.4375] | [0, 0, -180] | 0 |  |
-| camera | - | [2, 9.4375, 17.5] | - | 0 | draw: rotation; put_away: rotation; shoot_pump: rotation; shoot_pump_last: rotation; shoot_last: rotation; shoot: rotation; switch_semi: rotation; switch_pump: rotation; switch_semi_empty: rotation; switch_pump_empty: rotation; reload_tactical: rotation; reload_tactical_xmag_1: rotation; reload_tactical_xmag_2: rotation; reload_empty: rotation; reload_empty_xmag_1: rotation; reload_empty_xmag_2: rotation; reload_empty_pump: rotation; reload_empty_pump_xmag_1: rotation; reload_empty_pump_xmag_2: rotation; bolt: rotation; inspect: rotation; inspect_pump: rotation; inspect_empty: rotation; inspect_empty_pump: rotation |
+| camera | - | [3, 8.75, 19.5] | - | 0 | draw: rotation; put_away: rotation; shoot_pump: rotation; shoot_pump_last: rotation; shoot_last: rotation; shoot: rotation; switch_semi: rotation; switch_pump: rotation; switch_semi_empty: rotation; switch_pump_empty: rotation; reload_tactical: rotation; reload_tactical_xmag_1: rotation; reload_tactical_xmag_2: rotation; reload_empty: rotation; reload_empty_xmag_1: rotation; reload_empty_xmag_2: rotation; reload_empty_pump: rotation; reload_empty_pump_xmag_1: rotation; reload_empty_pump_xmag_2: rotation; bolt: rotation; inspect: rotation; inspect_pump: rotation; inspect_empty: rotation; inspect_empty_pump: rotation |
 | positioning | - | [0, 0, 0.5] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 5.25, 5.5] | - | 0 |  |
 | ground | positioning | [0, -5, 2.5] | - | 0 |  |
-| fixed | positioning | [0.875, 4.25, 4.75] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [0.875, 5.5, 4.0625] | [0, 90, 0] | 0 |  |
 | view | - | [0, 0, 0.5] | - | 0 |  |
-| idle_view | view | [3, 8.75, 18.5] | - | 0 |  |
-| iron_view | view | [0, 7.82813, 18.5] | - | 0 |  |
+| idle_view | view | [3, 9.25, 19.5] | - | 0 |  |
+| iron_view | view | [0, 7.82813, 20.0] | - | 0 |  |
 | refit_view | view | [16, 5, 3.5] | [0, 89, 0] | 0 |  |
 | refit_scope_view | view | [7, 10, 10] | [0, 70, -10] | 0 |  |
 | refit_muzzle_view | view | [8.875, 6.975, -7.5] | [0, 120, 0] | 0 |  |
@@ -1679,7 +1987,7 @@ Animation: `assets/tacz/animations/hk_mp5a5.animation.json`
 
 LOD reference: `{'model': 'tacz:gun/lod/hk_mp5a5', 'texture': 'tacz:gun/lod/hk_mp5a5'}`
 
-Geometry: `geometry.hk_mp5a5 - Converted`; **159 bones**.
+Geometry: `geometry.hk_mp5a5 - Converted`; **166 bones**.
 
 | Bone | Parent | Pivot (native pixels) | Rotation | Cubes | Authored animation channels |
 | --- | --- | --- | --- | --- | --- |
@@ -1795,7 +2103,7 @@ Geometry: `geometry.hk_mp5a5 - Converted`; **159 bones**.
 | group9 | body | [8, 0, -8] | - | 11 |  |
 | octagon13 | body | [0, 8, 0] | - | 16 |  |
 | sight | gun | [0.5, 7.5, -0.5] | - | 21 |  |
-| constraint | Mp5 | [0, 13.3375, 5.725] | - | 0 | static_idle: position,rotation; reload_tactical: position,rotation; reload_tactical_xmag: position,rotation; reload_empty: position,rotation; reload_empty_xmag: position,rotation; shoot: position,rotation |
+| constraint | Mp5 | [0, 13.3375, -1.275] | - | 0 | static_idle: position,rotation; reload_tactical: position,rotation; reload_tactical_xmag: position,rotation; reload_empty: position,rotation; reload_empty_xmag: position,rotation; shoot: position,rotation |
 | attachment_adapter | Mp5 | [0, 0, 0] | - | 0 |  |
 | laser_adapter | attachment_adapter | [1.22143, 10.875, -7] | - | 12 |  |
 | ar_stock_adapter | attachment_adapter | [0, -17, 0] | - | 0 |  |
@@ -1807,15 +2115,22 @@ Geometry: `geometry.hk_mp5a5 - Converted`; **159 bones**.
 | group26 | group7 | [8, -17, -8.1875] | - | 0 |  |
 | group27 | group7 | [7.6875, -7.57708, 8.40473] | - | 0 |  |
 | tube | ar_stock_adapter | [-0.01863, 11.48371, -1.04084] | - | 10 |  |
-| oem_stock_light | attachment_adapter | [0, -17, 0] | - | 0 |  |
-| base2 | oem_stock_light | [8, -12, -8] | - | 13 |  |
+| oem_stock_removed | attachment_adapter | [8, -12, -8] | - | 13 |  |
+| octagon11 | oem_stock_removed | [0.125, -4, 0] | - | 8 |  |
+| octagon17 | oem_stock_removed | [0.125, -4, 0] | - | 8 |  |
+| group34 | oem_stock_removed | [8, -12, -8] | - | 0 |  |
+| group35 | group34 | [8, -12, -8.1875] | - | 7 |  |
+| group36 | group34 | [8, -12, -8.1875] | - | 7 |  |
+| group37 | group34 | [7.6875, -2.57708, 8.40473] | - | 3 |  |
+| oem_stock_unfolded | attachment_adapter | [0, -17, 0] | - | 0 |  |
+| base2 | oem_stock_unfolded | [8, -12, -8] | - | 13 |  |
 | octagon9 | base2 | [0.125, -4, 0] | - | 8 |  |
 | octagon10 | base2 | [0.125, -4, 0] | - | 8 |  |
 | group28 | base2 | [8, -12, -8] | - | 0 |  |
 | group29 | group28 | [8, -12, -8.1875] | - | 7 |  |
 | group30 | group28 | [8, -12, -8.1875] | - | 7 |  |
 | group31 | group28 | [7.6875, -2.57708, 8.40473] | - | 3 |  |
-| stock2 | oem_stock_light | [8, -11.9375, -8.75] | - | 0 |  |
+| stock2 | oem_stock_unfolded | [8, -11.9375, -8.75] | - | 0 |  |
 | group32 | stock2 | [12.52656, -2.26647, -8.75] | - | 4 |  |
 | group33 | stock2 | [12.52656, -2.26647, -8.75] | - | 21 |  |
 | oem_stock_heavy | attachment_adapter | [0, 8, 0] | - | 0 |  |
@@ -1831,10 +2146,10 @@ Geometry: `geometry.hk_mp5a5 - Converted`; **159 bones**.
 | positioning | - | [0, 0, -8] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 7.925, 5.65] | - | 0 |  |
 | ground | positioning | [0, -0.9, 2.65] | - | 0 |  |
-| fixed | positioning | [1.05, 10.675, 3.45] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [1.05, 7.87813, 4.2] | [0, 90, 0] | 0 |  |
 | view | - | [0, 0, 0] | - | 0 |  |
-| idle_view | view | [2.75, 14.2875, 14] | - | 0 |  |
-| iron_view | view | [0, 13.4875, 11] | - | 0 |  |
+| idle_view | view | [2.75, 14.2875, 15] | - | 0 |  |
+| iron_view | view | [0, 13.4875, 14] | - | 0 |  |
 | refit_view | view | [23, 10.2, 3.15] | [0, 89.9, 0] | 0 |  |
 | refit_muzzle_view | view | [8, 9, -16] | [0, 120, 0] | 0 |  |
 | refit_stock_view | view | [10, 9, 11] | [0, 90, 0] | 0 |  |
@@ -1842,6 +2157,341 @@ Geometry: `geometry.hk_mp5a5 - Converted`; **159 bones**.
 | refit_extended_mag_view | view | [10, -2, 0] | [0, 90, 35] | 0 |  |
 | refit_laser_view | view | [7, 14, -14] | [-165, 45, -180] | 0 |  |
 | refit_grip_view | view | [6.8, 6.4, -4] | [0, 90, 0] | 0 |  |
+
+## tacz:hk_mp7a1_display
+
+Display: `assets/tacz/display/guns/hk_mp7a1_display.json`
+
+Model: `assets/tacz/geo_models/gun/hk_mp7a1_geo.json`
+
+Animation: `assets/tacz/animations/hk_mp7a1.animation.json`
+
+LOD reference: `{'model': 'tacz:gun/lod/hk_mp7a1', 'texture': 'tacz:gun/lod/hk_mp7a1'}`
+
+Geometry: `geometry.unknown`; **69 bones**.
+
+| Bone | Parent | Pivot (native pixels) | Rotation | Cubes | Authored animation channels |
+| --- | --- | --- | --- | --- | --- |
+| root | - | [0, 5.5, -1] | - | 0 | switch_auto: position,rotation; switch_semi: position,rotation; draw: position,rotation; put_away: position,rotation; shoot: position,rotation; reload_tactical: position,rotation; reload_tactical_2: position,rotation; reload_tactical_3: position,rotation; reload_tactical_xmag_3: position,rotation; reload_empty: position,rotation; reload_empty_2: position,rotation; reload_empty_3: position,rotation; reload_empty_xmag_3: position,rotation; reload_empty_easter: position,rotation; inspect: position,rotation; inspect_empty: position,rotation; inspect_xmag_3: position,rotation; inspect_empty_xmag_3: position,rotation |
+| gun_and_righthand | root | [0, 5.5, -1] | - | 0 | reload_empty_easter: position,rotation; inspect: rotation; inspect_empty: rotation; inspect_xmag_3: rotation; inspect_empty_xmag_3: rotation |
+| mp7 | gun_and_righthand | [0, -13, 0] | - | 0 |  |
+| gunbody | mp7 | [0, -13, 0] | - | 0 |  |
+| lower | gunbody | [0.375, -13, 0] | - | 332 |  |
+| gaslock | lower | [0, 20.08366, -9.6777] | - | 6 |  |
+| group | lower | [1.17076, 7.38123, -9.0625] | - | 41 |  |
+| bone2 | group | [0, 18.5, -2.9375] | - | 43 |  |
+| grip | lower | [0, 5.3803, -9.902] | - | 22 |  |
+| mp7_sight | mp7 | [0, -13, 0] | - | 0 |  |
+| sight | mp7_sight | [0, -12, 0] | - | 30 |  |
+| sight_illuminated | sight | [0.02631, 11.52067, -9.51009] | - | 3 |  |
+| sight_folded | mp7_sight | [0, -12, 0] | - | 0 |  |
+| sight_folded2 | sight_folded | [0, 10.2875, 3.1875] | [-90, 0, 0] | 21 |  |
+| sight3_illuminated | sight_folded2 | [0.02631, 11.55817, -9.51009] | - | 2 |  |
+| sight_folded3 | sight_folded | [-0.00265, 10.25, -9.58366] | [-90, 0, 0] | 9 |  |
+| sight2_illuminated | sight_folded3 | [0.02631, 11.52067, -9.51009] | - | 1 |  |
+| rear | mp7_sight | [0, -11, 0] | - | 22 |  |
+| stock_default | mp7 | [0, 7.8125, 0.57813] | - | 39 |  |
+| attachment_adapter | mp7 | [0, -13, -8.75] | - | 0 |  |
+| oem_stock_unfolded | attachment_adapter | [0, -13, -8.75] | - | 39 |  |
+| mag_release | mp7 | [0.00011, 4.41214, -2.26502] | - | 6 |  |
+| bolt_release | mp7 | [0, 6.36414, -3.56792] | - | 9 | static_bolt_caught: rotation; reload_empty: rotation; reload_empty_2: rotation; reload_empty_3: rotation; reload_empty_xmag_3: rotation; reload_empty_easter: rotation |
+| muzzle_default | mp7 | [0, 7.08367, -13.75738] | - | 32 |  |
+| selector | mp7 | [0, 6.25, -2.125] | - | 0 | static_auto: rotation |
+| selector_l | selector | [0, 6.35968, -2.317] | [-45, 0, 0] | 13 | static_semi: rotation; switch_auto: rotation; switch_semi: rotation |
+| selector_r | selector | [-0.89226, 6.28075, -2.2401] | [-12.5, 0, 0] | 11 | static_semi: rotation; switch_auto: rotation; switch_semi: rotation |
+| bolt_pull | mp7 | [0, 8, 0] | - | 0 | reload_empty: position; reload_empty_2: position; reload_empty_easter: position |
+| pull | bolt_pull | [1.00049, 10.41498, 5.58713] | - | 9 |  |
+| deco | pull | [-0.95447, 8.01667, 5.47502] | - | 0 |  |
+| bolt | bolt_pull | [-0.0625, 7.67188, -3.55555] | - | 2 | static_bolt_caught: position; shoot: position; reload_empty: position; reload_empty_2: position; reload_empty_3: position; reload_empty_xmag_3: position; reload_empty_easter: position |
+| barrel | mp7 | [0, 7.08366, -9.96385] | - | 8 |  |
+| positioning2 | mp7 | [0, 8, 0] | - | 0 |  |
+| shell | positioning2 | [-0.5, 7, -0.5] | - | 0 |  |
+| scope_pos | positioning2 | [0, 9.80313, 0.26563] | - | 0 |  |
+| muzzle_pos | positioning2 | [0, 7.0837, -12.87276] | - | 0 |  |
+| muzzle_flash | positioning2 | [0, 7.0837, -12.87276] | - | 0 |  |
+| laser_pos | positioning2 | [1.25479, 6.98413, -8.75] | [0, 0, 90] | 0 |  |
+| laser_pos2 | positioning2 | [0, 9.80313, -6.23437] | - | 0 |  |
+| constraint | positioning2 | [0, 11.6875, -9.5375] | - | 0 | static_idle: position,rotation; draw: position,rotation; put_away: position,rotation; shoot: position,rotation |
+| righthand | gun_and_righthand | [6, 16, 0] | - | 0 | static_idle: position,rotation,scale; switch_auto: position,rotation,scale; switch_semi: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_2: position,rotation,scale; reload_tactical_3: position,rotation,scale; reload_tactical_xmag_3: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_2: position,rotation,scale; reload_empty_3: position,rotation,scale; reload_empty_xmag_3: position,rotation,scale; reload_empty_easter: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale; inspect_xmag_3: position,rotation,scale; inspect_empty_xmag_3: position,rotation,scale |
+| righthand_pos | righthand | [0, 5, 0] | - | 1 |  |
+| additional_magazine | gun_and_righthand | [0, 5, -1] | - | 0 | reload_tactical: position,rotation,scale; reload_tactical_2: position,rotation,scale; reload_tactical_3: scale; reload_tactical_xmag_3: scale; inspect: scale; inspect_empty: scale; inspect_xmag_3: scale; inspect_empty_xmag_3: scale |
+| mag_and_lefthand | root | [0, 3, -1] | - | 0 | reload_tactical: position,rotation; reload_tactical_2: position,rotation; reload_tactical_3: position,rotation; reload_tactical_xmag_3: position,rotation; reload_empty: position,rotation; reload_empty_2: position,rotation; reload_empty_3: position,rotation; reload_empty_xmag_3: position,rotation; reload_empty_easter: position,rotation; inspect: position,rotation; inspect_empty: position,rotation; inspect_xmag_3: position,rotation; inspect_empty_xmag_3: position,rotation |
+| mag_and_bullet | mag_and_lefthand | [0, 3, -1] | - | 0 | reload_empty_easter: rotation; inspect: scale; inspect_empty: scale; inspect_xmag_3: scale; inspect_empty_xmag_3: scale |
+| bullet | mag_and_bullet | [-7, 0.34425, -0.14617] | - | 12 | static_bolt_caught: scale; reload_tactical_3: scale; reload_tactical_xmag_3: scale; reload_empty: scale; reload_empty_2: scale; reload_empty_3: scale; reload_empty_xmag_3: scale; inspect: scale; inspect_empty: scale; inspect_xmag_3: scale; inspect_empty_xmag_3: scale |
+| magazine | mag_and_bullet | [0, 5, -1] | - | 0 |  |
+| bullet_in_mag | magazine | [-7, 0.34425, -0.14617] | - | 12 |  |
+| mag_standard | magazine | [4, -29, 0] | - | 24 |  |
+| mag_extended_1 | magazine | [0, 0, -22] | - | 38 |  |
+| mag_extended_2 | magazine | [4, -29, 0] | - | 44 |  |
+| mag_extended_3 | magazine | [0, 5, -1] | - | 83 |  |
+| lefthand | mag_and_lefthand | [-6, 16, 0] | - | 0 | static_idle: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_2: position,rotation,scale; reload_tactical_3: position,rotation,scale; reload_tactical_xmag_3: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_2: position,rotation,scale; reload_empty_3: position,rotation,scale; reload_empty_xmag_3: position,rotation,scale; reload_empty_easter: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale; inspect_xmag_3: position,rotation,scale; inspect_empty_xmag_3: position,rotation,scale |
+| lefthand_pos | lefthand | [0, 5, 0] | - | 1 |  |
+| positioning | - | [0, 0, -8] | - | 0 |  |
+| thirdperson_hand | positioning | [0, 5.75, -2.15] | - | 0 |  |
+| ground | positioning | [0, -3, 0] | - | 0 |  |
+| fixed | positioning | [0, 6.11563, -3.75] | [0, 90, 0] | 0 |  |
+| view | - | [0, 0, 0] | - | 0 |  |
+| idle_view | view | [2.5, 12.25, 11] | [0, 0, -5] | 0 |  |
+| camera | idle_view | [2.5, 12.25, 11] | - | 0 | switch_auto: rotation; switch_semi: rotation; draw: rotation; put_away: rotation; shoot: rotation; reload_tactical: rotation; reload_tactical_2: rotation; reload_tactical_3: rotation; reload_tactical_xmag_3: rotation; reload_empty: rotation; reload_empty_2: rotation; reload_empty_3: rotation; reload_empty_xmag_3: rotation; reload_empty_easter: rotation; inspect: relative_to,rotation; inspect_empty: relative_to,rotation; inspect_xmag_3: relative_to,rotation; inspect_empty_xmag_3: relative_to,rotation |
+| iron_view | view | [0, 11.6875, 10] | - | 0 |  |
+| refit_view | view | [24, 7, 0] | [0, 89.95, 0] | 0 |  |
+| refit_muzzle_view | view | [10, 7.5, -19] | [180, 70, 180] | 0 |  |
+| refit_stock_view | view | [20, 8, 14] | [0, 90, 0] | 0 |  |
+| refit_scope_view | view | [8, 11.25, 4] | [0, 60, 0] | 0 |  |
+| refit_extended_mag_view | view | [14, -2, -2] | [0, 90, 5] | 0 |  |
+| refit_grip_view | view | [10, 5, -8] | [0, 90, 0] | 0 |  |
+| refit_laser_view | view | [11, 10, -12] | [-165, 75, -180] | 0 |  |
+
+## tacz:hm50b_display
+
+Display: `assets/tacz/display/guns/hm50b_display.json`
+
+Model: `assets/tacz/geo_models/gun/hm50b_geo.json`
+
+Animation: `assets/tacz/animations/hm50b.animation.json`
+
+LOD reference: `{'model': 'tacz:gun/lod/hm50b', 'texture': 'tacz:gun/lod/hm50b'}`
+
+Geometry: `geometry.unknown`; **236 bones**.
+
+| Bone | Parent | Pivot (native pixels) | Rotation | Cubes | Authored animation channels |
+| --- | --- | --- | --- | --- | --- |
+| root | - | [0, 6, 16] | - | 0 | crawl_start: position,rotation; crawl: position,rotation; crawl_end: position,rotation; crawl_bolt: position,rotation; crawl_bipod: position,rotation; crawl_bipod_end: position,rotation; draw: position,rotation; put_away: position,rotation; bolt: position,rotation; reload_tactical: position,rotation; reload_empty: position,rotation; inspect: position,rotation; inspect_empty: position,rotation; shoot: position,rotation |
+| mag_and_lefthand | root | [0, 6, 8] | - | 0 | reload_tactical: position,rotation; reload_empty: position,rotation |
+| mag_and_bullet | mag_and_lefthand | [0, 6, 8] | - | 0 | reload_tactical: position,rotation,scale; reload_empty: position,rotation,scale |
+| bullet | mag_and_bullet | [0, 10.5, 11] | - | 0 | static_bolt_caught: scale; reload_tactical: scale; reload_empty: scale; inspect_empty: scale |
+| head4 | bullet | [0, 10.5, 5.17188] | - | 4 |  |
+| shell5 | bullet | [0, 10.5, 9] | - | 1 |  |
+| octagon15 | shell5 | [0, 10.5, 11.08073] | [90, 0, 0] | 4 |  |
+| bone107 | shell5 | [0, 10.5, 7.33073] | [90, 0, 0] | 0 |  |
+| bone108 | bone107 | [0, 10.5, 7.33073] | - | 0 |  |
+| bone109 | bone108 | [0, 10.5, 6.87026] | [-18.35164, 0, 0] | 0 |  |
+| bone110 | bone109 | [0, 10.47513, 6.87026] | [0, 0, -7.43025] | 1 |  |
+| bone111 | bone109 | [0, 10.47513, 6.87026] | [0, 0, 7.43025] | 1 |  |
+| bone112 | bone107 | [0, 10.5, 7.33073] | [0, -45, 0] | 0 |  |
+| bone113 | bone112 | [0, 10.5, 6.87026] | [-18.35164, 0, 0] | 0 |  |
+| bone114 | bone113 | [0, 10.47513, 6.87026] | [0, 0, -7.43025] | 1 |  |
+| bone115 | bone113 | [0, 10.47513, 6.87026] | [0, 0, 7.43025] | 1 |  |
+| bone116 | bone107 | [0, 10.5, 7.33073] | [0, -90, 0] | 0 |  |
+| bone117 | bone116 | [0, 10.5, 6.87026] | [-18.35164, 0, 0] | 0 |  |
+| bone118 | bone117 | [0, 10.47513, 6.87026] | [0, 0, -7.43025] | 1 |  |
+| bone119 | bone117 | [0, 10.47513, 6.87026] | [0, 0, 7.43025] | 1 |  |
+| bone120 | bone107 | [0, 10.5, 7.33073] | [0, -135, 0] | 0 |  |
+| bone121 | bone120 | [0, 10.5, 6.87026] | [-18.35164, 0, 0] | 0 |  |
+| bone122 | bone121 | [0, 10.47513, 6.87026] | [0, 0, -7.43025] | 1 |  |
+| bone123 | bone121 | [0, 10.47513, 6.87026] | [0, 0, 7.43025] | 1 |  |
+| bone124 | bone107 | [0, 10.5, 7.33073] | [0, -180, 0] | 0 |  |
+| bone125 | bone124 | [0, 10.5, 6.87026] | [-18.35164, 0, 0] | 0 |  |
+| bone126 | bone125 | [0, 10.47513, 6.87026] | [0, 0, -7.43025] | 1 |  |
+| bone127 | bone125 | [0, 10.47513, 6.87026] | [0, 0, 7.43025] | 1 |  |
+| bone128 | bone107 | [0, 10.5, 7.33073] | [0, -225, 0] | 0 |  |
+| bone129 | bone128 | [0, 10.5, 6.87026] | [-18.35164, 0, 0] | 0 |  |
+| bone130 | bone129 | [0, 10.47513, 6.87026] | [0, 0, -7.43025] | 1 |  |
+| bone131 | bone129 | [0, 10.47513, 6.87026] | [0, 0, 7.43025] | 1 |  |
+| bone132 | bone107 | [0, 10.5, 7.33073] | [0, -270, 0] | 0 |  |
+| bone133 | bone132 | [0, 10.5, 6.87026] | [-18.35164, 0, 0] | 0 |  |
+| bone134 | bone133 | [0, 10.47513, 6.87026] | [0, 0, -7.43025] | 1 |  |
+| bone135 | bone133 | [0, 10.47513, 6.87026] | [0, 0, 7.43025] | 1 |  |
+| bone136 | bone107 | [0, 10.5, 7.33073] | [0, -315, 0] | 0 |  |
+| bone137 | bone136 | [0, 10.5, 6.87026] | [-18.35164, 0, 0] | 0 |  |
+| bone138 | bone137 | [0, 10.47513, 6.87026] | [0, 0, -7.43025] | 1 |  |
+| bone139 | bone137 | [0, 10.47513, 6.87026] | [0, 0, 7.43025] | 1 |  |
+| octagon16 | shell5 | [0.00033, 10.49805, 3.2788] | [90, 0, 0] | 4 |  |
+| octagon17 | shell5 | [0.00033, 10.49805, 3.2788] | [90, 0, 0] | 4 |  |
+| octagon18 | shell5 | [0.00033, 10.49805, 3.2788] | [90, 0, 0] | 4 |  |
+| magzine | mag_and_bullet | [0, 6, 16] | - | 0 |  |
+| bullet_in_mag | magzine | [0, 10.5, 11] | - | 0 | reload_empty: scale; inspect_empty: scale |
+| head | bullet_in_mag | [0, 10.5, 5.17188] | - | 4 |  |
+| shell | bullet_in_mag | [0, 10.5, 9] | - | 1 |  |
+| octagon4 | shell | [0, 10.5, 11.08073] | [90, 0, 0] | 4 |  |
+| bone36 | shell | [0, 10.5, 7.33073] | [90, 0, 0] | 0 |  |
+| bone35 | bone36 | [0, 10.5, 7.33073] | - | 0 |  |
+| bone34 | bone35 | [0, 10.5, 6.87026] | [-18.35164, 0, 0] | 0 |  |
+| bone4 | bone34 | [0, 10.47513, 6.87026] | [0, 0, -7.43025] | 1 |  |
+| bone5 | bone34 | [0, 10.47513, 6.87026] | [0, 0, 7.43025] | 1 |  |
+| bone6 | bone36 | [0, 10.5, 7.33073] | [0, -45, 0] | 0 |  |
+| bone7 | bone6 | [0, 10.5, 6.87026] | [-18.35164, 0, 0] | 0 |  |
+| bone8 | bone7 | [0, 10.47513, 6.87026] | [0, 0, -7.43025] | 1 |  |
+| bone9 | bone7 | [0, 10.47513, 6.87026] | [0, 0, 7.43025] | 1 |  |
+| bone10 | bone36 | [0, 10.5, 7.33073] | [0, -90, 0] | 0 |  |
+| bone11 | bone10 | [0, 10.5, 6.87026] | [-18.35164, 0, 0] | 0 |  |
+| bone12 | bone11 | [0, 10.47513, 6.87026] | [0, 0, -7.43025] | 1 |  |
+| bone13 | bone11 | [0, 10.47513, 6.87026] | [0, 0, 7.43025] | 1 |  |
+| bone14 | bone36 | [0, 10.5, 7.33073] | [0, -135, 0] | 0 |  |
+| bone15 | bone14 | [0, 10.5, 6.87026] | [-18.35164, 0, 0] | 0 |  |
+| bone16 | bone15 | [0, 10.47513, 6.87026] | [0, 0, -7.43025] | 1 |  |
+| bone17 | bone15 | [0, 10.47513, 6.87026] | [0, 0, 7.43025] | 1 |  |
+| bone18 | bone36 | [0, 10.5, 7.33073] | [0, -180, 0] | 0 |  |
+| bone19 | bone18 | [0, 10.5, 6.87026] | [-18.35164, 0, 0] | 0 |  |
+| bone20 | bone19 | [0, 10.47513, 6.87026] | [0, 0, -7.43025] | 1 |  |
+| bone21 | bone19 | [0, 10.47513, 6.87026] | [0, 0, 7.43025] | 1 |  |
+| bone22 | bone36 | [0, 10.5, 7.33073] | [0, -225, 0] | 0 |  |
+| bone23 | bone22 | [0, 10.5, 6.87026] | [-18.35164, 0, 0] | 0 |  |
+| bone24 | bone23 | [0, 10.47513, 6.87026] | [0, 0, -7.43025] | 1 |  |
+| bone25 | bone23 | [0, 10.47513, 6.87026] | [0, 0, 7.43025] | 1 |  |
+| bone26 | bone36 | [0, 10.5, 7.33073] | [0, -270, 0] | 0 |  |
+| bone27 | bone26 | [0, 10.5, 6.87026] | [-18.35164, 0, 0] | 0 |  |
+| bone28 | bone27 | [0, 10.47513, 6.87026] | [0, 0, -7.43025] | 1 |  |
+| bone29 | bone27 | [0, 10.47513, 6.87026] | [0, 0, 7.43025] | 1 |  |
+| bone30 | bone36 | [0, 10.5, 7.33073] | [0, -315, 0] | 0 |  |
+| bone31 | bone30 | [0, 10.5, 6.87026] | [-18.35164, 0, 0] | 0 |  |
+| bone32 | bone31 | [0, 10.47513, 6.87026] | [0, 0, -7.43025] | 1 |  |
+| bone33 | bone31 | [0, 10.47513, 6.87026] | [0, 0, 7.43025] | 1 |  |
+| octagon | shell | [0.00033, 10.49805, 3.2788] | [90, 0, 0] | 4 |  |
+| octagon5 | shell | [0.00033, 10.49805, 3.2788] | [90, 0, 0] | 4 |  |
+| octagon6 | shell | [0.00033, 10.49805, 3.2788] | [90, 0, 0] | 4 |  |
+| mag_standard | magzine | [-6, 8.75, -4.5] | - | 19 |  |
+| mag_extended_1 | magzine | [5, 9.5, 7.75] | - | 52 |  |
+| mag_extended_2 | magzine | [5, 9.5, 7.75] | - | 52 |  |
+| mag_extended_3 | magzine | [5, 9.5, 7.75] | - | 52 |  |
+| lefthand | mag_and_lefthand | [-6, 19, 0] | - | 0 | static_idle: position,rotation,scale; crawl_start: position,rotation; crawl: position,rotation; crawl_end: position,rotation; crawl_bolt: position,rotation,scale; crawl_handup: position,rotation; crawl_handdown: position,rotation; draw: position,rotation,scale; put_away: position,rotation,scale; bolt: position,rotation,scale; reload_tactical: position,rotation,scale; reload_empty: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale |
+| lefthand_pos | lefthand | [0, 8, 0] | - | 1 |  |
+| gun_and_righthand | root | [0, 6, 16] | - | 0 |  |
+| hm50b | gun_and_righthand | [0, 6, 16] | - | 0 |  |
+| body | hm50b | [0, 0, 0] | - | 1 |  |
+| handguard | body | [0, -0.25, 0] | - | 87 |  |
+| bone | handguard | [0, -10.5, 0.1875] | - | 6 |  |
+| bone37 | bone | [0, 0, 0] | [90, 0, 0] | 3 |  |
+| bone39 | bone | [0, 0, 0] | [90, 0, 0] | 3 |  |
+| bone38 | bone | [0, -3.3125, 0] | [90, 0, 0] | 3 |  |
+| bone40 | bone | [0, -3.3125, 0] | [90, 0, 0] | 3 |  |
+| bone3 | handguard | [0, 9.40625, -1.625] | - | 10 |  |
+| lower | body | [0, 0, 0] | - | 40 |  |
+| grip | lower | [0, 9.8027, 14.67713] | - | 12 |  |
+| upper | body | [0, -0.25, 0] | - | 50 |  |
+| rails | upper | [0, 14.09375, -25.3125] | - | 31 |  |
+| barrel | body | [0, 0, 0] | - | 0 |  |
+| octagon2 | barrel | [0, 3.375, -25.75] | - | 4 |  |
+| muzzle_default | body | [0, 11.375, -32.29752] | - | 60 |  |
+| pins | body | [0, 0, 0] | - | 10 |  |
+| fire_selector | body | [0.875, 8.75, 15.75] | - | 7 |  |
+| trigger | body | [0, 6.60981, 13.82293] | - | 3 |  |
+| bipod | hm50b | [0, 0, 0] | - | 0 |  |
+| bipod_L | bipod | [1.5, 8.11908, -17.125] | [-85, 0, -30] | 15 | crawl_start: rotation; crawl: rotation; crawl_end: rotation; crawl_bipod: rotation; crawl_bipod_end: rotation; crawl_handup: rotation; crawl_handdown: rotation |
+| bipod_R | bipod | [-1.5, 8.11908, -17.125] | [-85, 0, 30] | 15 | crawl_start: rotation; crawl: rotation; crawl_end: rotation; crawl_bipod: rotation; crawl_bipod_end: rotation; crawl_handup: rotation; crawl_handdown: rotation |
+| base | bipod | [0, 9.25, -17.875] | - | 23 |  |
+| bolt | hm50b | [0, 11.375, 4] | - | 0 | crawl_bolt: position; bolt: position; reload_empty: position |
+| fix | bolt | [-0.125, 10.625, 7.5625] | - | 9 |  |
+| rotate | bolt | [0, 11.375, 4] | - | 17 | crawl_bolt: position,rotation; bolt: position,rotation; reload_empty: position,rotation |
+| bone2 | rotate | [2.625, 8.8493, 3.9375] | [0, 0, -22.5] | 5 |  |
+| bullet_in_barrel | bolt | [0, 11.375, 4] | - | 0 |  |
+| head3 | bullet_in_barrel | [0, 11.375, -1.82812] | - | 4 |  |
+| shell4 | bullet_in_barrel | [0, 11.375, 2] | - | 1 |  |
+| octagon11 | shell4 | [0, 11.375, 4.08073] | [90, 0, 0] | 4 |  |
+| bone74 | shell4 | [0, 11.375, 0.33073] | [90, 0, 0] | 0 |  |
+| bone75 | bone74 | [0, 11.375, 0.33073] | - | 0 |  |
+| bone76 | bone75 | [0, 11.375, -0.12974] | [-18.35164, 0, 0] | 0 |  |
+| bone77 | bone76 | [0, 11.35013, -0.12974] | [0, 0, -7.43025] | 1 |  |
+| bone78 | bone76 | [0, 11.35013, -0.12974] | [0, 0, 7.43025] | 1 |  |
+| bone79 | bone74 | [0, 11.375, 0.33073] | [0, -45, 0] | 0 |  |
+| bone80 | bone79 | [0, 11.375, -0.12974] | [-18.35164, 0, 0] | 0 |  |
+| bone81 | bone80 | [0, 11.35013, -0.12974] | [0, 0, -7.43025] | 1 |  |
+| bone82 | bone80 | [0, 11.35013, -0.12974] | [0, 0, 7.43025] | 1 |  |
+| bone83 | bone74 | [0, 11.375, 0.33073] | [0, -90, 0] | 0 |  |
+| bone84 | bone83 | [0, 11.375, -0.12974] | [-18.35164, 0, 0] | 0 |  |
+| bone85 | bone84 | [0, 11.35013, -0.12974] | [0, 0, -7.43025] | 1 |  |
+| bone86 | bone84 | [0, 11.35013, -0.12974] | [0, 0, 7.43025] | 1 |  |
+| bone87 | bone74 | [0, 11.375, 0.33073] | [0, -135, 0] | 0 |  |
+| bone88 | bone87 | [0, 11.375, -0.12974] | [-18.35164, 0, 0] | 0 |  |
+| bone89 | bone88 | [0, 11.35013, -0.12974] | [0, 0, -7.43025] | 1 |  |
+| bone90 | bone88 | [0, 11.35013, -0.12974] | [0, 0, 7.43025] | 1 |  |
+| bone91 | bone74 | [0, 11.375, 0.33073] | [0, -180, 0] | 0 |  |
+| bone92 | bone91 | [0, 11.375, -0.12974] | [-18.35164, 0, 0] | 0 |  |
+| bone93 | bone92 | [0, 11.35013, -0.12974] | [0, 0, -7.43025] | 1 |  |
+| bone94 | bone92 | [0, 11.35013, -0.12974] | [0, 0, 7.43025] | 1 |  |
+| bone95 | bone74 | [0, 11.375, 0.33073] | [0, -225, 0] | 0 |  |
+| bone96 | bone95 | [0, 11.375, -0.12974] | [-18.35164, 0, 0] | 0 |  |
+| bone97 | bone96 | [0, 11.35013, -0.12974] | [0, 0, -7.43025] | 1 |  |
+| bone98 | bone96 | [0, 11.35013, -0.12974] | [0, 0, 7.43025] | 1 |  |
+| bone99 | bone74 | [0, 11.375, 0.33073] | [0, -270, 0] | 0 |  |
+| bone100 | bone99 | [0, 11.375, -0.12974] | [-18.35164, 0, 0] | 0 |  |
+| bone101 | bone100 | [0, 11.35013, -0.12974] | [0, 0, -7.43025] | 1 |  |
+| bone102 | bone100 | [0, 11.35013, -0.12974] | [0, 0, 7.43025] | 1 |  |
+| bone103 | bone74 | [0, 11.375, 0.33073] | [0, -315, 0] | 0 |  |
+| bone104 | bone103 | [0, 11.375, -0.12974] | [-18.35164, 0, 0] | 0 |  |
+| bone105 | bone104 | [0, 11.35013, -0.12974] | [0, 0, -7.43025] | 1 |  |
+| bone106 | bone104 | [0, 11.35013, -0.12974] | [0, 0, 7.43025] | 1 |  |
+| octagon12 | shell4 | [0.00033, 11.37305, -3.7212] | [90, 0, 0] | 0 |  |
+| octagon13 | shell4 | [0.00033, 11.37305, -3.7212] | [90, 0, 0] | 0 |  |
+| octagon14 | shell4 | [0.00033, 11.37305, -3.7212] | [90, 0, 0] | 12 |  |
+| ar_stock_adapter | hm50b | [0, 10.76268, 25.17125] | - | 6 |  |
+| sights | hm50b | [0, 6, 16] | - | 0 |  |
+| sight | sights | [0, 8, 0] | - | 0 |  |
+| rear2 | sight | [0, 11.55938, 7.625] | - | 13 |  |
+| sight_illuminated | rear2 | [0.1875, 15.09983, 18.62422] | - | 2 |  |
+| fore2 | sight | [8, 3.25, -6.5625] | - | 13 |  |
+| fore_illuminated2 | fore2 | [0, 15.09983, -1.93828] | - | 1 |  |
+| sight_folded | sights | [0, 8, 0] | - | 0 |  |
+| rear3 | sight_folded | [0, 14.37813, 18.625] | [-90, 0, 0] | 5 |  |
+| octagon3 | rear3 | [0, 5, 7.25] | - | 8 |  |
+| rear_illuminated | octagon3 | [0.1875, 15.09983, 18.62422] | - | 2 |  |
+| fore | sight_folded | [8, 1.25, -6.5625] | - | 13 |  |
+| fore_illuminated | fore | [1e-05, 14.44436, -3.18221] | - | 1 |  |
+| sight_base | sights | [0, 0, 0] | - | 0 |  |
+| group16 | sight_base | [0, 16.3125, 1.4375] | - | 9 |  |
+| group15 | sight_base | [-0.01563, 17.05938, -1.34375] | - | 10 |  |
+| shell_ejection | hm50b | [0, 11.375, 4] | - | 0 | crawl_bolt: scale; bolt: scale; reload_empty: position,rotation,scale; inspect_empty: scale |
+| head2 | shell_ejection | [0, 11.375, -1.82812] | - | 4 | crawl_bolt: scale; bolt: scale; reload_empty: scale |
+| shell2 | shell_ejection | [0, 11.375, 2] | - | 1 |  |
+| octagon7 | shell2 | [0, 11.375, 4.08073] | [90, 0, 0] | 4 |  |
+| bone41 | shell2 | [0, 11.375, 0.33073] | [90, 0, 0] | 0 |  |
+| bone42 | bone41 | [0, 11.375, 0.33073] | - | 0 |  |
+| bone43 | bone42 | [0, 11.375, -0.12974] | [-18.35164, 0, 0] | 0 |  |
+| bone44 | bone43 | [0, 11.35013, -0.12974] | [0, 0, -7.43025] | 1 |  |
+| bone45 | bone43 | [0, 11.35013, -0.12974] | [0, 0, 7.43025] | 1 |  |
+| bone46 | bone41 | [0, 11.375, 0.33073] | [0, -45, 0] | 0 |  |
+| bone47 | bone46 | [0, 11.375, -0.12974] | [-18.35164, 0, 0] | 0 |  |
+| bone48 | bone47 | [0, 11.35013, -0.12974] | [0, 0, -7.43025] | 1 |  |
+| bone49 | bone47 | [0, 11.35013, -0.12974] | [0, 0, 7.43025] | 1 |  |
+| bone50 | bone41 | [0, 11.375, 0.33073] | [0, -90, 0] | 0 |  |
+| bone51 | bone50 | [0, 11.375, -0.12974] | [-18.35164, 0, 0] | 0 |  |
+| bone52 | bone51 | [0, 11.35013, -0.12974] | [0, 0, -7.43025] | 1 |  |
+| bone53 | bone51 | [0, 11.35013, -0.12974] | [0, 0, 7.43025] | 1 |  |
+| bone54 | bone41 | [0, 11.375, 0.33073] | [0, -135, 0] | 0 |  |
+| bone55 | bone54 | [0, 11.375, -0.12974] | [-18.35164, 0, 0] | 0 |  |
+| bone56 | bone55 | [0, 11.35013, -0.12974] | [0, 0, -7.43025] | 1 |  |
+| bone57 | bone55 | [0, 11.35013, -0.12974] | [0, 0, 7.43025] | 1 |  |
+| bone58 | bone41 | [0, 11.375, 0.33073] | [0, -180, 0] | 0 |  |
+| bone59 | bone58 | [0, 11.375, -0.12974] | [-18.35164, 0, 0] | 0 |  |
+| bone60 | bone59 | [0, 11.35013, -0.12974] | [0, 0, -7.43025] | 1 |  |
+| bone61 | bone59 | [0, 11.35013, -0.12974] | [0, 0, 7.43025] | 1 |  |
+| bone62 | bone41 | [0, 11.375, 0.33073] | [0, -225, 0] | 0 |  |
+| bone63 | bone62 | [0, 11.375, -0.12974] | [-18.35164, 0, 0] | 0 |  |
+| bone64 | bone63 | [0, 11.35013, -0.12974] | [0, 0, -7.43025] | 1 |  |
+| bone65 | bone63 | [0, 11.35013, -0.12974] | [0, 0, 7.43025] | 1 |  |
+| bone66 | bone41 | [0, 11.375, 0.33073] | [0, -270, 0] | 0 |  |
+| bone67 | bone66 | [0, 11.375, -0.12974] | [-18.35164, 0, 0] | 0 |  |
+| bone68 | bone67 | [0, 11.35013, -0.12974] | [0, 0, -7.43025] | 1 |  |
+| bone69 | bone67 | [0, 11.35013, -0.12974] | [0, 0, 7.43025] | 1 |  |
+| bone70 | bone41 | [0, 11.375, 0.33073] | [0, -315, 0] | 0 |  |
+| bone71 | bone70 | [0, 11.375, -0.12974] | [-18.35164, 0, 0] | 0 |  |
+| bone72 | bone71 | [0, 11.35013, -0.12974] | [0, 0, -7.43025] | 1 |  |
+| bone73 | bone71 | [0, 11.35013, -0.12974] | [0, 0, 7.43025] | 1 |  |
+| octagon8 | shell2 | [0.00033, 11.37305, -3.7212] | [90, 0, 0] | 4 |  |
+| octagon9 | shell2 | [0.00033, 11.37305, -3.7212] | [90, 0, 0] | 4 |  |
+| octagon10 | shell2 | [0.00033, 11.37305, -3.7212] | [90, 0, 0] | 4 |  |
+| constraint | hm50b | [0, 15.6909, -2.225] | - | 0 | static_idle: position,rotation; crawl_bolt: position,rotation; bolt: position,rotation; reload_tactical: position,rotation; reload_empty: position,rotation; shoot: position,rotation |
+| positioning2 | hm50b | [0, 10, -39.1] | - | 0 |  |
+| stock_pos | positioning2 | [0, 10.99375, 25.175] | - | 0 |  |
+| scope_pos | positioning2 | [0, 14.19063, 13.6] | - | 0 |  |
+| muzzle_pos | positioning2 | [0, 11.35938, -31.25625] | - | 0 |  |
+| muzzle_flash | positioning2 | [0, 11.39063, -35.35] | - | 0 |  |
+| shell3 | positioning2 | [-0.375, 12, 6.7125] | - | 0 |  |
+| righthand | gun_and_righthand | [6, 19, 0] | - | 0 | static_idle: position,rotation,scale; crawl_bolt: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; bolt: position,rotation,scale; reload_tactical: position,rotation,scale; reload_empty: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale |
+| righthand_pos | righthand | [0, 8, 0] | - | 1 |  |
+| view | - | [0, 0, 0] | - | 0 |  |
+| iron_view | view | [0, 15.6875, 23.2] | - | 0 |  |
+| idle_view | view | [4, 16.25, 25] | - | 0 |  |
+| refit_extended_mag_view | view | [10.7, 3.3, 7.725] | [0, 90, 0] | 0 |  |
+| refit_view | view | [36.6, 9.275, -0.125] | [0, 89.9, 0] | 0 |  |
+| refit_muzzle_view | view | [28.6, 10.275, -49.975] | [0, 120, 0] | 0 |  |
+| refit_scope_view | view | [16.6, 18.275, -1.975] | [7.5, 120, 0] | 0 |  |
+| refit_stock_view | view | [13, 9, 27] | [0, 90, 0] | 0 |  |
+| positioning | - | [8, -1, -1] | - | 0 |  |
+| thirdperson_hand | positioning | [0, 7.95, 15.075] | - | 0 |  |
+| ground | positioning | [0, -5.425, 7.325] | - | 0 |  |
+| fixed | positioning | [2.35, 8.0125, 13.2875] | [0, 90, 0] | 0 |  |
+| camera | - | [4, 16.25, 25] | - | 0 | crawl_start: rotation; crawl_end: rotation; crawl_bolt: rotation; crawl_bipod: rotation; crawl_bipod_end: rotation; draw: rotation; put_away: rotation; bolt: rotation; reload_tactical: rotation; reload_empty: rotation; inspect: rotation; inspect_empty: rotation; shoot: rotation |
 
 ## tacz:kar98_display
 
@@ -1853,7 +2503,7 @@ Animation: `assets/tacz/animations/kar98.animation.json`
 
 LOD reference: `{'model': 'tacz:gun/lod/kar98', 'texture': 'tacz:gun/lod/kar98'}`
 
-Geometry: `geometry.unknown`; **57 bones**.
+Geometry: `geometry.unknown`; **58 bones**.
 
 | Bone | Parent | Pivot (native pixels) | Rotation | Cubes | Authored animation channels |
 | --- | --- | --- | --- | --- | --- |
@@ -1868,12 +2518,13 @@ Geometry: `geometry.unknown`; **57 bones**.
 | bullet_in_gunbody | Gunbody | [-0.0625, 7.0125, 5.84706] | - | 7 | static_idle: scale; reload_empty_clip: scale; reload_intro_empty: scale; reload_intro: scale; reload_loop: scale; reload_end: position,rotation,scale; inspect: scale; inspect_empty: scale; shoot: scale; shoot_scope: scale; draw: scale; put_away: scale |
 | bullet_3 | bullet_in_gunbody | [-0.0625, 6.0125, 5.6375] | - | 4 |  |
 | bullet_in_mag | Gunbody | [-0.06487, 7.07593, 6.07069] | - | 11 | reload_loop: position,rotation |
-| bolt | GUN | [-0.00324, 7.59619, 9.27919] | - | 38 | reload_empty_clip: position; reload_intro_empty: position; reload_intro: position; reload_loop: position; reload_end: position; inspect: position; inspect_empty: position; bolt: position; bolt_scope: position |
+| bolt | GUN | [-0.00324, 7.59619, 9.27919] | - | 33 | reload_empty_clip: position; reload_intro_empty: position; reload_intro: position; reload_loop: position; reload_end: position; inspect: position; inspect_empty: position; bolt: position; bolt_scope: position |
 | Rotate | bolt | [0, 7.525, 5.6] | - | 22 | reload_empty_clip: rotation; reload_intro_empty: rotation; reload_intro: rotation; reload_loop: rotation; reload_end: rotation; inspect: rotation; inspect_empty: rotation; bolt: rotation; bolt_scope: rotation |
-| Safety | bolt | [0, 7.975, 10.575] | - | 4 | reload_empty_clip: rotation; reload_end: rotation; shoot: rotation; shoot_scope: rotation; bolt: rotation; bolt_scope: rotation |
+| Safety | bolt | [0, 7.975, 10.575] | - | 4 | reload_empty_clip: rotation; reload_intro_empty: rotation; reload_end: rotation; inspect: rotation; inspect_empty: rotation; shoot: rotation; shoot_scope: rotation; bolt: rotation; bolt_scope: rotation |
 | bullet_in_bolt | bolt | [0.05926, 7.50244, 0.77919] | - | 0 | static_idle: scale; reload_empty_clip: position,rotation,scale; reload_intro_empty: scale; reload_intro: position,rotation,scale; reload_loop: scale; reload_end: position,rotation,scale; inspect: scale; bolt: position,rotation,scale; bolt_scope: position,rotation,scale |
 | bullet2 | bullet_in_bolt | [0, 7.5125, 0.78456] | - | 7 |  |
 | bullet_8 | bullet2 | [0, 6.5125, 0.575] | - | 4 | reload_empty_clip: scale; inspect_empty: scale; bolt: scale; bolt_scope: scale |
+| hammer | bolt | [0, 7.42515, 10.63] | - | 5 | static_idle: position; static_hammer: position; reload_empty_clip: position; inspect: position; inspect_empty: position; bolt: position; bolt_scope: position |
 | Trigger | GUN | [0, 4.97714, 9.95405] | - | 4 |  |
 | Reciever | GUN | [0, 7.3, 7.6] | - | 31 |  |
 | scope_pos | GUN | [0.00012, 7.80963, 7.7618] | - | 0 |  |
@@ -1896,7 +2547,7 @@ Geometry: `geometry.unknown`; **57 bones**.
 | bullet_7 | bullet_792x57_9 | [0, 2.2, 20.7] | - | 4 |  |
 | bullet_792x57_7 | bullet | [0, 4.68438, 20.95585] | - | 7 | reload_empty_clip: position,rotation |
 | bullet_5 | bullet_792x57_7 | [0, 2.075, 20.7] | - | 4 |  |
-| righthand | right_and_magzine | [6, 19, 0] | - | 0 | static_idle: position,rotation,scale; reload_empty_clip: position,rotation,scale; reload_intro_empty: position,rotation,scale; reload_intro: position,rotation,scale; reload_loop: position,rotation; reload_end: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale; bolt: position,rotation,scale; bolt_scope: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale |
+| righthand | right_and_magzine | [6, 19, 0] | - | 0 | static_idle: position,rotation,scale; reload_empty_clip: position,rotation,scale; reload_intro_empty: position,rotation,scale; reload_intro: position,rotation,scale; reload_loop: position,rotation,scale; reload_end: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale; bolt: position,rotation,scale; bolt_scope: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale |
 | righthand_pos | righthand | [0, 8, 0] | - | 1 |  |
 | hide | righthand | [0, 7.2, 5.34706] | - | 0 | reload_loop: position; inspect: position; shoot: scale; shoot_scope: scale |
 | bullet_792x57_3 | hide | [0, 7.2, 5.34706] | - | 7 | static_idle: scale; reload_empty_clip: scale; reload_intro_empty: scale; reload_intro: scale; reload_loop: position,rotation,scale; reload_end: scale; inspect: position,rotation,scale; inspect_empty: scale; bolt: scale; bolt_scope: scale; draw: scale; put_away: scale |
@@ -1904,7 +2555,7 @@ Geometry: `geometry.unknown`; **57 bones**.
 | constraint | root | [0, 8.55, 0.525] | - | 0 | static_idle: position,rotation; reload_intro_empty: position,rotation; reload_intro: position,rotation; reload_loop: position,rotation; reload_end: position,rotation; shoot: position,rotation; shoot_scope: position,rotation; bolt: position,rotation; bolt_scope: position,rotation; put_away: position,rotation |
 | camera | - | [2, 9.8125, 15.4375] | - | 0 | reload_empty_clip: rotation; reload_intro_empty: rotation; reload_intro: rotation; reload_loop: rotation; reload_end: rotation; inspect: rotation; inspect_empty: rotation; shoot: rotation; shoot_scope: rotation; bolt: rotation; bolt_scope: rotation; draw: rotation; put_away: rotation |
 | views | - | [2, 9.8125, 15.4375] | - | 0 |  |
-| idle_view | views | [2, 9.8125, 17] | - | 0 |  |
+| idle_view | views | [2, 9.8125, 18] | - | 0 |  |
 | iron_view | views | [0, 8.75, 17.5] | - | 0 |  |
 | refit_view | views | [32, 7, 0] | [0, 89.9, 0] | 0 |  |
 | refit_muzzle_view | views | [12, 9, -31] | [0, 120, 0] | 0 |  |
@@ -1913,7 +2564,7 @@ Geometry: `geometry.unknown`; **57 bones**.
 | positioning | - | [8, -1, -1] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 5.075, 10.7625] | - | 0 |  |
 | ground | positioning | [0, 0, 0.325] | - | 0 |  |
-| fixed | positioning | [1.0375, 6.7, 0.325] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [1.0375, 5.0125, 9.95] | [0, 90, 0] | 0 |  |
 
 ## tacz:lonetrail_display
 
@@ -1956,23 +2607,23 @@ Geometry: `geometry.unknown`; **45 bones**.
 | lefthand_pos | lefthand | [0, 10, 0] | - | 1 |  |
 | rh_and_bullet_inspect | root | [-2, 4.7063, 10.7851] | - | 0 | inspect: position,rotation |
 | rh_and_bullet | rh_and_bullet_inspect | [-5.875, 5.53128, 13.84758] | - | 0 | reload_tactical: position,rotation; reload_empty: position,rotation; inspect: position,rotation |
-| bullet_in_barrel | rh_and_bullet | [0.00863, 8.1477, 6.37481] | [90, 0, 0] | 0 | reload_tactical: position,rotation,scale; reload_empty: position,rotation,scale; inspect: position,rotation |
-| round_shell | bullet_in_barrel | [0, -1.875, 8] | - | 31 |  |
-| head | bullet_in_barrel | [0.00395, 1.99982, 7.87101] | - | 30 |  |
+| bullet_in_chamber | rh_and_bullet | [0.00863, 8.1477, 6.37481] | [90, 0, 0] | 0 | reload_tactical: position,rotation,scale; reload_empty: position,rotation,scale; inspect: position,rotation |
+| round_shell | bullet_in_chamber | [0, -1.875, 8] | - | 31 |  |
+| head | bullet_in_chamber | [0.00395, 1.99982, 7.87101] | - | 30 |  |
 | righthand | rh_and_bullet | [6, 21, 0] | - | 0 | static_idle: position,rotation,scale; reload_tactical: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; reload_empty: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale |
 | righthand_pos | righthand | [0, 10, 0] | - | 1 |  |
 | camera | - | [2.5, 10, 15.5] | - | 0 | reload_tactical: rotation; shoot: rotation; draw: position,rotation; put_away: rotation; reload_empty: rotation; inspect: rotation; inspect_empty: rotation |
-| iron_view | - | [0, 9.14854, 15.5762] | - | 0 |  |
+| iron_view | - | [0, 9.14854, 18.0] | - | 0 |  |
 | positioning | - | [0, 0, 0] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 6.63125, 2.74375] | - | 0 |  |
 | ground | positioning | [0, 0, -1.5375] | - | 0 |  |
-| fixed | positioning | [1.075, 7.6625, -1.4875] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [1.075, 6.50625, 1.35625] | [0, 90, 0] | 0 |  |
 | refit | - | [0, 0, 0] | - | 0 |  |
 | refit_view | refit | [16, 8.25, 0] | [0, 89, 0] | 0 |  |
 | refit_laser_view | refit | [7, 6.25, -8.25] | [0, 112.5, 0] | 0 |  |
 | refit_scope_view | refit | [5, 13.2, 9.5] | [15, 47.5, 0] | 0 |  |
 | refit_muzzle_view | refit | [7, 10.65, -18] | [10, 120, 0] | 0 |  |
-| idle_view | - | [3, 10.9375, 16.5] | - | 0 |  |
+| idle_view | - | [3, 10.9375, 17.5] | - | 0 |  |
 | refit_extended_mag_view | - | [5, 8.5, 11.8125] | [10, 50, 0] | 0 |  |
 
 ## tacz:m1014_display
@@ -2041,11 +2692,11 @@ Geometry: `geometry.m1014`; **61 bones**.
 | positioning | - | [0, 0, 0] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 6.8875, 8.5] | - | 0 |  |
 | ground | positioning | [0, 0, 0] | - | 0 |  |
-| fixed | positioning | [1.1875, 8.75, -1] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [1.1875, 7.01563, 6.5] | [0, 90, 0] | 0 |  |
 | camera | - | [2.5, 12, 14] | - | 0 | draw: rotation; put_away: rotation; reload_intro: rotation; reload_loop: rotation; reload_loop_2: rotation; reload_end: rotation; reload_intro_empty: rotation; reload_intro_empty_all: rotation; inspect: rotation; inspect_empty: rotation; shoot: rotation; shoot_last: rotation |
 | views | - | [2, 12, 12] | - | 0 |  |
-| idle_view | views | [2.5, 12, 14] | - | 0 |  |
-| iron_view | views | [0, 11, 14.25] | - | 0 |  |
+| idle_view | views | [2.5, 12, 15] | - | 0 |  |
+| iron_view | views | [0, 11, 13] | - | 0 |  |
 | refit_view | views | [24, 9, 0] | [0, 89.9, 0] | 0 |  |
 | refit_muzzle_view | views | [14, 9, -31] | [0, 120, 0] | 0 |  |
 | refit_scope_view | views | [11, 16, 10] | [0, 60, -20] | 0 |  |
@@ -2061,20 +2712,22 @@ Animation: `assets/tacz/animations/m107.animation.json`
 
 LOD reference: `{'model': 'tacz:gun/lod/m107', 'texture': 'tacz:gun/lod/m107'}`
 
-Geometry: `geometry.m82a2`; **189 bones**.
+Geometry: `geometry.m82a2`; **191 bones**.
 
 | Bone | Parent | Pivot (native pixels) | Rotation | Cubes | Authored animation channels |
 | --- | --- | --- | --- | --- | --- |
-| root | - | [0, 5, 16] | - | 0 | static_idle: position,rotation; draw: position,rotation; reload_tactical: position,rotation; reload_tactical_xmag: position,rotation; reload_empty: position,rotation; reload_empty_xmag: position,rotation; inspect: position,rotation; inspect_xmag: position,rotation; inspect_empty: position,rotation; inspect_empty_xmag: position,rotation; shoot: position,rotation; put_away: position,rotation |
+| root | - | [0, 5, 16] | - | 0 | static_idle: position,rotation; crawl_start: position,rotation; crawl_end: position,rotation; crawl_bipod: position,rotation; crawl_bipod_end: position,rotation; draw: position,rotation; reload_tactical: position,rotation; reload_tactical_xmag: position,rotation; reload_empty: position,rotation; reload_empty_xmag: position,rotation; inspect: position,rotation; inspect_xmag: position,rotation; inspect_empty: position,rotation; inspect_empty_xmag: position,rotation; shoot: position,rotation; put_away: position,rotation |
 | gun_and_righthand | root | [0, 5, 16] | - | 0 |  |
 | righthand | gun_and_righthand | [6, 19, 8] | - | 0 | static_idle: position,rotation,scale; draw: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_xmag: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag: position,rotation,scale; inspect: position,rotation,scale; inspect_xmag: position,rotation,scale; inspect_empty: position,rotation,scale; inspect_empty_xmag: position,rotation,scale; put_away: position,rotation,scale |
 | righthand_pos | righthand | [0, 8, 8] | - | 1 |  |
 | gun | gun_and_righthand | [0, 8, 8] | - | 0 |  |
 | m107 | gun | [0, 8, 8] | - | 0 |  |
 | bipod_extended | m107 | [-3.75, 5.875, -1.875] | - | 0 |  |
-| l2 | bipod_extended | [1.40016, 7.15973, -10.14645] | [0, 0, -22.5] | 12 |  |
-| l3 | bipod_extended | [-1.40016, 7.15973, -10.14645] | [0, 0, 22.5] | 12 |  |
 | mid | bipod_extended | [0, 7.8278, -10.28348] | - | 8 |  |
+| bipod_l | bipod_extended | [1.4002, 7.1597, -10.1464] | - | 0 | crawl_start: rotation; crawl: rotation; crawl_end: rotation; crawl_bipod: rotation; crawl_bipod_end: rotation; crawl_handup: rotation; crawl_handdown: rotation; shoot: rotation |
+| l2 | bipod_l | [1.40016, 7.15973, -10.14645] | [70, 0, -22.5] | 12 |  |
+| bipod_r | bipod_extended | [-1.4002, 7.1597, -10.1464] | - | 0 | crawl_start: rotation; crawl: rotation; crawl_end: rotation; crawl_bipod: rotation; crawl_bipod_end: rotation; crawl_handup: rotation; crawl_handdown: rotation; shoot: rotation |
+| l3 | bipod_r | [-1.40016, 7.15973, -10.14645] | [70, 0, 22.5] | 12 |  |
 | sight_folded | m107 | [0, 8, 8] | - | 0 |  |
 | rearsightfold | sight_folded | [0, 10.625, 21.0625] | - | 8 |  |
 | foresightfoldr | sight_folded | [0, 11.82768, -15.19077] | [-90, 0, 0] | 14 |  |
@@ -2240,10 +2893,10 @@ Geometry: `geometry.m82a2`; **189 bones**.
 | mag_extended_1 | magazine | [-6, 8.75, 3.5] | - | 19 |  |
 | mag_extended_2 | magazine | [5, 8.5, 7.3125] | - | 52 |  |
 | mag_extended_3 | magazine | [5, 8.5, 7.3125] | - | 52 |  |
-| lefthand | root | [-6, 19, 8] | - | 0 | static_idle: position,rotation,scale; draw: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_xmag: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag: position,rotation,scale; inspect: position,rotation,scale; inspect_xmag: position,rotation,scale; inspect_empty: position,rotation,scale; inspect_empty_xmag: position,rotation,scale; put_away: position,rotation,scale |
+| lefthand | root | [-6, 19, 8] | - | 0 | static_idle: position,rotation,scale; crawl_start: position,rotation; crawl: position,rotation; crawl_end: position,rotation; crawl_handup: position,rotation; crawl_handdown: position,rotation; draw: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_xmag: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag: position,rotation,scale; inspect: position,rotation,scale; inspect_xmag: position,rotation,scale; inspect_empty: position,rotation,scale; inspect_empty_xmag: position,rotation,scale; put_away: position,rotation,scale |
 | lefthand_pos | lefthand | [0, 8, 8] | - | 1 |  |
 | view | - | [0, 0, 0] | - | 0 |  |
-| idle_view | view | [3.25, 14.5, 21] | - | 0 |  |
+| idle_view | view | [3.5, 14.5, 24] | - | 0 |  |
 | iron_view | view | [0, 14, 24] | - | 0 |  |
 | refit_view | view | [40, 6, -4] | [0, 89.9, 0] | 0 |  |
 | refit_muzzle_view | view | [16, 10, -40] | [0, 107.5, 0] | 0 |  |
@@ -2251,9 +2904,9 @@ Geometry: `geometry.m82a2`; **189 bones**.
 | refit_scope_view | view | [16.6, 13.275, -12.975] | [0, 120, 0] | 0 |  |
 | positioning | - | [0, 0, 0] | - | 0 |  |
 | ground | positioning | [0, -8, 0] | - | 0 |  |
-| fixed | positioning | [0, 9, 0] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [0, 7, 12.9375] | [0, 90, 0] | 0 |  |
 | thirdperson_hand | positioning | [0, 7, 14.25] | - | 0 |  |
-| camera | - | [3.25, 14.5, 21] | - | 0 | draw: rotation; reload_tactical: rotation; reload_tactical_xmag: rotation; reload_empty: rotation; reload_empty_xmag: rotation; inspect: rotation; inspect_xmag: rotation; inspect_empty: rotation; inspect_empty_xmag: rotation; shoot: rotation; put_away: rotation |
+| camera | - | [3.25, 14.5, 21] | - | 0 | crawl_start: rotation; crawl_end: rotation; crawl_bipod: rotation; crawl_bipod_end: rotation; draw: rotation; reload_tactical: rotation; reload_tactical_xmag: rotation; reload_empty: rotation; reload_empty_xmag: rotation; inspect: rotation; inspect_xmag: rotation; inspect_empty: rotation; inspect_empty_xmag: rotation; shoot: rotation; put_away: rotation |
 
 ## tacz:m16a1_display
 
@@ -2265,7 +2918,7 @@ Animation: `assets/tacz/animations/m16a1.animation.json`
 
 LOD reference: `{'model': 'tacz:gun/lod/m16a1', 'texture': 'tacz:gun/lod/m16a1'}`
 
-Geometry: `geometry.unknown`; **85 bones**.
+Geometry: `geometry.unknown`; **90 bones**.
 
 | Bone | Parent | Pivot (native pixels) | Rotation | Cubes | Authored animation channels |
 | --- | --- | --- | --- | --- | --- |
@@ -2282,13 +2935,11 @@ Geometry: `geometry.unknown`; **85 bones**.
 | group24 | mag | [0, 1, -4.9375] | - | 27 |  |
 | bullet2 | mag_extended_1 | [4, 0, -5.8125] | - | 0 |  |
 | mag_extended_2 | magazine | [-4, 8, 2.1875] | - | 0 |  |
-| mag3 | mag_extended_2 | [-2, 3.51444, 3.82622] | - | 0 |  |
-| group3 | mag3 | [0, 1, -4.9375] | - | 27 |  |
 | bullet3 | mag_extended_2 | [4, 0, -5.8125] | - | 0 |  |
+| mag3 | mag_extended_2 | [0, 18.64764, 3.24628] | - | 27 |  |
 | mag_extended_3 | magazine | [-4, 8, 2.1875] | - | 0 |  |
-| mag4 | mag_extended_3 | [-2, 3.51444, 3.82622] | - | 0 |  |
-| group6 | mag4 | [0, 1, -4.9375] | - | 27 |  |
 | bullet4 | mag_extended_3 | [4, 0, -5.8125] | - | 0 |  |
+| group3 | mag_extended_3 | [0.2974, 4.11564, 3.31111] | - | 75 |  |
 | lefthand | mag_and_lefthand | [-6, 19, 0] | - | 0 | static_idle: position,rotation,scale; static_bolt_caught: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; reload_tactical: position,rotation,scale; reload_empty: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale |
 | lefthand_pos | lefthand | [0, 8, 0] | - | 1 |  |
 | gun_and_righthand | root | [0, 8.3, 5] | - | 0 | inspect: position,rotation; inspect_empty: position,rotation |
@@ -2330,30 +2981,37 @@ Geometry: `geometry.unknown`; **85 bones**.
 | group16 | stock | [0, 10.70711, 21.55368] | - | 4 |  |
 | group17 | stock | [0, 13.5, 8.5] | - | 3 |  |
 | group18 | stock | [0, 4.03125, 21.57813] | - | 4 |  |
-| ring | m16a1_default | [0, 8, 0] | - | 0 |  |
+| handguard_default | m16a1_default | [0.00027, 9.83954, -6.4177] | - | 99 |  |
+| ring | handguard_default | [0, 8, 0] | - | 0 |  |
 | octagon3 | ring | [0, 8, -0.25] | - | 4 |  |
 | octagon4 | ring | [0, 9.5625, 1.0625] | [0, 180, 0] | 4 |  |
-| handguard | m16a1_default | [0.00027, 9.83954, -6.4177] | - | 84 |  |
+| handguard_tactical | m16a1_default | [0, 9.3, -4] | - | 0 |  |
 | positioning2 | m16a1 | [0, 0, 0] | - | 0 |  |
 | muzzle_pos | positioning2 | [0, 9.55625, -21.4] | - | 0 |  |
 | muzzle_flash | positioning2 | [0, 9.60625, -24] | - | 0 |  |
 | shell | positioning2 | [-0.15, 9.7625, 4.225] | - | 0 |  |
-| scope_pos | positioning2 | [0, 12.4375, 5] | - | 0 |  |
+| scope_pos | positioning2 | [0, 13.125, 7] | - | 0 |  |
+| attachment_adapter | m16a1 | [0, 8.3, 5] | - | 0 |  |
+| oem_handguard_a2 | attachment_adapter | [-0.97307, -0.97307, -0.05925] | - | 151 |  |
+| mount | m16a1 | [0, 12, 6] | - | 44 |  |
+| bone5 | mount | [0, 11, 4.875] | - | 3 |  |
+| bone4 | mount | [0, 12, 4.875] | - | 3 |  |
 | righthand | gun_and_righthand | [6, 19, 0] | - | 0 | static_idle: position,rotation,scale; static_bolt_caught: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; reload_tactical: position,rotation,scale; reload_empty: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale |
 | righthand_pos | righthand | [0, 8, 0] | - | 1 |  |
 | camera | - | [3.39375, 13.05, 16.4625] | - | 0 | draw: rotation; put_away: rotation; reload_tactical: rotation; reload_empty: rotation; inspect: rotation; inspect_empty: relative_to,rotation; shoot: rotation |
 | positioning | - | [0, 0, 0] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 7.0125, 7.5] | - | 0 |  |
 | ground | positioning | [0, -0.9, 3.025] | - | 0 |  |
-| fixed | positioning | [1.05, 9.6, 5.15] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [1.05, 7.0375, 6.8375] | [0, 90, 0] | 0 |  |
 | view | - | [0, 0, 0] | - | 0 |  |
-| iron_view | view | [0, 12.65, 13.95] | - | 0 |  |
-| idle_view | view | [3.39375, 13.05, 16.4625] | - | 0 |  |
-| refit_view | view | [23, 9, 3] | [0, 89.9, 0] | 0 |  |
-| refit_muzzle_view | view | [11, 9.2, -24] | [0, 90, 0] | 0 |  |
+| iron_view | view | [0, 12.65, 16] | - | 0 |  |
+| idle_view | view | [3.25, 13.05, 17.4625] | [0, 0, -2.5] | 0 |  |
+| refit_view | view | [31.99999, 9, 3.01571] | [0, 89.9, 0] | 0 |  |
+| refit_grip_view | view | [16, 9.2, -6] | [0, 90, 0] | 0 |  |
+| refit_muzzle_view | view | [16, 9.2, -24] | [0, 90, 0] | 0 |  |
 | refit_laser_view | view | [7, 10, -11] | [0, 125, 0] | 0 |  |
-| refit_extended_mag_view | view | [10, 4, 3] | [0, 90, 0] | 0 |  |
-| refit_scope_view | view | [8, 12.5, 4.3] | [0, 50, 0] | 0 |  |
+| refit_extended_mag_view | view | [24, 4, 3] | [0, 90, 0] | 0 |  |
+| refit_scope_view | view | [16, 12.5, 11.3] | [0, 70, 0] | 0 |  |
 
 ## tacz:m16a4_display
 
@@ -2458,17 +3116,173 @@ Geometry: `geometry.unknown`; **100 bones**.
 | positioning | - | [0, 0, 0] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 6.325, 7.75] | - | 0 |  |
 | ground | positioning | [0, -0.9, 3.025] | - | 0 |  |
-| fixed | positioning | [1.05, 9.6, 5.15] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [1.05, 7.05313, 6.8375] | [0, 90, 0] | 0 |  |
 | view | - | [0, 0, 0] | - | 0 |  |
-| iron_view | view | [0, 12.65, 13.95] | - | 0 |  |
-| idle_view | view | [3.39375, 13.05, 16.4625] | - | 0 |  |
-| refit_view | view | [23, 9, 0] | [0, 89.9, 0] | 0 |  |
+| iron_view | view | [0, 12.65, 16] | - | 0 |  |
+| idle_view | view | [3.25, 13.05, 17.4625] | [0, 0, -2.5] | 0 |  |
+| refit_view | view | [32, 9, 0] | [0, 89.9, 0] | 0 |  |
 | refit_stock_view | view | [11, 9.2, 17] | [0, 90, 0] | 0 |  |
 | refit_muzzle_view | view | [11, 9.2, -24] | [0, 90, 0] | 0 |  |
 | refit_extended_mag_view | view | [10, 4, 3] | [0, 90, 0] | 0 |  |
 | refit_scope_view | view | [8.73954, 12.5, 12.75299] | [0, 50, 0] | 0 |  |
 | refit_grip_view | view | [6.8, 5.4, -4] | [0, 90, 0] | 0 |  |
 | refit_laser_view | view | [12, 13, -24] | [15, 135, 0] | 0 |  |
+
+## tacz:m1866_display
+
+Display: `assets/tacz/display/guns/m1866_display.json`
+
+Model: `assets/tacz/geo_models/gun/m1866_geo.json`
+
+Animation: `assets/tacz/animations/m1866.animation.json`
+
+LOD reference: `{'model': 'tacz:gun/lod/m1866', 'texture': 'tacz:gun/lod/m1866'}`
+
+Geometry: `geometry.m4a1_fom - Converted`; **69 bones**.
+
+| Bone | Parent | Pivot (native pixels) | Rotation | Cubes | Authored animation channels |
+| --- | --- | --- | --- | --- | --- |
+| root | - | [0, 7, -1.425] | - | 0 | static_idle: position,rotation; draw: position,rotation; put_away: position,rotation; shoot: position,rotation; bolt: position,rotation; bolt_fast: position,rotation; reload_intro: position,rotation; reload_loop_intro: position,rotation; reload_loop_next: position,rotation; reload_loop_end: position,rotation; reload_loop_1_load: position,rotation; reload_end: position,rotation; reload_end_empty: position,rotation; inspect: position,rotation; inspect_empty: position,rotation |
+| mag_and_lefthand | root | [0, 5, -6] | - | 0 |  |
+| lefthand | mag_and_lefthand | [-6, 19, 0] | - | 0 | static_idle: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; bolt: position,rotation,scale; bolt_fast: position,rotation,scale; reload_intro: position,rotation,scale; reload_loop_intro: position,rotation,scale; reload_loop_next: position,rotation,scale; reload_loop_end: position,rotation,scale; reload_loop_1_load: position,rotation,scale; reload_end: position,rotation,scale; reload_end_empty: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale |
+| lefthand_pos | lefthand | [0, 8, 0] | - | 1 |  |
+| gun_and_righthand | root | [0, 7, -1.425] | - | 0 |  |
+| m1866_default | gun_and_righthand | [0, 7, -1.6] | - | 0 |  |
+| gun_default | m1866_default | [0, 0, 0] | - | 0 |  |
+| trigger | gun_default | [0, 7.92678, 6.25] | - | 5 |  |
+| receiver | gun_default | [0, 10.66605, 3.25] | - | 60 |  |
+| stock | gun_default | [0.31093, 10.21071, 15.29725] | - | 27 |  |
+| handguard | gun_default | [0, 9, 1.25] | - | 5 |  |
+| nosecap | handguard | [0, 10.89584, -8.01028] | - | 10 |  |
+| muzzle_default | gun_default | [0, 0, 0] | - | 0 |  |
+| octagon2 | muzzle_default | [0, 12, -12.5] | - | 8 |  |
+| sight | muzzle_default | [0, 10.5, -3.17678] | - | 6 |  |
+| sight1_illuminated | sight | [0, 10.71207, -19.81739] | - | 1 |  |
+| group | sight | [0, 10.56634, -2.125] | [-15, 0, 0] | 3 |  |
+| barrel_extended2 | gun_default | [0, 5, 0] | - | 0 |  |
+| octagon7 | barrel_extended2 | [0, 17, -12.5] | - | 0 |  |
+| sight3 | barrel_extended2 | [0, 15.5, -3.17678] | - | 0 |  |
+| octagon8 | barrel_extended2 | [0, 14.125, -17] | - | 0 |  |
+| octagon9 | barrel_extended2 | [0, 14.22892, -20.8125] | - | 0 |  |
+| rings | gun_default | [0.75156, 8.89263, 7.32708] | - | 1 |  |
+| group4 | rings | [0, 0, 0] | - | 1 |  |
+| group2 | group4 | [0, 8.1875, -10.5] | [-90, 0, 0] | 4 |  |
+| group5 | rings | [0, 3.09829, 16.51955] | [-90, -67.5, 90] | 1 |  |
+| group6 | group5 | [0, 3.03579, 16.51955] | [-90, 0, 0] | 4 |  |
+| group3 | rings | [0.78125, 8.17825, 7.17323] | [0, 22.5, 90] | 6 |  |
+| lever | m1866_default | [0, 7.875, 4.25] | - | 22 | bolt: position,rotation; bolt_fast: position,rotation; reload_end_empty: position,rotation; inspect: position,rotation; inspect_empty: position,rotation |
+| hammer | m1866_default | [0, 8.4375, 6.625] | - | 10 | static_idle: rotation; static_hammer: rotation; put_away: rotation; shoot: rotation; bolt: rotation; bolt_fast: rotation; reload_end_empty: rotation; inspect: rotation; inspect_empty: rotation |
+| elevator | m1866_default | [0, 9.0375, 1] | - | 9 |  |
+| bolt | m1866_default | [0, 12, 5.25] | - | 8 | bolt: position; bolt_fast: position; reload_end_empty: position,rotation; inspect: position,rotation; inspect_empty: position,rotation |
+| bullet_in_bolt | bolt | [0, 10.04688, -0.41667] | - | 0 | bolt: position,scale; bolt_fast: position,scale; reload_end_empty: position; inspect: scale; inspect_empty: scale |
+| shell_effects | bullet_in_bolt | [0, 10.04688, -0.4375] | - | 2 |  |
+| projectile | bullet_in_bolt | [0, 10.04688, -0.3125] | - | 1 | bolt: scale; bolt_fast: scale; reload_end_empty: scale; inspect_empty: scale |
+| bullet_in_mag | m1866_default | [0, 11.125, 1.8125] | - | 3 |  |
+| bullet_in_barrel | m1866_default | [0, 10.04688, -0.41667] | - | 3 | bolt: position,rotation; bolt_fast: position,rotation; reload_end_empty: position,rotation; inspect: position,rotation; inspect_empty: position,rotation |
+| carrier | m1866_default | [-0.1875, 9.15625, 3.625] | - | 10 | reload_loop_intro: position,rotation; reload_loop_next: position,rotation; reload_loop_end: position,rotation; reload_loop_1_load: position,rotation |
+| attachment_adapter | m1866_default | [0, 0, 0] | - | 0 |  |
+| oem_barrel_cannon | attachment_adapter | [0, 0, 0] | - | 0 |  |
+| octagon3 | oem_barrel_cannon | [0, 12, -12.5] | - | 8 |  |
+| sight2 | oem_barrel_cannon | [0, 10.5, -3.17678] | - | 6 |  |
+| sight2_illuminated | sight2 | [0, 10.71207, -24.81739] | - | 1 |  |
+| group7 | sight2 | [0, 10.56634, -2.125] | [-15, 0, 0] | 3 |  |
+| positioning2 | m1866_default | [0, 0, 0] | - | 0 |  |
+| shell | positioning2 | [0, 10, 1.0375] | [-15, 0, 0] | 0 |  |
+| muzzle_flash | positioning2 | [0, 10.00313, -20.93437] | - | 0 |  |
+| scope_pos | positioning2 | [0, 0, 0] | - | 0 |  |
+| constraint | m1866_default | [0, 10.6875, -8.6] | - | 0 | static_idle: position,rotation; shoot: position,rotation; bolt: position,rotation; bolt_fast: position,rotation; reload_intro: position,rotation; reload_loop_intro: position,rotation; reload_loop_next: position,rotation; reload_loop_end: position,rotation; reload_loop_1_load: position,rotation; reload_end: position,rotation; reload_end_empty: position,rotation |
+| righthand | gun_and_righthand | [6, 19, 0] | - | 0 | static_idle: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; bolt: position,rotation,scale; bolt_fast: position,rotation,scale; reload_intro: position,rotation,scale; reload_loop_intro: position,rotation,scale; reload_loop_next: position,rotation,scale; reload_loop_end: position,rotation,scale; reload_loop_1_load: position,rotation,scale; reload_end: position,rotation,scale; reload_end_empty: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale |
+| righthand_pos | righthand | [0, 8, 0] | - | 1 |  |
+| bullet_in_mag2 | righthand | [0.0297, 9.13395, 1.09586] | - | 3 | static_idle: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; bolt: scale; bolt_fast: scale; reload_intro: position,rotation,scale; reload_loop_intro: position,rotation,scale; reload_loop_next: position,rotation,scale; reload_loop_end: position,rotation,scale; reload_loop_1_load: position,rotation,scale; reload_end: position,rotation,scale; reload_end_empty: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale |
+| mag_extended_3 | gun_and_righthand | [0, 9.125, -17.5] | - | 9 |  |
+| mag_extended_2 | gun_and_righthand | [0, 9.125, -14.5] | - | 9 |  |
+| mag_extended_1 | gun_and_righthand | [0, 9.125, -13.5] | - | 9 |  |
+| camera | - | [3, 13.1563, 13.05] | [0, 0, -7.5] | 0 | draw: rotation; put_away: rotation; shoot: rotation; bolt: rotation; bolt_fast: rotation; reload_intro: position,rotation; reload_loop_intro: rotation; reload_loop_next: rotation; reload_loop_end: rotation; reload_loop_1_load: rotation; reload_end: position,relative_to,rotation; reload_end_empty: position,relative_to,rotation; inspect: rotation; inspect_empty: rotation |
+| views | - | [2, 12, 12] | - | 0 |  |
+| idle_view | views | [2.5, 12.9063, 13.05] | [0, 0, -5] | 0 |  |
+| iron_view | views | [0, 10.9268, 12.5] | - | 0 |  |
+| refit_view | views | [28, 7, -4] | [0, 89.9, 0] | 0 |  |
+| refit_muzzle_view | views | [12, 10.5, -27.25] | [0, 120, 0] | 0 |  |
+| refit_stock_view | views | [12, 5.25, 15.25] | [0, 90, 0] | 0 |  |
+| refit_scope_view | views | [10, 12, 10] | [0, 50, 0] | 0 |  |
+| refit_extended_mag_view | views | [16, 3.275, -22] | [170, 60, 180] | 0 |  |
+| positioning | - | [0, 0, 0] | - | 0 |  |
+| fixed | positioning | [1.1, 7.81563, 5.54375] | [0, 90, 0] | 0 |  |
+| ground | positioning | [0, -2.0625, 0] | - | 0 |  |
+| thirdperson_hand | positioning | [0, 7.825, 5.8] | - | 0 |  |
+| octagon | - | [0, 16, -26] | - | 0 |  |
+
+## tacz:m1897_display
+
+Display: `assets/tacz/display/guns/m1897_display.json`
+
+Model: `assets/tacz/geo_models/gun/m1897_geo.json`
+
+Animation: `assets/tacz/animations/m1897.animation.json`
+
+LOD reference: `{'model': 'tacz:gun/lod/m1897', 'texture': 'tacz:gun/lod/m1897'}`
+
+Geometry: `geometry.m870_cc - Converted`; **57 bones**.
+
+| Bone | Parent | Pivot (native pixels) | Rotation | Cubes | Authored animation channels |
+| --- | --- | --- | --- | --- | --- |
+| root | - | [0, 7, 5] | - | 0 | inspect: position,rotation; shoot: position,rotation; reload_intro_empty_easter: position,rotation; bolt_add_1: position,rotation; bolt_add_4: position,rotation; bolt_add_5: position,rotation; bolt_add_2: position,rotation; bolt_add_3: position,rotation; reload_intro: position,rotation; reload_intro_empty: position,rotation; draw: position,rotation; reload_end: position,rotation; put_away: position,rotation; inspect_empty: position,rotation; bolt: position,rotation; reload_loop: position,rotation |
+| gun_and_lefthand | root | [0, 7, 8] | - | 0 | inspect: rotation; inspect_empty: rotation |
+| constraint | gun_and_lefthand | [0, 10.125, -8] | - | 0 | shoot: position,rotation; reload_intro_empty_easter: position,rotation; static_idle: position,rotation; reload_intro_empty: position,rotation |
+| muzzle_flash | gun_and_lefthand | [0, 9.15, -24] | - | 0 |  |
+| shell | gun_and_lefthand | [0, 9.125, 2.5] | - | 0 |  |
+| gun | gun_and_lefthand | [0, 7, 8] | - | 0 |  |
+| slide | gun | [0, 8.21079, -6.1875] | - | 4 | inspect: position; reload_intro_empty_easter: position; reload_intro_empty: position; inspect_empty: position; bolt: position |
+| bolt | slide | [0, 9.0375, 4.25] | - | 31 |  |
+| polygon_8 | slide | [0.00062, 7.90981, -11.6502] | [-0.5, 0, 0] | 8 |  |
+| body | gun | [0, 7.5625, 13.5] | - | 96 |  |
+| FSL_Triangle_Cube_Fill_v1_0_0_2 | body | [0.7115, 8.90815, 6.46071] | - | 34 |  |
+| screw | body | [0, 8.875, 7.375] | - | 14 |  |
+| stock | gun | [0, 7.3125, 4.75] | - | 0 |  |
+| ring2 | stock | [2e-05, 2.13534, 19.61303] | - | 6 |  |
+| group14 | stock | [1e-05, 1.09143, 22.83906] | - | 11 |  |
+| stock2 | stock | [0, 6.5625, 4.75] | - | 52 |  |
+| barrel | gun | [0, 9.15, -2.19472] | - | 0 |  |
+| group | barrel | [0, 7.15, -0.0625] | - | 16 |  |
+| group15 | group | [0, 7.31951, -13.83491] | - | 14 |  |
+| hole | group15 | [0, 9.17188, -12.375] | - | 0 |  |
+| bone4 | hole | [0, 9.17188, -6.825] | - | 14 |  |
+| bone | hole | [0, 9.17188, -6.825] | [0, 0.75, -90] | 14 |  |
+| bone2 | hole | [0, 9.17188, -6] | [0.03035, 0.78032, -44.99741] | 14 |  |
+| bone3 | hole | [0, 9.17188, -6] | [0.03035, -0.78032, 44.99741] | 14 |  |
+| polygon_8_hollow | barrel | [0, 9.15, -24] | - | 8 |  |
+| group9 | barrel | [0, 9.15, 0.25] | - | 8 |  |
+| magazine | gun | [0, 6.9375, -12.258] | - | 0 |  |
+| group5 | magazine | [0, 7.8125, -0.5] | [-0.5, 0, 0] | 4 |  |
+| bullet_in_mag | magazine | [0, 7.825, -0.09375] | - | 9 | inspect: scale; inspect_empty: scale |
+| bayonet_lug | gun | [0, 9.15625, -18.9875] | - | 34 |  |
+| ring1 | bayonet_lug | [2e-05, 7.5848, -19.5557] | - | 4 | reload_intro_empty_easter: rotation; reload_intro: rotation; reload_intro_empty: rotation; reload_end: rotation; reload_loop: rotation |
+| trigger | gun | [0, 6.23294, 6.52512] | [20, 0, 0] | 5 |  |
+| panel | gun | [0, 8.7, 6.25] | [1, 0, 0] | 19 | inspect: rotation; reload_intro_empty_easter: rotation; reload_intro_empty: rotation; inspect_empty: rotation; bolt: rotation; reload_loop: rotation |
+| hammer | panel | [0, 8.65, 5] | - | 9 | static_idle: rotation; static_bolt_caught: rotation |
+| lefthand | gun_and_lefthand | [-6, 19, 0] | - | 0 | inspect: position,rotation,scale; reload_intro_empty_easter: position,rotation,scale; static_idle: position,rotation,scale; reload_intro: position,rotation,scale; reload_intro_empty: position,rotation,scale; draw: position,rotation,scale; reload_end: position,rotation,scale; put_away: position,rotation,scale; inspect_empty: position,rotation,scale; bolt: position,rotation,scale; reload_loop: position,rotation,scale |
+| lefthand_pos | lefthand | [0, 8, 0] | - | 1 |  |
+| attachment_adapter | gun_and_lefthand | [0, 0, 0] | - | 0 |  |
+| bayonet | attachment_adapter | [0, 8.1875, -23.9625] | - | 26 |  |
+| octagon8 | bayonet | [0, 8.1125, -23.78125] | - | 4 |  |
+| positioning2 | gun_and_lefthand | [0, 0, 0] | - | 0 |  |
+| muzzle_pos | positioning2 | [0, 9.15, -23.9875] | - | 0 |  |
+| bullet_and_righthand | root | [0, 7.75, 0] | - | 0 | reload_intro_empty_easter: position,rotation; reload_intro: position,rotation,scale; reload_intro_empty: position,rotation; reload_end: position,rotation; reload_loop: position,rotation |
+| bullet | bullet_and_righthand | [0, 7.825, -0.59375] | - | 9 | inspect: scale; reload_intro_empty_easter: position,rotation,scale; reload_intro_empty: position,rotation,scale; reload_end: scale; inspect_empty: position,rotation,scale; reload_loop: position,rotation,scale |
+| bullet_in_barrel | bullet_and_righthand | [0, 9.15, -0.28125] | - | 9 | inspect: position,rotation,scale; reload_intro_empty_easter: scale; reload_intro: scale; reload_intro_empty: scale; reload_end: scale; inspect_empty: scale; reload_loop: scale |
+| righthand | bullet_and_righthand | [6, 19, 0] | - | 0 | inspect: position,rotation,scale; reload_intro_empty_easter: position,rotation,scale; static_idle: position,rotation,scale; reload_intro: position,rotation,scale; reload_intro_empty: position,rotation,scale; draw: position,rotation,scale; reload_end: position,rotation,scale; put_away: position,rotation,scale; inspect_empty: position,rotation,scale; reload_loop: position,rotation,scale |
+| righthand_pos | righthand | [0, 8, 0] | - | 1 |  |
+| positioning | - | [0, 0, 0] | - | 0 |  |
+| fixed | positioning | [0, 6.76563, 6.375] | [0, 90, 0] | 0 |  |
+| ground | positioning | [0, 0, 0] | - | 0 |  |
+| thirdperson_hand | positioning | [0, 7, 6.1875] | - | 0 |  |
+| views | - | [2, 12, 12] | - | 0 |  |
+| iron_view | views | [0, 10.125, 10] | [0.5, 0, 0] | 0 |  |
+| refit_view | views | [27, 8.5, 0] | [0, 89.95, 0] | 0 |  |
+| refit_muzzle_view | views | [16, 10, -35] | [-170, 75, 180] | 0 |  |
+| refit_extended_mag_view | views | [-7, 10.275, 4] | [10, -75, 0] | 0 |  |
+| camera | - | [1.875, 11.25, 12] | [0, 0, -6] | 0 | inspect: rotation; shoot: rotation; reload_intro_empty_easter: rotation; reload_intro: rotation; reload_intro_empty: rotation; draw: rotation; reload_end: rotation; put_away: rotation; inspect_empty: rotation; bolt: rotation; reload_loop: rotation |
+| idle_view | camera | [1.875, 11.25, 12] | - | 0 |  |
 
 ## tacz:m1911_display
 
@@ -2490,7 +3304,7 @@ Geometry: `geometry.m1911 - Converted`; **50 bones**.
 | lefthand | L | [8, -8.5, 6.2] | [97.5, 0, -180] | 0 | static_idle: scale; draw: scale; put_away: scale; reload_tactical: scale; reload_empty: scale; inspect: scale; inspect_empty: scale |
 | lefthand_pos | lefthand | [14, -19.5, 6.2] | - | 1 |  |
 | magazine_and_bullet | mag_and_lefthand | [0, 1.99487, 1.5993] | - | 0 |  |
-| bullet | magazine_and_bullet | [0, 4.565, 1.0625] | [90, 0, 0] | 5 | reload_tactical: scale; reload_empty: scale; inspect: scale; inspect_empty: scale |
+| bullet | magazine_and_bullet | [0, 4.565, 1.0625] | [90, 0, 0] | 5 | static_bolt_caught: scale; reload_tactical: scale; reload_empty: scale; inspect: scale; inspect_empty: scale |
 | magazine | magazine_and_bullet | [0, 1.99487, 1.5993] | - | 0 |  |
 | bullet_in_mag | magazine | [0, 4.565, 1.0625] | [90, 0, 0] | 5 | inspect_empty: scale |
 | mag_standard | magazine | [0, 1.99487, 1.5993] | - | 13 |  |
@@ -2524,8 +3338,8 @@ Geometry: `geometry.m1911 - Converted`; **50 bones**.
 | parts2 | lower | [-0.00404, 0.58023, 4.28441] | - | 15 |  |
 | camera | - | [2.35, 7.275, 13.375] | - | 0 | draw: rotation; put_away: rotation; reload_tactical: rotation; reload_empty: rotation; inspect: rotation; inspect_empty: rotation; shoot: rotation |
 | view | - | [8, 0, 0] | - | 0 |  |
-| idle_view | view | [2.35, 7.275, 13.375] | - | 0 |  |
-| iron_view | view | [0, 6.175, 14.5] | [0, 0, -6] | 0 |  |
+| idle_view | view | [2.35, 7.275, 14.375] | - | 0 |  |
+| iron_view | view | [0, 6.175, 14.875] | [0, 0, -6] | 0 |  |
 | refit_view | view | [14.1, 2.725, -1] | [0, 89, 0] | 0 |  |
 | refit_muzzle_view | view | [5.6, 5.525, -10.35] | [0, 120, 0] | 0 |  |
 | refit_scope_view | view | [5.7, 6.825, 5.575] | [0, 60, 0] | 0 |  |
@@ -2533,7 +3347,7 @@ Geometry: `geometry.m1911 - Converted`; **50 bones**.
 | positioning | - | [8, -1, -1] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 4.075, -0.15] | - | 0 |  |
 | ground | positioning | [0, -3.9, -1.1] | - | 0 |  |
-| fixed | positioning | [0.625, 4.9, -0.725] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [0.625, 4.00938, -0.5375] | [0, 90, 0] | 0 |  |
 
 ## tacz:m249_display
 
@@ -2557,7 +3371,7 @@ Geometry: `geometry.m249`; **103 bones**.
 | righthand_pos | righthand | [0, 8, 0] | - | 1 |  |
 | m249 | gun_rh | [0, 5.7, 7] | - | 0 |  |
 | m249_default | m249 | [0, 8, 0] | - | 0 |  |
-| constraint | m249_default | [0, 11, 8.325] | - | 0 | static_idle: position,rotation; static_ammo_display: position,rotation; draw: position,rotation; put_away: position,rotation; shoot: position,rotation |
+| constraint | m249_default | [0, 11, 0.325] | - | 0 | static_idle: position,rotation; static_ammo_display: position,rotation; draw: position,rotation; put_away: position,rotation; shoot: position,rotation |
 | attachment_positioning | m249_default | [0, 10.6875, 4] | - | 0 |  |
 | muzzle_pos | attachment_positioning | [0, 8.4312, -22.19375] | - | 0 |  |
 | muzzle_flash | attachment_positioning | [0, 8.43125, -23.0062] | - | 0 |  |
@@ -2637,15 +3451,15 @@ Geometry: `geometry.m249`; **103 bones**.
 | box | magazine | [-5.5, 5.125, -0.25] | - | 19 |  |
 | front | m249 | [0, -7, 0] | - | 0 |  |
 | hg_cap | front | [-0.34651, 9.90901, 0.4375] | - | 37 |  |
-| idle_view | - | [3.25625, 12.13125, 17.5] | - | 0 |  |
-| iron_view | - | [0, 11, 16.5] | - | 0 |  |
 | camera | - | [3.25625, 12.13125, 17.5] | - | 0 | draw: rotation; put_away: rotation; reload_tactical: rotation; reload_empty: rotation; inspect: rotation; inspect_empty: rotation; shoot: rotation |
 | positioning | - | [0, 0, 0] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 4.85, 6.1] | - | 0 |  |
 | ground | positioning | [0, -3.9, 0.65] | - | 0 |  |
-| fixed | positioning | [1.1, 6.1, 1.225] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [1.1, 5.19375, 5.00625] | [0, 90, 0] | 0 |  |
 | view | - | [0, 0, 0] | - | 0 |  |
-| refit_view | view | [23, 10, 0] | [0, 89.9, 0] | 0 |  |
+| idle_view | view | [3.25625, 12.13125, 18.5] | - | 0 |  |
+| iron_view | view | [0, 11, 18] | - | 0 |  |
+| refit_view | view | [32, 8, 2] | [0, 89.9, 0] | 0 |  |
 | refit_muzzle_view | view | [10, 8, -29] | [0, 120, 0] | 0 |  |
 | refit_stock_view | view | [10, 7, 14] | [0, 90, 0] | 0 |  |
 | refit_scope_view | view | [8, 12.05, 11.3] | [0, 50, 0] | 0 |  |
@@ -2691,12 +3505,12 @@ Geometry: `geometry.unknown`; **32 bones**.
 | lefthand | root | [-6, 19, 0] | - | 0 | static_idle: position,rotation,scale; draw: position,rotation,scale; put_down: position,rotation,scale; put_away: position,rotation,scale; reload_empty: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale |
 | lefthand_pos | lefthand | [0, 8, 0] | - | 1 |  |
 | views | - | [0, 0, 0] | - | 0 |  |
-| idle_view | views | [3, 15, 10] | - | 0 |  |
+| idle_view | views | [3, 15, 11] | - | 0 |  |
 | iron_view | views | [2, 16.54788, 7.95971] | [7.5, 0, 0] | 0 |  |
 | refit_view | views | [23, 11, 1] | [0, 89.9, 0] | 0 |  |
 | positioning | - | [-3.025, -8.95, -11.225] | - | 0 |  |
 | ground | positioning | [0, 0, 0] | - | 0 |  |
-| fixed | positioning | [2.5, 10, 0] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [2.5, 8, -0.5625] | [0, 90, 0] | 0 |  |
 | thirdperson_hand | positioning | [0.025, 7.975, 0.65] | - | 0 |  |
 | camera | - | [3, 14, 10] | - | 0 | draw: rotation; put_down: rotation; put_away: rotation; reload_empty: rotation; inspect: rotation; inspect_empty: rotation; shoot: rotation |
 
@@ -2710,7 +3524,7 @@ Animation: `assets/tacz/animations/m4a1.animation.json`
 
 LOD reference: `{'model': 'tacz:gun/lod/m4a1', 'texture': 'tacz:gun/lod/m4a1'}`
 
-Geometry: `geometry.m4a1_fom - Converted`; **140 bones**.
+Geometry: `geometry.unknown`; **81 bones**.
 
 | Bone | Parent | Pivot (native pixels) | Rotation | Cubes | Authored animation channels |
 | --- | --- | --- | --- | --- | --- |
@@ -2720,140 +3534,81 @@ Geometry: `geometry.m4a1_fom - Converted`; **140 bones**.
 | lefthand | mag_and_lefthand | [-6, 19, 0] | - | 0 | static_idle: position,rotation,scale; switch_auto: position,rotation,scale; switch_semi: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_xmag: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale; static_AFG: position,rotation,scale; static_VG: position,rotation,scale |
 | lefthand_pos | lefthand | [0, 8, 0] | - | 1 |  |
 | mag_and_bullet | mag_and_lefthand | [0, 5, -6] | - | 0 | reload_tactical: scale; reload_tactical_xmag: scale; reload_empty: scale; reload_empty_xmag: scale |
-| bullet | mag_and_bullet | [0, 8.975, -6] | - | 0 | reload_tactical_xmag: scale; reload_empty_xmag: scale; inspect: scale; inspect_empty: scale |
-| group3 | bullet | [-4, 8.16427, -4.375] | - | 12 |  |
+| bullet | mag_and_bullet | [0, 8.975, -6.1875] | - | 0 | static_bolt_caught: scale; reload_tactical_xmag: scale; reload_empty: scale; reload_empty_xmag: scale; inspect: scale; inspect_empty: scale |
+| group2 | bullet | [0, 9.03927, -6.625] | [0, 0, 90] | 12 |  |
 | magazine | mag_and_bullet | [0, 5, -6] | - | 0 |  |
-| bullet_in_mag | magazine | [0, 8.975, -6] | - | 0 | reload_empty: scale; reload_empty_xmag: position; inspect_empty: scale |
-| group25 | bullet_in_mag | [-4, 8.16427, -4.375] | - | 12 |  |
-| mag_standard | magazine | [3, 23, -7.875] | - | 27 |  |
-| mag_extended_1 | magazine | [0, 18.58514, -6.75372] | - | 33 |  |
-| mag_extended_2 | magazine | [0, 18.58514, -6.75372] | - | 33 |  |
-| mag_extended_3 | magazine | [0, 8, -8] | - | 0 |  |
-| extend_magazine | mag_extended_3 | [0, 3.77323, -11.98397] | - | 9 |  |
+| bullet_in_mag | magazine | [-6, 8.975, -6.1875] | - | 0 | reload_empty: scale; reload_empty_xmag: position; inspect_empty: scale |
+| group25 | bullet_in_mag | [0, 9.03927, -6.625] | [0, 0, 90] | 12 |  |
+| mag_standard | magazine | [0, 5.23255, -6.5133] | - | 27 |  |
+| mag_extended_1 | magazine | [0, 18.64764, -7.00372] | - | 33 |  |
+| mag_extended_2 | magazine | [0, 18.64764, -6.87872] | - | 33 |  |
+| mag_extended_3 | magazine | [0, 8, -8.1875] | - | 0 |  |
+| extend_magazine | mag_extended_3 | [0, 3.77323, -12.17147] | - | 9 |  |
 | gun_and_righthand | root | [0, 7, -1.425] | - | 0 | inspect: position,rotation; inspect_empty: position,rotation |
-| m4a1 | gun_and_righthand | [0, 7, -1.425] | - | 0 |  |
-| constraint | m4a1 | [0, 12.5875, -6.625] | - | 0 | static_idle: position,rotation; draw: position,rotation; put_away: position,rotation; reload_tactical: position,rotation; reload_tactical_xmag: position,rotation; reload_empty: position,rotation; reload_empty_xmag: position,rotation; shoot: position,rotation |
-| gun_body | m4a1 | [0, 8, -8] | - | 2 |  |
-| m4a1_pull | gun_body | [0, 11, 0] | - | 0 | inspect: position; inspect_empty: position |
-| m4a1_bolt | m4a1_pull | [0, 8, -8] | - | 0 | static_bolt_caught: position; reload_tactical_xmag: position,rotation; reload_empty: position; reload_empty_xmag: position; shoot: position; inspect_empty: position |
-| bullet_in_barrel | m4a1_bolt | [0, 8.375, -10.1] | - | 0 | reload_empty_xmag: position; shoot: scale |
-| group5 | bullet_in_barrel | [-4, 8.81427, -8.475] | - | 12 |  |
-| bolt | m4a1_bolt | [0, -8, -10.0625] | - | 14 |  |
-| group26 | bolt | [-0.03503, 0.52602, -6.11115] | - | 12 |  |
-| pull | m4a1_pull | [0.01831, 8.76835, -8.00392] | - | 15 |  |
-| buffer | gun_body | [-0.01863, 10.04621, -10.40021] | - | 0 |  |
-| octagon2 | buffer | [0, 8, -8] | - | 4 |  |
-| octagon3 | buffer | [0, 8, -8] | - | 6 |  |
-| barrel | gun_body | [0, 13.5, -17.5] | - | 0 |  |
-| group2 | barrel | [0.01831, 9.14335, -8.50392] | - | 8 |  |
-| octagon4 | barrel | [0, 8, -8] | - | 8 |  |
-| octagon5 | barrel | [0, 8, -8] | - | 4 |  |
-| octagon7 | barrel | [0, 8, -8] | - | 12 |  |
-| sight2 | gun_body | [0, 4.125, -23.07812] | - | 1 |  |
-| fore_sight3 | gun_body | [0, -5.875, -17.89062] | - | 35 |  |
-| body2 | gun_body | [8, -16, -18.3125] | - | 0 |  |
-| upper2 | body2 | [0.01831, -6.96602, -10.31642] | - | 29 |  |
-| group37 | upper2 | [-0.88597, -6.24839, -5.60156] | - | 0 |  |
-| lower2 | body2 | [0.01831, -7.34102, -10.56642] | - | 54 |  |
-| cap2 | body2 | [0.19018, -7.16915, -10.12892] | - | 5 |  |
-| deco2 | body2 | [0, -7.64062, -0.54687] | - | 7 |  |
-| bolt_release | deco2 | [0.85468, 8.48126, -4.52343] | - | 2 | static_bolt_caught: rotation; reload_empty: rotation; reload_empty_xmag: rotation; inspect_empty: rotation |
-| mag_release | deco2 | [0.32031, 7.82032, -4.59375] | - | 4 | reload_tactical: position; reload_tactical_xmag: position,rotation; reload_empty: position; reload_empty_xmag: position,rotation; inspect: position; inspect_empty: position |
-| light_part2 | deco2 | [0.01831, -7.23165, -10.12892] | - | 0 |  |
-| group35 | light_part2 | [0.01831, -7.23165, -10.12892] | - | 5 |  |
-| group34 | light_part2 | [0.01831, -7.23165, -10.12892] | - | 3 |  |
-| group31 | body2 | [-0.69847, -6.24839, -5.60156] | - | 8 |  |
-| body_rail | body2 | [0.09283, 10.36951, -15.59375] | - | 35 |  |
-| grip2 | gun_body | [0, -10.92044, -0.58543] | - | 11 |  |
-| rings3 | gun_body | [0, -16, -10.125] | - | 0 |  |
-| bone38 | rings3 | [0.06881, -6.31832, -9.17547] | [90, 0, -30] | 10 |  |
-| bone60 | bone38 | [-5.76624, -5.36878, -18.06524] | [-7.8253, 60, 0] | 0 |  |
-| bone61 | bone60 | [-5.76624, -5.41776, -18.06524] | [0, 0, -4.49465] | 1 |  |
-| bone62 | bone60 | [-5.76624, -5.41776, -18.06524] | [0, 0, 4.49465] | 1 |  |
-| bone70 | rings3 | [0, -6.4375, -8.625] | [90, 0, -60] | 6 |  |
-| selector | m4a1 | [0.69476, 7.93549, -1.1875] | - | 2 | static_auto: rotation; static_semi: rotation; switch_auto: rotation; switch_semi: rotation |
-| octagon42 | selector | [0, -8.0625, -1.1875] | - | 4 |  |
-| sights | m4a1 | [0, 10.84375, 0.5] | - | 0 |  |
-| sight | sights | [0.125, 12.60631, -0.96874] | - | 0 |  |
-| rear_sight | sight | [0.125, 12.60631, -0.96874] | - | 0 |  |
-| bone3 | rear_sight | [0.125, 12.60631, -0.96874] | - | 27 |  |
-| dark | rear_sight | [0.375, 10.26251, -2.60937] | - | 0 |  |
-| screw | dark | [0, 8, -8.25] | - | 0 |  |
-| group14 | screw | [0, 8, -8.25] | - | 0 |  |
-| octagon25 | group14 | [0, 8, -8.25] | - | 0 |  |
-| octagon26 | group14 | [0, 8, -8.25] | - | 4 |  |
-| group15 | screw | [0, 8, -8.25] | - | 0 |  |
-| octagon27 | group15 | [0, 8, -8.25] | - | 0 |  |
-| octagon28 | group15 | [0, 8, -8.25] | - | 0 |  |
-| octagon32 | dark | [0, 8, -8.25] | - | 0 |  |
-| octagon33 | dark | [0, 8, -8.25] | - | 4 |  |
-| group16 | dark | [0.5, 12.06251, -1.8125] | - | 7 |  |
-| octagon34 | rear_sight | [0, 4.57813, -1.75] | - | 7 |  |
-| fore_sights | sight | [0, 0, 0] | - | 1 |  |
-| fore_sight | fore_sights | [-1e-05, 11.2396, -18.55112] | - | 8 |  |
-| bone | fore_sight | [0.29687, -3.721, -18.89746] | [0, 0, 10] | 4 |  |
-| bone2 | fore_sight | [-0.29687, -3.721, -18.89746] | [0, 0, -10] | 4 |  |
-| sight_illuminated | fore_sight | [-0.06274, 7.47673, -2.81696] | - | 1 |  |
-| lever | fore_sights | [0.4375, 10.85937, -16.78125] | [45, 0, 0] | 0 |  |
-| bone9 | lever | [0.29687, 12.35938, -17.99999] | - | 1 |  |
-| bone4 | bone9 | [0.29687, 12.71875, -16.68749] | - | 2 |  |
-| sight_folded | sights | [0.125, 12.60631, -0.96874] | - | 0 |  |
-| fore_sights2 | sight_folded | [0, 0, 0] | - | 1 |  |
-| fore_sight2 | fore_sights2 | [-1e-05, 11.2396, -18.55112] | [-90, 0, 0] | 8 |  |
-| bone15 | fore_sight2 | [0.29687, -3.721, -18.89746] | [0, 0, 10] | 4 |  |
-| bone16 | fore_sight2 | [-0.29687, -3.721, -18.89746] | [0, 0, -10] | 4 |  |
-| sight_illuminated2 | fore_sight2 | [-0.06274, 7.47673, -2.81696] | - | 1 |  |
-| lever2 | fore_sights2 | [0.4375, 10.85937, -16.78125] | [90, 0, 0] | 0 |  |
-| bone19 | lever2 | [0.29687, 12.35938, -17.99999] | - | 1 |  |
-| bone20 | bone19 | [0.29687, 12.71875, -16.68749] | - | 2 |  |
-| muzzle_default | m4a1 | [0.01831, 9.14335, -8.25392] | - | 20 |  |
-| octagon6 | muzzle_default | [0, 8.54688, -25.125] | - | 4 |  |
-| octagon8 | muzzle_default | [0, 8.54688, -24.8125] | - | 4 |  |
-| attachment_adapter | m4a1 | [0, 20, -8] | - | 0 |  |
-| oem_stock_tactical | attachment_adapter | [0, 20, -8] | - | 52 |  |
-| group23 | oem_stock_tactical | [0, 19.76812, 11.86876] | [-7.5, 0, 0] | 16 |  |
-| handguard_tactical | m4a1 | [0, -5, -8] | - | 0 |  |
-| rail2 | handguard_tactical | [0.09283, 10.36951, -15.59375] | - | 25 |  |
-| rail3 | handguard_tactical | [0.09283, 10.36951, -15.59375] | - | 25 |  |
-| rail4 | handguard_tactical | [0.09283, 10.36951, -15.59375] | - | 25 |  |
-| rail | handguard_tactical | [0.09283, 10.36951, -15.59375] | - | 25 |  |
-| hexadecagon | handguard_tactical | [0, 8, -8] | - | 4 |  |
-| group9 | hexadecagon | [0, 13, -16.5] | - | 2 |  |
-| group12 | hexadecagon | [0, 13, -16.5] | - | 47 |  |
-| group10 | hexadecagon | [0, 2, -16.5] | - | 47 |  |
-| group11 | hexadecagon | [0, 2, -16.5] | - | 47 |  |
-| group17 | hexadecagon | [0, 13, -16.5] | - | 47 |  |
-| positioning2 | m4a1 | [0, 7, -1.425] | - | 0 |  |
-| muzzle_flash | positioning2 | [0, 9.55, -26.25] | - | 0 |  |
-| muzzle_pos | positioning2 | [0, 9.55, -24.25] | - | 0 |  |
-| laser_pos | positioning2 | [1.46875, 9.5, -15] | [0, 0, 90] | 0 |  |
-| scope_pos | positioning2 | [0, 11.01, -2.125] | - | 0 |  |
-| stock_pos | positioning2 | [0, 9.525, 4.125] | - | 0 |  |
-| grip_pos | positioning2 | [0, 8.075, -13.625] | - | 0 |  |
-| shell | positioning2 | [-0.2, 9.75, -6.025] | - | 0 |  |
-| handguard_default | m4a1 | [-0.97307, -8.97307, -10.93425] | - | 0 |  |
-| rings2 | handguard_default | [0, -11, -10.6875] | - | 36 |  |
-| holes3 | handguard_default | [0, 2.93401, -15.06289] | - | 10 |  |
-| holes2 | handguard_default | [-0.1325, -0.93401, -15.06289] | - | 3 |  |
-| bone7 | handguard_default | [-0.97307, -8.97307, -10.93425] | - | 24 |  |
-| octagon37 | handguard_default | [0, -6.4375, -23.1875] | - | 4 |  |
+| m4 | gun_and_righthand | [0, -23, 0] | - | 0 |  |
+| constraint | m4 | [0, 12.525, -10] | - | 0 | static_idle: position,rotation; draw: position,rotation; put_away: position,rotation; reload_tactical: position,rotation; reload_tactical_xmag: position,rotation; reload_empty: position,rotation; reload_empty_xmag: position,rotation; shoot: position,rotation |
+| m4_body | m4 | [0, -23, 0] | - | 2 |  |
+| upper | m4_body | [0, 9.46726, -4.03258] | - | 221 |  |
+| group13 | upper | [-1.06274, 16.24326, -3.56303] | - | 18 |  |
+| group14 | group13 | [-1.43055, 10.53208, -3.0625] | [0, 0, 2] | 6 |  |
+| cap | m4_body | [-0.94031, 8.77857, -5.90675] | [0, 0, 12.5] | 10 |  |
+| AR | m4_body | [0.125, 12.05216, 1.31251] | - | 19 |  |
+| handguard_default | m4_body | [0, 9.5182, -13.28713] | - | 0 |  |
+| octagon | handguard_default | [0, 2.54563, -13.40951] | - | 64 |  |
+| bone | octagon | [0, 0, -0.1875] | - | 36 |  |
+| handguard_tactical | m4_body | [-1e-05, 9.55492, -13.20484] | - | 310 |  |
+| grip | m4_body | [0, 8.88558, -1.25] | - | 17 |  |
+| group3 | m4_body | [0, 0, 0] | - | 4 |  |
+| handguard | group3 | [0.00606, 11.02096, -17.96403] | - | 52 |  |
+| sight_illuminated | handguard | [0, 12.24076, -19.24808] | - | 1 |  |
+| barrel | group3 | [-0.37328, 25.60413, -12.28125] | - | 0 |  |
+| group | group3 | [-0.00255, 16.52396, -8.75] | - | 39 |  |
+| barrel2 | m4_body | [0, 13.47884, -18.5] | - | 24 |  |
+| mag_release | m4 | [-0.21484, 10.78907, -4.50391] | - | 13 | reload_tactical: position; reload_tactical_xmag: position,rotation; reload_empty: position; reload_empty_xmag: position,rotation; inspect: position; inspect_empty: position |
+| bolt_release | m4 | [0.80752, 8.34336, -4.31729] | [0, 0, 5] | 10 | static_bolt_caught: rotation; reload_empty: rotation; reload_empty_xmag: rotation; inspect_empty: rotation |
+| selector | m4 | [0.23159, 7.82653, -1.2562] | - | 6 | static_auto: rotation; static_semi: rotation; switch_auto: rotation; switch_semi: rotation |
+| m4a1_pull | m4 | [-0.03337, 10.16495, -3.24437] | - | 0 | inspect: position; inspect_empty: position |
+| m4a1_bolt | m4a1_pull | [-0.18522, 4.56912, -6.74082] | [0, 0, 5] | 29 | static_bolt_caught: position; reload_tactical_xmag: position,rotation; reload_empty: position; reload_empty_xmag: position; shoot: position; inspect_empty: position |
+| bullet_in_barrel | m4a1_bolt | [-0.43373, 9.53415, -10.41733] | - | 12 | reload_empty_xmag: position; shoot: position,rotation,scale |
+| pull2 | m4a1_pull | [0.4458, 10.6996, 1.3627] | - | 25 |  |
+| sight | m4 | [0.0006, 12.15305, -2.9419] | - | 90 |  |
+| muzzle_default | m4 | [0, 9.99084, -32.74432] | - | 16 |  |
+| octagon6 | muzzle_default | [0, 14.53629, -32.625] | - | 4 |  |
+| octagon8 | muzzle_default | [0, 14.53629, -32.3125] | - | 4 |  |
+| positioning2 | m4 | [0, 7, -1.425] | - | 0 |  |
+| scope_pos | positioning2 | [0, 11, -2.9375] | - | 0 |  |
+| muzzle_flash | positioning2 | [0, 9.55, -26.875] | - | 0 |  |
+| muzzle_pos | positioning2 | [0, 9.5363, -25.79663] | - | 0 |  |
+| laser_pos | positioning2 | [1.462, 9.52884, -15.56204] | [0, 0, 90] | 0 |  |
+| stock_pos | positioning2 | [0, 9.525, 3.9375] | - | 0 |  |
+| grip_pos | positioning2 | [0, 8.18413, -13.5625] | - | 0 |  |
+| shell | positioning2 | [-0.2, 9.68849, -6.025] | - | 0 |  |
+| attachment_adapter | m4 | [0.0048, 3.53034, -13.40598] | - | 0 |  |
+| oem_side_cover | attachment_adapter | [0.0239, 2.51009, -13.39817] | - | 0 |  |
+| group11 | oem_side_cover | [1.29941, 14.54134, -13.69007] | - | 42 |  |
+| group4 | oem_side_cover | [-1.29941, 14.54134, -13.69007] | - | 42 |  |
+| oem_grip_cover | attachment_adapter | [-0.0143, 4.5506, -13.41379] | - | 0 |  |
+| group9 | oem_grip_cover | [0, 8.23413, -13.69007] | [0, 0, -90] | 27 |  |
+| group8 | oem_grip_cover | [0, 10.94808, -13.69007] | [0, 0, 90] | 42 |  |
+| oem_stock_tactical | attachment_adapter | [0.0001, 8.29968, 8.98128] | - | 50 |  |
+| octagon15 | oem_stock_tactical | [0, 6.86095, 3.6645] | - | 4 |  |
 | righthand | gun_and_righthand | [6, 19, 0] | - | 0 | static_idle: position,rotation,scale; switch_auto: position,rotation,scale; switch_semi: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_xmag: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale |
 | righthand_pos | righthand | [0, 8, 0] | - | 1 |  |
-| camera | - | [3, 13.15625, 6.05] | - | 0 | switch_auto: rotation; switch_semi: rotation; draw: rotation; put_away: rotation; reload_tactical: rotation; reload_tactical_xmag: rotation; reload_empty: rotation; reload_empty_xmag: rotation; inspect: rotation; shoot: rotation; inspect_empty: rotation |
+| camera | - | [3.25, 13.4063, 7.8] | - | 0 | switch_auto: rotation; switch_semi: rotation; draw: rotation; put_away: rotation; reload_tactical: rotation; reload_tactical_xmag: rotation; reload_empty: rotation; reload_empty_xmag: rotation; inspect: rotation; shoot: rotation; inspect_empty: rotation |
 | positioning | - | [0, 0, -8] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 6.875, -2.65] | - | 0 |  |
 | ground | positioning | [0, -0.9, -7.35] | - | 0 |  |
-| fixed | positioning | [1.5625, 8.1, -6.775] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [1.5625, 7.05313, -3.275] | [0, 90, 0] | 0 |  |
 | view | - | [0, 0, 0] | - | 0 |  |
-| iron_view | view | [0, 12.58125, 3] | - | 0 |  |
-| idle_view | view | [3.25, 13.40625, 6.8] | - | 0 |  |
-| refit_view | view | [23, 10, -7] | [0, 89.9, 0] | 0 |  |
+| iron_view | view | [0, 12.65433, 6.75] | - | 0 |  |
+| idle_view | view | [3.25, 13.25, 8] | [0, 0, -3] | 0 |  |
+| refit_view | view | [29.99999, 10, -6.98778] | [0, 89.9, 0] | 0 |  |
 | refit_muzzle_view | view | [10, 9, -34] | [0, 120, 0] | 0 |  |
-| refit_stock_view | view | [10, 9, 4.6] | [0, 90, 0] | 0 |  |
-| refit_scope_view | view | [8, 12.5, 4.3] | [0, 50, 0] | 0 |  |
-| refit_extended_mag_view | view | [6, -2, -7] | [0, 90, 35] | 0 |  |
-| refit_laser_view | view | [12, 13, -24] | [15, 135, 0] | 0 |  |
-| refit_grip_view | view | [5.8, 5.4, -13] | [0, 90, 0] | 0 |  |
+| refit_stock_view | view | [16, 9, 4.6] | [0, 90, 0] | 0 |  |
+| refit_scope_view | view | [13.53644, 12.5, 10.12066] | [0, 50, 0] | 0 |  |
+| refit_extended_mag_view | view | [19.36971, -5.26699, -7] | [0, 90, 30] | 0 |  |
+| refit_laser_view | view | [12, 13, -29] | [15, 135, 0] | 0 |  |
+| refit_grip_view | view | [16, 5, -13] | [0, 90, 0] | 0 |  |
 
 ## tacz:m700_display
 
@@ -2893,7 +3648,7 @@ Geometry: `geometry.m24_body - Converted`; **56 bones**.
 | righthand_pos | righthand | [0, 9, 0] | - | 1 |  |
 | mag_and_lefthand | root | [0, 5.4, 0] | - | 0 | reload_tactical: position,rotation; reload_empty: position,rotation; inspect: position,rotation; inspect_empty: position,rotation |
 | mag_and_bullet | mag_and_lefthand | [0, 0, 0] | - | 0 |  |
-| bullet5 | mag_and_bullet | [0, 5.73168, 5.6875] | [90, 0, 0] | 12 | reload_tactical: scale; reload_empty: scale; inspect: scale; inspect_empty: scale |
+| bullet5 | mag_and_bullet | [0, 5.73168, 5.6875] | [90, 0, 0] | 12 | reload_tactical: scale; reload_empty: scale; inspect: scale; inspect_empty: scale; static_bolt_caught: scale |
 | magazine | mag_and_bullet | [0, 0, 0] | - | 0 |  |
 | bullet_in_mag | magazine | [0, 5.73168, 5.6875] | [90, 0, 0] | 12 | reload_empty: scale |
 | mag_standard | magazine | [0, 8, 0] | - | 0 |  |
@@ -2914,15 +3669,15 @@ Geometry: `geometry.m24_body - Converted`; **56 bones**.
 | lefthand | mag_and_lefthand | [-6, 20, 0] | - | 0 | static_idle: position,rotation,scale; reload_tactical: position,rotation,scale; reload_empty: position,rotation,scale; bolt: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale |
 | lefthand_pos | lefthand | [0, 9, 0] | - | 1 |  |
 | views | - | [3.4, 4.175, 0] | - | 0 |  |
-| iron_view | views | [0, 8.40625, 16] | - | 0 |  |
-| idle_view | views | [3, 10.5, 16] | - | 0 |  |
+| iron_view | views | [0, 8.40625, 16.5] | - | 0 |  |
+| idle_view | views | [3, 10, 17] | - | 0 |  |
 | refit_view | views | [30, 5, 0] | [0, 89.9, 0] | 0 |  |
 | refit_muzzle_view | views | [12.35, 7.85, -30.75] | [0, 120, 0] | 0 |  |
 | refit_scope_view | views | [11.4, 8.175, 11.95] | [0, 67.5, 0] | 0 |  |
 | refit_extended_mag_view | views | [12.88122, -4.37673, 6] | [0, 90, 30] | 0 |  |
 | positioning | - | [0.5, -3.95, -11.225] | - | 0 |  |
 | ground | positioning | [0, 0, 0] | - | 0 |  |
-| fixed | positioning | [1, 6, 0] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [1, 4.875, 10] | [0, 90, 0] | 0 |  |
 | thirdperson_hand | positioning | [0.125, 4.05, 7.175] | - | 0 |  |
 | camera | - | [3, 9.75, 16] | - | 0 | shoot: rotation; reload_tactical: rotation; reload_empty: rotation; bolt: rotation; draw: rotation; put_away: rotation; inspect: rotation; inspect_empty: rotation |
 
@@ -2998,15 +3753,15 @@ Geometry: `geometry.m870_cc - Converted`; **69 bones**.
 | muzzle_pos | positioning2 | [0, 9.125, -23.125] | - | 0 |  |
 | camera | - | [2.5, 11, 10] | - | 0 | reload_empty_all: rotation; reload_intro_empty: rotation; reload_intro: rotation; reload_loop: rotation; reload_end: rotation; shoot: rotation; put_away: rotation; bolt: rotation; inspect: rotation; inspect_01: rotation; inspect_empty: rotation |
 | views | - | [2, 12, 12] | - | 0 |  |
-| idle_view | views | [2.5, 11, 10] | - | 0 |  |
-| iron_view | views | [0, 10.25, 10] | - | 0 |  |
-| refit_view | views | [20, 9, -2] | [0, 89.9, 0] | 0 |  |
+| idle_view | views | [2.5, 11.5, 11.5] | - | 0 |  |
+| iron_view | views | [0, 10.25, 10.5] | - | 0 |  |
+| refit_view | views | [32, 9, 0] | [0, 89.9, 0] | 0 |  |
 | refit_muzzle_view | views | [12, 9, -26] | [0, 120, 0] | 0 |  |
 | refit_stock_view | views | [12, 9, 12] | [0, 90, 0] | 0 |  |
 | refit_scope_view | views | [10, 12, 9] | [0, 50, 0] | 0 |  |
 | refit_extended_mag_view | views | [12, 2.275, -25] | [170, 60, 180] | 0 |  |
 | positioning | - | [0, 0, 0] | - | 0 |  |
-| fixed | positioning | [1.35, 8.275, -0.05] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [1.35, 6.99375, 5.77813] | [0, 90, 0] | 0 |  |
 | ground | positioning | [0, -4, 2] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 6.825, 5.425] | - | 0 |  |
 
@@ -3020,16 +3775,16 @@ Animation: `assets/tacz/animations/m95.animation.json`
 
 LOD reference: `{'model': 'tacz:gun/lod/m95', 'texture': 'tacz:gun/lod/m95'}`
 
-Geometry: `geometry.m95_rebuild - black - Converted`; **101 bones**.
+Geometry: `geometry.m95_rebuild - black - Converted`; **104 bones**.
 
 | Bone | Parent | Pivot (native pixels) | Rotation | Cubes | Authored animation channels |
 | --- | --- | --- | --- | --- | --- |
-| root | - | [0, 9, 1] | - | 0 | draw: position,rotation; put_away: position,rotation; reload_tactical: position,rotation; reload_empty: position,rotation; bolt: position,rotation; shoot: position,rotation; inspect: position,rotation; inspect_empty: position,rotation |
+| root | - | [0, 9, 1] | - | 0 | crawl_start: position,rotation; crawl_end: position,rotation; draw: position,rotation; put_away: position,rotation; reload_tactical: position,rotation; reload_empty: position,rotation; bolt: position,rotation; shoot: position,rotation; inspect: position,rotation; inspect_empty: position,rotation |
 | mag_and_lefthand | root | [0, 6, 12] | - | 0 | reload_empty: position,rotation |
-| lefthand | mag_and_lefthand | [-6, 19, 0] | - | 0 | static_idle: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; reload_tactical: position,rotation,scale; reload_empty: position,rotation,scale; bolt: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale |
+| lefthand | mag_and_lefthand | [-6, 19, 0] | - | 0 | static_idle: position,rotation,scale; crawl_start: position,rotation; crawl: position,rotation; crawl_end: position,rotation; crawl_handup: position,rotation; crawl_handdown: position,rotation; draw: position,rotation,scale; put_away: position,rotation,scale; reload_tactical: position,rotation,scale; reload_empty: position,rotation,scale; bolt: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale |
 | lefthand_pos | lefthand | [0, 8, 0] | - | 1 |  |
 | mag_and_bullet | mag_and_lefthand | [0, 6, 12] | - | 0 | reload_tactical: position,rotation; reload_empty: position,rotation,scale |
-| bullet | mag_and_bullet | [0, 8.6875, 12] | - | 0 | inspect: scale; inspect_empty: scale |
+| bullet | mag_and_bullet | [0, 8.6875, 12] | - | 0 | reload_empty: scale; inspect: scale; inspect_empty: scale |
 | head3 | bullet | [-0.00033, 9.48859, 12.25196] | - | 4 |  |
 | shell3 | bullet | [-0.00033, 9.48859, 12.25196] | - | 18 |  |
 | magzine | mag_and_bullet | [0, 6, 12] | - | 0 |  |
@@ -3056,9 +3811,6 @@ Geometry: `geometry.m95_rebuild - black - Converted`; **101 bones**.
 | muzzle_pos | positioning2 | [0, 10, -34.1] | - | 0 |  |
 | muzzle_flash | positioning2 | [0, 10, -39.1] | - | 0 |  |
 | shell | positioning2 | [-0.375, 10.5, 12.2125] | - | 0 |  |
-| shell_ejection | m95 | [0, 10.125, 6] | - | 0 | reload_empty: position,rotation,scale; bolt: scale; inspect_empty: position |
-| 50bmg2 | shell_ejection | [8, 0, -8] | - | 0 |  |
-| shell4 | 50bmg2 | [-0.00033, 8.80109, 12.25196] | - | 18 |  |
 | mag_release | m95 | [0, 6.02776, 16.27138] | - | 10 |  |
 | pattern | m95 | [0, 8, 0] | - | 4 |  |
 | sight_folded | m95 | [0, 8, 0] | - | 0 |  |
@@ -3074,6 +3826,10 @@ Geometry: `geometry.m95_rebuild - black - Converted`; **101 bones**.
 | 50bmg | bullet_in_barrel | [8, 0, -8] | - | 0 |  |
 | shell_parts | 50bmg | [-0.00033, 8.80109, 12.25196] | - | 18 |  |
 | head | 50bmg | [-0.00033, 8.80109, 12.25196] | - | 4 |  |
+| bullet_in_bolt | m95_bolt | [0, 10.125, 6.3125] | - | 0 | reload_empty: position,rotation,scale; bolt: position,rotation,scale; inspect: scale; inspect_empty: scale |
+| 50bmg2 | bullet_in_bolt | [8, 0, -8] | - | 0 |  |
+| shell_parts2 | 50bmg2 | [-0.00033, 8.80109, 12.25196] | - | 18 |  |
+| head4 | 50bmg2 | [-0.00033, 8.80109, 12.25196] | - | 4 | reload_empty: scale; bolt: scale |
 | bolt | m95_bolt | [0, 8, 0] | - | 0 |  |
 | fix | bolt | [7.93789, -0.18724, -4.5625] | - | 3 |  |
 | rotate | bolt | [0.00328, 10.15662, 10.33249] | - | 16 | reload_empty: position,rotation; bolt: position,rotation; inspect: rotation; inspect_empty: rotation |
@@ -3102,9 +3858,11 @@ Geometry: `geometry.m95_rebuild - black - Converted`; **101 bones**.
 | switch | lower | [0, 7.75, 0] | - | 6 |  |
 | group | lower | [0.5, 8, 6] | - | 12 |  |
 | bipod | m95_body | [-3.75, 5.875, -4.375] | - | 0 |  |
-| l2 | bipod | [1.40016, 7.15973, -12.64645] | [70, 0, -22.5] | 12 | reload_tactical: rotation; reload_empty: rotation |
-| l3 | bipod | [-1.40016, 7.15973, -12.64645] | [70, 0, 22.5] | 12 | reload_tactical: rotation; reload_empty: rotation; inspect: rotation; inspect_empty: rotation |
 | mid | bipod | [0, 7.8278, -12.78348] | - | 8 |  |
+| bipod_l | bipod | [1.40016, 7.15973, -12.64645] | - | 0 | crawl_start: rotation; crawl: rotation; crawl_end: rotation; crawl_bipod: rotation; crawl_bipod_end: rotation; crawl_handup: rotation; crawl_handdown: rotation; shoot: rotation |
+| l2 | bipod_l | [1.40016, 7.15973, -12.64645] | [70, 0, -22.5] | 12 | reload_tactical: rotation; reload_empty: rotation |
+| bipod_r | bipod | [-1.4002, 7.1597, -12.6464] | - | 0 | crawl_start: rotation; crawl: rotation; crawl_end: rotation; crawl_bipod: rotation; crawl_bipod_end: rotation; crawl_handup: rotation; crawl_handdown: rotation; shoot: rotation |
+| l3 | bipod_r | [-1.40016, 7.15973, -12.64645] | [70, 0, 22.5] | 12 | reload_tactical: rotation; reload_empty: rotation; inspect: rotation; inspect_empty: rotation |
 | decos | m95_body | [0, 0, 0] | - | 2 |  |
 | pin2 | decos | [-2.5625, 9.875, 22.5] | - | 10 |  |
 | pin | decos | [-2.25, 9.125, -4] | - | 3 |  |
@@ -3113,14 +3871,14 @@ Geometry: `geometry.m95_rebuild - black - Converted`; **101 bones**.
 | bone5 | decos | [1.46311, 10.9735, 21.625] | [0, 45, 67.5] | 3 |  |
 | righthand | gun_and_righthand | [6, 19, 0] | - | 0 | static_idle: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; reload_tactical: position,rotation,scale; reload_empty: position,rotation,scale; bolt: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale |
 | righthand_pos | righthand | [0, 8, 0] | - | 1 |  |
-| camera | - | [3.25, 14.25, 14.5] | - | 0 | draw: rotation; put_away: rotation; reload_tactical: rotation; reload_empty: rotation; bolt: rotation; shoot: rotation; inspect: rotation; inspect_empty: rotation |
+| camera | - | [3.25, 14.25, 14.5] | - | 0 | crawl_start: rotation; crawl_end: rotation; draw: rotation; put_away: rotation; reload_tactical: rotation; reload_empty: rotation; bolt: rotation; shoot: rotation; inspect: rotation; inspect_empty: rotation |
 | positioning | - | [8, -1, -1] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 6.95, 2.075] | - | 0 |  |
 | ground | positioning | [0, -0.425, -3.675] | - | 0 |  |
-| fixed | positioning | [1.6, 10.2, -1.525] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [1.6, 6.99687, 0.9125] | [0, 90, 0] | 0 |  |
 | view | - | [0, 0, 0] | - | 0 |  |
 | iron_view | view | [0, 14, 14.2] | - | 0 |  |
-| idle_view | view | [3.25, 14.25, 14.5] | - | 0 |  |
+| idle_view | view | [3.25, 14.25, 15.5] | - | 0 |  |
 | refit_extended_mag_view | view | [10.7, 5.3, 11.725] | [0, 90, 0] | 0 |  |
 | refit_view | view | [36.6, 9.275, -5.125] | [0, 89.9, 0] | 0 |  |
 | refit_muzzle_view | view | [28.6, 10.275, -64.975] | [0, 120, 0] | 0 |  |
@@ -3161,7 +3919,7 @@ Geometry: `geometry.unknown`; **57 bones**.
 | safety | upper | [0, 9.5625, 3.8125] | - | 13 |  |
 | iron_sight | upper | [0.25, 10.03125, 3.75] | - | 8 |  |
 | sight_illuminated | iron_sight | [0, 10.17621, -3.81924] | - | 4 |  |
-| bullet_in_barrel | upper | [0, 9.5625, 1.25] | [90, 0, 0] | 6 |  |
+| bullet_in_barrel | upper | [0, 9.5625, 1.25] | [90, 0, 0] | 6 | shoot: position,rotation,scale |
 | constraint | gun | [0, 10.175, 3.35] | - | 0 | static_idle: position,rotation; melee_push: position,rotation; shoot: position,rotation; reload_empty: position,rotation; static_bolt_caught: position,rotation |
 | positioning2 | gun | [0, 0, 0] | - | 0 |  |
 | muzzle_flash | positioning2 | [0, 9.5625, -4.95312] | - | 0 |  |
@@ -3171,7 +3929,7 @@ Geometry: `geometry.unknown`; **57 bones**.
 | righthand_pos | righthand | [0, 8, 0] | - | 1 |  |
 | mag_and_lefthand | root | [0, 3.75, 4] | - | 0 | inspect: position,rotation; inspect_empty: position,rotation; reload_empty: position,rotation; reload_tactical: position,rotation |
 | mag_and_bullet | mag_and_lefthand | [0, 4, 4] | - | 0 | reload_empty: position,rotation; reload_tactical: position,rotation,scale |
-| bullet | mag_and_bullet | [0, 9, 3.4375] | [90, 0, 0] | 6 | inspect: scale; inspect_empty: scale; reload_empty: scale; reload_tactical: scale |
+| bullet | mag_and_bullet | [0, 9, 3.4375] | [90, 0, 0] | 6 | inspect: scale; inspect_empty: scale; reload_empty: scale; reload_tactical: scale; static_bolt_caught: scale |
 | magazine | mag_and_bullet | [0, 4, 4] | - | 0 |  |
 | bullet_in_mag | magazine | [0, 9, 3.4375] | [90, 0, 0] | 6 | inspect: position,rotation; reload_empty: position,scale |
 | mag_standard | magazine | [0.55178, 3.71875, 3.22855] | - | 11 |  |
@@ -3188,15 +3946,110 @@ Geometry: `geometry.unknown`; **57 bones**.
 | positioning | - | [0, 0, 0] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 8, 1.75] | - | 0 |  |
 | ground | positioning | [0, -3, 0] | - | 0 |  |
-| fixed | positioning | [1, 8, 0] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [1, 8, 1] | [0, 90, 0] | 0 |  |
 | view | - | [0, 0, 0] | - | 0 |  |
-| idle_view | view | [2.5, 11.5, 13.5] | - | 0 |  |
-| iron_view | view | [0, 10.1875, 12.4375] | - | 0 |  |
+| idle_view | view | [2.5, 11.5, 14.5] | - | 0 |  |
+| iron_view | view | [0, 10.1875, 15] | - | 0 |  |
 | refit_view | view | [16, 8, 0] | [0, 89.9, 0] | 0 |  |
 | refit_muzzle_view | view | [8.875, 8.475, -10] | [0, 120, 0] | 0 |  |
 | refit_scope_view | view | [10.35, 10.225, 6.2] | [0, 67.5, 0] | 0 |  |
 | refit_extended_mag_view | view | [16, -1.85, 4.35] | [0, 90, 30] | 0 |  |
 | refit_laser_view | view | [8, 6.75, -6] | [0, 115, 0] | 0 |  |
+
+## tacz:mcx_spear_lt_display
+
+Display: `assets/tacz/display/guns/mcx_spear_lt_display.json`
+
+Model: `assets/tacz/geo_models/gun/mcx_spear_lt_geo.json`
+
+Animation: `assets/tacz/animations/mcx_spear_lt.animation.json`
+
+LOD reference: `{'model': 'tacz:gun/lod/mcx_spear_lt', 'texture': 'tacz:gun/lod/mcx_spear_lt'}`
+
+Geometry: `geometry.unknown`; **80 bones**.
+
+| Bone | Parent | Pivot (native pixels) | Rotation | Cubes | Authored animation channels |
+| --- | --- | --- | --- | --- | --- |
+| root | - | [0, 7.3, -3.4] | - | 0 | switch_semi: position,rotation; switch_auto: position,rotation; shoot: position,rotation; draw: position,rotation; put_away: position,rotation; reload_tactical: position,rotation; reload_tactical_xmag_1: position,rotation; reload_tactical_xmag_2: position,rotation; reload_tactical_xmag_3: position,rotation; reload_empty: position,rotation; reload_empty_xmag_1: position,rotation; reload_empty_xmag_2: position,rotation; reload_empty_xmag_3: position,rotation; inspect: position,rotation; inspect_empty: position,rotation |
+| additional_magazine | root | [0, 3, -7] | - | 0 | reload_tactical: position,rotation,scale; reload_tactical_xmag_1: position,rotation,scale; reload_tactical_xmag_2: position,rotation,scale; reload_tactical_xmag_3: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag_1: position,rotation,scale; reload_empty_xmag_2: position,rotation,scale; reload_empty_xmag_3: position,rotation,scale; inspect: scale; inspect_empty: scale |
+| mag_and_lefthand | root | [0, 3, -7] | - | 0 | reload_tactical: position,rotation; reload_tactical_xmag_1: position,rotation; reload_tactical_xmag_2: position,rotation; reload_tactical_xmag_3: position,rotation; reload_empty: position,rotation; reload_empty_xmag_1: position,rotation; reload_empty_xmag_2: position,rotation; reload_empty_xmag_3: position,rotation; inspect: position,rotation; inspect_empty: position,rotation |
+| mag_and_bullet | mag_and_lefthand | [0, 3, -7] | - | 0 | reload_tactical: scale; reload_tactical_xmag_1: scale; reload_tactical_xmag_2: scale; reload_tactical_xmag_3: scale; reload_empty: scale; reload_empty_xmag_1: scale; reload_empty_xmag_2: scale; reload_empty_xmag_3: scale; inspect_empty: position,rotation |
+| bullet | mag_and_bullet | [0, 8.6625, -6.625] | - | 0 | static_bolt_caught: scale; reload_empty: scale; reload_empty_xmag_1: scale; reload_empty_xmag_2: scale; reload_empty_xmag_3: scale; inspect: scale; inspect_empty: scale |
+| group3 | bullet | [0, 8.72677, -7.0625] | - | 12 |  |
+| magazine | mag_and_bullet | [0, 3, -7] | - | 0 |  |
+| bullet_in_mag | magazine | [-2, 8.6625, -6.625] | - | 0 |  |
+| group2 | bullet_in_mag | [0, 8.72677, -7.0625] | - | 12 |  |
+| mag_standard | magazine | [0, 0.25, -13.4375] | - | 24 |  |
+| mag_extended_1 | magazine | [0, 3.39603, -7.44159] | - | 33 |  |
+| mag_extended_2 | magazine | [0, 3.32967, -7.70938] | - | 32 |  |
+| mag_extended_3 | magazine | [0, 4.96904, -6.89033] | - | 9 |  |
+| lefthand | mag_and_lefthand | [-6, 19, 0] | - | 0 | static_idle: position,rotation,scale; switch_semi: position,rotation,scale; switch_auto: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_xmag_1: position,rotation,scale; reload_tactical_xmag_2: position,rotation,scale; reload_tactical_xmag_3: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag_1: position,rotation,scale; reload_empty_xmag_2: position,rotation,scale; reload_empty_xmag_3: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale |
+| lefthand_pos | lefthand | [0, 8, 0] | - | 1 |  |
+| gun_and_righthand | root | [0, 0, 0] | - | 0 |  |
+| mcx | gun_and_righthand | [0, 0.1875, -0.875] | - | 0 |  |
+| stock_default | mcx | [0.04545, 8.96396, 4.05192] | - | 71 |  |
+| muzzle_default | mcx | [0, 8.06779, -24.08406] | - | 68 |  |
+| kit_default | mcx | [0, 0, 0] | - | 0 |  |
+| barrel2 | kit_default | [8, 4.0625, -27] | - | 4 |  |
+| mlok2 | kit_default | [0.389, 10.31107, -16.52596] | - | 271 |  |
+| body_rail | mcx | [0.375, 10.85363, -4] | - | 51 |  |
+| stock_base | mcx | [0, 12.9375, 1.92692] | - | 31 |  |
+| lower | mcx | [0, 0.375, -2.75] | - | 1 |  |
+| upper | lower | [0, 0, 0] | - | 321 |  |
+| grip | lower | [-0.06248, 4.88505, -0.56782] | - | 45 |  |
+| mag_release | mcx | [-0.02646, 0.1875, -0.9375] | - | 8 | reload_tactical: position; reload_tactical_xmag_1: position; reload_tactical_xmag_2: position; reload_tactical_xmag_3: position; reload_empty: position; reload_empty_xmag_1: position; reload_empty_xmag_2: position; reload_empty_xmag_3: position |
+| bolt_release | mcx | [-0.16634, -3.8125, -0.875] | - | 0 |  |
+| bolt_release_l | bolt_release | [0.79782, 8.00899, -5.09709] | [0, 0, 5] | 10 | static_bolt_caught: rotation; reload_empty: rotation; reload_empty_xmag_1: rotation; reload_empty_xmag_2: rotation; reload_empty_xmag_3: rotation |
+| bolt_release_r | bolt_release | [0.21925, 7.88558, -4.13459] | - | 3 |  |
+| bolt_pull | mcx | [0, 0, 0] | - | 0 | inspect: position; inspect_empty: position |
+| bolt | bolt_pull | [-0.41444, 12.28156, -0.6375] | - | 0 | static_bolt_caught: position; shoot: position; reload_empty: position; reload_empty_xmag_1: position; reload_empty_xmag_2: position; reload_empty_xmag_3: position; inspect_empty: position |
+| mcx_bolt | bolt | [0.00177, 6.08273, -8.42187] | - | 13 |  |
+| bullet_in_barrel | bolt | [0, 7.8125, -10.1] | - | 0 | shoot: position,scale; inspect_empty: scale |
+| group5 | bullet_in_barrel | [-4, 8.18927, -8.82983] | - | 12 |  |
+| pull | bolt_pull | [-2, -2.14187, -0.92692] | - | 25 | reload_empty_xmag_3: position; inspect_empty: position |
+| selector | mcx | [0, 7.44436, -2.01538] | [-90, 0, 0] | 7 | static_auto: rotation; static_semi: rotation; switch_semi: rotation; switch_auto: rotation |
+| sight_base | mcx | [0, 6.91634, -1.925] | - | 0 |  |
+| fore_base2 | sight_base | [-1e-05, 10.90951, -26.21635] | - | 7 |  |
+| rear_base2 | sight_base | [-0.00521, 11.29706, -2.57624] | - | 7 |  |
+| sight | sight_base | [0, -0.39616, -18.5] | - | 0 |  |
+| fore2 | sight | [0.0625, 12.79134, -19.625] | - | 11 |  |
+| fore_sight_illuminated | fore2 | [0, 11.10275, -25.71875] | - | 1 |  |
+| rear2 | sight | [-1e-05, 10.97201, -2.34135] | - | 19 |  |
+| rear_sight_illuminated | rear2 | [-0.05355, 11.76009, -1.78125] | - | 3 |  |
+| sight_folded | sight_base | [0, -0.39616, -18.5] | - | 0 |  |
+| fore3 | sight_folded | [0.0625, 12.79134, -19.625] | - | 11 |  |
+| fore_sight1_illuminated | fore3 | [0, 16.60496, -20.34322] | [-90, 0, 0] | 1 |  |
+| rear3 | sight_folded | [-1e-05, 10.97201, -2.34135] | - | 19 |  |
+| rear_sight1_illuminated | rear3 | [-0.05355, 11.16718, -1.18834] | [-90, 0, 0] | 3 |  |
+| attachment_adapter | mcx | [0, 0.1875, -0.875] | - | 0 |  |
+| ar_stock_adapter | attachment_adapter | [0, 9.39385, 3.67966] | - | 15 |  |
+| handguard_tactical | mcx | [0, 17.56829, -11.125] | - | 32 |  |
+| positioning2 | mcx | [0, 7, -1.425] | - | 0 |  |
+| muzzle_flash | positioning2 | [0, 9.05, -24.9375] | - | 0 |  |
+| muzzle_pos | positioning2 | [0, 9.0625, -22.375] | - | 0 |  |
+| laser_pos | positioning2 | [1.23118, 9.01371, -19.4] | [0, 0, 90] | 0 |  |
+| scope_pos | positioning2 | [0, 10.85365, -5] | - | 0 |  |
+| stock_pos | positioning2 | [0, 9.46875, 4.25] | - | 0 |  |
+| grip_pos | positioning2 | [0, 7.6306, -16.25] | - | 0 |  |
+| shell | positioning2 | [-0.2, 9.25, -6.0875] | - | 0 |  |
+| constraint | mcx | [0, 11.525, -5.1] | - | 0 | static_idle: position,rotation; switch_semi: position,rotation; switch_auto: position,rotation; shoot: position,rotation |
+| righthand | gun_and_righthand | [6, 19, 0] | - | 0 | static_idle: position,rotation,scale; switch_semi: position,rotation,scale; switch_auto: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_xmag_1: position,rotation,scale; reload_tactical_xmag_2: position,rotation,scale; reload_tactical_xmag_3: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag_1: position,rotation,scale; reload_empty_xmag_2: position,rotation,scale; reload_empty_xmag_3: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale |
+| righthand_pos | righthand | [0, 8, 0] | - | 1 |  |
+| positioning | - | [0, 0, 0] | - | 0 |  |
+| thirdperson_hand | positioning | [0, 6.72813, -2.9125] | - | 0 |  |
+| ground | positioning | [0, -4.65, -4.225] | - | 0 |  |
+| fixed | positioning | [0.875, 6.73438, -3.9] | [0, 90, 0] | 0 |  |
+| view | - | [0, 0, 0] | - | 0 |  |
+| iron_view | view | [0, 12.03125, 5] | - | 0 |  |
+| idle_view | view | [3.5, 13, 7] | [0, 0, -3.5] | 0 |  |
+| refit_view | view | [24, 8, -9] | [0, 89.9, 0] | 0 |  |
+| refit_muzzle_view | view | [10, 9, -29] | [0, 120, 0] | 0 |  |
+| refit_stock_view | view | [10, 9, 4.6] | [0, 90, 0] | 0 |  |
+| refit_scope_view | view | [8, 12.5, 2.3] | [0, 50, 0] | 0 |  |
+| refit_extended_mag_view | view | [8, -2, -7] | [0, 90, 35] | 0 |  |
+| refit_laser_view | view | [7, 9, -18.5] | [0, 70, 0] | 0 |  |
+| refit_grip_view | view | [7.8, 5.9, -15.5] | [0, 90, 0] | 0 |  |
+| camera | - | [3, 12.25, 7] | - | 0 | switch_semi: rotation; switch_auto: rotation; shoot: rotation; draw: rotation; put_away: rotation; reload_tactical: rotation; reload_tactical_xmag_1: rotation; reload_tactical_xmag_2: rotation; reload_tactical_xmag_3: rotation; reload_empty: rotation; reload_empty_xmag_1: rotation; reload_empty_xmag_2: rotation; reload_empty_xmag_3: rotation; inspect: rotation; inspect_empty: rotation |
 
 ## tacz:minigun_display
 
@@ -3213,7 +4066,7 @@ Geometry: `geometry.minigun_2`; **64 bones**.
 | Bone | Parent | Pivot (native pixels) | Rotation | Cubes | Authored animation channels |
 | --- | --- | --- | --- | --- | --- |
 | views | - | [2, 12, 12] | - | 0 |  |
-| idle_view | views | [3.125, 14.09096, 14.20835] | [4.98107, 0.43523, -4.98107] | 0 |  |
+| idle_view | views | [3.125, 14.09096, 15.20835] | [4.98107, 0.43523, -4.98107] | 0 |  |
 | iron_view | views | [3.125, 14.09096, 14.20835] | [4.98107, 0.43523, -4.98107] | 0 |  |
 | refit_view | views | [32, 20, -32] | [15, 135, 0] | 0 |  |
 | refit_muzzle_view | views | [17, 2, -39] | [0, 135, 0] | 0 |  |
@@ -3291,11 +4144,11 @@ Geometry: `geometry.mk14`; **125 bones**.
 
 | Bone | Parent | Pivot (native pixels) | Rotation | Cubes | Authored animation channels |
 | --- | --- | --- | --- | --- | --- |
-| camera | - | [2.5875, 9.925, 14.46875] | - | 0 | draw: rotation; put_away: rotation; reload_tactical: rotation; reload_empty: rotation; inspect: rotation; inspect_empty: rotation; shoot: rotation |
-| root | - | [0, 6, 7] | - | 0 | draw: position,rotation; put_away: position,rotation; reload_tactical: position,rotation; reload_empty: position,rotation; inspect: position,rotation; inspect_empty: position,rotation; shoot: position,rotation |
+| camera | - | [2.5875, 9.925, 14.46875] | - | 0 | switch_semi: rotation; switch_auto: rotation; crawl_start: rotation; crawl_end: rotation; crawl_bipod: rotation; crawl_bipod_end: rotation; draw: rotation; put_away: rotation; reload_tactical: rotation; reload_empty: rotation; inspect: rotation; inspect_empty: rotation; shoot: rotation |
+| root | - | [0, 6, 7] | - | 0 | switch_semi: position,rotation; switch_auto: position,rotation; crawl_start: position,rotation; crawl_end: position,rotation; crawl_bipod: position,rotation; crawl_bipod_end: position,rotation; draw: position,rotation; put_away: position,rotation; reload_tactical: position,rotation; reload_empty: position,rotation; inspect: position,rotation; inspect_empty: position,rotation; shoot: position,rotation |
 | mag_and_lefthand | root | [0, 2, 4.25] | - | 0 | reload_tactical: position,rotation; reload_empty: position,rotation |
 | magazine_bullet | mag_and_lefthand | [0, 2, 4.25] | [-5, 0, 0] | 0 | reload_empty: scale; inspect_empty: position,rotation |
-| bullet | magazine_bullet | [0, 6.46646, 3.65138] | [90, 0, 0] | 12 | reload_tactical: scale; reload_empty: scale; inspect_empty: scale |
+| bullet | magazine_bullet | [0, 6.46646, 3.65138] | [90, 0, 0] | 12 | static_bolt_caught: scale; reload_tactical: scale; reload_empty: scale; inspect_empty: scale |
 | magazine | magazine_bullet | [0, 2, 4.25] | - | 0 |  |
 | bullet_in_mag | magazine | [0, 6.46646, 3.65138] | [90, 0, 0] | 12 |  |
 | mag_standard | magazine | [0, 6, 3.9] | - | 0 |  |
@@ -3303,11 +4156,11 @@ Geometry: `geometry.mk14`; **125 bones**.
 | mag_extended_1 | magazine | [-0.00037, 1.7039, 3.9475] | - | 16 |  |
 | mag_extended_2 | magazine | [-0.00037, 1.7039, 3.9475] | - | 16 |  |
 | mag_extended_3 | magazine | [-0.00037, 1.7039, 3.9475] | - | 16 |  |
-| lefthand | mag_and_lefthand | [-6, 19, 4] | - | 0 | static_idle: position,rotation,scale; static_bolt_caught: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; reload_tactical: position,rotation,scale; reload_empty: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale |
+| lefthand | mag_and_lefthand | [-6, 19, 4] | - | 0 | static_idle: position,rotation,scale; static_bolt_caught: position,rotation,scale; switch_semi: position,rotation,scale; switch_auto: position,rotation,scale; crawl_start: position,rotation; crawl: position,rotation; crawl_end: position,rotation; crawl_handup: position,rotation; crawl_handdown: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; reload_tactical: position,rotation,scale; reload_empty: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale |
 | lefthand_pos | lefthand | [0, 8, 4] | - | 1 |  |
 | gun_and_righthand | root | [0, 3, 12] | - | 0 |  |
 | mk14 | gun_and_righthand | [0, 3, 12] | - | 0 |  |
-| constraint | mk14 | [0, 8.575, -17.575] | - | 0 | static_idle: position,rotation; reload_tactical: position,rotation; reload_empty: position,rotation |
+| constraint | mk14 | [0, 8.575, -17.575] | - | 0 | static_idle: position,rotation; reload_tactical: position,rotation; reload_empty: position,rotation; shoot: position,rotation |
 | mk14_default | mk14 | [0, 8, 0] | - | 0 |  |
 | body2 | mk14_default | [0, 8, 0] | - | 0 |  |
 | mid | body2 | [5.12697, 8, 0] | - | 33 |  |
@@ -3358,7 +4211,7 @@ Geometry: `geometry.mk14`; **125 bones**.
 | magrelease | moveableparts | [0, 5, 6.35] | - | 1 | reload_tactical: rotation; reload_empty: rotation; inspect_empty: rotation |
 | trigger2 | moveableparts | [0, 3.59503, 9.30722] | - | 4 |  |
 | boltrelease | moveableparts | [0.75648, 6.90415, 6.43981] | - | 4 | static_bolt_caught: position; reload_empty: position; inspect_empty: position |
-| selector | moveableparts | [0.34375, 4.07793, 8.62731] | - | 4 |  |
+| selector | moveableparts | [-0.96875, 6.32793, 9.22106] | - | 4 | static_semi: rotation; static_auto: rotation; switch_semi: rotation; switch_auto: rotation |
 | safety | moveableparts | [0.34375, 3.95293, 8.18981] | - | 8 |  |
 | muzzle_default | mk14_default | [0, 18.0625, -15.3125] | - | 36 |  |
 | barrel2 | mk14_default | [-7, 8, 0] | - | 0 |  |
@@ -3379,9 +4232,9 @@ Geometry: `geometry.mk14`; **125 bones**.
 | octagon3 | rear_sight2 | [0, 8.625, 7.9375] | - | 8 |  |
 | bipod | mk14_default | [0, 8, 0] | - | 0 |  |
 | group47 | bipod | [0.5, 7.65625, -13.5] | - | 13 |  |
-| l2 | bipod | [0.82856, 7.73313, -14.4375] | - | 22 |  |
+| l2 | bipod | [0.98481, 4.04563, -9.25] | - | 22 | crawl_start: rotation; crawl: rotation; crawl_end: rotation; crawl_bipod: rotation; crawl_bipod_end: rotation; crawl_handup: rotation; crawl_handdown: rotation; shoot: rotation |
 | octagon26 | l2 | [0, 8, 0] | - | 4 |  |
-| r2 | bipod | [0.82856, 7.73313, -14.4375] | - | 22 |  |
+| r2 | bipod | [-0.98394, 4.04563, -9.25] | - | 22 | crawl_start: rotation; crawl: rotation; crawl_end: rotation; crawl_bipod: rotation; crawl_bipod_end: rotation; crawl_handup: rotation; crawl_handdown: rotation; shoot: rotation |
 | octagon27 | r2 | [0, 8, 0] | - | 4 |  |
 | octagon28 | bipod | [0, 8, 0] | - | 4 |  |
 | stock_default | mk14 | [0.99607, 5.4088, 18.59375] | - | 139 |  |
@@ -3390,7 +4243,7 @@ Geometry: `geometry.mk14`; **125 bones**.
 | mount | mk14 | [4.42354, 6.60624, -0.03125] | - | 36 |  |
 | additional_magazine | mk14 | [0, 1.9, 4.25] | [-5, 0, 0] | 0 | reload_tactical: scale; reload_empty: position,rotation |
 | bolt2 | mk14 | [0, 8, 0] | - | 10 | static_bolt_caught: position; reload_empty: position; inspect: position,rotation; inspect_empty: position,rotation; shoot: position |
-| bullet_in_barrel | bolt2 | [0, 7.24146, 0.32638] | [90, 0, 0] | 12 |  |
+| bullet_in_barrel | bolt2 | [0, 7.24146, 0.32638] | [90, 0, 0] | 12 | shoot: position,scale |
 | charger | mk14 | [-0.00205, 7.29327, 2.84375] | - | 13 | static_bolt_caught: position; reload_empty: position; inspect: position,rotation; inspect_empty: position,rotation; shoot: position |
 | positioning2 | mk14 | [0, 7.30625, -22.35] | - | 0 |  |
 | muzzle_flash | positioning2 | [0, 7.30625, -22.35] | - | 0 |  |
@@ -3400,22 +4253,218 @@ Geometry: `geometry.mk14`; **125 bones**.
 | muzzle_pos | positioning2 | [0, 7.30625, -19.1] | - | 0 |  |
 | shell | positioning2 | [-0.125, 7.55625, 4.975] | - | 0 |  |
 | stock_pos | positioning2 | [0, 5.8125, 14.625] | - | 0 |  |
-| righthand | gun_and_righthand | [6, 19, 4] | - | 0 | static_idle: position,rotation,scale; static_bolt_caught: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; reload_tactical: position,rotation,scale; reload_empty: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale |
+| righthand | gun_and_righthand | [6, 19, 4] | - | 0 | static_idle: position,rotation,scale; static_bolt_caught: position,rotation,scale; switch_semi: position,rotation,scale; switch_auto: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; reload_tactical: position,rotation,scale; reload_empty: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale |
 | righthand_pos | righthand | [0, 8, 4] | - | 1 |  |
 | positioning | - | [0, 0, 2] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 4.55, 10.6] | - | 0 |  |
 | ground | positioning | [0, -5, 0] | - | 0 |  |
-| fixed | positioning | [1.3, 6.975, 2.125] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [1.3, 4.50625, 9.75] | [0, 90, 0] | 0 |  |
 | view | - | [0, 0, 0] | - | 0 |  |
-| iron_view | view | [0, 8.6625, 12.1375] | - | 0 |  |
-| idle_view | view | [2.5875, 9.925, 14.46875] | - | 0 |  |
-| refit_view | view | [23, 6.2, 3] | [0, 89.9, 0] | 0 |  |
-| refit_grip_view | view | [10.325, 4.3, -2.775] | [0, 90, 0] | 0 |  |
-| refit_stock_view | view | [10.325, 4.3, 18.225] | [0, 90, 0] | 0 |  |
-| refit_muzzle_view | view | [11, 7.3, -21.15] | [0, 90, 0] | 0 |  |
-| refit_scope_view | view | [6.85, 10, 11.225] | [0, 50, 0] | 0 |  |
-| refit_extended_mag_view | view | [10, 2.05, 4.1] | [0, 90, 0] | 0 |  |
-| refit_laser_view | view | [14, 14, -24] | [15, 135, 0] | 0 |  |
+| iron_view | view | [0, 8.6625, 14] | - | 0 |  |
+| idle_view | view | [2.5875, 9.925, 15.46875] | - | 0 |  |
+| refit_view | view | [32, 6.2, 3] | [0, 89.9, 0] | 0 |  |
+| refit_grip_view | view | [16.325, 4.3, -2.775] | [0, 90, 0] | 0 |  |
+| refit_stock_view | view | [16.325, 4.3, 18.225] | [0, 90, 0] | 0 |  |
+| refit_muzzle_view | view | [16, 7.3, -21.15] | [0, 90, 0] | 0 |  |
+| refit_scope_view | view | [16.85, 10, 15.225] | [0, 50, 0] | 0 |  |
+| refit_extended_mag_view | view | [16, 2.05, 4.1] | [0, 90, 0] | 0 |  |
+| refit_laser_view | view | [16, 14, -24] | [15, 135, 0] | 0 |  |
+
+## tacz:mk18_display
+
+Display: `assets/tacz/display/guns/mk18_display.json`
+
+Model: `assets/tacz/geo_models/gun/mk18_geo.json`
+
+Animation: `assets/tacz/animations/mk18.animation.json`
+
+LOD reference: `{'model': 'tacz:gun/lod/mk18', 'texture': 'tacz:gun/lod/mk18'}`
+
+Geometry: `geometry.unknown`; **79 bones**.
+
+| Bone | Parent | Pivot (native pixels) | Rotation | Cubes | Authored animation channels |
+| --- | --- | --- | --- | --- | --- |
+| root | - | [0, 7, -1.425] | - | 0 | switch_auto: position,rotation; switch_semi: position,rotation; draw: position,rotation; put_away: position,rotation; reload_tactical: position,rotation; reload_tactical_xmag: position,rotation; reload_empty: position,rotation; reload_empty_xmag: position,rotation; inspect: position,rotation; shoot: position,rotation; inspect_empty: position,rotation |
+| additional_magazine | root | [0, 5, -6] | - | 0 | reload_tactical: position,rotation; reload_tactical_xmag: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag: position; inspect: scale; inspect_empty: scale |
+| mag_and_lefthand | root | [0, 5, -6] | - | 0 | reload_tactical: position,rotation; reload_tactical_xmag: position,rotation; reload_empty: position,rotation; reload_empty_xmag: position,rotation; inspect: position,rotation; inspect_empty: position,rotation |
+| lefthand | mag_and_lefthand | [-6, 19, 0] | - | 0 | static_idle: position,rotation,scale; switch_auto: position,rotation,scale; switch_semi: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_xmag: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale; static_AFG: position,rotation,scale; static_VG: position,rotation,scale |
+| lefthand_pos | lefthand | [0, 8, 0] | - | 1 |  |
+| mag_and_bullet | mag_and_lefthand | [0, 5, -6] | - | 0 | reload_tactical: scale; reload_tactical_xmag: scale; reload_empty: scale; reload_empty_xmag: scale |
+| bullet | mag_and_bullet | [0, 8.975, -6.1875] | - | 0 | static_bolt_caught: scale; reload_tactical_xmag: scale; reload_empty: scale; reload_empty_xmag: scale; inspect: scale; inspect_empty: scale |
+| group2 | bullet | [0, 9.03927, -6.625] | [0, 0, 90] | 12 |  |
+| magazine | mag_and_bullet | [0, 5, -6] | - | 0 |  |
+| mag_standard | magazine | [0, 5.15695, -6.91309] | - | 24 |  |
+| bullet2 | mag_standard | [2, 0.5, -12.9375] | - | 0 |  |
+| bullet_in_mag | magazine | [-6, 8.975, -6.1875] | - | 0 | reload_empty: scale; reload_empty_xmag: position; inspect_empty: scale |
+| group25 | bullet_in_mag | [0, 9.03927, -6.625] | [0, 0, 90] | 12 |  |
+| mag_extended_1 | magazine | [0, 18.64764, -7.00372] | - | 33 |  |
+| mag_extended_2 | magazine | [0, 18.64764, -6.87872] | - | 0 |  |
+| bone6 | mag_extended_2 | [0, -1.31254, -8.15336] | - | 12 |  |
+| bone7 | mag_extended_2 | [0, -1.31254, -8.15336] | - | 20 |  |
+| mag_extended_3 | magazine | [0, 8, -8.1875] | - | 75 |  |
+| gun_and_righthand | root | [0, 7, -1.425] | - | 0 | inspect: position,rotation; inspect_empty: position,rotation |
+| m4 | gun_and_righthand | [0, -23, 0] | - | 0 |  |
+| constraint | m4 | [0, 12.775, -17.625] | - | 0 | static_idle: position,rotation; draw: position,rotation; put_away: position,rotation; reload_tactical: position,rotation; reload_tactical_xmag: position,rotation; reload_empty: position,rotation; reload_empty_xmag: position,rotation; shoot: position,rotation |
+| m4_body | m4 | [0, -22.98413, 0] | - | 2 |  |
+| upper | m4_body | [0, 9.48313, -4.03258] | - | 221 |  |
+| group13 | upper | [-1.06274, 16.25913, -3.56303] | - | 18 |  |
+| group14 | group13 | [-1.43055, 10.54795, -3.0625] | [0, 0, 2] | 6 |  |
+| cap | m4_body | [-0.94031, 8.79444, -5.90675] | [0, 0, 12.5] | 10 |  |
+| AR | m4_body | [0.125, 12.06803, 1.31251] | - | 19 |  |
+| grip | m4_body | [0, 8.90145, -1.25] | - | 17 |  |
+| barrel | m4_body | [0, 9.50806, -12.69531] | - | 15 |  |
+| mag_release | m4 | [-0.21484, 10.78907, -4.50391] | - | 13 | reload_tactical: position; reload_tactical_xmag: position,rotation; reload_empty: position; reload_empty_xmag: position,rotation; inspect: position; inspect_empty: position |
+| bolt_release | m4 | [0.80752, 8.34336, -4.31729] | [0, 0, 5] | 10 | static_bolt_caught: rotation; reload_empty: rotation; reload_empty_xmag: rotation; inspect_empty: rotation |
+| selector | m4 | [0.23159, 7.82653, -1.2562] | - | 6 | static_auto: rotation; static_semi: rotation; switch_auto: rotation; switch_semi: rotation |
+| mk18_pull | m4 | [-0.03337, 10.16495, -3.24437] | - | 0 | inspect: position; inspect_empty: position |
+| mk18_bolt | mk18_pull | [-0.18522, 4.56912, -6.74082] | [0, 0, 5] | 29 | static_bolt_caught: position; reload_tactical_xmag: position,rotation; reload_empty: position; reload_empty_xmag: position; shoot: position; inspect_empty: position |
+| bullet_in_barrel | mk18_bolt | [-0.43373, 9.53415, -10.41733] | - | 12 | reload_empty_xmag: position; shoot: position,rotation,scale |
+| pull2 | mk18_pull | [0.4458, 10.6996, 1.3627] | - | 25 |  |
+| muzzle_default | m4 | [0, 9.99084, -27.64478] | - | 16 |  |
+| octagon6 | muzzle_default | [0, 14.53629, -27.52546] | - | 4 |  |
+| octagon8 | muzzle_default | [0, 14.53629, -27.21296] | - | 4 |  |
+| positioning2 | m4 | [0, 7, -1.425] | - | 0 |  |
+| scope_pos | positioning2 | [0, 11, -2.9375] | - | 0 |  |
+| muzzle_flash | positioning2 | [0, 9.55, -22.875] | - | 0 |  |
+| muzzle_pos | positioning2 | [0, 9.5363, -20.77547] | - | 0 |  |
+| laser_pos | positioning2 | [1.2745, 9.5623, -18.24954] | [0, 0, 90] | 0 |  |
+| stock_pos | positioning2 | [0, 9.525, 3.9375] | - | 0 |  |
+| grip_pos | positioning2 | [0, 8.37494, -13.5625] | - | 0 |  |
+| shell | positioning2 | [-0.2, 9.68849, -6.025] | - | 0 |  |
+| attachment_adapter | m4 | [0.0048, 3.53034, -13.40598] | - | 0 |  |
+| oem_grip_cover | attachment_adapter | [-0.0143, 4.5506, -13.41379] | - | 0 |  |
+| group9 | oem_grip_cover | [0, 8.34351, -13.69007] | [0, 0, -90] | 27 |  |
+| oem_side_cover | attachment_adapter | [0.0239, 2.51009, -13.39817] | - | 0 |  |
+| group11 | oem_side_cover | [1.26816, 14.57259, -13.69007] | - | 42 |  |
+| group4 | oem_side_cover | [-1.26816, 14.57259, -13.69007] | - | 42 |  |
+| oem_stock_tactical | attachment_adapter | [0.0001, 8.42468, 9.48128] | - | 65 |  |
+| sight | m4 | [8, 0.03704, -16.0625] | - | 34 |  |
+| sight_illuminated | sight | [-0.09399, 7.45352, -2.87262] | - | 1 |  |
+| sight_illuminated4 | sight | [0, 11.31893, -23.94244] | - | 0 |  |
+| sight_folded | m4 | [8, 0.03704, -16.0625] | - | 0 |  |
+| group3 | sight_folded | [0.00016, 11.31234, -19.07308] | [-90, 0, 0] | 14 |  |
+| group | sight_folded | [0, 11.31603, -1.18425] | [-90, 0, 0] | 21 |  |
+| sight_base | m4 | [8.03125, 0.03704, -16.0625] | - | 28 |  |
+| handguard | m4 | [0, 10.97454, -14.8125] | - | 616 |  |
+| righthand | gun_and_righthand | [6, 19, 0] | - | 0 | static_idle: position,rotation,scale; switch_auto: position,rotation,scale; switch_semi: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_xmag: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale |
+| righthand_pos | righthand | [0, 8, 0] | - | 1 |  |
+| camera | - | [3.25, 13.4063, 7.8] | - | 0 | switch_auto: rotation; switch_semi: rotation; draw: rotation; put_away: rotation; reload_tactical: rotation; reload_tactical_xmag: rotation; reload_empty: rotation; reload_empty_xmag: rotation; inspect: rotation; shoot: rotation; inspect_empty: rotation |
+| positioning | - | [0, 0, -8] | - | 0 |  |
+| thirdperson_hand | positioning | [0, 6.875, -2.65] | - | 0 |  |
+| ground | positioning | [0, -0.9, -7.35] | - | 0 |  |
+| fixed | positioning | [1.5625, 7.05313, -3.2125] | [0, 90, 0] | 0 |  |
+| view | - | [0, 0, 0] | - | 0 |  |
+| iron_view | view | [0, 12.71683, 5.5] | - | 0 |  |
+| idle_view | view | [3, 12.875, 7.75] | [0, 0, -3] | 0 |  |
+| refit_view | view | [29.99999, 10, -6.98429] | [0, 89.9, 0] | 0 |  |
+| refit_muzzle_view | view | [16.19615, 9, -35.26795] | [0, 120, 0] | 0 |  |
+| refit_stock_view | view | [20, 9, 4.6] | [0, 90, 0] | 0 |  |
+| refit_scope_view | view | [13.53644, 12.5, 10.12066] | [0, 50, 0] | 0 |  |
+| refit_extended_mag_view | view | [19.36971, -5.26699, -7] | [0, 90, 30] | 0 |  |
+| refit_laser_view | view | [12, 13, -29] | [15, 135, 0] | 0 |  |
+| refit_grip_view | view | [16, 5, -13] | [0, 90, 0] | 0 |  |
+
+## tacz:mrad_display
+
+Display: `assets/tacz/display/guns/mrad_display.json`
+
+Model: `assets/tacz/geo_models/gun/mrad_geo.json`
+
+Animation: `assets/tacz/animations/mrad.animation.json`
+
+LOD reference: `{'model': 'tacz:gun/lod/mrad', 'texture': 'tacz:gun/lod/mrad'}`
+
+Geometry: `geometry.unknown`; **87 bones**.
+
+| Bone | Parent | Pivot (native pixels) | Rotation | Cubes | Authored animation channels |
+| --- | --- | --- | --- | --- | --- |
+| root | - | [0, 6.125, 11.9375] | - | 0 | crawl_start: position,rotation; crawl_end: position,rotation; crawl_bipod: position,rotation; crawl_bipod_end: position,rotation; crawl_handdown: position,rotation; crawl_handup: position,rotation; draw: position,rotation; put_away: position,rotation; reload_tactical: position,rotation; reload_empty: position,rotation; inspect: position,rotation; inspect_empty: position,rotation; bolt: position,rotation; shoot: position,rotation |
+| gun_and_righthand | root | [0, 6.125, 11.9375] | - | 0 |  |
+| mrad | gun_and_righthand | [0, -13.25, -6.75] | - | 0 |  |
+| gun | mrad | [0, -13.25, -6.75] | - | 0 |  |
+| body | gun | [0, -13.25, -6.75] | - | 0 |  |
+| receiver | body | [-0.375, 5.9375, 14.25] | - | 110 |  |
+| body_rail | body | [-0.15944, 6.15644, 0.76564] | - | 70 |  |
+| mlok | body | [-0.9957, 17.30721, -1.75] | - | 197 |  |
+| rail2 | mlok | [1.22387, 13.83615, -10.83717] | [0, 0, -90] | 19 |  |
+| rail3 | mlok | [-1.22387, 13.83615, -10.83717] | [0, 0, 90] | 19 |  |
+| grip | body | [-0.3125, -13.25, -6.75] | - | 28 |  |
+| barrel | gun | [0, 17.91634, -11.96875] | - | 9 |  |
+| selector | gun | [0.23159, 6.00766, 11.67188] | [45, 0, 0] | 7 |  |
+| stock | gun | [0, -13.25, -6.75] | - | 0 |  |
+| base | stock | [0.77977, 10.53116, 16.5096] | - | 19 |  |
+| extend | stock | [-0.375, 5.9375, 14.25] | - | 98 |  |
+| cheek | stock | [0, -7.1875, -6.75] | - | 27 |  |
+| bipod | mrad | [0, 9.52017, -5.1875] | - | 0 |  |
+| mid | bipod | [0.5, 9.19659, -19.375] | - | 13 |  |
+| l | bipod | [0.97535, 5.56146, -14.43658] | - | 21 | crawl_start: rotation; crawl: rotation; crawl_end: rotation; crawl_bipod: rotation; crawl_bipod_end: rotation; crawl_handdown: rotation; crawl_handup: rotation |
+| octagon26 | l | [0, 9.52017, -5.1875] | - | 4 |  |
+| r | bipod | [-0.99274, 5.56799, -14.44187] | - | 21 | crawl_start: rotation; crawl: rotation; crawl_end: rotation; crawl_bipod: rotation; crawl_bipod_end: rotation; crawl_handdown: rotation; crawl_handup: rotation |
+| octagon27 | r | [0, 9.52017, -5.1875] | - | 4 |  |
+| deco | bipod | [0, 4.83267, -14.4375] | - | 4 |  |
+| muzzle_default | mrad | [0, 7.82461, -30.26281] | - | 4 |  |
+| bone9 | muzzle_default | [0, 17.70767, -29.21281] | - | 50 |  |
+| sights | mrad | [0, 5.6875, 10.075] | - | 0 |  |
+| sight_base | sights | [0, 5.6875, 10.075] | - | 0 |  |
+| fore_base | sight_base | [-1e-05, 9.68067, -14.21635] | - | 7 |  |
+| sight | sights | [0, -1.625, -6.5] | - | 0 |  |
+| fore | sight | [0, 9.875, -14.71875] | - | 0 |  |
+| fore_extd | fore | [0, -7.125, -34.65625] | - | 11 |  |
+| fore_sight_illuminated | fore_extd | [0, 9.87391, -13.71875] | - | 1 |  |
+| rear_base | sight | [-0.00521, 10.06822, 9.67376] | - | 7 |  |
+| rear | sight | [-0.00493, 9.9375, 10.34375] | - | 0 |  |
+| rear_extd | rear | [-0.00493, 10.66718, 10.21875] | - | 19 |  |
+| rear_sight_illuminated | rear_extd | [-0.05355, 10.53125, 10.21875] | - | 3 |  |
+| sight_folded | sights | [0, 5.6875, 10.075] | - | 0 |  |
+| fore2 | sight_folded | [0, 9.875, -14.71875] | [-90, 0, 0] | 0 |  |
+| fore_extd2 | fore2 | [0, -7.125, -34.65625] | - | 11 |  |
+| fore_sight_illuminated2 | fore_extd2 | [0, 9.87391, -13.71875] | - | 1 |  |
+| bolt_fix | mrad | [0, 7.85384, 5.2275] | - | 0 | reload_empty: rotation; inspect: rotation; inspect_empty: rotation; bolt: rotation |
+| bolt | bolt_fix | [0, 2.70767, 5.2275] | - | 22 | reload_empty: position; inspect: position; inspect_empty: position; bolt: position |
+| ball | bolt | [-2.33594, 0.83266, 9.60937] | - | 9 |  |
+| bullet_in_barrel | bolt | [0, 7.9388, -0.731] | - | 0 |  |
+| 86x3 | bullet_in_barrel | [0, 7.9375, 1.5] | [90, 0, 0] | 28 |  |
+| bullet_in_bolt | bolt | [0, 7.9388, -0.731] | - | 0 | reload_empty: position,rotation,scale; bolt: position,scale |
+| 86x5 | bullet_in_bolt | [0, 7.9375, 1.5] | [90, 0, 0] | 0 |  |
+| head | 86x5 | [0, 0, 0] | - | 10 | reload_empty: scale; bolt: scale |
+| shell2 | 86x5 | [0, 0, 0] | - | 18 |  |
+| extra | bolt_fix | [0, 12.85384, 12.16989] | - | 9 |  |
+| mag_release | mrad | [0, 4.20581, 7.6875] | - | 2 | reload_tactical: rotation; reload_empty: rotation; inspect: rotation; inspect_empty: rotation |
+| positioning2 | mrad | [0, 0.25, 0] | - | 0 |  |
+| scope_pos | positioning2 | [0, 9.625, 8.5] | - | 0 |  |
+| muzzle_flash | positioning2 | [0, 7.84375, -30.25312] | - | 0 |  |
+| muzzle_pos | positioning2 | [0, 7.84375, -28.6625] | - | 0 |  |
+| shell | positioning2 | [-0.3125, 8.1875, 5.25] | - | 0 |  |
+| laser_pos | positioning2 | [0, 9.625, -10.5] | - | 0 |  |
+| constraint | mrad | [0, 10.8125, 1.25] | - | 0 | static_idle: position,rotation; crawl: position,rotation; shoot: position,rotation |
+| righthand | gun_and_righthand | [6, 19, 11.5] | - | 0 | static_idle: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; reload_tactical: position,rotation,scale; reload_empty: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale; bolt: position,rotation,scale |
+| righthand_pos | righthand | [0, 8, 11.5] | - | 1 |  |
+| mag_and_lefthand | root | [0, 4.875, 5.125] | - | 0 | reload_tactical: position,rotation; reload_empty: position,rotation; inspect: position,rotation; inspect_empty: position,rotation |
+| mag_and_bullet | mag_and_lefthand | [0, 4.75, 7] | - | 0 | reload_empty: position,rotation,scale |
+| magazine | mag_and_bullet | [0, 4.75, 7] | - | 0 |  |
+| bullet_in_mag | magazine | [0, 4.75, 6.9375] | - | 0 |  |
+| 86x70 | bullet_in_mag | [0, 7.1875, 7.25] | [90, 0, 0] | 28 |  |
+| mag_standard | magazine | [-0.09375, 19.78704, -6.875] | - | 39 |  |
+| mag_extended_1 | magazine | [0, 4.75, 7] | - | 39 |  |
+| mag_extended_2 | magazine | [0, 4.75, 7] | - | 39 |  |
+| mag_extended_3 | magazine | [0, 4.75, 7] | - | 39 |  |
+| bullet | mag_and_bullet | [0, 4.75, 7] | - | 0 | reload_tactical: scale; reload_empty: scale; inspect: scale; inspect_empty: scale |
+| 86x2 | bullet | [0, 7.1875, 7.25] | [90, 0, 0] | 28 |  |
+| lefthand | mag_and_lefthand | [-6, 19, 11.5] | - | 0 | static_idle: position,rotation,scale; crawl_start: position,rotation; crawl: position,rotation; crawl_end: position,rotation; crawl_handdown: position,rotation; crawl_handup: position,rotation; draw: position,rotation,scale; put_away: position,rotation,scale; reload_tactical: position,rotation,scale; reload_empty: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale; bolt: position,rotation,scale |
+| lefthand_pos | lefthand | [0, 8, 11.5] | - | 1 |  |
+| camera | - | [3.05, 12.25, 17.5] | - | 0 | crawl_start: rotation; crawl_end: rotation; crawl_bipod: rotation; crawl_bipod_end: rotation; crawl_handdown: rotation; draw: rotation; put_away: rotation; reload_tactical: rotation; reload_empty: rotation; inspect: rotation; inspect_empty: rotation; bolt: rotation; shoot: rotation |
+| positioning | - | [0.5, -3.95, -11.225] | - | 0 |  |
+| ground | positioning | [0.15, 0.475, -0.325] | - | 0 |  |
+| fixed | positioning | [1.275, 5.25938, 9.69688] | [0, 90, 0] | 0 |  |
+| thirdperson_hand | positioning | [-0.375, 5.05, 10.825] | - | 0 |  |
+| views | - | [3.4, 4.175, 0] | - | 0 |  |
+| iron_view | views | [0, 10.8125, 19] | - | 0 |  |
+| idle_view | views | [3.25, 11.75, 19] | [0, 0, -3] | 0 |  |
+| refit_view | views | [36, 5.175, 2] | [0, 89, 0] | 0 |  |
+| refit_muzzle_view | views | [16.35, 7.85, -36.75] | [0, 120, 0] | 0 |  |
+| refit_scope_view | views | [16.96576, 10.675, 14.2684] | [0, 75, 0] | 0 |  |
+| refit_extended_mag_view | views | [12.88122, -4.37673, 6] | [0, 90, 35] | 0 |  |
+| refit_laser_view | views | [16, 13, -16] | [-165, 70, -180] | 0 |  |
 
 ## tacz:p320_display
 
@@ -3427,7 +4476,7 @@ Animation: `assets/tacz/animations/p320.animation.json`
 
 LOD reference: `{'model': 'tacz:gun/lod/p320', 'texture': 'tacz:gun/lod/p320'}`
 
-Geometry: `geometry.unknown`; **53 bones**.
+Geometry: `geometry.unknown`; **55 bones**.
 
 | Bone | Parent | Pivot (native pixels) | Rotation | Cubes | Authored animation channels |
 | --- | --- | --- | --- | --- | --- |
@@ -3452,16 +4501,17 @@ Geometry: `geometry.unknown`; **53 bones**.
 | fore_sight | slide | [0, 10.02104, -4.15773] | - | 3 |  |
 | positioning3 | slide | [0, 2.375, 0.0625] | - | 0 |  |
 | scope_pos | positioning3 | [0, 10, 3.5] | - | 0 |  |
+| bullet_in_barrel | slide | [0, 9.35938, 1.1875] | [90, 0, 0] | 5 | inspect_empty: scale; shoot: position,rotation,scale |
 | barrel | gun | [0, 9, -1.75] | - | 14 | inspect_empty: rotation; inspect: position,rotation; shoot: position,rotation; reload_empty: rotation; static_bolt_caught: position,rotation |
 | muzzle_pos | barrel | [0, 9.5, -4.4375] | - | 0 |  |
-| bullet_in_barrel | barrel | [0, 9.35938, 1.1875] | [90, 0, 0] | 5 | inspect_empty: scale; inspect: position |
 | constraint | gun | [0, 10.25, 3] | - | 0 | inspect_empty: position,rotation; inspect: position,rotation; reload_tactical: position,rotation; static_idle: position,rotation; shoot: position,rotation; reload_empty: position,rotation |
 | righthand | gun_and_righthand | [6, 19, 0] | - | 0 | inspect_empty: position,rotation,scale; inspect: position,rotation,scale; reload_tactical: position,rotation,scale; static_idle: position,rotation,scale; reload_empty: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; static_state: position,rotation,scale |
 | righthand_pos | righthand | [0, 8, 0] | - | 1 |  |
 | mag_and_lefthand | root | [0, -0.20188, 2.52] | - | 0 | inspect_empty: position,rotation; inspect: position,rotation; reload_tactical: position,rotation; reload_empty: position,rotation |
 | lefthand | mag_and_lefthand | [-5.95198, 19.42312, -0.10363] | - | 0 | inspect_empty: position,rotation,scale; inspect: position,rotation,scale; reload_tactical: position,rotation,scale; static_idle: position,rotation,scale; reload_empty: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; static_state: position,rotation,scale |
 | lefthand_pos | lefthand | [0.04802, 8.42312, -0.10363] | - | 1 |  |
-| magazine | mag_and_lefthand | [0, 8.18565, 2.58355] | - | 0 | inspect_empty: position; inspect: position; reload_tactical: scale; reload_empty: scale |
+| mag_and_bullet | mag_and_lefthand | [0, 8.1857, 2.5835] | - | 0 | inspect_empty: position; inspect: position; reload_tactical: scale; reload_empty: scale |
+| magazine | mag_and_bullet | [0, 8.18565, 2.58355] | - | 0 |  |
 | mag_standard | magazine | [0, 3.84253, 4.58718] | - | 14 |  |
 | bullet3 | mag_standard | [0, 8.875, 3.25] | - | 0 |  |
 | mag_extended_1 | magazine | [0, 3.84253, 4.64968] | - | 19 |  |
@@ -3471,13 +4521,14 @@ Geometry: `geometry.unknown`; **53 bones**.
 | mag_extended_3 | magazine | [0, 3.84253, 4.64968] | - | 19 |  |
 | bullet5 | mag_extended_3 | [0, 8.75, 3.25] | - | 0 |  |
 | bullet_in_mag | magazine | [0, 8.75, 3.25] | [90, 0, 0] | 5 | inspect_empty: scale |
+| bullet | mag_and_bullet | [0, 8.75, 3.25] | [90, 0, 0] | 5 | inspect_empty: scale; inspect: scale; reload_tactical: scale; reload_empty: scale; static_bolt_caught: scale |
 | positioning | - | [0, 0, 0] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 8, 1.75] | - | 0 |  |
 | ground | positioning | [0, -3, 0] | - | 0 |  |
-| fixed | positioning | [1, 8, 0] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [1, 8, 0.8125] | [0, 90, 0] | 0 |  |
 | view | - | [0, 0, 0] | - | 0 |  |
-| iron_view | view | [0, 10.20313, 14] | - | 0 |  |
-| idle_view | view | [3, 12, 14] | - | 0 |  |
+| iron_view | view | [0, 10.20313, 15.5] | - | 0 |  |
+| idle_view | view | [3, 12, 15] | - | 0 |  |
 | refit_view | view | [16, 8, 0] | [0, 89.9, 0] | 0 |  |
 | refit_scope_view | view | [7, 12, 6] | [0, 70, -10] | 0 |  |
 | refit_muzzle_view | view | [8.875, 6.475, -12] | [0, 120, 0] | 0 |  |
@@ -3536,9 +4587,9 @@ Geometry: `geometry.p90 - Converted`; **47 bones**.
 | positioning | - | [0, 0, -8] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 7.25, 3] | - | 0 |  |
 | ground | positioning | [0, 0, 8] | - | 0 |  |
-| fixed | positioning | [1.5, 8, 6.375] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [1.5, 7.25, 1.875] | [0, 90, 0] | 0 |  |
 | view | - | [0, 0, 0] | - | 0 |  |
-| idle_view | view | [2.25, 13.25, 15] | - | 0 |  |
+| idle_view | view | [2.25, 13.25, 16] | - | 0 |  |
 | iron_view | view | [0, 13.65, 13.8] | - | 0 |  |
 | refit_view | view | [24, 9, 3] | [0, 89.9, 0] | 0 |  |
 | refit_muzzle_view | view | [12, 8, -14] | [0, 117.5, 0] | 0 |  |
@@ -3546,6 +4597,191 @@ Geometry: `geometry.p90 - Converted`; **47 bones**.
 | refit_extended_mag_view | view | [10, 9, 5.45] | [0, 90, 0] | 0 |  |
 | refit_scope_view | view | [10, 12.7, 8.5] | [0, 60, 0] | 0 |  |
 | camera | - | [2.25, 13.25, 15] | - | 0 | draw: rotation; put_away: rotation; reload_empty: rotation; reload_tactical: rotation; inspect: rotation; inspect_empty: rotation; shoot: rotation |
+
+## tacz:pkm_display
+
+Display: `assets/tacz/display/guns/pkm_display.json`
+
+Model: `assets/tacz/geo_models/gun/pkm_geo.json`
+
+Animation: `assets/tacz/animations/pkm.animation.json`
+
+LOD reference: `{'model': 'tacz:gun/lod/pkm', 'texture': 'tacz:gun/lod/pkm'}`
+
+Geometry: `geometry.unknown`; **170 bones**.
+
+| Bone | Parent | Pivot (native pixels) | Rotation | Cubes | Authored animation channels |
+| --- | --- | --- | --- | --- | --- |
+| root | - | [0, 5.125, 11.9375] | - | 0 | static_idle: position,rotation; crawl_start: position,rotation; crawl_end: position,rotation; crawl_bipod: position,rotation; crawl_bipod_end: position,rotation; put_away: position,rotation; draw: position,rotation; reload_tactical: position,rotation; reload_empty: position,rotation; inspect: position,rotation; inspect_empty: position,rotation; shoot: position,rotation |
+| gun_and_righthhand | root | [0, 5.125, 11.9375] | - | 0 |  |
+| pkm | gun_and_righthhand | [0, 0, 0] | - | 0 |  |
+| barrel_grip | pkm | [0, 7.4375, -3.6925] | - | 0 | put_away: rotation; draw: rotation |
+| octagon | barrel_grip | [0, 7.4375, -3.6925] | [0, 0, 45] | 29 |  |
+| bipod | pkm | [0, 5.98438, -13.46967] | - | 0 | draw: rotation |
+| R | bipod | [-0.45799, 4.72348, -13.53446] | [76.2621, 3.57938, -4.66109] | 11 | crawl_start: rotation; crawl: rotation; crawl_end: rotation; crawl_bipod: rotation; crawl_bipod_end: rotation; crawl_handdown: rotation; crawl_handup: rotation |
+| L | bipod | [0.45799, 4.72348, -13.53446] | [76.2621, -3.57938, 4.66109] | 11 | crawl_start: rotation; crawl: rotation; crawl_end: rotation; crawl_bipod: rotation; crawl_bipod_end: rotation; crawl_handdown: rotation; crawl_handup: rotation |
+| bipod2 | bipod | [0, 5.98438, -1.5] | - | 15 |  |
+| pull_handle | pkm | [-3.9375, 5.04148, 5.81762] | - | 10 | reload_empty: position |
+| muzzle_default | pkm | [0, 7.4375, -14.0625] | - | 20 |  |
+| cap | pkm | [0, 8.5625, -0.75] | - | 47 | reload_tactical: rotation; reload_empty: rotation; inspect: rotation; inspect_empty: rotation |
+| deco2 | cap | [-0.4375, 4.02586, 2.47387] | - | 7 |  |
+| dust_cover | deco2 | [1.4775, 9.08086, 2.47387] | [0, 0, -52.5] | 4 | draw: rotation; reload_tactical: rotation; reload_empty: rotation; inspect: rotation; inspect_empty: rotation; shoot: rotation |
+| bone6 | dust_cover | [1.98034, 4.11799, 4.02745] | [0, 0, -6] | 4 |  |
+| dust_cover2 | deco2 | [-2.47, 9.39836, 2.47387] | - | 3 | draw: rotation; reload_tactical: rotation; reload_empty: rotation; inspect: rotation; inspect_empty: rotation; shoot: rotation |
+| bone8 | dust_cover2 | [-5.48034, 5.36799, 4.02745] | [0, 0, 36] | 3 |  |
+| mounts | cap | [0, 9.99161, 5.12749] | - | 22 |  |
+| scope_pos | mounts | [0, 10.10938, 5.73438] | - | 0 |  |
+| sights | cap | [0, 0, 0] | - | 27 |  |
+| gun_body | pkm | [0, 0, 0] | - | 0 |  |
+| barrel | gun_body | [0, 0, 0] | - | 0 |  |
+| gas_block | barrel | [0, 7.4375, -16.76795] | - | 8 |  |
+| octagon8 | gas_block | [0, 5.96686, -16.44342] | - | 5 |  |
+| gas_tube | barrel | [0, 5.96686, -11.31903] | - | 4 |  |
+| fore_sight | barrel | [0, 7.43561, -24.98771] | - | 12 |  |
+| bone9 | fore_sight | [0, 10.52365, -24.24104] | - | 12 |  |
+| sight_illuminated | bone9 | [0, 0, 0] | - | 1 |  |
+| barrel2 | barrel | [0, 0, 0] | - | 24 |  |
+| grip | gun_body | [-8, 4.625, 18.5625] | - | 12 |  |
+| stock | gun_body | [0, 5.91648, 23.00512] | - | 46 |  |
+| bone10 | stock | [-0.34375, 5.91648, 31.38012] | - | 49 |  |
+| receiver | gun_body | [0, 0, 0] | - | 54 |  |
+| bone4 | receiver | [-2.5, 4.85398, -1.93238] | - | 6 |  |
+| octagon7 | bone4 | [-5.625, 5.875, 7.8125] | - | 4 |  |
+| octagon2 | bone4 | [-5.625, 5.875, 5.5] | - | 4 |  |
+| octagon4 | bone4 | [-5.625, 5.875, 3.1875] | - | 4 |  |
+| octagon3 | bone4 | [-5.625, 5.875, 10.125] | - | 4 |  |
+| bone | receiver | [0.2229, 7.88594, -2.36362] | - | 4 |  |
+| octagon6 | receiver | [0.5, 6, -4.9375] | - | 8 |  |
+| deco | gun_body | [1.60231, 9.01296, -3.04391] | - | 4 |  |
+| bone5 | deco | [1.14062, 6.69505, 7.99217] | - | 3 |  |
+| bone7 | bone5 | [1.25547, 7.00595, 5.41405] | [0, 0, -3] | 5 | shoot: rotation |
+| safety | deco | [0.4375, 4.68845, 9.85321] | - | 0 |  |
+| octagon5 | safety | [0.4375, 4.68845, 9.85321] | - | 6 |  |
+| pins | deco | [1.60231, 9.01296, -3.04391] | - | 16 |  |
+| positioning2 | pkm | [0, 0, 0] | - | 0 |  |
+| muzzle_flash | positioning2 | [0, 7.4375, -27.5] | - | 0 |  |
+| muzzle_pos | positioning2 | [0, 7.45313, -25.96875] | - | 0 |  |
+| shell | positioning2 | [0.9375, 6.0625, 5.42188] | [0, 15, 0] | 0 |  |
+| constraint | pkm | [0, 10.375, -13.9375] | - | 0 | static_idle: position,rotation; put_away: position,rotation; draw: position,rotation; reload_tactical: position,rotation; reload_empty: position,rotation; inspect: position,rotation; inspect_empty: position,rotation; shoot: position,rotation |
+| righthand | gun_and_righthhand | [6, 19, 9] | - | 0 | static_idle: position,rotation,scale; put_away: position,rotation,scale; draw: position,rotation,scale; reload_tactical: position,rotation,scale; reload_empty: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale |
+| righthand_pos | righthand | [0, 8, 9] | - | 1 |  |
+| mag_and_lefthand | root | [0, 0, 0] | - | 0 | reload_tactical: position,rotation; reload_empty: position,rotation |
+| lefthand | mag_and_lefthand | [-6, 19, 9] | - | 0 | static_idle: position,rotation,scale; crawl_start: position,rotation; crawl: position,rotation; crawl_end: position,rotation; crawl_handdown: position,rotation; crawl_handup: position,rotation; put_away: position,rotation,scale; draw: position,rotation,scale; reload_tactical: position,rotation,scale; reload_empty: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale |
+| lefthand_pos | lefthand | [0, 8, 9] | - | 1 |  |
+| mag_and_bullet | mag_and_lefthand | [0, -1.375, 0] | - | 0 | reload_tactical: position,rotation |
+| chain_anim | mag_and_bullet | [0, 0, 0] | - | 0 | inspect: rotation; inspect_empty: rotation; shoot: position,rotation |
+| bullet_chain | chain_anim | [0, 0, 0] | - | 0 | static_bolt_caught: position,rotation,scale |
+| bullet_belt | bullet_chain | [0, 0, 0] | - | 0 | reload_tactical: position,rotation; reload_empty: position,rotation |
+| bullet_belt_1 | bullet_belt | [-3.73523, 3.28719, 1.54892] | - | 0 | reload_tactical: rotation; reload_empty: position,rotation; shoot: position,rotation |
+| bl1 | bullet_belt_1 | [-3.77907, 4.2026, 0.90771] | - | 3 | reload_empty: scale; static_ammo_display: scale; inspect_empty: scale |
+| bone17 | bullet_belt_1 | [-3.80739, 4.10136, 1.54892] | - | 3 | reload_tactical: scale; reload_empty: scale |
+| bullet_belt_2 | bullet_belt_1 | [-3.74636, 4.49998, 1.54891] | - | 0 | reload_tactical: rotation; reload_empty: rotation |
+| bl2 | bullet_belt_2 | [-3.75, 5.5615, 0.7827] | - | 3 | reload_empty: scale; static_ammo_display: scale; inspect_empty: scale |
+| bone11 | bullet_belt_2 | [-4.20313, 6.29688, 0.84375] | - | 3 | reload_empty: scale |
+| bullet_belt_3 | bullet_belt_2 | [-3.59284, 5.81659, 1.54891] | [0, 0, 13.5] | 0 | reload_tactical: rotation; reload_empty: rotation |
+| bl3 | bullet_belt_3 | [-3.65647, 6.81312, 0.9077] | - | 3 | reload_empty: scale; static_ammo_display: scale; inspect_empty: scale |
+| bone12 | bullet_belt_3 | [-3.65647, 5.65312, 0.7827] | - | 3 |  |
+| bullet_belt_4 | bullet_belt_3 | [-3.51915, 7.07259, 1.54891] | - | 0 | reload_tactical: rotation; reload_empty: rotation |
+| bl4 | bullet_belt_4 | [-3.64592, 8.56449, 0.84375] | - | 3 | reload_empty: scale; static_ammo_display: scale; inspect_empty: scale |
+| bone13 | bullet_belt_4 | [-3.19279, 7.82912, 0.7827] | [0, 0, 25] | 3 |  |
+| bullet_belt_5 | bullet_belt_4 | [-3.17702, 8.2135, 1.54891] | [0, 0, -7.5] | 0 | reload_tactical: rotation; reload_empty: rotation |
+| bl5 | bullet_belt_5 | [-2.28066, 8.54503, 0.7827] | - | 3 | reload_empty: scale; static_ammo_display: scale; inspect_empty: scale |
+| bone14 | bullet_belt_5 | [-2.28066, 8.54503, 0.7827] | [0, 0, 57] | 3 |  |
+| bullet_belt_6 | bullet_belt_5 | [-2.04653, 8.80786, 1.54891] | [0, 0, -10] | 0 | reload_tactical: rotation; reload_empty: rotation |
+| bl6 | bullet_belt_6 | [-1.23017, 8.89938, 0.9077] | - | 3 | reload_empty: scale; static_ammo_display: scale; inspect_empty: scale |
+| bone15 | bullet_belt_6 | [-1.23017, 8.89938, 0.7827] | [0, 0, 82.5] | 3 |  |
+| bullet_belt_7 | bullet_belt_6 | [-0.82153, 8.80786, 1.54891] | - | 0 | reload_tactical: rotation; reload_empty: rotation |
+| bl7 | bullet_belt_7 | [-0.23017, 8.89938, 0.7827] | - | 3 | reload_empty: scale; static_ammo_display: scale; inspect_empty: scale |
+| bone16 | bullet_belt_7 | [-0.23017, 8.89938, 0.7827] | [0, 0, 90] | 3 |  |
+| chain | bullet_belt_7 | [-0.23062, 8.89688, 0] | - | 0 | draw: scale; reload_tactical: rotation,scale; reload_empty: scale; static_belt_display: scale; shoot: position |
+| belt_1 | chain | [-0.23148, 8.89219, 1.54892] | [0, 0, 108.25] | 0 | reload_tactical: rotation; reload_empty: rotation |
+| bone18 | belt_1 | [-0.69666, 10.87075, 0.84375] | - | 3 | static_belt_display: scale |
+| belt_2 | belt_1 | [-0.23989, 10.07385, 1.54891] | [0, 0, 56] | 0 | reload_tactical: rotation; reload_empty: rotation; shoot: rotation |
+| bone19 | belt_2 | [-0.69666, 11.87075, 0.84375] | - | 3 | static_belt_display: scale |
+| belt_3 | belt_2 | [-0.08637, 11.39046, 1.54891] | [0, 0, 18.5] | 0 | reload_tactical: rotation; reload_empty: rotation; shoot: rotation |
+| bone20 | belt_3 | [-0.15, 11.22699, 0.7827] | - | 3 | static_belt_display: scale |
+| belt_4 | belt_3 | [-0.10643, 12.70896, 1.54891] | [0, 0, -39] | 0 | reload_tactical: rotation; reload_empty: rotation; shoot: rotation |
+| bone21 | belt_4 | [0.21993, 13.46549, 0.7827] | [0, 0, 25] | 3 | static_belt_display: scale |
+| belt_5 | belt_4 | [0.25133, 13.47487, 1.54891] | [0, 0, -67.5] | 0 | reload_tactical: rotation; reload_empty: rotation |
+| bone22 | belt_5 | [1.23473, 14.0454, 0.7827] | [0, 0, 57] | 3 | static_belt_display: scale |
+| belt_6 | belt_5 | [1.26573, 14.05823, 1.54891] | [0, 0, -65] | 0 | reload_tactical: rotation; reload_empty: rotation; shoot: rotation |
+| bone23 | belt_6 | [2.42694, 14.21587, 0.7827] | [0, 0, 82.5] | 3 | static_belt_display: scale |
+| belt_7 | belt_6 | [2.46058, 14.24935, 1.54891] | - | 0 | reload_tactical: rotation; reload_empty: rotation; shoot: rotation |
+| bone24 | belt_7 | [3.42694, 14.21587, 0.7827] | [0, 0, 90] | 3 | static_belt_display: scale |
+| belt_8 | belt_7 | [3.58558, 14.12435, 1.54891] | [0, 0, 50] | 0 | reload_tactical: rotation; reload_empty: rotation |
+| bone37 | belt_8 | [4.55194, 14.09087, 0.7827] | [0, 0, 90] | 3 | static_belt_display: scale |
+| belt_9 | belt_8 | [4.64808, 14.12435, 1.54891] | [0, 0, 35] | 0 | reload_tactical: rotation |
+| bone38 | belt_9 | [5.61444, 14.09087, 0.7827] | [0, 0, 90] | 3 | static_belt_display: scale |
+| belt_10 | belt_9 | [5.83558, 14.12435, 1.54891] | [0, 0, -2.5] | 0 | reload_tactical: rotation |
+| bone39 | belt_10 | [6.80194, 14.09087, 0.7827] | [0, 0, 90] | 3 | static_belt_display: scale |
+| belt_11 | belt_10 | [6.96058, 14.12435, 1.54891] | [0, 0, -2.5] | 0 | reload_tactical: rotation |
+| bone40 | belt_11 | [7.92694, 14.09087, 0.7827] | [0, 0, 90] | 3 | static_belt_display: scale |
+| bullet_chain_2 | chain_anim | [0, 0, 0] | - | 0 | static_idle: scale; reload_tactical: scale; static_bolt_caught: scale; inspect: scale; inspect_empty: scale; shoot: scale |
+| bullet_belt2 | bullet_chain_2 | [0, 0, 0] | - | 0 | reload_empty: position,rotation |
+| add_bullet_belt_1 | bullet_belt2 | [-3.73523, 3.28719, 1.54892] | - | 0 | reload_empty: position,rotation; shoot: position,rotation |
+| bl8 | add_bullet_belt_1 | [-3.77907, 4.2026, 0.90771] | - | 3 | reload_empty: scale; static_bolt_caught: scale; static_ammo_display: scale; inspect_empty: scale |
+| bone2 | add_bullet_belt_1 | [-3.80739, 4.10136, 1.54892] | - | 3 |  |
+| add_bullet_belt_2 | add_bullet_belt_1 | [-3.74636, 4.49998, 1.54891] | - | 0 | reload_empty: rotation |
+| bl9 | add_bullet_belt_2 | [-3.75, 5.5615, 0.7827] | - | 3 | reload_empty: scale; static_bolt_caught: scale; static_ammo_display: scale; inspect_empty: scale |
+| bone3 | add_bullet_belt_2 | [-4.20313, 6.29688, 0.84375] | - | 3 |  |
+| add_bullet_belt_3 | add_bullet_belt_2 | [-3.59284, 5.81659, 1.54891] | [0, 0, 13.5] | 0 | reload_empty: rotation |
+| bl10 | add_bullet_belt_3 | [-3.65647, 6.81312, 0.9077] | - | 3 | reload_empty: scale; static_bolt_caught: scale; static_ammo_display: scale; inspect_empty: scale |
+| bone25 | add_bullet_belt_3 | [-3.65647, 5.65312, 0.7827] | - | 3 |  |
+| add_bullet_belt_4 | add_bullet_belt_3 | [-3.51915, 7.07259, 1.54891] | - | 0 | reload_empty: rotation |
+| bl11 | add_bullet_belt_4 | [-3.64592, 8.56449, 0.84375] | - | 3 | reload_empty: scale; static_bolt_caught: scale; static_ammo_display: scale; inspect_empty: scale |
+| bone26 | add_bullet_belt_4 | [-3.19279, 7.82912, 0.7827] | [0, 0, 25] | 3 |  |
+| add_bullet_belt_5 | add_bullet_belt_4 | [-3.17702, 8.2135, 1.54891] | [0, 0, -7.5] | 0 | reload_empty: rotation |
+| bl12 | add_bullet_belt_5 | [-2.28066, 8.54503, 0.7827] | - | 3 | reload_empty: scale; static_bolt_caught: scale; static_ammo_display: scale; inspect_empty: scale |
+| bone27 | add_bullet_belt_5 | [-2.28066, 8.54503, 0.7827] | [0, 0, 57] | 3 |  |
+| add_bullet_belt_6 | add_bullet_belt_5 | [-2.04653, 8.80786, 1.54891] | [0, 0, -10] | 0 | reload_empty: rotation |
+| bl13 | add_bullet_belt_6 | [-1.23017, 8.89938, 0.9077] | - | 3 | reload_empty: scale; static_bolt_caught: scale; static_ammo_display: scale; inspect_empty: scale |
+| bone28 | add_bullet_belt_6 | [-1.23017, 8.89938, 0.7827] | [0, 0, 82.5] | 3 |  |
+| add_bullet_belt_7 | add_bullet_belt_6 | [-0.82153, 8.80786, 1.54891] | - | 0 | reload_empty: rotation |
+| bl14 | add_bullet_belt_7 | [-0.23017, 8.89938, 0.7827] | - | 3 | reload_empty: scale; static_bolt_caught: scale; static_ammo_display: scale; inspect_empty: scale |
+| bone29 | add_bullet_belt_7 | [-0.23017, 8.89938, 0.7827] | [0, 0, 90] | 3 |  |
+| chain2 | add_bullet_belt_7 | [-0.23062, 8.89688, 0] | - | 0 | reload_empty: scale; static_belt_display: scale; shoot: position |
+| add_belt_1 | chain2 | [-0.23148, 8.89219, 1.54892] | [0, 0, 108.25] | 0 | reload_empty: rotation |
+| bone30 | add_belt_1 | [-0.69666, 10.87075, 0.84375] | - | 3 | static_belt_display: scale |
+| add_belt_2 | add_belt_1 | [-0.23989, 10.07385, 1.54891] | [0, 0, 56] | 0 | reload_empty: rotation; shoot: rotation |
+| bone31 | add_belt_2 | [-0.69666, 11.87075, 0.84375] | - | 3 | static_belt_display: scale |
+| add_belt_3 | add_belt_2 | [-0.08637, 11.39046, 1.54891] | [0, 0, 18.5] | 0 | reload_empty: rotation; shoot: rotation |
+| bone32 | add_belt_3 | [-0.15, 11.22699, 0.7827] | - | 3 | static_belt_display: scale |
+| add_belt_4 | add_belt_3 | [-0.10643, 12.70896, 1.54891] | [0, 0, -39] | 0 | reload_empty: rotation; shoot: rotation |
+| bone33 | add_belt_4 | [0.21993, 13.46549, 0.7827] | [0, 0, 25] | 3 | static_belt_display: scale |
+| add_belt_5 | add_belt_4 | [0.25133, 13.47487, 1.54891] | [0, 0, -67.5] | 0 | reload_empty: rotation |
+| bone34 | add_belt_5 | [1.23473, 14.0454, 0.7827] | [0, 0, 57] | 3 | static_belt_display: scale |
+| add_belt_6 | add_belt_5 | [1.26573, 14.05823, 1.54891] | [0, 0, -65] | 0 | reload_empty: rotation; shoot: rotation |
+| bone35 | add_belt_6 | [2.42694, 14.21587, 0.7827] | [0, 0, 82.5] | 3 | static_belt_display: scale |
+| add_belt_7 | add_belt_6 | [2.46058, 14.24935, 1.54891] | - | 0 | reload_empty: rotation; shoot: rotation |
+| bone36 | add_belt_7 | [3.42694, 14.21587, 0.7827] | [0, 0, 90] | 3 | static_belt_display: scale |
+| add_belt_8 | add_belt_7 | [3.58558, 14.12435, 1.54891] | [0, 0, 50] | 0 | reload_empty: rotation |
+| bone41 | add_belt_8 | [4.55194, 14.09087, 0.7827] | [0, 0, 90] | 3 | static_belt_display: scale |
+| add_belt_9 | add_belt_8 | [4.64808, 14.12435, 1.54891] | [0, 0, 35] | 0 |  |
+| bone42 | add_belt_9 | [5.61444, 14.09087, 0.7827] | [0, 0, 90] | 3 | static_belt_display: scale |
+| add_belt_10 | add_belt_9 | [5.83558, 14.12435, 1.54891] | [0, 0, -2.5] | 0 |  |
+| bone43 | add_belt_10 | [6.80194, 14.09087, 0.7827] | [0, 0, 90] | 3 | static_belt_display: scale |
+| add_belt_11 | add_belt_10 | [6.96058, 14.12435, 1.54891] | [0, 0, -2.5] | 0 |  |
+| bone44 | add_belt_11 | [7.92694, 14.09087, 0.7827] | [0, 0, 90] | 3 | static_belt_display: scale |
+| mag_standard | mag_and_bullet | [0, -1.375, 0] | - | 0 |  |
+| box | mag_standard | [0, -0.5, -0.0625] | - | 42 |  |
+| mag_extended_1 | mag_and_bullet | [0, -1.375, 0] | - | 0 |  |
+| box2 | mag_extended_1 | [0, -0.5, -0.0625] | - | 42 |  |
+| mag_extended_2 | mag_and_bullet | [0, -1.375, 0] | - | 0 |  |
+| box3 | mag_extended_2 | [0, -0.5, -0.0625] | - | 42 |  |
+| mag_extended_3 | mag_and_bullet | [0, -1.375, 0] | - | 0 |  |
+| box4 | mag_extended_3 | [0, -0.5, -0.0625] | - | 42 |  |
+| positioning | - | [0, 0, 0] | - | 0 |  |
+| ground | positioning | [0, -7.875, 1.125] | - | 0 |  |
+| thirdperson_hand | positioning | [0, 5.0625, 10.0625] | - | 0 |  |
+| fixed | positioning | [2.375, 4.40625, 8.92188] | [0, 90, 0] | 0 |  |
+| camera | - | [4, 11.5, 21] | - | 0 | crawl_start: rotation; crawl_end: rotation; crawl_bipod: rotation; crawl_bipod_end: rotation; put_away: rotation; draw: rotation; reload_tactical: rotation; reload_empty: rotation; inspect: rotation; inspect_empty: rotation; shoot: rotation |
+| views | - | [0, 0, 0] | - | 0 |  |
+| iron_view | views | [0, 10.475, 17.375] | - | 0 |  |
+| idle_view | views | [4, 11.5, 21] | - | 0 |  |
+| refit_view | views | [30, 5, 2] | [0, 89.9, 0] | 0 |  |
+| refit_muzzle_view | views | [16, 9, -37] | [0, 120, 0] | 0 |  |
+| refit_scope_view | views | [14, 16, 16] | [15, 50, 0] | 0 |  |
+| refit_extended_mag_view | views | [-20, 10, -4] | [15, -110, 0] | 0 |  |
 
 ## tacz:qbz_191_display
 
@@ -3637,14 +4873,14 @@ Geometry: `geometry.unknown`; **95 bones**.
 | bone26 | mag_extended_3 | [0, -0.25, -8.8125] | - | 7 |  |
 | drum | mag_extended_3 | [-0.20312, 3.19461, 0.57833] | - | 52 |  |
 | bullet_in_mag | magazine | [0, 7.46296, 3.5] | [90, 0, -45] | 12 |  |
-| bullet | mag_and_bullet | [0, 7.46296, 3.5] | [90, 0, -45] | 12 | reload_tactical_xmag_3: scale; inspect: scale; inspect_empty: scale |
+| bullet | mag_and_bullet | [0, 7.46296, 3.5] | [90, 0, -45] | 12 | static_bolt_caught: scale; reload_tactical_xmag_3: scale; reload_empty: scale; reload_empty_xmag_1: scale; reload_empty_xmag_2: scale; reload_empty_xmag_3: scale; inspect: scale; inspect_empty: scale |
 | lefthand | mag_and_lefthand | [-6, 19, 0] | - | 0 | static_idle: position,rotation,scale; static_bolt_caught: position,rotation,scale; switch_semi: position,rotation,scale; switch_auto: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_xmag_1: position,rotation,scale; reload_tactical_xmag_2: position,rotation,scale; reload_tactical_xmag_3: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag_1: position,rotation,scale; reload_empty_xmag_2: position,rotation,scale; reload_empty_xmag_3: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale |
 | lefthand_pos | lefthand | [0, 8, 0] | - | 1 |  |
 | additional_magazine | root | [0, 7, 1] | - | 0 | reload_tactical: position,rotation,scale; reload_tactical_xmag_1: position,rotation,scale; reload_tactical_xmag_2: position,rotation,scale; reload_tactical_xmag_3: scale; reload_empty: position,rotation,scale; reload_empty_xmag_1: position,rotation,scale; reload_empty_xmag_2: position,rotation,scale; reload_empty_xmag_3: position,rotation,scale; inspect: scale; inspect_empty: scale |
 | camera | - | [2.77, 12.19, 13.59] | - | 0 | switch_semi: rotation; switch_auto: rotation; draw: rotation; put_away: rotation; shoot: rotation; reload_tactical: rotation; reload_tactical_xmag_1: rotation; reload_tactical_xmag_2: rotation; reload_tactical_xmag_3: rotation; reload_empty: rotation; reload_empty_xmag_1: rotation; reload_empty_xmag_2: rotation; reload_empty_xmag_3: rotation; inspect: rotation; inspect_empty: rotation |
 | view | - | [0, 0, 0] | - | 0 |  |
 | iron_view | view | [0, 11.89063, 13.6875] | - | 0 |  |
-| idle_view | view | [2.77, 12.19, 13.59] | - | 0 |  |
+| idle_view | view | [2.77, 12.19, 14.59] | - | 0 |  |
 | refit_view | view | [23, 9, 0] | [0, 89.9, 0] | 0 |  |
 | refit_extended_mag_view | view | [12, 0, 1] | [0, 90, 30] | 0 |  |
 | refit_muzzle_view | view | [12, 10.5625, -24] | [0, 120, 0] | 0 |  |
@@ -3655,7 +4891,7 @@ Geometry: `geometry.unknown`; **95 bones**.
 | positioning | - | [0, 0, 0] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 6.8875, 6.75] | - | 0 |  |
 | ground | positioning | [0, -5, 0] | - | 0 |  |
-| fixed | positioning | [1.3125, 8.75, -1] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [1.3125, 7.1875, 5.5] | [0, 90, 0] | 0 |  |
 
 ## tacz:qbz_95_display
 
@@ -3743,7 +4979,7 @@ Geometry: `geometry.qbz_95`; **95 bones**.
 | righthand | mag_and_hand | [6, 19, 0] | - | 0 | inspect_empty: position,rotation,scale; static_idle: position,rotation,scale; put_away: position,rotation,scale; draw: position,rotation,scale; reload_empty: position,rotation,scale; reload_tactical: position,rotation,scale; inspect: position,rotation,scale |
 | righthand_pos | righthand | [0, 8, 0] | - | 1 |  |
 | mag_and_bullet | mag_and_hand | [0, 5.10849, 10.34941] | - | 0 | reload_empty: scale; reload_tactical: position |
-| bullet | mag_and_bullet | [0, 7.75, 12.25] | [90, 0, -45] | 12 | inspect_empty: scale |
+| bullet | mag_and_bullet | [0, 7.75, 12.25] | [90, 0, -45] | 12 | inspect_empty: scale; static_bolt_caught: scale; reload_empty: scale |
 | magazine | mag_and_bullet | [0, 5.10849, 10.34941] | - | 0 | reload_tactical: scale |
 | bullet_in_mag | magazine | [0, 7.75, 12.25] | [90, 0, -45] | 12 | inspect_empty: scale; static_bolt_caught: scale |
 | mag_standard | magazine | [-1, 5.10849, 10.34941] | - | 0 |  |
@@ -3755,17 +4991,131 @@ Geometry: `geometry.qbz_95`; **95 bones**.
 | positioning | - | [0, 0, -8] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 6.875, 2.1] | - | 0 |  |
 | ground | positioning | [0, -3, 0] | - | 0 |  |
-| fixed | positioning | [1, 9.1, 3.225] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [1, 8.13125, 0.85] | [0, 90, 0] | 0 |  |
 | camera | - | [2.98125, 14.23125, 14.4] | - | 0 | inspect_empty: rotation; put_away: rotation; draw: rotation; reload_empty: rotation; reload_tactical: rotation; shoot: rotation; inspect: rotation |
 | view | - | [0, 0, 0] | - | 0 |  |
-| iron_view | view | [0, 13.9375, 12.5] | - | 0 |  |
-| idle_view | view | [2.9125, 14.50625, 14.4] | - | 0 |  |
+| iron_view | view | [0, 13.9375, 15.5] | - | 0 |  |
+| idle_view | view | [2.9125, 14.50625, 15.4] | - | 0 |  |
 | refit_view | view | [24, 9, 4] | [0, 89.9, 0] | 0 |  |
 | refit_muzzle_view | view | [12, 9, -25] | [0, 120, 0] | 0 |  |
 | refit_scope_view | view | [8, 14.5, 6.3] | [0, 45, 0] | 0 |  |
 | refit_extended_mag_view | view | [11, -2, 10] | [0, 90, 30] | 0 |  |
 | refit_grip_view | view | [10.8, 5.4, -5] | [0, 90, 20] | 0 |  |
 | refit_laser_view | view | [14, 16, -16] | [10, 135, 0] | 0 |  |
+
+## tacz:qr_24_display
+
+Display: `assets/tacz/display/guns/qr_24_display.json`
+
+Model: `assets/tacz/geo_models/gun/qr_24_geo.json`
+
+Animation: `assets/tacz/animations/qr_24.animation.json`
+
+LOD reference: `None`
+
+Geometry: `geometry.unknown`; **99 bones**.
+
+| Bone | Parent | Pivot (native pixels) | Rotation | Cubes | Authored animation channels |
+| --- | --- | --- | --- | --- | --- |
+| root | - | [0, 10, 3] | - | 0 | switch_auto: position,rotation; switch_burst: position,rotation; switch_semi: position,rotation; put_away: position,rotation; draw: position,rotation; inspect_empty: position,rotation; inspect: position,rotation; reload_tactical: position,rotation; reload_empty: position,rotation; shoot: position,rotation |
+| gun_and_righthand | root | [0, 10, 3] | - | 0 | inspect_empty: position,rotation; inspect: position,rotation |
+| qr24 | gun_and_righthand | [0, 10, 5] | - | 0 |  |
+| gun_default | qr24 | [0, 0, 0] | - | 0 |  |
+| selector | gun_default | [0, 8.71875, 5.1875] | - | 3 | static_auto: rotation; static_burst: rotation; static_semi: rotation; switch_auto: rotation; switch_burst: rotation; switch_semi: rotation |
+| selector_illuminated | selector | [0, 8.9375, 5.4375] | - | 1 |  |
+| receiver | gun_default | [0, 0, 0] | - | 0 |  |
+| lower | receiver | [0, 0, 0] | - | 126 |  |
+| mode_illuminated | lower | [0, 8.3125, 5.3125] | - | 5 |  |
+| upper | receiver | [0, 11.75, -4.09375] | - | 94 |  |
+| handguard | gun_default | [0, 0, 0] | - | 226 |  |
+| sidecover | gun_default | [0, 7.8125, -1] | - | 0 |  |
+| group7 | sidecover | [1.125, 10.16475, -6.54419] | - | 7 |  |
+| group8 | sidecover | [1.0625, 10.16475, -6.54419] | - | 7 |  |
+| handguard_tactical | gun_default | [0, 8.91291, -8.375] | - | 19 |  |
+| grip | gun_default | [0, 8.67995, 6.89196] | - | 14 |  |
+| barrel_group | gun_default | [0, 0, 0] | - | 0 |  |
+| gastube | barrel_group | [0, 11.3125, -12.1875] | - | 11 |  |
+| barrel | barrel_group | [0, 10.25, -18.5] | - | 10 |  |
+| pins | gun_default | [0, 9.1875, -4.375] | - | 6 |  |
+| stock_default | gun_default | [0, 8.56718, 17.66033] | - | 128 |  |
+| bone3 | stock_default | [0, 9.65372, 8.58265] | - | 24 |  |
+| trigger | gun_default | [0, 6.67271, 3.23871] | - | 5 |  |
+| sight_base | gun_default | [0, -5.9375, -6] | - | 0 |  |
+| fore_base | sight_base | [0, -2.8125, -26] | - | 7 |  |
+| rear_base | sight_base | [0, -2.875, -12.125] | - | 7 |  |
+| muzzle_default | gun_default | [0.01831, 9.84648, -3.62892] | - | 16 |  |
+| group3 | muzzle_default | [0, 10.25001, -20.17187] | - | 8 |  |
+| octagon6 | muzzle_default | [0, 9.25001, -20.5] | - | 4 |  |
+| octagon8 | muzzle_default | [0, 9.25001, -20.1875] | - | 4 |  |
+| attachment_adapter | qr24 | [0, 10.1875, 15] | - | 0 |  |
+| laser_adapter | attachment_adapter | [0, 11.58709, -15.375] | - | 19 |  |
+| ar_stock_adapter | attachment_adapter | [0, 10.1875, 10.9375] | - | 18 |  |
+| group | ar_stock_adapter | [0.84976, 10.49177, 4.6875] | - | 0 |  |
+| bolt_group | qr24 | [0.10041, 11.13258, -1.5] | - | 0 | inspect_empty: position; inspect: position; reload_empty: position; static_bolt_caught: position; shoot: position |
+| bolt | bolt_group | [0.10041, 11.13258, -1.5] | - | 14 |  |
+| bullet_in_barrel | bolt_group | [0.00756, 10.25757, -3.76273] | [90, 0, 45] | 12 | shoot: position,rotation,scale |
+| mag_release | qr24 | [0.57812, 8.52367, 0.3125] | - | 4 | inspect_empty: position; inspect: position; reload_tactical: position; reload_empty: position |
+| bolt_release | qr24 | [0.66969, 9.3125, 1.8125] | - | 5 | inspect_empty: rotation; reload_empty: rotation; static_bolt_caught: rotation |
+| charging_handle | qr24 | [1.05492, 10.5625, -1.5] | - | 0 | inspect_empty: position; inspect: position |
+| rotate | charging_handle | [1.05492, 10.5625, -1.5] | [0, 10, 0] | 9 | inspect_empty: rotation; inspect: rotation |
+| base | charging_handle | [0.0625, 0, 0] | - | 4 |  |
+| sights | qr24 | [0, 10, 5] | - | 0 |  |
+| sight | sights | [0, 10, 5] | - | 0 |  |
+| fore | sight | [0, 12.5, -11.03125] | - | 11 |  |
+| fore_illuminated | fore | [0, 12.49891, -11.09375] | - | 1 |  |
+| rear | sight | [-0.0625, 12.5, 5.46875] | - | 17 |  |
+| rear_illuminated | rear | [0, 0, 0] | - | 2 |  |
+| group27 | rear | [-0.0625, 4.99891, -1.78125] | - | 4 |  |
+| sight_folded | sights | [0, 10, 5] | - | 0 |  |
+| fore2 | sight_folded | [0, 12.5, -11.03125] | [-90, 0, 0] | 11 |  |
+| fore4_illuminated | fore2 | [0, 12.49891, -11.09375] | - | 1 |  |
+| rear2 | sight_folded | [-0.0625, 12.5, 5.46875] | [-90, 0, 0] | 17 |  |
+| rear3_illuminated | rear2 | [0, 0, 0] | - | 2 |  |
+| group2 | rear2 | [-0.0625, 4.99891, -1.78125] | - | 4 |  |
+| positioning2 | qr24 | [0, 0, 0] | - | 0 |  |
+| laser_pos | positioning2 | [0, 11.75, -15] | - | 0 |  |
+| grip_pos | positioning2 | [0, 8.78125, -8.4375] | - | 0 |  |
+| stock_pos | positioning2 | [0, 10.24375, 10.11875] | - | 0 |  |
+| muzzle_pos | positioning2 | [0, 10.25, -20.25] | - | 0 |  |
+| muzzle_flash | positioning2 | [0, 10.24687, -22.3125] | - | 0 |  |
+| scope_pos | positioning2 | [0, 12.225, 2] | - | 0 |  |
+| shell | positioning2 | [-0.19688, 10.74688, -0.25] | - | 0 |  |
+| constraint | qr24 | [0, 13.37189, -0.0594] | - | 0 | static_idle: position,rotation; put_away: position,rotation; draw: position,rotation; inspect_empty: position,rotation; inspect: position,rotation; reload_tactical: position,rotation; reload_empty: position,rotation; shoot: position,rotation |
+| righthand | gun_and_righthand | [6, 19, 0] | - | 0 | static_idle: position,rotation,scale; switch_auto: position,rotation,scale; switch_burst: position,rotation,scale; switch_semi: position,rotation,scale; put_away: position,rotation,scale; draw: position,rotation,scale; inspect_empty: position,rotation,scale; inspect: position,rotation,scale; reload_tactical: position,rotation,scale; reload_empty: position,rotation,scale |
+| righthand_pos | righthand | [0, 8, 0] | - | 1 |  |
+| mag_and_lefthand | root | [0, 6, 0] | - | 0 | inspect_empty: position,rotation; inspect: position,rotation; reload_tactical: position,rotation; reload_empty: position,rotation |
+| mags_and_bullet | mag_and_lefthand | [0, 6, 0] | - | 0 | reload_tactical: position,rotation,scale; reload_empty: position,rotation,scale |
+| bullet | mags_and_bullet | [0, 9.75, 1.75] | [90, 0, 0] | 12 | inspect_empty: scale; inspect: scale; reload_empty: scale; static_bolt_caught: scale |
+| magazine | mags_and_bullet | [0, 6, 0] | - | 0 |  |
+| bullet_in_mag | magazine | [0, 9.75, 1.75] | [90, 0, 0] | 12 |  |
+| mag_standard | magazine | [0, 6, 0] | - | 44 |  |
+| bone5 | mag_standard | [0, 4.32617, -0.95703] | [-20, 0, 0] | 5 |  |
+| mag_extended_1 | magazine | [0, 6, 0] | - | 47 |  |
+| bone6 | mag_extended_1 | [0, 4.32617, -0.95703] | [-20, 0, 0] | 5 |  |
+| mag_extended_2 | magazine | [0, 6, 0] | - | 53 |  |
+| bone7 | mag_extended_2 | [0, 4.32617, -0.95703] | [-20, 0, 0] | 5 |  |
+| mag_extended_3 | magazine | [0, 9.59364, -0.3077] | [-5, 0, 0] | 4 |  |
+| bone | mag_extended_3 | [0, 3.88426, -0.81825] | - | 0 |  |
+| bone2 | bone | [0, 3.88426, -0.81825] | [-10, 0, 0] | 37 |  |
+| bone4 | bone | [0, 3.57893, -3.43711] | [-9.2525, 3.8102, 22.1916] | 48 |  |
+| lefthand | mag_and_lefthand | [-6, 19, 0] | - | 0 | static_idle: position,rotation,scale; switch_auto: position,rotation,scale; switch_burst: position,rotation,scale; switch_semi: position,rotation,scale; put_away: position,rotation,scale; draw: position,rotation,scale; inspect_empty: position,rotation,scale; inspect: position,rotation,scale; reload_tactical: position,rotation,scale; reload_empty: position,rotation,scale |
+| lefthand_pos | lefthand | [0, 8, 0] | - | 1 |  |
+| additional_magazine | root | [0, 6, 0] | - | 0 | inspect_empty: scale; inspect: scale; reload_tactical: position,rotation,scale; reload_empty: position,rotation,scale |
+| view | - | [0, 0, 0] | - | 0 |  |
+| iron_view | view | [0, 13.375, 11.75] | - | 0 |  |
+| idle_view | view | [2.875, 13.75, 14.5] | - | 0 |  |
+| refit_view | view | [32, 9, -4] | [0, 89, 0] | 0 |  |
+| refit_extended_mag_view | view | [24, 0, 1] | [0, 90, 20] | 0 |  |
+| refit_muzzle_view | view | [18, 10.25, -28] | [0, 120, 0] | 0 |  |
+| refit_scope_view | view | [14, 12.5, 3.3] | [0, 70, 0] | 0 |  |
+| refit_laser_view | view | [20, 11.25, -26] | [0, 120, 0] | 0 |  |
+| refit_grip_view | view | [18, 5, -10] | [0, 90, 20] | 0 |  |
+| refit_stock_view | view | [22, 10.25, 12] | [0, 90, 0] | 0 |  |
+| positioning | - | [0, 0, 0] | - | 0 |  |
+| thirdperson_hand | positioning | [0, 7.8875, 5] | - | 0 |  |
+| ground | positioning | [0, -5, 0] | - | 0 |  |
+| fixed | positioning | [1, 8, 3.28125] | [0, 90, 0] | 0 |  |
+| camera | - | [2.875, 13.75, 13.5] | - | 0 | switch_auto: rotation; switch_burst: rotation; switch_semi: rotation; put_away: rotation; draw: rotation; inspect_empty: rotation; inspect: rotation; reload_tactical: rotation; reload_empty: rotation; shoot: rotation |
 
 ## tacz:rhino357_display
 
@@ -3835,12 +5185,12 @@ Geometry: `geometry.unknown`; **67 bones**.
 | round1 | round_group | [0, 9.84128, 2.90453] | - | 8 |  |
 | constraint | root | [0.025, 7.875, 3.1625] | - | 0 | static_idle: position,rotation; shoot: position,rotation |
 | positioning | - | [0, 0, 0] | - | 0 |  |
-| fixed | positioning | [0.975, 8.0875, 0.7] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [0.975, 8.025, 2.45] | [0, 90, 0] | 0 |  |
 | ground | positioning | [0, 1.3125, 1.1875] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 8.0125, 2.8] | - | 0 |  |
 | view | - | [0, 0, 0] | - | 0 |  |
-| iron_view | view | [0, 10.9063, 11] | - | 0 |  |
-| idle_view | view | [2.5, 12.5, 15] | [0, 0, -2.5] | 0 |  |
+| iron_view | view | [0, 10.9063, 16.5] | - | 0 |  |
+| idle_view | view | [2.5, 12.5, 16] | [0, 0, -2.5] | 0 |  |
 | refit_view | view | [15, 10, -1] | [0, 89.9, 0] | 0 |  |
 | refit_muzzle_view | view | [9.14359, 9.5, -13.87564] | [0, 120, 0] | 0 |  |
 | refit_scope_view | view | [7.71895, 14.40518, 9.22707] | [12.5, 32.5, 0] | 0 |  |
@@ -3974,13 +5324,13 @@ Geometry: `geometry.rpg7 - Converted`; **118 bones**.
 | group9 | group7 | [0, 5.25, 4] | - | 4 |  |
 | group | group7 | [0, 5.25, 0.6] | - | 4 |  |
 | camera | - | [2.8, 8.15, 5.075] | - | 0 | shoot: rotation; reload_empty: rotation; put_away: rotation; draw: rotation; static_bolt_caught: rotation; static_idle: rotation; inspect_empty: rotation; inspect: rotation |
-| idle_view | - | [2.8, 8.15, 5.075] | - | 0 |  |
+| idle_view | - | [2.8, 8.15, 6.075] | - | 0 |  |
 | iron_view | - | [0.875, 8.4125, 4.75] | [0, 0, -12.5] | 0 |  |
 | refit_view | - | [25, 5, 2] | [0, 89.9, 0] | 0 |  |
 | positioning | - | [0, 0, 0] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 3.575, -1.85] | - | 0 |  |
 | ground | positioning | [0, -0.9, 0.65] | - | 0 |  |
-| fixed | positioning | [1.4, 5.25, 1.225] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [1.4, 4.28125, -3.3375] | [0, 90, 0] | 0 |  |
 
 ## tacz:rpk_display
 
@@ -3992,13 +5342,13 @@ Animation: `assets/tacz/animations/rpk.animation.json`
 
 LOD reference: `{'model': 'tacz:gun/lod/rpk', 'texture': 'tacz:gun/lod/rpk'}`
 
-Geometry: `geometry.rpk - Converted`; **96 bones**.
+Geometry: `geometry.rpk - Converted`; **95 bones**.
 
 | Bone | Parent | Pivot (native pixels) | Rotation | Cubes | Authored animation channels |
 | --- | --- | --- | --- | --- | --- |
-| root | - | [0, 8, 5] | - | 0 | crawl_start: position,rotation; crawl: position,rotation; crawl_end: position,rotation; crawl_handdown: position,rotation; crawl_handup: position,rotation; draw: position,rotation; put_away: position,rotation; reload_tactical: position,rotation,scale; reload_tactical_xmag: position,rotation,scale; reload_empty: position,rotation; reload_empty_xmag: position,rotation; inspect: position,rotation; inspect_xmag: position,rotation; shoot: position,rotation; inspect_empty: position,rotation |
+| root | - | [0, 8, 5] | - | 0 | switch_auto: position,rotation; switch_semi: position,rotation; crawl_start: position,rotation; crawl: position,rotation; crawl_end: position,rotation; crawl_handdown: position,rotation; crawl_handup: position,rotation; crawl_bipod: position,rotation; crawl_bipod_end: position,rotation; draw: position,rotation; put_away: position,rotation; reload_tactical: position,rotation,scale; reload_tactical_xmag: position,rotation,scale; reload_empty: position,rotation; reload_empty_xmag: position,rotation; inspect: position,rotation; inspect_xmag: position,rotation; inspect_empty: position,rotation; shoot: position,rotation |
 | lefthand_and_mag | root | [0, 3, 0] | - | 0 | reload_tactical: position,rotation; reload_tactical_xmag: position,rotation; reload_empty: position,rotation; reload_empty_xmag: position,rotation; inspect: position,rotation; inspect_xmag: position,rotation; inspect_empty: position,rotation |
-| lefthand | lefthand_and_mag | [-6, 19, 0] | - | 0 | static_idle: position,rotation,scale; crawl_start: position,rotation; crawl: position,rotation; crawl_end: position,rotation; crawl_handdown: position,rotation; crawl_handup: position,rotation; draw: position,rotation,scale; put_away: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_xmag: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag: position,rotation,scale; inspect: position,rotation,scale; inspect_xmag: position,rotation,scale; inspect_empty: position,rotation,scale |
+| lefthand | lefthand_and_mag | [-6, 19, 0] | - | 0 | static_idle: position,rotation,scale; switch_auto: position,rotation,scale; switch_semi: position,rotation,scale; crawl_start: position,rotation; crawl: position,rotation; crawl_end: position,rotation; crawl_handdown: position,rotation; crawl_handup: position,rotation; draw: position,rotation,scale; put_away: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_xmag: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag: position,rotation,scale; inspect: position,rotation,scale; inspect_xmag: position,rotation,scale; inspect_empty: position,rotation,scale |
 | lefthand_pos | lefthand | [0, 8, 0] | - | 1 |  |
 | mag_and_bullet | lefthand_and_mag | [0, 3, 0] | - | 0 | reload_empty: position,rotation,scale; reload_empty_xmag: position,rotation,scale |
 | bullet | mag_and_bullet | [0, 8.29817, 1.24878] | - | 12 | reload_tactical: scale; reload_tactical_xmag: scale; reload_empty: scale; reload_empty_xmag: scale; inspect: scale; inspect_xmag: scale; inspect_empty: scale |
@@ -4017,7 +5367,7 @@ Geometry: `geometry.rpk - Converted`; **96 bones**.
 | bone8 | mag_extended_3 | [0, 3.875, -0.31298] | [-18.58597, -7.52076, -21.26765] | 53 |  |
 | righthand_and_gun | root | [0, 8, 5] | - | 0 | inspect: position,rotation; inspect_xmag: position,rotation; inspect_empty: position,rotation |
 | RPK | righthand_and_gun | [0, 8, 5] | - | 0 |  |
-| constraint | RPK | [0, 10.775, -23.325] | - | 0 | static_idle: position,rotation; reload_tactical: position,rotation; reload_empty: position,rotation |
+| constraint | RPK | [0, 10.775, -23.325] | - | 0 | static_idle: position,rotation; reload_tactical: position,rotation; reload_tactical_xmag: position,rotation; reload_empty: position,rotation; reload_empty_xmag: position,rotation |
 | mount | RPK | [8, 0, -8] | - | 29 |  |
 | rail2 | mount | [8, 0, -8] | - | 0 |  |
 | group15 | rail2 | [8, -0.125, -8] | - | 29 |  |
@@ -4038,8 +5388,8 @@ Geometry: `geometry.rpk - Converted`; **96 bones**.
 | default_gun | RPK | [0, 8, 0] | - | 0 |  |
 | bipod_extended | default_gun | [-0.87744, 5.50125, -10.65376] | - | 0 |  |
 | group6 | bipod_extended | [0.28125, 3.37625, -25.5] | - | 20 |  |
-| group7 | bipod_extended | [0.51211, 7.18746, -24.9375] | [87.5, -20, 0] | 8 | crawl_start: rotation; crawl: rotation; crawl_end: rotation; crawl_handdown: rotation; crawl_handup: rotation; draw: rotation; reload_tactical: rotation; reload_tactical_xmag: rotation; reload_empty: rotation; reload_empty_xmag: rotation; inspect: rotation; inspect_xmag: rotation; shoot: rotation; inspect_empty: rotation |
-| group2 | bipod_extended | [-0.51211, 7.18746, -24.9375] | [87.5, 20, 0] | 8 | crawl_start: rotation; crawl: rotation; crawl_end: rotation; crawl_handdown: rotation; crawl_handup: rotation; draw: rotation; reload_tactical: rotation; reload_tactical_xmag: rotation; reload_empty: rotation; reload_empty_xmag: rotation; inspect: rotation; inspect_xmag: rotation; shoot: rotation; inspect_empty: rotation |
+| group7 | bipod_extended | [0.51211, 7.18746, -24.9375] | [87.5, -20, 0] | 8 | crawl_start: rotation; crawl: rotation; crawl_end: rotation; crawl_handdown: rotation; crawl_handup: rotation; crawl_bipod: rotation; crawl_bipod_end: rotation; draw: rotation; reload_tactical: rotation; reload_tactical_xmag: rotation; reload_empty: rotation; reload_empty_xmag: rotation; inspect: rotation; inspect_xmag: rotation; inspect_empty: rotation; shoot: rotation |
+| group2 | bipod_extended | [-0.51211, 7.18746, -24.9375] | [87.5, 20, 0] | 8 | crawl_start: rotation; crawl: rotation; crawl_end: rotation; crawl_handdown: rotation; crawl_handup: rotation; crawl_bipod: rotation; crawl_bipod_end: rotation; draw: rotation; reload_tactical: rotation; reload_tactical_xmag: rotation; reload_empty: rotation; reload_empty_xmag: rotation; inspect: rotation; inspect_xmag: rotation; inspect_empty: rotation; shoot: rotation |
 | iron_sight2 | default_gun | [-0.01786, 10.00488, -2.924] | - | 35 |  |
 | group24 | iron_sight2 | [0, 10.8125, -3.28393] | - | 10 |  |
 | handguard | default_gun | [0, 8.15625, -5.64331] | - | 0 |  |
@@ -4063,35 +5413,34 @@ Geometry: `geometry.rpk - Converted`; **96 bones**.
 | ribs | group20 | [0, 8, 0] | - | 0 |  |
 | group19 | ribs | [-0.79301, 9.07677, 2.6875] | - | 10 |  |
 | group8 | ribs | [-0.49954, 10.14108, 3.125] | - | 15 |  |
-| safety2 | default_gun | [-0.87501, 8.34818, 6.00738] | - | 17 |  |
+| safety2 | default_gun | [-0.87501, 8.34818, 6.00738] | - | 17 | static_auto: rotation; static_semi: rotation; switch_auto: rotation; switch_semi: rotation |
 | iron_sight | default_gun | [0, 10.26582, -26.84942] | - | 15 |  |
 | grip2 | default_gun | [0, 5.5253, 8.55193] | - | 12 |  |
 | trigger2 | default_gun | [0, 6.16383, 5.97541] | - | 4 |  |
 | sight_illuminate | RPK | [0.0221, 10.8125, -26.90625] | - | 1 |  |
-| bolt | RPK | [-0.66789, 9.22764, -1.22246] | - | 12 | reload_empty: position; reload_empty_xmag: position; inspect: position; inspect_xmag: position; shoot: position; inspect_empty: position |
-| bullet_in_barrel | bolt | [0, 8.67317, -2.92622] | - | 12 | reload_empty: scale; reload_empty_xmag: scale; shoot: scale |
+| bolt | RPK | [-0.66789, 9.22764, -1.22246] | - | 12 | reload_empty: position; reload_empty_xmag: position; inspect: position; inspect_xmag: position; inspect_empty: position; shoot: position |
+| bullet_in_barrel | bolt | [0, 8.67317, -2.92622] | - | 12 | reload_empty: scale; reload_empty_xmag: scale; shoot: position,scale |
 | positioning2 | RPK | [0, 0, 0] | - | 0 |  |
 | muzzle_pos | positioning2 | [0, 8.55625, -27.7] | - | 0 |  |
 | stock_pos | positioning2 | [0, 8.65625, 13.55] | - | 0 |  |
 | muzzle_flash | positioning2 | [0, 8.55625, -29.7] | - | 0 |  |
 | scope_pos | positioning2 | [0, 11.325, 4.275] | - | 0 |  |
 | shell | positioning2 | [-0.5, 9.1, 0] | - | 0 |  |
-| righthand | righthand_and_gun | [6, 19, 0] | - | 0 | static_idle: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_xmag: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag: position,rotation,scale; inspect: position,rotation,scale; inspect_xmag: position,rotation,scale; inspect_empty: position,rotation,scale |
+| righthand | righthand_and_gun | [6, 19, 0] | - | 0 | static_idle: position,rotation,scale; switch_auto: position,rotation,scale; switch_semi: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_xmag: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag: position,rotation,scale; inspect: position,rotation,scale; inspect_xmag: position,rotation,scale; inspect_empty: position,rotation,scale |
 | righthand_pos | righthand | [0, 8, 0] | - | 1 |  |
-| camera | - | [2, 11.75, 13] | - | 0 | crawl_start: rotation; crawl_end: rotation; crawl_handup: rotation; draw: rotation; put_away: rotation; reload_tactical: rotation; reload_tactical_xmag: rotation; reload_empty: rotation; reload_empty_xmag: rotation; inspect: rotation; inspect_xmag: rotation; shoot: rotation; inspect_empty: rotation |
+| camera | - | [2, 11.75, 13] | - | 0 | switch_auto: rotation; switch_semi: rotation; crawl_start: rotation; crawl_end: rotation; crawl_bipod: rotation; crawl_bipod_end: rotation; draw: rotation; put_away: rotation; reload_tactical: rotation; reload_tactical_xmag: rotation; reload_empty: rotation; reload_empty_xmag: rotation; inspect: rotation; inspect_xmag: rotation; inspect_empty: rotation; shoot: rotation |
 | positioning | - | [8, -1, -1] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 6.575, 6.35] | - | 0 |  |
 | ground | positioning | [0, -3.9, -1.35] | - | 0 |  |
-| fixed | positioning | [1.2, 8.1, -0.775] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [1.2, 7.0375, 5.1625] | [0, 90, 0] | 0 |  |
 | view | - | [8, 0, 0] | - | 0 |  |
-| refit_view | view | [24, 7, -2] | [0, 89.9, 0] | 0 |  |
+| refit_view | view | [36, 7, -2] | [0, 89.9, 0] | 0 |  |
 | refit_muzzle_view | view | [8, 8, -34] | [0, 120, 0] | 0 |  |
 | refit_stock_view | view | [13, 7, 13] | [0, 90, 0] | 0 |  |
 | refit_scope_view | view | [8, 12.05, -2.7] | [0, 120, 0] | 0 |  |
 | refit_extended_mag_view | view | [13, -1, 0] | [0, 90, 20] | 0 |  |
-| idle_view | view | [2, 11.75, 13] | - | 0 |  |
-| iron_view | view | [0, 10.91875, 10.15] | - | 0 |  |
-| cover2 | - | [0.0091, 9.82671, 8.89747] | - | 0 |  |
+| idle_view | view | [2.75, 11.75, 14] | - | 0 |  |
+| iron_view | view | [0, 10.78125, 12] | - | 0 |  |
 
 ## tacz:scar_h_display
 
@@ -4103,7 +5452,7 @@ Animation: `assets/tacz/animations/scar_h.animation.json`
 
 LOD reference: `{'model': 'tacz:gun/lod/scar_h', 'texture': 'tacz:gun/lod/scar_h'}`
 
-Geometry: `geometry.scar_mk20 - Converted`; **111 bones**.
+Geometry: `geometry.scar_mk20 - Converted`; **112 bones**.
 
 | Bone | Parent | Pivot (native pixels) | Rotation | Cubes | Authored animation channels |
 | --- | --- | --- | --- | --- | --- |
@@ -4114,17 +5463,18 @@ Geometry: `geometry.scar_mk20 - Converted`; **111 bones**.
 | additional_magazine | scar_h | [0, 5, 3] | - | 0 | reload_tactical: position,rotation,scale; reload_tactical_xmag_1: position,rotation,scale; reload_tactical_xmag_2: position,rotation,scale; reload_tactical_xmag_3: scale; reload_empty: position,rotation,scale; reload_empty_xmag_1: position,rotation,scale; reload_empty_xmag_2: position,rotation,scale; reload_empty_xmag_3: scale; inspect: scale; inspect_xmag: scale; inspect_empty: scale; inspect_empty_xmag_12: scale; inspect_empty_xmag_3: scale |
 | attachment_adapter | scar_h | [0, 8, 0] | - | 0 |  |
 | ar_stock_adapter | attachment_adapter | [0, 8.24911, 11.37197] | - | 43 |  |
+| oem_side_cover | attachment_adapter | [0, 8, 0] | - | 10 |  |
+| oem_grip_cover | attachment_adapter | [0, 8, 0] | - | 3 |  |
 | stock_default | scar_h | [0, 0, 0] | - | 0 |  |
-| stock_extended_part | stock_default | [0, 7.50937, 16.07812] | - | 32 |  |
-| group8 | stock_extended_part | [0, 5.16403, 20.16044] | - | 2 |  |
-| bone | group8 | [0, 5.16403, 21.16044] | - | 11 |  |
+| stock_extended_part | stock_default | [0, 7.50937, 15.57812] | - | 32 |  |
+| group8 | stock_extended_part | [0, 5.16403, 19.66044] | - | 2 |  |
+| bone | group8 | [0, 5.16403, 20.66044] | - | 11 |  |
 | stock | stock_default | [0, 8, 0] | - | 38 |  |
 | group10 | stock | [-0.8135, 10.26037, 16.79787] | [3, 0, 0] | 4 |  |
 | octagon9 | stock | [0, 8, 0] | - | 4 |  |
 | hinge | stock | [-0.875, 16.00937, 5.59375] | - | 0 |  |
 | bone5 | hinge | [0.4375, 8.9375, 12.1875] | - | 44 |  |
 | muzzle_default | scar_h | [0, 9.375, -15.75] | - | 28 |  |
-| handguard_default | scar_h | [0, 16.375, -1.9375] | - | 13 |  |
 | default_gun | scar_h | [0, 8, 0] | - | 0 |  |
 | body | default_gun | [0, 8, 0] | - | 0 |  |
 | metal | body | [-0.50379, 9.84175, -5.24219] | - | 4 |  |
@@ -4207,17 +5557,17 @@ Geometry: `geometry.scar_mk20 - Converted`; **111 bones**.
 | positioning | - | [0, 0, -8] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 7.125, 7.575] | - | 0 |  |
 | ground | positioning | [0, -1.9, 4.65] | - | 0 |  |
-| fixed | positioning | [0.9, 9.325, 5.225] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [0.9, 6.99687, 6.35] | [0, 90, 0] | 0 |  |
 | view | - | [0, 0, 0] | - | 0 |  |
-| idle_view | view | [2.36875, 13.09375, 16.1875] | - | 0 |  |
-| iron_view | view | [0, 12.8625, 15.5] | - | 0 |  |
-| refit_view | view | [23, 9, 3] | [0, 89.9, 0] | 0 | static_idle: position; switch_semi: position; switch_auto: position |
-| refit_muzzle_view | view | [11, 9, -15] | [0, 90, 0] | 0 |  |
-| refit_grip_view | view | [5.8, 5.4, -3] | [0, 90, 0] | 0 |  |
-| refit_extended_mag_view | view | [10, 4, 3] | [0, 90, 0] | 0 |  |
-| refit_stock_view | view | [10, 9, 15.6] | [0, 90, 0] | 0 |  |
-| refit_scope_view | view | [8, 13.1, 12.3] | [0, 50, 0] | 0 |  |
-| refit_laser_view | view | [14, 14, -16] | [15, 135, 0] | 0 |  |
+| idle_view | view | [2.36875, 13.09375, 17.1875] | - | 0 |  |
+| iron_view | view | [0, 12.8625, 16] | - | 0 |  |
+| refit_view | view | [32, 9, 3] | [0, 89.9, 0] | 0 | static_idle: position; switch_semi: position; switch_auto: position |
+| refit_muzzle_view | view | [16, 9, -15] | [0, 90, 0] | 0 |  |
+| refit_grip_view | view | [16.05, 5.4, -3] | [0, 90, 0] | 0 |  |
+| refit_extended_mag_view | view | [16, 4, 3] | [0, 90, 0] | 0 |  |
+| refit_stock_view | view | [16, 9, 15.6] | [0, 90, 0] | 0 |  |
+| refit_scope_view | view | [16, 13.1, 12.3] | [0, 50, 0] | 0 |  |
+| refit_laser_view | view | [18, 14, -16] | [15, 135, 0] | 0 |  |
 
 ## tacz:scar_l_display
 
@@ -4229,7 +5579,7 @@ Animation: `assets/tacz/animations/scar_l.animation.json`
 
 LOD reference: `{'model': 'tacz:gun/lod/scar_l', 'texture': 'tacz:gun/lod/scar_l'}`
 
-Geometry: `geometry.scar_l`; **105 bones**.
+Geometry: `geometry.scar_l`; **108 bones**.
 
 | Bone | Parent | Pivot (native pixels) | Rotation | Cubes | Authored animation channels |
 | --- | --- | --- | --- | --- | --- |
@@ -4242,15 +5592,18 @@ Geometry: `geometry.scar_l`; **105 bones**.
 | octagon4 | muzzle_default | [0, 8, 0] | - | 8 |  |
 | attachment_adapter | scar_h | [0, 8, 0] | - | 0 |  |
 | ar_stock_adapter | attachment_adapter | [0, 8.24911, 11.37197] | - | 43 |  |
-| stock_default | scar_h | [0, 0, 0] | - | 0 |  |
+| oem_side_cover | attachment_adapter | [0, 8, 0] | - | 10 |  |
+| oem_grip_cover | attachment_adapter | [0, 8, 0] | - | 3 |  |
+| stock_default | scar_h | [0, 10, 0] | - | 0 |  |
 | stock_extended_part | stock_default | [0, 7.50937, 15.07812] | - | 32 |  |
 | group8 | stock_extended_part | [0, 5.16403, 19.16044] | - | 2 |  |
 | bone | group8 | [0, 5.16403, 20.16044] | - | 11 |  |
-| stock | stock_default | [0, 8, 0] | - | 30 |  |
-| octagon9 | stock | [0, 8, 0] | - | 4 |  |
-| hinge | stock_default | [-0.875, 16.00937, 5.59375] | - | 0 |  |
+| hinge | stock_default | [-0.875, 26.00937, 5.59375] | - | 0 |  |
 | bone5 | hinge | [0.4375, 8.9375, 12.1875] | - | 44 |  |
-| handguard_default | scar_h | [0, 16.375, -1.9375] | - | 13 |  |
+| stock2 | stock_default | [0, 8, 0] | - | 38 |  |
+| group10 | stock2 | [-0.8135, 10.26037, 16.79787] | [3, 0, 0] | 4 |  |
+| octagon5 | stock2 | [0, 8, 0] | - | 4 |  |
+| hinge2 | stock2 | [-0.875, 16.00937, 5.59375] | - | 0 |  |
 | default_gun | scar_h | [0, 8, 0] | - | 0 |  |
 | body | default_gun | [0, 8, 0] | - | 0 |  |
 | metal | body | [-0.50379, 9.84175, -5.24219] | - | 4 |  |
@@ -4288,16 +5641,15 @@ Geometry: `geometry.scar_l`; **105 bones**.
 | sight | sights | [0, 11.50284, 13.80938] | - | 0 |  |
 | fore_sight | sight | [0, 18.87972, -6.49688] | - | 23 |  |
 | sight_illuminated | fore_sight | [0, 12.62097, -7.59063] | - | 1 |  |
-| rear_sight | sight | [0, 11.50284, 13.55938] | - | 1 |  |
-| octagon5 | rear_sight | [0, 8, -0.25] | - | 4 |  |
-| octagon6 | rear_sight | [0, 8, -0.25] | - | 6 |  |
-| octagon7 | rear_sight | [0, 8, -0.25] | - | 4 |  |
-| octagon8 | rear_sight | [0, 8, -0.25] | - | 4 |  |
-| octagon | rear_sight | [0, 8, -0.25] | - | 8 |  |
+| rear_sight | sight | [0, 11.50284, 13.80938] | - | 0 |  |
+| rear | rear_sight | [1.125, 11.6875, 10.0625] | - | 0 |  |
+| group6 | rear | [0, 12.375, 10.0625] | - | 28 |  |
 | sight_folded | sights | [0, 11.50284, 11.80938] | - | 0 |  |
+| rear_sight2 | sight_folded | [0, 11.69034, 9.80938] | [-90, 0, 0] | 0 |  |
+| rear2 | rear_sight2 | [1.125, 11.6875, 10.0625] | - | 0 |  |
+| group7 | rear2 | [0, 12.375, 10.0625] | - | 28 |  |
 | fore_sight2 | sight_folded | [0, 11.23188, -7.5017] | [90, 0, 0] | 23 |  |
 | bone8 | fore_sight2 | [0, 12.62097, -7.59063] | - | 1 |  |
-| rear_sight2 | sight_folded | [0, 11.69048, 9.81107] | [-90, 0, 0] | 27 |  |
 | positioning2 | scar_h | [0, 0, 0] | - | 0 |  |
 | stock_pos | positioning2 | [0, 10.025, 13.525] | - | 0 |  |
 | muzzle_pos | positioning2 | [0, 9.375, -14.0625] | - | 0 |  |
@@ -4325,8 +5677,8 @@ Geometry: `geometry.scar_l`; **105 bones**.
 | lefthand_pos | lefthand | [0, 8, 0] | - | 1 | reload_empty: rotation |
 | camera | - | [2.36875, 13.09375, 16.1875] | - | 0 | switch_auto: rotation; switch_burst: rotation; switch_semi: rotation; draw: rotation; put_away: rotation; reload_tactical: rotation; reload_tactical_xmag_1: rotation; reload_tactical_xmag_2: rotation; reload_tactical_xmag_3: rotation; reload_empty: rotation; reload_empty_xmag_1: rotation; reload_empty_xmag_2: rotation; reload_empty_xmag_3: rotation; shoot: rotation; inspect: rotation; inspect_xmag: rotation; inspect_empty: rotation; inspect_empty_xmag_12: rotation; inspect_empty_xmag_3: rotation |
 | view | - | [0, 0, 0] | - | 0 |  |
-| idle_view | view | [2.36875, 13.09375, 16.1875] | - | 0 |  |
-| iron_view | view | [0, 12.825, 14.5] | - | 0 |  |
+| idle_view | view | [2.36875, 13.09375, 17.1875] | - | 0 |  |
+| iron_view | view | [0, 12.87188, 16] | - | 0 |  |
 | refit_view | view | [23, 9, 3] | [0, 89.9, 0] | 0 | static_idle: position; switch_auto: position; switch_burst: position; switch_semi: position; reload_empty_xmag_2: position |
 | refit_muzzle_view | view | [11, 9, -15] | [0, 90, 0] | 0 |  |
 | refit_grip_view | view | [8, 6, -3] | [0, 90, 0] | 0 |  |
@@ -4337,7 +5689,123 @@ Geometry: `geometry.scar_l`; **105 bones**.
 | positioning | - | [0, 0, -8] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 6.875, 7.2] | - | 0 |  |
 | ground | positioning | [0, -1.9, 4.65] | - | 0 |  |
-| fixed | positioning | [0.9, 9.325, 5.225] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [0.9, 6.99687, 6.35] | [0, 90, 0] | 0 |  |
+| stock_default2 | - | [0, 0, 0] | - | 0 |  |
+
+## tacz:scar_mk20_display
+
+Display: `assets/tacz/display/guns/scar_mk20_display.json`
+
+Model: `assets/tacz/geo_models/gun/scar_mk20_geo.json`
+
+Animation: `assets/tacz/animations/scar_mk20.animation.json`
+
+LOD reference: `{'model': 'tacz:gun/lod/scar_mk20', 'texture': 'tacz:gun/lod/scar_mk20'}`
+
+Geometry: `geometry.scar_mk20 - Converted`; **100 bones**.
+
+| Bone | Parent | Pivot (native pixels) | Rotation | Cubes | Authored animation channels |
+| --- | --- | --- | --- | --- | --- |
+| root | - | [0, 8, 5.0625] | - | 0 | crawl_start: position,rotation; crawl_end: position,rotation; crawl_bipod: position,rotation; crawl_bipod_end: position,rotation; shoot: position,rotation; draw: position,rotation; put_away: position,rotation; reload_tactical: position,rotation; reload_tactical_xmag_1: position,rotation; reload_tactical_xmag_2: position,rotation; reload_tactical_xmag_3: position,rotation; reload_empty: position,rotation; reload_empty_xmag_1: position,rotation; reload_empty_xmag_2: position,rotation; reload_empty_xmag_3: position,rotation; inspect: position,rotation; inspect_xmag: position,rotation; inspect_empty: position,rotation; inspect_empty_xmag: position,rotation |
+| mag_and_lefthand | root | [0, 5.5, 3] | - | 0 | reload_tactical: position,rotation; reload_tactical_xmag_1: position,rotation; reload_tactical_xmag_2: position,rotation; reload_tactical_xmag_3: position,rotation; reload_empty: position,rotation; reload_empty_xmag_1: position,rotation; reload_empty_xmag_2: position,rotation; reload_empty_xmag_3: position,rotation; inspect: position,rotation; inspect_xmag: position,rotation; inspect_empty: position,rotation; inspect_empty_xmag: position,rotation |
+| mag | mag_and_lefthand | [0, 5.5, 3] | - | 0 | reload_tactical: scale; reload_tactical_xmag_1: scale; reload_tactical_xmag_2: scale; reload_empty: scale; reload_empty_xmag_1: scale; reload_empty_xmag_2: scale; reload_empty_xmag_3: scale; inspect_empty: position,rotation; inspect_empty_xmag: position,rotation |
+| magazine | mag | [0, 5.5, 3] | - | 0 |  |
+| bullet_in_mag | magazine | [0, 8.73168, 2.74739] | - | 12 |  |
+| mag_standard | magazine | [0, -2.5, 1.5625] | - | 32 |  |
+| mag_extended_1 | magazine | [0, -2.5, 1.5625] | - | 32 |  |
+| mag_extended_2 | magazine | [0, -2.5, 1.5625] | - | 32 |  |
+| mag_extended_3 | magazine | [0, -2.5, 1.5625] | - | 32 |  |
+| bullet | mag | [0, 8.73168, 2.74739] | - | 12 | static_bolt_caught: scale; reload_tactical: scale; reload_tactical_xmag_1: scale; reload_tactical_xmag_2: scale; reload_tactical_xmag_3: scale; reload_empty: scale; reload_empty_xmag_1: scale; reload_empty_xmag_2: scale; reload_empty_xmag_3: scale; inspect: scale; inspect_xmag: scale; inspect_empty: scale; inspect_empty_xmag: scale |
+| lefthand | mag_and_lefthand | [-6, 19, 0] | - | 0 | static_idle: position,rotation,scale; crawl_start: position,rotation; crawl: position,rotation; crawl_end: position,rotation; crawl_handdown: position,rotation; crawl_handup: position,rotation; draw: position,rotation,scale; put_away: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_xmag_1: position,rotation,scale; reload_tactical_xmag_2: position,rotation,scale; reload_tactical_xmag_3: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag_1: position,rotation,scale; reload_empty_xmag_2: position,rotation,scale; reload_empty_xmag_3: position,rotation,scale; inspect: position,rotation,scale; inspect_xmag: position,rotation,scale; inspect_empty: position,rotation,scale; inspect_empty_xmag: position,rotation,scale |
+| lefthand_pos | lefthand | [0, 8, 0] | - | 1 | reload_empty: rotation; reload_empty_xmag_1: rotation; reload_empty_xmag_2: rotation; reload_empty_xmag_3: rotation |
+| gun_and_righthand | root | [0, 8, 5.0625] | - | 0 | reload_tactical_xmag_3: position,rotation; inspect: position,rotation; inspect_xmag: position,rotation; inspect_empty: position,rotation; inspect_empty_xmag: position,rotation |
+| gun | gun_and_righthand | [0, 8, 0.5] | - | 0 |  |
+| constraint | gun | [0, 12.5875, 3.875] | - | 0 | static_idle: position,rotation; shoot: position,rotation; reload_tactical: position,rotation; reload_tactical_xmag_1: position,rotation; reload_tactical_xmag_2: position,rotation; reload_tactical_xmag_3: position,rotation; reload_empty: position,rotation; reload_empty_xmag_1: position,rotation; reload_empty_xmag_2: position,rotation; reload_empty_xmag_3: position,rotation |
+| additional_magazine | gun | [0, 5.5, 3] | - | 0 | reload_tactical: position,rotation,scale; reload_tactical_xmag_1: position,rotation,scale; reload_tactical_xmag_2: position,rotation,scale; reload_tactical_xmag_3: scale; reload_empty: position,rotation,scale; reload_empty_xmag_1: position,rotation,scale; reload_empty_xmag_2: position,rotation,scale; reload_empty_xmag_3: position,rotation,scale; inspect: scale; inspect_xmag: scale; inspect_empty: scale; inspect_empty_xmag: scale |
+| body | gun | [0, 8, 0.5] | - | 0 |  |
+| buttons | body | [0, 8, 0.5] | - | 0 |  |
+| switch | buttons | [0, 8, 0.5] | - | 5 |  |
+| magrelease | buttons | [0.71875, 6.2953, -1.56629] | - | 4 | reload_tactical: position; reload_tactical_xmag_1: position; reload_tactical_xmag_2: position; reload_tactical_xmag_3: position; reload_empty: position; reload_empty_xmag_1: position; reload_empty_xmag_2: position; reload_empty_xmag_3: position; inspect: position; inspect_xmag: position; inspect_empty: position; inspect_empty_xmag: position |
+| octagon3 | magrelease | [0, 8, 0.5] | - | 4 |  |
+| boltcatch | buttons | [0.90806, 8.67598, 5.25] | - | 8 | static_bolt_caught: rotation; reload_empty: rotation; reload_empty_xmag_1: rotation; reload_empty_xmag_2: rotation; reload_empty_xmag_3: rotation; inspect_empty: rotation; inspect_empty_xmag: rotation |
+| trigger | buttons | [0, 4.60545, 1.40909] | - | 3 |  |
+| bipod | body | [0, 8, 0.5] | - | 0 |  |
+| group16 | bipod | [0.5, 7.65625, -13] | - | 17 |  |
+| l | bipod | [0.86919, 7.0601, -12.25] | [0, 0, -22.5] | 26 | crawl_start: rotation; crawl: rotation; crawl_end: rotation; crawl_bipod: rotation; crawl_bipod_end: rotation; crawl_handdown: rotation; crawl_handup: rotation |
+| r | bipod | [-0.8692, 7.0601, -12.25] | [0, 0, 22.5] | 26 | crawl_start: rotation; crawl: rotation; crawl_end: rotation; crawl_bipod: rotation; crawl_bipod_end: rotation; crawl_handdown: rotation; crawl_handup: rotation |
+| screws | body | [0, 8, -5.16919] | - | 17 |  |
+| group8 | screws | [0, 10.8125, -6.875] | - | 0 |  |
+| rails | body | [0, 8, 0.5] | - | 0 |  |
+| Gun_rails2 | rails | [0, 8.25828, -7.68779] | - | 57 |  |
+| Gun_rails3 | rails | [0.09283, 10.36951, -7.09375] | - | 55 |  |
+| Gunrails | rails | [0.15533, 10.24451, -7.09375] | - | 31 |  |
+| Gunrails2 | rails | [-0.15533, 10.24451, -7.09375] | - | 32 |  |
+| group4 | rails | [0.79419, 1.86742, -7.1875] | - | 18 |  |
+| barrel | body | [0, 9.375, -18.5] | - | 23 |  |
+| lower | body | [0.5, 8.9375, -7.5] | - | 45 |  |
+| magwell | lower | [0, 6.34107, 3.00003] | [-10, 0, 0] | 30 |  |
+| upper | body | [-0.50693, 17.43371, 3] | - | 36 |  |
+| group5 | upper | [0.17336, 9.375, -1.3681] | - | 6 |  |
+| group6 | upper | [0, 9.09218, 5.7279] | - | 5 |  |
+| stock_default | body | [-0.82149, 7.92344, 11.64425] | - | 0 |  |
+| rail | stock_default | [0.09283, 10.36951, -7.09375] | - | 19 |  |
+| group9 | stock_default | [1.34375, 8.88438, 21.23437] | - | 6 |  |
+| group10 | stock_default | [0, 9.22167, 14.70954] | - | 83 |  |
+| black | stock_default | [-0.82149, 7.92344, 11.64425] | - | 1 |  |
+| group | black | [-0.5, 1.36875, 15.42187] | - | 32 |  |
+| stock_polymer | black | [0, 5.16403, 20.16044] | - | 11 |  |
+| cheek | black | [-0.02333, 9.95718, 16.97656] | - | 8 |  |
+| bone | cheek | [-0.95561, 9.68286, 19.84375] | - | 0 |  |
+| bone3 | cheek | [0.6756, 10.27719, 14.5625] | - | 4 |  |
+| bone4 | cheek | [-0.6756, 10.27719, 14.5625] | - | 4 |  |
+| group12 | cheek | [0, 8, 0.5] | - | 15 |  |
+| group13 | black | [0.69113, 7.55764, 17.93604] | - | 6 |  |
+| grip | body | [0, 5, 8.125] | - | 30 |  |
+| sight_base | body | [1.125, 11.6875, 10.0625] | - | 23 |  |
+| group19 | sight_base | [0, 11.57701, -11.4154] | - | 13 |  |
+| attachment_adapter | gun | [0, 8, 0.5] | - | 0 |  |
+| ar_stock_adapter | attachment_adapter | [0, 8.24911, 11.37197] | - | 43 |  |
+| muzzle_default | gun | [0, 9.375, -23.375] | - | 33 |  |
+| bolt | gun | [0, 8, 0.5] | - | 15 | static_bolt_caught: position; shoot: position; reload_empty: position; reload_empty_xmag_1: position; reload_empty_xmag_2: position; reload_empty_xmag_3: position; inspect: position; inspect_xmag: position; inspect_empty: position; inspect_empty_xmag: position |
+| bullet_in_barrel | bolt | [0, 9.38793, -1.25261] | - | 12 | shoot: position,rotation,scale |
+| sight | gun | [0, 8, 0.5] | - | 0 |  |
+| sight_default | sight | [0, 8, 0.5] | - | 0 |  |
+| rear | sight_default | [1.125, 11.6875, 10.0625] | - | 0 |  |
+| group2 | rear | [0, 12.3125, 10.0625] | - | 28 |  |
+| fore | sight_default | [0, 8, 0.5] | - | 0 |  |
+| group11 | fore | [0.1875, 12.8125, -14.25] | - | 10 |  |
+| sight_illuminated | fore | [0, 12.6875, -14.25] | - | 1 |  |
+| sight_folded | gun | [0, 8, 0.5] | - | 0 |  |
+| rear2 | sight_folded | [1.125, 11.6875, 10.0625] | - | 0 |  |
+| group3 | rear2 | [0, 11.6875, 10.0625] | [-90, 0, 0] | 28 |  |
+| fore2 | sight_folded | [0, 8, 0.5] | - | 0 |  |
+| group7 | fore2 | [0, 11.60938, -14.25] | [-90, 0, 0] | 9 |  |
+| sight_folded_illuminated | group7 | [0, 12.6875, -14.25] | - | 1 |  |
+| positioning2 | gun | [0, 7, -0.925] | - | 0 |  |
+| muzzle_flash | positioning2 | [0, 9.375, -25.75] | - | 0 |  |
+| muzzle_pos | positioning2 | [0, 9.375, -22.25] | - | 0 |  |
+| laser_pos | positioning2 | [1.1875, 9.26563, -11.625] | [0, 0, 90] | 0 |  |
+| scope_pos | positioning2 | [0, 11.41625, 6.5] | - | 0 |  |
+| stock_pos | positioning2 | [0, 10, 14.5] | - | 0 |  |
+| grip_pos | positioning2 | [0, 8.075, -3.6875] | - | 0 |  |
+| shell | positioning2 | [-0.45, 9.5, 3.975] | [0, 10, 0] | 0 |  |
+| righthand | gun_and_righthand | [6, 19, 0] | - | 0 | static_idle: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_xmag_1: position,rotation,scale; reload_tactical_xmag_2: position,rotation,scale; reload_tactical_xmag_3: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag_1: position,rotation,scale; reload_empty_xmag_2: position,rotation,scale; reload_empty_xmag_3: position,rotation,scale; inspect: position,rotation,scale; inspect_xmag: position,rotation,scale; inspect_empty: position,rotation,scale; inspect_empty_xmag: position,rotation,scale |
+| righthand_pos | righthand | [0, 8, 0] | - | 1 |  |
+| positioning | - | [0, 0, -8] | - | 0 |  |
+| thirdperson_hand | positioning | [0, 7, 7.4375] | - | 0 |  |
+| ground | positioning | [0, -1, 0.5] | - | 0 |  |
+| fixed | positioning | [1.5625, 7, 6.475] | [0, 90, 0] | 0 |  |
+| view | - | [0, 0, 0] | - | 0 |  |
+| iron_view | view | [0, 12.8125, 16.5] | - | 0 |  |
+| idle_view | view | [3.25, 13, 17] | - | 0 |  |
+| refit_view | view | [30, 10, 0] | [0, 89, 0] | 0 | static_idle: position; reload_tactical_xmag_3: position; reload_empty_xmag_3: position |
+| refit_muzzle_view | view | [13.73205, 10, -31.5359] | [0, 120, 0] | 0 |  |
+| refit_stock_view | view | [14, 9, 16.6] | [0, 90, 0] | 0 |  |
+| refit_scope_view | view | [9.65535, 12.5, 11.99441] | [0, 50, 0] | 0 |  |
+| refit_extended_mag_view | view | [12.96364, 2.22788, 2] | [0, 90, 10] | 0 |  |
+| refit_laser_view | view | [12, 13, -24] | [-165, 45, 180] | 0 |  |
+| refit_grip_view | view | [10.8, 5.4, -6] | [0, 90, 0] | 0 |  |
+| camera | - | [3.25, 13, 16] | - | 0 | crawl_start: rotation; crawl_end: rotation; crawl_bipod: rotation; crawl_bipod_end: rotation; shoot: rotation; draw: rotation; put_away: rotation; reload_tactical: rotation; reload_tactical_xmag_1: rotation; reload_tactical_xmag_2: rotation; reload_tactical_xmag_3: rotation; reload_empty: rotation; reload_empty_xmag_1: rotation; reload_empty_xmag_2: rotation; reload_empty_xmag_3: rotation; inspect: rotation; inspect_xmag: rotation; inspect_empty: rotation; inspect_empty_xmag: rotation |
 
 ## tacz:sks_tactical_display
 
@@ -4396,7 +5864,7 @@ Geometry: `geometry.sks_tactical_cc - Converted`; **79 bones**.
 | sight | sks_tac | [0.5625, 4.9375, -5.5] | - | 9 |  |
 | sight_front_illuminated | sight | [0.13729, 8.13239, -0.67443] | - | 3 |  |
 | bolt | sks_tac | [0.5625, 6.9375, 2.5625] | - | 22 | static_bolt_caught: position; reload_empty: position; reload_empty_xmag_1: position; reload_empty_xmag_2: position; reload_empty_xmag_3: position; shoot: position; inspect: position; inspect_xmag_1: position; inspect_xmag_2: position; inspect_xmag_3: position; inspect_empty: position; inspect_empty_xmag_1: position; inspect_empty_xmag_2: position; inspect_empty_xmag_3: position |
-| bullet_in_barrel | bolt | [0, 6.50442, -1.47622] | - | 12 | reload_empty: scale; reload_empty_xmag_1: scale; reload_empty_xmag_2: scale; reload_empty_xmag_3: scale; shoot: scale |
+| bullet_in_barrel | bolt | [0, 6.50442, -1.47622] | - | 12 | reload_empty: scale; reload_empty_xmag_1: scale; reload_empty_xmag_2: scale; reload_empty_xmag_3: scale; shoot: position,scale |
 | octagon18 | bolt | [0, 8, 0] | - | 8 |  |
 | octagon19 | bolt | [0, 8, 0] | - | 4 |  |
 | default_gun | sks_tac | [0, 0, 0] | - | 0 |  |
@@ -4421,17 +5889,17 @@ Geometry: `geometry.sks_tactical_cc - Converted`; **79 bones**.
 | positioning | - | [0, 0, -8] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 3.875, 9.675] | - | 0 |  |
 | ground | positioning | [0, -3.625, 5.1] | - | 0 |  |
-| fixed | positioning | [0.95, 6.525, 2.6] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [0.95, 3.93125, 8.1625] | [0, 90, 0] | 0 |  |
 | view | - | [0, 0, 0] | - | 0 |  |
-| iron_view | view | [0, 8.21875, 12.5] | - | 0 |  |
-| idle_view | view | [2.21875, 9.0125, 14.5125] | - | 0 |  |
-| refit_view | view | [30.325, 6.575, -2] | [0, 89.9, 0] | 0 |  |
-| refit_extended_mag_view | view | [10.775, 2.55, 1.375] | [0, 90, 0] | 0 |  |
-| refit_muzzle_view | view | [9.55, 6.55, -25.125] | [0, 90, 0] | 0 |  |
-| refit_stock_view | view | [12.675, 5.5, 16.775] | [0, 90, 0] | 0 |  |
+| iron_view | view | [0, 8.23438, 16.5] | - | 0 |  |
+| idle_view | view | [2.75, 9.5, 16.375] | [0, 0, -2.5] | 0 |  |
+| refit_view | view | [32.325, 6.575, 0] | [0, 89.9, 0] | 0 |  |
+| refit_extended_mag_view | view | [16.775, 2.55, 1.375] | [0, 90, 0] | 0 |  |
+| refit_muzzle_view | view | [16.55, 6.55, -25.125] | [0, 90, 0] | 0 |  |
+| refit_stock_view | view | [16.675, 5.5, 16.775] | [0, 90, 0] | 0 |  |
 | refit_grip_view | view | [8.925, 2.975, -4.875] | [0, 90, 0] | 0 |  |
-| refit_scope_view | view | [8.925, 9.3, -4.875] | [0, 120, 0] | 0 |  |
-| refit_laser_view | view | [14, 14, -22] | [15, 135, 0] | 0 |  |
+| refit_scope_view | view | [16.925, 9.3, -4.875] | [0, 120, 0] | 0 |  |
+| refit_laser_view | view | [16, 14, -22] | [15, 135, 0] | 0 |  |
 
 ## tacz:spas_12_display
 
@@ -4523,7 +5991,7 @@ Geometry: `geometry.spas_12_retextured - Converted`; **88 bones**.
 | righthand | bullet_and_righthand | [6, 19, 0] | - | 0 | static_idle: position,rotation,scale; static_idle_semi: position,rotation,scale; static_idle_semi_caught: position,rotation,scale; switch_semi: position,rotation,scale; switch_semi_empty: position,rotation,scale; switch_pump: position,rotation,scale; switch_pump_empty: position,rotation,scale; put_away: position,rotation,scale; put_away_semi: position,rotation,scale; put_away_semi_caught: position,rotation,scale; bolt: position,rotation,scale; inspect: position,rotation,scale; inspect_1: position,rotation,scale; inspect_empty: position,rotation,scale; inspect_semi: position,rotation,scale; inspect_1_semi: position,rotation,scale; inspect_empty_semi: position,rotation,scale; draw: position,rotation,scale; draw_semi: position,rotation,scale; draw_semi_caught: position,rotation,scale; reload_intro: position,rotation,scale; reload_intro_semi: position,rotation,scale; reload_loop: position,rotation,scale; reload_loop_semi: position,rotation,scale; reload_end: position,rotation,scale; reload_end_semi: position,rotation,scale; reload_empty_intro: position,rotation,scale; reload_empty_intro_semi: position,rotation,scale |
 | righthand_pos | righthand | [0, 8, 0] | - | 1 |  |
 | views | - | [2, 12, 12] | - | 0 |  |
-| idle_view | views | [3.32, 13.14, 20.65] | - | 0 |  |
+| idle_view | views | [3.32, 13.14, 21.65] | - | 0 |  |
 | iron_view | views | [-3, 12.375, 20] | [0, 0, -37.5] | 0 |  |
 | refit_view | views | [24, 9, 0] | [0, 89.9, 0] | 0 |  |
 | refit_muzzle_view | views | [18, 9, -28] | [0, 120, 0] | 0 |  |
@@ -4531,7 +5999,7 @@ Geometry: `geometry.spas_12_retextured - Converted`; **88 bones**.
 | refit_scope_view | views | [12, 16, 11] | [0, 60, -20] | 0 |  |
 | refit_extended_mag_view | views | [14, 3, -26] | [170, 60, 180] | 0 |  |
 | positioning | - | [0, 0, 0] | - | 0 |  |
-| fixed | positioning | [1.5, 9, 0] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [1.5, 7.5, 12.875] | [0, 90, 0] | 0 |  |
 | ground | positioning | [0, -3, 0] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 7.325, 14.675] | - | 0 |  |
 | camera | - | [3.32, 13.14, 20.65] | - | 0 | switch_semi: rotation; switch_semi_empty: rotation; switch_pump: rotation; switch_pump_empty: rotation; shoot: rotation; shoot_semi: rotation; shoot_semi_last: rotation; put_away: rotation; put_away_semi: rotation; put_away_semi_caught: rotation; bolt: rotation; inspect: rotation; inspect_1: rotation; inspect_empty: rotation; inspect_semi: rotation; inspect_1_semi: rotation; inspect_empty_semi: rotation; draw: rotation; draw_semi: rotation; draw_semi_caught: rotation; reload_intro: rotation; reload_intro_semi: rotation; reload_loop: rotation; reload_loop_semi: rotation; reload_end: rotation; reload_end_semi: rotation; reload_empty_intro: rotation; reload_empty_intro_semi: rotation |
@@ -4546,23 +6014,22 @@ Animation: `assets/tacz/animations/spr15hb.animation.json`
 
 LOD reference: `{'model': 'tacz:gun/lod/spr15hb', 'texture': 'tacz:gun/lod/spr15hb'}`
 
-Geometry: `geometry.unknown`; **95 bones**.
+Geometry: `geometry.unknown`; **94 bones**.
 
 | Bone | Parent | Pivot (native pixels) | Rotation | Cubes | Authored animation channels |
 | --- | --- | --- | --- | --- | --- |
-| root | - | [0, 7, 1.875] | - | 0 | switch_semi: position,rotation; switch_burst: position,rotation; put_away: position,rotation; draw: position,rotation; reload_tactical: position,rotation; reload_tactical_xmag_1: position,rotation; reload_tactical_xmag_2: position,rotation; reload_tactical_xmag_3: position,rotation; reload_empty: position,rotation; reload_empty_xmag_1: position,rotation; reload_empty_xmag_2: position,rotation; reload_empty_xmag_3: position,rotation; inspect: position,rotation; inspect_empty: position,rotation; shoot: position,rotation |
+| root | - | [0, 7, 1.875] | - | 0 | switch_semi: position,rotation; switch_burst: position,rotation; crawl_start: position,rotation; crawl_end: position,rotation; crawl_bipod: position,rotation; crawl_bipod_end: position,rotation; put_away: position,rotation; draw: position,rotation; reload_tactical: position,rotation; reload_tactical_xmag_1: position,rotation; reload_tactical_xmag_2: position,rotation; reload_tactical_xmag_3: position,rotation; reload_empty: position,rotation; reload_empty_xmag_1: position,rotation; reload_empty_xmag_2: position,rotation; reload_empty_xmag_3: position,rotation; inspect: position,rotation; inspect_empty: position,rotation; shoot: position,rotation |
 | mag_and_lefthand | root | [0, 5, 3] | - | 0 | reload_tactical: position,rotation; reload_tactical_xmag_1: position,rotation; reload_tactical_xmag_2: position,rotation; reload_tactical_xmag_3: position,rotation; reload_empty: position,rotation; reload_empty_xmag_1: position,rotation; reload_empty_xmag_2: position,rotation; reload_empty_xmag_3: position,rotation |
 | mag_and_bullet | mag_and_lefthand | [0, 5, 3] | - | 0 | reload_tactical: scale; reload_tactical_xmag_1: scale; reload_tactical_xmag_2: scale |
-| bullet_in_mag | mag_and_bullet | [0, 9, 2.46073] | [90, 0, 45] | 12 |  |
 | magazine | mag_and_bullet | [0, 5, 3] | - | 0 |  |
 | mag_extended_3 | magazine | [0, 5.15695, 2.21191] | - | 24 |  |
-| bullet | mag_extended_3 | [2, 0.5, -3.8125] | - | 0 |  |
 | mag_standard | magazine | [0, 5.863, 2.51804] | - | 24 |  |
 | mag_extended_1 | magazine | [0, 6.06524, 2.93802] | - | 12 |  |
 | mag_extended_2 | magazine | [0, 5.9437, 2.28752] | - | 20 |  |
-| bullet2 | mag_extended_2 | [2, 0.5, -3.8125] | - | 0 |  |
-| lefthand | mag_and_lefthand | [-6, 19, 9] | - | 0 | static_idle: position,rotation,scale; switch_semi: position,rotation,scale; switch_burst: position,rotation,scale; put_away: position,rotation,scale; draw: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_xmag_1: position,rotation,scale; reload_tactical_xmag_2: position,rotation,scale; reload_tactical_xmag_3: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag_1: position,rotation,scale; reload_empty_xmag_2: position,rotation,scale; reload_empty_xmag_3: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale |
-| lefthand_pos | lefthand | [0, 8, 9] | - | 1 |  |
+| bullet_in_mag | magazine | [0, 9, 2.46073] | [90, 0, 45] | 12 |  |
+| bullet | mag_and_bullet | [0, 9, 2.46073] | [90, 0, 45] | 12 | reload_empty: scale; reload_empty_xmag_1: scale; reload_empty_xmag_2: scale; reload_empty_xmag_3: scale; inspect: scale; inspect_empty: scale; static_bolt_caught: scale |
+| lefthand | mag_and_lefthand | [-6, 19, 8] | - | 0 | static_idle: position,rotation,scale; switch_semi: position,rotation,scale; switch_burst: position,rotation,scale; crawl_start: position,rotation; crawl: position,rotation; crawl_end: position,rotation; crawl_handdown: position,rotation; crawl_handup: position,rotation; put_away: position,rotation,scale; draw: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_xmag_1: position,rotation,scale; reload_tactical_xmag_2: position,rotation,scale; reload_tactical_xmag_3: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag_1: position,rotation,scale; reload_empty_xmag_2: position,rotation,scale; reload_empty_xmag_3: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale |
+| lefthand_pos | lefthand | [0, 8, 8] | - | 1 |  |
 | gun_and_righthand | root | [0, 7, 7.575] | - | 0 |  |
 | spr15 | gun_and_righthand | [0, 6.9375, 7.575] | - | 0 |  |
 | constraint | spr15 | [0, 12.4625, -9.625] | - | 0 | static_idle: position,rotation; switch_semi: position,rotation; switch_burst: position,rotation; reload_tactical: position,rotation; reload_tactical_xmag_1: position,rotation; reload_tactical_xmag_2: position,rotation; reload_tactical_xmag_3: position,rotation; reload_empty: position,rotation; reload_empty_xmag_1: position,rotation; reload_empty_xmag_2: position,rotation; reload_empty_xmag_3: position,rotation; shoot: position,rotation |
@@ -4591,9 +6058,9 @@ Geometry: `geometry.unknown`; **95 bones**.
 | rear_base | sight_base | [-0.00521, 11.31822, 6.92376] | - | 7 |  |
 | bipod | spr15 | [0, 11.1875, -3] | - | 0 |  |
 | mid | bipod | [0.5, 10.84375, -16.5] | - | 13 |  |
-| l | bipod | [0.82856, 10.92063, -17.4375] | - | 22 |  |
+| l | bipod | [0.98481, 7.23313, -12.25] | - | 22 | crawl_start: rotation; crawl: rotation; crawl_end: rotation; crawl_bipod: rotation; crawl_bipod_end: rotation; crawl_handdown: rotation; crawl_handup: rotation |
 | octagon26 | l | [0, 11.1875, -3] | - | 4 |  |
-| r | bipod | [0.82856, 10.92063, -17.4375] | - | 22 |  |
+| r | bipod | [-0.99956, 7.23313, -12.25] | - | 22 | crawl_start: rotation; crawl: rotation; crawl_end: rotation; crawl_bipod: rotation; crawl_bipod_end: rotation; crawl_handdown: rotation; crawl_handup: rotation |
 | octagon27 | r | [0, 11.1875, -3] | - | 4 |  |
 | deco | bipod | [0, 6.5, -12.25] | - | 4 |  |
 | handguard_attachment | spr15 | [0, 7.8125, -1.25] | - | 0 |  |
@@ -4614,10 +6081,10 @@ Geometry: `geometry.unknown`; **95 bones**.
 | handguard_tactical | mlok | [0, 18.03125, -0.875] | - | 19 |  |
 | bolt_pull | spr15 | [0, 10.9375, 9] | - | 0 |  |
 | pull2 | bolt_pull | [0, 10.65625, 9.39329] | - | 17 |  |
-| m4a1_bolt | bolt_pull | [0, 7.9375, 1] | - | 0 |  |
-| bolt | m4a1_bolt | [0, -8.0625, -1.0625] | - | 14 | reload_empty: position; reload_empty_xmag_1: position; reload_empty_xmag_2: position; reload_empty_xmag_3: position; inspect: rotation; inspect_empty: position,rotation; shoot: position; static_bolt_caught: position |
+| m4a1_bolt | bolt_pull | [0, 7.9375, 1] | - | 0 | shoot: position; static_bolt_caught: position |
+| bolt | m4a1_bolt | [0, -8.0625, -1.0625] | - | 14 | reload_empty: position; reload_empty_xmag_1: position; reload_empty_xmag_2: position; reload_empty_xmag_3: position; inspect: rotation; inspect_empty: position,rotation |
 | group26 | bolt | [-0.03503, 0.46352, 2.88885] | - | 8 |  |
-| bullet_in_barrel | m4a1_bolt | [0, 9.50001, -1.28927] | [90, 0, 0] | 12 | shoot: scale |
+| bullet_in_barrel | m4a1_bolt | [0, 9.50001, -1.28927] | [90, 0, 0] | 12 | shoot: position,scale |
 | stock_default | spr15 | [0, 0, 0] | - | 0 |  |
 | base | stock_default | [0.19248, 29.10414, 10.27733] | - | 54 |  |
 | extend | stock_default | [-0.01831, 23.70585, 9.46483] | - | 13 |  |
@@ -4628,16 +6095,16 @@ Geometry: `geometry.unknown`; **95 bones**.
 | mag_release | spr15 | [0.32031, 7.75782, 4.40625] | - | 4 | reload_tactical: position; reload_tactical_xmag_1: position; reload_tactical_xmag_2: position; reload_tactical_xmag_3: position; reload_empty: position; reload_empty_xmag_1: position; reload_empty_xmag_2: position; reload_empty_xmag_3: position |
 | selector | spr15 | [0.69476, 7.87299, 7.8125] | - | 6 | static_semi: rotation; static_burst: rotation; switch_semi: rotation; switch_burst: rotation |
 | bolt_release | spr15 | [0.85468, 8.41876, 4.47657] | - | 2 | reload_empty: rotation; reload_empty_xmag_1: rotation; reload_empty_xmag_2: rotation; reload_empty_xmag_3: rotation; static_bolt_caught: rotation |
-| righthand | gun_and_righthand | [6, 19, 9] | - | 0 | static_idle: position,rotation,scale; switch_semi: position,rotation,scale; switch_burst: position,rotation,scale; put_away: position,rotation,scale; draw: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_xmag_1: position,rotation,scale; reload_tactical_xmag_2: position,rotation,scale; reload_tactical_xmag_3: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag_1: position,rotation,scale; reload_empty_xmag_2: position,rotation,scale; reload_empty_xmag_3: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale |
-| righthand_pos | righthand | [0, 8, 9] | - | 1 |  |
-| camera | - | [2.5, 12.5, 15] | - | 0 | switch_semi: rotation; switch_burst: rotation; put_away: rotation; draw: rotation; reload_tactical: rotation; reload_tactical_xmag_1: rotation; reload_tactical_xmag_2: rotation; reload_tactical_xmag_3: rotation; reload_empty: rotation; reload_empty_xmag_1: rotation; reload_empty_xmag_2: rotation; reload_empty_xmag_3: rotation; inspect: rotation; inspect_empty: rotation; shoot: rotation |
+| righthand | gun_and_righthand | [6, 19, 8] | - | 0 | static_idle: position,rotation,scale; switch_semi: position,rotation,scale; switch_burst: position,rotation,scale; put_away: position,rotation,scale; draw: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_xmag_1: position,rotation,scale; reload_tactical_xmag_2: position,rotation,scale; reload_tactical_xmag_3: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag_1: position,rotation,scale; reload_empty_xmag_2: position,rotation,scale; reload_empty_xmag_3: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale |
+| righthand_pos | righthand | [0, 8, 8] | - | 1 |  |
+| camera | - | [2.5, 12.5, 15] | - | 0 | switch_semi: rotation; switch_burst: rotation; crawl_start: rotation; crawl_end: rotation; crawl_bipod: rotation; crawl_bipod_end: rotation; put_away: rotation; draw: rotation; reload_tactical: rotation; reload_tactical_xmag_1: rotation; reload_tactical_xmag_2: rotation; reload_tactical_xmag_3: rotation; reload_empty: rotation; reload_empty_xmag_1: rotation; reload_empty_xmag_2: rotation; reload_empty_xmag_3: rotation; inspect: rotation; inspect_empty: rotation; shoot: rotation |
 | positioning | - | [0, 0, -8] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 7, 7] | - | 0 |  |
 | ground | positioning | [0, -3, 0] | - | 0 |  |
-| fixed | positioning | [0, 9.5, 2] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [0, 6.98438, 5.6875] | [0, 90, 0] | 0 |  |
 | view | - | [0, 0, 0] | - | 0 |  |
-| iron_view | view | [0, 12.04688, 13] | - | 0 |  |
-| idle_view | view | [2.5, 12.5, 15] | - | 0 |  |
+| iron_view | view | [0, 12.04688, 16] | - | 0 |  |
+| idle_view | view | [2.5, 12.5, 16] | [0, 0, -2.5] | 0 |  |
 | refit_view | view | [32, 10, -4] | [0, 89.9, 0] | 0 |  |
 | refit_muzzle_view | view | [16, 9, -34] | [0, 120, 0] | 0 |  |
 | refit_stock_view | view | [12, 9, 16.6] | [0, 90, 0] | 0 |  |
@@ -4696,7 +6163,7 @@ Geometry: `geometry.scar_l`; **46 bones**.
 | lefthand_pos | lefthand | [0, 8, 0] | - | 1 |  |
 | camera | - | [2.14938, 12.74247, 12.28104] | - | 0 | draw: rotation; shoot: rotation; reload_empty: rotation; inspect: rotation; inspect_empty: rotation; put_away: rotation |
 | view | - | [0, 0, 0] | - | 0 |  |
-| idle_view | view | [2.75, 12.5, 12.28104] | - | 0 |  |
+| idle_view | view | [2.75, 12.5, 13.28104] | - | 0 |  |
 | iron_view | view | [0, 11.2, 15] | - | 0 |  |
 | refit_view | view | [32, 9, -8] | [0, 89.9, 0] | 0 |  |
 | refit_extended_mag_view | view | [-10, 15.1, 5.3] | [30, -60, 0] | 0 |  |
@@ -4705,7 +6172,70 @@ Geometry: `geometry.scar_l`; **46 bones**.
 | positioning | - | [0, 0, -8] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 7.5, 6.45] | - | 0 |  |
 | ground | positioning | [0, -2, -8] | - | 0 |  |
-| fixed | positioning | [0.9, 9.325, -5.775] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [0.9, 7.77812, 6.475] | [0, 90, 0] | 0 |  |
+
+## tacz:svd_display
+
+Display: `assets/tacz/display/guns/svd_display.json`
+
+Model: `assets/tacz/geo_models/gun/svd_geo.json`
+
+Animation: `assets/tacz/animations/svd.animation.json`
+
+LOD reference: `{'model': 'tacz:gun/lod/svd', 'texture': 'tacz:gun/lod/svd'}`
+
+Geometry: `geometry.type81`; **48 bones**.
+
+| Bone | Parent | Pivot (native pixels) | Rotation | Cubes | Authored animation channels |
+| --- | --- | --- | --- | --- | --- |
+| root | - | [0, 7.5, 6] | - | 0 | static_idle: position,rotation; reload_tactical: position,rotation; reload_tactical_xmag_1: position,rotation; reload_tactical_xmag_2: position,rotation; reload_tactical_xmag_3: position,rotation; reload_empty: position,rotation; reload_empty_xmag_1: position,rotation; reload_empty_xmag_2: position,rotation; reload_empty_xmag_3: position,rotation; inspect: position,rotation; inspect_empty: position,rotation; draw: position,rotation; put_away: position,rotation; shoot: position,rotation |
+| mag_and_lefthand | root | [0, 6.25, -0.3] | - | 0 | reload_tactical: position,rotation; reload_tactical_xmag_1: position,rotation; reload_tactical_xmag_2: position,rotation; reload_tactical_xmag_3: position,rotation |
+| lefthand | mag_and_lefthand | [-6, 19, 2] | - | 0 | static_idle: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_xmag_1: position,rotation,scale; reload_tactical_xmag_2: position,rotation,scale; reload_tactical_xmag_3: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag_1: position,rotation,scale; reload_empty_xmag_2: position,rotation,scale; reload_empty_xmag_3: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale |
+| lefthand_pos | lefthand | [0, 8, 2] | - | 1 |  |
+| mag_and_bullet | mag_and_lefthand | [0, 6.25, -0.3] | - | 0 | reload_empty: position,rotation; reload_empty_xmag_1: position,rotation; reload_empty_xmag_2: position,rotation; reload_empty_xmag_3: position,rotation; inspect: position,rotation; inspect_empty: position,rotation |
+| magazine | mag_and_bullet | [-3, 3.75, -5.25] | - | 0 |  |
+| bullet_in_mag | magazine | [3, 2.6875, -13.70866] | - | 11 | reload_empty: scale; reload_empty_xmag_1: scale; reload_empty_xmag_2: scale; reload_empty_xmag_3: scale; inspect_empty: scale |
+| mag | magazine | [-6.99872, 4.80985, -7.38625] | - | 63 |  |
+| bullet | mag_and_bullet | [6, 2.6875, -13.70866] | - | 11 | static_bolt_caught: scale; reload_tactical: scale; reload_tactical_xmag_1: scale; reload_tactical_xmag_2: scale; reload_tactical_xmag_3: scale; reload_empty: scale; reload_empty_xmag_1: scale; reload_empty_xmag_2: scale; reload_empty_xmag_3: scale; inspect: scale; inspect_empty: scale |
+| gun_and_righthand | root | [0, 8, 0] | - | 0 |  |
+| righthand | gun_and_righthand | [6, 19, 2] | - | 0 | static_idle: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_xmag_1: position,rotation,scale; reload_tactical_xmag_2: position,rotation,scale; reload_tactical_xmag_3: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag_1: position,rotation,scale; reload_empty_xmag_2: position,rotation,scale; reload_empty_xmag_3: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale |
+| righthand_pos | righthand | [0, 8, 2] | - | 1 |  |
+| svd | gun_and_righthand | [0.00128, -8.73015, -6.87] | - | 0 |  |
+| svd_default | svd | [0.00128, -8.73015, -6.87] | - | 0 |  |
+| lower | svd_default | [0.00128, 17.26985, -6.87] | - | 93 |  |
+| cover | svd_default | [0.00128, -8.73015, -6.87] | - | 153 |  |
+| safety | svd_default | [-0.97648, 7.31508, 5.71924] | [13.5, 0, 0] | 21 |  |
+| handguard | svd_default | [0.00128, -8.73015, -3.33] | - | 70 |  |
+| bone11 | handguard | [-3.58808, 9.85361, -4.39077] | - | 27 |  |
+| barrel | svd_default | [0.00128, 10.86231, -28.11] | - | 61 |  |
+| sight_illuminated | barrel | [0, 10.7678, -31.32297] | - | 1 |  |
+| stock | svd_default | [-0.0356, -2.83015, -6.87] | - | 80 |  |
+| iron_sight | svd_default | [0.00128, -7.55015, -6.87] | - | 12 |  |
+| pings | svd_default | [-4.71872, 7.26736, 1.50628] | - | 9 |  |
+| mount | svd_default | [1.17705, 8.61014, 3.28707] | - | 72 |  |
+| muzzle_default | svd | [0.00128, 7.76481, -33.91752] | - | 32 |  |
+| bolt_bullet | svd | [0.00128, 9.26985, -2.62] | - | 0 | static_bolt_caught: position; reload_empty: position,rotation; reload_empty_xmag_1: position,rotation; reload_empty_xmag_2: position,rotation; reload_empty_xmag_3: position,rotation; inspect: position; inspect_empty: position,rotation; shoot: position |
+| bolt | bolt_bullet | [0.00128, -8.73015, -10.87] | - | 10 |  |
+| bullet_in_barrel | bolt_bullet | [0, 9.21854, -5.49939] | - | 11 | reload_empty: position,rotation; reload_empty_xmag_1: position,rotation; reload_empty_xmag_2: position,rotation; reload_empty_xmag_3: position,rotation; inspect_empty: scale; shoot: position,rotation,scale |
+| magrelease | svd | [0.00128, 6.69485, 2.105] | - | 2 | reload_tactical: rotation; reload_tactical_xmag_1: rotation; reload_tactical_xmag_2: rotation; reload_tactical_xmag_3: rotation; reload_empty: rotation; reload_empty_xmag_1: rotation; reload_empty_xmag_2: rotation; reload_empty_xmag_3: rotation; inspect: rotation; inspect_empty: rotation |
+| positioning2 | svd | [0.00128, -8.73015, -6.87] | - | 0 |  |
+| muzzle_flash | positioning2 | [0.00128, 9.22298, -34.87] | - | 0 |  |
+| shell | positioning2 | [-0.24872, 9.51985, 0.13] | - | 0 |  |
+| scope_pos | positioning2 | [0, 11.93751, 5.57188] | - | 0 |  |
+| muzzle_pos | positioning2 | [0, 9.223, -32.5625] | - | 0 |  |
+| constraint | svd | [0, 11.2125, -17.1] | - | 0 | static_idle: position,rotation; reload_tactical: position,rotation; reload_tactical_xmag_1: position,rotation; reload_tactical_xmag_2: position,rotation; reload_tactical_xmag_3: position,rotation; reload_empty: position,rotation; reload_empty_xmag_1: position,rotation; reload_empty_xmag_2: position,rotation; reload_empty_xmag_3: position,rotation; shoot: position,rotation |
+| camera | - | [3.5, 13.5, 15] | - | 0 | reload_tactical: rotation; reload_tactical_xmag_1: rotation; reload_tactical_xmag_2: rotation; reload_tactical_xmag_3: rotation; reload_empty: rotation; reload_empty_xmag_1: rotation; reload_empty_xmag_2: rotation; reload_empty_xmag_3: rotation; inspect: rotation; inspect_empty: rotation; draw: rotation; put_away: rotation; shoot: rotation |
+| positioning | - | [0, 0, 0] | - | 0 |  |
+| thirdperson_hand | positioning | [0, 6.8875, 6.75] | - | 0 |  |
+| ground | positioning | [0, -5, 0] | - | 0 |  |
+| fixed | positioning | [1, 7.29688, 5.625] | [0, 90, 0] | 0 |  |
+| view | - | [0, 0, 0] | - | 0 |  |
+| iron_view | view | [0, 11.18751, 14.5] | - | 0 |  |
+| idle_view | view | [4, 12.5, 17] | - | 0 |  |
+| refit_view | view | [36, 9, -6] | [0, 89.9, 0] | 0 |  |
+| refit_scope_view | view | [24, 11.3, -6.875] | [0, 120, 0] | 0 |  |
+| refit_extended_mag_view | view | [24, 0, -1] | [0, 90, 15] | 0 |  |
+| refit_muzzle_view | view | [24, 9, -43] | [0, 120, 0] | 0 |  |
 
 ## tacz:taurus500_display
 
@@ -4734,24 +6264,24 @@ Geometry: `geometry.s&w m500`; **66 bones**.
 | base | cylinder | [0, 9.96875, 0.874] | - | 106 | reload_tactical: rotation; reload_empty: rotation |
 | holes | base | [0.37736, 11.02903, 4.6875] | - | 10 |  |
 | ejector | cylinder | [0, 9.95085, 4] | - | 27 | cylinder_out: position; reload_tactical: position; reload_empty: position |
-| loader_and_round | cylinder | [0, 10, 5.5] | - | 0 | cylinder_out: scale; charge_in: scale; charge_out: scale; static_idle: scale; reload_tactical: position,rotation,scale; reload_empty: position,rotation,scale; inspect: scale; inspect_empty: scale; shoot: scale; cock: scale |
-| loader | loader_and_round | [0, 9.96875, 5.4295] | - | 13 | reload_tactical: position,rotation,scale; reload_empty: position,rotation,scale |
-| roundgroup | loader_and_round | [0, 9.96875, 4.9375] | - | 0 | reload_tactical: position; reload_empty: position |
-| round1 | roundgroup | [0, 10.74375, 3.6875] | - | 0 | inspect: position,rotation |
-| round_head | round1 | [0, 10.75, 2.96875] | - | 2 | reload_tactical: scale; reload_empty: scale |
-| round_shell | round1 | [0, 10.75, 4.9375] | - | 6 |  |
-| round2 | roundgroup | [0.75, 10.19375, 3.6875] | [0, 0, 72] | 0 |  |
-| round_head2 | round2 | [0.73222, 10.19218, 2.96875] | - | 2 | reload_tactical: scale; reload_empty: scale |
-| round_shell2 | round2 | [0.73222, 10.19218, 4.9375] | - | 6 |  |
-| round3 | roundgroup | [0.475, 9.31875, 3.6875] | [0, 0, 144] | 0 |  |
-| round_head3 | round3 | [0.47722, 9.29494, 2.96875] | - | 2 | reload_tactical: scale; reload_empty: scale |
-| round_shell3 | round3 | [0.47722, 9.29494, 4.9375] | - | 6 |  |
-| round4 | roundgroup | [-0.45, 9.34375, 3.6875] | [0, 0, -144] | 0 |  |
-| round_head4 | round4 | [-0.44669, 9.35486, 2.96875] | - | 2 | reload_tactical: scale; reload_empty: scale |
-| round_shell4 | round4 | [-0.44669, 9.35486, 4.9375] | - | 6 |  |
-| round5 | roundgroup | [-0.725, 10.19375, 3.6875] | [0, 0, -72] | 0 |  |
-| round_head5 | round5 | [-0.71495, 10.21596, 2.96875] | - | 2 | reload_tactical: scale; reload_empty: scale |
-| round_shell5 | round5 | [-0.71495, 10.21596, 4.9375] | - | 6 |  |
+| loader_and_round | cylinder | [0, 9.97188, 5.44905] | - | 0 | cylinder_out: scale; charge_in: scale; charge_out: scale; static_idle: scale; reload_tactical: position,rotation,scale; reload_empty: position,rotation,scale; inspect: scale; inspect_empty: scale; shoot: scale; cock: scale |
+| loader | loader_and_round | [0, 9.96875, 5.442] | - | 13 | reload_tactical: position,rotation,scale; reload_empty: position,rotation,scale |
+| roundgroup | loader_and_round | [0, 9.96875, 5.3928] | - | 0 | reload_tactical: position; reload_empty: position |
+| round1 | roundgroup | [0, 10.04625, 5.2678] | - | 0 | inspect: position,rotation |
+| round_head | round1 | [0, 10.04688, 5.19593] | - | 2 | reload_tactical: scale; reload_empty: scale |
+| round_shell | round1 | [0, 10.04688, 5.3928] | - | 6 |  |
+| round2 | roundgroup | [0.075, 9.99125, 5.2678] | [0, 0, 72] | 0 |  |
+| round_head2 | round2 | [0.07322, 9.99109, 5.19593] | - | 2 | reload_tactical: scale; reload_empty: scale |
+| round_shell2 | round2 | [0.07322, 9.99109, 5.3928] | - | 6 |  |
+| round3 | roundgroup | [0.0475, 9.90375, 5.2678] | [0, 0, 144] | 0 |  |
+| round_head3 | round3 | [0.04772, 9.90137, 5.19593] | - | 2 | reload_tactical: scale; reload_empty: scale |
+| round_shell3 | round3 | [0.04772, 9.90137, 5.3928] | - | 6 |  |
+| round4 | roundgroup | [-0.045, 9.90625, 5.2678] | [0, 0, -144] | 0 |  |
+| round_head4 | round4 | [-0.04467, 9.90736, 5.19593] | - | 2 | reload_tactical: scale; reload_empty: scale |
+| round_shell4 | round4 | [-0.04467, 9.90736, 5.3928] | - | 6 |  |
+| round5 | roundgroup | [-0.0725, 9.99125, 5.2678] | [0, 0, -72] | 0 |  |
+| round_head5 | round5 | [-0.07149, 9.99347, 5.19593] | - | 2 | reload_tactical: scale; reload_empty: scale |
+| round_shell5 | round5 | [-0.07149, 9.99347, 5.3928] | - | 6 |  |
 | crane | cranecylinder | [0, 8.5, 0] | - | 17 |  |
 | base_gun | gun | [0, 8.5, 0] | - | 0 |  |
 | ironsight | base_gun | [0, 11.85928, 5.22237] | - | 8 |  |
@@ -4777,10 +6307,10 @@ Geometry: `geometry.s&w m500`; **66 bones**.
 | positioning | - | [0, 0, 0] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 8.1, 5.5875] | - | 0 |  |
 | ground | positioning | [0, 1.1, -0.35] | - | 0 |  |
-| fixed | positioning | [1.0125, 8.1625, 0.075] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [1.0125, 8.00625, 4.2625] | [0, 90, 0] | 0 |  |
 | refit | - | [0, 0, 0] | - | 0 |  |
-| iron_view | refit | [0, 12.1875, 24] | - | 0 |  |
-| idle_view | refit | [2.87, 13.39, 17.12] | - | 0 |  |
+| iron_view | refit | [0, 12.1875, 18.62] | - | 0 |  |
+| idle_view | refit | [2.87, 13.39, 18.12] | - | 0 |  |
 | refit_view | refit | [16, 8.75, -1] | [0, 89.9, 0] | 0 |  |
 | refit_extended_mag_view | refit | [11, 10.25, 0.75] | [0, 112.5, 0] | 0 |  |
 | refit_scope_view | refit | [9, 13.2, 4.5] | [0, 47.5, 0] | 0 |  |
@@ -4798,14 +6328,14 @@ Animation: `assets/tacz/animations/taurus943.animation.json`
 
 LOD reference: `{'model': 'tacz:gun/lod/taurus943', 'texture': 'tacz:gun/lod/taurus943'}`
 
-Geometry: `geometry.unknown`; **61 bones**.
+Geometry: `geometry.unknown`; **64 bones**.
 
 | Bone | Parent | Pivot (native pixels) | Rotation | Cubes | Authored animation channels |
 | --- | --- | --- | --- | --- | --- |
-| root | - | [0, 3.5625, 1.875] | - | 0 | cocked_shoot: position,rotation; charge_in: position,rotation; charge_out: position,rotation; reload_tactical: position,rotation; inspect: position,rotation; draw: position,rotation; put_away: position,rotation; inspect_empty: position,rotation; shoot: position,rotation; reload_empty: position,rotation |
-| lefthand | root | [-6.01875, 19, 0] | - | 0 | static_idle: position,rotation,scale; reload_tactical: position,rotation,scale; inspect: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; inspect_empty: position,rotation,scale; reload_empty: position,rotation,scale |
+| root | - | [0, 3.5625, 1.875] | - | 0 | cocked_shoot: position,rotation; charge_in: position,rotation; charge_out: position,rotation; reload_all: position,rotation; reload_intro: position,rotation; reload_loop: position,rotation; reload_end: position,rotation; inspect: position,rotation; inspect_empty: position,rotation; draw: position,rotation; put_away: position,rotation; shoot: position,rotation |
+| lefthand | root | [-6.01875, 19, 0] | - | 0 | static_idle: position,rotation,scale; reload_all: position,rotation,scale; reload_intro: position,rotation,scale; reload_loop: position,rotation,scale; reload_end: position,rotation; inspect: position,rotation,scale; inspect_empty: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale |
 | lefthand_pos | lefthand | [-0.01875, 8, 0] | - | 1 |  |
-| rh_and_gun | root | [0, 4.25, 1.25] | - | 0 | reload_tactical: position,rotation; reload_empty: position,rotation |
+| rh_and_gun | root | [0, 4.25, 1.25] | - | 0 | reload_all: position,rotation; reload_loop: position,rotation; reload_end: position,rotation |
 | gun | rh_and_gun | [0, 3.55, 0] | - | 0 | inspect: position,rotation; inspect_empty: position,rotation |
 | base_gun | gun | [0, 0, 0] | - | 0 |  |
 | text_943 | base_gun | [0.32812, 0.04688, -0.5] | - | 27 |  |
@@ -4817,52 +6347,128 @@ Geometry: `geometry.unknown`; **61 bones**.
 | trigger | gun | [0, 4.28768, 0.16575] | - | 4 | cocked_shoot: rotation; charge_in: rotation; charge_out: rotation |
 | hammer | gun | [0, 4.875, 1.4375] | - | 12 | cocked_shoot: rotation; charge_in: rotation; charge_out: rotation; charging: rotation; shoot: rotation |
 | releasebutton | gun | [0.5625, 5.09375, 1.1875] | - | 9 |  |
-| cylinder_group | gun | [0.15625, 4.34375, -2.0625] | - | 0 | reload_tactical: rotation; reload_empty: rotation |
-| cylinder | cylinder_group | [0, 5.4375, 0] | - | 0 | cocked_shoot: rotation; charge_in: rotation; charge_out: rotation; reload_tactical: rotation; charging: rotation; shoot: rotation; reload_empty: rotation |
-| ejector | cylinder | [0, 5.4375, -0.34375] | - | 12 | reload_tactical: position; reload_empty: position |
-| cylinder_base | cylinder | [0, 5.4375, 0] | - | 145 |  |
-| rounds | cylinder | [0, 5.4375, 0] | - | 0 | reload_tactical: position,scale; reload_empty: position,scale |
-| round1 | rounds | [0, 5.4375, -0.5] | - | 0 | reload_tactical: position,scale; reload_empty: position,scale |
+| cylinder_group | gun | [0.15625, 4.34375, -2.0625] | - | 0 | reload_all: rotation; reload_intro: rotation; reload_loop: rotation; reload_end: rotation |
+| cylinder | cylinder_group | [0, 5.4375, 0] | - | 0 | cocked_shoot: rotation; charge_in: rotation; charge_out: rotation; reload_all: rotation; reload_intro: rotation; reload_loop: rotation; reload_end: rotation; charging: rotation; shoot: rotation |
+| ejector | cylinder | [0, 5.4375, -0.34375] | - | 12 | reload_all: position; reload_intro: position; reload_loop: position |
+| cylinder_base | cylinder | [2, 5.4375, 0] | - | 145 |  |
+| rounds | cylinder | [0, 5.4375, 0] | - | 0 | static_bolt_caught: scale; reload_all: position,scale; reload_intro: position,scale |
+| round0 | rounds | [0, 6, -0.5] | [0, 0, 45] | 0 | reload_intro: scale; reload_loop: position,rotation,scale; static_ammo_display: scale |
+| round_shell0 | round0 | [0, 6, -0.5] | - | 2 |  |
+| head0 | round0 | [0, 6, -0.5] | - | 2 |  |
+| round1 | rounds | [0, 6, -0.5] | [0, 0, 45] | 0 | reload_all: position,scale; static_ammo_display: scale |
 | round_shell | round1 | [0, 6, -0.5] | - | 2 |  |
-| head | round1 | [0, 6, -0.5] | - | 2 | reload_tactical: scale; reload_empty: scale |
-| round2 | rounds | [0, 5.4375, -0.5] | [0, 0, -45] | 0 | reload_tactical: position,rotation,scale; reload_empty: position,rotation,scale |
-| round_shell2 | round2 | [0, 6, -0.5] | - | 2 |  |
-| head2 | round2 | [0, 6, -0.5] | - | 2 |  |
-| round3 | rounds | [0, 5.4375, -0.5] | [0, 0, -90] | 0 | reload_tactical: position,scale; reload_empty: position,scale |
-| round_shell3 | round3 | [0, 6, -0.5] | - | 2 |  |
-| head3 | round3 | [0, 6, -0.5] | - | 2 | reload_tactical: scale; reload_empty: scale |
-| round4 | rounds | [0, 5.4375, -0.5] | [0, 0, -135] | 0 | reload_tactical: position,scale; reload_empty: position,scale |
-| round_shell4 | round4 | [0, 6, -0.5] | - | 2 |  |
-| head4 | round4 | [0, 6, -0.5] | - | 2 | reload_tactical: scale; reload_empty: scale |
-| round5 | rounds | [0, 5.4375, -0.5] | [0, 0, -180] | 0 | reload_tactical: position,scale; reload_empty: position,scale |
-| round_shell5 | round5 | [0, 6, -0.5] | - | 2 |  |
-| head5 | round5 | [0, 6, -0.5] | - | 2 | reload_tactical: scale; reload_empty: scale |
-| round6 | rounds | [0, 5.4375, -0.5] | [0, 0, 135] | 0 | reload_tactical: position,scale; reload_empty: position,scale |
-| round_shell6 | round6 | [0, 6, -0.5] | - | 2 |  |
-| head6 | round6 | [0, 6, -0.5] | - | 2 | reload_tactical: scale; reload_empty: scale |
-| round7 | rounds | [0, 5.4375, -0.5] | [0, 0, 90] | 0 | reload_tactical: position,scale; reload_empty: position,scale |
-| round_shell7 | round7 | [0, 6, -0.5] | - | 2 |  |
-| head7 | round7 | [0, 6, -0.5] | - | 2 | reload_tactical: scale; reload_empty: scale |
-| round8 | rounds | [0, 5.4375, -0.5] | [0, 0, 45] | 0 | reload_tactical: position,scale; reload_empty: position,scale |
-| round_shell8 | round8 | [0, 6, -0.5] | - | 2 |  |
-| head8 | round8 | [0, 6, -0.5] | - | 2 | reload_tactical: scale; reload_empty: scale |
+| head | round1 | [0, 6, -0.5] | - | 2 | reload_all: scale; reload_intro: scale |
+| round2 | rounds | [-0.39775, 5.83525, -0.5] | - | 0 | reload_all: position,rotation,scale; static_ammo_display: scale |
+| round_shell2 | round2 | [-0.39775, 5.83525, -0.5] | - | 2 |  |
+| head2 | round2 | [-0.39775, 5.83525, -0.5] | - | 2 |  |
+| round3 | rounds | [-0.5625, 5.4375, -0.5] | [0, 0, -45] | 0 | reload_all: position,scale; static_ammo_display: scale |
+| round_shell3 | round3 | [-0.5625, 5.4375, -0.5] | - | 2 |  |
+| head3 | round3 | [-0.5625, 5.4375, -0.5] | - | 2 | reload_all: scale; reload_intro: scale |
+| round4 | rounds | [-0.39775, 5.03975, -0.5] | [0, 0, -90] | 0 | reload_all: position,scale; static_ammo_display: scale |
+| round_shell4 | round4 | [-0.39775, 5.03975, -0.5] | - | 2 |  |
+| head4 | round4 | [-0.39775, 5.03975, -0.5] | - | 2 | reload_all: scale; reload_intro: scale |
+| round5 | rounds | [0, 4.875, -0.5] | [0, 0, -135] | 0 | reload_all: position,scale; static_ammo_display: scale |
+| round_shell5 | round5 | [0, 4.875, -0.5] | - | 2 |  |
+| head5 | round5 | [0, 4.875, -0.5] | - | 2 | reload_all: scale; reload_intro: scale |
+| round6 | rounds | [0.39775, 5.03975, -0.5] | [0, 0, -180] | 0 | reload_all: position,scale; static_ammo_display: scale |
+| round_shell6 | round6 | [0.39775, 5.03975, -0.5] | - | 2 |  |
+| head6 | round6 | [0.39775, 5.03975, -0.5] | - | 2 | reload_all: scale; reload_intro: scale |
+| round7 | rounds | [0.5625, 5.4375, -0.5] | [0, 0, 135] | 0 | reload_all: position,scale; static_ammo_display: scale |
+| round_shell7 | round7 | [0.5625, 5.4375, -0.5] | - | 2 |  |
+| head7 | round7 | [0.5625, 5.4375, -0.5] | - | 2 | reload_all: scale; reload_intro: scale |
+| round8 | rounds | [0.39775, 5.83525, -0.5] | [0, 0, 90] | 0 | reload_all: position,scale; static_ammo_display: scale |
+| round_shell8 | round8 | [0.39775, 5.83525, -0.5] | - | 2 |  |
+| head8 | round8 | [0.39775, 5.83525, -0.5] | - | 2 | reload_all: scale; reload_intro: scale |
 | crane | cylinder_group | [0.15625, 4.34375, -1.78125] | - | 8 |  |
 | muzzle_flash | gun | [0, 5.9875, -5.3125] | - | 0 |  |
-| righthand | rh_and_gun | [5.98125, 19, 0] | - | 0 | static_idle: position,rotation,scale; reload_tactical: position,rotation,scale; inspect: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; inspect_empty: position,rotation,scale; reload_empty: position,rotation,scale |
+| righthand | rh_and_gun | [5.98125, 19, 0] | - | 0 | static_idle: position,rotation,scale; reload_all: position,rotation,scale; reload_intro: position,rotation,scale; reload_loop: position,rotation,scale; reload_end: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale |
 | righthand_pos | righthand | [-0.01875, 8, 0] | - | 1 |  |
 | constraint | root | [0, 4.275, 1.39063] | - | 0 | static_idle: position,rotation; shoot: position,rotation |
-| iron_view | - | [0, 6.71104, 5.32622] | - | 0 | static_idle: position,rotation |
-| idle_view | - | [1.6, 7.5, 9] | - | 0 |  |
+| iron_view | - | [0, 6.67979, 10.5] | - | 0 | static_idle: position,rotation |
+| idle_view | - | [1.6, 7.5, 10] | - | 0 |  |
 | positioning | - | [0, 0, 0] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 4.225, 1.00938] | - | 0 |  |
 | ground | positioning | [0, -0.5875, -0.975] | - | 0 |  |
-| fixed | positioning | [0.7, 5.475, -0.175] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [0.7, 4.13125, -0.05] | [0, 90, 0] | 0 |  |
 | refit | - | [0, 0, 0] | - | 0 |  |
 | refit_view | refit | [12, 5.25, 0] | [0, 89.9, 0] | 0 |  |
 | refit_extended_mag_view | refit | [7, 6.25, -4.25] | [0, 112.5, 0] | 0 |  |
 | refit_scope_view | refit | [8, 7.2, 6.5] | [0, 47.5, 0] | 0 |  |
 | refit_muzzle_view | refit | [8, 5.65, -10] | [0, 135, 0] | 0 |  |
-| camera | - | [0, 0, 0] | - | 0 | cocked_shoot: rotation; reload_tactical: rotation; inspect: rotation; draw: rotation; put_away: rotation; inspect_empty: rotation; shoot: rotation; reload_empty: rotation |
+| camera | - | [1.6, 7.5, 10] | - | 0 | cocked_shoot: rotation; reload_all: rotation; reload_intro: rotation; reload_loop: rotation; reload_end: rotation; inspect: rotation; inspect_empty: rotation; draw: rotation; put_away: rotation; shoot: rotation |
+
+## tacz:tec_9_display
+
+Display: `assets/tacz/display/guns/tec_9_display.json`
+
+Model: `assets/tacz/geo_models/gun/tec_9_geo.json`
+
+Animation: `assets/tacz/animations/tec_9.animation.json`
+
+LOD reference: `{'model': 'tacz:gun/lod/tec_9', 'texture': 'tacz:gun/lod/tec_9'}`
+
+Geometry: `geometry.tec_9`; **58 bones**.
+
+| Bone | Parent | Pivot (native pixels) | Rotation | Cubes | Authored animation channels |
+| --- | --- | --- | --- | --- | --- |
+| root | - | [0, 8, 3] | - | 0 | draw: position,rotation; put_away: position,rotation; inspect: position,rotation; inspect_empty: position,rotation; reload_tactical: position,rotation; reload_tactical_xmag_1: position,rotation; reload_tactical_xmag_2: position,rotation; reload_tactical_xmag_3: position,rotation; reload_empty: position,rotation; reload_empty_xmag_1: position,rotation; reload_empty_xmag_2: position,rotation; reload_empty_xmag_3: position,rotation; shoot: position,rotation |
+| gun_and_righthand | root | [0, 8, 3] | - | 0 | inspect: position,rotation; inspect_empty: position,rotation; reload_tactical: position,rotation; reload_tactical_xmag_1: position,rotation; reload_tactical_xmag_2: position,rotation; reload_tactical_xmag_3: position,rotation; reload_empty: position,rotation; reload_empty_xmag_1: position,rotation; reload_empty_xmag_2: position,rotation; reload_empty_xmag_3: position,rotation |
+| tec_9 | gun_and_righthand | [0, 4.5, 0] | - | 0 |  |
+| body | tec_9 | [-0.08839, 15.66161, -1.8458] | - | 69 |  |
+| mount | tec_9 | [-0.33823, 10.77904, 4.30561] | - | 0 |  |
+| group4 | mount | [-0.33823, 10.77904, 4.30561] | - | 10 |  |
+| group3 | mount | [0, 9.125, 3.79688] | - | 7 |  |
+| handguard_tactical | tec_9 | [-1.09375, 9.6791, -5.23189] | - | 0 |  |
+| group6 | handguard_tactical | [-1.09375, 9.6791, -5.23189] | [0, 0, -90] | 10 |  |
+| stock_default | tec_9 | [0, 0, 0] | - | 5 |  |
+| mag_release | tec_9 | [0.00536, 6.02099, -0.45518] | - | 1 | inspect: rotation; inspect_empty: rotation; reload_tactical: rotation; reload_tactical_xmag_1: rotation; reload_tactical_xmag_2: rotation; reload_tactical_xmag_3: rotation; reload_empty: rotation; reload_empty_xmag_1: rotation; reload_empty_xmag_2: rotation; reload_empty_xmag_3: rotation |
+| trigger | tec_9 | [0, 8.30978, 1.08923] | - | 4 | inspect_empty: rotation |
+| grip | tec_9 | [0, 0, 0] | - | 24 |  |
+| attachment_adapter | tec_9 | [-0.78347, 8.15421, 5.76141] | - | 0 |  |
+| ar_stock_adapter | attachment_adapter | [-0.78347, 8.15421, 5.76141] | - | 0 |  |
+| group | ar_stock_adapter | [0, 1, -2.14062] | - | 6 |  |
+| group2 | ar_stock_adapter | [0, 0, 0.375] | - | 16 |  |
+| barrel | tec_9 | [0, 0, 0] | - | 12 |  |
+| handguard | tec_9 | [0, 10.76624, -2.40112] | - | 115 |  |
+| bolt | tec_9 | [0.47094, 10.15844, 0.5625] | - | 8 | static_bolt_caught: position; inspect: position; inspect_empty: position; reload_empty: position; reload_empty_xmag_1: position; reload_empty_xmag_2: position; reload_empty_xmag_3: position; shoot: position |
+| sight | tec_9 | [0, 0, 0] | - | 4 |  |
+| positioning2 | tec_9 | [0, 2.375, 0] | - | 0 |  |
+| muzzle_flash | positioning2 | [0, 9.6875, -9] | - | 0 |  |
+| shell | positioning2 | [-0.5, 10.25, -1.75] | - | 0 |  |
+| scope_pos | positioning2 | [0, 11.15625, 4.79688] | - | 0 |  |
+| muzzle_pos | positioning2 | [0, 9.6875, -8.5] | - | 0 |  |
+| stock_pos | positioning2 | [0, 9.1875, 8.14063] | - | 0 |  |
+| laser_pos | positioning2 | [-1.21, 9.67188, -5.70312] | [0, 0, -90] | 0 |  |
+| constraint | tec_9 | [0, 10.91161, -3] | - | 0 | static_idle: position,rotation; reload_tactical: position,rotation; reload_tactical_xmag_1: position,rotation; reload_tactical_xmag_2: position,rotation; reload_tactical_xmag_3: position,rotation; reload_empty: position,rotation; reload_empty_xmag_1: position,rotation; reload_empty_xmag_2: position,rotation; reload_empty_xmag_3: position,rotation; shoot: position,rotation |
+| additional_magazine | tec_9 | [0, 4.5, -2] | - | 0 | inspect: scale; inspect_empty: scale; reload_tactical: position,rotation,scale; reload_tactical_xmag_1: position,rotation,scale; reload_tactical_xmag_2: position,rotation,scale; reload_tactical_xmag_3: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag_1: position,rotation,scale; reload_empty_xmag_2: position,rotation,scale; reload_empty_xmag_3: position,rotation,scale |
+| righthand | gun_and_righthand | [6, 19, 0] | - | 0 | static_idle: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_xmag_1: position,rotation,scale; reload_tactical_xmag_2: position,rotation,scale; reload_tactical_xmag_3: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag_1: position,rotation,scale; reload_empty_xmag_2: position,rotation,scale; reload_empty_xmag_3: position,rotation,scale |
+| righthand_pos | righthand | [0, 8, 0] | - | 1 |  |
+| mag_and_lefthand | root | [0, 4.5, -2] | - | 0 | inspect: position,rotation; inspect_empty: position,rotation; reload_tactical: position,rotation; reload_tactical_xmag_1: position,rotation; reload_tactical_xmag_2: position,rotation; reload_tactical_xmag_3: position,rotation; reload_empty: position,rotation; reload_empty_xmag_1: position,rotation; reload_empty_xmag_2: position,rotation; reload_empty_xmag_3: position,rotation |
+| mag_bullet | mag_and_lefthand | [0, 4.5, -2] | - | 0 | reload_tactical: scale; reload_tactical_xmag_1: scale; reload_tactical_xmag_2: scale; reload_tactical_xmag_3: scale; reload_empty: scale; reload_empty_xmag_1: scale; reload_empty_xmag_2: scale; reload_empty_xmag_3: scale |
+| bullet | mag_bullet | [0, 9.375, -1] | [90, 0, 0] | 6 | static_bolt_caught: scale; inspect: scale; inspect_empty: scale; reload_tactical: scale; reload_tactical_xmag_1: scale; reload_tactical_xmag_2: scale; reload_tactical_xmag_3: scale; reload_empty: scale; reload_empty_xmag_1: scale; reload_empty_xmag_2: scale; reload_empty_xmag_3: scale |
+| magazine | mag_bullet | [0, 4.5, -2] | - | 0 |  |
+| bullet_in_mag | magazine | [0, 9.375, -1] | [90, 0, 0] | 6 |  |
+| mag_standard | magazine | [0, 4.5, -1.75] | - | 12 |  |
+| mag_extended_1 | magazine | [0, 4.5, -1.75] | - | 12 |  |
+| mag_extended_2 | magazine | [0, 4.5, -1.75] | - | 12 |  |
+| mag_extended_3 | magazine | [0, 4.5, -1.75] | - | 18 |  |
+| bone | mag_extended_3 | [0, 2.8125, -1] | - | 8 |  |
+| lefthand | mag_and_lefthand | [-6, 19, 0] | - | 0 | static_idle: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_xmag_1: position,rotation,scale; reload_tactical_xmag_2: position,rotation,scale; reload_tactical_xmag_3: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag_1: position,rotation,scale; reload_empty_xmag_2: position,rotation,scale; reload_empty_xmag_3: position,rotation,scale |
+| lefthand_pos | lefthand | [0, 8, 0] | - | 1 |  |
+| view | - | [0, 0, 0] | - | 0 |  |
+| iron_view | view | [0, 10.89063, 12.5] | - | 0 |  |
+| idle_view | view | [1.9754, 12.8125, 12.5] | [0, 0, -5] | 0 |  |
+| refit_view | view | [24, 7.75, 0] | [0, 89, 0] | 0 |  |
+| refit_scope_view | view | [6, 12.5, 6.05] | [15, 70, 0] | 0 |  |
+| refit_stock_view | view | [10, 9.1875, 11.875] | [0, 90, 0] | 0 |  |
+| refit_laser_view | view | [-7, 12.75, -11.25] | [15, -135, 0] | 0 |  |
+| refit_muzzle_view | view | [8.875, 9.475, -14] | [0, 120, 0] | 0 |  |
+| refit_extended_mag_view | view | [12, 1.15, -1.65] | [0, 90, 22.5] | 0 |  |
+| camera | - | [2.97536, 13.06442, 11.5] | - | 0 | draw: rotation; put_away: rotation; inspect: rotation; inspect_empty: rotation; reload_tactical: position,rotation; reload_tactical_xmag_1: position,rotation; reload_tactical_xmag_2: position,rotation; reload_tactical_xmag_3: rotation; reload_empty: rotation; reload_empty_xmag_1: rotation; reload_empty_xmag_2: rotation; reload_empty_xmag_3: rotation; shoot: rotation |
+| positioning | - | [0, 0, 0] | - | 0 |  |
+| thirdperson_hand | positioning | [0, 8, 1.75] | - | 0 |  |
+| ground | positioning | [0, -3, 0] | - | 0 |  |
+| fixed | positioning | [1, 8, 1.0625] | [0, 90, 0] | 0 |  |
 
 ## tacz:timeless50_display
 
@@ -4902,7 +6508,7 @@ Geometry: `geometry.unknown`; **76 bones**.
 | bone9 | deco2 | [0.43489, 8.74623, 3.98792] | - | 0 |  |
 | bone8 | deco2 | [0.43489, 9.02748, 3.81604] | - | 0 |  |
 | bone7 | deco2 | [0.43489, 9.30873, 3.64417] | - | 18 |  |
-| bullet_in_barrel | slide | [0, 9.24307, 0.51603] | [90, 0, 0] | 8 | static_bolt_caught: scale; reload_empty: scale; reload_empty_xmag_1: scale; reload_empty_xmag_2: scale; reload_empty_xmag_3: scale; inspect_empty: scale |
+| bullet_in_barrel | slide | [0, 9.24307, 0.51603] | [90, 0, 0] | 8 | shoot: position,rotation,scale; static_bolt_caught: scale; reload_empty: scale; reload_empty_xmag_1: scale; reload_empty_xmag_2: scale; reload_empty_xmag_3: scale; inspect_empty: scale |
 | scope_pos | slide | [0, 9.8125, 4.25] | - | 0 |  |
 | gun | timeless_50 | [0, 3.8, 1.6] | - | 0 |  |
 | lower | gun | [-0.00332, 7.51197, 1.88185] | - | 36 |  |
@@ -4921,7 +6527,7 @@ Geometry: `geometry.unknown`; **76 bones**.
 | bolt_release | timeless_50 | [0.47626, 8.24597, 0.69859] | - | 7 | static_bolt_caught: position,rotation; reload_empty: position,rotation; reload_empty_xmag_1: position,rotation; reload_empty_xmag_2: position,rotation; reload_empty_xmag_3: position,rotation; inspect_empty: position,rotation |
 | mag_release | timeless_50 | [0.401, 6.8, 2.1625] | - | 1 |  |
 | positioning2 | timeless_50 | [0, 2.375, 0] | - | 0 |  |
-| muzzle_flash | positioning2 | [0, 9.25, -5.6875] | - | 0 |  |
+| muzzle_flash | positioning2 | [0, 9.29688, -4.4375] | - | 0 |  |
 | laser_pos | positioning2 | [0, 7.85938, -2.375] | [0, 0, -180] | 0 |  |
 | shell | positioning2 | [0, 9.375, 2.25] | [0, 20, 0] | 0 |  |
 | muzzle_pos | positioning2 | [0, 9.28125, -4.4375] | - | 0 |  |
@@ -4930,7 +6536,7 @@ Geometry: `geometry.unknown`; **76 bones**.
 | lefthand | mag_and_lefthand | [-5.95198, 19.42312, -0.10363] | - | 0 | reload_tactical: position,rotation,scale; reload_tactical_xmag_1: position,rotation,scale; reload_tactical_xmag_2: position,rotation,scale; reload_tactical_xmag_3: position,rotation,scale; static_idle: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag_1: position,rotation,scale; reload_empty_xmag_2: position,rotation,scale; reload_empty_xmag_3: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale |
 | lefthand_pos | lefthand | [0.04802, 8.42312, -0.10363] | - | 1 |  |
 | mag_and_bullet | mag_and_lefthand | [0, 5.99487, 3.0993] | - | 0 | reload_tactical: scale; reload_tactical_xmag_1: scale; reload_tactical_xmag_2: scale; reload_tactical_xmag_3: scale; reload_empty: position,rotation,scale; reload_empty_xmag_1: position,rotation,scale; reload_empty_xmag_2: position,rotation,scale; reload_empty_xmag_3: position,rotation,scale; inspect: scale; inspect_empty: scale |
-| bullet | mag_and_bullet | [0, 8.14307, 2.71631] | [90, 0, 45] | 8 | static_bolt_caught: scale; inspect: scale; inspect_empty: scale |
+| bullet | mag_and_bullet | [0, 8.14307, 2.71631] | [90, 0, 45] | 8 | static_bolt_caught: scale; reload_empty: scale; reload_empty_xmag_1: scale; reload_empty_xmag_2: scale; reload_empty_xmag_3: scale; inspect: scale; inspect_empty: scale |
 | magazine | mag_and_bullet | [0, 5.99487, 3.0993] | - | 0 |  |
 | mag_standard | magazine | [0, 3.09934, 1.7827] | [5, 0, 0] | 0 |  |
 | magazine1 | mag_standard | [-0.01116, 3.5309, 2.6787] | - | 19 |  |
@@ -4944,10 +6550,10 @@ Geometry: `geometry.unknown`; **76 bones**.
 | positioning | - | [0, 0, 0] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 8, 1.75] | - | 0 |  |
 | ground | positioning | [0, -3, 0] | - | 0 |  |
-| fixed | positioning | [1, 8, 0] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [1, 7.85938, 1.0625] | [0, 90, 0] | 0 |  |
 | view | - | [0, 0, 0] | - | 0 |  |
-| iron_view | view | [5e-05, 9.9277, 12.28197] | - | 0 |  |
-| idle_view | view | [2, 11, 13] | - | 0 |  |
+| iron_view | view | [5e-05, 9.9277, 14.5] | - | 0 |  |
+| idle_view | view | [2, 11, 14] | - | 0 |  |
 | refit_view | view | [16, 8, 0] | [0, 89.9, 0] | 0 |  |
 | refit_scope_view | view | [7, 12, 6] | [0, 70, -10] | 0 |  |
 | refit_muzzle_view | view | [8.875, 6.475, -12] | [0, 120, 0] | 0 |  |
@@ -4973,7 +6579,7 @@ Geometry: `geometry.type81`; **82 bones**.
 | additional_magazine | root | [0, 4, 1] | - | 0 | inspect: scale; reload_tactical: position,rotation,scale; reload_empty: position,rotation,scale; inspect_empty: scale |
 | mag_and_lefthand | root | [0, 5.8125, 2.75] | - | 0 | inspect: position,rotation; reload_tactical: position,rotation; reload_empty: position,rotation; inspect_empty: position,rotation |
 | mag_and_bullet | mag_and_lefthand | [0, 4, 1] | - | 0 | reload_tactical: position,scale; reload_empty: position,scale |
-| bullet | mag_and_bullet | [0, 8.25, 1.3125] | [90, 0, 0] | 12 | inspect: scale; reload_tactical: scale; reload_empty: scale; inspect_empty: scale |
+| bullet | mag_and_bullet | [0, 8.25, 1.3125] | [90, 0, 0] | 12 | inspect: scale; static_bolt_caught: scale; reload_tactical: scale; reload_empty: scale; inspect_empty: scale |
 | magazine | mag_and_bullet | [0, 4, 1] | - | 0 |  |
 | bullet_in_mag | magazine | [0, 8.12548, 1.42661] | [85, 0, 0] | 12 |  |
 | mag_standard | magazine | [0, 7, 0] | [-5, 0, 0] | 0 |  |
@@ -5031,7 +6637,7 @@ Geometry: `geometry.type81`; **82 bones**.
 | hexagon4 | bone3 | [-1.53185, 9.63337, -3.02631] | [30, 0, 0] | 6 |  |
 | hexagon5 | bone3 | [-1.07875, 9.6327, -3.02988] | [30, 0, 0] | 3 |  |
 | hexagon6 | bone3 | [-0.64483, 9.63338, -3.0263] | [30, 0, 0] | 3 |  |
-| bullet_in_barrel | bolt | [0, 8.72548, -3.32339] | [90, 0, 0] | 12 | inspect: position; inspect_empty: position |
+| bullet_in_barrel | bolt | [0, 9.22548, -2.38589] | [90, 0, 0] | 12 | shoot: position,rotation,scale |
 | positioning2 | type81 | [0, 0, 0] | - | 0 |  |
 | muzzle_flash | positioning2 | [0, 8.875, -23.8125] | - | 0 |  |
 | shell | positioning2 | [-0.25, 9.75, 1.225] | - | 0 |  |
@@ -5039,18 +6645,18 @@ Geometry: `geometry.type81`; **82 bones**.
 | mag_release | type81 | [0, 6.38333, 4.17026] | - | 3 | inspect: rotation; reload_tactical: rotation; reload_empty: rotation; inspect_empty: rotation |
 | righthand | gun_and_righthand | [6, 19, 2] | - | 0 | static_idle: position,rotation,scale; put_away: position,rotation,scale; inspect: position,rotation,scale; draw: position,rotation,scale; reload_tactical: position,rotation,scale; reload_empty: position,rotation,scale; inspect_empty: position,rotation,scale |
 | righthand_pos | righthand | [0, 8, 2] | - | 1 |  |
-| constraint | root | [0, 10.9375, -15.6875] | - | 0 | static_idle: position,rotation; shoot: position,rotation; reload_tactical: position,rotation; reload_empty: position,rotation |
+| constraint | root | [0, 10.9375, 0.3125] | - | 0 | static_idle: position,rotation; shoot: position,rotation; reload_tactical: position,rotation; reload_empty: position,rotation |
 | camera | - | [2.39375, 12.175, 15.2125] | - | 0 | put_away: rotation; inspect: rotation; draw: rotation; shoot: position,rotation; reload_tactical: rotation; reload_empty: rotation; inspect_empty: rotation |
 | positioning | - | [0, 0, 0] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 6.8875, 6.75] | - | 0 |  |
 | ground | positioning | [0, -5, 0] | - | 0 |  |
-| fixed | positioning | [1, 8.75, -1] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [1, 7.0625, 7.4375] | [0, 90, 0] | 0 |  |
 | view | - | [0, 0, 0] | - | 0 |  |
-| iron_view | view | [0, 10.92188, 9.5] | - | 0 |  |
-| refit_view | view | [23, 9, 0] | [0, 89.9, 0] | 0 |  |
+| idle_view | view | [2.5, 12, 17.5] | - | 0 |  |
+| iron_view | view | [0, 10.92188, 16.5] | - | 0 |  |
+| refit_view | view | [24, 9, 0] | [0, 89.9, 0] | 0 |  |
 | refit_extended_mag_view | view | [12, 0, 1] | [0, 90, 30] | 0 |  |
 | refit_muzzle_view | view | [12, 9, -26] | [0, 120, 0] | 0 |  |
-| idle_view | view | [2.39375, 12.175, 15.2125] | - | 0 |  |
 
 ## tacz:ump45_display
 
@@ -5068,7 +6674,7 @@ Geometry: `geometry.ump45_fom - Converted`; **69 bones**.
 | --- | --- | --- | --- | --- | --- |
 | root | - | [0, 9, 5] | - | 0 | reload_tactical: position; reload_empty: position; inspect: position,rotation; inspect_empty: position,rotation; shoot: position,rotation |
 | magzine_and_bullet | root | [0, 4.49291, -0.69807] | - | 0 | draw: position,rotation; put_away: position,rotation; reload_tactical: position,rotation; reload_empty: position,rotation; inspect: position,rotation; inspect_empty: position,rotation |
-| bullet | magzine_and_bullet | [0, 10.25, 1.25] | [90, 0, 0] | 0 | reload_tactical: scale; reload_empty: scale; inspect: scale; inspect_empty: scale |
+| bullet | magzine_and_bullet | [0, 10.25, 1.25] | [90, 0, 0] | 0 | static_bolt_caught: scale; reload_tactical: scale; reload_empty: scale; inspect: scale; inspect_empty: scale |
 | 4 | bullet | [0, 11.0025, 1] | [0, 45, 0] | 5 |  |
 | magazine | magzine_and_bullet | [0, 4.49291, -0.69807] | - | 0 |  |
 | bullet_in_mag | magazine | [0, 10.25, 1.25] | [90, 0, 0] | 0 |  |
@@ -5094,7 +6700,7 @@ Geometry: `geometry.ump45_fom - Converted`; **69 bones**.
 | hinge | ump45_stock_extended | [0, 8, 0] | - | 5 |  |
 | ump45_charge_handle | ump45 | [0.75466, 12.07986, -6.77373] | - | 9 | reload_empty: position; inspect: position |
 | ump45_bolt | ump45 | [-0.125, 10.6375, 0.4375] | - | 5 | static_bolt_caught: position; reload_empty: position; inspect: position; inspect_empty: position; shoot: position |
-| bullet_in_barrel | ump45_bolt | [0, 10.75, -0.925] | [90, 0, 0] | 0 |  |
+| bullet_in_barrel | ump45_bolt | [0, 10.75, -0.925] | [90, 0, 0] | 0 | shoot: position,rotation,scale |
 | 3 | bullet_in_barrel | [0, 11.5025, -1.175] | [0, 45, 0] | 5 |  |
 | ump45_default | ump45 | [0, 8, 0] | - | 0 |  |
 | upper | ump45_default | [0.21875, 7.57566, -0.15625] | - | 0 |  |
@@ -5124,10 +6730,10 @@ Geometry: `geometry.ump45_fom - Converted`; **69 bones**.
 | positioning | - | [0, 0, -8] | - | 0 |  |
 | thirdperson_hand | positioning | [0, 8.175, 5.75] | - | 0 |  |
 | ground | positioning | [0, -3.525, 0.65] | - | 0 |  |
-| fixed | positioning | [1.1, 10.8, 2.375] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [1.1, 7.9875, 4.1875] | [0, 90, 0] | 0 |  |
 | view | - | [0, 0, 0] | - | 0 |  |
-| idle_view | view | [2.5, 14.5, 15] | - | 0 |  |
-| iron_view | view | [0, 13.65, 13.8] | - | 0 |  |
+| idle_view | view | [2.5, 14.5, 16] | - | 0 |  |
+| iron_view | view | [0, 13.65, 15] | - | 0 |  |
 | refit_view | view | [24.4, 9, 3] | [0, 89.9, 0] | 0 |  |
 | refit_muzzle_view | view | [11, 9, -13] | [0, 90, 0] | 0 |  |
 | refit_grip_view | view | [5.8, 7.4, -6] | [0, 90, 0] | 0 |  |
@@ -5135,6 +6741,100 @@ Geometry: `geometry.ump45_fom - Converted`; **69 bones**.
 | refit_extended_mag_view | view | [10, 4, -0.55] | [0, 90, 0] | 0 |  |
 | refit_stock_view | view | [10, 9, 12.6] | [0, 90, 0] | 0 |  |
 | refit_scope_view | view | [8.075, 14.7, 11.525] | [0, 50, 0] | 0 |  |
+
+## tacz:urgi_display
+
+Display: `assets/tacz/display/guns/urgi_display.json`
+
+Model: `assets/tacz/geo_models/gun/urgi_geo.json`
+
+Animation: `assets/tacz/animations/urgi.animation.json`
+
+LOD reference: `{'model': 'tacz:gun/lod/urgi', 'texture': 'tacz:gun/lod/urgi'}`
+
+Geometry: `geometry.unknown`; **79 bones**.
+
+| Bone | Parent | Pivot (native pixels) | Rotation | Cubes | Authored animation channels |
+| --- | --- | --- | --- | --- | --- |
+| root | - | [0, 7, -1.425] | - | 0 | switch_auto: position,rotation; switch_semi: position,rotation; shoot: position,rotation; draw: position,rotation; put_away: position,rotation; reload_tactical: position,rotation; reload_tactical_xmag: position,rotation; reload_empty: position,rotation; reload_empty_xmag: position,rotation; inspect: position,rotation; inspect_empty: position,rotation |
+| additional_magazine | root | [0, 5, -6] | - | 0 | reload_tactical: position,rotation; reload_tactical_xmag: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag: position; inspect: scale; inspect_empty: scale |
+| mag_and_lefthand | root | [0, 5, -6] | - | 0 | reload_tactical: position,rotation; reload_tactical_xmag: position,rotation; reload_empty: position,rotation; reload_empty_xmag: position,rotation; inspect: position,rotation; inspect_empty: position,rotation |
+| lefthand | mag_and_lefthand | [-6, 19, 0] | - | 0 | static_idle: position,rotation,scale; switch_auto: position,rotation,scale; switch_semi: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_xmag: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale; static_AFG: position,rotation,scale; static_VG: position,rotation,scale |
+| lefthand_pos | lefthand | [0, 8, 0] | - | 1 |  |
+| mag_and_bullet | mag_and_lefthand | [0, 5, -6] | - | 0 | reload_tactical: scale; reload_tactical_xmag: scale; reload_empty: scale; reload_empty_xmag: scale |
+| bullet | mag_and_bullet | [0, 8.975, -6.1875] | - | 0 | static_bolt_caught: scale; reload_tactical_xmag: scale; reload_empty: scale; reload_empty_xmag: scale; inspect: scale; inspect_empty: scale |
+| group2 | bullet | [0, 9.03927, -6.625] | [0, 0, 90] | 12 |  |
+| magazine | mag_and_bullet | [0, 5, -6] | - | 0 |  |
+| mag_standard | magazine | [0, 5.15695, -6.91309] | - | 24 |  |
+| bullet2 | mag_standard | [2, 0.5, -12.9375] | - | 0 |  |
+| bullet_in_mag | magazine | [-6, 8.975, -6.1875] | - | 0 | reload_empty: scale; reload_empty_xmag: position; inspect_empty: scale |
+| group25 | bullet_in_mag | [0, 9.03927, -6.625] | [0, 0, 90] | 12 |  |
+| mag_extended_1 | magazine | [0, 18.64764, -7.00372] | - | 33 |  |
+| mag_extended_2 | magazine | [0, 18.64764, -6.87872] | - | 0 |  |
+| bone6 | mag_extended_2 | [-10, -1.31254, -8.15336] | - | 12 |  |
+| bone7 | mag_extended_2 | [10, -1.31254, -8.15336] | - | 20 |  |
+| mag_extended_3 | magazine | [0, 8, -8.3125] | - | 75 |  |
+| gun_and_righthand | root | [0, 7, -1.425] | - | 0 | inspect: position,rotation; inspect_empty: position,rotation |
+| m4 | gun_and_righthand | [0, -23, 0] | - | 0 |  |
+| constraint | m4 | [0, 12.275, -13.625] | - | 0 | static_idle: position,rotation; shoot: position,rotation; draw: position,rotation; put_away: position,rotation; reload_tactical: position,rotation; reload_tactical_xmag: position,rotation; reload_empty: position,rotation; reload_empty_xmag: position,rotation |
+| m4_body | m4 | [0, -22.98413, 0] | - | 2 |  |
+| upper | m4_body | [0, 9.48313, -4.03258] | - | 221 |  |
+| group13 | upper | [-1.06274, 16.25913, -3.56303] | - | 18 |  |
+| group14 | group13 | [-1.43055, 10.54795, -3.0625] | [0, 0, 2] | 6 |  |
+| cap | m4_body | [-0.94031, 8.79444, -5.90675] | [0, 0, 12.5] | 10 |  |
+| AR | m4_body | [0.125, 12.06803, 1.31251] | - | 19 |  |
+| grip | m4_body | [0, 8.90145, -1.25] | - | 17 |  |
+| mag_release | m4 | [-0.21484, 10.78907, -4.50391] | - | 13 | reload_tactical: position; reload_tactical_xmag: position,rotation; reload_empty: position; reload_empty_xmag: position,rotation; inspect: position; inspect_empty: position |
+| bolt_release | m4 | [0.80752, 8.34336, -4.31729] | [0, 0, 5] | 10 | static_bolt_caught: rotation; reload_empty: rotation; reload_empty_xmag: rotation; inspect_empty: rotation |
+| selector | m4 | [0.23159, 7.82653, -1.2562] | - | 6 | static_auto: rotation; static_semi: rotation; switch_auto: rotation; switch_semi: rotation |
+| mk18_pull | m4 | [-0.03337, 10.16495, -3.24437] | - | 0 | inspect: position; inspect_empty: position |
+| mk18_bolt | mk18_pull | [-0.18522, 4.56912, -6.74082] | [0, 0, 5] | 29 | static_bolt_caught: position; shoot: position; reload_empty: position; reload_empty_xmag: position; inspect_empty: position |
+| bullet_in_barrel | mk18_bolt | [-0.43373, 9.53415, -10.41733] | - | 12 | shoot: position,rotation,scale; reload_empty_xmag: position |
+| pull2 | mk18_pull | [-4.00333, 10.55036, 0.37651] | - | 75 |  |
+| positioning2 | m4 | [0, 7, -1.425] | - | 0 |  |
+| scope_pos | positioning2 | [0, 11, -4] | - | 0 |  |
+| muzzle_flash | positioning2 | [0, 9.55, -27.25] | - | 0 |  |
+| laser_pos | positioning2 | [0, 10.9998, -20.93704] | - | 0 |  |
+| stock_pos | positioning2 | [0, 9.525, 3.9375] | - | 0 |  |
+| grip_pos | positioning2 | [0, 8.26912, -16.25] | - | 0 |  |
+| shell | positioning2 | [-0.2, 9.68849, -6.025] | - | 0 |  |
+| muzzle_pos | positioning2 | [0, 9.5363, -25.32738] | - | 0 |  |
+| attachment_adapter | m4 | [0.0048, 3.53034, -13.40598] | - | 0 |  |
+| oem_stock_tactical | attachment_adapter | [0.0001, 8.42468, 9.48128] | - | 65 |  |
+| sight_base | m4 | [-0.08589, 11.26127, -36.86672] | - | 9 |  |
+| sight_folded | sight_base | [8, -17.96296, -27.8125] | - | 0 |  |
+| group3 | sight_folded | [0.00016, 11.31234, -24.80192] | [90, 0, 0] | 13 |  |
+| folded_illuminated | group3 | [0, 11.31893, -19.93256] | - | 1 |  |
+| rotate2 | sight_folded | [0, 11.43092, -0.91127] | [-90, 0, 0] | 12 |  |
+| sight | sight_base | [-0.00613, 11.70468, -25.55733] | - | 13 |  |
+| sight_illuminated | sight | [-0.09399, 7.45352, -41.00238] | - | 1 |  |
+| rotate | sight | [0, 11.43092, -0.91127] | - | 12 |  |
+| rearsight | sight_base | [0.07705, 11.34198, -1.01808] | - | 35 |  |
+| octagon4 | rearsight | [-0.74411, 11.39265, -0.40464] | [8, 0, 0] | 4 |  |
+| octagon10 | rearsight | [0.34388, 11.46783, -1.86926] | [40, 0, 0] | 6 |  |
+| muzzle_default | m4 | [0, 9.53075, -26.62343] | - | 24 |  |
+| barrel | m4 | [0, 9.48941, -26.62344] | - | 9 |  |
+| handguard_tactical | m4 | [0, 8.39803, -16.25] | - | 19 |  |
+| mk2 | m4 | [0.12411, 9.33585, -15.5362] | - | 268 |  |
+| group | mk2 | [0, 9.48941, -26.62344] | - | 5 |  |
+| group10 | group | [0, 9.53075, -26.62343] | - | 0 |  |
+| righthand | gun_and_righthand | [6, 19, 0] | - | 0 | static_idle: position,rotation,scale; switch_auto: position,rotation,scale; switch_semi: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_xmag: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag: position,rotation,scale; inspect: position,rotation,scale; inspect_empty: position,rotation,scale |
+| righthand_pos | righthand | [0, 8, 0] | - | 1 |  |
+| camera | - | [3.25, 13.4063, 7.8] | - | 0 | switch_auto: rotation; switch_semi: rotation; shoot: rotation; draw: rotation; put_away: rotation; reload_tactical: rotation; reload_tactical_xmag: rotation; reload_empty: rotation; reload_empty_xmag: rotation; inspect: rotation; inspect_empty: rotation |
+| positioning | - | [0, 0, -8] | - | 0 |  |
+| thirdperson_hand | positioning | [0, 6.875, -2.65] | - | 0 |  |
+| ground | positioning | [0, -0.9, -7.35] | - | 0 |  |
+| fixed | positioning | [1.5625, 7.05313, -3.2125] | [0, 90, 0] | 0 |  |
+| view | - | [0, 0, 0] | - | 0 |  |
+| iron_view | view | [0, 12.65433, 6] | - | 0 |  |
+| idle_view | view | [3, 12.875, 7.75] | [0, 0, -3] | 0 |  |
+| refit_view | view | [29.99999, 10, -6.98429] | [0, 89.9, 0] | 0 |  |
+| refit_muzzle_view | view | [16.19615, 9, -35.26795] | [0, 120, 0] | 0 |  |
+| refit_stock_view | view | [20, 9, 4.6] | [0, 90, 0] | 0 |  |
+| refit_scope_view | view | [13.53644, 12.5, 10.12066] | [0, 50, 0] | 0 |  |
+| refit_extended_mag_view | view | [19.36971, -5.26699, -7] | [0, 90, 30] | 0 |  |
+| refit_laser_view | view | [12, 13, -29] | [15, 135, 0] | 0 |  |
+| refit_grip_view | view | [16, 5, -13] | [0, 90, 0] | 0 |  |
 
 ## tacz:uzi_display
 
@@ -5146,7 +6846,7 @@ Animation: `assets/tacz/animations/uzi.animation.json`
 
 LOD reference: `{'model': 'tacz:gun/lod/uzi', 'texture': 'tacz:gun/lod/uzi'}`
 
-Geometry: `geometry.uzi_stock - Converted`; **69 bones**.
+Geometry: `geometry.uzi_stock - Converted`; **76 bones**.
 
 | Bone | Parent | Pivot (native pixels) | Rotation | Cubes | Authored animation channels |
 | --- | --- | --- | --- | --- | --- |
@@ -5172,9 +6872,9 @@ Geometry: `geometry.uzi_stock - Converted`; **69 bones**.
 | uzi | gun_and_righthand | [0, 6, 3] | - | 0 |  |
 | mag_release | uzi | [0.68796, 3.34401, 2.875] | - | 2 |  |
 | mount | uzi | [0.375, 10.11742, 2.5] | - | 17 |  |
-| fold_stock | uzi | [0, 8, 0] | - | 2 |  |
-| group12 | fold_stock | [0, 1.375, 11.25] | - | 15 |  |
-| group13 | fold_stock | [0, 7.4375, -1.875] | - | 0 |  |
+| stock_default | uzi | [0, 8, 0] | - | 2 |  |
+| group12 | stock_default | [0, 1.375, 11.25] | - | 15 |  |
+| group13 | stock_default | [0, 7.4375, -1.875] | - | 0 |  |
 | group14 | group13 | [0.5, 6.5625, 6] | - | 7 |  |
 | group | group13 | [0.5, 6.5625, 6] | - | 10 |  |
 | default_gun | uzi | [0, 8, 0] | - | 0 |  |
@@ -5207,17 +6907,24 @@ Geometry: `geometry.uzi_stock - Converted`; **69 bones**.
 | pull | uzi | [0.5, 8.75, -0.5] | - | 13 | reload_empty: position; inspect_empty: position; shoot: position |
 | bolt | uzi | [-0.65625, 11.73798, 4.76831] | - | 9 | static_bolt_caught: position; reload_empty: position; inspect_empty: position; shoot: position |
 | additional_magazine | uzi | [0, 1.7, 2.6] | - | 0 | reload_tactical: position,rotation,scale; reload_empty: position,rotation,scale; inspect: scale; inspect_empty: scale |
+| attachment_adapter | uzi | [0, 0, 0] | - | 0 |  |
+| oem_stock_unfolded | attachment_adapter | [0, 0, 0] | - | 0 |  |
+| fold_stock2 | oem_stock_unfolded | [0, 8, 0] | - | 0 |  |
+| group10 | fold_stock2 | [0, 8, 10.07813] | [170, 0, 0] | 0 |  |
+| bone | group10 | [-0.76451, 7.0404, 7.9375] | - | 18 |  |
+| group9 | group10 | [0, 7.125, 5.82813] | [180, 0, 0] | 16 |  |
 | camera | - | [3, 12, 16] | - | 0 | draw: rotation; put_away: rotation; reload_tactical: rotation; reload_empty: rotation; inspect: relative_to,rotation; inspect_empty: rotation; shoot: rotation,scale |
 | view | - | [0, 0, 0] | - | 0 |  |
-| idle_view | view | [3, 12, 16] | - | 0 |  |
-| iron_view | view | [0, 10.60625, 12.89375] | - | 0 |  |
-| refit_extended_mag_view | view | [11.65, 0.7, 3] | [0, 90, 0] | 0 |  |
-| refit_view | view | [16.975, 6.825, 1] | [0, 89.9, 0] | 0 |  |
-| refit_muzzle_view | view | [9, 8.825, -18] | [0, 120, 0] | 0 |  |
-| refit_scope_view | view | [8.025, 11.675, 0.775] | [0, 117.5, 0] | 0 |  |
+| idle_view | view | [3, 12, 17] | - | 0 |  |
+| iron_view | view | [0, 10.60625, 16] | - | 0 |  |
+| refit_extended_mag_view | view | [20.65, 0.7, 3] | [0, 90, 0] | 0 |  |
+| refit_view | view | [24, 6.825, 3] | [0, 89.9, 0] | 0 |  |
+| refit_muzzle_view | view | [16, 8.825, -18] | [0, 120, 0] | 0 |  |
+| refit_scope_view | view | [16.025, 11.675, -2.225] | [0, 117.5, 0] | 0 |  |
+| refit_stock_view | view | [24, 9, 9] | [0, 90, 0] | 0 |  |
 | positioning | - | [0, 0, 0] | - | 0 |  |
 | thirdperson_hand | positioning | [0.95, 6.525, 1.1] | - | 0 |  |
-| fixed | positioning | [0.95, 8.55, 1.825] | [0, 90, 0] | 0 |  |
+| fixed | positioning | [0.95, 7.00313, 0.575] | [0, 90, 0] | 0 |  |
 | ground | positioning | [0, -2.875, 1] | - | 0 |  |
 
 ## tacz:vector45_display
@@ -5230,7 +6937,7 @@ Animation: `assets/tacz/animations/vector45.animation.json`
 
 LOD reference: `{'model': 'tacz:gun/lod/vector45', 'texture': 'tacz:gun/lod/vector45'}`
 
-Geometry: `geometry.vector45 - Converted`; **97 bones**.
+Geometry: `geometry.vector45 - Converted`; **96 bones**.
 
 | Bone | Parent | Pivot (native pixels) | Rotation | Cubes | Authored animation channels |
 | --- | --- | --- | --- | --- | --- |
@@ -5239,7 +6946,7 @@ Geometry: `geometry.vector45 - Converted`; **97 bones**.
 | lefthand | mag_and_lefthand | [-6, 19, 0] | - | 0 | static_idle: position,rotation,scale; static_VG: position,rotation,scale; static_AFG: position,rotation,scale; switch_auto: position,rotation,scale; switch_burst: position,rotation,scale; switch_semi: position,rotation,scale; draw: position,rotation,scale; put_away: position,rotation,scale; reload_tactical: position,rotation,scale; reload_tactical_xmag_1: position,rotation,scale; reload_tactical_xmag_23: position,rotation,scale; reload_empty: position,rotation,scale; reload_empty_xmag_1: position,rotation,scale; reload_empty_xmag_23: position,rotation,scale; inspect: position,rotation,scale; inspect_xmag_1: position,rotation,scale; inspect_xmag_23: position,rotation,scale; inspect_empty: position,rotation,scale; inspect_empty_xmag_1: position,rotation,scale; inspect_empty_xmag_23: position,rotation,scale |
 | lefthand_pos | lefthand | [0, 8, 0] | - | 1 |  |
 | mag_and_bullet | mag_and_lefthand | [0, 7.5, -3] | - | 0 |  |
-| bullet | mag_and_bullet | [0, 11.25, -3.75] | [90, 0, 0] | 0 | reload_tactical: scale; reload_tactical_xmag_1: scale; reload_tactical_xmag_23: scale; inspect: scale; inspect_xmag_1: scale; inspect_xmag_23: scale; inspect_empty: scale; inspect_empty_xmag_1: scale; inspect_empty_xmag_23: scale |
+| bullet | mag_and_bullet | [0, 11.25, -3.75] | [90, 0, 0] | 0 | reload_tactical: scale; reload_tactical_xmag_1: scale; reload_tactical_xmag_23: scale; reload_empty: scale; reload_empty_xmag_1: scale; reload_empty_xmag_23: scale; inspect: scale; inspect_xmag_1: scale; inspect_xmag_23: scale; inspect_empty: scale; inspect_empty_xmag_1: scale; inspect_empty_xmag_23: scale |
 | 3 | bullet | [0, 12.0025, -4] | [0, 45, 0] | 5 |  |
 | magzine | mag_and_bullet | [0, 7.5, -3] | - | 0 |  |
 | bullet_in_mag | magzine | [0, 11.25, -3.75] | [90, 0, 0] | 0 | reload_tactical: scale; reload_tactical_xmag_1: scale; reload_tactical_xmag_23: scale; inspect_empty: scale; inspect_empty_xmag_1: scale; inspect_empty_xmag_23: scale |
@@ -5261,9 +6968,10 @@ Geometry: `geometry.vector45 - Converted`; **97 bones**.
 | stock_pos | positioning2 | [0, 12.6625, 7.6] | - | 0 |  |
 | laser_pos | positioning2 | [1.25, 11, -9.125] | [0, 0, 90] | 0 |  |
 | grip_pos | positioning2 | [0, 10.0625, -9.325] | - | 0 |  |
-| scope_pos | positioning2 | [0, 13.8125, 1.725] | - | 0 |  |
+| scope_pos | positioning2 | [0, 13.8125, -1.275] | - | 0 |  |
 | attachment_adapter | Victor45 | [0, 10.87411, 5.55947] | - | 0 |  |
-| oem_stock_light | attachment_adapter | [0, 10.87411, 5.55947] | - | 0 |  |
+| oem_stock_light | attachment_adapter | [0, 10.87411, 5.55947] | - | 42 |  |
+| group12 | oem_stock_light | [0, -8.65242, 14.6041] | - | 20 |  |
 | oem_stock_tactical | attachment_adapter | [0.875, 11.36588, -6.61687] | - | 42 |  |
 | group13 | oem_stock_tactical | [0, 7.7486, 15.8645] | - | 21 |  |
 | oem_stock_heavy | attachment_adapter | [0.875, -6.63412, -6.61687] | - | 47 |  |
@@ -5314,12 +7022,10 @@ Geometry: `geometry.vector45 - Converted`; **97 bones**.
 | octagon4 | safety | [0, 12.9375, 1.875] | [-45, 0, 0] | 8 |  |
 | selector | safety | [0, 12.9375, -2.625] | [-22.5, 0, 0] | 8 | static_auto: rotation; static_burst: rotation; switch_auto: rotation; switch_burst: rotation; switch_semi: rotation |
 | icons | vector45_body | [0, 5, 0] | - | 4 |  |
-| stock_default | vector45_body | [0.875, 1.86588, -6.61687] | - | 42 |  |
-| group12 | stock_default | [0, -8.65242, 14.6041] | - | 20 |  |
 | camera | - | [2.125, 15.45, 9.95] | - | 0 | switch_auto: rotation; switch_burst: rotation; switch_semi: rotation; draw: rotation; put_away: rotation; reload_tactical: rotation; reload_tactical_xmag_1: rotation; reload_tactical_xmag_23: rotation; reload_empty: rotation; reload_empty_xmag_1: rotation; reload_empty_xmag_23: rotation; inspect: rotation; inspect_xmag_1: rotation; inspect_xmag_23: rotation; inspect_empty: position,rotation; inspect_empty_xmag_1: position,rotation; inspect_empty_xmag_23: position,rotation; shoot: rotation |
 | view | - | [0, 0, 0] | - | 0 |  |
-| idle_view | view | [2.125, 15.45, 9.95] | - | 0 |  |
-| iron_view | view | [0, 15, 7.5] | - | 0 |  |
+| idle_view | view | [2.125, 15.45, 10] | - | 0 |  |
+| iron_view | view | [0, 15, 9] | - | 0 |  |
 | refit_view | view | [22.325, 10.4, 0.325] | [0, 89.9, 0] | 0 |  |
 | refit_extended_mag_view | view | [11, 2.55, -1.925] | [0, 90, 0] | 0 |  |
 | refit_muzzle_view | view | [9.55, 11.55, -13.825] | [0, 90, 0] | 0 |  |

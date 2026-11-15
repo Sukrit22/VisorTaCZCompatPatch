@@ -8,6 +8,10 @@ import org.vmstudio.visor.api.common.HandType;
 import org.vmstudio.visor.api.client.player.pose.PlayerPoseType;
 /** Native TaCZ asset playback at the actual gun, without shared entity/sound concurrency eviction. */
 public final class DualSounds {
+ public static GunSoundInstance play(int slot,com.tacz.guns.client.resource.pojo.display.SoundData sound,float volume,float pitch,int distance){
+  var player=Minecraft.getInstance().player;if(sound==null||player==null)return null;
+  return play(slot,sound.getSound(),sound.resolveVolume(player.getRandom(),volume),sound.resolvePitch(player.getRandom(),pitch),distance);
+ }
  public static boolean available(ResourceLocation asset){
   if(asset==null)return false;
   var resource=new ResourceLocation(asset.getNamespace(),"tacz_sounds/"+asset.getPath()+".ogg");
@@ -22,7 +26,7 @@ public final class DualSounds {
  }
  private static final class LocatedSound extends GunSoundInstance {
   LocatedSound(ResourceLocation asset,float volume,float pitch,int distance,org.joml.Vector3f at){
-   super(ModSounds.GUN.get(),SoundSource.PLAYERS,volume,pitch,Minecraft.getInstance().player,distance,asset,false);
+   super(ModSounds.GUN.get(),SoundSource.PLAYERS,volume,pitch,Minecraft.getInstance().player,distance,asset,false,false,true);
    this.x=at.x;this.y=at.y;this.z=at.z;
   }
  }

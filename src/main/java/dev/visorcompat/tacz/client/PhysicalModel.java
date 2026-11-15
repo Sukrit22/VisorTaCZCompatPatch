@@ -77,13 +77,15 @@ public final class PhysicalModel implements AutoCloseable {
                 if(profile.bolt()){if(dev.visorcompat.tacz.physical.ActionState.lifted(stack)||dev.visorcompat.tacz.physical.BoltState.open(stack))slide.zRot+=1.05f;else pull=0;}
                 if(dev.visorcompat.tacz.physical.ActionState.locked(stack)){
                     if(profile.smg()){pull=java.lang.Math.max(pull,.055f);slide.zRot+=.6f;}
-                    else if(bolt!=null)bolt.offsetZ+=.055f/(profile.scale()*calibration.gunScale());
+                    else if(bolt!=null)bolt.offsetZ+=.055f*DescriptorProfiles.details(profile).boltRatio()/(profile.scale()*calibration.gunScale());
                     else pull=java.lang.Math.max(pull,.055f);
                 }
                 if(jam.remaining()>0 && (jam.kind()==dev.visorcompat.tacz.physical.Jam.Kind.STOVEPIPE || jam.kind()==dev.visorcompat.tacz.physical.Jam.Kind.DOUBLE_FEED))
-                    {if(bolt!=null)bolt.offsetZ+=java.lang.Math.max(0,.025f-pull)/(profile.scale()*calibration.gunScale());
+                    {if(bolt!=null)bolt.offsetZ+=java.lang.Math.max(0,.025f-pull)*DescriptorProfiles.details(profile).boltRatio()/(profile.scale()*calibration.gunScale());
                     else pull=java.lang.Math.max(pull,.025f);}
-                if((profile.smg()||profile.mechanism()==WeaponProfile.Mechanism.SPAS12)&&bolt!=null)bolt.offsetZ+=pull/(profile.scale()*calibration.gunScale());
+                // A child bolt already inherits the charging handle/pump translation.
+                // Sibling parts need their own displacement (AA-12 uses the opposite direction).
+                ActionMotion.follow(slide,bolt,pull/(profile.scale()*calibration.gunScale()),DescriptorProfiles.details(profile).boltRatio());
                 slide.offsetZ+=pull/(profile.scale()*calibration.gunScale());
             }
         }

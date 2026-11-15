@@ -18,6 +18,7 @@
     "HipFireMixin"
   ],
   "client": [
+    "LegacyGunSoundMixin",
     "AdsSprintMixin",
     "OffhandUseMixin",
     "LocalAttachmentDetailMixin",
@@ -26,7 +27,6 @@
     "CameraMixin",
     "DesktopGunRenderMixin",
     "TracerMixin",
-    "MuzzleFlashMixin",
     "PhysicalReloadMixin",
     "AutoAdsMixin",
     "RemoteGunMixin",

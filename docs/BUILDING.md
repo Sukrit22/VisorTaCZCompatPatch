@@ -46,10 +46,10 @@ Each project pins its own Minecraft, loader, Visor and TaCZ compile dependencies
 
 | Project | Loader development target | Visor Modrinth version ID | TaCZ Modrinth version ID |
 | --- | --- | --- | --- |
-| `forge/1.20.1` | Forge 47.4.0 / MC1.20.1 | `gqaBzrB7` by default; `-PvisorVersion=<id>` override | `yOVIzIJR` (TaCZ) |
-| `fabric/1.20.1` | Loader 0.17.2 / MC1.20.1 | `ehts00JW` | `c6sOTqZb` (Refabricated) |
-| `fabric/1.21.1` | Loader 0.17.2 / MC1.21.1 | `7i7UZxdB` | `veM4XOhW` (Refabricated) |
-| `neoforge/1.21.1` | NeoForge 21.1.219 / MC1.21.1 | `TfyC5Jd9` | `62q6mB5Q` (NeoForge TaCZ port) |
+| `forge/1.20.1` | Forge 47.4.0 / MC1.20.1 | `gqaBzrB7` by default; `-PvisorVersion=<id>` override | `QGCbNkTy` (TaCZ) |
+| `fabric/1.20.1` | Loader 0.17.2 / MC1.20.1 | `ehts00JW` | `wbgtQwxp` (Refabricated) |
+| `fabric/1.21.1` | Loader 0.17.2 / MC1.21.1 | `7i7UZxdB` | `eoaP2iB9` (Refabricated) |
+| `neoforge/1.21.1` | NeoForge 21.1.219 / MC1.21.1 | `TfyC5Jd9` | `O2Pfsh6w` (official NeoForge TaCZ) |
 
 Dependency declarations are build inputs; accepted installed versions are separately declared in `mods.toml`, `fabric.mod.json`, or `neoforge.mods.toml`. Widening metadata alone does not establish API compatibility. Fabric also needs Fabric API and Forge Config API Port. Java targets are 17 for 1.20.1 and 21 for 1.21.1.
 

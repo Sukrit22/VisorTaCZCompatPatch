@@ -73,9 +73,19 @@ tasks.register('generateSharedSources') {
    }
    // Each TaCZ model declares one render method. Avoid unmapped Mojang class
    // names in descriptor selectors while retaining TaCZ's stable method name.
-   if(source.name in ['GunStencilMixin.java','OpticLensMixin.java'])
+   if(source.name == 'OpticLensMixin.java')
     s=s.replaceAll(/method="render\([^"]+"/, 'method="render"')
    s=minecraft121Transform(s,source)
+   if(source.name == 'GunStencilMixin.java') {
+    def named=s
+    ['com/mojang/blaze3d/vertex/PoseStack':'net/minecraft/class_4587',
+     'net/minecraft/world/item/ItemStack':'net/minecraft/class_1799',
+     'net/minecraft/world/item/ItemDisplayContext':'net/minecraft/class_811',
+     'net/minecraft/client/renderer/RenderType':'net/minecraft/class_1921',
+     'net/minecraft/client/renderer/MultiBufferSource':'net/minecraft/class_4597'].each { from,to -> s=s.replace('L'+from+';', 'L'+to+';') }
+    def namedSelector=(named =~ /method="([^"]+)"/)[0][1]
+    s=s.replaceAll(/method="([^"]+)"/) { all,intermediary -> 'method={"'+namedSelector+'","'+intermediary+'"}' }
+   }
    def rel=file('../../src/main/java').toPath().relativize(source.toPath()).toString()
    def target=new File(out,rel);target.parentFile.mkdirs();target.setText(s,'UTF-8')
   }

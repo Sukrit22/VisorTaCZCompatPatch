@@ -30,8 +30,8 @@ public final class FabricEvents {
    var event=new TickEvent.ClientTickEvent(TickEvent.Phase.END);
    CompatSettings.tick(event);ClientRecoil.tick(event);AutoAds.tick(event);
   });
-  cn.sh1rocu.simplebedrockmodel.api.event.RenderTickEvent.EVENT.register(nativeEvent->{
-   if(nativeEvent.phase!=cn.sh1rocu.simplebedrockmodel.api.event.RenderTickEvent.Phase.START)return;
+  cn.sh1rocu.simplebedrockmodel.api.event.RenderFrameEvent.EVENT.register(nativeEvent->{
+   if(nativeEvent.phase!=cn.sh1rocu.simplebedrockmodel.api.event.RenderFrameEvent.Phase.START)return;
    var event=new TickEvent.RenderTickEvent(TickEvent.Phase.START,nativeEvent.getTimer().getGameTimeDeltaPartialTick(false));
    MagazineEffects.frame(event);if(controls!=null)controls.animation(event);
   });

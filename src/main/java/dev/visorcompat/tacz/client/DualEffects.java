@@ -36,7 +36,9 @@ public final class DualEffects {
   var gun=IGun.getIGunOrNull(stack);if(gun==null)return;
   var profile=Profiles.get(stack);var pistol=PistolProfiles.get(profile);
   String asset=pistol==null&&gun.getGunId(stack).toString().equals("tacz:glock_17")?DualShotFeedback.glockSound(cue):pistol==null?"":pistol.sound(cue);
-  if(!asset.isEmpty())DualSounds.play(slot,new net.minecraft.resources.ResourceLocation(gun.getGunId(stack).getNamespace(),asset),.8f,1,12);
+  var configured=DescriptorProfiles.sound(profile,cue);
+  if(configured!=null){if(!configured.isEmpty())DualSounds.play(slot,new net.minecraft.resources.ResourceLocation(configured),.8f,1,12);}
+  else if(!asset.isEmpty())DualSounds.play(slot,new net.minecraft.resources.ResourceLocation(gun.getGunId(stack).getNamespace(),asset),.8f,1,12);
   if(cue==3)eject(slot,stack,true);
  }
  private static void eject(int slot,ItemStack stack,boolean live){

@@ -46,3 +46,22 @@ Both use TaCZ's closed-bolt, native-round magazine reload contract. Their own `b
 ## Focused tests
 
 See the alpha.9 section of [the consolidated checklist](TESTING-CURRENT.md). For a custom profile, copy Glock's complete block, edit the rack zone by 1 cm, install identical files on both sides and restart. Confirm acquisition and guide move together. Test mismatched/invalid files on a spare instance: expect a message and paused compatibility, with no Java fallback. Restore matching files and restart.
+
+
+## TaCZ 1.2 audited profiles (0.14.2-alpha.2)
+
+`joints.action.bolt_ratio` optionally sets the signed displacement of a separate bolt relative to a manual action stroke (default `1`, range -4 to 4). Child bolts inherit parent movement and do not receive a second displacement. It does not change server ammo or the gesture threshold. AA-12 uses `charge_handle` plus a reverse-moving bolt indicator.
+
+`visual.shot_travel` is now signed, bounded to ±0.3 metres at the profile model scale. `visual.shot_followers = [{node = "charge_handle", travel = 0.01875}]` gives a separate part its own shot excursion. Do not list a parent and its child: inherited translation would double the motion. `visual.shot_modes = ["BURST"]` limits the visual cycle to native TaCZ modes; SPAS uses BURST for self-loading and SEMI for pump mode. Missing new fields preserve previous single-part behavior.
+
+Optional `[guns.sounds]` contains full resource IDs for `mag_out`, `mag_in`, `action_back`, `action_close`, and `eject`. These are short physical-action cues, not entire reload tracks. An absent section preserves legacy selection. With a section present, omitted/empty cues stay silent. Shared pack folders are allowed (e.g. AK74M uses AK47 clips). No resources are copied into the addon.
+
+An absent physical part can use `node = ""` for button profiles or a non-detachable magazine mechanism. Physical action nodes and detachable-magazine nodes remain mandatory. Correct part names in a button profile do **not** enable physical handling; the mechanism still controls capability.
+
+Audit the actual pack without changing it or personal calibration:
+
+```powershell
+python scripts/audit-gun-profiles.py path/to/tacz_default_gun.zip
+```
+
+See [the review and test notes](PROFILE-REVIEW-1.2.md). Config overrides in `config/visor_tacz/profiles/*.toml` replace the entire matching gun entry and still take precedence over bundled fixes. Merge your customized entry explicitly; do not delete calibration JSON. Restart after changing descriptor TOML.

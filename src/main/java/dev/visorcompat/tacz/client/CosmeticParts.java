@@ -12,7 +12,11 @@ final class CosmeticParts implements AutoCloseable {
     private static BedrockPart find(BedrockPart p,String n){if(p==null)return null;if(n.equals(p.name))return p;for(var c:p.children){var found=find(c,n);if(found!=null)return found;}return null;}
     CosmeticParts(BedrockPart root,WeaponProfile profile,ItemStack stack,Calibration calibration,boolean physical,boolean manualBusy){
         var data=DescriptorProfiles.details(profile);if(data==null)return;var v=data.visual();var gun=IGun.getIGunOrNull(stack);if(gun==null)return;
-        if(!manualBusy&&!dev.visorcompat.tacz.physical.ManualCycle.enabled(stack)){var shot=remember(root,v.shotNode());if(shot!=null)shot.offsetZ+=(DualClient.active()?DualEffects.cycle(stack):ShotVisual.cycle(stack))*v.shotTravel()/(profile.scale()*calibration.gunScale());}
+        if(!manualBusy&&!dev.visorcompat.tacz.physical.ManualCycle.enabled(stack)&&(v.shotModes().isEmpty()||v.shotModes().contains(gun.getFireMode(stack).name()))){
+            float cycle=(DualClient.active()?DualEffects.cycle(stack):ShotVisual.cycle(stack))/(profile.scale()*calibration.gunScale());
+            var shot=remember(root,v.shotNode());if(shot!=null)shot.offsetZ+=cycle*v.shotTravel();
+            for(var motion:v.shotFollowers()){var part=remember(root,motion.node());if(part!=null)part.offsetZ+=cycle*motion.travel();}
+        }
         if(physical&&dev.visorcompat.tacz.physical.CzMagazine.applies(stack)){
             for(String name:List.of("additional_magazine","mag_standard2")){
                 var part=remember(root,name);if(part!=null)part.visible=dev.visorcompat.tacz.physical.CzMagazine.attached(stack);

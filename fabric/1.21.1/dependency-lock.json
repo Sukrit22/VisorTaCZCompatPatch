@@ -14,11 +14,11 @@
     },
     {
       "project": "1j76DVHU",
-      "version": "1.21.1-0.7.1-forge1.1.8-hotfix2",
-      "version_id": "veM4XOhW",
-      "url": "https://cdn.modrinth.com/data/1j76DVHU/versions/veM4XOhW/TACZ-Refabricated-1.21.1-0.7.1-forge1.1.8-hotfix2.jar",
-      "sha512": "f3ef350f67cd251af59c6b27e4ca3349f8840d763e13b6f2662dea868428fa9ba17b29c2e8e2d56f991055e41b04ad61b51bc63b968331a03f37baf5a63278fd",
-      "sha1": "60dfc215c91dc541364be075d5c106cea9363e77"
+      "version": "1.0.0-neo1.2.0+mc1.21.1",
+      "version_id": "eoaP2iB9",
+      "url": "https://cdn.modrinth.com/data/1j76DVHU/versions/eoaP2iB9/tacz-refabricated-1.0.0-neo1.2.0%2Bmc1.21.1.jar",
+      "sha512": "51214dd811c52afa9dd1226e91b619293f6529fa7aa634068a90f08367a047f61b13c118558fba964be07e6d0dd13779c1240ddae9f797aa4cab584b569fc704",
+      "sha1": "b7dc9e036be80b43eb47a3bd69013262433eceb9"
     },
     {
       "project": "ohNO6lps",

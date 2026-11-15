@@ -22,7 +22,7 @@ ordering="AFTER"
 [[dependencies.visor_tacz]]
 modId="tacz"
 type="required"
-versionRange="[1.1.8-hotfix-r7,)"
+versionRange="[1.2.0]"
 ordering="AFTER"
 [[mixins]]
 config="visor_tacz.mixins.json"

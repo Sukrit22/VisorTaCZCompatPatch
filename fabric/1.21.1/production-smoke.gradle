@@ -7,7 +7,7 @@ configurations {
 dependencies {
  productionMods 'net.fabricmc.fabric-api:fabric-api:0.116.17+1.21.1'
  productionMods 'maven.modrinth:visor:7i7UZxdB'
- productionMods "maven.modrinth:tacz-refabricated:${providers.gradleProperty('smokeTacz').getOrElse('veM4XOhW')}"
+ productionMods "maven.modrinth:tacz-refabricated:${providers.gradleProperty('smokeTacz').getOrElse('eoaP2iB9')}"
  productionMods 'maven.modrinth:forge-config-api-port:N5qzq0XV'
  productionMappings 'net.fabricmc:intermediary:1.21.1:v2'
 }

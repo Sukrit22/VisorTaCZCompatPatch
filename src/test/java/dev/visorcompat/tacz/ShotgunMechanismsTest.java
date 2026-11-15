@@ -23,6 +23,6 @@ class ShotgunMechanismsTest {
         var guns=DescriptorProfiles.parse(text);
         var spas=guns.get("tacz:spas_12");assertTrue(spas.profile().pump());assertTrue(spas.profile().selector());assertEquals("pump",spas.rack());assertEquals("bolt2",spas.bolt());
         var benelli=guns.get("tacz:m1014");assertEquals(WeaponProfile.Mechanism.TUBE_AUTO,benelli.profile().mechanism());assertEquals("Bolt",benelli.rack());assertFalse(benelli.profile().selector());
-        var aa=guns.get("tacz:aa12");assertEquals(WeaponProfile.Mechanism.MAGAZINE,aa.profile().mechanism());assertEquals("bolt",aa.rack());assertEquals("magazine",aa.magazine());
+        var aa=guns.get("tacz:aa12");assertEquals(WeaponProfile.Mechanism.MAGAZINE,aa.profile().mechanism());assertEquals("charge_handle",aa.rack());assertEquals("bolt",aa.bolt());assertEquals("magazine",aa.magazine());
     }
 }

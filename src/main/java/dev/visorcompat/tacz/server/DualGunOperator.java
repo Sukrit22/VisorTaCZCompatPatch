@@ -27,6 +27,7 @@ public final class DualGunOperator implements IGunOperator {
     private final LivingEntityReload reload;
     private final LivingEntityBolt bolt;
     private final LivingEntityAmmoCheck ammo;
+    private final LivingEntityUnload unload;
     private ReloadState reloadState = new ReloadState();
     private boolean closed;
     private final DualCharge charge = new DualCharge();
@@ -47,6 +48,7 @@ public final class DualGunOperator implements IGunOperator {
         reload = new LivingEntityReload(player, data, draw, shoot);
         bolt = new LivingEntityBolt(data, player, draw, shoot);
         ammo = new LivingEntityAmmoCheck(player);
+        unload = new LivingEntityUnload(player, data, draw, shoot, new LivingEntityMelee(player, data, draw));
         if (initializeDraw) scoped(() -> { draw.draw(() -> weapon); return null; });
     }
 
@@ -196,6 +198,7 @@ public final class DualGunOperator implements IGunOperator {
     @Override public void draw(Supplier<ItemStack> ignored) { initialData(); }
     @Override public void bolt() { if (valid()) scoped(() -> { bolt.bolt(); return null; }); }
     @Override public void reload() { if (valid()) scoped(() -> { reload.reload(); return null; }); }
+    @Override public void unloadAmmo() { if (valid()) scoped(() -> { unload.unloadAmmo(); return null; }); }
     @Override public void cancelReload() { scoped(() -> { reload.cancelReload(); return null; }); }
     @Override public void fireSelect() { if (valid()) scoped(() -> { new LivingEntityFireSelect(player, data).fireSelect(); return null; }); }
     @Override public void zoom() { }

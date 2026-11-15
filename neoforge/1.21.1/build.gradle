@@ -1,11 +1,11 @@
 plugins { id 'net.neoforged.moddev' version '2.0.141' }
 group='dev.visorcompat.tacz'
-version='0.14.0-alpha.10+1.21.1'
+version = '0.14.2-alpha.2'
 base.archivesName='visor-compat-tacz-1.21.1-neoforge'
 java.toolchain.languageVersion=JavaLanguageVersion.of(21)
 repositories { mavenCentral(); maven { url='https://api.modrinth.com/maven' } }
 configurations { upstreamBundles { transitive=false } }
-dependencies { upstreamBundles 'maven.modrinth:tacz-1.21.1:62q6mB5Q' }
+dependencies { upstreamBundles 'maven.modrinth:timeless-and-classics-zero:O2Pfsh6w' }
 def nestedDirectory=layout.buildDirectory.dir('upstream-runtime')
 tasks.register('extractUpstreamLibraries') {
  inputs.files(configurations.upstreamBundles); outputs.dir(nestedDirectory)
@@ -32,7 +32,7 @@ neoForge {
 }
 dependencies {
  implementation 'maven.modrinth:visor:TfyC5Jd9'
- implementation 'maven.modrinth:tacz-1.21.1:62q6mB5Q'
+ implementation 'maven.modrinth:timeless-and-classics-zero:O2Pfsh6w'
  compileOnly 'org.apache.commons:commons-math3:3.6.1'
  compileOnly fileTree(nestedDirectory) { include '*.jar' }
  testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'

@@ -452,3 +452,131 @@ pack = "base"
 name = "vector45"
 calibrated = false
 notes = ""
+
+[[guns]]
+id = "tacz:ak12"
+display = "tacz:default"
+pack = "base"
+name = "ak12"
+calibrated = false
+notes = "TaCZ 1.2 model mapping reviewed; VR calibration pending. Physical template candidate."
+
+[[guns]]
+id = "tacz:ak74m"
+display = "tacz:default"
+pack = "base"
+name = "ak74m"
+calibrated = false
+notes = "TaCZ 1.2 model mapping reviewed; VR calibration pending. Physical template candidate."
+
+[[guns]]
+id = "tacz:hcar"
+display = "tacz:default"
+pack = "base"
+name = "hcar"
+calibrated = false
+notes = "TaCZ 1.2 model mapping reviewed; VR calibration pending. Physical template candidate."
+
+[[guns]]
+id = "tacz:hk_mp7a1"
+display = "tacz:default"
+pack = "base"
+name = "hk_mp7a1"
+calibrated = false
+notes = "TaCZ 1.2 model mapping reviewed; VR calibration pending. Physical template candidate."
+
+[[guns]]
+id = "tacz:hm50b"
+display = "tacz:default"
+pack = "base"
+name = "hm50b"
+calibrated = false
+notes = "TaCZ 1.2 model mapping reviewed; VR calibration pending. Button only: distinct mechanism requires implementation."
+
+[[guns]]
+id = "tacz:m1866"
+display = "tacz:default"
+pack = "base"
+name = "m1866"
+calibrated = false
+notes = "TaCZ 1.2 model mapping reviewed; VR calibration pending. Button only: distinct mechanism requires implementation."
+
+[[guns]]
+id = "tacz:m1897"
+display = "tacz:default"
+pack = "base"
+name = "m1897"
+calibrated = false
+notes = "TaCZ 1.2 model mapping reviewed; VR calibration pending. Physical template candidate."
+
+[[guns]]
+id = "tacz:mcx_spear_lt"
+display = "tacz:default"
+pack = "base"
+name = "mcx_spear_lt"
+calibrated = false
+notes = "TaCZ 1.2 model mapping reviewed; VR calibration pending. Physical template candidate."
+
+[[guns]]
+id = "tacz:mk18"
+display = "tacz:default"
+pack = "base"
+name = "mk18"
+calibrated = false
+notes = "TaCZ 1.2 model mapping reviewed; VR calibration pending. Physical template candidate."
+
+[[guns]]
+id = "tacz:mrad"
+display = "tacz:default"
+pack = "base"
+name = "mrad"
+calibrated = false
+notes = "TaCZ 1.2 model mapping reviewed; VR calibration pending. Button only: distinct mechanism requires implementation."
+
+[[guns]]
+id = "tacz:pkm"
+display = "tacz:default"
+pack = "base"
+name = "pkm"
+calibrated = false
+notes = "TaCZ 1.2 model mapping reviewed; VR calibration pending. Button only: distinct mechanism requires implementation."
+
+[[guns]]
+id = "tacz:qr_24"
+display = "tacz:default"
+pack = "base"
+name = "qr_24"
+calibrated = false
+notes = "TaCZ 1.2 model mapping reviewed; VR calibration pending. Physical template candidate."
+
+[[guns]]
+id = "tacz:scar_mk20"
+display = "tacz:default"
+pack = "base"
+name = "scar_mk20"
+calibrated = false
+notes = "TaCZ 1.2 model mapping reviewed; VR calibration pending. Physical template candidate."
+
+[[guns]]
+id = "tacz:svd"
+display = "tacz:default"
+pack = "base"
+name = "svd"
+calibrated = false
+notes = "TaCZ 1.2 model mapping reviewed; VR calibration pending. Physical template candidate."
+
+[[guns]]
+id = "tacz:tec_9"
+display = "tacz:default"
+pack = "base"
+name = "tec_9"
+calibrated = false
+notes = "TaCZ 1.2 model mapping reviewed; VR calibration pending. Physical open-bolt template candidate."
+
+[[guns]]
+id = "tacz:urgi"
+display = "tacz:default"
+pack = "base"
+name = "urgi"
+calibrated = false
+notes = "TaCZ 1.2 model mapping reviewed; VR calibration pending. Physical template candidate."

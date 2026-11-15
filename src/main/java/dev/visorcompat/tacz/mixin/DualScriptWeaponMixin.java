@@ -5,7 +5,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.*;
-@Mixin(value=ModernKineticGunScriptAPI.class,remap=false)
+@Mixin(value={ModernKineticGunScriptAPI.class,com.tacz.guns.entity.shooter.LivingEntityUnload.class},remap=false)
 public abstract class DualScriptWeaponMixin {
  // The native guard reads the stack twice (identity and emptiness). Group counts
  // matched call sites, not mapping aliases, so do not cap it at one invocation.

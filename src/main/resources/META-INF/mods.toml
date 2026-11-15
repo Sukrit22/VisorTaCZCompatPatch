@@ -27,6 +27,6 @@ side="BOTH"
 [[dependencies.visor_tacz]]
 modId="tacz"
 mandatory=true
-versionRange="[1.1.8-hotfix],[1.1.8-hotfix2]"
+versionRange="[1.2.0]"
 ordering="AFTER"
 side="BOTH"

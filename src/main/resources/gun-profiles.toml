@@ -52,7 +52,7 @@ action_close = "b93r_inspect_slide_release"
 
 [guns.visual]
 shot_node = "upper"
-shot_travel = 0.055
+shot_travel = 0.075
 
 [[guns]]
 id = "tacz:cz75"
@@ -104,7 +104,7 @@ action_close = "cz75_inspect_sliderelease"
 
 [guns.visual]
 shot_node = "slide"
-shot_travel = 0.055
+shot_travel = 0.07875
 
 [[guns]]
 id = "tacz:deagle"
@@ -156,7 +156,7 @@ action_close = "deagle_inspect_slideclose"
 
 [guns.visual]
 shot_node = "slide2"
-shot_travel = 0.055
+shot_travel = 0.1125
 
 [[guns]]
 id = "tacz:deagle_golden"
@@ -208,7 +208,7 @@ action_close = "deagle_inspect_slideclose"
 
 [guns.visual]
 shot_node = "slide2"
-shot_travel = 0.055
+shot_travel = 0.1125
 
 [[guns]]
 id = "tacz:glock_17"
@@ -247,7 +247,7 @@ position = [0.00076171875, 0.04671875, 0.0690625]
 
 [guns.visual]
 shot_node = "slide"
-shot_travel = 0.055
+shot_travel = 0.065
 
 [[guns]]
 id = "tacz:hk_mk23"
@@ -300,7 +300,7 @@ action_close = "m1911_reload_empty_chamber"
 
 [guns.visual]
 shot_node = "slide"
-shot_travel = 0.055
+shot_travel = 0.0796875
 
 [[guns]]
 id = "tacz:hk_mp5a5"
@@ -339,7 +339,7 @@ position = [0.0075, 0.12843749999999998, -0.1378125]
 
 [guns.visual]
 shot_node = "bolt"
-shot_travel = 0.055
+shot_travel = 0.1125
 
 [[guns]]
 id = "tacz:lonetrail"
@@ -354,7 +354,7 @@ grip_pixels = [0.0, 6.63125, 2.74375]
 muzzle_pixels = [0.00863, 8.11642, -12.24776]
 support_distance = 0.0
 [guns.parts.magazine]
-node = "magazine"
+node = ""
 [guns.parts.action]
 node = "breach2"
 [guns.parts.bolt]
@@ -438,7 +438,7 @@ action_close = "m1911_reload_empty_chamber"
 
 [guns.visual]
 shot_node = "slide"
-shot_travel = 0.055
+shot_travel = 0.0890625
 
 [[guns]]
 id = "tacz:m4a1"
@@ -477,7 +477,7 @@ position = [0.008125, 0.11679687500000002, -0.13710937500000003]
 
 [guns.visual]
 shot_node = "m4a1_bolt"
-shot_travel = 0.055
+shot_travel = 0.1777401
 
 [[guns]]
 id = "tacz:m700"
@@ -494,7 +494,7 @@ support_distance = 0.3
 [guns.parts.magazine]
 node = "magazine"
 [guns.parts.action]
-node = "bolt"
+node = "bullet_and_bolt"
 [guns.parts.bolt]
 node = ""
 [guns.joints.action]
@@ -597,7 +597,7 @@ action_close = "m9a4_inspect_slide"
 
 [guns.visual]
 shot_node = "upper"
-shot_travel = 0.055
+shot_travel = 0.08625
 
 [[guns]]
 id = "tacz:p320"
@@ -649,7 +649,7 @@ action_close = "p320_inspect_sliderelease"
 
 [guns.visual]
 shot_node = "slide"
-shot_travel = 0.055
+shot_travel = 0.09375
 
 [[guns]]
 id = "tacz:rhino357"
@@ -664,7 +664,7 @@ grip_pixels = [0.0, 8.0125, 2.8]
 muzzle_pixels = [0.0, 9.02589, -5.5625]
 support_distance = 0.0
 [guns.parts.magazine]
-node = "magazine"
+node = ""
 [guns.parts.action]
 node = "cylinder_crane"
 [guns.parts.bolt]
@@ -745,7 +745,7 @@ position = [0.005625, 0.08015624999999998, -0.1246875]
 
 [guns.visual]
 shot_node = "bolt"
-shot_travel = 0.055
+shot_travel = 0.225
 
 [[guns]]
 id = "tacz:scar_l"
@@ -784,7 +784,7 @@ position = [0.005625, 0.08953124999999995, -0.11062500000000003]
 
 [guns.visual]
 shot_node = "bolt"
-shot_travel = 0.055
+shot_travel = 0.225
 
 [[guns]]
 id = "tacz:taurus500"
@@ -799,7 +799,7 @@ grip_pixels = [0.0, 8.1, 5.5875]
 muzzle_pixels = [0.0, 10.75, -9.53125]
 support_distance = 0.0
 [guns.parts.magazine]
-node = "magazine"
+node = ""
 [guns.parts.action]
 node = "cranecylinder"
 [guns.parts.bolt]
@@ -856,7 +856,7 @@ grip_pixels = [0.0, 4.225, 1.00938]
 muzzle_pixels = [0.0, 5.9875, -5.3125]
 support_distance = 0.0
 [guns.parts.magazine]
-node = "magazine"
+node = ""
 [guns.parts.action]
 node = "cylinder_group"
 [guns.parts.bolt]
@@ -949,7 +949,7 @@ action_close = "timeless50_inspect_slidepull"
 
 [guns.visual]
 shot_node = "slide"
-shot_travel = 0.055
+shot_travel = 0.075
 
 [[guns]]
 id = "tacz:aa12"
@@ -966,16 +966,18 @@ support_distance = 0.3
 [guns.parts.magazine]
 node = "magazine"
 [guns.parts.action]
-node = "bolt"
+node = "charge_handle"
 [guns.parts.bolt]
-node = ""
+node = "bolt"
 [guns.joints.action]
 kind = "template"
 frame = "gun"
+# Native AA-12 bolt indicator moves opposite to its top charging handle.
+bolt_ratio = -0.5707143
 [guns.zones.magazine]
 position = [-0.0, -0.08, -0.24]
 [guns.zones.rack]
-position = [0, 0.126, -0.008]
+position = [0, 0.2015625, -0.3046875]
 [guns.zones.support]
 position = [0, 0, -0.3]
 [guns.zones.release]
@@ -986,9 +988,17 @@ position = [0.04, 0.03, 0]
 position = [0.0178125, 0.11812499999999994, -0.1640625]
 [guns.visual]
 shot_node = "bolt"
-shot_travel = 0.055
+shot_travel = -0.1284375
+shot_followers = [{node = "charge_handle", travel = 0.01875}]
 
 
+
+# Short handling clips; AA-12/UMP use explicit fallback clips where the pack only supplies full tracks.
+[guns.sounds]
+mag_out = "tacz:m4a1/m4a1_reload_tactical_magout"
+mag_in = "tacz:m4a1/m4a1_reload_tactical_magin"
+action_back = "tacz:m4a1/m4a1_inspect_rackon"
+action_close = "tacz:m4a1/m4a1_inspect_rackrelase"
 [[guns]]
 id = "tacz:ai_awp"
 display = "tacz:default"
@@ -1002,11 +1012,11 @@ grip_pixels = [0.125, 5.05, 7.175]
 muzzle_pixels = [0, 7.75, -33.225]
 support_distance = 0.3
 [guns.parts.magazine]
-node = "magazine"
+node = "magzine"
 [guns.parts.action]
-node = "slide"
+node = "bolt_group"
 [guns.parts.bolt]
-node = ""
+node = "bolt_rotate"
 [guns.joints.action]
 kind = "template"
 frame = "gun"
@@ -1063,8 +1073,15 @@ position = [0.01875, 0.0871875, -0.195]
 
 [guns.visual]
 shot_node = "bolt"
-shot_travel = 0.055
+shot_travel = 0.225
 
+
+# Short handling clips; AA-12/UMP use explicit fallback clips where the pack only supplies full tracks.
+[guns.sounds]
+mag_out = "tacz:ak47/ak47_reload_magout"
+mag_in = "tacz:ak47/ak47_reload_magin"
+action_back = "tacz:ak47/ak47_inspect_pull"
+action_close = "tacz:ak47/ak47_inspect_empty_release"
 [[guns]]
 id = "tacz:aug"
 display = "tacz:default"
@@ -1080,9 +1097,9 @@ support_distance = 0.3
 [guns.parts.magazine]
 node = "magazine"
 [guns.parts.action]
-node = "slide"
+node = "aug_charge"
 [guns.parts.bolt]
-node = ""
+node = "aug_bolt"
 [guns.joints.action]
 kind = "template"
 frame = "gun"
@@ -1112,7 +1129,7 @@ grip_pixels = [0, 6.525, 7.65]
 muzzle_pixels = [0, 9.125, -15]
 support_distance = 0.3
 [guns.parts.magazine]
-node = "magazine"
+node = ""
 [guns.parts.action]
 node = "front_part"
 [guns.parts.bolt]
@@ -1158,7 +1175,7 @@ grip_pixels = [0, 6.525, 7.65]
 muzzle_pixels = [0, 9.125, -15]
 support_distance = 0.3
 [guns.parts.magazine]
-node = "magazine"
+node = ""
 [guns.parts.action]
 node = "front_part"
 [guns.parts.bolt]
@@ -1204,11 +1221,11 @@ grip_pixels = [0, 7, 7]
 muzzle_pixels = [0, 10.375, -23]
 support_distance = 0.3
 [guns.parts.magazine]
-node = "magazine"
+node = "mag"
 [guns.parts.action]
-node = "slide"
+node = "charge"
 [guns.parts.bolt]
-node = ""
+node = "bolt"
 [guns.joints.action]
 kind = "template"
 frame = "gun"
@@ -1240,9 +1257,9 @@ support_distance = 0.3
 [guns.parts.magazine]
 node = "magazine"
 [guns.parts.action]
-node = "slide"
+node = "pull_handle"
 [guns.parts.bolt]
-node = ""
+node = "bolt"
 [guns.joints.action]
 kind = "template"
 frame = "gun"
@@ -1274,7 +1291,7 @@ support_distance = 0.3
 [guns.parts.magazine]
 node = "magazine"
 [guns.parts.action]
-node = "slide"
+node = "pull_handle"
 [guns.parts.bolt]
 node = ""
 [guns.joints.action]
@@ -1308,9 +1325,9 @@ support_distance = 0.3
 [guns.parts.magazine]
 node = "magazine"
 [guns.parts.action]
-node = "slide"
+node = "charge_handle"
 [guns.parts.bolt]
-node = ""
+node = "416d_bolt"
 [guns.joints.action]
 kind = "template"
 frame = "gun"
@@ -1342,9 +1359,9 @@ support_distance = 0.3
 [guns.parts.magazine]
 node = "magazine"
 [guns.parts.action]
-node = "slide"
+node = "pull"
 [guns.parts.bolt]
-node = ""
+node = "G3_bolt"
 [guns.joints.action]
 kind = "template"
 frame = "gun"
@@ -1376,7 +1393,7 @@ support_distance = 0.3
 [guns.parts.magazine]
 node = "magazine"
 [guns.parts.action]
-node = "slide"
+node = "bolt"
 [guns.parts.bolt]
 node = ""
 [guns.joints.action]
@@ -1430,7 +1447,7 @@ position = [0.04, 0.03, 0]
 position = [0.01875, 0.09656250000000001, -0.30328125]
 [guns.visual]
 shot_node = "Bolt"
-shot_travel = 0.055
+shot_travel = 0.1875
 hidden = ["bullet_and_hand", "bullet"]
 
 
@@ -1449,7 +1466,7 @@ support_distance = 0.3
 [guns.parts.magazine]
 node = "magazine"
 [guns.parts.action]
-node = "slide"
+node = "bolt"
 [guns.parts.bolt]
 node = ""
 [guns.joints.action]
@@ -1483,9 +1500,9 @@ support_distance = 0.3
 [guns.parts.magazine]
 node = "magazine"
 [guns.parts.action]
-node = "slide"
+node = "pull2"
 [guns.parts.bolt]
-node = ""
+node = "bolt"
 [guns.joints.action]
 kind = "template"
 frame = "gun"
@@ -1517,9 +1534,9 @@ support_distance = 0.3
 [guns.parts.magazine]
 node = "magazine"
 [guns.parts.action]
-node = "slide"
+node = "pull2"
 [guns.parts.bolt]
-node = ""
+node = "bolt"
 [guns.joints.action]
 kind = "template"
 frame = "gun"
@@ -1551,7 +1568,7 @@ support_distance = 0.3
 [guns.parts.magazine]
 node = "magazine"
 [guns.parts.action]
-node = "slide"
+node = "pull_handle"
 [guns.parts.bolt]
 node = ""
 [guns.joints.action]
@@ -1583,9 +1600,9 @@ grip_pixels = [0.025, 7.975, 0.65]
 muzzle_pixels = [0, 9.875, -10.5]
 support_distance = 0.3
 [guns.parts.magazine]
-node = "magazine"
+node = ""
 [guns.parts.action]
-node = "slide"
+node = "barrel"
 [guns.parts.bolt]
 node = ""
 [guns.joints.action]
@@ -1619,7 +1636,7 @@ support_distance = 0.3
 [guns.parts.magazine]
 node = "magazine"
 [guns.parts.action]
-node = "slide"
+node = "m95_bolt"
 [guns.parts.bolt]
 node = ""
 [guns.joints.action]
@@ -1651,9 +1668,9 @@ grip_pixels = [0, 3.825, 23.425]
 muzzle_pixels = [0, 2.5, -24]
 support_distance = 0.3
 [guns.parts.magazine]
-node = "magazine"
+node = "mag2"
 [guns.parts.action]
-node = "slide"
+node = "barrel_rotate"
 [guns.parts.bolt]
 node = ""
 [guns.joints.action]
@@ -1687,9 +1704,9 @@ support_distance = 0.3
 [guns.parts.magazine]
 node = "magazine"
 [guns.parts.action]
-node = "slide"
+node = "charger"
 [guns.parts.bolt]
-node = ""
+node = "bolt2"
 [guns.joints.action]
 kind = "template"
 frame = "gun"
@@ -1719,9 +1736,9 @@ grip_pixels = [0, 7.25, 3]
 muzzle_pixels = [0, 8, -5.75]
 support_distance = 0.3
 [guns.parts.magazine]
-node = "magazine"
+node = "p90_mag_standard"
 [guns.parts.action]
-node = "slide"
+node = "pull"
 [guns.parts.bolt]
 node = ""
 [guns.joints.action]
@@ -1755,7 +1772,7 @@ support_distance = 0.3
 [guns.parts.magazine]
 node = "magazine"
 [guns.parts.action]
-node = "slide"
+node = "bolt"
 [guns.parts.bolt]
 node = ""
 [guns.joints.action]
@@ -1789,7 +1806,7 @@ support_distance = 0.3
 [guns.parts.magazine]
 node = "magazine"
 [guns.parts.action]
-node = "slide"
+node = "bolt_group"
 [guns.parts.bolt]
 node = ""
 [guns.joints.action]
@@ -1821,9 +1838,9 @@ grip_pixels = [0, 3.575, -1.85]
 muzzle_pixels = [0, 5.45313, -8.15]
 support_distance = 0.3
 [guns.parts.magazine]
-node = "magazine"
+node = ""
 [guns.parts.action]
-node = "slide"
+node = ""
 [guns.parts.bolt]
 node = ""
 [guns.joints.action]
@@ -1857,7 +1874,7 @@ support_distance = 0.3
 [guns.parts.magazine]
 node = "magazine"
 [guns.parts.action]
-node = "slide"
+node = "bolt"
 [guns.parts.bolt]
 node = ""
 [guns.joints.action]
@@ -1891,7 +1908,7 @@ support_distance = 0.3
 [guns.parts.magazine]
 node = "magazine"
 [guns.parts.action]
-node = "slide"
+node = "bolt"
 [guns.parts.bolt]
 node = ""
 [guns.joints.action]
@@ -1945,7 +1962,9 @@ position = [0.04, 0.03, 0]
 position = [0.01875, 0.091875, -0.27]
 [guns.visual]
 shot_node = "bolt2"
-shot_travel = 0.055
+shot_travel = 0.15
+# TaCZ names the self-loading SPAS mode BURST; SEMI is pump-action.
+shot_modes = ["BURST"]
 hidden = ["bullet_and_righthand", "bullet_in_mag"]
 
 
@@ -1964,9 +1983,9 @@ support_distance = 0.3
 [guns.parts.magazine]
 node = "magazine"
 [guns.parts.action]
-node = "slide"
+node = "bolt_pull"
 [guns.parts.bolt]
-node = ""
+node = "m4a1_bolt"
 [guns.joints.action]
 kind = "template"
 frame = "gun"
@@ -1996,9 +2015,9 @@ grip_pixels = [0, 7.5, 6.45]
 muzzle_pixels = [0, 10, -39.25]
 support_distance = 0.3
 [guns.parts.magazine]
-node = "magazine"
+node = ""
 [guns.parts.action]
-node = "slide"
+node = "door_cap"
 [guns.parts.bolt]
 node = ""
 [guns.joints.action]
@@ -2032,7 +2051,7 @@ support_distance = 0.3
 [guns.parts.magazine]
 node = "magazine"
 [guns.parts.action]
-node = "slide"
+node = "bolt"
 [guns.parts.bolt]
 node = ""
 [guns.joints.action]
@@ -2091,8 +2110,15 @@ position = [0.005625, 0.083203125, -0.189375]
 
 [guns.visual]
 shot_node = "ump45_bolt"
-shot_travel = 0.055
+shot_travel = 0.095625
 
+
+# Short handling clips; AA-12/UMP use explicit fallback clips where the pack only supplies full tracks.
+[guns.sounds]
+mag_out = "tacz:hk_mp5a5/hk_mp5a5_reload_magout"
+mag_in = "tacz:hk_mp5a5/hk_mp5a5_reload_magin"
+action_back = "tacz:hk_mp5a5/hk_mp5a5_inspect_boltback"
+action_close = "tacz:hk_mp5a5/hk_mp5a5_inspect_boltrelease"
 [[guns]]
 id = "tacz:uzi"
 display = "tacz:default"
@@ -2108,9 +2134,9 @@ support_distance = 0.3
 [guns.parts.magazine]
 node = "magazine"
 [guns.parts.action]
-node = "slide"
+node = "pull"
 [guns.parts.bolt]
-node = ""
+node = "bolt"
 [guns.joints.action]
 kind = "template"
 frame = "gun"
@@ -2140,9 +2166,9 @@ grip_pixels = [0, 11.675, 2.075]
 muzzle_pixels = [0, 11.25, -11.775]
 support_distance = 0.3
 [guns.parts.magazine]
-node = "magazine"
+node = "magzine"
 [guns.parts.action]
-node = "slide"
+node = "vector45_bolt"
 [guns.parts.bolt]
 node = ""
 [guns.joints.action]
@@ -2160,3 +2186,700 @@ position = [0, 0, 0]
 position = [0, 0, 0]
 [guns.zones.port]
 position = [0.005625, 0.009843749999999972, -0.24281250000000001]
+
+
+# TaCZ 1.2 candidate: model/animation reviewed; grip and zones need in-game calibration.
+[[guns]]
+id = "tacz:ak12"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "closed_bolt_magazine"
+variant = "MAGAZINE"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 6, 16]
+muzzle_pixels = [0, 8.6875, -14]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "bolt"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0.0, -0.0975, -0.24375]
+[guns.zones.rack]
+position = [-0.0153056, 0.1453684, -0.3466864]
+[guns.zones.support]
+position = [0.0, 0.0515625, -0.5148191]
+[guns.zones.release]
+position = [0.0075, 0.1406621, -0.2517187]
+[guns.zones.selector]
+position = [0.04, 0.03, 0]
+[guns.zones.port]
+position = [0.0075, 0.1406621, -0.2517187]
+[guns.visual]
+shot_node = "bolt"
+shot_travel = 0.1875
+
+
+# TaCZ 1.2 candidate: model/animation reviewed; grip and zones need in-game calibration.
+
+# Short handling clips; AA-12/UMP use explicit fallback clips where the pack only supplies full tracks.
+[guns.sounds]
+mag_out = "tacz:ak12/ak12_reload_magout"
+mag_in = "tacz:ak12/ak12_reload_magin"
+action_back = "tacz:ak12/ak12_inspect_chamberpull"
+action_close = "tacz:ak12/ak12_inspect_chamberrelease"
+[[guns]]
+id = "tacz:ak74m"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "closed_bolt_magazine"
+variant = "MAGAZINE"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 6, 5]
+muzzle_pixels = [0, 8.5, -27]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "bolt"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0.0, -0.0975, -0.31875]
+[guns.zones.rack]
+position = [0.0294, 0.1137896, -0.3556789]
+[guns.zones.support]
+position = [0.0, 0.0453326, -0.6390379]
+[guns.zones.release]
+position = [0.0075, 0.1101934, -0.3384375]
+[guns.zones.selector]
+position = [0.04, 0.03, 0]
+[guns.zones.port]
+position = [0.0075, 0.1101934, -0.3384375]
+[guns.visual]
+shot_node = "bolt"
+shot_travel = 0.1875
+
+
+# TaCZ 1.2 candidate: model/animation reviewed; grip and zones need in-game calibration.
+
+# Short handling clips; AA-12/UMP use explicit fallback clips where the pack only supplies full tracks.
+[guns.sounds]
+mag_out = "tacz:ak47/ak47_reload_magout"
+mag_in = "tacz:ak47/ak47_reload_magin"
+action_back = "tacz:ak47/ak47_inspect_pull"
+action_close = "tacz:ak47/ak47_inspect_empty_release"
+[[guns]]
+id = "tacz:hcar"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "closed_bolt_magazine"
+variant = "MAGAZINE"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 6, 9]
+muzzle_pixels = [0, 11.125, -24.5]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "pulls"
+[guns.parts.bolt]
+node = "bolt"
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0.0, 0.1125, -0.3375]
+[guns.zones.rack]
+position = [-0.0441049, 0.1429688, -0.2276869]
+[guns.zones.support]
+position = [0.0, 0.0, -0.3]
+[guns.zones.release]
+position = [0.01875, 0.196875, -0.309375]
+[guns.zones.selector]
+position = [0.04, 0.03, 0]
+[guns.zones.port]
+position = [0.01875, 0.196875, -0.309375]
+[guns.visual]
+shot_node = "bolt"
+shot_travel = 0.135
+
+
+# TaCZ 1.2 candidate: model/animation reviewed; grip and zones need in-game calibration.
+
+# Short handling clips; AA-12/UMP use explicit fallback clips where the pack only supplies full tracks.
+[guns.sounds]
+mag_out = "tacz:hcar/hcar_inspect_magout"
+mag_in = "tacz:hcar/hcar_reload_tactical_magin"
+action_back = "tacz:hcar/hcar_reload_empty_rackoff"
+action_close = "tacz:hcar/hcar_reload_empty_rackback"
+[[guns]]
+id = "tacz:hk_mp7a1"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "closed_bolt_magazine"
+variant = "MAGAZINE"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 5, 0]
+muzzle_pixels = [0, 7.0837, -12.87276]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "bolt_pull"
+[guns.parts.bolt]
+node = "bolt"
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0.0, 0.0, -0.0375]
+[guns.zones.rack]
+position = [0.0, 0.1125, 0.0]
+[guns.zones.support]
+position = [0.0, 0.0, -0.3]
+[guns.zones.release]
+position = [0.0, 0.0511552, -0.133797]
+[guns.zones.selector]
+position = [0.04, 0.03, 0]
+[guns.zones.port]
+position = [0.01875, 0.075, -0.01875]
+[guns.visual]
+shot_node = "bolt"
+shot_travel = 0.15
+
+
+# TaCZ 1.2 candidate: model/animation reviewed; grip and zones need in-game calibration.
+
+# Short handling clips; AA-12/UMP use explicit fallback clips where the pack only supplies full tracks.
+[guns.sounds]
+mag_out = "tacz:hk_mp7a1/hk_mp7a1_reload_magout"
+mag_in = "tacz:hk_mp7a1/hk_mp7a1_reload_magin"
+action_back = ""
+action_close = "tacz:hk_mp7a1/hk_mp7a1_reload_empty_charge"
+[[guns]]
+id = "tacz:hm50b"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "button"
+variant = "BUTTON"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 8, 0]
+muzzle_pixels = [0, 11.39063, -35.35]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magzine"
+[guns.parts.action]
+node = "bolt"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0.0, -0.075, 0.6]
+[guns.zones.rack]
+position = [0.0, 0.1265625, 0.15]
+[guns.zones.support]
+position = [0.0, 0.0, -0.3]
+[guns.zones.release]
+position = [0.0, 0.09375, 0.3375]
+[guns.zones.selector]
+position = [0.04, 0.03, 0]
+[guns.zones.port]
+position = [0.0, 0.09375, 0.3375]
+
+
+# TaCZ 1.2 candidate: model/animation reviewed; grip and zones need in-game calibration.
+[[guns]]
+id = "tacz:m1866"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "button"
+variant = "BUTTON"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 8, 0]
+muzzle_pixels = [0, 10.00313, -20.93437]
+support_distance = 0.3
+[guns.parts.magazine]
+node = ""
+[guns.parts.action]
+node = "lever"
+[guns.parts.bolt]
+node = "bolt"
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0.0, -0.0375, -0.0534375]
+[guns.zones.rack]
+position = [0.0, 0.15, 0.196875]
+[guns.zones.support]
+position = [0.0, 0.0, -0.3]
+[guns.zones.release]
+position = [0.0, 0.075, 0.0389063]
+[guns.zones.selector]
+position = [0.04, 0.03, 0]
+[guns.zones.port]
+position = [0.0, 0.075, 0.0389063]
+
+
+# TaCZ 1.2 candidate: model/animation reviewed; grip and zones need in-game calibration.
+[[guns]]
+id = "tacz:m1897"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "pump"
+variant = "PUMP"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 7, 7]
+muzzle_pixels = [0, 9.15, -24]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "slide"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0.0, -0.0023437, -0.722175]
+[guns.zones.rack]
+position = [0.0, 0.0454046, -0.4945312]
+[guns.zones.support]
+position = [0.0, 0.0454046, -0.4945312]
+[guns.zones.release]
+position = [0.0, 0.0796875, -0.16875]
+[guns.zones.selector]
+position = [0.04, 0.03, 0]
+[guns.zones.port]
+position = [0.0, 0.0796875, -0.16875]
+[guns.visual]
+hidden = ["bullet_and_righthand"]
+
+
+# TaCZ 1.2 candidate: model/animation reviewed; grip and zones need in-game calibration.
+
+# Short handling clips; AA-12/UMP use explicit fallback clips where the pack only supplies full tracks.
+[guns.sounds]
+mag_out = ""
+mag_in = "tacz:m1897/m1897_reload_shellinsert"
+action_back = "tacz:m1897/m1897_bolt_in"
+action_close = "tacz:m1897/m1897_bolt_out"
+eject = "tacz:m1897/m1897_bolt_in"
+[[guns]]
+id = "tacz:mcx_spear_lt"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "closed_bolt_magazine"
+variant = "MAGAZINE"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 6, 0]
+muzzle_pixels = [0, 9.05, -24.9375]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "bolt_pull"
+[guns.parts.bolt]
+node = "bolt"
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0.0, -0.1125, -0.2625]
+[guns.zones.rack]
+position = [0.0, -0.225, 0.0]
+[guns.zones.support]
+position = [0.0, 0.0611475, -0.609375]
+[guns.zones.release]
+position = [0.0062377, -0.3679688, -0.0328125]
+[guns.zones.selector]
+position = [0.04, 0.03, 0]
+[guns.zones.port]
+position = [0.0075, 0.121875, -0.2282812]
+[guns.visual]
+shot_node = "bolt"
+shot_travel = 0.1875
+
+
+# TaCZ 1.2 candidate: model/animation reviewed; grip and zones need in-game calibration.
+
+# Short handling clips; AA-12/UMP use explicit fallback clips where the pack only supplies full tracks.
+[guns.sounds]
+mag_out = "tacz:mcx_spear_lt/mcx_reload_magout"
+mag_in = "tacz:mcx_spear_lt/mcx_reload_magin"
+action_back = "tacz:mcx_spear_lt/mcx_inspect_rackon"
+action_close = "tacz:mcx_spear_lt/mcx_inspect_rackback"
+[[guns]]
+id = "tacz:mk18"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "closed_bolt_magazine"
+variant = "MAGAZINE"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 6, 0]
+muzzle_pixels = [0, 9.55, -22.875]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "mk18_pull"
+[guns.parts.bolt]
+node = "mk18_bolt"
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0.0, -0.0375, -0.225]
+[guns.zones.rack]
+position = [0.0012514, 0.1561856, -0.1216639]
+[guns.zones.support]
+position = [0.0, 0.0890603, -0.5085937]
+[guns.zones.release]
+position = [-0.030282, 0.087876, -0.1618984]
+[guns.zones.selector]
+position = [0.04, 0.03, 0]
+[guns.zones.port]
+position = [0.0075, 0.1383184, -0.2259375]
+[guns.visual]
+shot_node = "mk18_bolt"
+shot_travel = 0.1640677
+
+
+# TaCZ 1.2 candidate: model/animation reviewed; grip and zones need in-game calibration.
+
+# Short handling clips; AA-12/UMP use explicit fallback clips where the pack only supplies full tracks.
+[guns.sounds]
+mag_out = "tacz:mk18/mk18_reload_tactical_magout"
+mag_in = "tacz:mk18/mk18_reload_tactical_magin"
+action_back = "tacz:mk18/mk18_inspect_rackon"
+action_close = "tacz:mk18/mk18_inspect_rackrelase"
+[[guns]]
+id = "tacz:mrad"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "button"
+variant = "BUTTON"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 8, 11.5]
+muzzle_pixels = [0, 7.84375, -30.25312]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "bolt_fix"
+[guns.parts.bolt]
+node = "bolt"
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0.0, -0.121875, -0.16875]
+[guns.zones.rack]
+position = [0.0, -0.1984624, -0.2352187]
+[guns.zones.support]
+position = [0.0, 0.0, -0.3]
+[guns.zones.release]
+position = [0.0117188, 0.0070312, -0.234375]
+[guns.zones.selector]
+position = [0.04, 0.03, 0]
+[guns.zones.port]
+position = [0.0117188, 0.0070312, -0.234375]
+
+
+# TaCZ 1.2 candidate: model/animation reviewed; grip and zones need in-game calibration.
+[[guns]]
+id = "tacz:pkm"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "button"
+variant = "BUTTON"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 8, 9]
+muzzle_pixels = [0, 7.4375, -27.5]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "mag_standard"
+[guns.parts.action]
+node = "pull_handle"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0.0, -0.1078125, 0.1101562]
+[guns.zones.rack]
+position = [0.0, -0.1078125, 0.1101562]
+[guns.zones.support]
+position = [0.0, 0.0, -0.3]
+[guns.zones.release]
+position = [-0.0351562, -0.0726562, -0.1341795]
+[guns.zones.selector]
+position = [0.04, 0.03, 0]
+[guns.zones.port]
+position = [-0.0351562, -0.0726562, -0.1341795]
+
+
+# TaCZ 1.2 candidate: model/animation reviewed; grip and zones need in-game calibration.
+[[guns]]
+id = "tacz:qr_24"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "closed_bolt_magazine"
+variant = "MAGAZINE"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 7, 6]
+muzzle_pixels = [0, 10.24687, -22.3125]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "bolt_group"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0.0, -0.0375, -0.225]
+[guns.zones.rack]
+position = [-0.0037654, 0.1549718, -0.28125]
+[guns.zones.support]
+position = [0.0, 0.0667969, -0.5414062]
+[guns.zones.release]
+position = [-0.0251134, 0.0867187, -0.1570312]
+[guns.zones.selector]
+position = [0.04, 0.03, 0]
+[guns.zones.port]
+position = [0.007383, 0.140508, -0.234375]
+[guns.visual]
+shot_node = "bolt_group"
+shot_travel = 0.1875
+
+
+# TaCZ 1.2 candidate: model/animation reviewed; grip and zones need in-game calibration.
+
+# Short handling clips; AA-12/UMP use explicit fallback clips where the pack only supplies full tracks.
+[guns.sounds]
+mag_out = "tacz:qr24/qr24_reload_tactical_magout"
+mag_in = "tacz:qr24/qr24_reload_tactical_magin"
+action_back = ""
+action_close = "tacz:qr24/qr24_reload_empty_charge"
+[[guns]]
+id = "tacz:scar_mk20"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "closed_bolt_magazine"
+variant = "MAGAZINE"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 6, 8]
+muzzle_pixels = [0, 9.375, -25.75]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "bolt"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0.0, -0.01875, -0.1875]
+[guns.zones.rack]
+position = [0.0, 0.075, -0.28125]
+[guns.zones.support]
+position = [0.0, 0.0778125, -0.4382813]
+[guns.zones.release]
+position = [-0.0340522, 0.1003492, -0.103125]
+[guns.zones.selector]
+position = [0.04, 0.03, 0]
+[guns.zones.port]
+position = [0.016875, 0.13125, -0.1509375]
+[guns.visual]
+shot_node = "bolt"
+shot_travel = 0.225
+
+
+# TaCZ 1.2 candidate: model/animation reviewed; grip and zones need in-game calibration.
+
+# Short handling clips; AA-12/UMP use explicit fallback clips where the pack only supplies full tracks.
+[guns.sounds]
+mag_out = "tacz:scar_h/p05_ar_schotel_reload_empty_magout"
+mag_in = "tacz:scar_h/p05_ar_schotel_reload_empty_magin"
+action_back = "tacz:scar_h/p05_ar_schotel_inspect_empty_boltback"
+action_close = "tacz:scar_h/p05_ar_schotel_inspect_empty_boltclose"
+[[guns]]
+id = "tacz:svd"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "closed_bolt_magazine"
+variant = "MAGAZINE"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 6, 5]
+muzzle_pixels = [0.00128, 9.22298, -34.87]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "bolt_bullet"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0.1125, -0.084375, -0.384375]
+[guns.zones.rack]
+position = [-4.8e-05, 0.1226194, -0.28575]
+[guns.zones.support]
+position = [0.0, 0.0, -0.3]
+[guns.zones.release]
+position = [0.009327, 0.1319944, -0.182625]
+[guns.zones.selector]
+position = [0.04, 0.03, 0]
+[guns.zones.port]
+position = [0.009327, 0.1319944, -0.182625]
+[guns.visual]
+shot_node = "bolt_bullet"
+shot_travel = 0.215625
+
+
+# TaCZ 1.2 candidate: model/animation reviewed; grip and zones need in-game calibration.
+
+# Short handling clips; AA-12/UMP use explicit fallback clips where the pack only supplies full tracks.
+[guns.sounds]
+mag_out = "tacz:svd/svd_reload_magout"
+mag_in = "tacz:svd/svd_reload_magin"
+action_back = ""
+action_close = "tacz:svd/svd_reload_empty_charge"
+[[guns]]
+id = "tacz:tec_9"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "closed_bolt_magazine"
+variant = "MAGAZINE"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 8, 0]
+muzzle_pixels = [0, 9.6875, -9]
+support_distance = 0.0
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "bolt"
+[guns.parts.bolt]
+node = ""
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0.0, -0.13125, -0.075]
+[guns.zones.rack]
+position = [-0.0176602, 0.0809415, 0.0210937]
+[guns.zones.support]
+position = [0.0, 0.0, -0.3]
+[guns.zones.release]
+position = [0.01875, 0.084375, -0.065625]
+[guns.zones.selector]
+position = [0.04, 0.03, 0]
+[guns.zones.port]
+position = [0.01875, 0.084375, -0.065625]
+
+
+# TaCZ 1.2 candidate: model/animation reviewed; grip and zones need in-game calibration.
+
+[guns.visual]
+# Native open-bolt animation travels forward before returning rearward.
+shot_node = "bolt"
+shot_travel = -0.0585938
+
+[guns.sounds]
+mag_out = "tacz:tec_9/tec9_reload_magout"
+mag_in = "tacz:tec_9/tec9_reload_magin"
+action_back = "tacz:tec_9/tec9_inspect_empty_rackon"
+action_close = "tacz:tec_9/tec9_inspect_empty_rackoff"
+[[guns]]
+id = "tacz:urgi"
+display = "tacz:default"
+model = "tacz_resolved_display"
+mechanism = "closed_bolt_magazine"
+variant = "MAGAZINE"
+ammo_adapter = "native_rounds"
+[guns.geometry]
+scale = 0.6
+grip_pixels = [0, 6, 0]
+muzzle_pixels = [0, 9.55, -27.25]
+support_distance = 0.3
+[guns.parts.magazine]
+node = "magazine"
+[guns.parts.action]
+node = "mk18_pull"
+[guns.parts.bolt]
+node = "mk18_bolt"
+[guns.joints.action]
+kind = "template"
+frame = "gun"
+[guns.zones.magazine]
+position = [0.0, -0.0375, -0.225]
+[guns.zones.rack]
+position = [0.0012514, 0.1561856, -0.1216639]
+[guns.zones.support]
+position = [0.0, 0.085092, -0.609375]
+[guns.zones.release]
+position = [-0.030282, 0.087876, -0.1618984]
+[guns.zones.selector]
+position = [0.04, 0.03, 0]
+[guns.zones.port]
+position = [0.0075, 0.1383184, -0.2259375]
+[guns.visual]
+shot_node = "mk18_bolt"
+shot_travel = 0.1640677
+
+# Short handling clips; AA-12/UMP use explicit fallback clips where the pack only supplies full tracks.
+[guns.sounds]
+mag_out = "tacz:m4a1/m4a1_reload_tactical_magout"
+mag_in = "tacz:m4a1/m4a1_reload_tactical_magin"
+action_back = "tacz:m4a1/m4a1_inspect_rackon"
+action_close = "tacz:m4a1/m4a1_inspect_rackrelase"

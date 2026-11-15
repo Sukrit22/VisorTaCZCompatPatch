@@ -2,7 +2,9 @@
 
 A Visor VR addon for TaCZ: controller aiming, muzzle-origin shots, physical weapon handling, calibration, and experimental dual wield with body holsters. VR and flatscreen players can share a server.
 
-**[Download the 0.14.0 release](https://github.com/Sukrit22/VisorTaCZCompatPatch/releases/tag/0.14.0)** · [Build instructions](docs/BUILDING.md) · [Controls and test tracker](docs/TESTING-CURRENT.md) · [Developer tour](docs/PROJECT-TOUR.md)
+**[Download 0.14.2-alpha.2 (TaCZ 1.2 pre-release)](https://github.com/Sukrit22/VisorTaCZCompatPatch/releases/tag/0.14.2-alpha.2)** · [Previous 0.14.0 release](https://github.com/Sukrit22/VisorTaCZCompatPatch/releases/tag/0.14.0) · [Build instructions](docs/BUILDING.md) · [Controls and test tracker](docs/TESTING-CURRENT.md) · [Developer tour](docs/PROJECT-TOUR.md)
+
+See the [TaCZ 1.2 profile review](docs/PROFILE-REVIEW-1.2.md) for AA-12/action corrections and 12 new experimental physical profiles.
 
 ## Release versus current source
 
@@ -15,7 +17,7 @@ The **0.14.0** GitHub release is a download collection. Its uploaded binaries ar
 | 1.21.1 Fabric | 0.14.0-alpha.5.1+1.21.1 |
 | 1.21.1 NeoForge | 0.14.0-alpha.5.1+1.21.1 |
 
-**Current working-tree candidate: 0.14.0-alpha.10, protocol 35** (1.21.1 adds `+1.21.1`). The release tag predates this candidate, and attached older JARs do not contain every source feature below. In particular, the Physical dual Glock milestone and alpha.9 feedback/ADS fixes require a newer build. Use matching addon builds on client and server; do not mix artifacts merely because they share the GitHub release page. See [alpha.8](docs/UPDATE-0.14.0-alpha.8.md), [alpha.9](docs/UPDATE-0.14.0-alpha.9.md) and [alpha.10 changes](docs/UPDATE-0.14.0-alpha.10.md).
+**Current pre-release: 0.14.2-alpha.2, protocol 37**, targeting TaCZ 1.2.0 and matching Refabricated builds. See the [release notes and exact dependency versions](docs/RELEASE-0.14.2-alpha.2.md). Use matching addon builds on client and server. See the [TaCZ 1.2 upgrade notes and pending tests](docs/TACZ-1.2-UPGRADE.md); older TaCZ binaries are intentionally rejected by this candidate.
 
 ## Installation
 
@@ -23,10 +25,10 @@ Choose the JAR for **both** your Minecraft version and loader. Install the addon
 
 | Target | Java | Dependencies |
 | --- | --- | --- |
-| Forge 1.20.1 | 17 | Forge 47.4.x; Visor; TaCZ 1.1.8-hotfix/hotfix2 |
-| Fabric 1.20.1 | 17 | Fabric Loader 0.17.2+; Fabric API; Visor; TaCZ: Refabricated; Forge Config API Port |
-| Fabric 1.21.1 | 21 | Fabric Loader 0.17.2+; Fabric API; Visor 0.6.0-beta or compatible later build; TaCZ: Refabricated; Forge Config API Port |
-| NeoForge 1.21.1 | 21 | NeoForge 21.1; Visor 0.6.0-beta or compatible later build; the targeted NeoForge TaCZ port |
+| Forge 1.20.1 | 17 | Forge 47.4.x; Visor; TaCZ 1.2.0 |
+| Fabric 1.20.1 | 17 | Fabric Loader 0.17.2+; Fabric API; Visor; TaCZ: Refabricated 1.0.0 for TaCZ 1.2.0; Forge Config API Port |
+| Fabric 1.21.1 | 21 | Fabric Loader 0.17.2+; Fabric API; Visor 0.6.0-beta or compatible later build; TaCZ: Refabricated 1.0.0 for TaCZ 1.2.0; Forge Config API Port |
+| NeoForge 1.21.1 | 21 | NeoForge 21.1; Visor 0.6.0-beta or compatible later build; official TaCZ 1.2.0 |
 
 The [build guide](docs/BUILDING.md) identifies the pinned development dependencies and metadata. A permissive dependency range is not a claim that every upstream version has been tested. **Gun Durability (`gundb`) is optional**; the detailed jam adapter targets 2.2.2.
 
@@ -85,7 +87,7 @@ Use the [master checklist](docs/TESTING-CURRENT.md): it retains reported passes 
 
 Build all supported targets on Windows with `./gradlew.bat -p all build --console=plain`; releases collect in `all/build/libs`. This also checks the development-only26.2 target without packaging it. See [build commands, JDK selection and artifact paths](docs/BUILDING.md). Shared authored code lives under `src/main`; do not edit generated files under a target's `build/generated/shared` directory.
 
-Development now proceeds on **`main`**. Earlier experiment branches are retained as checkpoints; their commits are included in `main`. The [Visor multiplatform template review](docs/VISOR-ADDON-MULTIPLATFORM-REVIEW.md) describes a staged route toward clearer common/platform modules without silently raising minimum Visor versions or dropping TaCZ port-specific behavior.
+The TaCZ 1.2 upgrade release is on **`codex/tacz-1.2-upgrade`**; **`main`** retains the earlier baseline. Earlier experiment branches are retained as checkpoints; their commits are included in `main`. The [Visor multiplatform template review](docs/VISOR-ADDON-MULTIPLATFORM-REVIEW.md) describes a staged route toward clearer common/platform modules without silently raising minimum Visor versions or dropping TaCZ port-specific behavior.
 
 MIT license. Visor, TaCZ and gun-pack assets remain owned by their respective projects.
 

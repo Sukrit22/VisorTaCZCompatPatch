@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class DescriptorProfilesTest {
     private String bundled()throws Exception{try(var in=getClass().getResourceAsStream("/gun-profiles.toml")){return new String(in.readAllBytes(),StandardCharsets.UTF_8);}}
     @Test void everyExistingPhysicalProfileMigratesWithoutGeometryChanges()throws Exception{
-        var data=DescriptorProfiles.parse(bundled());assertEquals(54,data.size());int migrated=0;
+        var data=DescriptorProfiles.parse(bundled());assertEquals(70,data.size());int migrated=0;
         for(String id:Profiles.ids()){
             var p=Profiles.byId(id);if(!p.physical())continue;migrated++;
             var d=data.get(id);assertNotNull(d,id);assertEquals(p,d.profile(),id);assertEquals(p.rackNode(),d.rack(),id);assertEquals(p.boltNode(),d.bolt(),id);
@@ -16,7 +16,7 @@ class DescriptorProfilesTest {
             assertTrue(Handling.release(p,Calibration.ZERO).distance(d.zones().get("release"))<1e-6,id);
             assertTrue(JamProfile.of(p,Calibration.ZERO).port().distance(d.zones().get("port"))<1e-6,id);
         }
-        assertEquals(27,migrated);
+        assertEquals(39,migrated);
     }
     @Test void akAndUmpUseTheirOwnActionBonesWithoutChangingGripGeometry(){
         var ak=Profiles.byId("tacz:ak47");var ump=Profiles.byId("tacz:ump45");
@@ -46,7 +46,7 @@ class DescriptorProfilesTest {
         assertEquals("m4a1_bolt",d.get("tacz:m4a1").visual().shotNode());
     }
     @Test void rejectUnsafeVisualTravelAndUnimplementedFireMode()throws Exception{
-        var text=bundled();assertThrows(IllegalArgumentException.class,()->DescriptorProfiles.parse(text.replace("shot_travel = 0.055","shot_travel = 1.0")));
+        var text=bundled();assertThrows(IllegalArgumentException.class,()->DescriptorProfiles.parse(text.replaceFirst("shot_travel = [-0-9.]+","shot_travel = 1.0")));
         assertThrows(IllegalArgumentException.class,()->DescriptorProfiles.parse(text.replace("manual_cycle_modes = [\"SEMI\"]","manual_cycle_modes = [\"INVALID\"]")));
     }
     @Test void gunIdLookupDoesNotRequireBindingAStack(){
